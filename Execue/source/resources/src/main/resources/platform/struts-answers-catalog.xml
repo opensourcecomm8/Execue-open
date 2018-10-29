@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for Answers Catalog related actions
+
+-->
+<struts>
+    
+	<package name="answers-catalog" namespace="/swi" extends="execue-console-default">
+        
+		<action name="showAssetSelectionForCubes"  class="assetSelectionAction">
+			<result name="input" type="tiles">cube.showAssetSelectionForCubes</result>
+			<result name="error" type="tiles" >cube.showAssetSelectionForCubes</result> 
+			<result name="success" type="tiles" >cube.showAssetSelectionForCubes</result> 
+		</action>
+		<!-- Mart actions  -->
+		<action name="showMartRequest" method="input" class="martManagementAction">
+			<result type="tiles" name="success">mart.showRequest</result>
+		</action>
+		<action name="showMartTargetAsset" class="martManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+		</action>
+		<!--<action name="createMart" method="createMart" class="martManagementAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+				<result name="input">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+				<result name="error">/WEB-INF/jsp/admin/swi/catalog/martTargetAssetInfo.jsp</result>
+			</action>-->
+		
+		<!--action name="showCubeRequest" method="input" class="cubeManagementAction"-->
+		<action name="showCubeRequest" method="input" class="cubeManagementAction">
+			<result type="tiles" name="success">cube.showRequest</result>
+			<result type="tiles" name="input">cube.showRequest</result>
+			<result type="tiles" name="error">cube.showRequest</result>
+		</action>
+		
+		<action name="manageCubes" method="showCubes" class="cubeManagementAction">
+			<result type="tiles" name="success">cube.manageCubes</result>
+			<result type="tiles" name="error">cube.manageCubes</result>
+			<result type="tiles" name="input">cube.manageCubes</result>
+		</action>
+		
+		<action name="manageMarts" method="showMarts" class="martManagementAction">
+			<result type="tiles" name="success">mart.manageMarts</result>
+			<result type="tiles" name="error">mart.manageMarts</result>
+			<result type="tiles" name="input">mart.manageMarts</result>
+		</action>
+		
+		<action name="showCubesList" method="getPageResults" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/viewCubesList.jsp</result>
+		</action>
+		
+		<action name="editCube" method="editCube" class="cubeManagementAction">
+			<result type="tiles" name="success">cube.editCube</result>
+		</action>
+		
+		<action name="editMart" method="editMart" class="martManagementAction">
+			<result type="tiles" name="success">mart.editMart</result>
+		</action>
+		
+		<!--action name="showConceptsForCube" method="input" class="cubeManagementAction"-->
+		<action name="showConceptsForCube" method="getPageResults" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/viewCubeConcepts.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/catalog/viewCubeConcepts.jsp</result>
+		</action>
+		
+		<!--action name="showSubConceptsForCube" method="showSubConceptsForCube" class="cubeManagementAction"-->
+		<action name="showSubConceptsForCube" method="getPageResults" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/viewCubeConcepts.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/catalog/viewCubeConcepts.jsp</result>
+		</action>
+		
+		<action name="showTargetAsset" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>
+		</action>
+		
+		<action name="showSnapshot" method="showSnapshot" class="cubeManagementAction">
+			<result type="tiles" name="success">cube.showSnapshot</result>
+			<result type="tiles" name="input">cube.showSnapshot</result>
+			<result type="tiles" name="error">cube.showSnapshot</result>
+		</action>
+		<!-- <action name="createCube" method="createCube" class="cubeManagementAction">
+				<result name="success" >/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>			
+				<result name="input">/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>
+				<result  name="error">/WEB-INF/jsp/admin/swi/catalog/targetAssetInfo.jsp</result>
+			</action>-->
+		<action name="showCubeStatus" method="showCubeRequestStatus" class="cubeManagementAction">
+			<result type="tiles" name="success">cube.showStatus</result>
+			<result type="tiles" name="input">cube.showStatus</result>
+			<result type="tiles" name="error">cube.showStatus</result>
+		</action>
+		<action name="showSelectedDimensions" method="showSelectedDimensions" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/selectedDimensions.jsp</result>
+		</action>
+        
+		<action name="showDimensionDetails" method="showDimensionDetails" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/dimensionDefinition.jsp</result>
+		</action>
+        
+		<action name="showSelectedDimensionDetails" method="showSelectedDimensionDetails" class="cubeManagementAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/catalog/dimensionDefinition.jsp</result>
+		</action>
+        
+	</package>
+
+	<package name="catalog-json" namespace="/swi" extends="execue-json-default">
+		<action name="addDimension" method="addDimensionToSelection" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+		
+		<action name="updateCube" method="updateCube" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>		
+		<action name="refreshCube" method="refreshCube" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		<action name="updateMart" method="updateMart" class="martManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>		
+		<action name="refreshMart" method="refreshMart" class="martManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		<action name="addRangeDimension" method="addRangeToSelection" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+        
+		<action name="deleteSelectedDimensions" method="deleteMembersAndRanges" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+		<action name="createMart" method="createMart" class="martManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>	
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>		
+		</action>
+		
+		<action name="createCube" method="createCube" class="cubeManagementAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>	
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>	
+		</action>
+        
+	</package>
+</struts>

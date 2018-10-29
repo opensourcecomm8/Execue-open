@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<dataaccess>
+		<static-values>
+			<database-drivers>
+				<oracle>
+					<driver-name>jdbc:oracle:thin:</driver-name>
+					<driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+				</oracle>
+				<mysql>
+					<driver-name>jdbc:mysql:</driver-name>
+					<driver-class>com.mysql.jdbc.Driver</driver-class>
+				</mysql>
+				<!-- <mssql>
+						<driver-name>jdbc:sqlserver:</driver-name>
+						<driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
+					</mssql> -->
+				<mssql>
+					<driver-name>jdbc:jtds:sqlserver:</driver-name>
+					<driver-class>net.sourceforge.jtds.jdbc.Driver</driver-class>
+				</mssql>
+				<teradata>
+					<driver-name>jdbc:teradata:</driver-name>
+					<driver-class>com.ncr.teradata.TeraDriver</driver-class>
+				</teradata>
+				<!--  SAS Workspace Server -->
+				<sas-workspace>
+					<driver-name>jdbc:sasiom:</driver-name>
+					<driver-class>com.sas.rio.MVADriver</driver-class> 
+				</sas-workspace>
+				<!--  SAS SAS/SHARE server -->
+				<sas-sharenet>
+					<driver-name>jdbc:sharenet:</driver-name>
+					<driver-class>com.sas.net.sharenet.ShareNetDriver</driver-class>
+				</sas-sharenet>	
+				<db2>
+					<driver-name>jdbc:db2j:net:</driver-name>
+					<driver-class>com.ibm.db2.jcc.DB2Driver</driver-class>
+				</db2>			
+				<derby>
+					<driver-name>jdbc:derby:</driver-name>
+					<driver-class>org.apache.derby.jdbc.ClientDriver</driver-class>
+				</derby>			
+				<postgres>
+					<driver-name>jdbc:postgresql:</driver-name>
+					<driver-class>org.postgresql.Driver</driver-class>
+				</postgres>			
+			</database-drivers>
+			<database-jdbc-url-patterns>
+				<oracle><![CDATA[<driver-name>@<db-location>:<db-port>:<db-schema-name>]]></oracle>
+				<mysql><![CDATA[<driver-name>//<db-location>:<db-port>/<db-schema-name>]]></mysql>
+				<mssql><![CDATA[<driver-name>//<db-location>:<db-port>/<db-schema-name>]]></mssql>
+				<!-- <mssql><![CDATA[<driver-name>//<db-location>:<db-port>;database=<db-schema-name>]]></mssql> -->
+				<teradata><![CDATA[<driver-name>//<db-location>/DBS_PORT=<db-port>\,DATABASE=<db-schema-name>]]></teradata>
+				<sas-sharenet><![CDATA[<driver-name>//<db-location>:<db-port>?librefs=<db-schema-name>]]></sas-sharenet>
+				<sas-workspace><![CDATA[<driver-name>//<db-location>:<db-port>?librefs=<db-schema-name>]]></sas-workspace>
+				<db2><![CDATA[<driver-name>//<db-location>:<db-port>/<db-schema-name>]]></db2>
+				<derby><![CDATA[<driver-name>//<db-location>:<db-port>/<db-schema-name>]]></derby>
+				<postgres><![CDATA[<driver-name>//<db-location>:<db-port>/<db-schema-name>]]></postgres>
+			</database-jdbc-url-patterns>
+			<palce-holders>
+				<driver-name><![CDATA[<driver-name>]]></driver-name>
+				<db-location><![CDATA[<db-location>]]></db-location>
+				<db-port><![CDATA[<db-port>]]></db-port>
+				<db-schema-name><![CDATA[<db-schema-name>]]></db-schema-name>
+			</palce-holders>
+			<pool-parameters>
+				<oracle>
+					<validation-query><![CDATA[SELECT 1 FROM DUAL]]></validation-query>
+				</oracle>
+				<mysql>
+					<validation-query><![CDATA[SELECT 1]]></validation-query>
+				</mysql>
+				<mssql>
+					<validation-query><![CDATA[SELECT 1]]></validation-query>
+				</mssql>
+				<teradata>
+					<validation-query><![CDATA[SELECT 1]]></validation-query>
+				</teradata>
+				<sas-sharenet>
+					<!-- SAS doesn't have dual like support, need to specify some default sas library and its dataset to validate -->
+					<validation-query><![CDATA[SELECT 1 FROM dictionary.members WHERE libname = 'WORK']]></validation-query>
+				</sas-sharenet>
+				<sas-workspace>
+					<!-- SAS doesn't have dual like support, need to specify some default sas library and its dataset to validate -->
+					<validation-query><![CDATA[SELECT 1 FROM dictionary.members WHERE libname = 'WORK']]></validation-query>
+				</sas-workspace>	
+				<db2>
+					<validation-query><![CDATA[select CURRENT DATE from SYSIBM.SYSDUMMY1]]></validation-query>
+				</db2>			
+				<derby>
+					<validation-query><![CDATA[select 1 from SYSIBM.SYSDUMMY1]]></validation-query>
+				</derby>			
+				<postgres>
+					<validation-query><![CDATA[select 1]]></validation-query>
+				</postgres>			
+				<generic-parameters>
+					<test-on-borrow>true</test-on-borrow>
+					<max-active>75</max-active>
+					<max-idle>10</max-idle>
+				</generic-parameters>
+			</pool-parameters>
+			<setup-is-for-batch-processes-only>@@SETUP_IS_FOR_BATCH_PROCESSES_ONLY@@</setup-is-for-batch-processes-only>
+			<local-environment-jndi-root-context-name>execue</local-environment-jndi-root-context-name>
+			<local-environment-jndi-jdbc-sub-context-name>jdbc</local-environment-jndi-jdbc-sub-context-name>
+			<solr-pool-parameters>
+				<solr-http-header>http://</solr-http-header>
+			</solr-pool-parameters>
+		</static-values>
+	</dataaccess>
+</execue-configuration>

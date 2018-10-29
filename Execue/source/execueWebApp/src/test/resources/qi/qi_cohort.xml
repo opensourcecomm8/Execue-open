@@ -1,0 +1,76 @@
+<qf>
+    <selectText/>
+    <selectTextProcessed/>
+    <selects>
+        <select>
+            <term>
+                <name>MerchandiseAmount</name>
+                <displayName>Merchandise Sales Amount</displayName>
+                <type>CONCEPT</type>
+            </term>
+        </select>
+    </selects>
+    <conditions>
+        <condition>
+            <lhsBusinessTerm>
+                <term>
+                    <name>AccountStatus</name>
+                    <displayName>Account Status</displayName>
+                    <type>CONCEPT</type>
+                </term>
+                <hasInstances>true</hasInstances>
+                <datatype>String</datatype>
+            </lhsBusinessTerm>
+            <operator>IN</operator>
+            <rhsValue>
+                <terms>
+                    <term>
+                        <name>AccountStatus2</name>
+                        <displayName>Open</displayName>
+                        <type>INSTANCE</type>
+                    </term>
+                </terms>
+            </rhsValue>
+        </condition>
+    </conditions>
+    <populations>
+        <term>
+            <name>Account</name>
+            <displayName>Account</displayName>
+            <type>CONCEPT</type>
+        </term>
+    </populations>
+    <summarizations>
+        <term>
+            <name>Product</name>
+            <displayName>Product</displayName>
+            <type>CONCEPT</type>
+        </term>
+    </summarizations>
+    <cohort>
+        <summarizations/>
+        <conditions>
+            <condition>
+                <lhsBusinessTerm>
+                    <term>
+                        <name>Time</name>
+                        <displayName>Bill Month</displayName>
+                        <type>CONCEPT</type>
+                    </term>
+                    <hasInstances>true</hasInstances>
+                    <datatype>String</datatype>
+                </lhsBusinessTerm>
+                <operator>EQUALS</operator>
+                <rhsValue>
+                    <terms>
+                        <term>
+                            <name>Month1-Year2006</name>
+                            <displayName>Jan 2006</displayName>
+                            <type>INSTANCE</type>
+                        </term>
+                    </terms>
+                </rhsValue>
+            </condition>
+        </conditions>
+    </cohort> 
+</qf>

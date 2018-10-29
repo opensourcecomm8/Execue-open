@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens constants, packages and any other configurations/modifications 
+	#    which are across the application
+
+-->
+<struts>
+
+	<!-- 
+			# Constants overriden from struts defaults
+		-->
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.configuration.xml.reload" value="false" />
+	<constant name="struts.ui.theme" value="simple"/>
+	<constant name="struts.custom.i18n.resources" value="platform.messages.GlobalLabel,ext.messages.GlobalLabel-ext,platform.messages.GlobalMessage,ext.messages.GlobalMessage-ext,platform.messages.GlobalWarning,ext.messages.GlobalWarning-ext,platform.messages.GlobalTips" />
+	<constant name="struts.multipart.maxSize" value="104857600" /><!-- Maximum Size for file upload in bytes -->
+
+	<!-- 
+			# Package definition for execue web-app's console module
+			# Changes from struts-default are,
+			# 1. tiles added as a result ype
+			# 2. any field with name (on html form) starts with image be ignored on params interceptor
+			# 3. any method named as input,back,cancel,browse and any method starts with show and delete
+			#      will not validated
+		-->
+	<package name="execue-console-default" extends="struts-default">
+        
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+		</result-types>
+        
+		<interceptors>
+        	
+			<!-- Any common Admin releated code should go here -->
+	        
+			<interceptor name="adminInterceptor" class="com.execue.web.core.swi.AdminInterceptor"/>
+
+        
+			<interceptor-stack name="execue-console-stack">
+				<interceptor-ref name="defaultStack">
+					<param name="params.excludeParams">imageField.*,clickedMenuItem,ts</param>
+					<param name="validation.excludeMethods">input,back,cancel,browse,delete,list</param>
+				</interceptor-ref>
+				<interceptor-ref name="adminInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+        
+		<default-interceptor-ref name="execue-console-stack"/>
+	
+		<global-results>
+			<result name="appSelection-failure" type="redirect-action">
+				<param name="actionName">selectAppSearchAppsDashboard</param>
+				<param name="namespace">/swi</param>
+			</result>
+		</global-results>
+		
+	</package><!-- End of package "execue-console-default" -->
+    
+    <package name="execue-json-default" extends="execue-console-default">
+        <result-types>
+            <result-type name="json" class="com.googlecode.jsonplugin.JSONResult"/>
+        </result-types>
+        <interceptors>
+            <interceptor name="json" class="com.googlecode.jsonplugin.JSONInterceptor"/>
+        </interceptors>
+    </package><!-- End of package "execue-json-default" -->
+</struts>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defines the package for craigslist related actions
+
+-->
+<struts>
+	<package name="unstructuredInterfaceSearch" extends="execue-console-default">	
+		<action name="unstructuredSearch" method="performUnstructuredSearchByUserQuery" class="unstructuredSearchAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchByUserQuery.jsp</result>
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchByUserQuery.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchByUserQuery.jsp</result>
+		</action>
+		<action name="getExecueFacets" method = "getExecueFacets" class="unstructuredSearchAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/ussFacets.jsp</result>
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/ussFacets.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/ussFacets.jsp</result>
+		</action>
+  
+		<action name="unstructuredSearchByFacet"  method="performUnstructuredSearchByFacet" class="unstructuredSearchAction">   
+			<result name="success">/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="error">/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result> 
+		</action>
+  
+  
+		<action name="getUnstructuredSearchPageResult"  method = "getPageResults" class="unstructuredSearchAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/unstructuredlSearchBarResultsPagination.jsp</result>			
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/unstructuredlSearchBarResultsPagination.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/unstructuredlSearchBarResultsPagination.jsp</result>  
+		</action>
+		
+		<action name="performResemantification" method="performResemantification" class="unstructuredSearchAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+		</action>
+		<action name="showDynamicKnowledgeInput" method="input" class="unstructuredDynamicKnowledgeAbsorptionAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/unstructuredDynamicKnowledgeInput.jsp</result>
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/unstructuredDynamicKnowledgeInput.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/unstructuredDynamicKnowledgeInput.jsp</result>
+		</action>
+		<action name="updateUnstructuredSearchOptions" method="updateUnstructuredSearchOptions" class="unstructuredSearchAction">
+			<result name="success" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="input" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/uss/unstructuredSearchResults.jsp</result>
+		</action>		
+	</package>	
+	
+	<package name="unstructuredInterfaceSearch-json" namespace="/uss" extends="execue-json-default">		
+		<action name="createInstance" class="unstructuredDynamicKnowledgeAbsorptionAction" method="createInstance">
+			<result name="success" type="json">
+				<param name="root">status</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">status</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">status</param>
+			</result>
+		</action>
+		
+		<action name="suggestConcepts" class="unstructuredDynamicKnowledgeAbsorptionAction" method="suggestConcepts">
+			<result name="success" type="json">
+				<param name="root">concepts</param>
+			</result>
+		</action>
+		<action name="showInstances" class="unstructuredDynamicKnowledgeAbsorptionAction" method="showInstances">
+			<result name="success" type="json">
+				<param name="root">instances</param>
+			</result>
+		</action>
+		<action name="suggestLocations" class="unstructuredSearchAction" method="suggestLocations">
+			<result name="success" type="json">
+				<param name="root">suggestLocationTerms</param>
+			</result>
+		</action>
+		
+		<action name="unstructuredResemantificationStatus" class="unstructuredResemantificationStatusAction" method="checkStatus">
+			<result name="success" type="json">
+				<param name="root">messageStatus</param>
+			</result>
+		</action>
+	</package>
+</struts>

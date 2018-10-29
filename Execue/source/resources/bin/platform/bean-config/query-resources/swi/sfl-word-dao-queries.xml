@@ -1,0 +1,104 @@
+<queries>
+	<QUERY_ALL_SECONDARY_WORDS>
+		<![CDATA[from SecondaryWord as sw 
+		         where 1 = 1]]>
+	</QUERY_ALL_SECONDARY_WORDS>
+
+	<QUERY_ALL_SFT_TERM_IDS>
+		<![CDATA[select id from SFLTerm as sw 
+		         where 1 = 1]]>
+	</QUERY_ALL_SFT_TERM_IDS>
+
+	<QUERY_RI_ONTO_MATCHED_SFT_TERM_IDS>
+		<![CDATA[select distinct st.id
+		         from SFLTerm st,RIOntoTerm ri 
+		         where lower(st.businessTerm) = ri.word]]>
+	</QUERY_RI_ONTO_MATCHED_SFT_TERM_IDS>
+
+	<QUERY_PLL_MATCHED_SFT_TERM_IDS>
+		<![CDATA[select distinct st.id 
+		         from SFLTerm st ,ParallelWord pll
+		         where st.businessTerm = pll.parallelWord]]>
+	</QUERY_PLL_MATCHED_SFT_TERM_IDS>
+
+	<QUERY_SFL_TERM_TOKENS_BY_LOOKUP_WORD>
+		<![CDATA[select stt from SFLTermToken stt, SFLTerm st 
+		         where stt.sflTermId = :sflTermId 
+                 and st.businessTerm = :lookupWord]]>
+	</QUERY_SFL_TERM_TOKENS_BY_LOOKUP_WORD>
+
+	<QUERY_SFL_TERM_TOKENS_BY_LOOKUP_WORDS>
+		<![CDATA[from SFLTermToken stt
+		         where businessTermToken in (:lookupWords)]]>
+	</QUERY_SFL_TERM_TOKENS_BY_LOOKUP_WORDS>
+
+	<QUERY_ALL_SFL_TERMS>
+		<![CDATA[select st from SFLTerm st]]>
+	</QUERY_ALL_SFL_TERMS>
+
+	<QUERY_GET_SFL_TERM_BY_WORD>
+		<![CDATA[from SFLTerm st 
+		         where st.businessTerm=:businessTerm]]>
+	</QUERY_GET_SFL_TERM_BY_WORD>
+
+	<QUERY_SFL_TERM_TOKENS_BY_TERM_ID>
+		<![CDATA[from SFLTermToken stt
+		         where sflTerm.id = :termId]]>
+	</QUERY_SFL_TERM_TOKENS_BY_TERM_ID>
+
+	<QUERY_GET_SFL_TERM>
+		<![CDATA[from SFLTerm st 
+		         where st.businessTerm=:term]]>
+	</QUERY_GET_SFL_TERM>
+
+	<QUERY_SFL_TERM_TOKENS_BY_KEYWORD>
+		<![CDATA[from SFLTermToken as token
+		         where token.businessTermToken=:keyWord]]>
+	</QUERY_SFL_TERM_TOKENS_BY_KEYWORD>
+
+	<QUERY_SFL_TERMS_FOR_NON_ZERO_HITS>
+		<![CDATA[select sflTerm.id 
+		         from SFLTerm sflTerm, SFLTermToken sflTermToken 
+		         where sflTerm.id = sflTermToken.sflTerm.id
+                 group by sflTerm.id having sum(sflTermToken.hits) > 0]]>
+	</QUERY_SFL_TERMS_FOR_NON_ZERO_HITS>
+
+	<QUERY_SFL_TERMS_BY_IDS>
+		<![CDATA[from SFLTerm sflTerm where sflTerm.id in (:sflTermIds)]]>
+	</QUERY_SFL_TERMS_BY_IDS>
+
+	<QUERY_ALL_SECONDARY_WORDS_FOR_MODEL>
+		<![CDATA[select sw
+		         from SecondaryWord as sw, 
+		         ModelGroupMapping mgm 
+		         where sw.modelGroup.id = mgm.modelGroup.id and 
+                 mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType]]>
+	</QUERY_ALL_SECONDARY_WORDS_FOR_MODEL>
+
+	<QUERY_ELIGIBLE_SECONDARY_WORDS_FOR_MODEL>
+		<![CDATA[select stt.businessTermToken 
+		         from SFLTermToken as stt, RIOntoTerm ri, ModelGroupMapping mgm 
+		         where mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		         and ri.modelGroupId = mgm.modelGroup.id and 
+                 ri.word=lower(stt.sflTerm.businessTerm) 
+                 GROUP BY stt.businessTermToken HAVING COUNT(stt.businessTermToken) >= :threshold]]>
+	</QUERY_ELIGIBLE_SECONDARY_WORDS_FOR_MODEL>
+
+	<QUERY_GET_SFL_TERM_BY_WORD_AND_CONTEXT_ID>
+		<![CDATA[from SFLTerm st 
+		         where st.businessTerm=:businessTerm and st.contextId=:contextId]]>
+	</QUERY_GET_SFL_TERM_BY_WORD_AND_CONTEXT_ID>
+
+	<QUERY_GET_SFL_TERM_IDS_BY_CONTEXT_ID>
+		<![CDATA[select id from SFLTerm st where st.contextId=:contextId]]>
+	</QUERY_GET_SFL_TERM_IDS_BY_CONTEXT_ID>
+
+	<QUERY_GET_SFL_TERMS_FOR_INSTANCES_OF_CONCEPT>
+	<![CDATA[select distinct st 
+		from SFLTerm st, RIOntoTerm rt 
+		where rt.entityType= :instanceEntityType
+		and rt.conceptBEDID = :conceptBedId 
+		and lower(st.businessTerm) = rt.word
+	]]>
+	</QUERY_GET_SFL_TERMS_FOR_INSTANCES_OF_CONCEPT>
+</queries>

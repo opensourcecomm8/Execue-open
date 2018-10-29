@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<class name="com.execue.core.common.bean.entity.InstanceTripleDefinition" table="INSTANCE_TRIPLE_DEFINITION">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">INSTANCE_TRIPLE_DEFINITION</param>
+			</generator>
+		</id>
+         <property name="srcInstanceBedId" type="java.lang.Long">
+            <column name="SRC_INSTANCE_BE_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="destInstanceBedId" type="java.lang.Long">
+            <column name="DEST_INSTANCE_BE_ID" precision="20" scale="0" />
+        </property>
+         <property name="srcConceptBedId" type="java.lang.Long">
+            <column name="SRC_CONCEPT_BE_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="destConceptBedId" type="java.lang.Long">
+            <column name="DEST_CONCEPT_BE_ID" precision="20" scale="0" />
+        </property>
+          <property name="relationBedId" type="java.lang.Long">
+            <column name="RELATION_BE_ID" precision="20" scale="0" />
+        </property>
+        
+	
+	</class>
+
+</hibernate-mapping>

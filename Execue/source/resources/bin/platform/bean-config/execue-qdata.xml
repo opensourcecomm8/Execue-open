@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+		
+	<bean id="localQueryDataService" 
+		class="com.execue.qdata.service.impl.QueryDataServiceImpl">
+		<property name="queryDataConfigurationService">
+			<ref bean="queryDataConfigurationService"/>
+		</property>
+		<property name="queryDataAccessManager">
+			<ref bean="queryDataAccessManager"/>
+		</property>
+	</bean>
+	
+	<bean id="queryDataAccessManager" class="com.execue.qdata.dataaccess.impl.QueryDataAccessManagerImpl" >
+		<property name="QDataBusinessQueryDAO">
+			<ref bean="qDataBusinessQueryDAO"/>
+		</property>
+		<property name="QDataAggregatedQueryDAO">
+			<ref bean="qDataAggregatedQueryDAO"/>
+		</property>
+		<property name="QDataUserQueryDAO">
+			<ref bean="qDataUserQueryDAO"/>
+		</property>
+		<property name="QDataReducedQueryDAO">
+			<ref bean="qDataReducedQueryDAO"/>
+		</property>
+		<property name="newsItemDAO">
+			<ref bean="newsItemDAO"/>
+		</property>
+		<property name="optimalDSetSWIDAO">
+			<ref bean="optimalDSetSWIDAO"/>
+		</property>		
+	</bean>
+	
+	<bean id="jobDataAccessManager" class="com.execue.qdata.dataaccess.impl.JobDataAccessManagerImpl" >
+		<property name="jobDataDAO">
+			<ref bean="jobDataDAO"/>
+		</property>		
+	</bean>
+	
+	<bean id="jobDataService" class="com.execue.qdata.service.impl.JobDataServiceImpl" >
+		<property name="jobDataAccessManager">
+			<ref bean="jobDataAccessManager"/>
+		</property>		
+	</bean>
+	
+	<bean id="queryDataService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager"/>
+		<property name="target" ref="localQueryDataService"/>
+		<property name="proxyTargetClass" value="false"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getAggregatedQuery">PROPAGATION_REQUIRED</prop>
+				<prop key="getAggregatedQueryById">PROPAGATION_REQUIRED</prop>
+				<prop key="getAggregateQueries">PROPAGATION_REQUIRED</prop>
+				<prop key="getAllAggregateQueries">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Bean definition for UDX Data Access Manager -->
+	<bean id="udxDataAccessManager" class="com.execue.qdata.dataaccess.impl.UDXDataAccessManagerImpl" >
+		<property name="udxDAO">
+			<ref bean="udxDAO"/>
+		</property>     
+	</bean>
+    
+	<!-- Bean definition for UDX Service -->
+	<bean id="udxService" class="com.execue.qdata.service.impl.UDXServiceImpl" >
+		<property name="udxDataAccessManager">
+			<ref bean="udxDataAccessManager"/>
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>      
+		<property name="rfxDataAccessManager">
+			<ref bean="rfxDataAccessManager"/>
+		</property> 
+	</bean>
+	<bean id="reportDataAccessManager" class="com.execue.qdata.dataaccess.impl.ReportDataAccessManagerImpl">
+		<property name="reportDAO" ref="reportDAO"/>
+	</bean>
+	
+	<bean id="reportService" 
+		class="com.execue.qdata.service.impl.ReportServiceImpl">
+		<property name="reportDataAccessManager">
+			<ref bean="reportDataAccessManager"/>
+		</property>				
+	</bean>	  
+    
+	<!-- Bean definition for RFX Service -->
+	<bean id="rfxService" class="com.execue.qdata.service.impl.RFXServiceImpl" >
+		<property name="rfxDataAccessManager">
+			<ref bean="rfxDataAccessManager"/>
+		</property>    
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>  
+	</bean>
+	
+	<!-- Bean definition for RFX Data Access Manager -->
+	<bean id="rfxDataAccessManager" class="com.execue.qdata.dataaccess.impl.RFXDataAccessManagerImpl" >
+		<property name="rfxDAO">
+			<ref bean="rfxDAO"/>
+		</property>     
+		<property name="newsItemDAO">
+			<ref bean="newsItemDAO"/>
+		</property>     
+		<property name="applicationCategoryMappingDAO">
+			<ref bean="applicationCategoryMappingDAO"/>
+		</property>		
+	</bean>
+	
+	<bean id="messageService" class="com.execue.qdata.service.impl.MessageServiceImpl">
+		<property name="messageDataAccessManager" ref="messageDataAccessManager" />
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+	</bean>
+	
+	<bean id="messageDataAccessManager" class="com.execue.qdata.dataaccess.impl.MessageDataAccessManagerImpl">
+		<property name="messageDAO" ref="messageDAO" />
+	</bean>
+	
+	<!-- Bean Definitions for App/News Trend Batch-->
+	<bean id="appPopularityService" class="com.execue.qdata.news.service.impl.AppPopularityServiceImpl" >
+		<property name="appPopularityDataAccessManager" ref="appPopularityDataAcessManagerImpl"></property>
+	</bean>
+	<bean id="appPopularityDataAcessManagerImpl" class="com.execue.qdata.news.dataaccess.dao.impl.AppPopularityDataAcessManagerImpl" >
+		<property name="appPopularityDataAccessdao" ref="appPopularityDataAccessDAOImpl"></property>		
+	</bean>
+	    
+	<bean id="userNotificationDataAccessManager"
+		class="com.execue.qdata.dataaccess.impl.UserNotificationDataAccessManagerImpl">
+		<property name="userNotificationDAO">
+			<ref bean="userNotificationDAO" />
+		</property>
+	</bean>
+	<bean id="userNotificationService"
+		class="com.execue.qdata.service.impl.UserNotificationServiceImpl">
+		<property name="userNotificationDataAccessManager">
+			<ref bean="userNotificationDataAccessManager" />
+		</property>
+	</bean>
+	<bean id="queryDataConfigurationService"
+		class="com.execue.qdata.configuration.impl.QueryDataConfigurationServiceImpl">
+		<property name="qdataConfiguration">
+			<ref bean="qdataConfiguration" />
+		</property>
+	</bean>
+	
+	<!-- bean definitions for AnswersCatalogManagementQueueDataAccessManager -->
+	<bean id="answersCatalogManagementQueueDataAccessManager"
+		class="com.execue.qdata.dataaccess.impl.AnswersCatalogManagementQueueDataAccessManagerImpl">
+		<property name="answersCatalogManagementQueueDAO">
+			<ref bean="answersCatalogManagementQueueDAO" />
+		</property>
+	</bean>
+	<!-- bean definitions for AnswersCatalogManagementQueueService -->
+	<bean id="answersCatalogManagementQueueService"
+		class="com.execue.qdata.service.impl.AnswersCatalogManagementQueueServiceImpl" scope="singleton">
+		<property name="answersCatalogManagementQueueDataAccessManager">
+			<ref bean="answersCatalogManagementQueueDataAccessManager" />
+		</property>
+	</bean>
+	
+</beans>

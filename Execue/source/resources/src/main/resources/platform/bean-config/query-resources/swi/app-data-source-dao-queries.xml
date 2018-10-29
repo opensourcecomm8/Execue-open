@@ -1,0 +1,15 @@
+<queries>	
+	<QUERY_GET_DATA_SOURCES_BY_APP_ID_AND_TYPE>
+	<![CDATA[select ds from DataSource ds, AppDataSource ads where ds.type = :dataSourceType and ads.appId = :appId and ads.dataSourceId = ds.id]]>
+	</QUERY_GET_DATA_SOURCES_BY_APP_ID_AND_TYPE>
+		
+	<QUERY_DELETE_APP_DATA_SOURCE_MAPPINGS>
+	<![CDATA[delete from AppDataSource where appId = :appId]]>
+	</QUERY_DELETE_APP_DATA_SOURCE_MAPPINGS>
+	
+	<QUERY_GET_APPLICATIONS_CONFIGURED_TO_UNWH_DATASOURCE>
+	   <![CDATA[select appId from AppDataSource 
+	       where dataSourceId = :uswhDataSourceId]]>
+	</QUERY_GET_APPLICATIONS_CONFIGURED_TO_UNWH_DATASOURCE>
+</queries>
+	

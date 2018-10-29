@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<platform-services>
+		<static-values>	
+			<range-lower-limit>Low</range-lower-limit>
+			<range-upper-limit>High</range-upper-limit>
+			<range-description-delimiter>to</range-description-delimiter>	
+			<app-scoping-refresh-index-enabled>false</app-scoping-refresh-index-enabled>						
+		</static-values>
+		<sampling-strategy>
+			<allowed-proportion-values>0,1</allowed-proportion-values>
+			<theortical-mean-and-stddev-variation-allowed-percentage>20</theortical-mean-and-stddev-variation-allowed-percentage>
+			<needed-population-coverage-percentage-while-checking-for-bell-curve>94.99</needed-population-coverage-percentage-while-checking-for-bell-curve>
+		</sampling-strategy>
+		<security>
+		  <member-level-access-rights-propagation-needed>false</member-level-access-rights-propagation-needed>
+		</security>
+	</platform-services>
+</execue-configuration>

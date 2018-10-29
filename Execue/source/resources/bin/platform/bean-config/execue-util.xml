@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+	<bean id="dynamicFormulaEvaluationService" class="com.execue.util.conversion.DynamicFormulaEvaluationServiceImpl">
+		<property name="dynamicDateFormulaEvaluationService" ref="dynamicDateFormulaEvaluationService"></property>
+	</bean>
+	<bean id="dynamicDateFormulaEvaluationService" class="com.execue.util.conversion.DynamicDateFormulaEvaluationServiceImpl">
+	</bean>
+	
+		
+	<bean id="dateUnitConversion" class="com.execue.util.conversion.DateUnitConversionImpl">
+	</bean>		
+</beans>

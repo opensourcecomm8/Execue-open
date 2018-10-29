@@ -1,0 +1,37 @@
+<queries>	
+	<QUERY_GET_DEFAULT_DYNAMIC_VALUE_BY_ASSET_ID>
+	<![CDATA[from DefaultDynamicValue
+		 where assetId = :assetId
+	]]>
+	</QUERY_GET_DEFAULT_DYNAMIC_VALUE_BY_ASSET_ID>
+
+	<QUERY_GET_DEFAULT_DYNAMIC_VALUE_BY_ASSET_ID_AND_BED_ID>
+	<![CDATA[from DefaultDynamicValue
+		 where assetId = :assetId and lhsDEDId = :bedId
+	]]>
+	</QUERY_GET_DEFAULT_DYNAMIC_VALUE_BY_ASSET_ID_AND_BED_ID>
+
+	<QUERY_GET_DDV_BY_ASSET_ID_AND_BEDIDS>
+	<![CDATA[from DefaultDynamicValue ddv 
+		 where ddv.assetId = :assetId and ddv.lhsDEDId in (:bedIds)
+	]]>
+	</QUERY_GET_DDV_BY_ASSET_ID_AND_BEDIDS>	
+
+	<QUERY_GET_DEFAULT_DYNAMIC_BY_MODEL_GROUP>
+	<![CDATA[select ddv.id from DefaultDynamicValue ddv,BusinessEntityDefinition be 
+		 where ddv.lhsDEDId = be.id and be.modelGroup.id in(:modelGroupIds)
+	]]>
+	</QUERY_GET_DEFAULT_DYNAMIC_BY_MODEL_GROUP>	
+	
+	<QUERY_DELETE_DEFAULT_DYNAMIC_VALUE>
+	<![CDATA[delete from DefaultDynamicValue 
+		 where id in (:defaultDynamicValueIds)
+	]]>
+	</QUERY_DELETE_DEFAULT_DYNAMIC_VALUE>
+	
+		
+	<DELETE_DDV_BY_BEDID>
+	<![CDATA[delete from DefaultDynamicValue where lhsDEDId = :bedId
+	]]>
+	</DELETE_DDV_BY_BEDID>	
+</queries>

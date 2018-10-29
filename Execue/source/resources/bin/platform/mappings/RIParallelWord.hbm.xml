@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="pwdType">
+        <param name="enumClass">com.execue.core.common.type.ParallelWordType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.entity.RIParallelWord" table="RI_PARALLEL_WORD">
+        
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RI_PARALLEL_WORD</param>
+			</generator>
+        </id>
+
+        <property name="word" type="string">
+            <column name="WORD" />
+        </property>
+
+        <property name="equivalentWord" type="string">
+            <column name="EQUIVALENT_WORD" />
+        </property>
+
+        <property name="clusterTerms" type="string">
+            <column name="CLUSTER_TERMS" />
+        </property>
+        
+        <property name="prefixSpace" type="boolean">
+            <column name="PREFIX_SPACE" precision="1" scale="0" />
+        </property>
+        
+        <property name="suffixSpace" type="boolean">
+            <column name="SUFFIX_SPACE" precision="1" scale="0" />
+        </property>
+        
+        <property name="keyWord" type="boolean">
+            <column name="KEY_WORD" precision="1" scale="0" />
+        </property>
+        
+        <property name="multiWord" type="boolean">
+            <column name="MULTI_WORD" precision="1" scale="0" />
+        </property>
+    
+		<property name="keyWordId" type="java.lang.Long">
+            <column name="KEY_WORD_ID" />
+        </property>
+		<property name="hits" type="java.lang.Long">
+			<column name="HITS" precision="20" scale="0" />
+		</property>
+		<property name="quality" type="java.lang.Double">
+			<column name="quality" precision="10" />
+		</property>
+        
+        <property name="pwdType" type="pwdType">
+            <column name="PWD_TYPE" precision="2" scale="0" />
+        </property>
+         <property name="posType" type="string">
+			<column name="POS_TYPE" />
+		</property>
+		 <property name="preferedSelect" type="java.lang.Integer">
+			<column name="pref_select" />
+		</property>
+		<property name="bedId" type="java.lang.Long">
+			<column name="BE_ID" precision="20" />
+		</property>
+		<property name="modelGroupId" type="java.lang.Long">
+			<column name="MODEL_GROUP_ID" precision="20" />
+		</property>
+		 <property name="isDifferentWord" type="checkType">
+            <column name="IS_DIFFERENT_WORD" length="1" />
+        </property>
+		<many-to-one name="user" class="com.execue.core.common.bean.security.User" fetch="select">
+			<column name="USER_ID" precision="20" scale="0" />
+		</many-to-one>
+      
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+<qf>
+	<selectText>BillingBalance</selectText>
+	<selects/>
+	<conditions/>
+	<populations/>
+	<summarizations/>
+	<cohort>
+		<summarizations/>
+		<conditions/>
+	</cohort>
+</qf>

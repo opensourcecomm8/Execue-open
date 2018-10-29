@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef name="udxProcessedType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ProcessingFlagType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<class name="com.execue.core.common.bean.qdata.UnStructuredIndex" table="UDX">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">UDX</param>
+			</generator>
+		</id>
+        
+		<property name="rfId" type="java.lang.Long">
+			<column name="RF_ID" precision="20" scale="0" />
+		</property>
+        
+		<property name="url" type="string">
+			<column name="URL"/>
+		</property>
+        
+		<property name="imageUrl" type="string">
+			<column name="IMAGE_URL"/>
+		</property>
+                
+		<property name="shortDescription" type="string">
+			<column name="SHORT_DESC"/>
+		</property>
+        
+		<property name="longDescription" type="string">
+			<column name="LONG_DESC"/>
+		</property>
+        
+		<property name="entityCount" type="java.lang.Double">
+			<column name="ENTITY_COUNT"/>
+		</property>
+        
+		<property name="maxMatchWeight" type="java.lang.Double">
+			<column name="MAX_MATCH_WEIGHT"/>
+		</property>
+                        
+		<property name="contentSource" type="string">
+			<column name="SOURCE"/>
+		</property>
+        
+		<property name="contentSourceType" type="string">
+			<column name="CONTENT_SOURCE_TYPE"/>
+		</property>
+        
+		<property name="contentDate" type="timestamp">
+			<column name="CONTENT_DATE"/>
+		</property>
+		        
+		<property name="createdDate" type="timestamp">
+			<column name="CREATED_DATE"/>
+		</property>
+		
+		<property name="imageUrlProcessed" type="udxProcessedType">
+			<column name="IMAGE_URL_PROCESSED"/>
+		</property>
+		<property name="batchId" type="java.lang.Long">
+			<column name="BATCH_ID"/>
+		</property>
+		
+		<property name="articleRefId" type="java.lang.Long">
+			<column name="ARTICLE_REF_ID"/>
+		</property>
+		
+		<set name="udxAttributes" inverse="true" cascade="save-update,delete">
+			<key>
+				<column name="UDX_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.qdata.UDXAttribute" />
+		</set> 
+	</class>
+</hibernate-mapping>

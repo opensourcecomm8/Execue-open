@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!--  Appender configuration -->
+    <appender name="ConsoleAppender"
+        class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%X{txnId} %d [%t] %-5p %C{1} - %m%n" />
+        </layout>
+    </appender>
+    <appender name="FileAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="@@WebApp_war_logfile_location@@" />
+        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+        <param name="MaxBackupIndex" value="99" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%X{txnId} %d [%t] %-5p %C{1} - %m%n" />
+        </layout>
+    </appender>
+
+    <!--
+    <appender name="ReducedFormFileAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="@@reducedform_logfile_location@@" />
+        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+        <param name="MaxBackupIndex" value="99" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%X{txnId} %d [%t] %-5p %C{1} - %m%n" />
+        </layout>
+    </appender>
+    -->
+
+    <!--
+    <appender name="SemantifyFlowAppender"
+        class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="@@sfl_logfile_location@@" />
+        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+        <param name="MaxBackupIndex" value="99" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%X{txnId} %d [%t] %-5p %C{1} - %m%n" />
+        </layout>
+    </appender>
+    -->
+
+    <!--  Logger configuration -->
+    <logger name="org.springframework">
+        <level value="WARN" />
+    </logger>
+
+    <logger name="com.execue.nlp">
+        <level value="ERROR" />
+    </logger>
+
+<!--  
+    <logger name="com.execue.driver.sementic.SemanticDriver">
+        <level value="DEBUG" />
+        <appender-ref ref="ReducedFormFileAppender" />
+    </logger>
+-->
+    <!--  Logger configuration -->
+    <logger name="org.apache">
+        <level value="WARN" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="org.hibernate">
+        <level value="WARN" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="com.opensymphony">
+        <level value="WARN" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="freemarker">
+        <level value="WARN" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="net.sf">
+        <level value="WARN" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="com.execue">
+        <level value="@@log_level@@" />
+    </logger>
+
+    <!--  Logger configuration -->
+    <logger name="org.quartz">
+        <level value="WARN" />
+    </logger>
+
+    <logger name="org.tuckey">
+        <level value="WARN" />
+    </logger>
+    
+    <logger name="com.execue.repoting">
+        <level value="@@log_level@@" />
+    </logger>
+    
+    <!--
+    <category name="com.execue.nlp">   
+        <priority value="SEMANTIFY" class="com.execue.core.common.util.SemantifyLogLevel" />   
+        <appender-ref ref="SemantifyFlowAppender"/>   
+    </category>
+    
+    <category name="com.execue.driver">   
+        <priority value="SEMANTIFY" class="com.execue.core.common.util.SemantifyLogLevel" />   
+        <appender-ref ref="SemantifyFlowAppender"/>   
+    </category> 
+    -->
+
+    <!--  Root logger configuration -->
+    <root>
+        <priority value="@@log_level@@" />
+        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="FileAppender" />
+    </root>
+</log4j:configuration>

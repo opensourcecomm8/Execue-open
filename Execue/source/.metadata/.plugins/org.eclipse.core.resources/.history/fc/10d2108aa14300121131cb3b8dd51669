@@ -1,0 +1,123 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+	
+	<bean id="smtpMailService" class="com.execue.util.mail.impl.SMTPMailServiceImpl">		
+	</bean>		
+	<bean id="cryptographyService" class="com.execue.util.cryptography.impl.CryptographyServiceImpl">
+		<property name="cryptographyKeyGenerationFactory" ref="cryptographyKeyGenerationFactory"></property>		
+	</bean>
+		
+	<bean id="desKeyGenerationService" class="com.execue.util.cryptography.impl.des.DESKeyGenerationServiceImpl"/>		
+	<bean id="tripleDesKeyGenerationService" class="com.execue.util.cryptography.impl.tripledes.TripleDESKeyGenerationServiceImpl"/>
+	
+	<bean id="cryptographyKeyGenerationFactory" 
+		class="com.execue.util.cryptography.CryptographyKeyGenerationFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="DES" value="desKeyGenerationService"/>
+				<entry key="TRIPLE_DES" value="tripleDesKeyGenerationService"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="arithmeticExpressionEvaluator" 
+		class="com.execue.util.conversion.expression.arithmetic.impl.JMEPArithmeticExpressionEvaluatorImpl">		
+	</bean>	
+	
+	<!-- bean definitions for TimeFrame begins -->
+	<bean id="timeFrameHandlerService"
+		class="com.execue.util.conversion.timeframe.impl.TimeFrameHandlerServiceImpl">
+		<property name="timeFrameConversionEnhancerService"
+			ref="timeFrameConversionEnhancerService" />		
+	</bean>
+	<bean id="timeFrameConversionEnhancerService"
+		class="com.execue.util.conversion.timeframe.impl.TimeFrameConversionEnhancerServiceImpl">
+	</bean>	
+	<!-- bean definitions for TimeFrame ends   --> 
+	
+	<bean id="queryGenerationUtilServiceFactory" 
+		class="com.execue.util.querygen.QueryGenerationUtilServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="oracleQueryGenerationUtilService"/>
+				<entry key="2" value="mySqlQueryGenerationUtilService"/>
+				<entry key="3" value="msSqlQueryGenerationUtilService"/>
+				<entry key="4" value="db2QueryGenerationUtilService"/>
+				<entry key="7" value="teradataQueryGenerationUtilService"/>
+				<entry key="8" value="sasQueryGenerationUtilService"/>
+				<entry key="10" value="derbyQueryGenerationUtilServiceImpl"/>
+				<entry key="11" value="postgresQueryGenerationUtilServiceImpl"/>
+				<!-- default -->
+				<entry key="0" value="oracleQueryGenerationUtilService"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="mySqlQueryGenerationUtilService" class="com.execue.util.querygen.impl.mysql.MySqlQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "2"/>
+	</bean>
+	
+	<bean id="msSqlQueryGenerationUtilService" class="com.execue.util.querygen.impl.mssql.MsSqlQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "3"/>
+	</bean>
+	
+	<bean id="oracleQueryGenerationUtilService" class="com.execue.util.querygen.impl.oracle.OracleQueryGenerationUtilServiceImpl">
+		<property name="providerTypeValue" value = "1"/>
+	</bean>
+	
+		<bean id="db2QueryGenerationUtilService" class="com.execue.util.querygen.impl.db2.Db2QueryGenerationUtilServiceImpl">
+		<property name="providerTypeValue" value = "4"/>
+	</bean>
+	
+	<bean id="teradataQueryGenerationUtilService" class="com.execue.util.querygen.impl.teradata.TeradataQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "7"/>
+	</bean>
+	
+	<bean id="sasQueryGenerationUtilService" class="com.execue.util.querygen.impl.sas.SASQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "8"/>
+	</bean>
+
+	<bean id="derbyQueryGenerationUtilServiceImpl" class="com.execue.util.querygen.impl.derby.DerbyQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "10"/>
+	</bean>
+
+	<bean id="postgresQueryGenerationUtilServiceImpl" class="com.execue.util.querygen.impl.postgres.PostgresQueryGenerationUtilServiceImpl" >
+		<property name="providerTypeValue" value = "11"/>
+	</bean>
+
+
+	<bean id="sqlAdaptorFactory" 
+		class="com.execue.util.queryadaptor.SQLAdaptorFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="oracleSQLAdaptor"/>
+				<entry key="2" value="mySqlSQLAdaptor"/>
+				<entry key="3" value="msSQLSQLAdaptor"/>
+				<entry key="4" value="dB2SQLAdaptor"/>
+				<entry key="7" value="teradataSQLAdaptor"/>
+				<entry key="8" value="sASSQLAdaptor"/>
+				<entry key="10" value="derbySqlSQLAdaptor"/>
+				<entry key="11" value="postgresSqlSQLAdaptor"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="oracleSQLAdaptor" class="com.execue.util.queryadaptor.impl.OracleSQLAdaptor" />
+	<bean id="mySqlSQLAdaptor" class="com.execue.util.queryadaptor.impl.MySqlSQLAdaptor" />
+	<bean id="msSQLSQLAdaptor" class="com.execue.util.queryadaptor.impl.MsSqlSQLAdaptor" />
+	<bean id="teradataSQLAdaptor" class="com.execue.util.queryadaptor.impl.TeradataSQLAdaptor" />
+	<bean id="sASSQLAdaptor" class="com.execue.util.queryadaptor.impl.SASSQLAdaptor" />
+	<bean id="dB2SQLAdaptor" class="com.execue.util.queryadaptor.impl.DB2SQLAdaptor" />
+	<bean id="derbySqlSQLAdaptor" class="com.execue.util.queryadaptor.impl.DerbySqlSQLAdaptor" />
+	<bean id="postgresSqlSQLAdaptor" class="com.execue.util.queryadaptor.impl.PostgresSqlSQLAdaptor" />
+	
+</beans>

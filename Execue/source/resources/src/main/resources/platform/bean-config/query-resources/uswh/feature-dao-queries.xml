@@ -1,0 +1,27 @@
+<queries>
+
+	<QUERY_GET_FEATURE_BY_NAMES>
+	<![CDATA[from Feature where contextId = :contextId AND featureName IN(:featureNames)]]>
+	</QUERY_GET_FEATURE_BY_NAMES>
+	
+	<QUERY_ALL_FEATURES>
+	<![CDATA[from Feature]]>
+	</QUERY_ALL_FEATURES>
+	
+	<QUERY_ALL_FEATURES_BY_CONTEXT_ID>
+	<![CDATA[from Feature where contextId = :contextId]]>
+	</QUERY_ALL_FEATURES_BY_CONTEXT_ID>
+
+	<QUERY_GET_FEATURE_BY_FEATURE_BE_IDS>
+	<![CDATA[from Feature where contextId = :contextId AND featureBedId IN(:featureBedIds)]]>
+	</QUERY_GET_FEATURE_BY_FEATURE_BE_IDS>
+
+	<QUERY_GET_ALL_MULTI_VALUED_FEATURES>
+	<![CDATA[select f.id from Feature f where f.contextId = :contextId and f.multiValued = :yesMultiValued]]>
+	</QUERY_GET_ALL_MULTI_VALUED_FEATURES>
+
+	<QUERY_GET_FEATURE__BY_BE_ID>
+	<![CDATA[from Feature f where f.featureBedId = :featureBedId]]>	
+	</QUERY_GET_FEATURE__BY_BE_ID>
+	
+</queries>

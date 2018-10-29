@@ -1,0 +1,31 @@
+<queries>
+	<QUERY_GET_SCOPED_APPS>
+	<![CDATA[Select appId, sum(tokenWeight), count(token), sum(appearances)
+		 from ApplicationScopeIndex where token in(:tokens)                                                                        
+		 group by appId order by sum(tokenWeight) desc
+	]]>
+	</QUERY_GET_SCOPED_APPS>
+
+	<QUERY_GET_SCOPED_APPS_BY_VERTICAL>
+	<![CDATA[Select eas.appId, sum(eas.tokenWeight),count(eas.token),sum(eas.appearances) 
+		 from ApplicationScopeIndex eas, VerticalAppWeight vaw 
+		 where eas.token in(:tokens) and vaw.verticalId = :verticalId 
+		 and vaw.applicationId = eas.appId group by eas.appId 
+		 order by sum(eas.tokenWeight) desc
+	]]>
+	</QUERY_GET_SCOPED_APPS_BY_VERTICAL>
+
+	
+	<QUERY_GET_APP_AES_LIST>
+	<![CDATA[from ApplicationScopeIndexDetail aes 
+		 where lastRefreshDate <= :refreshDate
+	]]>
+	</QUERY_GET_APP_AES_LIST>
+	
+	<QUERY_GET_APP_AES_BY_APP_ID>
+	<![CDATA[from ApplicationScopeIndexDetail aes 
+		 where appId = :appId
+	]]>
+	</QUERY_GET_APP_AES_BY_APP_ID>
+	
+</queries>

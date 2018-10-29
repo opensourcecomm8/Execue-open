@@ -1,0 +1,126 @@
+<queries>
+	
+	<QUERY_GET_COLUMNS_FOR_TABLE>
+	<![CDATA[select column from AssetEntityDefinition assetEntityDefinition
+	         join assetEntityDefinition.colum as column
+		 where assetEntityDefinition.tabl.id = :tableId
+		 and assetEntityDefinition.entityType =:columnEntityType
+		  order by column.name
+	]]>
+	</QUERY_GET_COLUMNS_FOR_TABLE>	
+	
+	<QUERY_GET_COLUM_BY_COLUMN_NAME_TABLE_NAME_ASSET_ID>
+	<![CDATA[select aed.colum from AssetEntityDefinition aed 
+		 where aed.asset.id =:assetId 
+		 and aed.tabl.name =:tableName
+		 and aed.colum.name =:columName 
+		 and aed.entityType = :entityType
+	]]>
+	</QUERY_GET_COLUM_BY_COLUMN_NAME_TABLE_NAME_ASSET_ID>
+	
+	<QUERY_COLUMN_DISPLAY_NAMES>
+	<![CDATA[select distinct aed.colum.displayName from AssetEntityDefinition aed 
+		 where aed.asset.id = :assetId and aed.tabl.id = :tableId and aed.entityType = :columnEntityType
+	]]>
+	</QUERY_COLUMN_DISPLAY_NAMES>
+	
+	<QUERY_OTHER_COLUMN_IDS_BY_DISPLAY_NAME>
+	<![CDATA[select c.id from AssetEntityDefinition aed, Colum c where aed.asset.id = :assetId 
+		 and aed.tabl.id = :tableId and aed.colum.id = c.id and aed.entityType = :columnEntityType 
+		 and c.id != :columnId and c.displayName = :columnDisplayName
+	]]>
+	</QUERY_OTHER_COLUMN_IDS_BY_DISPLAY_NAME>	
+	
+	<QUERY_GET_RELATED_VIRTUAL_LOOKUP_VALUE_COLUMN>
+	<![CDATA[select vlaed.colum from AssetEntityDefinition aed, AssetEntityDefinition vlaed 
+		 where aed.asset.id = :assetId 
+		 and aed.tabl.id = :tableId and aed.colum.id = :columnId 
+		 and aed.entityType = :columnEntityType 
+		 and vlaed.asset.id = aed.asset.id 
+		 and vlaed.entityType = :virtualColumnEntityType 
+		 and vlaed.tabl.actualName = aed.tabl.name 
+		 and vlaed.colum.name = aed.colum.name and 
+		 vlaed.tabl.virtual = :yes and
+		 vlaed.tabl.lookupValueColumn = vlaed.colum.name
+	]]>
+	</QUERY_GET_RELATED_VIRTUAL_LOOKUP_VALUE_COLUMN>	
+	
+	<QUERY_GET_COLUMN_IDS_FOR_TABLE>
+	<![CDATA[select ae.colum.id from AssetEntityDefinition as ae where ae.asset.id = :assetId 
+		 and ae.tabl.id = :tableId and ae.entityType = :columnEntityType
+	]]>
+	</QUERY_GET_COLUMN_IDS_FOR_TABLE>
+		
+	<QUERY_GET_POPULATED_COLUMNS>
+	<![CDATA[from Colum as colum where colum.id in (:columnIds)]]>
+	</QUERY_GET_POPULATED_COLUMNS>
+	
+	<QUERY_GET_COLUMNS_WITHOUT_KDX_TYPE>
+	<![CDATA[select colum.id from Asset as asset, AssetEntityDefinition as aed,
+		 Tabl as tabl,Colum as colum where 
+		 asset.id = :assetId and aed.asset.id = asset.id 
+		 and aed.tabl.id = tabl.id and tabl.id = :tableId and aed.colum.id = colum.id
+		 and aed.entityType = :columnEntityType and colum.kdxDataType = :none
+	]]>
+	</QUERY_GET_COLUMNS_WITHOUT_KDX_TYPE>
+
+
+	<QUERY_GET_ASSET_TABLE_COLUMN_NAMES>
+	<![CDATA[select assetEntityDefinition.colum.name from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.tabl.id = :tableId and assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType =:columnEntityType order by assetEntityDefinition.colum.id asc
+	]]>
+	</QUERY_GET_ASSET_TABLE_COLUMN_NAMES>
+	
+	<QUERY_GET_ASSET_TABLE_COLUMNS>
+	<![CDATA[select assetEntityDefinition.colum from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.tabl.id = :tableId and assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType =:columnEntityType
+	]]>
+	</QUERY_GET_ASSET_TABLE_COLUMNS>
+	
+	<QUERY_GET_ASSET_TABLE_COLUMNS_COUNT>
+	<![CDATA[select count(assetEntityDefinition.colum.id) from AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.tabl.id = :tableId and assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType = :columnEntityType
+	]]>
+	</QUERY_GET_ASSET_TABLE_COLUMNS_COUNT>	
+
+	<QUERY_GET_CONSTRAINT_COLUMNS_FOR_TABLE>
+	<![CDATA[select assetEntityDefinition.colum from 
+		 AssetEntityDefinition as assetEntityDefinition
+		 where assetEntityDefinition.tabl = :tabl 
+		 and assetEntityDefinition.colum.isConstraintColum = :isConstraintColum
+		 and assetEntityDefinition.membr is null
+	]]>
+	</QUERY_GET_CONSTRAINT_COLUMNS_FOR_TABLE>
+
+	<QUERY_GET_FKS_FOR_PK>
+	<![CDATA[select constraint.constraintColums from
+		 Constraint as constraint 
+		 where constraint.referenceColumn = :pkColumn
+	]]>
+	</QUERY_GET_FKS_FOR_PK>
+
+
+	<QUERY_GET_TABLE_FOR_COLUMN_ID>
+	<![CDATA[select aed.tabl from 
+		AssetEntityDefinition as aed
+		where aed.colum.id=:columnId and aed.membr is null
+	]]>
+	</QUERY_GET_TABLE_FOR_COLUMN_ID>
+
+    <QUERY_LOOKUP_DESCRIPTION_COLUMN_BY_LOOKUP_COLUMN>
+    <![CDATA[select aeds.colum 
+        from AssetEntityDefinition aedp, AssetEntityDefinition aeds 
+        where aedp.colum.id = :lookupColumnId 
+        and aedp.entityType = :entityType 
+        and aeds.entityType = :entityType 
+        and aedp.asset.id = aeds.asset.id 
+        and aedp.tabl.id = aeds.tabl.id 
+        and aeds.colum.name = aedp.tabl.lookupDescColumn
+    ]]>
+    </QUERY_LOOKUP_DESCRIPTION_COLUMN_BY_LOOKUP_COLUMN>
+	
+</queries>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<governor>
+		<static-values>
+			<min-weight-query-percentage>50</min-weight-query-percentage>
+			<min-priority-based-query-percentage>90</min-priority-based-query-percentage>
+			<apply-defaults>true</apply-defaults>
+			<defaults-range-value-seperator>~</defaults-range-value-seperator>
+			<defaults-multiple-value-seperator>\,</defaults-multiple-value-seperator>
+			<max-default-metrics-per-query>6</max-default-metrics-per-query>
+			<apply-security-filters>false</apply-security-filters>
+			<apply-member-level-security-filters>false</apply-member-level-security-filters>
+		</static-values>
+		<scaling-factor>
+			<concept-name>ScalingFactor</concept-name>
+		</scaling-factor>
+		<business-query-term-weights>
+			<select>7.5</select>
+			<group>7.5</group>
+			<condition>5.0</condition>
+			<having>2.5</having>
+			<order>1.0</order>
+			<grain>10.0</grain>
+		</business-query-term-weights>
+	</governor>
+</execue-configuration>

@@ -1,0 +1,55 @@
+INPUT {
+	MARGIN: 0px;
+}
+.searchStart {
+	DISPLAY: block;
+	BACKGROUND: url(../common/images/searchStart.gif) no-repeat;
+	FLOAT: left;
+	WIDTH: 5px;
+	HEIGHT: 26px
+}
+.searchEnd {
+	DISPLAY: block;
+
+	FLOAT: left;
+	WIDTH: 26px;
+	HEIGHT: 26px;
+	CURSOR: pointer;
+}
+.searchField {
+
+	PADDING-LEFT: 0px;
+	/*BACKGROUND: url(../images/main/searchBg.gif) repeat-x;*/
+	FLOAT: left;
+	padding-top:4px;
+	padding-bottom:4px;
+	WIDTH: 155px;
+	COLOR: #777;
+
+
+	border:1px solid #CCC;
+	border-left:none;
+	border-right:none;
+
+}
+#roundedSearch {
+	PADDING-LEFT: 2px;
+	POSITION: relative;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	width: 206px;
+}
+#searchPopup {
+	FONT-SIZE: 10px; MARGIN-LEFT: 6px; WIDTH: 160px; COLOR: #7eb250; HEIGHT: 35px
+}
+
+#roundedSearch2 {
+	PADDING-LEFT: 2px;
+	POSITION: relative;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	width: 206px;
+}
+#searchPopup2 {
+	FONT-SIZE: 10px; MARGIN-LEFT: 6px; WIDTH: 160px; COLOR: #7eb250; HEIGHT: 35px
+}

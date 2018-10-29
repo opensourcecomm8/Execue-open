@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">	
+	   
+	<bean id="answersCatalogMgmtQueueControllerConfigurationService"
+		class="com.execue.acmq.configuration.impl.AnswersCatalogMgmtQueueControllerConfigurationServiceImpl">	
+		<property name="answersCatalogMgmtQueueControllerConfiguration" ref="answersCatalogMgmtQueueControllerConfiguration" />
+	</bean>
+	
+	<bean id="answersCatalogMgmtQueueControllerConfigurableService"
+		class="com.execue.acmq.configuration.impl.AnswersCatalogMgmtQueueConfigurableService">		
+		<property name="answersCatalogMgmtQueueControllerConfigurationService" ref="answersCatalogMgmtQueueControllerConfigurationService" />
+	</bean>
+	
+	<bean id="answersCatalogMgmtQueueController" class="com.execue.acmq.controller.impl.AnswersCatalogMgmtQueueController" >
+		<property name="answersCatalogMgmtQueueControllerConfigurationService" ref="answersCatalogMgmtQueueControllerConfigurationService"></property>
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService"></property> 
+		<property name="answersCatalogManagementQueueWrapperService" ref="answersCatalogManagementQueueWrapperService"></property>
+	</bean>
+</beans>

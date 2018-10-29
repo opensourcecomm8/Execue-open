@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="unstructuredCAConnectionMgmtService" class="com.execue.usca.service.impl.UnstructuredCAConnectionMgmtServiceImpl" >
+		<property name="unstructuredCAPooledDataManager" ref="unstructuredCAPooledDataManager"/>
+	</bean>
+	
+	<bean id="unstructuredCAManagementService" class="com.execue.usca.service.impl.UnstructuredCAManagementServiceImpl" >
+        <property name="unstructuredCADataAccessManager" ref="unstructuredCADataAccessManager"/>
+    </bean>
+    
+    <bean id="unstructuredCADataAccessManager" class="com.execue.usca.dataaccess.impl.UnstructuredCADataAccessManagerImpl" >
+        <property name="unstructuredCALinkDAO" ref="unstructuredCALinkDAO"/>
+    </bean>
+	
+</beans>

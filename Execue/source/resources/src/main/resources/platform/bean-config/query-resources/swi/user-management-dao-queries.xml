@@ -1,0 +1,55 @@
+<queries>
+	<GET_ROLES_QUERY>
+	<![CDATA[from SecurityRoles as securityRoles where securityRoles.status = :status]]>
+	</GET_ROLES_QUERY>
+	
+	<QUERY_GET_USER>
+	<![CDATA[from User as user where user.username = :username]]>
+	</QUERY_GET_USER>	
+
+	<GET_GROUPS_QUERY>
+	<![CDATA[from SecurityGroups as securityGroups where securityGroups.status =:status]]>
+	</GET_GROUPS_QUERY>
+	
+	<QUERY_GET_ALL_USERS>
+	<![CDATA[from User as user]]>
+	</QUERY_GET_ALL_USERS>
+	
+	<QUERY_GET_ALL_ROLES>
+	<![CDATA[from SecurityRoles as role]]>
+	</QUERY_GET_ALL_ROLES>
+	
+	<QUERY_GET_USER_GROUPS>
+	<![CDATA[select user.groups from User as user where user = :user]]>
+	</QUERY_GET_USER_GROUPS>	
+	
+	<GET_USER_BY_ENCRYPTED_KEY>
+	<![CDATA[from User as user where user.encryptedKey= :encryptedKey]]>
+	</GET_USER_BY_ENCRYPTED_KEY>	
+	
+	<GET_USER_REQUEST_BY_ACCEPT_REJECT_TYPE>
+	<![CDATA[from UserRequest as userRequest
+		 where userRequest.userRequestType=:userRequestType 
+		 and userRequest.acceptRejectRequest=:acceptRejectType
+	]]>
+	</GET_USER_REQUEST_BY_ACCEPT_REJECT_TYPE>
+	
+	<GET_FRESH_USER_REQUEST>
+	<![CDATA[from UserRequest as userRequest 
+		 where userRequest.userRequestType=:userRequestType 
+		 and userRequest.acceptRejectRequest is null
+	]]>
+	</GET_FRESH_USER_REQUEST>
+	
+	<GET_USER_REQUEST_BY_ID>
+	<![CDATA[from UserRequest as userRequest where userRequest.id=:id
+	]]>
+	</GET_USER_REQUEST_BY_ID>	
+	
+	<QUERY_USERS_HAVING_SEARCH_STRING>
+	<![CDATA[select user from User as user 
+	    where user.username like :searchString order by locate(:searchString, user.username, 1),
+		user.username
+	]]>
+	</QUERY_USERS_HAVING_SEARCH_STRING>
+</queries>

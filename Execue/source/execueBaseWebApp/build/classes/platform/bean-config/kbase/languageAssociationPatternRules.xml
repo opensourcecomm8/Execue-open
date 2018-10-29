@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<execue>
+	 
+	 <regexComponents>
+		 <component>
+	       	<name>Statistics</name>
+	        <patternHolder>%STAT%</patternHolder>
+	        <concept>Statistics</concept>
+	        <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Statistics)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+	     </component>
+	     <component>
+            <name>PeriodicInformation</name>
+            <patternHolder>%PI%</patternHolder>
+            <concept>PeriodicInformation</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(PeriodicInformation)([\\w~]*)#nlpTag:OC#type:[\\w]+]]></regex>
+        </component>
+        <component>
+            <name>Indicator</name>
+            <patternHolder>%IND%</patternHolder>
+            <concept>Indicator</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Indicator|Attribute)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component>
+        <component>
+            <name>ExecueConcept</name>
+            <patternHolder>%EC%</patternHolder>
+            <concept>ExecueConcept</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(ExecueConcept)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component>
+         <component>
+            <name>Conjunction</name>
+            <patternHolder>%CONJ%</patternHolder>
+            <concept>Conjunction</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Conjunction)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component>  
+        <component>
+            <name>By-Conjunction</name>
+            <patternHolder>%BYCONJ%</patternHolder>
+            <concept>By-Conjunction</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(By-Conjunction)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component>   
+         <component>
+            <name>Measure,PopulationConcept,Time,Location</name>
+            <patternHolder>%MES%</patternHolder>
+            <concept>Measure,PopulationConcept,Time,Location</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Measure|Time|Location|PopulationConcept)([\\w~]*)#nlpTag:OC#type:[\\w]+]]></regex>
+        </component> 
+        <component>
+            <name>ComparativeStatistics</name>
+            <patternHolder>%COMP%</patternHolder>
+            <concept>ComparativeStatistics</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(ComparativeStatistics)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component> 
+        <component>
+            <name>QuantitativeConceptInstance</name>
+            <patternHolder>%QCI%</patternHolder>
+            <concept>QuantitativeConcept</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(QuantitativeConcept)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component> 
+        <component>
+            <name>Adjective</name>
+            <patternHolder>%ADJ%</patternHolder>
+            <concept>Adjective</concept>
+             <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Adjective)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component> 
+        <component>
+            <name>ComparativeConcept</name>
+            <patternHolder>%COMPCONCEPT%</patternHolder>
+            <concept>ComparativeConcept</concept>
+             <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(ComparativeConcept)([\\w~]*)#nlpTag:(OI|OC)#type:[\\w]+]]></regex>
+        </component> 
+	  </regexComponents>
+    <languagePatternRule>
+
+        <name>Indicator</name>
+        <type>weightUpdate</type>
+		<ruleString>(%IND%(\s))(%EC%(\s)?)</ruleString>
+        <weightUpdateInfo>
+            <weightUpdationCandidates>1</weightUpdationCandidates>
+            <weightUpdateValue>5</weightUpdateValue>
+        </weightUpdateInfo>
+
+        <rule>
+            <pattern>
+                <patternType>REGULAR</patternType>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>Indicator</superConcept>
+                <recognitionNlpTag>OI</recognitionNlpTag>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>1</partID>
+            </pattern>
+            <pattern>
+                <regex><![CDATA[[\w#\-]+]]></regex>
+                <superConcept>ExecueConcept</superConcept>
+                <excludeSuperConcept>Value</excludeSuperConcept>
+                <fixedpart>false</fixedpart>
+                <partID>2</partID>
+            </pattern>
+        </rule>
+
+    </languagePatternRule>
+
+    <!--  Indicator Series -->
+
+    <languagePatternRule>
+
+        <name>IndicatorSeries</name>
+        <type>weightUpdate</type>
+		<ruleString>((%IND%(\s))(%CONJ%(\s))?)+(%EC%(\s)?)</ruleString>
+        <weightUpdateInfo>
+            <weightUpdationCandidates>1-1</weightUpdationCandidates>
+            <weightUpdateValue>5</weightUpdateValue>
+        </weightUpdateInfo>
+
+        <rule>
+            <repetitivePattern>
+                <repetitivePatternID>1</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Indicator</superConcept>
+                    <excludeSuperConcept>ByVariable</excludeSuperConcept>
+                    <recognitionNlpTag>OI</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>true</required>
+                    <partID>1-1</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[(,|(and))]]></regex>
+                    <superConcept/>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>1-2</partID>
+                </repPattern>
+                <minOccurance>2</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+            <pattern>
+                <regex><![CDATA[[\w#\-]+]]></regex>
+                <superConcept>ExecueConcept</superConcept>
+                <excludeSuperConcept>Value</excludeSuperConcept>
+                <fixedpart>false</fixedpart>
+                <partID>2</partID>
+            </pattern>
+        </rule>
+
+    </languagePatternRule>
+
+    <!-- Flagging Only Rules -->
+
+    <languagePatternRule>
+
+        <name>STAT-ASSOCIATION</name>
+        <ruleString>(%STAT%(\s))(%PI%(\s)?)</ruleString>
+        <type>flag</type>
+        <flagInfo>
+            <flagValue>StatAssociated</flagValue>
+            <flagStoargeCadidates>2</flagStoargeCadidates>
+        </flagInfo>
+        <rule>
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>Statistics</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>1</partID>
+            </pattern>
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>PeriodicInformation</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>2</partID>
+            </pattern>
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <languagePatternRule>
+
+        <name>BY</name>
+        <ruleString>(%BYCONJ%(\s))(%IND%(\s)?)*((%MES%)(\s)?(%CONJ%)?(\s)?)+</ruleString>
+        <type>flag, weightUpdate</type>
+        <flagInfo>
+            <flagValue>Mapped</flagValue>
+            <flagStoargeCadidates>01</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>ByVariable</flagValue>
+            <flagStoargeCadidates>03-1</flagStoargeCadidates>
+        </flagInfo>
+        <weightUpdateInfo>
+            <weightUpdationCandidates>03-1</weightUpdationCandidates>
+            <weightUpdateValue>5</weightUpdateValue>
+        </weightUpdateInfo>
+        <weightUpdateInfo>
+            <weightUpdationCandidates>01</weightUpdationCandidates>
+            <weightUpdateValue>10</weightUpdateValue>
+        </weightUpdateInfo>
+        <rule>
+            <pattern>
+                <regex><![CDATA[[\w\d-]+]]></regex>
+                <superConcept>BY-CONJUNCTION</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>true</required>
+                <partID>01</partID>
+            </pattern>
+            <repetitivePattern>
+                <repetitivePatternID>02</repetitivePatternID>
+                <pattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Attribute, Indicator</superConcept>
+                    <excludeRecognitionNlpTag>OC</excludeRecognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>02-1</partID>
+                </pattern>
+                <minOccurance>0</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+            <repetitivePattern>
+                <repetitivePatternID>03</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Measure,PopulationConcept,Time,Location</superConcept>
+                    <recognitionNlpTag>OC,Profile</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>true</required>
+                    <partID>03-1</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[(,|(and))]]></regex>
+                    <superConcept/>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>03-2</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <languagePatternRule>
+
+        <name>ConceptSeries</name>
+        <ruleString>(((%IND%(\s))?(%CONJ%(\s))?)?([\w]+(\s)?)(%PI%(\s)))+</ruleString>
+        <type>flag</type>
+        <flagInfo>
+            <flagValue>ConceptSeries</flagValue>
+            <flagStoargeCadidates>1-1,1-2,1-3,1-4,1-5</flagStoargeCadidates>
+        </flagInfo>
+        <rule>
+            <repetitivePattern>
+                <repetitivePatternID>1</repetitivePatternID>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[[\w#=><]+]]></regex>
+                    <superConcept>Attribute</superConcept>
+                    <excludeSuperConcept>Time</excludeSuperConcept>
+                    <excludeRecognitionNlpTag>OC, Profile</excludeRecognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>1-1</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[(,|(and))]]></regex>
+                    <superConcept/>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>1-2</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept/>
+                    <recognitionNlpTag>IN, WRB, WP$, WP, WDT, BY</recognitionNlpTag>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>1-3</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w#\-]+]]></regex>
+                    <superConcept>PeriodicInformation, Company, Sector, Industry</superConcept>
+                    <recognitionNlpTag>OC, OI</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>true</required>
+                    <partID>1-5</partID>
+                </repPattern>
+                <minOccurance>2</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <!-- Top-Bottom Rules -->
+
+    <languagePatternRule>
+
+        <name>TOP-BOTTOM-1</name>
+        <ruleString>(%COMP%(\s))(%QCI%(\s))?(%ADJ%(\s))*(%COMPCONCEPT%(\s)?)?(%IND%(\s)?)*(%CONJ%(\s))?(%IND%(\s)?)?(%BYCONJ%(\s))?(%PI%(\s)?)</ruleString>
+        <type>flag</type>
+        <flagInfo>
+            <flagValue>OrderBy</flagValue>
+            <flagStoargeCadidates>11</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>GroupVariable</flagValue>
+            <flagStoargeCadidates>04</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>ComparativeLimit</flagValue>
+            <flagStoargeCadidates>02</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>QueryType</flagValue>
+            <flagStoargeCadidates>01</flagStoargeCadidates>
+        </flagInfo>
+        <rule>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeStatistics</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>true</required>
+                <partID>01</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\d]+]]></regex>
+                <superConcept>QuantitativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <defaultVal>1</defaultVal>
+                <partID>02</partID>
+            </pattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>03</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>DomainAdjectives</superConcept>
+                    <recognitionNlpTag>OI</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>03-1</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <partID>04</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept/>
+                <fixedpart>false</fixedpart>
+                <recognitionNlpTag>IN</recognitionNlpTag>
+                <required>false</required>
+                <partID>05</partID>
+            </pattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>06</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Attribute</superConcept>
+                    <recognitionNlpTag>OI</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>06-1</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>07</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+					<regex><![CDATA[[\w]+]]></regex>
+					<superConcept/>
+					<excludeRecognitionNlpTag>OC,OI,OP,OCP,OIP</excludeRecognitionNlpTag>
+					<fixedpart>true</fixedpart>
+					<required>false</required>
+					<partID>07-1</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+			</repetitivePattern>
+
+            <pattern>
+                <regex><![CDATA[[\w-]+]]></regex>
+                <superConcept>CONJUNCTION</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>false</required>
+                <partID>09</partID>
+            </pattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>10</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Attribute</superConcept>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>10-1</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[(,|(and))]]></regex>
+                    <superConcept/>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>10-2</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>PeriodicInformation</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>11</partID>
+                <defaultVal>MarketCapital</defaultVal>
+            </pattern>
+
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <languagePatternRule>
+
+        <name>TOP-BOTTOM-3</name>
+        <ruleString>(%COMP%(\s))(%QCI%(\s))((%IND%(\s))?(%CONJ%(\s))?)+(%PI%(\s))(%CONJ%(\s))?(%COMPCONCEPT%(\s))?</ruleString>
+        <type>flag</type>
+        <flagInfo>
+            <flagValue>OrderBy</flagValue>
+            <flagStoargeCadidates>10</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>GroupVariable</flagValue>
+            <flagStoargeCadidates>12</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>ComparativeLimit</flagValue>
+            <flagStoargeCadidates>04</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>QueryType</flagValue>
+            <flagStoargeCadidates>03</flagStoargeCadidates>
+        </flagInfo>
+        <rule>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeStatistics</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>true</required>
+                <partID>03</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\d]+]]></regex>
+                <superConcept>QuantitativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <defaultVal>1</defaultVal>
+                <partID>04</partID>
+            </pattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>9</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>Attribute</superConcept>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>09-1</partID>
+                </repPattern>
+                <repPattern>
+                    <patternType>ALLOWED</patternType>
+                    <regex><![CDATA[(,|(and))]]></regex>
+                    <superConcept/>
+                    <fixedpart>true</fixedpart>
+                    <required>false</required>
+                    <partID>09-2</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>PeriodicInformation</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>10</partID>
+                <defaultVal>MarketCapital</defaultVal>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\w\d-]+]]></regex>
+                <superConcept>CONJUNCTION</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>false</required>
+                <partID>11</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <partID>12</partID>
+            </pattern>
+
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <languagePatternRule>
+
+        <name>TOP-BOTTOM-2</name>
+        <ruleString>(%PI%(\s))(%CONJ%(\s))(%COMP%(\s))(%QCI%(\s))(%ADJ%(\s))+(%COMPCONCEPT%(\s))?</ruleString>
+        <type>flag</type>
+        <flagInfo>
+            <flagValue>OrderBy</flagValue>
+            <flagStoargeCadidates>01</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>GroupVariable</flagValue>
+            <flagStoargeCadidates>06</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>ComparativeLimit</flagValue>
+            <flagStoargeCadidates>04</flagStoargeCadidates>
+        </flagInfo>
+        <flagInfo>
+            <flagValue>QueryType</flagValue>
+            <flagStoargeCadidates>03</flagStoargeCadidates>
+        </flagInfo>
+        <rule>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>PeriodicInformation</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>true</required>
+                <partID>01</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>Conjunction</superConcept>
+                <superConcept/>
+                <fixedpart>true</fixedpart>
+                <required>false</required>
+                <partID>02</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeStatistics</superConcept>
+                <fixedpart>true</fixedpart>
+                <required>true</required>
+                <partID>03</partID>
+            </pattern>
+
+            <pattern>
+                <regex><![CDATA[[\d]+]]></regex>
+                <superConcept>QuantitativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <defaultVal>1</defaultVal>
+                <partID>04</partID>
+            </pattern>
+
+            <repetitivePattern>
+                <repetitivePatternID>05</repetitivePatternID>
+                <repPattern>
+                    <patternType>REGULAR</patternType>
+                    <regex><![CDATA[[\w]+]]></regex>
+                    <superConcept>DomainAdjectives</superConcept>
+                    <recognitionNlpTag>OI, OC</recognitionNlpTag>
+                    <fixedpart>false</fixedpart>
+                    <required>false</required>
+                    <partID>05-1</partID>
+                </repPattern>
+                <minOccurance>1</minOccurance>
+                <maxOccurance>99</maxOccurance>
+            </repetitivePattern>
+
+            <pattern>
+                <regex><![CDATA[[\w]+]]></regex>
+                <superConcept>ComparativeConcept</superConcept>
+                <fixedpart>false</fixedpart>
+                <required>false</required>
+                <defaultVal>Customer</defaultVal>
+                <partID>06</partID>
+            </pattern>
+
+        </rule>
+        <equivalentPatterns>false</equivalentPatterns>
+    </languagePatternRule>
+
+    <!-- Unification Rules -->
+
+</execue>

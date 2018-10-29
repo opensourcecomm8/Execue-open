@@ -1,0 +1,15 @@
+<queries>
+	
+	<QUERY_GET_ALL_FEATURE_DEPENDENCY_BY_TYPE>
+	<![CDATA[from FeatureDependency fd where fd.contextId = :contextId and fd.dependencyType = :dependencyType
+	]]>
+	</QUERY_GET_ALL_FEATURE_DEPENDENCY_BY_TYPE>		
+	
+	<DELETE_FEATURE_DEPENDENCY_BY_FEATURE_ID>
+	<![CDATA[
+		   delete from FeatureDependency fd 
+		   where fd.contextId = :contextId 
+		   and (fd.featureId = :featureId or fd.dependencyFeatureId = :dependencyFeatureId)
+	]]>
+	</DELETE_FEATURE_DEPENDENCY_BY_FEATURE_ID>	
+</queries>

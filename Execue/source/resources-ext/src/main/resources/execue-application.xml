@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- Imports the configurations of the different infrastructure systems of the application -->
+	<import resource="platform/bean-config/execue-logging-configuration.xml" />
+	<import resource="spring-hibernate.xml" />
+	<import resource="spring-hibernate-qdata.xml" />
+	<import resource="spring-hibernate-sdata.xml" />
+	<import resource="spring-hibernate-audittrail.xml" />
+	<import resource="platform/bean-config/execue-configuration.xml" />
+	<import resource="ext/bean-config/execue-configuration-ext.xml" />
+	<import resource="platform/bean-config/execue-core.xml" />
+	<import resource="platform/bean-config/execue-util.xml" />
+	<import resource="platform/bean-config/execue-util-services.xml" />
+	<import resource="platform/bean-config/execue-dataaccess.xml" />
+	<import resource="platform/bean-config/execue-qdata-dataaccess.xml" />
+	<import resource="platform/bean-config/execue-sdata-dataaccess.xml" />
+	<import resource="platform/bean-config/execue-unstructured-wh-dataaccess.xml" />	
+	<import resource="platform/bean-config/execue-unstructured-wh.xml" />
+	<import resource="platform/bean-config/execue-unstructured-ca-dataaccess.xml" />
+	<import resource="platform/bean-config/execue-unstructured-ca.xml" />
+	<import resource="platform/bean-config/execue-sdata.xml" />
+	<import resource="platform/bean-config/execue-dataaccess-services.xml" />
+	<import resource="platform/bean-config/execue-qdata.xml" />
+	<import resource="platform/bean-config/execue-swi.xml" />
+	<import resource="ext/bean-config/execue-swi-ext.xml" />
+	<import resource="platform/bean-config/execue-security.xml" />
+	<import resource="platform/bean-config/execue-query-generation.xml" />
+	<import resource="platform/bean-config/execue-pseudolang.xml" />
+	<import resource="platform/bean-config/execue-messaging.xml" />
+	<import resource="platform/bean-config/execue-ac-query-history.xml" />
+	<import resource="platform/bean-config/execue-acmq-controller.xml" />
+	<import resource="platform/bean-config/execue-platform-services.xml" />
+	<import resource="platform/bean-config/execue-query-cache.xml" />
+	<import resource="platform/bean-config/execue-ontology.xml" />
+	<import resource="platform/bean-config/execue-publisher.xml" />
+	<import resource="platform/bean-config/execue-governor.xml" />
+	<import resource="ext/bean-config/execue-governor-ext.xml" />
+	<import resource="platform/bean-config/execue-answers-catalog.xml" />
+	<import resource="platform/bean-config/execue-aggregation.xml" />
+	<import resource="ext/bean-config/execue-aggregation-ext.xml" />
+	<import resource="platform/bean-config/execue-report-presentation.xml" />
+	<import resource="platform/bean-config/execue-report-chartfx.xml" />
+	<import resource="platform/bean-config/execue-report-htmlgrid.xml" />
+	<import resource="ext/bean-config/execue-report-presentation-ext.xml" />
+	<import resource="platform/bean-config/execue-driver.xml" />
+	<import resource="ext/bean-config/execue-driver-ext.xml" />	
+	<import resource="platform/bean-config/execue-qi.xml" />	
+	<import resource="platform/bean-config/execue-semantic-util-services.xml" />
+	<import resource="platform/bean-config/execue-nlp.xml" />
+	<import resource="ext/bean-config/execue-nlp-ext.xml"/>
+	<import resource="platform/bean-config/execue-unstructured-search.xml" />
+	<import resource="ext/bean-config/execue-unstructured-search-ext.xml" />
+	<import resource="platform/bean-config/execue-knowledge-search.xml" />
+	<import resource="platform/bean-config/execue-content-preprocessor.xml"/>
+	<import resource="platform/bean-config/execue-content-postprocessor.xml"/>
+	<import resource="platform/bean-config/execue-content-semantification.xml"/>
+	<import resource="platform/bean-config/execue-semantic-driver.xml" />
+	<import resource="platform/bean-config/execue-job-scheduler.xml" />
+	<import resource="ext/bean-config/execue-job-scheduler-ext.xml" />
+	<import resource="platform/bean-config/execue-handler.xml" />
+	<import resource="platform/bean-config/execue-web.xml" />
+	<import resource="ext/bean-config/execue-web-ext.xml" />
+	<import resource="platform/bean-config/execue-swi-handler.xml" />
+	<import resource="platform/bean-config/execue-swi-web.xml" />
+	<import resource="ext/bean-config/execue-swi-web-ext.xml" />
+	<import resource="ext/bean-config/execue-swi-config-ext.xml" />
+	<import resource="platform/bean-config/execue-web-security.xml" />
+	<import resource="ext/bean-config/execue-web-security-ext.xml" />
+	<import resource="platform/bean-config/execue-rules.xml" />
+	<import resource="platform/bean-config/execue-query-builder.xml" />
+	<import resource="platform/bean-config/execue-audit-trail-dataaccess.xml" />
+	<import resource="platform/bean-config/execue-audit-trail.xml" />
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.Seed" table="SEED">
+		<id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="nodeId" type="java.lang.Long">
+        	<column name="NODE_ID" length="20" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.String">
+        	<column name="TYPE" length="20" not-null="true" />
+        </property>
+        <property name="nextValue" type="java.lang.Integer">
+			<column name="NEXT_VALUE" length="20" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<queries>
+	<QUERY_GET_RI_CLOUD_BY_COMP_BE_IDS_AND_CLOUD_OUTPUT>
+	<![CDATA[from RICloud ric 
+		 where ric.componentBusinessEntityId IN (:compBedIds)
+		 and ric.cloudOutput = :cloudOutput
+		 and ric.cloudId NOT IN (SELECT r2.cloudId FROM RICloud r2 
+		 WHERE r2.componentBusinessEntityId NOT IN (:compBedIds) AND r2.required = :requiredValue)
+	]]>
+	</QUERY_GET_RI_CLOUD_BY_COMP_BE_IDS_AND_CLOUD_OUTPUT>
+
+	<QUERY_GET_CLOUD_BY_NAME>
+	<![CDATA[from Cloud
+		 where name=:cloudName
+	]]>
+	</QUERY_GET_CLOUD_BY_NAME>
+
+	<QUERY_GET_CLOUD_COMPONENT_BY_CLOUD_ID_AND_BED_ID>
+	<![CDATA[from CloudComponent cc 
+		 where cc.cloud.id = :cloudId 
+		 and cc.componentBed.id = :compBedId
+	]]>
+	</QUERY_GET_CLOUD_COMPONENT_BY_CLOUD_ID_AND_BED_ID>
+
+	<QUERY_GET_DEFAULT_APP_CLOUD>
+	<![CDATA[select cloud from Cloud cloud 
+		left join cloud.models model 
+		where model.id = :modelId 
+		and cloud.isDefault= :isDefaultValue
+	]]>
+	</QUERY_GET_DEFAULT_APP_CLOUD>
+
+	<QUERY_GET_ALL_CLOUDS_BY_MODEL_ID>
+	<![CDATA[select model.clouds
+		 from Model model 
+		 where model.id = :modelId
+	]]>
+	</QUERY_GET_ALL_CLOUDS_BY_MODEL_ID>
+
+	<QUERY_TRUNCATE_RI_CLOUD_BY_CLOUD_ID>
+	<![CDATA[delete from RICloud riCloud
+		 where riCloud.cloudId = :cloudId
+	]]>
+	</QUERY_TRUNCATE_RI_CLOUD_BY_CLOUD_ID>
+
+	<QUERY_GET_ALL_CLOUD_COMPONENTS_BY_CLOUD_ID>
+	<![CDATA[from CloudComponent cc
+		 where cc.cloud.id = :cloudId
+	]]>
+	</QUERY_GET_ALL_CLOUD_COMPONENTS_BY_CLOUD_ID>
+
+	<QUERY_GET_RI_CLOUD_BY_COMPONENT_BE_ID>
+	<![CDATA[from RICloud riCloud
+		 where riCloud.id = :cloudId 
+		 and riCloud.cloudOutputBusinessEntityId = :componentBEId
+	]]>
+	</QUERY_GET_RI_CLOUD_BY_COMPONENT_BE_ID>
+
+	<QUERY_GET_RI_CLOUD_BY_PARENT_RICLOUD_ID>
+	<![CDATA[from RICloud riCloud 
+		 where riCloud.id = :cloudId 
+		 and riCloud.primaryRICloudId = :primaryRICloudId
+	]]>
+	</QUERY_GET_RI_CLOUD_BY_PARENT_RICLOUD_ID>
+
+	<QUERY_DELETE_CLOUD_COMPONENT_BY_CLOUD_ID>
+	<![CDATA[delete from CloudComponent cloudComponent 
+		 where cloudComponent.cloud.id = :cloudId
+	]]>
+	</QUERY_DELETE_CLOUD_COMPONENT_BY_CLOUD_ID>
+
+	<QUERY_GET_CLOUD_BY_CATEGORY>
+	<![CDATA[from Cloud where category=:category]]>
+	</QUERY_GET_CLOUD_BY_CATEGORY>
+	
+	<QUERY_CLOUD_EXISTS>
+	<![CDATA[from Cloud as cloud where cloud.name=:cloudName]]>
+	</QUERY_CLOUD_EXISTS>
+</queries>

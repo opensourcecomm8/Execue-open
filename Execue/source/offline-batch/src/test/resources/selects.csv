@@ -1,0 +1,351 @@
+Account
+Account, Merch_Amt
+Acct_Age
+Acct_Age, Good_Bal
+BalTransInd, Account
+Billing_Bal
+Billing_Bal, Account
+Billing_Bal, Billing_Bal_, Merch_Amt
+Billing_Bal, BScore, FICO
+Billing_Bal, BT_Bal, Finance_Charge, BT_Amt, Merch_Amt
+Billing_Bal, FICO
+Billing_Bal, FICO, Account
+Billing_Bal, Finance_Charge, Merch_Amt
+Billing_Bal, Merch_Amt
+Billing_Bal, Merch_Amt, FICO
+Billing_Bal, Gross_Active, Account
+BScore
+BScore, Account
+BScore, Billing_Bal, FICO
+BScore, FICO
+BScore, FICO, Merch_Amt
+BScore, Util, FICO
+BScore, Util, FICO, FICO_
+BScore, Util, Merch_Amt, FICO
+BT_Amt
+BT_Amt, BT_Amt_, Merch_Amt
+BT_Amt, Merch_Amt
+BT_Amt, Net_Inc, Merch_Amt
+BT_Bal
+BT_Bal, Account
+BT_Bal, BT_Amt, Acct_Age, FICO, Merch_Amt, Net_Inc
+BT_Bal, Finance_Charge, BT_Amt, Merch_Amt
+BT_Bal, Merch_Amt
+BT_Bal, Merch_Amt, Account
+BT_Bal, Net_Inc, Merch_Amt, BT_Amt, FICO
+BT_Fee
+CashAdvAmtInd, Merch_Amt, Account
+Cash_Adv_Bal, Account
+Cash_Adv__Amt
+DLQOneBal
+DLQOneBal, DLQTwoBal, DLQThreeBal, Account
+DLQThree_PERCENT, DLQOne_PERCENT, DLQTwo_PERCENT, Account
+DLQTwoBal, DLQOneBal, DLQThreeBal
+DLQ_Bal
+DLQ_Bal, Account
+Earned_CBB, Merch_Amt
+FICO
+FICO, Account
+FICO, Billing_Bal, Account
+FICO, BScore, Account
+FICO, BT_Amt, Merch_Amt
+FICO, Finance_Charge, Merch_Amt, Account
+FICO, Finance_Charge, Merch_Amt, Billing_Bal, Account
+FICO, Merch_Amt
+FICO, Merch_Amt, Account
+FICO, Util
+FICO, Util, Merch_Amt
+Finance_Charge
+Finance_Charge, Billing_Bal
+Finance_Charge, Billing_Bal, Merch_Amt
+Finance_Charge, Billing_Bal, Merch_Amt, FICO
+Finance_Charge, FICO, Merch_Amt, Account
+Finance_Charge, Merch_Amt
+Finance_Charge, Merch_Amt, Account
+Finance_Charge, Merch_Amt, Billing_Bal, Account
+Finance_Charge, Merch_Amt, FICO
+Finance_Charge, Merch_Amt, Merch_Amt_
+Finance_Charge, Merch_Bal
+Finance_Charge, Rev_Bal, Merch_Amt
+Gross_Active
+Gross_Active, Open, Account
+Gross_Active, PurchActiveInd, Open, Account
+INVN, TOT_ASSETS
+Merch_Amt
+Merch_Amt, Account
+Merch_Amt, Billing_Bal, Net_Inc, Late_Fee
+Merch_Amt, BT_Amt
+Merch_Amt, BT_Amt, Net_Inc
+Merch_Amt, FICO
+Merch_Amt, FICO, FICO_
+Merch_Amt, Finance_Charge
+Merch_Amt, Finance_Charge, Account
+Merch_Amt, Gross_Active, Account
+Merch_Amt, Merch_Bal
+Merch_Amt, Net_Inc, BT_Amt
+Merch_Bal
+Net_Income
+Net_Inc, BT_Amt
+Net_Inc, BT_Bal, FICO, BT_Amt, Acct_Age, Merch_Amt
+Net_Inc, BT_Bal, FICO, BT_Amt, Merch_Amt
+Net_Inc, BT_Fee, Finance_Charge, Late_Fee, BT_Amt, Billing_Bal, Merch_Amt
+Net_Inc, FICO, BT_Amt, BT_Bal, Acct_Age, Merch_Amt
+Net_Inc, FICO, Util, Late_Fee, Cash_Adv_Bal, Billing_Bal, Merch_Amt
+Open, Account
+Open
+Open, PurchActiveInd, Gross_Active
+OTB
+Port_Seg_Grp
+Total_Credit_Limit
+Total_Credit_Limit, Billing_Bal, Util, BT_Amt
+Total_Credit_Limit, Billing_Bal, Util, Merch_Amt
+TOT_ASSETS
+Util
+Util, BScore, FICO
+Util, FICO
+Util, FICO, BScore
+Util, FICO, FICO_
+Util, Merch_Amt
+Util, Merch_Amt, FICO
+Acct_Age, Account
+Acct_Age, FICO
+Acct_Age, Good_Bal, FICO
+Acct_Age, Merch_Amt
+Acct_Age,FICO
+Acct_Age,Good_Bal,FICO
+AC_Login, Account
+AC_Reg, Account
+AC_Reg, Newsletter_Opt_In, AC_Login, Account
+Balance Transfer Balance,Merchandise Balance,Cash Advance Balance
+BalTransAmtInd, Account
+Behavior Score,Fico Score
+BillBalInd, Account
+Billing_Bal, BScore, FICO, Merch_Amt
+Billing_Bal, BT_Amt
+Billing_Bal, Cash_Adv__Amt, BT_Bal, Account
+Billing_Bal, Cash_Adv__Amt, Merch_Amt
+Billing_Bal, FICO, Merch_Amt
+Billing_Bal, FICO, Merch_Amt, Account
+Billing_Bal, FICO, Merch_Bal
+Billing_Bal, Finance_Charge
+Billing_Bal, Finance_Charge, Account
+Billing_Bal, Finance_Charge, FICO
+Billing_Bal, Finance_Charge, FICO, BT_Amt
+Billing_Bal, Finance_Charge, FICO, Merch_Amt
+Billing_Bal, Finance_Charge, Rev_Bal, Merch_Amt
+Billing_Bal, Merch_Amt, Account
+Billing_Bal, Merch_Amt, Cash_Adv__Amt, Account
+Billing_Bal, Merch_Amt, Finance_Charge
+Billing_Bal, Merch_Amt, Finance_Charge, Account
+Billing_Bal, Merch_Amt, Net_Inc
+Billing_Bal, Merch_Amt, Net_Inc, Account
+Billing_Bal, Merch_Bal
+Billing_Bal, Merch_Bal, Account
+Billing_Bal, Merch_Bal, Finance_Charge, Account
+Billing_Bal, Merch_Bal, Merch_Amt, BT_Fee, BT_Amt, Account
+Billing_Bal, Util, Total_Credit_Limit, Account
+Billing_Bal,Account
+Billing_Bal,Cash_Adv__Amt,Merch_Amt
+Billing_Bal,FICO
+Billing_Bal,Finance_Charge,FICO
+Billing_Bal,Finance_Charge,FICO,BT_Amt
+Billing_Bal,Finance_Charge,Merch_Amt
+Billing_Bal,Merch_Amt
+Billing_Bal,Merch_Amt,Finance_Charge
+Billing_Bal,Merch_Bal
+Billing_Bal,Merch_Bal,Account
+Billing_Bal, Billing_Bal, Billing_Bal, Merch_Amt, Merch_Amt, Merch_Amt, Account
+BScore, Billing_Bal, FICO, Merch_Bal
+BScore, Total_Credit_Limit, FICO
+BScore,FICO
+BScore,FICO,Merch_Amt
+BT_Amt, Account
+BT_Amt, BT_Bal, Net_Inc, BalTransBalInd, FICO, Acct_Age, Merch_Amt, Account
+BT_Amt, BT_Bal, Net_Inc, FICO, Acct_Age, Merch_Amt, Account
+BT_Amt, BT_Bal, Net_Inc, FICO, Acct_Age, Merch_Amt, Billing_Bal, Account
+BT_Amt, BT_Bal, Net_Inc, FICO, Merch_Amt, Account
+BT_Amt, FICO, Billing_Bal, Late_Fee, BT_Fee, Net_Inc, Finance_Charge, Merch_Amt, Account
+BT_Amt, FICO, Merch_Amt, Account
+BT_Amt, Finance_Charge, Billing_Bal, Account
+BT_Amt, Merch_Amt, Account
+BT_Amt, Net_Inc, BT_Fee, Finance_Charge, Merch_Amt, Late_Fee, Billing_Bal, Account
+BT_Amt,Account
+BT_Amt,FICO,Billing_Bal,Late_Fee,BT_Fee,Net_Inc,Finance_Charge,Merch_Amt,Account
+BT_Amt,FICO,Merch_Amt,Account
+BT_Amt,Merch_Amt
+BT_Amt,Merch_Amt,Account
+BT_Amt,Net_Inc,Merch_Amt
+BT_Bal, Merch_Bal, Cash_Adv_Bal
+BT_Bal, BT_Amt, Merch_Bal
+BT_Bal, Cash_Adv_Bal
+BT_Bal,Account
+BT_Bal,Cash_Adv_Bal
+BT_Bal,Merch_Amt
+BT_Bal,Merch_Amt,Account
+BT_Bal,Merch_Bal,Cash_Adv_Bal
+BT_Fee, Account
+BT_Fee, Billing_Bal, Merch_Amt, BT_Amt, Merch_Bal
+BT_Fee, BT_Amt
+BT_Fee, BT_Amt, Account
+BT_Fee,Account
+CashAdvAmtInd, Account
+Cash_Adv_Bal
+Cash_Adv_Bal, BT_Bal, Account
+Cash_Adv_Bal, BT_Bal, Merch_Bal
+Cash_Adv_Bal, FICO
+Cash_Adv_Bal,BT_Bal,Account
+Cash_Adv__Amt, Account
+Cash_Adv__Amt, Acct_Age, Merch_Amt, BT_Bal, BT_Amt, Net_Inc, FICO
+Cash_Adv__Amt, Billing_Bal, BT_Bal
+Cash_Adv__Amt, Billing_Bal, Merch_Amt
+Cash_Adv__Amt, Merch_Amt
+Cash_Adv__Amt,Merch_Amt
+CBB_Bal
+Charged_Off, Account
+Charged_Off, DLQ_3_Bal, MerchBalInd, Account
+CyclesDLQ, Account
+CyclesDLQ, Merch_Amt, Account
+Debit_Active, Account
+DLQOneBal, DLQFourBal, DLQTwoBal, DLQThreeBal, Account
+DLQOneBal,DLQFourBal,DLQTwoBal,DLQThreeBal,Account
+DLQOneBal,DLQTwoBal,DLQThreeBal,Account
+DLQOne_PERCENT, Account
+DLQOne_PERCENT, DLQOneBal, Account
+DLQSixBal
+DLQSixBal, Account
+DLQSix_PERCENT, Account
+DLQThree_PERCENT, DLQThree, DLQThree, DLQOne_PERCENT, DLQOne, DLQOne, Account
+DLQTwoBal
+DLQTwoBal, Account
+DLQTwoBal, DLQOneBal, DLQFourBal, DLQThreeBal
+DLQTwoBal,DLQOneBal,DLQFourBal,DLQThreeBal
+DLQTwoBal,DLQOneBal,DLQThreeBal
+DLQTwo_PERCENT, DLQOne_PERCENT, Account
+DLQTwo_PERCENT, DLQOne_PERCENT, DLQFour, DLQThree_PERCENT, Account
+DLQTwo_PERCENT, DLQOne_PERCENT, DLQThree_PERCENT, Account
+DLQ_3_Bal
+DLQ_PERCENT, Account
+DLQ_Bal, FICO, Account
+DLQ, Account
+Earned_CBB
+Earned_CBB, Account
+Earned_CBB,Account
+Earned_CBB,Merch_Amt
+FICO, Acct_Age, Merch_Amt, Net_Inc, Cash_Adv__Amt, BT_Amt, BT_Bal, Account
+FICO, BT_Amt
+FICO, ExpBalTranBalInd, Account
+FICO, FICO, FICO, Billing_Bal, Billing_Bal, Billing_Bal, Account
+FICO, FICO, FICO, BScore, BScore, BScore, Account
+FICO, Merch_Bal
+FICO, Merch_Bal, Account
+FICO,Account
+FICO,Billing_Bal,BT_Bal,Finance_Charge,BScore,Merch_Amt,Account
+FICO,BScore,Account
+FICO,BT_Amt,Merch_Amt
+FICO,Finance_Charge,Merch_Amt,Account
+FICO,Merch_Amt
+FICO,Merch_Amt,Account
+FICO,Merch_Bal
+FICO, FICO, FICO, DLQ_Bal, DLQ_Bal, DLQ_Bal, Account
+FICO, DLQ_Bal
+Finance_Charge, Account
+Finance_Charge, Billing_Bal, Account
+Finance_Charge, Billing_Bal, Merch_Bal
+Finance_Charge, FICO
+Finance_Charge, FICO, BT_Amt, Merch_Amt
+Finance_Charge, FICO, Merch_Amt
+Finance_Charge, FICO, Merch_Amt, Billing_Bal, Account
+Finance_Charge, FICO, Merch_Bal
+Finance_Charge, Finance_Charge, Finance_Charge, Merch_Amt, Merch_Amt, Merch_Amt, Account
+Finance_Charge,Account
+Finance_Charge,Billing_Bal,Merch_Amt
+Finance_Charge,FICO,Merch_Amt
+Finance_Charge,FICO,Merch_Amt,Billing_Bal,Account
+Finance_Charge,Merch_Amt
+Finance_Charge,Merch_Amt,Account
+Finance_Charge,Merch_Amt,Billing_Bal,Account
+Finance_Charge,Merch_Amt,FICO
+Finance_Charge,Merch_Amt,Merch_Amt
+FinChargeInd, Account
+FinChargeInd, Merch_Amt, Account
+FinChargeInd,Merch_Amt,Account
+Gross_Active, Account
+MerchAmtInd, PurchActiveInd, Account
+Merchandise Sales Amount
+MerchBalInd, Account
+Merch_Amt, Billing_Bal, Account
+Merch_Amt, BT_Amt, BT_Bal, Account
+Merch_Amt, BT_Bal, BT_Amt
+Merch_Amt, Cash_Adv__Amt, Account
+Merch_Amt, Gross_Active, Open, Account
+Merch_Amt, Merch_Amt, Merch_Amt, Close, Close, Close, Account
+Merch_Amt, Merch_Amt
+Merch_Amt, Merch_Amt, Account
+Merch_Amt, Merch_Bal, Account
+Merch_Amt, Net_Inc
+Merch_Amt, Net_Inc, Account
+Merch_Amt, Util
+Merch_Amt, Util, Account
+Merch_Amt,Account
+Merch_Amt,Billing_Bal,Account
+Merch_Amt,Billing_Bal,Net_Inc,BT_Amt
+Merch_Amt,Billing_Bal,Net_Inc,Late_Fee
+Merch_Amt,BT_Amt
+Merch_Amt,BT_Amt,BT_Bal,Account
+Merch_Amt,BT_Amt,Net_Inc
+Merch_Amt,BT_Bal,BT_Amt
+Merch_Amt,Cash_Adv__Amt,Account
+Merch_Amt,FICO
+Merch_Amt,Finance_Charge,Account
+Merch_Amt,Merch_Amt,Account
+Merch_Amt,Net_Inc
+Merch_Amt,Net_Inc,Account
+Merch_Amt,Net_Inc,BT_Amt
+Merch_Amt, Merch_Amt, Merch_Amt, Account
+Merch_Amt,Merch_Amt,Merch_Amt,Account
+Merch_Bal, Account
+Merch_Bal, BT_Bal, BT_Amt, Account
+Merch_Bal, Cash_Adv_Bal
+Merch_Bal, Cash_Adv_Bal, Account
+Merch_Bal, Cash_Adv_Bal, BT_Bal, Account
+Merch_Bal, FICO
+Merch_Bal, Finance_Charge, Cash_Adv_Bal
+Merch_Bal, Finance_Charge, Cash_Adv_Bal, Account
+Merch_Bal, Merch_Bal, Merch_Bal_STDDEV, Merch_Bal, Merch_Amt, Merch_Amt, Merch_Amt_STDDEV, Merch_Amt, Account
+Merch_Bal,Account
+Merch_Bal,Cash_Adv_Bal,BT_Bal,Account
+Merch_Bal,Finance_Charge,Cash_Adv_Bal
+Merch_Bal,Finance_Charge,Cash_Adv_Bal,Account
+Merch_Bal, Merch_Bal_STDDEV, Merch_Bal, Merch_Bal, Merch_Amt, Merch_Amt_STDDEV, Merch_Amt, Merch_Amt, Account
+Net_Inc
+Net_Inc, Account
+Net_Inc, Billing_Bal, BT_Bal, FICO, Acct_Age, BT_Amt, Merch_Amt
+Net_Inc, Billing_Bal, BT_Fee, Finance_Charge, BT_Amt, Late_Fee, Merch_Amt
+Net_Inc, Net_Inc, Net_Inc, Net_Inc_ex_Write_Off, Net_Inc_ex_Write_Off, Net_Inc_ex_Write_Off, Account
+Net_Inc,BT_Amt
+Net_Inc,BT_Bal,FICO,BT_Amt,Acct_Age,Merch_Amt
+Net_Inc,BT_Fee,Finance_Charge,Late_Fee,BT_Amt,Billing_Bal,Merch_Amt
+Net_Inc_ex_Write_Off, Net_Inc
+Net_Inc_ex_Write_Off, Net_Inc, Account
+Net_Inc_ex_Write_Off,Net_Inc
+Net_Inc_ex_Write_Off,Net_Inc,Account
+Newsletter_Opt_In, AC_Login, AC_Reg
+OfferDT
+Off_Us_Limit, Total_Credit_Limit
+Off_Us_Limit, Total_Credit_Limit, Account
+Rev_Bal
+Rev_Bal, Account
+Rev_Bal,Account
+Risk_Adj_Net_Inc
+Risk_Adj_Net_Inc, Account
+Total_Credit_Limit, Account
+Total_Credit_Limit, Billing_Bal, Util
+Util, Billing_Bal, Total_Credit_Limit
+Util,Billing_Bal,Total_Credit_Limit
+Util, Merch_Amt, Account
+CASH, INVN, TOT_ASSETS
+Short_Ratio_Recent
+Short_Ratio__1_Month
+BT_Bal, Finance_Charge, FICO, BScore, Merch_Amt, Billing_Bal, Account
+DLQ_Bal, DLQ_Bal, DLQ_Bal, Account
+FICO, Billing_Bal, BT_Bal, Finance_Charge, BScore, Merch_Amt, Account

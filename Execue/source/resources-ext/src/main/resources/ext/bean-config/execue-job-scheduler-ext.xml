@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- this should be un-commented on Prod Env and Commented on QA Env -->
+	<bean id="jobSchedulerConfigurationService"
+		class="com.execue.scheduler.configuration.impl.JobSchedulerConfigurationServiceImpl"
+		autowire="byName">		
+	</bean>
+	
+	<bean id="jobSchedulerConfigurableService"
+		class="com.execue.scheduler.configuration.impl.JobSchedulerConfigurableService">
+		<constructor-arg>
+			<value>${quartz.seed.file}</value>
+		</constructor-arg>
+		<property name="jobSchedulerConfigurationService" ref="jobSchedulerConfigurationService" />
+		<property name="execueJobSchedulerService" ref="execueJobSchedulerService" />
+	</bean>
+
+</beans>

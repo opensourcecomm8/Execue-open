@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Links for Menu Item. -->
+<Menu>
+	<MenuItem>
+		<name>Datasets</name>
+		<alias>Console</alias>
+		<actionName>../swi/showAssetsDashboard.action</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>false</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>ADVANCE</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_ADV_PUBLISHER</roleName>
+			</Role>
+		</roleList>
+
+		<!--         2nd level starts    -->
+		<menuItems>
+			<MenuItem>
+				<name>1. Locate/upload</name>
+				<alias>showDataSources</alias>
+				<actionName>../publisher/showUploadDataset.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>true</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+		</menuItems>
+	</MenuItem>
+	<!--         Publisher Home Starts    -->
+	<MenuItem>
+		<name>Search Apps</name>
+		<alias>showSearchAppsDashboard</alias>
+		<actionName>../swi/showSearchAppsDashboard.action</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>true</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>BOTH</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_PUBLISHER</roleName>
+			</Role>
+		</roleList>
+
+		<!--         2nd level starts    -->
+		<menuItems>
+
+			<MenuItem>
+				<name>Review Metadata</name>
+				<alias>showAssets</alias>
+				<actionName>../publisher/showMetadata.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>SIMPLE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Extract Metadata</name>
+				<alias>showAssets</alias>
+				<!--<actionName>../swi/showAsset.action</actionName>-->
+				<actionName>../publisher/showMetadata.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>					
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Review Joins</name>
+				<alias>showJoins</alias>
+				<actionName>../swi/showJoins.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Review Mappings</name>
+				<alias>showMappings</alias>
+				<actionName>../swi/showMappings.action
+				</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Publish</name>
+				<alias>showPublishApplications</alias>
+				<actionName>../swi/showPublishDatasets.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+		</menuItems>
+		<!--         2nd level ends    -->
+	</MenuItem>
+	<!--         Publisher Home ends    -->
+
+	<!--         Business Terminology Starts    -->
+	<MenuItem>
+		<name>Knowledge Base</name>
+		<alias>showKnowledgebaseDashboard</alias>
+		<actionName>../swi/showKnowledgebaseDashboard.action</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>false</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>ADVANCE</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_ADV_PUBLISHER</roleName>
+			</Role>
+		</roleList>
+
+		<menuItems>
+			<!--         2nd level starts    -->
+
+
+			<MenuItem>
+				<name><![CDATA[1. Entities & Relations]]></name>
+				<alias>showBusinessTerms</alias>
+				<actionName>../swi/showBusinessTerms.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<!--	<MenuItem>
+					<name>2. Relations</name>
+					<alias>showRelations</alias>
+					<actionName>../swi/showRelations.action</actionName>
+					<css>leaf</css>
+					<isDefaultDisplay>false</isDefaultDisplay>
+					<isLeaf>true</isLeaf>
+					<roleList>
+						<Role>
+							<roleName>ROLE_ADMIN</roleName>
+						</Role>
+						<Role>
+							<roleName>ROLE_PUBLISHER</roleName>
+						</Role>
+					</roleList>
+				</MenuItem>
+
+				<MenuItem>
+					<name>3. Triples</name>
+					<alias>showRelations</alias>
+					<actionName>../swi/showTripleDefinitions.action</actionName>
+					<css>leaf</css>
+					<isDefaultDisplay>false</isDefaultDisplay>
+					<isLeaf>true</isLeaf>
+					<roleList>
+						<Role>
+							<roleName>ROLE_ADMIN</roleName>
+						</Role>
+						<Role>
+							<roleName>ROLE_PUBLISHER</roleName>
+						</Role>
+					</roleList>
+				</MenuItem> -->
+			
+			<MenuItem>
+				<name>2. Synonyms</name>
+				<alias>showParallelWords</alias>
+				<actionName>../swi/showParallelWords.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+			<MenuItem>
+				<name> 3. Entity Groups</name>
+				<alias>showProfiles</alias>
+				<actionName>../swi/showProfiles.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+
+			<MenuItem>
+				<name>4. User Ranges</name>
+				<alias>showRanges</alias>
+				<actionName>../swi/showRanges.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+			<MenuItem>
+				<name>5. Attribute Relation</name>
+				<alias>AttributeRelation</alias>
+				<actionName>../swi/showAttributeRelations.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>6. Concept Default value</name>
+				<alias>ConceptDefaultValue</alias>
+				<actionName>../swi/showConceptDefaultValue.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>7. Entity Variations</name>
+				<alias>ConceptDefaultValue</alias>
+				<actionName>../swi/showBusinessEntityVariations.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>8. Entity Relations</name>
+				<alias>EntityRelation</alias>
+				<actionName>../swi/showRelations.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>9. Entity Hierarchy</name>
+				<alias>EntityHierarchy</alias>
+				<actionName>../swi/showHierarchy.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+		</menuItems>
+		<!--         2nd level ends    -->
+	</MenuItem>
+	<!--         Manage Knowledge Base ends    -->
+
+	<!--  Start of Account -->
+	<MenuItem>
+		<name>Account</name>
+		<alias>account</alias>
+		<actionName>../account/showUserProfile.action</actionName>
+		<!-- <actionName>../account/showAccountDashboard.action</actionName> -->
+		<css>trigger</css>
+		<isDefaultDisplay>true</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>BOTH</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_PUBLISHER</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_USER</roleName>
+			</Role>
+		</roleList>
+
+		<!--         2nd level starts    -->
+		<menuItems>
+			<MenuItem>
+				<name>Settings</name>
+				<alias>setting</alias>
+				<actionName>../account/showUserProfile.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_USER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Advanced Options</name>
+				<alias>advOption</alias>
+				<actionName>../swi/accountAccess.action?type=2</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>SIMPLE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Simplified View</name>
+				<alias>simConsole</alias>
+				<actionName>../swi/accountAccess.action?type=1</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Message Box</name>
+				<alias>setting</alias>
+				<actionName>../account/showUserNotification.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_ADV_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+		</menuItems>
+		
+	</MenuItem>
+	<!--  End of Account -->
+
+	<!--
+			<MenuItem> <name>C. Search Apps Administration</name> <id>MC</id>
+			<alias>Administration</alias> <actionName>#</actionName>
+			<css>trigger</css> <isDefaultDisplay>false</isDefaultDisplay>
+			<isLeaf>false</isLeaf> <roleList> <Role>
+			<roleName>ROLE_ADMIN</roleName> </Role> <Role>
+			<roleName>ROLE_PUBLISHER</roleName> </Role> </roleList> <menuItems>
+			<MenuItem> <name>Publisher Console</name> <id>MC1</id>
+			<alias>consoleHome</alias>
+			<actionName>../swi/showConsole.action</actionName> <css>leaf</css>
+			<isDefaultDisplay>true</isDefaultDisplay> <isLeaf>true</isLeaf>
+			<roleList> <Role> <roleName>ROLE_ADMIN</roleName> </Role> <Role>
+			<roleName>ROLE_PUBLISHER</roleName> </Role> </roleList> </MenuItem>
+
+			</menuItems> </MenuItem>
+		-->
+
+	<!--         Administration Starts    -->
+	<MenuItem>
+		<name>System Admin</name>
+		<alias>Administration</alias>
+		<actionName>#</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>false</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>ADVANCE</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+		</roleList>
+
+		<!--         2nd level starts    -->
+		<menuItems>
+
+			<MenuItem>
+				<name>Maintenance</name>
+				<alias>showMaintenanceHome</alias>
+				<actionName>../swi/showMaintenanceHome.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Manage Verticals</name>
+				<alias>ManageVerticals</alias>
+				<actionName>../swi/showVerticals.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Manage Users</name>
+				<alias>ManageUsers</alias>
+				<actionName>../swi/showUsers.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+
+			<MenuItem>
+				<name>Manage Roles</name>
+				<alias>ManageRoles</alias>
+				<actionName>../swi/showRoles.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+
+			<MenuItem>
+				<name>Manage Groups</name>
+				<alias>ManageGroups</alias>
+				<actionName>../swi/showGroups.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>Manage Asset Security</name>
+				<alias>ManageAssetSecurity</alias>
+				<actionName>../swi/showAssetSecurity.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>Manage Table Security</name>
+				<alias>ManageTableSecurity</alias>
+				<actionName>../swi/showTableSecurity.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>Manage Column Security</name>
+				<alias>ManageColumnSecurity</alias>
+				<actionName>../swi/showColumnSecurity.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<!--
+			NOTE: This feature is commented as we set the member-level-access-rights-propagation-needed flag to false in execue-platform-services-configuration.xml. 
+			Once we set it to TRUE then we should uncomment this portion.
+			-->
+			<!--     
+			<MenuItem>
+				<name>Manage Member Security</name>
+				<alias>ManageMemberSecurity</alias>
+				<actionName>../swi/showMemberSecurity.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			-->
+			
+			<MenuItem>
+				<name>Access Definitions</name>
+				<alias>AccessDefinitions</alias>
+				<actionName>#</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+
+			<MenuItem>
+				<name>System Configuration</name>
+				<alias>SystemConfiguration</alias>
+				<actionName>../swi/systemConfiguration.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>Type Association</name>
+				<alias>TypeAssociation</alias>
+				<actionName>../swi/showConceptType.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+			<MenuItem>
+				<name>Manage User Requests</name>
+				<alias>ManageUserRequest</alias>
+				<actionName>../account/showManageUserRequests.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>Show User Access Audit</name>
+				<alias>ManageUserRequest</alias>
+				<actionName>../audittrail/showUserAccessAuditlog.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			<MenuItem>
+				<name>Show Query Search Audit</name>
+				<alias>ManageUserRequest</alias>
+				<actionName>../audittrail/showQISearchAuditlog.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			
+			
+			<!--<MenuItem> 
+				<name>Manage Unstructured Apps</name>
+				<alias>ManageUnstructuredApps</alias>
+				<actionName>../swi/showUnstructuredApps.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>-->
+			
+		</menuItems>
+		<!--         2nd level ends    -->
+	</MenuItem>
+	<!--         Administration ends    -->
+
+	<MenuItem>
+		<name>Help</name>
+		<alias>revisit</alias>
+		<actionName>#</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>false</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>BOTH</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+			<Role>
+				<roleName>ROLE_PUBLISHER</roleName>
+			</Role>
+		</roleList>
+		<menuItems>
+			<MenuItem>
+				<name>How to Build Apps</name>
+				<alias>SystemConfiguration</alias>
+				<actionName>http://wiki.semantifi.com/index.php/HowToBuildApps</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<target>_blank</target>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<MenuItem>
+				<name>App Ideas</name>
+				<alias>SystemConfiguration</alias>
+				<actionName>http://wiki.semantifi.com/index.php/App_Ideas
+				</actionName>
+				<css>leaf</css>
+				<target>_blank</target>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+			<!--MenuItem>
+				<name>Workshops</name>
+				<alias>SystemConfiguration</alias>
+				<actionName>../workshops.html</actionName>
+				<css>leaf</css>
+				<target>_blank</target>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>BOTH</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+					<Role>
+						<roleName>ROLE_PUBLISHER</roleName>
+					</Role>
+				</roleList>
+			</MenuItem-->
+		</menuItems>
+
+		<!--         2nd level starts    -->
+	</MenuItem>
+
+
+	<!--         Answers Catalog Starts -->
+	<MenuItem>
+		<name>Answers Catalog</name>
+		<alias>AnswersCatalog</alias>
+		<actionName>#</actionName>
+		<css>trigger</css>
+		<isDefaultDisplay>false</isDefaultDisplay>
+		<isLeaf>false</isLeaf>
+		<menuType>ADVANCE</menuType>
+		<roleList>
+			<Role>
+				<roleName>ROLE_ADMIN</roleName>
+			</Role>
+		</roleList>
+
+		<!-- 2nd level starts -->
+		<menuItems>
+			
+
+			<MenuItem>
+				<name>Manage Custom Cubes</name>
+				<alias>BuildCustomCubes</alias>
+				<actionName>../swi/manageCubes.action
+				</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+
+			<MenuItem>
+				<name>Manage Custom Datamarts</name>
+				<alias>BuildCustomDatamarts</alias>
+				<actionName>../swi/manageMarts.action</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>
+
+			<!--<MenuItem>
+				<name>View Cube Request</name>
+				<alias>ViewCubeRequest</alias>
+				<actionName>../swi/showCubeRequest.action
+				</actionName>
+				<css>leaf</css>
+				<isDefaultDisplay>false</isDefaultDisplay>
+				<isLeaf>true</isLeaf>
+				<menuType>ADVANCE</menuType>
+				<roleList>
+					<Role>
+						<roleName>ROLE_ADMIN</roleName>
+					</Role>
+				</roleList>
+			</MenuItem>-->
+
+		</menuItems>
+		<!--  2nd level ends -->
+	</MenuItem>
+	<!-- Answers Catalog ends    -->
+</Menu>

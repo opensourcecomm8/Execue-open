@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Value Bean definitions -->
+
+	<!-- Service Handler definitions -->
+
+	<bean id="martManagementAction" scope="prototype" class="com.execue.web.core.action.swi.MartManagementAction">
+		<property name="martManagementServiceHandler" ref="martManagementServiceHandler"/>
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/>
+		<property name="answersCatalogConfigurationService" ref="answersCatalogConfigurationService"/>
+	</bean>
+	
+
+	<!-- Action Bean definitions -->
+	<bean id="accountAccessAction" scope="prototype"
+		class="com.execue.web.core.action.account.AccountAccessAction">
+	</bean>
+	<bean id="consoleAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ConsoleAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="sdxAction" scope="prototype"
+		class="com.execue.web.core.action.swi.SDXAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="assetDetailServiceHandler"
+			ref="assetDetailServiceHandler" />
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+	</bean>
+
+	<bean id="dashBoardAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DashBoardAction">
+		<property name="dashBoardServiceHandler"
+			ref="dashBoardServiceHandler" />
+		<property name="uploadServiceHandler"
+			ref="uploadServiceHandler" />
+	</bean>
+
+	<bean id="sdxPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.SDXPaginationAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="sdxSourceTablesPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.SDXSourceTablesPaginationAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="assetDetailAction" scope="prototype"
+		class="com.execue.web.core.action.swi.AssetDetailAction">
+		<property name="assetDetailServiceHandler"
+			ref="assetDetailServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+	<bean id="assetSelectionAction" scope="prototype"
+		class="com.execue.web.core.action.swi.AssetSelectionAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+
+	<bean id="assetGrainAction" scope="prototype"
+		class="com.execue.web.core.action.swi.AssetGrainAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="kdxAction" scope="prototype"
+		class="com.execue.web.core.action.swi.KDXAction">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+
+	<bean id="conceptsPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ConceptsPaginationAction">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+
+	<bean id="attributeAssociationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.AttributeAssociationAction">
+		<property name="attributeAssociationServiceHandler"
+			ref="attributeAssociationServiceHandler" />
+	</bean>
+
+	<bean id="relationsPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.RelationsPaginationAction">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+
+	<bean id="instancesPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.InstancesPaginationAction">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+
+	<bean id="rangesAction" scope="prototype"
+		class="com.execue.web.core.action.swi.RangesAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+
+	<bean id="rangesPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.RangesPaginationAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+
+	<bean id="profilesAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ProfilesAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+
+	<bean id="dataSourceAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DataSourceAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="dataSourcePaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DataSourcePaginationAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="joinsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.joins.JoinsAction">
+		<property name="joinServiceHandler" ref="joinServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="constraintsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.constraints.ConstraintsAction">
+		<property name="constraintServiceHandler"
+			ref="constraintServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+
+	<bean id="cubeManagementAction" scope="prototype"
+		class="com.execue.web.core.action.swi.CubeManagementAction">
+		<property name="cubeManagementServiceHandler"
+			ref="cubeManagementServiceHandler" />
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+	
+	<bean id="userPasswordAction" scope="prototype"
+		class="com.execue.web.core.action.swi.security.UserPasswordAction">
+		<property name="usersHandler" ref="usersHandler" />
+	</bean>
+	
+	<!-- User Groups Action configuration -->
+	<bean id="userGroupAction" scope="prototype"
+		class="com.execue.web.core.action.swi.security.UserGroupAction">
+		<property name="usersHandler" ref="usersHandler" />
+		<property name="groupsHandler" ref="groupsHandler" />
+	</bean>
+	<!-- Group role Action configuration -->
+	<bean id="groupRolesAction" scope="prototype"
+		class="com.execue.web.core.action.swi.security.GroupRoleAction">
+		<property name="groupsHandler" ref="groupsHandler" />
+		<property name="rolesHandler" ref="rolesHandler" />
+	</bean>
+	<bean id="groupsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.security.GroupsAction">
+		<property name="groupsHandler" ref="groupsHandler" />
+	</bean>
+	<bean id="rolesAction" scope="prototype"
+		class="com.execue.web.core.action.swi.security.RolesAction">
+		<property name="rolesHandler" ref="rolesHandler" />
+	</bean>
+	<!-- mapping -->
+	<bean id="conceptMappingsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.mappings.ConceptMappingsAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+		<property name="mappingServiceHandler"
+			ref="mappingServiceHandler" />		
+	</bean>
+	<bean id="instanceMappingsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.mappings.InstanceMappingsAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+		<property name="mappingServiceHandler"
+			ref="mappingServiceHandler" />
+		<property name="swiConfiguration" ref="swiConfiguration" />
+	</bean>
+	<bean id="kdxMappingAction" scope="prototype"
+		class="com.execue.web.core.action.swi.mappings.KDXMappingAction"
+		parent="kdxAction">
+	</bean>
+	<bean id="mappingSuggestAction" scope="prototype"
+		class="com.execue.web.core.action.swi.mappings.MappingSuggestAction">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+		<property name="mappingServiceHandler"
+			ref="mappingServiceHandler" />
+	</bean>
+	<!--Parallel Words Action configuration -->
+	<bean id="parallelWordsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ParallelWordsAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+	<bean id="parallelWordsPaginationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ParallelWordsPaginationAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+	</bean>
+	<bean id="sflAction" scope="prototype"
+		class="com.execue.web.core.action.swi.SFLAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+	<!-- Upload Action -->
+	<bean id="uploadAction" scope="prototype"
+		class="com.execue.web.core.action.swi.UploadAction">
+		<property name="uploadServiceHandler"
+			ref="uploadServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+		<property name="dashBoardServiceHandler"
+			ref="dashBoardServiceHandler" />
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+	</bean>
+
+	<bean id="publishedFileAbsorptionAction" scope="prototype"
+		class="com.execue.web.core.action.swi.PublishedFileAbsorptionAction">
+		<property name="uploadServiceHandler"
+			ref="uploadServiceHandler" />
+		<property name="conversionServiceHandler"
+			ref="conversionServiceHandler" />
+	</bean>
+
+	
+	<bean id="publishedFileColumnEvaluationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.PublishedFileColumnEvaluationAction">
+		<property name="publishedFileColumnEvaluationServiceHandler"
+			ref="publishedFileColumnEvaluationServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+	</bean>
+	<bean id="memberColumnEvaluationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.MemberColumnEvaluationAction">
+		<property name="publishedFileColumnEvaluationServiceHandler"
+			ref="publishedFileColumnEvaluationServiceHandler" />
+	</bean>
+	<bean id="publishedFileColumnDataAction" scope="prototype"
+		class="com.execue.web.core.action.swi.PublishedFileColumnDataAction">
+		<property name="publishedFileColumnEvaluationServiceHandler"
+			ref="publishedFileColumnEvaluationServiceHandler" />
+	</bean>
+	<bean id="jobRequestStatusAction" scope="prototype"
+		class="com.execue.web.core.action.swi.JobRequestStatusAction">
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+	</bean>
+	
+	
+	<bean id="publisherJobRequestStatusAction" scope="prototype"
+		class="com.execue.web.core.action.swi.PublisherJobRequestStatusAction">
+		<property name="publishedFileDataAccessManager"
+			ref="publishedFileDataAccessManager" />
+		<property name="jobDataAccessManager"
+			ref="jobDataAccessManager" />
+	</bean>
+	<bean id="jobMaintenanceAction" scope="prototype"
+		class="com.execue.web.core.action.swi.JobMaintenanceAction">
+		<property name="jobMaintenanceServiceHandler"
+			ref="jobMaintenanceServiceHandler" />
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+	<!--  Account related Action -->
+	<bean id="accountProfileAction" scope="prototype"
+		class="com.execue.web.core.action.account.AccountProfileAction">
+		<property name="accountHandler" ref="accountHandler" />
+		<property name="usersHandler" ref="usersHandler" />
+	</bean>
+
+	<bean id="appInfoAction" scope="prototype"
+		class="com.execue.web.core.action.AppInfoAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+	</bean>
+	<bean id="userNotificationAction" scope="prototype"
+		class="com.execue.web.core.action.account.UserNotificationAction">
+		<property name="userNotificationHandler"
+			ref="userNotificationHandler" />
+	</bean>
+	<bean id="notificationTemplateAction" scope="prototype"
+		class="com.execue.web.core.action.NotificationTemplateAction">
+		<property name="userNotificationHandler"
+			ref="userNotificationHandler" />
+	</bean>
+	<bean id="defaultMetricsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DefaultsAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="mappingServiceHandler"
+			ref="mappingServiceHandler" />
+	</bean>
+
+	<bean id="typeConceptAssociationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.TypeConceptAssociationAction">
+		<property name="typeConceptAssociationServiceHandler"
+			ref="typeConceptAssociationServiceHandler" />
+	</bean>
+	<bean id="applicationListAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ApplicationListAction">
+		<property name="dashBoardServiceHandler"
+			ref="dashBoardServiceHandler" />
+	</bean>
+	<bean id="datasetListAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DatasetListAction">
+		<property name="uploadServiceHandler"
+			ref="uploadServiceHandler" />
+	</bean>
+	<bean id="assetPublishAction" scope="prototype"
+		class="com.execue.web.core.action.swi.AssetPublishAction">
+		<property name="assetPublishServiceHandler"
+			ref="assetPublishServiceHandler" />
+		<property name="jobStatusServiceHandler"
+			ref="jobStatusServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+	</bean>
+	<bean id="conceptTypeAssociationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ConceptTypeAssociationAction">
+		<property name="typeConceptAssociationServiceHandler"
+			ref="typeConceptAssociationServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+	<bean id="tripleDefinitionsAction" scope="prototype"
+		class="com.execue.web.core.action.swi.TripleDefinitionsAction">
+		<property name="tripleDefinitionsServiceHandler"
+			ref="tripleDefinitionsServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+
+	<bean id="applicationDetailAction" scope="prototype"
+		class="com.execue.web.core.action.swi.ApplicationDetailAction">
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+		<property name="sdxServiceHandler" ref="sdxServiceHandler" />
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+
+
+	<bean id="defaultDynamicValueAction" scope="prototype"
+		class="com.execue.web.core.action.swi.DefaultDynamicValueAction">
+		<property name="defaultDynamicValueServiceHandler"
+			ref="defaultDynamicValueServiceHandler" />
+	</bean>
+	<bean id="verticalAction" scope="prototype"
+		class="com.execue.web.core.action.swi.VerticalAction">
+		<property name="verticalServiceHandler"
+			ref="verticalServiceHandler" />
+		<property name="applicationServiceHandler"
+			ref="applicationServiceHandler" />
+	</bean>
+	<bean id="businessEntityVariationAction" scope="prototype"
+		class="com.execue.web.core.action.swi.BusinessEntityVariationAction">
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />
+	</bean>
+	
+	<bean id="unstructuredAppDataSourceAction" scope="prototype"
+		class="com.execue.web.core.action.swi.UnstructuredAppDataSourceAction">
+		<property name="unstructuredAppDataSourceServiceHandler"
+			ref="unstructuredAppDataSourceServiceHandler" />	
+	</bean>
+	<bean id="unstructuredSearchAction" scope="prototype"
+		class="com.execue.web.core.action.uss.UnstructuredSearchAction">
+		<property name="unstructuredSearchServiceHandler"
+			ref="unstructuredSearchServiceHandler" />	
+	</bean>
+	
+	<bean id="unstructuredDynamicKnowledgeAbsorptionAction" scope="prototype"
+		class="com.execue.web.core.action.uss.UnstructuredDynamicKnowledgeAbsorptionAction">
+		<property name="unstructuredDynamicKnowledgeServiceHandler"
+			ref="unstructuredDynamicKnowledgeServiceHandler" />	
+	</bean>
+	<bean id="unstructuredResemantificationStatusAction" scope="prototype"
+		class="com.execue.web.core.action.uss.UnstructuredResemantificationStatusAction">
+		<property name="reportHandler"
+			ref="reportHandler" />	
+	</bean>
+	
+	<bean id="searchUserAccessAuditAction" scope="prototype"
+		class="com.execue.web.core.action.audittrail.SearchUserAccessAuditAction">
+		<property name="auditTrailServiceHandler"
+			ref="auditTrailServiceHandler" />					
+	</bean>
+	
+	<bean id="searchQISearchAuditAction" scope="prototype"
+		class="com.execue.web.core.action.audittrail.SearchQISearchAuditAction">
+		<property name="auditTrailServiceHandler"
+			ref="auditTrailServiceHandler" />					
+	</bean>
+	
+	<bean id="auditLogAction" scope="prototype"
+		class="com.execue.web.core.action.audittrail.AuditLogAction">
+		<property name="auditTrailServiceHandler"
+			ref="auditTrailServiceHandler" />					
+	</bean>
+	
+	
+</beans>

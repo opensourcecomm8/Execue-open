@@ -1,0 +1,126 @@
+/*styles for jquery ui daterangepicker plugin */
+
+.ui-daterangepickercontain {
+	position: absolute;
+	z-index: 9999999;
+	left:0px;
+	top:0px;
+}
+.ui-daterangepickercontain .ui-daterangepicker {
+	float: left;
+	padding: 5px !important;
+	width: auto;
+	display: inline;
+}
+.ui-daterangepicker ul, .ui-daterangepicker .ranges, .ui-daterangepicker .range-start, .ui-daterangepicker .range-end {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.ui-daterangepicker .ranges {
+	width: auto;
+	position: relative;
+	padding-bottom: 40px;
+}
+.ui-daterangepicker .range-start, .ui-daterangepicker .range-end {
+	margin-left: 5px;
+}
+.ui-daterangepicker button.btnDone {
+	margin: 10px 0;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	clear: both;
+	cursor: pointer;
+	font-size: 0.8em;
+}
+.ui-daterangepicker ul {
+	width: 17.6em;
+	background: none;
+	border: 0;
+}
+.ui-daterangepicker li {
+	list-style: none;
+	padding: 1px;
+	cursor: pointer;
+}
+.ui-daterangepicker li.ui-hover-state, .ui-daterangepicker li.ui-active-state {
+	padding: 0;
+}
+.ui-daterangepicker li.preset_0 {
+	/*margin-top: 1.5em !important;*/
+}
+.ui-daterangepicker li a, .ui-daterangepicker li a:hover {
+	background-position: 98% 50%;
+	display: block;
+	padding: .2em;
+	font-size:12px;
+}
+.ui-daterangepicker .ui-component-content a {
+	text-decoration: none !important;
+}
+.ui-daterangepicker li a {
+	margin: 1px;
+}
+.ui-daterangepicker .title {
+	display: block;
+	margin: 1em 0;
+	font-size: 1.1em;
+}
+.ui-daterangepicker .ui-datepicker-inline {
+	font-size: 1em;
+}
+.ui-daterangepicker-arrows {
+	padding: 0 16px;
+	position: relative;
+}
+.ui-daterangepicker-arrows a {
+	overflow: hidden;
+}
+.ui-daterangepicker-arrows .ui-datepicker-prev, .ui-daterangepicker-arrows .ui-datepicker-next {
+	top: 0;
+	left: 0;
+	display:none;
+}
+.ui-daterangepicker-arrows .ui-datepicker-next {
+	left: auto;
+	right: 0;
+}
+
+.hoursList{
+    bottom: 0;
+    clear: both;
+    cursor: pointer;
+    position: absolute;
+    right: 130px;	
+	  margin: 10px 0;
+	   background: none repeat scroll 0 0 #E6E6E6;
+    border: 1px solid #D3D3D3;
+    color: #555555;
+    font-size: 0.8em;
+}
+.minsList{
+    bottom: 0;
+    clear: both;
+    cursor: pointer;
+    position: absolute;
+    right: 70px;
+	  margin: 10px 0;
+	   background: none repeat scroll 0 0 #E6E6E6;
+    border: 1px solid #D3D3D3;
+    color: #555555;
+    font-size: 0.8em;
+}
+
+.ui-default-message{
+border:1px solid #999;
+padding:5px;
+background-color:#FFF;
+display:none;
+position:absolute;
+z-index:10000000;
+}
+td.ui-datepicker-today a{
+	font-weight:bold;
+	color:#F00;
+}

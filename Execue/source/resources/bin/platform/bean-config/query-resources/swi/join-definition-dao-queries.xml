@@ -1,0 +1,6 @@
+<queries>
+	<JOIN_DEFINITION_BY_ASSET_ID>
+	<![CDATA[from JoinDefinition as joinDefinition where joinDefinition.asset = :asset
+	]]>
+	</JOIN_DEFINITION_BY_ASSET_ID>	
+</queries>

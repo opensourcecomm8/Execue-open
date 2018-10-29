@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="categoryType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ModelCategoryType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="statusEnum" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.bean.StatusEnum</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.Model" table="MODEL">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">MODEL</param>
+			</generator>
+		</id>
+		<property name="name" type="string">
+			<column name="NAME" length="255" />
+		</property>
+		<property name="createdDate" type="timestamp">
+			<column name="CREATED_DATE" />
+		</property>
+		<property name="modifiedDate" type="timestamp">
+			<column name="MODIFIED_DATE" />
+		</property>
+		<property name="category" type="categoryType">
+			<column name="CATEGORY" length="10" />
+		</property>
+		<property name="popularity" type="java.lang.Long">
+			<column name="POPULARITY" precision="20" scale="0" />
+		</property>	
+		<property name="status" type="statusEnum">
+			<column name="STATUS" length="1" />
+		</property>
+        <property name="evaluate" type="checkType">
+            <column name="EVALUATE" length="1" />
+        </property>
+        <property name="indexEvaluationRequired" type="checkType">
+            <column name="INDEX_EVALUATION" length="1" />
+        </property>
+		<set name="applications" inverse="false" table="APPLICATION_MODEL_MAPPING" lazy="false">
+			<key>
+				<column name="MODEL_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Application">
+				<column name="APPLICATION_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set> 
+		<set name="modelGroups" inverse="false" table="MODEL_GROUP_MAPPING" lazy="false">
+			<key>
+				<column name="MODEL_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.ModelGroup">
+				<column name="MODEL_GROUP_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set>
+		<set name="modelGroupMappings" inverse="true">
+			<key>
+				<column name="MODEL_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.ModelGroupMapping" />
+		</set>
+		<set name="clouds" inverse="false" table="model_cloud">
+			<key>
+				<column name="MODEL_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Cloud">
+				<column name="CLOUD_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set> 
+	</class>
+</hibernate-mapping>

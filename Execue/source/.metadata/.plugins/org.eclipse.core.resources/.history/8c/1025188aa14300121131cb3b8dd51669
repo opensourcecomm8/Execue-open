@@ -1,0 +1,142 @@
+<queries>
+	<CITIES_BY_STATE_AS_LIST_BY_ID>
+	<![CDATA[select cityId from StateCity where stateId = :sourceId]]>
+	</CITIES_BY_STATE_AS_LIST_BY_ID>
+	<CITIES_BY_STATES_AS_LIST_BY_LIST>
+	<![CDATA[select cityId from StateCity where stateId in (:sourceIds)]]>
+	</CITIES_BY_STATES_AS_LIST_BY_LIST>
+	<CITIES_BY_STATES_AS_MAP_BY_LIST>
+	<![CDATA[select stateId, cityId from StateCity where stateId in (:sourceIds)]]>
+	</CITIES_BY_STATES_AS_MAP_BY_LIST>
+	
+	<STATES_BY_CITY_AS_LIST_BY_ID>
+	<![CDATA[select stateId from StateCity where cityId = :sourceId]]>
+	</STATES_BY_CITY_AS_LIST_BY_ID>
+	<STATES_BY_CITIES_AS_LIST_BY_LIST>
+	<![CDATA[select stateId from StateCity where cityId in (:sourceIds)]]>
+	</STATES_BY_CITIES_AS_LIST_BY_LIST>
+	<STATES_BY_CITIES_AS_MAP_BY_LIST>
+	<![CDATA[select cityId,stateId from StateCity where cityId in (:sourceIds)]]>
+	</STATES_BY_CITIES_AS_MAP_BY_LIST>
+		
+	<CITIES_BY_COUNTRY_AS_LIST_BY_ID>
+	<![CDATA[select cityId from CountryCity where countryId = :sourceId]]>
+	</CITIES_BY_COUNTRY_AS_LIST_BY_ID>
+	<CITIES_BY_COUNTRIES_AS_LIST_BY_LIST>
+	<![CDATA[select cityId from CountryCity where countryId in (:sourceIds)]]>
+	</CITIES_BY_COUNTRIES_AS_LIST_BY_LIST>
+	<CITIES_BY_COUNTRIES_AS_MAP_BY_LIST>
+	<![CDATA[select countryId,cityId from CountryCity where countryId in (:sourceIds)]]>
+	</CITIES_BY_COUNTRIES_AS_MAP_BY_LIST>
+	
+	<COUNTRIES_BY_CITY_AS_LIST_BY_ID>
+	<![CDATA[select countryId from CountryCity where cityId = :sourceId]]>
+	</COUNTRIES_BY_CITY_AS_LIST_BY_ID>
+	<COUNTRIES_BY_CITIES_AS_LIST_BY_LIST>
+	<![CDATA[select countryId from CountryCity where cityId in (:sourceIds)]]>
+	</COUNTRIES_BY_CITIES_AS_LIST_BY_LIST>
+	<COUNTRIES_BY_CITIES_AS_MAP_BY_LIST>
+	<![CDATA[select cityId,countryId from CountryCity where cityId in (:sourceIds)]]>
+	</COUNTRIES_BY_CITIES_AS_MAP_BY_LIST>
+	
+	<STATES_BY_COUNTRY_AS_LIST_BY_ID>
+	<![CDATA[select stateId from CountryState where countryId = :sourceId]]>
+	</STATES_BY_COUNTRY_AS_LIST_BY_ID>
+	<STATES_BY_COUNTRIES_AS_LIST_BY_LIST>
+	<![CDATA[select stateId from CountryState where countryId in (:sourceIds)]]>
+	</STATES_BY_COUNTRIES_AS_LIST_BY_LIST>
+	<STATES_BY_COUNTRIES_AS_MAP_BY_LIST>
+	<![CDATA[select countryId,stateId from CountryState where countryId in (:sourceIds)]]>
+	</STATES_BY_COUNTRIES_AS_MAP_BY_LIST>
+	
+	<COUNTRIES_BY_STATE_AS_LIST_BY_ID>
+	<![CDATA[select countryId from CountryState where stateId = :sourceId]]>
+	</COUNTRIES_BY_STATE_AS_LIST_BY_ID>
+	<COUNTRIES_BY_STATES_AS_LIST_BY_LIST>
+	<![CDATA[select countryId from CountryState where stateId in (:sourceIds)]]>
+	</COUNTRIES_BY_STATES_AS_LIST_BY_LIST>
+	<COUNTRIES_BY_STATES_AS_MAP_BY_LIST>
+	<![CDATA[select stateId,countryId from CountryState where stateId in (:sourceIds)]]>
+	</COUNTRIES_BY_STATES_AS_MAP_BY_LIST>
+	
+	<QUERY_GET_LOCATION_POINTS_BY_ZIPCODE>
+	<![CDATA[select lpi from LocationPointInfo lpi where lpi.zipCode in (:zipCodes) and lpi.normalizedLocationType = :locationType]]>
+	</QUERY_GET_LOCATION_POINTS_BY_ZIPCODE>
+	
+	<QUERY_GET_LOCATION_POINTS_BY_BEDIDS>
+	<![CDATA[select lpi from LocationPointInfo lpi where lpi.locationBedId in (:locationBedIds) and lpi.normalizedLocationType = :locationType]]>
+	</QUERY_GET_LOCATION_POINTS_BY_BEDIDS>
+	
+	<QUERY_GET_VALID_COUNTRY_CITY>
+	<![CDATA[from CountryCity as countryCity 
+		  where countryCity.countryId = :countryId and countryCity.cityId = :cityId 
+	]]>
+	</QUERY_GET_VALID_COUNTRY_CITY>	
+	
+	<QUERY_GET_VALID_COUNTRY_STATE>
+	<![CDATA[from CountryState as countryState 
+		  where countryState.countryId = :countryId and countryState.stateId = :stateId 
+	]]>
+	</QUERY_GET_VALID_COUNTRY_STATE>
+		
+	<QUERY_GET_VALID_STATE_CITY>
+	<![CDATA[from StateCity as stateCity 
+		  where stateCity.stateId = :stateId and stateCity.cityId = :cityId 
+	]]>
+	</QUERY_GET_VALID_STATE_CITY>
+	
+	<QUERY_GET_VALID_COUNTRY_CITY_COMBINATIONS>
+	<![CDATA[from CountryCity as countryCity 
+		  where countryCity.countryId = :countryId and countryCity.cityId in (:cityIds)
+	]]>
+	</QUERY_GET_VALID_COUNTRY_CITY_COMBINATIONS>
+	
+	<QUERY_GET_VALID_COUNTRY_STATE_COMBINATIONS>
+	<![CDATA[from CountryState as countryState 
+		  where countryState.countryId = :countryId and countryState.stateId in (:stateIds) 
+	]]>
+	</QUERY_GET_VALID_COUNTRY_STATE_COMBINATIONS>
+	
+	<QUERY_GET_VALID_STATE_CITY_COMBINATIONS>
+	<![CDATA[from StateCity as stateCity 
+		  where stateCity.stateId = :stateId and stateCity.cityId in (:cityIds) 
+	]]>
+	</QUERY_GET_VALID_STATE_CITY_COMBINATIONS>
+	
+	<QUERY_GET_MATCHED_LOCATION_POINT_INFO_BY_LOCATION_BED_ID>
+	<![CDATA[from LocationPointInfo where location = :location and   
+		normalizedLocationType = :locationType and locationBedId = :locationBedId 
+	]]>
+	</QUERY_GET_MATCHED_LOCATION_POINT_INFO_BY_LOCATION_BED_ID>
+	
+	<QUERY_GET_MATCHED_LOCATION_POINT_INFO_BY_ZIP_CODE>
+	<![CDATA[from LocationPointInfo where location = :location and  
+		normalizedLocationType= :locationType and zipCode = :zipCode 
+	]]>
+	</QUERY_GET_MATCHED_LOCATION_POINT_INFO_BY_ZIP_CODE>
+	
+	<QUERY_GET_LOCATION_POINT_INFO_BY_ZIP_CODE>
+	<![CDATA[from LocationPointInfo where zipCode = :zipCode and 
+		normalizedLocationType= :normalizedLocationType 
+	]]>
+	</QUERY_GET_LOCATION_POINT_INFO_BY_ZIP_CODE>
+	
+	<QUERY_GET_LOCATION_POINT_INFO_BY_BED_ID>
+	<![CDATA[from LocationPointInfo where locationBedId = :locationBedId and 
+		normalizedLocationType = :normalizedLocationType
+	]]>
+	</QUERY_GET_LOCATION_POINT_INFO_BY_BED_ID>
+	
+	<QUERY_GET_VALID_STATECITY_COMBINATIONS>
+	<![CDATA[from StateCity where stateId in (:stateIds) and 
+		cityId in (:cityIds)
+	]]>
+	</QUERY_GET_VALID_STATECITY_COMBINATIONS>
+	
+	<QUERY_GET_LOCATION_POINT_INFO_HAVING_SEARCH_STRING>
+	<![CDATA[select distinct lpi from LocationPointInfo as lpi
+		 where lpi.locationDisplayName like :searchString 
+		 order by locate(:inStr, lpi.locationDisplayName, 1),lpi.locationDisplayName
+	]]>
+	</QUERY_GET_LOCATION_POINT_INFO_HAVING_SEARCH_STRING>
+</queries>

@@ -1,0 +1,92 @@
+<queries>
+	<QUERY_GET_SPECIFIC_AGGREGATE_QUERY>
+	<![CDATA[from QDataAggregatedQuery as qDataAggregatedQuery where 
+		 qDataAggregatedQuery.userQuery = :userQuery and 
+		 qDataAggregatedQuery.assetId = :assetId and 
+		 qDataAggregatedQuery.businessQueryId = :businessQueryId and 
+		 qDataAggregatedQuery.type = :type
+	]]>
+	</QUERY_GET_SPECIFIC_AGGREGATE_QUERY>
+
+	<QUERY_GET_AGGREGATE_QUERY_BY_ASSET_ID>
+	<![CDATA[from QDataAggregatedQuery as qDataAggregatedQuery 
+		 where qDataAggregatedQuery.assetId = :assetId order by id
+	]]>
+	</QUERY_GET_AGGREGATE_QUERY_BY_ASSET_ID>
+
+	<QUERY_GET_AGGREGATE_QUERY_COLUM>
+	<![CDATA[from QDataAggregatedQueryColumn as qDataAggregatedQueryColumn 
+		 where qDataAggregatedQueryColumn.aggregatedQuery.id = :id 
+		 and qDataAggregatedQueryColumn.querySection= :name
+	]]>
+	</QUERY_GET_AGGREGATE_QUERY_COLUM>
+
+	<QUERY_GET_AGGREGATE_QUERY_INFO>
+	<![CDATA[select qDataAggregatedQueryColumn.aggregatedQuery.id,
+		 qDataAggregatedQueryColumn.name, qDataAggregatedQueryColumn.businessEntityId from 
+		 QDataAggregatedQueryColumn as qDataAggregatedQueryColumn, QDataAggregatedQuery as qDataAggregatedQuery
+		 where qDataAggregatedQueryColumn.aggregatedQuery.id = qDataAggregatedQuery.id
+		 and qDataAggregatedQuery.assetId = :assetId and 
+		 qDataAggregatedQueryColumn.querySection = :name
+		 order by qDataAggregatedQueryColumn.aggregatedQuery.id
+	]]>
+	</QUERY_GET_AGGREGATE_QUERY_INFO>
+
+	<QUERY_GET_AGGREGATE_QUERY_LIST>
+	<![CDATA[from QDataAggregatedQuery as qDataAggregatedQuery
+		 where qDataAggregatedQuery.userQuery = :userQuery
+	]]>
+	</QUERY_GET_AGGREGATE_QUERY_LIST>
+
+	<QUERY_GET_REPORT_DATA>
+	<![CDATA[from QDataReportData as qDataReportData 
+		 where qDataReportData.aggregatedQuery = :qDataAggregatedQuery
+	]]>
+	</QUERY_GET_REPORT_DATA>
+
+	<QUERY_GET_AGGREGATED_REPORT_TYPE>
+	<![CDATA[from QDataAggregatedReportType as qDataAggregatedReportType 
+		 where qDataAggregatedReportType.aggregatedQuery = :qDataAggregatedQuery
+	]]>
+	</QUERY_GET_AGGREGATED_REPORT_TYPE>
+
+	<QUERY_MATCH_USER_QUERY_LIST>
+	<![CDATA[from QDataUserQuery as  qDataUserQuery where qDataUserQuery.normalizedQueryString= :englishStatement
+	]]>
+	</QUERY_MATCH_USER_QUERY_LIST>
+
+	<QUERY_GET_CACHE_RESULTS>
+	<![CDATA[select uq.id, bq.id, aq.assetId, aq.assetWeight, aq.executionDate from
+		 QDataUserQuery as uq , QDataBusinessQuery as bq , QDataAggregatedQuery aq where uq.id =:userQueryId 
+		 and bq.applicationId = :applicationId and uq.id = bq.userQuery.id 
+		 and bq.id = aq.businessQueryId and aq.type  IN (:aggregateQueryType) 
+		 and uq.executionDate = :executionDate and aq.dataPresent = :checkTypeValueYes order by aq.assetId, aq.type
+	]]>
+	</QUERY_GET_CACHE_RESULTS>
+
+	<QUERY_GET_RECENTLY_EXECUTED_USER_QUERY>
+	<![CDATA[select max(uq.executionDate) from QDataUserQuery as uq , QDataBusinessQuery as bq ,
+		 QDataAggregatedQuery aq where uq.id = :userQueryId and bq.applicationId = :applicationId 
+		 and uq.id = bq.userQuery.id and bq.id = aq.businessQueryId and aq.type IN (:aggregateQueryType) 
+		 and uq.requestSuccessful = :checkTypeValueYes
+	]]>
+	</QUERY_GET_RECENTLY_EXECUTED_USER_QUERY>
+
+	<QUERY_GET_AGGREGATE_QUERIES_BY_UQID>
+	<![CDATA[from QDataAggregatedQuery qdaq where qdaq.userQuery.id = :userQueryId order by qdaq.assetId, qdaq.userQuery.id
+	]]>
+	</QUERY_GET_AGGREGATE_QUERIES_BY_UQID>
+
+	<QUERY_GET_MATCHED_AGGREGATED_QUERY_COLUMN>
+	<![CDATA[select aqc from QDataAggregatedQueryColumn aqc, QDataAggregatedQuery aq 
+		where aq.id = aqc.aggregatedQuery.id and aq.id = :aggQueryId and aqc.querySection = :conditionQuerySectionType
+		and aqc.businessEntityId = :conceptBedId
+	]]>
+	</QUERY_GET_MATCHED_AGGREGATED_QUERY_COLUMN>
+
+	<QUERY_GET_CACHED_REPORT_RESULT_BY_AGQID>
+	<![CDATA[from QDataCachedReportResults crr where crr.aggregatedQuery.id = :aggregateQueryId
+		 and crr.reportType = :reportType
+	]]>
+	</QUERY_GET_CACHED_REPORT_RESULT_BY_AGQID>
+</queries>

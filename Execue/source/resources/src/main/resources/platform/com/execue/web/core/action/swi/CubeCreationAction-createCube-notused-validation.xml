@@ -1,0 +1,30 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="targetAsset.name" >
+		<field-validator type="stringlength">
+			<param name="maxLength">255</param>
+			<param name="minLength">5</param>
+			<message key="execue.name.reuqired.length"/>
+		</field-validator>
+		<field-validator type="required" short-circuit="true">
+			<message key="execue.targetAsset.name.required"/>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*[_0-9a-zA-Z]*)]]>
+			</param>
+			<message key="execue.targetAssetname.notvalid"/>
+		</field-validator>
+	</field>
+	<field name="targetAsset.displayName">
+		<field-validator type="required">
+			<message key="execue.targetAsset.displayName.required"/>
+		</field-validator>
+	</field>
+	<field name="targetAsset.description">
+		<field-validator type="required">
+			<message key="execue.targetAsset.description.required"/>
+		</field-validator>
+	</field>
+</validators>
+

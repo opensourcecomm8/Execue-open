@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+        <classpathentry kind="src" path="src/main/java"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/core"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/core-web"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/core-common"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/common-services"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/messaging"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/handler"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/rules"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/security"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/query-interface"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/job-scheduler"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/query-cache"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/answers-catalog"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/swi"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/data-access"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/query-data"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/driver"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/semantic-driver"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/batch-maintenance"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/governor"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/reports-aggregation"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/reports-presentation"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/resources"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/resources-ext"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/pseudo-lang"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/publisher"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/knowledge-search"/>
+        <classpathentry combineaccessrules="false" kind="src" path="/unstructured-search"/>
+        <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+        	<attributes>
+        		<attribute name="owner.project.facets" value="java"/>
+        	</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

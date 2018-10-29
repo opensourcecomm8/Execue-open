@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.execue.core.common.bean.entity.unstructured.FeatureRangeInfo" table="FEATURE_RANGE_INFO">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">FEATURE_RANGE_INFO</param>
+            </generator>
+        </id>
+        <property name="featureId" type="java.lang.Long">
+            <column name="FEATURE_ID" />
+        </property>
+        <property name="defaultValue" type="java.lang.Double">
+            <column name="DEFAULT_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="minimumValue" type="java.lang.Double">
+            <column name="MINIMUM_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="maximumValue" type="java.lang.Double">
+            <column name="MAXIMUM_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="minimumImpactValue" type="java.lang.Double">
+            <column name="MINIMUM_IMPACT_VALUE" precision="16" scale="6" />
+        </property>
+    </class>
+</hibernate-mapping>

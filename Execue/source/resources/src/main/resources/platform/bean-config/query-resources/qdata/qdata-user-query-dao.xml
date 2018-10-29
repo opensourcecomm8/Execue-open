@@ -1,0 +1,12 @@
+<queries>
+	<GET_USER_QUERY_BY_REDUCED_QUERY_IDS>
+	<![CDATA[select uq from QDataUserQuery as uq, QDataReducedQuery as rq 
+		 where rq.id IN (:reducedQueryIds) and rq.userQueryId = uq.id
+	]]>
+	</GET_USER_QUERY_BY_REDUCED_QUERY_IDS	>
+
+	<GET_USER_QUERY_BY_IDS>
+	<![CDATA[from QDataUserQuery where id IN (:userQueryIds)
+	]]>
+	</GET_USER_QUERY_BY_IDS>
+</queries>

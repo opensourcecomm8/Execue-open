@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 9, 2010 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	
+	<class name="com.execue.core.common.bean.entity.AssetExtendedDetail" table="ASSET_EXTENDED_DETAIL">
+		<comment>A Data Asset EXTENDED DETAIL definiton</comment>
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">ASSET_EXTENDED_DETAIL</param>
+			</generator>
+		</id>
+		<property name="extendedNote" type="text">
+			<column name="EXTENDED_NOTE" />
+		</property>
+		<property name="extendedDisclaimer" type="text">
+			<column name="EXTENDED_DISCLAIMER"/>
+		</property>
+		<property name="creationInfo" type="text">
+            <column name="CREATION_INFO"/>
+        </property>
+		<many-to-one name="assetDetail" class="com.execue.core.common.bean.entity.AssetDetail" column ="ASSET_DETAIL_ID"  unique= "true" not-null = "true">
+		</many-to-one>       
+	</class>
+</hibernate-mapping>

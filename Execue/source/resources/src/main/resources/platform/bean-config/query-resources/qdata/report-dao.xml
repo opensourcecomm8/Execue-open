@@ -1,0 +1,12 @@
+<queries>
+	<QUERY_GET_REPORT_COMMENTS>
+	<![CDATA[from ReportComment as reportComment where reportComment.queryHash=:queryHash 
+		 and reportComment.assetId=:assetId order by reportComment.createdDate desc
+	]]>
+	</QUERY_GET_REPORT_COMMENTS>
+
+	<QUERY_DELETE_REPORT_COMMENT_BY_ASSET_ID>
+	<![CDATA[delete from ReportComment rc where rc.assetId=:assetId
+	]]>
+	</QUERY_DELETE_REPORT_COMMENT_BY_ASSET_ID>	
+</queries>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.PublishedFileInfoDetails" table="PUBLISHED_FILE_INFO_DETAILS">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">PUBLISHED_FILE_INFO_DETAILS</param>
+			</generator>
+		</id>
+		<property name="propertyName" type="string">
+			<column name="PROPERTY_NAME" length="255" not-null="true"/>
+		</property>
+		<property name="propertyValue" type="string">
+			<column name="PROPERTY_VALUE" length="255"/>
+		</property>
+		<many-to-one name="publishedFileInfo" class="com.execue.core.common.bean.entity.PublishedFileInfo"  fetch="select">
+			<column name="FILE_ID" precision="20" scale="0" not-null="true"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

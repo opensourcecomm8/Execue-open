@@ -1,0 +1,919 @@
+Binary file core-common/bin/com/execue/core/common/util/ExecueBeanUtil.class matches
+core-common/src/main/java/com/execue/core/common/util/ExecueBeanUtil.java:            message = message.replace("@@dateformat@@", dateFormat);
+core-common/src/main/java/com/execue/core/common/util/ExecueBeanUtil.java:         message = message.replace("@@columnName@@", columnName);
+Binary file execueAdminWebApp/src/main/webapp/images/admin/t_box.gif matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/clearAllFieldsButton.gif matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/disabledIcon.gif matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/editIconfaded.gif matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/search.png matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/loaderTrans.gif matches
+Binary file execueAdminWebApp/src/main/webapp/images/admin/semantify.bmp matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_f9bd01_256x240.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_2e83ff_256x240.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_d8e7f3_256x240.png1 matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_469bdd_256x240.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_217bc0_256x240.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_cd0a0a_256x240.png matches
+Binary file execueAdminWebApp/src/main/webapp/css/common/images/ui-icons_d8e7f3_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/PIVOTTABLE.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/quinnox/search-bar1.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/quinnox/boxTemplate_r1_c3.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/quinnox/home-page-bg-bottom.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/bartable.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/EXCEL2.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/search-bar1.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/facebook.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/news.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/logo.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/header.jpg matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/header.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/greentemplate/header-apps.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/PIVOTTABLE.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/t_box.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/reporting/detailedgtable.jpg matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/reporting/acrossgrid.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/add.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/search.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/loaderTrans.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/noImage-115.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/bartable.gif matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/semantify.bmp matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/noImage-116.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/uss/listView.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/more-2results.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/show.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/home-page-bg-bottom.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/EXCEL2.png matches
+Binary file execueBaseWebApp/src/main/webapp/images/main/centerImage.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_f9bd01_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_2e83ff_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_d8e7f3_256x240.png1 matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_469bdd_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_217bc0_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_cd0a0a_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/drilldown-jqgrid/css/images/ui-icons_d8e7f3_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/chartfx70/temp/Thumbs.db matches
+Binary file execueBaseWebApp/src/main/webapp/jide/jide-action.jar matches
+Binary file execueBaseWebApp/src/main/webapp/jide/jide-grids.jar matches
+Binary file execueBaseWebApp/src/main/webapp/jide/jide-common.jar matches
+Binary file execueBaseWebApp/src/main/webapp/jide/jide-pivot.jar matches
+Binary file execueBaseWebApp/src/main/webapp/jide/jide-components.jar matches
+execueBaseWebApp/src/main/webapp/views/main/search/qi-head-simpleSearch.jsp:			$text=$text.replace(/@@/gi,"");
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_f9bd01_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_2e83ff_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_d8e7f3_256x240.png1 matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_469bdd_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_217bc0_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_cd0a0a_256x240.png matches
+Binary file execueBaseWebApp/src/main/webapp/css/common/images/ui-icons_d8e7f3_256x240.png matches
+Binary file execue-platformDBSchemas/bin/mysql/sdata-base-dml-mysql.zip matches
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/bin/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+Binary file execue-platformDBSchemas/src/main/resources/mysql/sdata-base-dml-mysql.zip matches
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/audit-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/qdata-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/uswh-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/anscatalog-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/swi-base-ddl-dml-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execue-platformDBSchemas/src/main/resources/mysql/sdata-base-ddl-mysql.sql:/*!40101 SET @saved_cs_client     = @@character_set_client */;
+execueWebApp/src/main/webapp/META-INF/context.xml:		username="@@mysql_swi_username@@" password="@@mysql_swi_password@@" 
+execueWebApp/src/main/webapp/META-INF/context.xml:		url="@@mysql_swi_schema@@?autoReconnect=true" />
+execueWebApp/src/main/webapp/META-INF/context.xml:		username="@@mysql_qdata_username@@" password="@@mysql_qdata_password@@" 
+execueWebApp/src/main/webapp/META-INF/context.xml:		url="@@mysql_qdata_schema@@?autoReconnect=true" />
+Binary file execueWebApp/src/main/webapp/images/craigslist-icon4.png matches
+Binary file execueWebApp/src/main/webapp/images/updateApplicationButton.gif matches
+Binary file execueWebApp/src/main/webapp/images/whitehousenominees.png matches
+Binary file execueWebApp/src/main/webapp/images/boxTemplate_r3_c2.png matches
+Binary file execueWebApp/src/main/webapp/images/qi2_bg2.jpg matches
+Binary file execueWebApp/src/main/webapp/images/top_r2_c1.jpg matches
+Binary file execueWebApp/src/main/webapp/images/PIVOTTABLE.gif matches
+Binary file execueWebApp/src/main/webapp/images/sendButton.png matches
+Binary file execueWebApp/src/main/webapp/images/signUp_apps.png matches
+Binary file execueWebApp/src/main/webapp/images/t_box.gif matches
+Binary file execueWebApp/src/main/webapp/images/wait1c.gif matches
+Binary file execueWebApp/src/main/webapp/images/earmarks-icon.png matches
+Binary file execueWebApp/src/main/webapp/images/v2/centerImage.png matches
+Binary file execueWebApp/src/main/webapp/images/menu2.png matches
+Binary file execueWebApp/src/main/webapp/images/clearAllFieldsButton.gif matches
+Binary file execueWebApp/src/main/webapp/images/disabledIcon.gif matches
+Binary file execueWebApp/src/main/webapp/images/reporting/right1.png matches
+Binary file execueWebApp/src/main/webapp/images/reporting/ExeCuelogo.bmp matches
+Binary file execueWebApp/src/main/webapp/images/reporting/detailedgtable.jpg matches
+Binary file execueWebApp/src/main/webapp/images/reporting/ExeCuelogo.gif matches
+Binary file execueWebApp/src/main/webapp/images/reporting/acrossgrid.png matches
+Binary file execueWebApp/src/main/webapp/images/new3.gif matches
+Binary file execueWebApp/src/main/webapp/images/updateProfileButton.gif matches
+Binary file execueWebApp/src/main/webapp/images/whitehouse2009staff-icon.gif matches
+Binary file execueWebApp/src/main/webapp/images/editIconfaded.gif matches
+Binary file execueWebApp/src/main/webapp/images/Top200SmallBusinessComapanies.png matches
+Binary file execueWebApp/src/main/webapp/images/createParallelWordsButton_loader.gif matches
+Binary file execueWebApp/src/main/webapp/images/bi3_caption.jpg matches
+Binary file execueWebApp/src/main/webapp/images/Top30earningwebsites.png matches
+Binary file execueWebApp/src/main/webapp/images/search.png matches
+Binary file execueWebApp/src/main/webapp/images/loaderTrans.gif matches
+Binary file execueWebApp/src/main/webapp/images/Top100companiestoworkfor.png matches
+Binary file execueWebApp/src/main/webapp/images/saveSelectedJoinsButton_loader.gif matches
+Binary file execueWebApp/src/main/webapp/images/Top5000companies.png matches
+Binary file execueWebApp/src/main/webapp/images/whitehouse2009staff-icon.png matches
+Binary file execueWebApp/src/main/webapp/images/detailedgrid-2.png matches
+Binary file execueWebApp/src/main/webapp/images/semantifi3b/search-bar1.png matches
+Binary file execueWebApp/src/main/webapp/images/semantifi3b/home-page-border-right_r2_c1.png matches
+Binary file execueWebApp/src/main/webapp/images/semantifi3b/home-page-bg-bottom.png matches
+Binary file execueWebApp/src/main/webapp/images/semantifi3b/centerImage.png matches
+Binary file execueWebApp/src/main/webapp/images/bartable.gif matches
+Binary file execueWebApp/src/main/webapp/images/findOut.png matches
+Binary file execueWebApp/src/main/webapp/images/submitDisengage.gif matches
+Binary file execueWebApp/src/main/webapp/images/semantify.bmp matches
+Binary file execueWebApp/src/main/webapp/images/addMetrics.gif matches
+Binary file execueWebApp/src/main/webapp/images/crunchbase-icon.png matches
+Binary file execueWebApp/src/main/webapp/images/New.gif matches
+Binary file execueWebApp/src/main/webapp/images/sematify.bmp matches
+Binary file execueWebApp/src/main/webapp/images/index.png matches
+Binary file execueWebApp/src/main/webapp/images/inner-left-buttons.png matches
+Binary file execueWebApp/src/main/webapp/images/createConceptButton.gif matches
+Binary file execueWebApp/src/main/webapp/images/EXCEL1.png matches
+Binary file execueWebApp/src/main/webapp/images/semantify_logo1.gif matches
+Binary file execueWebApp/src/main/webapp/images/bg_semantfy.jpg matches
+Binary file execueWebApp/src/main/webapp/images/meaning_web_bg.jpg matches
+Binary file execueWebApp/src/main/webapp/images/Thumbs.db matches
+Binary file execueWebApp/src/main/webapp/images/updateProfileButton_disabled.gif matches
+Binary file execueWebApp/src/main/webapp/images/consumer-price-index-icon.png matches
+Binary file execueWebApp/src/main/webapp/images/semantifi-webservices.png matches
+Binary file execueWebApp/src/main/webapp/images/ceo-icon.png matches
+Binary file execueWebApp/src/main/webapp/images/EXCEL2.png matches
+Binary file execueWebApp/src/main/webapp/chartfx70/temp/Thumbs.db matches
+Binary file execueWebApp/src/main/webapp/jide/jide-action.jar matches
+Binary file execueWebApp/src/main/webapp/jide/jide-grids.jar matches
+Binary file execueWebApp/src/main/webapp/jide/jide-common.jar matches
+Binary file execueWebApp/src/main/webapp/jide/jide-pivot.jar matches
+Binary file execueWebApp/src/main/webapp/jide/jide-components.jar matches
+execueWebApp/src/main/webapp/views/search/qi-head-simpleSearch.jsp:			$text=$text.replace(/@@/gi,"");
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_f9bd01_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_2e83ff_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_d8e7f3_256x240.png1 matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_469bdd_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/jqgrid-pager.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_cd0a0a_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/reporting/images/ui-icons_d8e7f3_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_f9bd01_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_2e83ff_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_d8e7f3_256x240.png1 matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_469bdd_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_217bc0_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_cd0a0a_256x240.png matches
+Binary file execueWebApp/src/main/webapp/css/redmond/images/ui-icons_d8e7f3_256x240.png matches
+Binary file handler/bin/com/execue/handler/swi/impl/UsersHandlerImpl.class matches
+handler/src/main/java/com/execue/handler/swi/impl/UsersHandlerImpl.java:         message = message.replace("@@url@@", url);
+handler/src/main/java/com/execue/handler/swi/impl/UsersHandlerImpl.java:         message = message.replace("@@encryptedKey@@", user.getEncryptedKey());
+handler/src/main/java/com/execue/handler/swi/impl/UsersHandlerImpl.java:         message = message.replace("@@emailId@@", userRequest.getEmailId());
+handler/src/main/java/com/execue/handler/swi/impl/UsersHandlerImpl.java:         message = message.replace("@@contactNum@@", userRequest.getContactPhoneNum());
+handler/src/main/java/com/execue/handler/swi/impl/UsersHandlerImpl.java:         messageBody = messageBody.replace("@@comments@@", (userRequest.getComment() != null ? userRequest.getComment()
+Binary file lib/htmllexer-1.6.jar matches
+Binary file lib/XmlSchema-1.4.3.jar matches
+Binary file lib/jai_core-1.1.1_01.jar matches
+Binary file lib/poi-3.6.jar matches
+Binary file lib/joda-time-1.2.1.jar matches
+Binary file lib/commons-codec-1.3.jar matches
+Binary file lib/softwarefx.designer-v1.jar matches
+Binary file lib/jdbc-workspace-9.02.01.M0.jar matches
+Binary file lib/zookeeper-3.3.1.jar matches
+Binary file lib/httpcore-4.0.1.jar matches
+Binary file lib/jdbc-sharenet-9.02.01.M0.jar matches
+Binary file lib/commons-math3-3.0.jar matches
+Binary file lib/drools-compiler-4.0.7.jar matches
+Binary file lib/junit-4.5.jar matches
+Binary file lib/apache-mime4j-0.6.jar matches
+Binary file lib/struts2-core-2.0.14.jar matches
+Binary file lib/servlet-api-2.5.jar matches
+Binary file lib/antlr-3.0.jar matches
+Binary file lib/ojdbc14-10.2.0.2.jar matches
+Binary file lib/jide-common-2.5.8.jar matches
+Binary file lib/spring-security-config-3.1.2.RELEASE.jar matches
+Binary file lib/opencsv-1.8.jar matches
+Binary file lib/jai_codec-1.1.1_01.jar matches
+Binary file lib/commons-beanutils-core-1.7.0.jar matches
+Binary file lib/spring-beans-3.1.2.RELEASE.jar matches
+Binary file lib/tiles-core-2.0.6.jar matches
+Binary file lib/ognl-2.6.11.jar matches
+Binary file lib/axis2-1.5.4.jar matches
+Binary file lib/hibernate-core-3.6.10.Final.jar matches
+Binary file lib/kettle-engine-3.0.jar matches
+Binary file lib/cglib-2.1.3.jar matches
+Binary file lib/xalan-2.7.1.jar matches
+Binary file lib/spring-web-2.0.5.jar matches
+Binary file lib/chartfx.server.statistical-7.0.jar matches
+Binary file lib/xmlbeans-2.4.0.jar matches
+Binary file lib/jmxri-1.2.1.jar matches
+Binary file lib/xpp3_min-1.1.3.4.O.jar matches
+Binary file lib/log4j-1.2.15.jar matches
+Binary file lib/commons-lang-2.4.jar matches
+Binary file lib/struts2-tiles-plugin-2.0.14.jar matches
+Binary file lib/spring-security-core-3.1.2.RELEASE.jar matches
+Binary file lib/htmlparser-1.6.jar matches
+Binary file lib/ehcache-core-2.4.3.jar matches
+Binary file lib/jide-action-2.5.8.jar matches
+Binary file lib/xwork-2.0.7.jar matches
+Binary file lib/core-3.2.3.v_686_R32x.jar matches
+Binary file lib/mail-1.4.1.jar matches
+Binary file lib/ant-1.7.0.jar matches
+Binary file lib/stringtemplate-3.0.jar matches
+Binary file lib/db2jcc-9.jar matches
+Binary file lib/axiom-api-1.2.9.jar matches
+Binary file lib/axiom-dom-1.2.10.jar matches
+Binary file lib/axis2-kernel-1.5.4.jar matches
+Binary file lib/jdbc-driver-java-12.00.00.10.jar matches
+Binary file lib/httpclient-4.0.jar matches
+Binary file lib/softwarefx.beans-v1.jar matches
+Binary file lib/chartfx.gauge.design-v1.jar matches
+Binary file lib/javassist-3.12.1.GA.jar matches
+Binary file lib/lucene-core-3.4.0.jar matches
+Binary file lib/commons-pool-1.4.jar matches
+Binary file lib/xercesImpl-2.8.1.jar matches
+Binary file lib/jide-pivot-2.5.8.jar matches
+Binary file lib/javanlp-1.0.jar matches
+Binary file lib/wstx-asl-3.2.9.jar matches
+Binary file lib/commons-fileupload-1.2.1.jar matches
+Binary file lib/freemarker-2.3.8.jar matches
+Binary file lib/axiom-impl-1.2.9.jar matches
+Binary file lib/softwarefx.sfxnet-v1.jar matches
+Binary file lib/wsdl4j-1.6.2.jar matches
+Binary file lib/commons-vfs-1.0.jar matches
+Binary file lib/c3p0-0.9.1.jar matches
+Binary file lib/antlr-runtime-3.0.jar matches
+Binary file lib/scriptella-drivers-1.0rc.jar matches
+Binary file lib/spring-core-3.1.2.RELEASE.jar matches
+Binary file lib/spring-context-3.1.2.RELEASE.jar matches
+Binary file lib/jide-components-2.5.8.jar matches
+Binary file lib/drools-core-4.0.7.jar matches
+Binary file lib/commons-configuration-1.5.jar matches
+Binary file lib/mysql-connector-java-5.1.7.jar matches
+Binary file lib/spring-security-web-3.1.2.RELEASE.jar matches
+Binary file lib/dom4j-1.6.1.jar matches
+Binary file lib/scriptella-core-1.0rc.jar matches
+Binary file lib/chartfx.server.maps-7.0.jar matches
+Binary file lib/commons-dbcp-1.2.2.jar matches
+Binary file lib/chartfx.gauge-v1.jar matches
+Binary file lib/hibernate-ehcache-3.6.9.Final.jar matches
+Binary file lib/jide-grids-2.5.8.jar matches
+Binary file lib/jdom-1.0.jar matches
+Binary file lib/icu4j-3.2.0.jar matches
+Binary file lib/kettle-ognl-2.6.9.jar matches
+Binary file lib/spring-jdbc-3.1.2.RELEASE.jar matches
+Binary file lib/jsp-api-2.1.jar matches
+Binary file lib/commons-httpclient-3.1.jar matches
+Binary file lib/urlrewrite-3.2.0.jar matches
+Binary file lib/jdbc-core-9.02.01.M0.jar matches
+Binary file lib/derbyclient-10.2.2.jar matches
+Binary file lib/woden-api-1.0M8.jar matches
+Binary file lib/jmxtools-1.2.1.jar matches
+Binary file lib/commons-digester-1.8.jar matches
+Binary file lib/spring-expression-3.1.2.RELEASE.jar matches
+Binary file lib/spring-tx-3.1.2.RELEASE.jar matches
+Binary file lib/commons-net-1.4.1.jar matches
+Binary file lib/commons-io-1.4.jar matches
+Binary file lib/woden-impl-dom-1.0M8.jar matches
+Binary file lib/xercesImpl.jar-2.9.1.jar matches
+Binary file lib/xstream-1.3.1.jar matches
+Binary file lib/solr-solrj-3.4.0.jar matches
+Binary file lib/jena-1.0.jar matches
+Binary file lib/standard-1.1.2.jar matches
+Binary file lib/spring-orm-3.1.2.RELEASE.jar matches
+Binary file lib/chartfx.server-7.0.jar matches
+Binary file lib/janino-2.5.10.jar matches
+Binary file lib/quartz-1.6.0.jar matches
+Binary file lib/geronimo-javamail_1.4_spec-1.6.jar matches
+Binary file lib/commons-collections-3.2.1.jar matches
+Binary file lib/hibernate-jpa-2.0-api-1.0.1.Final.jar matches
+Binary file lib/jdbc-driver-12.00.00.10.jar matches
+Binary file lib/commons-beanutils-1.8.0.jar matches
+Binary file lib/postgresql-9.1-902.jdbc4.jar matches
+offline-batch/batch/scripts/runContentTransportationBatch.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runContentTransportationBatch.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch1.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch1.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch3.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch3.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch3.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch3.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runOldContentCleanupBatch.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runOldContentCleanupBatch.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch2.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch2.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch2.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch2.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runRuntimeContentCleanupBatch.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runRuntimeContentCleanupBatch.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch4.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch4.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch1.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch1.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch1.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runCleanupBadImageURLBatch1.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch4.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch4.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch3.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch3.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch4.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runPopulateImageURLsBatch4.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch2.sh:LOG_HOME="/apps/logs/offline-batch/qacc-node@@NODE_ID@@"
+offline-batch/batch/scripts/runSemantificationBatch2.sh:BATCH_HOME="/apps/batchscripts/offline-batch-qacc-node@@NODE_ID@@"
+resources/bin/platform/execue-ac-query-history-configuration.xml:				<bed-details>@@query-history-file-storage-bed-details_dir@@</bed-details>
+resources/bin/platform/execue-ac-query-history-configuration.xml:				<past-usage>@@query-history-file-storage-past-usage_dir@@</past-usage>
+Binary file resources/bin/platform/bean-config/kbase/tagger-dictionary/wsj3t0-18.holder matches
+Binary file resources/bin/platform/bean-config/kbase/tagger-dictionary/wsj3t0-18.holder.prob matches
+resources/bin/platform/execue-dataaccess-configuration.xml:			<setup-is-for-batch-processes-only>@@SETUP_IS_FOR_BATCH_PROCESSES_ONLY@@</setup-is-for-batch-processes-only>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-publisher-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Request to Publish Application</strong></p></br><p>Publisher:</p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>App Description: @@app_description@@</p></body></html>]]></mail-server-publisher-message-body>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-feedback-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>User's Feedback</strong></p></br><p>Name: @@user_name@@</p></br><p>Email: @@email@@</p></br><p>Feedback: @@feedback@@</p></body></html>]]></mail-server-feedback-message-body>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-demorequest-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Demo Request</strong></p></br><p>Name: @@demoRequest_name@@</p></br><p>Organization: @@demoRequest_org@@</p></br><p>Job title: @@jobTitle@@</p></br><p>Region: @@demoRequest_region@@</p></br><p>Email: @@email@@</p></br><p>Phone number: @@phNumber@@</p></br><p>Comments: @@comment@@</p></body></html>]]></mail-server-demorequest-message-body>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-semantifi-enterprise-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Semantify Enterprise Request</strong></p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>Search Requirement: @@app_description@@</p></body></html>]]></mail-server-semantifi-enterprise-message-body>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-user-activation-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>Thank you for registering with us. Please click on the below link to activate your account</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>]]></mail-server-user-activation-message-body>
+resources/bin/platform/execue-core-configuration.xml:				 Please click here(link) to reset your password on Semantifi.com</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>
+resources/bin/platform/execue-core-configuration.xml:				</p></br>Email Id : <u>@@emailId@@</u></p></br>Phone Number : <u>@@contactNum@@</u></body></html>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-user-advanced-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for advance options on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-user-demo-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for Demo on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+resources/bin/platform/execue-core-configuration.xml:			<mail-server-user-feedback-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have sent your feedback on the semantifi.com.</p></br><p>Status: @@comments@@</body></html>
+resources/bin/platform/execue-core-configuration.xml:			<web-main-context>@@WEB_MAIN_CONTEXT@@</web-main-context>
+resources/bin/platform/execue-core-configuration.xml:			<web-admin-context>@@WEB_ADMIN_CONTEXT@@</web-admin-context>
+resources/bin/platform/execue-core-configuration.xml:			<user-remote-location-url>@@IP_LOCATION_URL@@</user-remote-location-url>
+resources/bin/platform/execue-publisher-configuration.xml:				<CSV>@@apps_storage_files_csv_dir@@</CSV>
+resources/bin/platform/execue-publisher-configuration.xml:				<TSV>@@apps_storage_files_csv_dir@@</TSV>
+resources/bin/platform/execue-publisher-configuration.xml:				<EXCEL>@@apps_storage_files_excel_dir@@</EXCEL>
+resources/bin/platform/execue-publisher-configuration.xml:				<EXCELDB>@@apps_storage_files_exceldb_dir@@</EXCELDB>
+resources/bin/platform/execue-publisher-configuration.xml:				<IMAGE>@@apps_storage_files_image_dir@@</IMAGE>
+resources/bin/platform/execue-publisher-configuration.xml:				<OTHER>@@apps_storage_files_other_dir@@</OTHER>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-precision>For column @@columnName@@ Precision must be greater than or equal than original precision </column-validation-message-precision>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-scale>For column @@columnName@@ Scale must be greater than or equal than original scale</column-validation-message-scale>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-dateformat>For column @@columnName@@\, Date format : @@dateformat@@ is not valid></column-validation-message-invalid-dateformat>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-precision>For column @@columnName@@ precision is not valid</column-validation-message-invalid-precision>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-scale>For column @@columnName@@ scale is not valid</column-validation-message-invalid-scale>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-unittype>For column @@columnName@@ unit type is not valid </column-validation-message-invalid-unittype>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-unit>For column @@columnName@@ unit is not valid</column-validation-message-invalid-unit>
+resources/bin/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-datetype>For column @@columnName@@ Data type change is not compatible</column-validation-message-invalid-datetype>
+Binary file resources/src/test/resources/Module Dependency Flow.pdf matches
+resources/src/main/resources/platform/execue-ac-query-history-configuration.xml:				<bed-details>@@query-history-file-storage-bed-details_dir@@</bed-details>
+resources/src/main/resources/platform/execue-ac-query-history-configuration.xml:				<past-usage>@@query-history-file-storage-past-usage_dir@@</past-usage>
+Binary file resources/src/main/resources/platform/bean-config/kbase/tagger-dictionary/wsj3t0-18.holder matches
+Binary file resources/src/main/resources/platform/bean-config/kbase/tagger-dictionary/wsj3t0-18.holder.prob matches
+resources/src/main/resources/platform/execue-dataaccess-configuration.xml:			<setup-is-for-batch-processes-only>@@SETUP_IS_FOR_BATCH_PROCESSES_ONLY@@</setup-is-for-batch-processes-only>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-publisher-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Request to Publish Application</strong></p></br><p>Publisher:</p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>App Description: @@app_description@@</p></body></html>]]></mail-server-publisher-message-body>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-feedback-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>User's Feedback</strong></p></br><p>Name: @@user_name@@</p></br><p>Email: @@email@@</p></br><p>Feedback: @@feedback@@</p></body></html>]]></mail-server-feedback-message-body>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-demorequest-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Demo Request</strong></p></br><p>Name: @@demoRequest_name@@</p></br><p>Organization: @@demoRequest_org@@</p></br><p>Job title: @@jobTitle@@</p></br><p>Region: @@demoRequest_region@@</p></br><p>Email: @@email@@</p></br><p>Phone number: @@phNumber@@</p></br><p>Comments: @@comment@@</p></body></html>]]></mail-server-demorequest-message-body>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-semantifi-enterprise-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Semantify Enterprise Request</strong></p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>Search Requirement: @@app_description@@</p></body></html>]]></mail-server-semantifi-enterprise-message-body>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-user-activation-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>Thank you for registering with us. Please click on the below link to activate your account</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>]]></mail-server-user-activation-message-body>
+resources/src/main/resources/platform/execue-core-configuration.xml:				 Please click here(link) to reset your password on Semantifi.com</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>
+resources/src/main/resources/platform/execue-core-configuration.xml:				</p></br>Email Id : <u>@@emailId@@</u></p></br>Phone Number : <u>@@contactNum@@</u></body></html>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-user-advanced-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for advance options on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-user-demo-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for Demo on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<mail-server-user-feedback-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have sent your feedback on the semantifi.com.</p></br><p>Status: @@comments@@</body></html>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<web-main-context>@@WEB_MAIN_CONTEXT@@</web-main-context>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<web-admin-context>@@WEB_ADMIN_CONTEXT@@</web-admin-context>
+resources/src/main/resources/platform/execue-core-configuration.xml:			<user-remote-location-url>@@IP_LOCATION_URL@@</user-remote-location-url>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<CSV>@@apps_storage_files_csv_dir@@</CSV>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<TSV>@@apps_storage_files_csv_dir@@</TSV>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<EXCEL>@@apps_storage_files_excel_dir@@</EXCEL>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<EXCELDB>@@apps_storage_files_exceldb_dir@@</EXCELDB>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<IMAGE>@@apps_storage_files_image_dir@@</IMAGE>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:				<OTHER>@@apps_storage_files_other_dir@@</OTHER>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-precision>For column @@columnName@@ Precision must be greater than or equal than original precision </column-validation-message-precision>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-scale>For column @@columnName@@ Scale must be greater than or equal than original scale</column-validation-message-scale>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-dateformat>For column @@columnName@@\, Date format : @@dateformat@@ is not valid></column-validation-message-invalid-dateformat>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-precision>For column @@columnName@@ precision is not valid</column-validation-message-invalid-precision>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-scale>For column @@columnName@@ scale is not valid</column-validation-message-invalid-scale>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-unittype>For column @@columnName@@ unit type is not valid </column-validation-message-invalid-unittype>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-unit>For column @@columnName@@ unit is not valid</column-validation-message-invalid-unit>
+resources/src/main/resources/platform/execue-publisher-configuration.xml:			<column-validation-message-invalid-datetype>For column @@columnName@@ Data type change is not compatible</column-validation-message-invalid-datetype>
+resources-ext/bin/execue-log4j.xml:        <param name="File" value="@@WebApp_war_logfile_location@@" />
+resources-ext/bin/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/bin/execue-log4j.xml:        <param name="File" value="@@reducedform_logfile_location@@" />
+resources-ext/bin/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/bin/execue-log4j.xml:        <param name="File" value="@@sfl_logfile_location@@" />
+resources-ext/bin/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/bin/execue-log4j.xml:        <level value="@@log_level@@" />
+resources-ext/bin/execue-log4j.xml:        <level value="@@log_level@@" />
+resources-ext/bin/execue-log4j.xml:        <priority value="@@log_level@@" />
+resources-ext/bin/quartz.properties:org.quartz.jobStore.driverDelegateClass = @@mysql_quartz_jdbc_delegate_class@@
+resources-ext/bin/execue.properties:app.node.id = @@app_node_id@@
+resources-ext/bin/spring-hibernate.xml:				<prop key="hibernate.cache.use_second_level_cache">@@hibernate_cache_flag@@</prop>
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="File" value="@@WebApp_war_logfile_location@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="File" value="@@reducedform_logfile_location@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="File" value="@@sfl_logfile_location@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <param name="MaxFileSize" value="@@WebApp_war_logfile_size@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <level value="@@log_level@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <level value="@@log_level@@" />
+resources-ext/src/main/resources/execue-log4j.xml:        <priority value="@@log_level@@" />
+resources-ext/src/main/resources/quartz.properties:org.quartz.jobStore.driverDelegateClass = @@mysql_quartz_jdbc_delegate_class@@
+resources-ext/src/main/resources/execue.properties:app.node.id = @@app_node_id@@
+resources-ext/src/main/resources/spring-hibernate.xml:				<prop key="hibernate.cache.use_second_level_cache">@@hibernate_cache_flag@@</prop>

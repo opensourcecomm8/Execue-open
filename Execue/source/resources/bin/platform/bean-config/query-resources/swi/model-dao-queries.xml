@@ -1,0 +1,60 @@
+<queries>	
+	<QUERY_GET_ALL_MODELS>
+	<![CDATA[from Model m where  m.category = :userModelCategoryType ]]>
+	</QUERY_GET_ALL_MODELS>
+		
+	<QUERY_GET_MODEL_BY_GROUP_IDS>
+	<![CDATA[select mgm.model
+		 from ModelGroupMapping mgm
+		 where mgm.modelGroup.id in(:modelGroupId)
+	]]>
+	</QUERY_GET_MODEL_BY_GROUP_IDS>
+	
+	<QUERY_GET_MODEL_BY_USER_MODEL_GROUP_ID>
+	<![CDATA[select m from ModelGroupMapping mgm, ModelGroup mg, Model m
+		 where m.id = mgm.model.id and mg.id = mgm.modelGroup.id and mg.id = :modelGroupId 
+		 and mg.category = :userModelCategoryType
+	]]>	
+	</QUERY_GET_MODEL_BY_USER_MODEL_GROUP_ID>	
+		
+	<QUERY_GET_MODEL_GROUP_BY_TYPE_BED_ID>
+	<![CDATA[from ModelGroup as mg where mg.category = :systemModelCategoryType and mg.contextId = :typeBedId
+	]]>
+	</QUERY_GET_MODEL_GROUP_BY_TYPE_BED_ID>	
+
+	<QUERY_GET_MODELGROUP_IDS_BY_APPLICATION_ID>
+	<![CDATA[select mgm.modelGroup.id 
+		 from Application application inner join application.models model,ModelGroupMapping mgm
+		 where application.id = :applicationId  and mgm.model.id = model.id and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_MODELGROUP_IDS_BY_APPLICATION_ID>
+	
+	<QUERY_GET_MODELS_BY_APPLICATION_ID>
+	<![CDATA[select app.models from Application as app
+		 where app.id=:applicationId
+	]]>
+	</QUERY_GET_MODELS_BY_APPLICATION_ID>
+	
+	<QUERY_GET_MODEL_GROUP_MAPPING>
+	<![CDATA[from ModelGroupMapping as mgm 
+		 where mgm.model.id = :modelId
+	]]>
+	</QUERY_GET_MODEL_GROUP_MAPPING>
+
+	<QUERY_GET_MODELGROUP_BY_MODEL_ID>
+	<![CDATA[select mgm.modelGroup from ModelGroupMapping mgm 
+		 where mgm.model.id = :modelId and mgm.primary = :primaryValue
+	]]>
+	</QUERY_GET_MODELGROUP_BY_MODEL_ID>
+	
+		
+	<QUERY_GET_USER_MODEL_GROUPS_BY_MODEL_ID>
+	<![CDATA[select mg from ModelGroupMapping mgm, ModelGroup mg, Model m
+		 where m.id = mgm.model.id and mg.id = mgm.modelGroup.id and mg.category = :userModelCategoryType and m.id = :modelId 
+	]]>
+	</QUERY_GET_USER_MODEL_GROUPS_BY_MODEL_ID>
+		
+	<QUERY_MODEL_EXISTS>
+	<![CDATA[from Model as model where model.name=:modelName]]>
+	</QUERY_MODEL_EXISTS>
+</queries>

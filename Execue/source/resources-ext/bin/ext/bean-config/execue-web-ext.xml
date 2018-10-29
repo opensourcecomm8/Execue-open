@@ -1,0 +1,18 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="reportViewAction" scope="prototype"
+		class="com.execue.web.core.action.reporting.presentation.ReportViewActionNew">
+		<property name="reportController" ref="reportController" />
+		<property name="detailReportController" ref="detailReportController" />
+		<property name="queryDataService" ref="queryDataService" />
+		<property name="lookupService" ref="lookupService" />
+		<property name="presentationHandler" ref="presentationHandler"/>
+		<property name="reportListWrapper" ref="reportListWrapper" />
+		<property name="hierarchicalReportController" ref="hierarchicalReportController" />	
+		<property name="scatterChartController" ref="scatterChartController" />			
+	</bean>
+
+</beans>

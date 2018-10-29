@@ -1,0 +1,85 @@
+.nav {
+		margin:0; 
+		padding:0; 
+		list-style:none;
+	}	
+	
+		/* make the LI display inline */
+		/* it's position relative so that position absolute */
+		/* can be used in submenu */
+
+		.listBgColor{
+		background:#E4E8E9; 
+		color:#000;
+		}
+		.listBgColorHover{
+		background:#3B6E9F; 
+		color:#FFF;
+		}
+		
+		/* this is the parent menu */
+		.nav li a {
+			display:block; 
+			padding:8px 5px 0 5px; 
+			font-weight:700;  
+			height:23px; 
+			text-decoration:none; 
+			color:#fff; 
+			text-align:center; 
+			color:#333;
+		}
+
+		.nav li a:hover {
+			color:#fff;
+		}
+	
+		/* you can make a different style for default selected value */
+		.nav a.selected {
+			color:#f00;
+		}
+	
+		/* submenu, it's hidden by default */
+		.nav ul {
+			position:absolute; 
+			left:110px; 
+			display:none; 
+			margin:0 0 0 -1px; 
+			padding:0; 
+			list-style:none;
+			width:86px;
+			background-color:#E4E8E9;
+			border:1px solid #85969A;
+			z-index:500; 
+		}
+		
+		.nav ul li {
+			width:80px; 
+			float:left; 
+			/*border-top:1px solid #fff;*/
+			text-align:left;
+			padding:3px;
+		}
+		
+		/* display block will make the link fill the whole area of LI */
+		.nav ul a {
+			display:block;  
+			height:15px;
+			padding: 8px 5px; 
+			color:#666;
+			text-align:left;
+		}
+		
+		.nav ul a:hover {
+			text-decoration:underline;	
+		}
+
+		/* fix ie6 small issue */
+		/* we should always avoid using hack like this */
+		/* should put it into separate file : ) */
+		*html #nav ul {
+			/*margin:0 0 0 -2px;*/
+		}
+		.searchBoxStyle{
+		font-size:11px;	
+		font-weight:normal;
+		}

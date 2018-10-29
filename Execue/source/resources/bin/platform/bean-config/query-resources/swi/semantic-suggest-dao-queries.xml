@@ -1,0 +1,58 @@
+<queries>
+	<GET_CONCEPTS_WITH_APP_NAME>
+	<![CDATA[select bed from BusinessEntityDefinition bed 
+		 where bed.concept.displayName like :searchString 
+		 and bed.entityType = :conceptEntityType 
+		 and bed.modelGroup.id in (:ids) order by locate(:inStr, bed.concept.displayName, 1)
+	]]>
+	</GET_CONCEPTS_WITH_APP_NAME>
+
+	<GET_INSTANCES_WITH_APP_NAME>
+	<![CDATA[select bed from BusinessEntityDefinition bed 
+		 where bed.instance.displayName like :searchString and 
+		 bed.entityType = :conceptLookupInstanceEntityType and bed.modelGroup.id in (:ids) 
+		 order by locate(:inStr, bed.instance.displayName, 1)
+	]]>
+	</GET_INSTANCES_WITH_APP_NAME>
+
+	<GET_CONCEPT_PROFILES_WITH_APP_NAME>
+	<![CDATA[select bed from BusinessEntityDefinition bed 
+		 where bed.conceptProfile.displayName like :searchString 
+		 and bed.conceptProfile.enabled = :enabled and bed.entityType = :conceptProfileEntityType and bed.modelGroup.id in (:ids) 
+		 order by locate(:inStr, bed.conceptProfile.displayName, 1)
+	]]>
+	</GET_CONCEPT_PROFILES_WITH_APP_NAME>
+
+	<GET_INSTANCE_PROFILES_WITH_APP_NAME>
+	<![CDATA[select bed from BusinessEntityDefinition bed 
+		 where bed.instanceProfile.displayName like :searchString 
+		 and bed.instanceProfile.enabled = :enabled and bed.entityType = :instanceProfileEntityType and bed.modelGroup.id in (:ids) 
+		 order by locate(:inStr, bed.instanceProfile.displayName, 1)
+	]]>
+	</GET_INSTANCE_PROFILES_WITH_APP_NAME>
+
+	<GET_APP_NAME_BY_MODEL_GROUP_ID>
+	<![CDATA[select model.applications from ModelGroupMapping mgm, Model model 
+		 where mgm.modelGroup = :modelGroup and mgm.modelGroup.category = :userModelCategoryType 
+		 and model.id = mgm.model.id
+	]]>
+	</GET_APP_NAME_BY_MODEL_GROUP_ID>
+
+	<GET_AUTHORISED_APPS_FOR_USER>
+	<![CDATA[from Application app where app.owner.id = :userId or
+		 app.publishMode = 2
+	]]>
+	</GET_AUTHORISED_APPS_FOR_USER>
+
+	<GET_VERTICAL_BASED_APPS_FOR_USER>
+	<![CDATA[select app from Application app , VerticalAppWeight vaw , Vertical v where app.id = vaw.applicationId 
+		 and vaw.verticalId = v.id and v.id = :verticalId
+	]]>
+	</GET_VERTICAL_BASED_APPS_FOR_USER>
+
+	<GET_NON_BASE_MODEL_GROUP_MAPPINGS>
+	<![CDATA[select mgm.modelGroup.id from ModelGroupMapping mgm, Model model 
+		 where mgm.model = model and mgm.model in (:models) and mgm.modelGroup.category = :userModelCategoryType
+	]]>
+	</GET_NON_BASE_MODEL_GROUP_MAPPINGS>
+</queries>

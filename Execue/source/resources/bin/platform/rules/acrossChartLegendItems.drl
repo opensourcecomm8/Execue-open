@@ -1,0 +1,42 @@
+#created on: Sep 25, 2009
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Color;
+
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.SeriesAttributes;
+import com.softwarefx.chartfx.server.LegendItemAttributes;
+
+rule "removeCommonLegendLabels"
+	when
+		chartCurve : ChartServer ( ID == "" )
+	then
+	
+	// get the number of measures based on the unique series name
+	Set seriesName = new HashSet();
+	
+	for (SeriesAttributes series : chartCurve.getSeries()) {
+		seriesName.add(series.getText());
+	}
+	
+	// remove the legends for common named series
+	int numberOfDimensions = seriesName.size();
+	
+	for (int alCntr = 0; alCntr < chartCurve.getData().getSeries(); alCntr++) {
+		LegendItemAttributes item = new LegendItemAttributes();
+		SeriesAttributes series = chartCurve.getSeries().get(alCntr);
+		 
+		if(alCntr < numberOfDimensions)
+		 	item.setVisible(true);
+		else
+			item.setVisible(false);
+			
+    	chartCurve.getLegendBox().getItemAttributes().set(chartCurve.getSeries(), alCntr, item);
+	}	
+end

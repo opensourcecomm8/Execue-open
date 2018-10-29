@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="cloud_category" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CloudCategory</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="comp_category" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ComponentCategory</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="entityType">
+		<param name="enumClass">com.execue.core.common.type.BusinessEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="output" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CloudOutput</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<typedef name="cloudComponentSelectionType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CloudComponentSelectionType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.RICloud" table="RI_CLOUD">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RI_CLOUD</param>
+			</generator>
+		</id>
+		<property name="cloudId" type="java.lang.Long">
+			<column name="CLOUD_ID" precision="20" scale="0"/>
+		</property>
+		<property name="cloudName" type="string">
+			<column name="CLOUD_NAME" length="255" />
+		</property>
+		<property name="cloudOutputBusinessEntityId" type="java.lang.Long">
+			<column name="CLOUD_OUTPUT_BE_ID" precision="20" scale="0"/>
+		</property>
+		<property name="cloudOutputName" type="string">
+			<column name="CLOUD_OUTPUT_NAME" length="255" />
+		</property>
+		<property name="cloudCategory" type="cloud_category">
+			<column name="CLOUD_CATEGORY" length="2" not-null="false" />
+		</property>
+		<property name="cloudOutput" type="output">
+			<column name="CLOUD_OUTPUT" length="1" />
+		</property>
+		<property name="modelGroupId" type="java.lang.Long">
+			<column name="MODEL_GROUP_ID" precision="20" scale="0"/>
+		</property>
+		<property name="componentBusinessEntityId" type="java.lang.Long">
+			<column name="COMP_BE_ID" precision="20" scale="0"/>
+		</property>
+		<property name="componentName" type="string">
+			<column name="COMP_NAME" length="255" />
+		</property>
+		<property name="componentTypeBusinessEntityId" type="java.lang.Long">
+			<column name="COMP_TYPE_BE_ID" precision="20" scale="0"/>
+		</property>
+		<property name="componentTypeName" type="string">
+			<column name="COMP_TYPE_NAME" length="255" />
+		</property>
+		<property name="realizationBusinessEntityId" type="java.lang.Long">
+			<column name="REALIZATION_BE_ID" precision="20" scale="0"/>
+		</property>
+		<property name="realizationName" type="string">
+			<column name="REALIZATION_NAME" length="255" />
+		</property>
+		<property name="requiredBehaviorBusinessEntityId" type="java.lang.Long">
+			<column name="REQUIRED_BEHAVIOR_BE_ID" />
+		</property>
+		<property name="requiredBehaviorName" type="string">
+			<column name="REQUIRED_BEHAVIOR_NAME" length="255" />
+		</property>
+		<property name="componentCategory" type="comp_category">
+			<column name="COMP_CATEGORY" length="2" not-null="false" />
+		</property>
+		<property name="representativeEntityType" type="entityType">
+			<column name="REPRESENTATIVE_ENTITY_TYPE" length="25" not-null="false" />
+		</property>
+		<property name="importance" type="java.lang.Double">
+			<column name="IMPORTANCE" precision="10" scale="0"/>
+		</property>		
+		<property name="frequency" type="java.lang.Integer">
+			<column name="FREQUENCY" precision="2"/>
+		</property>
+		<property name="required" type="checkType">
+			<column name="REQUIRED" length="1" />
+		</property>
+		<property name="defaultValue" type="string">
+			<column name="DEFAULT_VALUE" />
+		</property>
+		<property name="primaryRICloudId" type="java.lang.Long">
+			<column name="PRIMARY_RI_CLOUD_ID" />
+		</property>
+		<property name="outputComponent" type="checkType">
+			<column name="OUTPUT_COMPONENT" length="1" />
+		</property>
+		<property name="cloudPart" type="java.lang.Integer">
+			<column name="CLOUD_PART" precision="2" scale="0"/>
+		</property>
+		<property name="cloudSelection" type="cloudComponentSelectionType">
+			<column name="CLOUD_SELECTION" length="2" scale="0"/>
+		</property>
+	</class>
+</hibernate-mapping>

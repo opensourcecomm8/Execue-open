@@ -1,0 +1,441 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Start: Bar Chart entries -->
+	<bean id="chartFxBarChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxBarChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="barChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.BarChartDataTxService" />
+
+	<bean id="chartfxBarChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxBarChartStructureTxService">
+	</bean>
+
+	<bean id="barChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.BarChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+	
+	<!-- End: Bar Chart entries -->
+	
+	<!-- Start: Pie Chart entries -->
+	<bean id="chartFxPieChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxPieChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="pieChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.PieChartDataTxService" />
+
+	<bean id="chartfxPieChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxPieChartStructureTxService">
+	</bean>
+
+	<bean id="pieChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.PieChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+	
+	<!-- End: Pie Chart entries -->
+	
+	<!-- Start: Scatter Chart entries -->
+	<bean id="chartFxScatterChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxScatterChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="scatterChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.ScatterChartDataTxService" />
+
+	<bean id="chartfxScatterChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxScatterChartStructureTxService">
+	</bean>
+
+	<bean id="scatterChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.ScatterChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+	
+	<!-- End: Scatter Chart entries -->
+	
+	<!-- Start: line Chart entries -->
+	<bean id="chartFxLineChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxLineChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="lineChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.LineChartDataTxService" />
+
+	<bean id="chartfxLineChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxLineChartStructureTxService">
+	</bean>
+
+	<bean id="lineChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.LineChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: line Chart entries -->
+		
+	<!-- Start: Barline Chart entries -->
+	<bean id="chartFxBarlineChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxBarLineChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="barlineChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.BarLineChartDataTxService" />
+
+	<bean id="chartfxBarlineChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxBarLineChartStructureTxService">
+	</bean>
+
+	<bean id="barlineChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.BarLineChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Barline Chart entries -->
+
+	
+	<!-- Start: Multibar chart entries -->
+	<bean id="chartFxMultiBarChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxMultiBarChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="multiBarChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.MultiBarChartDataTxService" />
+
+	<bean id="multiBarChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxMultiBarChartStructureTxService">
+	</bean>
+
+	<bean id="multiBarChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.MultiBarChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Multibar chart entries -->
+
+	<!-- Start: Multiline chart entries -->
+	<bean id="chartFxMultiLineChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxMultiLineChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+	
+	<bean id="multiLineChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.MultiLineChartDataTxService" />
+
+	<bean id="multiLineChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxMultiLineChartStructureTxService">
+	</bean>
+	
+	<bean id="multiLineChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.MultiLineChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Multiline chart entries -->	
+
+
+	<!-- Start: Cluster Bar chart entries -->
+	<bean id="chartFxClusterBarChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxClusterBarViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="clusterBarChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.ClusterBarChartDataTxService" />
+
+	<bean id="clusterBarChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxClusterBarChartStructureTxService"/>
+
+	<bean id="clusterBarChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.ClusterBarChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Cluster Bar chart entries -->
+	
+	<!-- Start: Cluster Line chart entries -->
+	<bean id="chartFxClusterLineChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxClusterLineViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="clusterLineChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.ClusterLineChartDataTxService" />
+
+	<bean id="clusterLineChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxClusterLineChartStructureTxService"/>
+
+	<bean id="clusterLineChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.ClusterLineChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Cluster Line chart entries -->
+	
+	<!-- Start: Cross Bar chart entries -->
+	<bean id="chartFxCrossBarChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxCrossBarViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+	
+	<bean id="crossBarChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.CrossBarChartDataTxService" />
+
+	<bean id="crossBarChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxCrossBarChartStructureTxService"/>
+
+	<bean id="crossBarChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.CrossBarChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Cross Bar chart entries -->
+	
+	<!-- Start: Cross Line chart entries -->
+	<bean id="chartFxCrossLineChartViewTx" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxCrossLineViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="crossLineChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.CrossLineChartDataTxService" />
+
+	<bean id="crossLineChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxCrossLineChartStructureTxService"/>
+
+	<bean id="crossLineChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.CrossLineChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Cross Line chart entries -->
+	
+	<!-- Start: Country Map entries -->
+	<bean id="chartFxCountryMapViewTxService" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxCountryMapViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="mapsDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.MapsDataTxService" />
+
+	<bean id="mapsStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxMapsStructureTxService"/>
+
+	<bean id="mapsDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.MapsDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Country Map entries -->
+	
+	<!-- Start: Cross state Map entries -->
+	<bean id="chartFxCrossStateMapViewTxService" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxCrossStateMapViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="crossStateMapsDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.CrossStateMapsDataTxService" />
+
+	<bean id="crossStateMapsStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxCrossStateMapsStructureTxService"/>
+
+	<bean id="crossStateMapsDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.CrossStateMapsDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: Cross state Map entries -->
+	
+	<!-- Start: MultiPie chart entries -->
+	<bean id="chartFxMultiPieChartViewTxService" scope="prototype"
+		class="com.execue.report.view.chartfx.tx.impl.ChartFxMultiPieChartViewTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="ruleService" ref="ruleService" />
+	</bean>
+
+	<bean id="multiPieChartDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.MultiPieChartDataTxService" />
+
+	<bean id="multiPieChartStructureTx" scope="prototype"
+		class="com.execue.report.presentation.chartfx.tx.structure.impl.ChartFxMultiPieChartStructureTxService">
+	</bean>
+
+	<bean id="multiPieChartDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.MultiPieChartDataMassageService" >
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+
+	<!-- End: MultiPie chart entries -->
+
+	<!--  Start: All Chart Handler entries -->	
+	<bean id="chartFxBarChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxBarChartHandler">
+		<property name="reportDataMassageService" ref="barChartDataMassage" />
+		<property name="reportDataTxService" ref="barChartDataTx" />
+		<property name="reportStructureTxService" ref="chartfxBarChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxBarChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxPieChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxPieChartHandler">
+		<property name="reportDataMassageService" ref="pieChartDataMassage" />
+		<property name="reportDataTxService" ref="pieChartDataTx" />
+		<property name="reportStructureTxService" ref="chartfxPieChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxPieChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxScatterChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxScatterChartHandler">
+		<property name="reportDataMassageService" ref="scatterChartDataMassage" />
+		<property name="reportDataTxService" ref="scatterChartDataTx" />
+		<property name="reportStructureTxService" ref="chartfxScatterChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxScatterChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxLineChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxLineChartHandler">
+		<property name="reportDataMassageService" ref="lineChartDataMassage" />
+		<property name="reportDataTxService" ref="lineChartDataTx" />
+		<property name="reportStructureTxService" ref="chartfxLineChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxLineChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxBarlineChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxBarlineChartHandler">
+		<property name="reportDataMassageService" ref="barlineChartDataMassage" />
+		<property name="reportDataTxService" ref="barlineChartDataTx" />
+		<property name="reportStructureTxService" ref="chartfxBarlineChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxBarlineChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+
+	<bean id="chartFxMultibarChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxMultibarChartHandler">
+		<property name="reportDataMassageService" ref="multiBarChartDataMassage" />
+		<property name="reportDataTxService" ref="multiBarChartDataTx" />
+		<property name="reportStructureTxService" ref="multiBarChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxMultiBarChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+
+	<bean id="chartFxMultilineChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxMultilineChartHandler">
+		<property name="reportDataMassageService" ref="multiLineChartDataMassage" />
+		<property name="reportDataTxService" ref="multiLineChartDataTx" />
+		<property name="reportStructureTxService" ref="multiLineChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxMultiLineChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxClusterBarChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxClusterBarChartHandler">
+		<property name="reportDataMassageService" ref="clusterBarChartDataMassage" />
+		<property name="reportDataTxService" ref="clusterBarChartDataTx" />
+		<property name="reportStructureTxService" ref="clusterBarChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxClusterBarChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxClusterLineChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxClusterLineChartHandler">
+		<property name="reportDataMassageService" ref="clusterLineChartDataMassage" />
+		<property name="reportDataTxService" ref="clusterLineChartDataTx" />
+		<property name="reportStructureTxService" ref="clusterLineChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxClusterLineChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxCrossBarChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxCrossBarChartHandler">
+		<property name="reportDataMassageService" ref="crossBarChartDataMassage" />
+		<property name="reportDataTxService" ref="crossBarChartDataTx" />
+		<property name="reportStructureTxService" ref="crossBarChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxCrossBarChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+
+	<bean id="chartFxCrossLineChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxCrossLineChartHandler">
+		<property name="reportDataMassageService" ref="crossLineChartDataMassage" />
+		<property name="reportDataTxService" ref="crossLineChartDataTx" />
+		<property name="reportStructureTxService" ref="crossLineChartStructureTx" />
+		<property name="reportViewTxService" ref="chartFxCrossLineChartViewTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxCountryMapHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxCountryMapHandler">
+		<property name="reportDataMassageService" ref="mapsDataMassage" />
+		<property name="reportDataTxService" ref="mapsDataTx" />
+		<property name="reportStructureTxService" ref="mapsStructureTx" />
+		<property name="reportViewTxService" ref="chartFxCountryMapViewTxService" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxCrossStateMapHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxCrossStateMapHandler">
+		<property name="reportDataMassageService" ref="crossStateMapsDataMassage" />
+		<property name="reportDataTxService" ref="crossStateMapsDataTx" />
+		<property name="reportStructureTxService" ref="crossStateMapsStructureTx" />
+		<property name="reportViewTxService" ref="chartFxCrossStateMapViewTxService" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="chartFxMultiPieChartHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.ChartFxMultiPieChartHandler">
+		<property name="reportDataMassageService" ref="multiPieChartDataMassage" />
+		<property name="reportDataTxService" ref="multiPieChartDataTx" />
+		<property name="reportStructureTxService" ref="multiPieChartStructureTx" />		
+		<property name="reportViewTxService" ref="chartFxMultiPieChartViewTxService" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	
+	<!--  End: All Chart Handler entries -->	
+
+</beans>

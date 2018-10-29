@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for SWI Consle Home related actions
+
+-->
+<struts>
+	<package name="swi" namespace="/swi" extends="execue-console-default">
+		<action name="accountAccess" class="accountAccessAction" method="changeAccess">
+			<result name="advRequest" type="redirectAction" >
+				<param name="actionName">showAdvancedOptions</param>
+				<param name="namespace">/account</param>
+			</result>
+			<result name="success" type="chain" >showSearchAppsDashboard</result>
+		</action>		
+		
+		<action name="getApplicationInfo" class="applicationAction" method="getApplicationInfo">
+			<result name="success" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result>  
+		</action>
+		<action name="getApplicationWithExample" class="applicationAction" method="getApplicationWithExample">
+			<result name="success" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result>  
+		</action>
+		<action name="createApp" method="createApplication" class="applicationAction">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result> 
+		</action>
+		<action name="deleteApp" class="applicationAction" method="deleteApplication">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="error" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/admin/swi/sdx/editApp.jsp</result>  
+		</action>
+		
+		<action name="getImage" method="getUploadedAppImage" class="applicationAction">
+			<result name="success" type="stream">
+				<param name="contentType">imageType</param>
+				<param name="contentDisposition">absorb</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">1024</param>				
+			</result>
+		</action>
+		
+		<!-- Actions for Job Request Status screen start -->
+		<action name="showJobRequests" class="jobRequestStatusAction" method="input">
+			<result name="success" type="tiles">swi.showJobs</result> 
+			<result name="input" type="tiles">swi.showJobs</result>
+			<result name="error" type="tiles">swi.showJobs</result>	
+		</action>
+		
+		<action name="showPublisherJobRequests" class="publisherJobRequestStatusAction" method="input">
+			<result name="success" type="tiles">swi.showPublisherJobs</result> 
+			<result name="input" type="tiles">swi.showPublisherJobs</result>
+			<result name="error" type="tiles">swi.showPublisherJobs</result>	
+		</action>
+		<action name="refreshJobStatus" method="getJobStatus" class="jobRequestStatusAction">			
+			<result name="success" type="tiles">swi.showJobStatus</result>	
+			<result name="error" type="tiles">swi.showJobStatus</result> 
+			<result name="input" type="tiles">swi.showJobStatus</result> 
+		</action>
+		<action name="refreshJobStatusDetails" method="showStatusDetails" class="jobRequestStatusAction">			
+			<result name="success">/WEB-INF/jsp/admin/maintenance/jobStatusDetails.jsp</result>	
+			<result name="error">/WEB-INF/jsp/admin/maintenance/jobStatusDetails.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/maintenance/jobStatusDetails.jsp</result> 
+		</action>
+		<action name="publishJobStatus" method="getJobStatus" class="jobRequestStatusAction">			
+			<result name="success" type="tiles">swi.showPublishJobStatus</result>	
+			<result name="error" type="tiles">swi.showPublishJobStatus</result> 
+			<result name="input" type="tiles">swi.showPublishJobStatus</result> 
+		</action>
+		
+		<action name="showJobsByType" class="jobRequestStatusAction" method="getJobsByType">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/jobRequestStatusInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/jobRequestStatusInfo.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/jobRequestStatusInfo.jsp</result>
+		</action>
+		<action name="showJobDetails" class="jobRequestStatusAction" method="getJobById">
+			<result name="success" type="tiles">swi.showJobDetails</result>
+			<result name="error" type="tiles">swi.showJobDetails</result>
+		</action>
+		<action name="getJobStatus" class="jobRequestStatusAction" method="getJobStatus">
+			<result name="upload" type="redirectAction">
+				<param name="actionName">showUploadStatus</param>
+				<param name="namespace">/publisher</param>
+				<param name="jobRequest.id">${jobRequest.id}</param>					
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">refreshJobStatus</param>				
+				<param name="jobRequest.id">${jobRequest.id}</param>					
+			</result>	
+			<result name="error" type="tiles">swi.showJobStatus</result>
+			<result name="input" type="tiles">swi.showJobStatus</result>
+		</action>
+		
+		<action name="getPublishJobStatus" class="jobRequestStatusAction" method="getJobStatus">
+			<result name="upload" type="redirectAction">
+				<param name="actionName">publishJobStatus</param>				
+				<param name="jobRequest.id">${jobRequest.id}</param>					
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">publishJobStatus</param>				
+				<param name="jobRequest.id">${jobRequest.id}</param>					
+			</result>	
+			<result name="error" type="tiles">swi.showPublishJobStatus</result>
+			<result name="input" type="tiles">swi.showPublishJobStatus</result>
+		</action>
+		<!-- Actions for Job Request Status screen End -->
+
+
+		<!-- Actions for Maintenance Screen start -->
+		<action name="showMaintenanceHome"  class="jobMaintenanceAction">
+			<result type="tiles">swi.showMaintenanceHome</result> 
+		</action>		
+		<action name="showUploadFileOntology" method="showModelName" class="jobMaintenanceAction">
+			<result>/WEB-INF/jsp/admin/maintenance/fileOntologyAbsorption.jsp</result> 
+		</action>		
+		<action name="absorbFileOntology" method="absorbFileOntology" class="jobMaintenanceAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">26240100</param>       
+			</interceptor-ref>
+			<interceptor-ref name="execue-console-stack"/>  
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>
+			<result name="input" type="chain">showUploadFileOntology</result>
+			<result name="error" type="chain">showUploadFileOntology</result>					
+		</action>   
+		<action name="showOntologyUploadStatus" method="showJobStatus" class="jobMaintenanceAction">
+			<result name="success" type="tiles">swi.showJobStatus</result> 
+			<result name="error" type="tiles">swi.showJobStatus</result> 
+			<result name="input" type="tiles">swi.showJobStatus</result> 
+		</action>
+		
+		<action name="showConceptTypeAssociationMaintenance" method="showModelName" class="jobMaintenanceAction">
+			<result>/WEB-INF/jsp/admin/maintenance/ConceptTypeAssociationMaintenance.jsp</result> 
+		</action>
+		
+		<action name="associateConceptWithType" method="associateConceptWithType" class="jobMaintenanceAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">26240100</param>       
+			</interceptor-ref>
+			<interceptor-ref name="execue-console-stack"/>  
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>
+			<result name="input" type="chain">showConceptTypeAssociationMaintenance</result>
+			<result name="error" type="chain">showConceptTypeAssociationMaintenance</result>					
+		</action> 
+		<action name="showCorrectMappingMaintenance" method="list" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/correctMappingMaintenance.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/correctMappingMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/correctMappingMaintenance.jsp</result> 
+		</action>
+	
+		<action name="correctMappingMaintenanceJob" class="jobMaintenanceAction">
+			<result name="success" type="tiles" >swi.showJobStatus</result> 
+			<result name="input" type="chain">showCorrectMappingMaintenance</result>
+			<result name="error" type="chain">showCorrectMappingMaintenance</result>
+		</action>	
+		<action name="sheduleCorrectMappingMaintenanceJob" method="correctMappingMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="input" type="chain">showCorrectMappingMaintenance</result>
+			<result name="error" type="chain">showCorrectMappingMaintenance</result>
+		</action>
+		<action name="showPopularityHitMaintenance" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/popularityHitMaintenance.jsp</result>
+			<result name="input"> /WEB-INF/jsp/admin/maintenance/popularityHitMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/popularityHitMaintenance.jsp</result> 
+		</action>
+		<action name="showSDXSynchronization"  method="showParentAssets" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/sdxSynchronization.jsp</result>
+			<result name="input"> /WEB-INF/jsp/admin/maintenance/sdxSynchronization.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/sdxSynchronization.jsp</result> 
+		</action>
+		<action name="showOptimalDSet"  method="showParentAssets" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/optimalDSet.jsp</result>
+			<result name="input"> /WEB-INF/jsp/admin/maintenance/optimalDSet.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/optimalDSet.jsp</result> 
+		</action>
+		
+		<action name="showRIOntoTermPopularityHitMaintenance" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/riOntoTermPopularityHitMaintenance.jsp</result>
+			<result name="input" >/WEB-INF/jsp/admin/maintenance/riOntoTermPopularityHitMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/riOntoTermPopularityHitMaintenance.jsp</result> 
+		</action>
+		<action name="showPopularityCollectionMaintenance" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/popularityCollectionMaintenance.jsp</result>
+			<result name="input" >/WEB-INF/jsp/admin/maintenance/popularityCollectionMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/popularityCollectionMaintenance.jsp</result> 
+		</action>
+		<action name="showPopularityDispersionMaintenance" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/popularityDispersionMaintenance.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/popularityDispersionMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/popularityDispersionMaintenance.jsp</result> 
+		</action>
+		<action name="showSFLTermTokenWeightMaintenance" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/sflTermTokenWeightMaintenance.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/sflTermTokenWeightMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/sflTermTokenWeightMaintenance.jsp</result> 
+		</action>
+		<action name="showSFLWeightUpdationBySecWord" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/sflWeightUpdationBySecWord.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/sflWeightUpdationBySecWord.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/sflWeightUpdationBySecWord.jsp</result> 
+		</action>
+		<action name="showBusinessModelPreparation" method="list" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/businessModelPreparation.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/businessModelPreparation.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/businessModelPreparation.jsp</result> 
+		</action>
+		<action name="shedulePopularityHitMaintenanceJob" method="popularityHitMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="input" type="chain">showPopularityHitMaintenance</result>
+			<result name="error" type="chain">showPopularityHitMaintenance</result>
+		</action>
+		<action name="scheduleOptimalDSetJob" method="scheduleOptimalDSetJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>
+			<result name="input" type="chain">showOptimalDSet</result>
+			<result name="error" type="chain">showOptimalDSet</result>  			
+		</action>
+		<action name="scheduleSDXSynchronizationJob" method="sdxSynchronizationJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>
+			<result name="input" type="chain">showSDXSynchronization</result>
+			<result name="error" type="chain">showSDXSynchronization</result>  			
+		</action>
+		<action name="sheduleRIOntoTermAbsorptionJob" method="sheduleRIOntoTermAbsorptionJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>                                    
+			</result>  
+			<result name="input" type="chain">showRIOntoTermAbsorption</result>
+			<result name="error" type="chain">showRIOntoTermAbsorption</result>
+		</action>
+
+		<action name="sheduleRIOntoTermPopularityHitMaintenanceJob" method="riOntoTermPopularityHitMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result> 
+			<result name="input" type="chain">showRIOntoTermPopularityHitMaintenance</result>
+			<result name="error" type="chain">showRIOntoTermPopularityHitMaintenance</result>
+		</action>
+		<action name="shedulePopularityCollectionMaintenanceJob" method="popularityCollectionMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="input" type="chain">showPopularityCollectionMaintenance</result>
+			<result name="error" type="chain">showPopularityCollectionMaintenance</result>
+		</action>
+		<action name="shedulePopularityDispersionMaintenanceJob" method="popularityDispersionMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="input" type="chain">showPopularityDispersionMaintenance</result>
+			<result name="error" type="chain">showPopularityDispersionMaintenance</result>
+		</action>
+		<action name="sheduleSFLTermTokenWeightMaintenanceJob" method="sflTermTokenWeightMaintenaceJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result> 
+			<result name="input" type="chain">showSFLTermTokenWeightMaintenance</result>
+			<result name="error" type="chain">showSFLTermTokenWeightMaintenance</result>
+		</action>
+		
+		<action name="sheduleSFLWeightUpdationBySecWordJob" method="sflWeightUpdationBySecondaryWordJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result> 
+			<result name="input" type="chain">showSFLWeightUpdationBySecWord</result>
+			<result name="error" type="chain">showSFLWeightUpdationBySecWord</result>
+		</action>
+	
+		<action name="showDefaultMetricsPopulation" method="list" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/defaultMetricsMaintenance.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/defaultMetricsMaintenance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/defaultMetricsMaintenance.jsp</result> 
+		</action>
+	
+		<action name="showJobStatus" method="showJobStatus" class="jobMaintenanceAction">
+			<result name="success" type="tiles">swi.showJobStatus</result> 
+			<result name="error" type="tiles">swi.showJobStatus</result> 
+			<result name="input" type="tiles">swi.showJobStatus</result> 
+		</action>
+		<action name="submitSelectedAsset"  method="submitSelectedAsset" class="assetSelectionAction">
+			<result name="asset" type="redirectAction">
+				<param name="actionName">showMetadata</param>
+				<param name="namespace">/publisher</param>
+				<param name="sourceURL">${sourceURL}</param>
+			</result>
+			<result name="asset-new" type="redirectAction">
+				<param name="actionName">newAsset</param>
+			</result>
+			<result name="mapping" type="redirectAction">
+				<param name="actionName">showMappings</param>
+				<param name="sourceURL">${sourceURL}</param>
+			</result>
+			<!--<result name="mapping" type="chain">showMappings</result>-->
+			<result name="join" type="redirectAction">
+				<param name="actionName">showJoins</param>
+				<param name="sourceURL">${sourceURL}</param>
+			</result>			
+			<!--<result name="join" type="redirect">showJoins.action</result>-->		
+			<result name="constraints" type="redirectAction">
+				<param name="actionName">showConstraints</param>
+			</result>
+			<!--<result name="constraints" type="chain">showConstraints</result>-->
+			<result name="cubeRequest" type="redirectAction">
+				<param name="actionName">showCubeRequest</param>
+			</result>
+			<result name="defaultMetrics" type="redirectAction">
+				<param name="actionName">showDefaultMetrics</param>
+				<param name="sourceURL">${sourceURL}</param>
+			</result>
+			<!--<result name="cubeRequest" type="chain">showCubeRequest</result>-->
+			<result name="success" type="redirectAction">				
+				<param name="actionName">showConsole</param>
+			</result>
+			<!--<result name="success" type="chain">showConsole</result>-->
+			<result name="ddv" type="redirectAction">
+				<param name="actionName">showConceptDefaultValue</param>
+			</result>
+			<result name="mart" type="redirectAction">
+				<param name="actionName">showMartRequest</param>
+			</result>
+		</action>
+		<action name="showAppInfo" method="showAppInfo" class="appInfoAction">
+			<result type="tiles" name="success">swi.showAppMeta</result>
+			<result type="tiles" name="input">swi.showAppMeta</result>
+			<result type="tiles" name="error">swi.showAppMeta</result>
+		</action>
+		<!-- actions for indexFormManagement -->
+		<action name="showIndexFormManagement" class="jobMaintenanceAction">
+			<result name="success">/WEB-INF/jsp/admin/maintenance/indexFormManagement.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/maintenance/indexFormManagement.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/maintenance/indexFormManagement.jsp</result>
+		</action>					
+		<action name="scheduleIndexFormManagementJob" method="indexFormManagementJob" class="jobMaintenanceAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showJobRequests</param>
+				<param name="namespace">/swi</param>									
+			</result>  
+			<result name="input" type="chain">showIndexFormManagement</result>
+			<result name="error" type="chain">showIndexFormManagement</result>	
+		</action>	
+	
+		<!-- Actions for Maintenance Screen end -->
+			
+		<!--Asset Analysis Report Action start-->		
+		<action name="showPublishApp" class="assetPublishAction" method="showPublish">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showPublishDatasets</param>               
+				<param name="applicationId">${applicationId}</param>                    
+			</result>    
+		</action>
+		<action name="showPublishDatasets" class="assetPublishAction" method="input">
+			<result type="tiles" >swi.publishDatasets</result> 
+		</action>
+		<action name="showPublishDataset" class="assetPublishAction" method="showPublishDataset">
+			<result type="tiles" >swi.publishDatasets</result> 
+		</action>
+		<action name="showExistingReport"  method="showExistingReport" class="assetPublishAction">
+			<result name="success" type="tiles" >sdx.showAssetAnalysisReport</result>			
+		</action>
+		<action name="showAssetAnalysisReport"  method="list" class="assetPublishAction">
+			<result name="success" type="tiles" >sdx.showAssetAnalysisReport</result>			
+		</action>
+		<action name="getAssetAnalysisReport"  method="getAssetAnalysisReportByOperationType" class="assetPublishAction">
+			<result name="AssetWithoutGrain">/WEB-INF/jsp/admin/swi/sdx/assetWithoutGrainReport.jsp</result>
+			<result name="UnmappedColumns">/WEB-INF/jsp/admin/swi/sdx/unMappedColumnsReport.jsp</result>
+			<result name="ColumnsWithMissingColumnType">/WEB-INF/jsp/admin/swi/sdx/columnsWihoutKDXTypeReport.jsp</result>
+			<result name="UnmappedMembers">/WEB-INF/jsp/admin/swi/sdx/unMappedMembersReport.jsp</result>
+			<result name="TablesWithoutJoins">/WEB-INF/jsp/admin/swi/sdx/tablesWithoutJoinsReport.jsp</result>
+			<result name="LookupTableWithoutMembers">/WEB-INF/jsp/admin/swi/sdx/lookupTablesWithoutMembersReport.jsp</result>
+			<result name="TableWithoutDefaultMetrics">/WEB-INF/jsp/admin/swi/sdx/tableWithoutDefaultMetricsReport.jsp</result>
+			<result name="error" type="tiles" >sdx.showAssetAnalysisReport</result>	
+		</action>
+		<!-- SWI Vertical related -->
+		<action name="showVerticals" class="verticalAction">			
+			<result name="success" type="tiles">show.Verticals</result>
+			<result name="input" type="tiles" >show.Verticals</result>			
+		</action>
+		
+		<action name="getVerticals" method="getAllVerticals" class="verticalAction">			
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/viewVerticals.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/viewVerticals.jsp</result>			
+		</action>
+		
+		<action name="createVertical" class="verticalAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>			
+		</action>
+		
+		<action name="deleteVertical" method="deleteVertical" class="verticalAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+		</action>
+		
+		<action name="getVertical" method="getVerticalDetails" class="verticalAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+		</action>
+				
+		<action name="addVertical" method="createOrUpdateVertical" class="verticalAction">			
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/vertical/createVertical.jsp</result>
+		</action>
+		
+		<action name="showVerticalAppAssociation" method="getVerticalAppAssociationDetails" class="verticalAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVerticalAppAssociations.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVerticalAppAssociations.jsp</result>			
+		</action>
+		
+		<action name="getVerticalApps" method="getPageResults" class="verticalAction">			
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/viewVerticalsApps.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/viewVerticalsApps.jsp</result>			
+		</action>
+		
+		<action name="createVerticalAppAssociation" method="getVerticalAppAssociationDetails" class="verticalAction">			
+			<result name="success">/WEB-INF/jsp/admin/swi/vertical/createVerticalAppAssociations.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/vertical/createVerticalAppAssociations.jsp</result>			
+		</action>	
+		
+		<action name="addVerticalAppAssociation" method="updateVerticalAppAssociation" class="verticalAction">			
+			<result name="success" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+			<result name="input" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+			<result name="error" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+		</action>
+		<action name="removeVerticalAppAssociation" method="deleteVerticalAppAssociation" class="verticalAction">			
+			<result name="success" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+			<result name="input" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+			<result name="input" type="chain">
+				<param name="actionName">showVerticalAppAssociation</param>
+				<param name="selectedVerticalId">${selectedVerticalId}</param>
+				<param name="filteredVerticalId">${filteredVerticalId}</param>
+			</result>
+		</action>
+		<!-- SWI Vertical related ends -->	
+		
+		
+		<!-- Asset Analysis Report end-->
+
+	</package>
+	<package name="swiAdminConsole" namespace="/swi" extends="execue-json-default">
+		<action name="setAppInfo" class="consoleAction" method="setApplicationDetails">
+			<result name="success" type="json">
+				<param name="root">applicationId</param>
+			</result>
+		</action>		
+		<action name="setUserClickedMenu" class="consoleAction" method="setClickedMenuItem">
+			<result name="success" type="json">
+				<param name="root">actionName</param>
+			</result>
+		</action>
+		<action name="currentJobStatus" method="getCurrentJobStatus" class="jobRequestStatusAction">           
+			<result type="json">
+				<param name="root">latestJobStatus</param>
+			</result> 
+		</action>
+		<action name="invokePublishAssetsMaintenanceJob" method="invokePublishAssetsMaintenanceJob" class="assetPublishAction">
+			<result type="json">
+				<param name="root">jobRequestResult</param>
+			</result>
+		</action>		
+		<action name="saveUpdateAppExample" class="applicationAction" method="saveUpdateAppExample">
+			<result name="success" type="json">
+				<param name="root">applicationExamples</param>
+			</result>
+		</action>
+		<action name="deleteAppExample" class="applicationAction" method="deleteAppExample">
+			<result name="success" type="json">
+				<param name="root">applicationExamples</param>
+			</result>
+		</action>
+		<action name="getWikiUrl" method="getWikiUrl" class="applicationAction">
+			<result type="json">
+				<param name="root">application</param>
+			</result>
+		</action>
+		<action name="deleteAppJob" class="applicationAction" method="deleteApplicationJob">
+			<result type="json">
+				<param name="root">jobRequestResult</param>
+			</result>
+		</action>
+		<action name="generateAssetAnalysisReport" method="generateAssetAnalysisReport" class="assetPublishAction">
+			<result type="json">
+				<param name="root">isAssetAnalysisReportGenerated</param>
+			</result>
+		</action>
+		<action name="getAssetAnalysisReportByAssetId" method="getAssetAnalysisReportByAssetId" class="assetPublishAction">
+			<result type="json">
+				<param name="root">isAssetAnalysisReportExists</param>
+			</result>
+		</action>
+		<action name="showHelpMessages" method="getHelpMessages" class="uploadAction">
+			<result name="success" type="json">
+				<param name="root">helpMessage</param>
+			</result>			
+		</action>	
+	</package>	
+</struts>

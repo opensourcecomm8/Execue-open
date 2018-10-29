@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!--
+			# file inclusions
+		-->
+	<include file="platform/struts-package.xml" /><!-- constants and default package -->
+	<include file="platform/struts-swi.xml" /><!-- package for SWI Console related actions -->
+	<include file="platform/struts-sdx.xml" /><!-- package for SDX related actions -->
+	<include file="platform/struts-kdx.xml" /><!-- package for KDX related actions -->
+	<include file="platform/struts-mapping.xml" /><!-- package for Mapping related actions -->
+	<include file="platform/struts-preferences.xml" /><!-- package for Preferences related actions -->
+	<include file="platform/struts-answers-catalog.xml" /><!-- package for Answers Catalog related actions -->
+	<include file="platform/struts-security.xml" /><!-- package for swi security related actions -->
+	<include file="platform/struts-reporting.xml" /><!-- package for swi security related actions -->
+	<include file="platform/struts-bookmark.xml" /> <!-- package for bookmark  related actions -->
+	<include file="platform/struts-qi.xml" /> <!-- package for query Interface  related actions -->
+	<include file="platform/struts-publisher.xml" /><!-- package for Publisher Module related actions -->
+	<include file="platform/struts-account.xml" /><!-- package for Publisher Module related actions -->
+	<include file="platform/struts-home.xml" /><!-- package for home page related actions -->
+    <include file="platform/struts-unstructured-search.xml" /><!-- package for home page related actions-->
+    <include file="platform/struts-audittrail.xml" />
+    <!-- Core extensions -->
+    <include file="ext/struts-home-ext.xml" />
+    <include file="ext/struts-qi-ext.xml" />
+    <include file="ext/struts-reporting-ext.xml" />
+    <include file="ext/struts-security-ext.xml" />
+    <include file="ext/struts-swi-ext.xml" />
+    <include file="ext/struts-swi-config-ext.xml" />
+    
+    <!-- Application level extensions -->
+
+</struts>

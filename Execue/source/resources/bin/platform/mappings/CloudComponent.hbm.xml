@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="entityType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.BusinessEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="comp_category" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ComponentCategory</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="cloudComponentSelectionType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CloudComponentSelectionType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.CloudComponent" table="CLOUD_COMPONENT">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">CLOUD_COMPONENT</param>
+			</generator>
+		</id>
+		<many-to-one name="cloud" class="com.execue.core.common.bean.entity.Cloud" fetch="select">
+			<column name="CLOUD_ID" precision="20" scale="0" />
+		</many-to-one>
+		<many-to-one name="componentBed" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="COMP_BE_ID" precision="20" scale="0"/>
+		</many-to-one>
+		<many-to-one name="componentTypeBed" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="COMP_TYPE_BE_ID" precision="20" scale="0"/>
+		</many-to-one>
+		<property name="importance" type="java.lang.Double">
+			<column name="WEIGHT" precision="10" scale="2"/>
+		</property>
+		<property name="frequency" type="java.lang.Integer">
+			<column name="FREQUENCY" precision="2" scale="0"/>
+		</property>
+		<property name="componentCategory" type="comp_category">
+			<column name="CATEGORY" length="2" not-null="true" />
+		</property>
+		<property name="representativeEntityType" type="entityType">
+			<column name="REPRESENTATIVE_ENTITY_TYPE" length="2"/>
+		</property>
+		<property name="requiredBehavior" type="java.lang.Long">
+			<column name="REQUIRED_BEHAVIOR" precision="20" scale="0"/>
+		</property>
+		<property name="required" type="checkType">
+			<column name="REQUIRED" length="1" />
+		</property>
+		<property name="defaultValue" type="string">
+			<column name="DEFAULT_VALUE" />
+		</property>
+		<property name="outputComponent" type="checkType">
+			<column name="OUTPUT_COMPONENT" length="1" />
+		</property>
+		<property name="cloudPart" type="java.lang.Integer">
+			<column name="CLOUD_PART" precision="2" scale="0"/>
+		</property>
+		<property name="cloudSelection" type="cloudComponentSelectionType">
+			<column name="CLOUD_SELECTION" precision="2" scale="0"/>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<queries>
+	<QUERY_GET_KEYWORDS_FOR_INSTANCES>
+	<![CDATA[select kw from KeyWord as kw,BusinessEntityDefinition as be, ModelGroupMapping mgm
+		where kw.businessEntityDefinition.id = be.id and be.modelGroup.id = mgm.modelGroup.id and 
+		mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType and be.entityType = :entityType and 
+		be.concept.id = :conceptId 
+	]]>
+	</QUERY_GET_KEYWORDS_FOR_INSTANCES>
+	
+	<QUERY_GET_KEYWORDS_BY_BEDID>
+	<![CDATA[from KeyWord kw where kw.businessEntityDefinition.id = :bedId
+	]]>
+	</QUERY_GET_KEYWORDS_BY_BEDID>
+	
+	<QUERY_KEYWORD_BY_NAME>
+	<![CDATA[select keyWord from KeyWord keyWord, ModelGroupMapping mgm
+		 where keyWord.word=:wordName and keyWord.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_KEYWORD_BY_NAME>
+
+	<QUERY_KEYWORD_BY_MODEL_ID>
+	<![CDATA[select keyWord from KeyWord keyWord, ModelGroupMapping mgm 
+		 where keyWord.modelGroup.id = mgm.modelGroup.id
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType order by keyWord.word
+	]]>
+	</QUERY_KEYWORD_BY_MODEL_ID>
+	
+
+	<QUERY_RI_ONTO_TERMS_BY_KEY_WORD>
+	<![CDATA[from RIOntoTerm as rionto where rionto.word=:keyWord]]>
+	</QUERY_RI_ONTO_TERMS_BY_KEY_WORD>
+
+	<QUERY_KEYWORD_IDS_BY_MODEL_ID>
+	<![CDATA[select keyWord.id from KeyWord keyWord, ModelGroupMapping mgm 
+		 where keyWord.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_KEYWORD_IDS_BY_MODEL_ID>
+
+	<QUERY_KEYWORD_IDS>
+	<![CDATA[select id from KeyWord]]>
+	</QUERY_KEYWORD_IDS>	
+	
+	<QUERY_DELETE_PARALLEL_WORD_BY_KEYWORD_IDS>
+	<![CDATA[delete from ParallelWord where keyWord.id in(:keyWordIds)]]>
+	</QUERY_DELETE_PARALLEL_WORD_BY_KEYWORD_IDS>
+
+	<QUERY_DELETE_KEYWORD_BY_IDS>
+	<![CDATA[delete from KeyWord where id in(:keyWordIds)]]>
+	</QUERY_DELETE_KEYWORD_BY_IDS>
+
+
+</queries>

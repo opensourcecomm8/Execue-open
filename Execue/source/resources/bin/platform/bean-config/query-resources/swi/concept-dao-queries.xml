@@ -1,0 +1,307 @@
+<queries>
+	<QUERY_GET_All_CONCEPT_BUSINESS_ENTITY>
+	<![CDATA[select bed.id, bed.concept.displayName 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_All_CONCEPT_BUSINESS_ENTITY>
+	
+	<QUERY_GET_CONCEPT_BEDS_FOR_MODEL>
+	<![CDATA[select bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and bed.entityType = :conceptEntityType 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType
+		 order by bed.concept.displayName
+	]]>
+	</QUERY_GET_CONCEPT_BEDS_FOR_MODEL>	
+	
+	<QUERY_GET_CONCEPT_BED_IDS_HAVING_INSTANCES>
+	<![CDATA[select distinct(bed.id) from
+		  BusinessEntityDefinition as bed, BusinessEntityDefinition as bed1, ModelGroupMapping as mgm 
+		  where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		  and mgm.modelGroup.category = :userModelCategoryType
+		  and bed.entityType = :conceptEntityType and bed1.modelGroup.id = mgm.modelGroup.id and 
+		  mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType
+		  and bed1.entityType = :instanceEntityType and bed1.concept.id = bed.concept.id  
+	]]>
+	</QUERY_GET_CONCEPT_BED_IDS_HAVING_INSTANCES>	
+	
+	<QUERY_GET_CONCEPT_BEDS_HAVING_BEHAVIOR_TYPE>
+	<![CDATA[ select eb.entityBedId from EntityBehavior as eb where eb.entityBedId in (:conceptBedIds)
+		  and eb.behaviorType = :behaviorType 
+	]]>
+	</QUERY_GET_CONCEPT_BEDS_HAVING_BEHAVIOR_TYPE>	
+	
+		
+	<QUERY_GET_All_CONCEPT_BUSINESS_ENTITY_FOR_MODEL>
+	<![CDATA[select bed.id, bed.concept.displayName 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_All_CONCEPT_BUSINESS_ENTITY_FOR_MODEL>
+	
+	<QUERY_GET_CONCEPT_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	<![CDATA[select count(distinct bed.concept) 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_CONCEPT_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	
+	<QUERY_GET_CONCEPT_BY_DISPLAY_NAME>
+	<![CDATA[select distinct concpt from ModelGroupMapping mgm,
+			BusinessEntityDefinition bed join bed.concept as concpt
+			  where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and concpt.displayName = :conceptDisplayName 
+		 order by concpt.name
+	]]>
+	</QUERY_GET_CONCEPT_BY_DISPLAY_NAME>
+	
+	<QUERY_GET_CONCEPT_BY_NAME>
+	<![CDATA[select distinct concpt from ModelGroupMapping mgm,
+				BusinessEntityDefinition bed join bed.concept as concpt 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType and concpt.name = :conceptName 
+		 and bed.entityType = :conceptBusinessEntityType
+		 order by concpt.name
+	]]>
+	</QUERY_GET_CONCEPT_BY_NAME>
+	
+	<QUERY_GET_CONCEPTS_FOR_MODEL>
+	<![CDATA[select distinct concpt from ModelGroupMapping mgm,
+			 BusinessEntityDefinition bed join bed.concept as concpt
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType
+		 order by concpt.displayName
+	]]>
+	</QUERY_GET_CONCEPTS_FOR_MODEL>	
+	
+	<QUERY_GET_CONCEPTS>
+	<![CDATA[select be.concept from BusinessEntityDefinition as be 
+		 where be.modelGroup in (:userModelGroups) 
+		 and be.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_CONCEPTS>
+	
+	<QUERY_GET_CONCEPTS_BY_POPULARITY>
+	<![CDATA[select concept 
+		 from BusinessEntityDefinition as be,Concept as concept ,ModelGroupMapping mgm 
+		 where concept.id = be.concept.id and be.entityType = :conceptEntityType
+		 and mgm.model.id = :modelId and   be.modelGroup.id = mgm.modelGroup.id
+		 and mgm.modelGroup.category != :baseModelCategoryType order by be.popularity desc
+	]]>
+	</QUERY_GET_CONCEPTS_BY_POPULARITY>
+	
+	<QUERY_GET_CONCEPTS_BY_SEARCHSTRING>
+	<![CDATA[select distinct bed.concept
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.concept.displayName like :searchString 
+		 order by bed.concept.displayName
+	]]>
+	</QUERY_GET_CONCEPTS_BY_SEARCHSTRING>
+	
+	<QUERY_CONCEPTS_ELIGIBLE_FOR_CUBE_CREATION>
+	<![CDATA[select distinct con.id,con.name,con.displayName,be.id
+		 from AssetEntityDefinition as ae, Concept as con, BusinessEntityDefinition as be,
+		 Mapping as map,Colum as col 
+		 where map.assetEntityDefinition.id = ae.id and map.businessEntityDefinition.id = be.id
+		 and ae.colum.id = col.id and be.concept.id = con.id and be.instance.id is null
+		 and ae.membr.id is null and (col.kdxDataType = :measureColumnType
+		 or col.kdxDataType = :dimensionColumnType or col.kdxDataType = :simpleLookupColumnType
+		 or col.kdxDataType = :rangeLookupColumnType) and ae.asset.id = :assetId 
+	]]>
+	</QUERY_CONCEPTS_ELIGIBLE_FOR_CUBE_CREATION>
+	
+	<QUERY_CONCEPTS_ELIGIBLE_FOR_CUBE_CREATION_BY_PAGE>
+	<![CDATA[select distinct con.id, con.name, con.displayName, be.id
+		 from Mapping as map, BusinessEntityDefinition as be, Concept as con, 
+		 AssetEntityDefinition as ae, Colum as col, Tabl tbl 
+		 where map.assetEntityDefinition.id = ae.id and map.businessEntityDefinition.id = be.id
+		 and (map.assetGrainType not in (:assetGrainTypes) or map.assetGrainType is null) 
+		 and map.primary = :primaryType 
+		 and ae.tabl.id = tbl.id and ae.colum.id = col.id 
+		 and be.concept.id = con.id 
+		 and be.entityType = :beEntityType and ae.entityType = :aeEntityType 
+		 and (col.kdxDataType = :measureColumnType
+		 or col.kdxDataType = :dimensionColumnType 
+		 or col.kdxDataType = :simpleLookupColumnType
+		 or col.kdxDataType = :rangeLookupColumnType)		
+		 and ae.asset.id = :assetId 
+	]]>
+	</QUERY_CONCEPTS_ELIGIBLE_FOR_CUBE_CREATION_BY_PAGE>
+	
+	<QUERY_CONCEPTS_COUNT_FOR_CUBE_CREATION>
+	<![CDATA[select count(distinct con.id)
+		 from Mapping as map, BusinessEntityDefinition as be, Concept as con, 
+		 AssetEntityDefinition as ae, Colum as col, Tabl tbl 
+		 where map.assetEntityDefinition.id = ae.id and map.businessEntityDefinition.id = be.id
+		 and (map.assetGrainType not in (:assetGrainTypes) or map.assetGrainType is null) 
+		 and map.primary = :primaryType 
+		 and ae.tabl.id = tbl.id and ae.colum.id = col.id 
+		 and be.concept.id = con.id 
+		 and be.entityType = :beEntityType and ae.entityType = :aeEntityType 
+		 and (col.kdxDataType = :measureColumnType
+		 or col.kdxDataType = :dimensionColumnType 
+		 or col.kdxDataType = :simpleLookupColumnType
+		 or col.kdxDataType = :rangeLookupColumnType)		
+		 and ae.asset.id = :assetId
+	]]>
+	</QUERY_CONCEPTS_COUNT_FOR_CUBE_CREATION>
+	
+	<conceptsEligibleForAssetMetaInfo>
+	<![CDATA[select distinct con from 
+		 AssetEntityDefinition as ae, Concept as con, BusinessEntityDefinition as be,
+		 Mapping as map, Colum as col 
+		 where map.assetEntityDefinition.id = ae.id and map.businessEntityDefinition.id = be.id 
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null 
+		 and (col.kdxDataType = :measureColumnType or col.kdxDataType = :dimensionColumnType 
+		 or col.kdxDataType = :simpleLookupColumnType or col.kdxDataType = :rangeLookupColumnType) 
+		 and ae.asset.id = :assetId order by con.id
+	]]>
+	</conceptsEligibleForAssetMetaInfo>
+	
+	<QUERY_GET_BED_BY_TYPE>
+	<![CDATA[select bed
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id
+		 and bed.type.name = :typeName and bed.entityType = :conceptEntityType
+		 and mgm.model.id = :modelId and mgm.modelGroup.category= :userModelCategoryType
+	]]>
+	</QUERY_GET_BED_BY_TYPE>
+	
+	<QUERY_LOOKUP_TYPE_CONCEPTS_HAVING_SEARCH_STRING>
+	<![CDATA[select distinct con 
+		 FROM Concept AS con, BusinessEntityDefinition AS be, 
+			ModelGroupMapping AS mgm 
+			WHERE be.concept.id = con.id 
+			AND be.instance.id is not null
+			AND be.type.id NOT IN (:locationRealizedTypeIds)  
+			AND be.modelGroup.id = mgm.modelGroup.id 
+			AND mgm.model.id = :modelId 
+			AND be.concept.displayName LIKE :searchString 
+			AND mgm.modelGroup.category = :userModelCategoryType ORDER BY LOCATE(:inStr, be.concept.displayName, 1),
+			be.concept.displayName, be.popularity DESC
+	]]>
+	</QUERY_LOOKUP_TYPE_CONCEPTS_HAVING_SEARCH_STRING>
+	
+	<QUERY_DISTINCT_UPDATED_MISMATCHED_ENUMERATIONCONCEPT_BEDS_FROM_BEMDETAILS>
+	<![CDATA[Select distinct bed 
+		 from RIOntoTerm rio, BusinessEntityMaintenanceInfo bemi, 
+		 BusinessEntityDefinition bed, BusinessEntityDefinition bedt,
+		 ModelGroupMapping mgm where mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		 and mgm.primary = :primaryValue and bemi.modelId = mgm.model.id 
+		 and rio.modelGroupId = mgm.modelGroup.id and bemi.entityId = rio.conceptBEDID 
+		 and rio.modelGroupId = bed.modelGroup.id  
+		 and bed.id = rio.conceptBEDID and bed.entityType = :conceptEntityType
+		 and bedt.type.id = bed.type.id   and bedt.entityType = :typeEntityType 
+		 and bemi.entityType = :conceptEntityType 
+		 and rio.entityType = :instanceEntityType and bemi.operationType = :updateOperationType 
+		 and (rio.conceptName != bed.concept.name or rio.typeBEDID != bedt.id 
+		 or rio.typeName != bedt.type.name)
+	]]>
+	</QUERY_DISTINCT_UPDATED_MISMATCHED_ENUMERATIONCONCEPT_BEDS_FROM_BEMDETAILS>
+	
+	<DIMENSION_ElIGIBLE_FOR_PARTICULAR_BEHAVIOUR>
+	<![CDATA[select distinct con
+		 from Mapping as map, BusinessEntityDefinition as be, Concept as con, 
+		 EntityBehavior as eb, ModelGroupMapping as mgm, AssetEntityDefinition as ae, Tabl tbl 
+		 where be.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id
+		 and be.entityType = :beEntityType and ae.entityType = :aeEntityType 
+		 and map.primary = :primaryType 
+		 and be.concept.id = con.id and be.id = eb.entityBedId 
+		 and ae.tabl.id = tbl.id and ae.tabl.lookupType in (:lookupTypes) 
+		 and eb.behaviorType= :behaviorType and ae.asset.id = :assetId 
+		 order by con.displayName
+	]]>
+	</DIMENSION_ElIGIBLE_FOR_PARTICULAR_BEHAVIOUR>
+	
+	<MEASURES_ElIGIBLE_FOR_PARTICULAR_TYPE>
+	<![CDATA[select distinct con from AssetEntityDefinition as ae,
+		Concept as con, BusinessEntityDefinition as be, Mapping as map, ModelGroupMapping as mgm 
+		where be.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		and map.assetEntityDefinition.id = ae.id 
+		and map.businessEntityDefinition.id = be.id 
+		and be.concept.id = con.id and be.type.name = :typeName 
+		and ae.asset.id = :assetId order by con.displayName
+	]]>
+	</MEASURES_ElIGIBLE_FOR_PARTICULAR_TYPE>
+	
+	<MEASURES_ELIGIBLE_FOR_CUBE_CREATION>
+	<![CDATA[select con 
+		 from AssetEntityDefinition as ae, Concept as con, 
+		 BusinessEntityDefinition as be,
+		 Mapping as map, Colum as col  
+		 where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id 
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null 
+		 and col.kdxDataType = :measureColumnType 
+		 and ae.asset.id = :assetId 
+		 order by con.displayName
+	]]>
+	</MEASURES_ELIGIBLE_FOR_CUBE_CREATION>
+
+	<MEASURES_COUNT_ELIGIBLE_FOR_CUBE_CREATION>
+	<![CDATA[select distinct count(con) 
+		 from AssetEntityDefinition as ae, Concept as con, 
+		 BusinessEntityDefinition as be,
+		 Mapping as map, Colum as col  
+		 where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id 
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null 
+		 and col.kdxDataType = :measureColumnType 
+		 and ae.asset.id = :assetId 
+		 order by upper(con.displayName)
+	]]>
+	</MEASURES_COUNT_ELIGIBLE_FOR_CUBE_CREATION>
+
+	
+	<QUERY_CHECK_FOR_INSTANCES>
+	<![CDATA[select COUNT(bed.concept.id) from BusinessEntityDefinition bed , ModelGroupMapping mgm
+		 WHERE bed.modelGroup.id = mgm.modelGroup.id and
+		 mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType
+		 and bed.concept.id = :conceptId and bed.instance is not null
+	]]>
+	</QUERY_CHECK_FOR_INSTANCES>
+
+	<QUERY_BED_BY_CONCEPT_DISPLAY_NAME>
+	<![CDATA[select distinct bed from
+		 BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		 and bed.concept.displayName = :conceptDisplayName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_CONCEPT_DISPLAY_NAME>
+	
+	<QUERY_BED_BY_CONCEPT_NAME>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.concept.name = :conceptName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_CONCEPT_NAME>
+		
+	<QUERY_GET_BED_BY_MODEL_GROUP_AND_CONCEPT_ID>
+	<![CDATA[select bed from BusinessEntityDefinition as bed, ModelGroup as mg 
+		 where mg.id in (:modelGroupIds) and bed.concept.id = :conceptId and 
+		 bed.entityType = :instanceEntityType  		
+	]]>
+	</QUERY_GET_BED_BY_MODEL_GROUP_AND_CONCEPT_ID>
+	
+	<QUERY_GET_CONCEPTS_BY_BED_IDS>
+	<![CDATA[select c from Concept c, BusinessEntityDefinition bed where c.id=bed.concept.id and bed.entityType= :entityType and bed.id in (:conceptBEDIds)  		
+	]]>
+	</QUERY_GET_CONCEPTS_BY_BED_IDS>
+	
+	
+	
+</queries>

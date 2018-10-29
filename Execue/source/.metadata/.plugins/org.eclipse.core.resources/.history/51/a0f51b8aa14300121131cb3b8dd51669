@@ -1,0 +1,57 @@
+<queries>
+	<QUERY_ALL_USER_QUERY_POSSIBILITY>
+		<![CDATA[from UserQueryPossibility 
+		         where userQueryId =:userQueryId]]>
+	</QUERY_ALL_USER_QUERY_POSSIBILITY>
+
+	<QUERY_POSSIBLE_ASSET_FOR_USER_REQUEST>
+		<!-- NOTE::NK:: Using Native Query -->
+		<!--  [CDATA[select uqp.modelId, uqp.possibilityId, ae.asset.id, sum(uqp.typeBasedWeight) 
+		         from UserQueryPossibility uqp,Mapping m, AssetEntityDefinition ae 
+		         where uqp.userQueryId = :userQueryId and uqp.entityBedId = 
+		         m.businessEntityDefinition.id  and m.primary = :primary
+		         and m.assetEntityDefinition.id = ae.id and ae.asset.status= :active 
+                 group by uqp.modelId, uqp.possibilityId, ae.asset.id]]-->
+		<!--  [CDATA[SELECT uqp.modelId, uqp.possibilityId, ae.asset.id, sum(uqp.typeBasedWeight) 
+		         FROM UserQueryPossibility uqp, Mapping m, AssetEntityDefinition ae, Asset 
+		         WHERE uqp.entityBedId = m.businessEntityDefinition.id
+		         AND m.assetEntityDefinition.id = ae.id 
+		         AND uqp.userQueryId = :userQueryId 
+		         AND m.primary = :primary
+		         AND ae.asset.status= :active
+		         AND 
+		         (
+		         	(uqp.measureGroupBy = :no)
+		         	OR
+		         	(uqp.measureGroupBy = :yes AND ae.asset.type = :cubeType AND ae.colum.kdxDataType = :rangeLookupType)
+		         	OR
+		         	(uqp.measureGroupBy = :yes AND ae.asset.type != :cubeType)
+		         )
+		         AND
+		         (
+		         	(uqp.measureConditionWithoutStat = :no)
+		         	OR
+		         	(uqp.measureConditionWithoutStat = :yes AND ae.asset.type = :cubeType AND ae.colum.kdxDataType = :rangeLookupType)
+		         	OR
+		         	(uqp.measureConditionWithoutStat = :yes AND ae.asset.type != :cubeType)
+		         ) 
+                 GROUP BY uqp.modelId, uqp.possibilityId, ae.asset.id]]-->                 
+	</QUERY_POSSIBLE_ASSET_FOR_USER_REQUEST>
+
+	<QUERY_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+		<![CDATA[select max(executionDate) from UserQueryPossibility]]>
+	</QUERY_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+
+	<DELETE_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+		<![CDATA[delete from UserQueryPossibility where executionDate <= :executionDate]]>
+	</DELETE_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+
+	<DELETE_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+		<![CDATA[delete from UserQueryPossibility where executionDate <= :executionDate]]>
+	</DELETE_USER_QUERY_POSSIBILITY_MAX_EXECUTION_DATE>
+
+	<DELETE_USER_QUERY_POSSIBILITY_BY_ENTITY_BED>
+		<![CDATA[delete from UserQueryPossibility where entityBedId = :entityBedId and entityType = :entityType]]>
+	</DELETE_USER_QUERY_POSSIBILITY_BY_ENTITY_BED>
+
+</queries>

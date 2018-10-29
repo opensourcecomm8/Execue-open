@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="semantificationConfigurationService"
+		class="com.execue.semantification.configuration.impl.SemantificationConfigurationImpl">
+		<property name="semantificationConfiguration" ref="semantificationConfiguration" />
+	</bean>
+
+	<bean id="semantificationConfigurableService"
+		class="com.execue.semantification.configuration.impl.SemantificationConfigurableService">
+		<property name="semantificationConfigurationService" ref="semantificationConfigurationService" />
+		<property name="rfxService" ref="rfxService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+	</bean>
+
+	<bean id="articleSemantificationService"
+		class="com.execue.semantification.batch.service.impl.ArticleSemantificationServiceImpl">
+		<property name="rfxService" ref="rfxService" />
+		<property name="udxService" ref="udxService" />
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="batchId">
+			<value>${app.node.id}</value>
+		</property>
+	</bean>
+
+	<bean id="genericArticleResemantificationService"
+		class="com.execue.semantification.batch.service.impl.GenericArticleResemantificationServiceImpl">
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="classifiedArticlePopulationService" ref="classifiedArticlePopulationService" />
+	</bean>
+
+	<bean id="genericArticleResemantificationThreadMessage"
+		class="com.execue.semantification.message.GenericArticleResemantificationThreadMessage">
+		<property name="messageService" ref="messageService" />
+		<property name="execueSystemCachedThreadPoolManager" ref="execueSystemCachedThreadPoolManager" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="genericArticleResemantificationMessageProcessor" ref="genericArticleResemantificationMessageProcessor" />
+	</bean>
+
+	<bean id="genericArticleResemantificationMessageProcessor"
+		class="com.execue.semantification.message.GenericArticleResemantificationMessageProcessor">
+		<property name="genericArticleResemantificationService" ref="genericArticleResemantificationService" />
+	</bean>
+
+	<bean id="genericArticleSemantificationService"
+		class="com.execue.semantification.batch.service.impl.GenericArticleSemantificationServiceImpl">
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="classifiedArticlePopulationService" ref="classifiedArticlePopulationService" />
+		<property name="unstructuredWarehouseManagementWrapperService" ref="unstructuredWarehouseManagementWrapperService" />
+		<property name="batchId">
+			<value>${app.node.id}</value>
+		</property>
+	</bean>
+
+	<bean id="articleSemantificationFactory"
+		class="com.execue.semantification.beanfactory.ArticleSemantificationFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="Finance" value="newsArticlePopulationService" />
+				<entry key="Craigslist" value="craigslistArticlePopulationService" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="articleMaintenanceFactory"
+		class="com.execue.semantification.beanfactory.ArticleMaintenanceFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="Default" value="baseArticleMaintenanceService" />
+				<entry key="Craigslist" value="craigslistArticleMaintenanceService" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="baseArticleMaintenanceService"
+		class="com.execue.semantification.service.BaseArticleMaintenanceService">
+		<property name="udxService" ref="udxService" />
+		<property name="rfxService" ref="rfxService" />
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+	</bean>
+
+	<bean id="classifiedArticleSemantificationAdapter"
+		class="com.execue.semantification.unstructured.adapter.impl.ClassifiedArticleSemantificationAdapterImpl">
+		<property name="udxService" ref="udxService" />
+		<property name="semantificationHelper" ref="semantificationHelper" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService" />
+        <property name="unstructuredWHFeatureContentLookupService" ref="unstructuredWHFeatureContentLookupService"/>
+	</bean>
+
+	<bean id="classifiedArticlePopulationService"
+		class="com.execue.semantification.unstructured.service.impl.ClassifiedArticlePopulationService">
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="nlpEngine" ref="nlpEngine" />
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredFacetManagementService" ref="unstructuredFacetManagementService" />
+		<property name="contentPostProcessingService" ref="contentPostProcessingService" />
+		<property name="contentPreProcessingService" ref="contentPreProcessingService" />
+		<property name="semantificationHelper" ref="semantificationHelper" />
+		<property name="reducedFormHelper" ref="reducedFormHelper" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+		<property name="unstructuredWarehouseHelper" ref="unstructuredWarehouseHelper" />
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService" />
+        <property name="unstructuredWHFeatureContentLookupService" ref="unstructuredWHFeatureContentLookupService"/>
+	</bean>
+
+	<bean id="semantificationJobService"
+		class="com.execue.semantification.service.impl.SemantificationJobServiceImpl">
+		<property name="jobDataService" ref="jobDataService" />
+	</bean>
+
+	<bean id="newsArticlePopulationService"
+		class="com.execue.semantification.unstructured.service.impl.NewsArticlePopulationService">
+		<property name="nlpEngine">
+			<ref bean="nlpEngine" />
+		</property>
+		<property name="udxService">
+			<ref bean="udxService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+
+		<property name="rfxService">
+			<ref bean="rfxService" />
+		</property>
+		<property name="rfxServiceHelper">
+			<ref bean="rfxServiceHelper" />
+		</property>
+		<property name="reducedFormHelper">
+			<ref bean="reducedFormHelper" />
+		</property>
+		<property name="rfIdGenerationService">
+			<ref bean="rfIdGenerationService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="genericArticleRuntimeTablesCleanupService"
+		class="com.execue.semantification.batch.service.impl.GenericArticleRuntimeTablesCleanupServiceImpl">
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+	</bean>
+
+	<bean id="genericOldArticlesCleanupService"
+		class="com.execue.semantification.batch.service.impl.GenericOldArticlesCleanupServiceImpl">
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredFacetManagementService" ref="unstructuredFacetManagementService" />
+		<property name="unstructuredCAManagementService" ref="unstructuredCAManagementService" />
+	</bean>
+
+	<bean id="GenericArticleBadImageURLCleanupServiceImpl"
+		class="com.execue.semantification.batch.service.impl.GenericArticleBadImageURLCleanupServiceImpl">
+		<property name="semantificationConfiguration" ref="semantificationConfigurationService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="unstructuredWarehouseManagementWrapperService" ref="unstructuredWarehouseManagementWrapperService" />
+	</bean>
+</beans>

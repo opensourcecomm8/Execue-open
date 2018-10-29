@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="com.execue.core.common.bean.qdata.UserQueryRFXValue" table="USER_QUERY_RFX_VALUE">
+        
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">USER_QUERY_RFX_VALUE</param>
+            </generator>
+        </id>
+
+        <property name="queryId" type="java.lang.Long">
+            <column name="QUERY_ID" precision="20" scale="0" />
+        </property>
+        
+  		<property name="srcConceptBedId" type="java.lang.Long">
+            <column name="SRC_CONCEPT_BE_ID" precision="20" scale="0" />
+        </property>  
+
+        <property name="relationBedId" type="java.lang.Long">
+            <column name="RELATION_BE_ID" precision="20" scale="0" />
+        </property>
+
+        <property name="destConceptBedId" type="java.lang.Long">
+            <column name="DEST_CONCEPT_BE_ID" precision="20" scale="0" />
+        </property> 
+
+        <property name="operator" type="string">
+            <column name="OPERATOR" precision="15" scale="0" />
+        </property>
+
+        <property name="startValue" type="java.lang.Double">
+            <column name="START_VALUE" precision="30" scale="2" />
+        </property>
+        
+        <property name="endValue" type="java.lang.Double">
+            <column name="END_VALUE" precision="30" scale="2" />
+        </property> 
+
+		<property name="tripleIdentifier" type="java.lang.Integer">
+			<column name="TRIPLE_IDENTIFIER" />
+		</property>
+    </class>
+ </hibernate-mapping>

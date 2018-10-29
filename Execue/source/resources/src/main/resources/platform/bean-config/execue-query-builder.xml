@@ -1,0 +1,260 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+	
+	<!-- Query Builder Factory for SWI Native Queries -->
+	<bean id="swiQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.swi.SWIQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="swiOracleQueryBuilderService"/>
+				<entry key="2" value="swiMySqlQueryBuilderService"/>
+				<entry key="3" value="swiMsSqlQueryBuilderService"/>
+				<entry key="7" value="swiTeradataQueryBuilderService"/>
+				<entry key="10" value="swiDerbyQueryBuilderService"/>
+				<entry key="11" value="swiPostgresQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="swiOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.swi.provider.type.value}"></property>
+	</bean>
+	
+	<bean id="swiMySqlQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWIMySqlQueryBuilderServiceImpl" >		
+	</bean>
+	
+	<bean id="swiMsSqlQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWIMsSqlQueryBuilderServiceImpl" >		
+	</bean>
+	
+	<bean id="swiOracleQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWIOracleQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="swiTeradataQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWITeradataQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="swiDerbyQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWIDerbyQueryBuilderServiceImpl" >		
+	</bean>
+
+	<bean id="swiPostgresQueryBuilderService" class="com.execue.querybuilder.service.swi.impl.SWIPostgresQueryBuilderServiceImpl" >		
+	</bean>
+
+	
+	<!-- Query Builder Factory for QData Native Queries -->
+	<bean id="qdataQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.qdata.QDataQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="qdataOracleQueryBuilderService"/>
+				<entry key="2" value="qdataMySqlQueryBuilderService"/>
+				<entry key="3" value="qdataMsSqlQueryBuilderService"/>
+				<entry key="7" value="qdataTeradataQueryBuilderService"/>
+				<entry key="10" value="qdataDerbyQueryBuilderService"/>
+				<entry key="11" value="qdataPostgresQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="qdataOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.qdata.provider.type.value}"></property>
+	</bean>
+    
+	<bean id="qdataMySqlQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataMySqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="qdataMsSqlQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="qdataOracleQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="qdataTeradataQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataTeradataQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="qdataDerbyQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataDerbyQueryBuilderServiceImpl" >
+	</bean>
+
+	<bean id="qdataPostgresQueryBuilderService" class="com.execue.querybuilder.service.qdata.impl.QDataPostgresQueryBuilderServiceImpl" >
+	</bean>	
+    
+	<!-- Query Builder Factory for SData Native Queries -->
+	<bean id="sdataQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.sdata.SDataQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="sdataOracleQueryBuilderService"/>
+				<entry key="2" value="sdataMySqlQueryBuilderService"/>
+				<entry key="3" value="sdataMsSqlQueryBuilderService"/>
+				<entry key="7" value="sdataTeradataQueryBuilderService"/>
+				<entry key="10" value="sdataDerbyQueryBuilderService"/>
+				<entry key="10" value="sdataPostgressQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="sdataOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.sdata.provider.type.value}"></property>
+	</bean>
+    
+	<bean id="sdataMySqlQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataMySqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="sdataMsSqlQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="sdataOracleQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="sdataTeradataQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataTeradataQueryBuilderServiceImpl" >
+	</bean>
+
+	<bean id="sdataDerbyQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataDerbyQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="sdataPostgresQueryBuilderService" class="com.execue.querybuilder.service.sdata.impl.SDataPostgresQueryBuilderServiceImpl" >
+	</bean>
+    
+	<!-- Query Builder Factory for Unstructured Content Aggregater Native Queries -->
+	<bean id="unstructuredCAQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.usca.UnstructuredCAQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="unstructuredCAOracleQueryBuilderService"/>
+				<entry key="2" value="unstructuredCAMySqlQueryBuilderService"/>
+				<entry key="3" value="unstructuredCAMsSqlQueryBuilderService"/>
+				<entry key="7" value="unstructuredCATeradataQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="unstructuredCAOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.usca.provider.type.value}"></property>
+	</bean>
+    
+	<bean id="unstructuredCAMySqlQueryBuilderService" class="com.execue.querybuilder.service.usca.impl.UnstructuredCAMySqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="unstructuredCAMsSqlQueryBuilderService" class="com.execue.querybuilder.service.usca.impl.UnstructuredCAMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="unstructuredCAOracleQueryBuilderService" class="com.execue.querybuilder.service.usca.impl.UnstructuredCAOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="unstructuredCATeradataQueryBuilderService" class="com.execue.querybuilder.service.usca.impl.UnstructuredCATeradataQueryBuilderServiceImpl" >
+	</bean>
+    
+	<!-- Query Builder Factory for Unstructured Warehouse Native Queries -->
+	<bean id="unstructuredWHQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.uswh.UnstructuredWHQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="unstructuredWHOracleQueryBuilderService"/>
+				<entry key="2" value="unstructuredWHMySqlQueryBuilderService"/>
+				<entry key="3" value="unstructuredWHMsSqlQueryBuilderService"/>
+				<entry key="7" value="unstructuredWHTeradataQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="unstructuredWHOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.uswh.provider.type.value}"></property>
+	</bean>
+    
+	<bean id="unstructuredWHMySqlQueryBuilderService" class="com.execue.querybuilder.service.uswh.impl.UnstructuredWHMySqlQueryBuilderServiceImpl" >
+		<property name="providerTypeValue" value = "2"/>     
+	</bean>
+    
+	<bean id="unstructuredWHMsSqlQueryBuilderService" class="com.execue.querybuilder.service.uswh.impl.UnstructuredWHMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="unstructuredWHOracleQueryBuilderService" class="com.execue.querybuilder.service.uswh.impl.UnstructuredWHOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="unstructuredWHTeradataQueryBuilderService" class="com.execue.querybuilder.service.uswh.impl.UnstructuredWHTeradataQueryBuilderServiceImpl" >
+	</bean>
+
+	<!-- Query Builder Factory for Client Source Native Queries -->
+	<bean id="clientSourceQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.client.ClientSourceQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="clientOracleQueryBuilderService"/>
+				<entry key="2" value="clientMySqlQueryBuilderService"/>
+				<entry key="3" value="clientMsSqlQueryBuilderService"/>
+				<entry key="4" value="clientSourceDB2QueryBuilderServiceImpl"/>
+				<entry key="7" value="clientTeradataQueryBuilderService"/>
+				<entry key="8" value="clientSASQueryBuilderService"/>
+				<entry key="9" value="clientSASQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="clientOracleQueryBuilderService"/>
+			</map>
+		</property>
+	</bean>
+    
+	<bean id="clientMySqlQueryBuilderService" class="com.execue.querybuilder.service.client.impl.ClientSourceMySqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="clientMsSqlQueryBuilderService" class="com.execue.querybuilder.service.client.impl.ClientSourceMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="clientOracleQueryBuilderService" class="com.execue.querybuilder.service.client.impl.ClientSourceOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="clientTeradataQueryBuilderService" class="com.execue.querybuilder.service.client.impl.ClientSourceTeradataQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="clientSASQueryBuilderService" class="com.execue.querybuilder.service.client.impl.ClientSourceSASQueryBuilderServiceImpl" >
+	</bean>    
+
+	<bean id="clientSourceDB2QueryBuilderServiceImpl" class="com.execue.querybuilder.service.client.impl.ClientSourceDB2QueryBuilderServiceImpl" >
+	</bean>
+
+	<bean id="clientSourcePostgresQueryBuilderServiceImpl" class="com.execue.querybuilder.service.client.impl.ClientSourcePostgresQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="clientSourceDerbyQueryBuilderServiceImpl" class="com.execue.querybuilder.service.client.impl.ClientSourceDerbyQueryBuilderServiceImpl" >
+	</bean>
+
+	
+	<!-- Query Builder Factory for AuditTrail Native Queries -->
+	<bean id="audittrailQueryBuilderServiceFactory" 
+		class="com.execue.querybuilder.service.audittrail.AuditTrailQueryBuilderServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="audittrailOracleQueryBuilderService"/>
+				<entry key="2" value="audittrailMySqlQueryBuilderService"/>
+				<entry key="3" value="audittrailMsSqlQueryBuilderService"/>
+				<entry key="7" value="audittrailTeradataQueryBuilderService"/>
+				<entry key="10" value="audittrailDerbyQueryBuilderService"/>
+				<entry key="11" value="audittrailPostgresQueryBuilderService"/>
+				<!-- default -->
+				<entry key="0" value="audittrailOracleQueryBuilderService"/>
+			</map>
+		</property>
+		<property name="providerTypeValue" value="${db.source.audit-trail.provider.type.value}"></property>
+	</bean>
+    
+	<bean id="audittrailMySqlQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailMySqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="audittrailMsSqlQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailMsSqlQueryBuilderServiceImpl" >       
+	</bean>
+    
+	<bean id="audittrailOracleQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailOracleQueryBuilderServiceImpl" >
+	</bean>
+    
+	<bean id="audittrailTeradataQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailTeradataQueryBuilderServiceImpl" >
+	</bean>
+	
+	<bean id="audittrailDerbyQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailDerbyQueryBuilderServiceImpl" >
+	</bean>
+
+	<bean id="audittrailPostgresQueryBuilderService" class="com.execue.querybuilder.service.audittrail.impl.AuditTrailPostgresQueryBuilderServiceImpl" >
+	</bean>
+
+	
+</beans>
+

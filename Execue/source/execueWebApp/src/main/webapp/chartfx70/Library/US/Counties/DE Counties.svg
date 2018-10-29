@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg >
+
+<svg  width="263.921pt" height="600.724pt" viewBox="0 0 263.921 600.724" xml:space="preserve">
+	<g id="Layer_x0020_1" style="fill-rule:nonzero;clip-rule:nonzero;stroke:#000000;stroke-miterlimit:4; font-family:'Arial'; font-size:10;">
+		<g>
+			<path style="fill:#FFFFFF;" d="M96.367,204.523l-21.646,27.818l-61.822,6.188v24.725l3.095,40.194l9.265,132.917h58.73l21.646-34.007l30.914-6.172l3.094-12.363l30.908,3.081l-6.186-21.631l-24.723-46.368l3.095-21.644v-34.007l-12.377-27.818l-33.994-30.913z"/>
+			<text transform="matrix(1 0 0 1 73.7046 312.7163)"><tspan x="0" y="0" style="stroke:none;">Kent</tspan></text>
+		</g>
+		<g style="stroke:none;">
+			<path style="fill:#FFFFFF;stroke:#000000;" d="M133.453,15.957L111.825,0.5H65.456L43.811,12.878l-18.552,12.36l-9.265,24.724L0.537,46.868l9.268,157.655l3.094,34.006l61.822-6.188l21.646-27.818l-21.646-40.179l6.188-34.005l-9.283-15.457V87.063l15.457-12.361
+				l12.362-3.095l24.738-46.37l6.177-9.282h3.092z"/>
+			<text transform="matrix(1 0 0 1 33.8081 71.6079)"><tspan x="0" y="0">New</tspan><tspan x="-4.17" y="12">Castle</tspan></text>
+		</g>
+		<g>
+			<path style="fill:#FFFFFF;" d="M170.551,386.903l-30.908-3.081l-3.094,12.363l-30.914,6.172L83.99,436.364h-58.73l6.188,80.375l3.096,37.099l3.079,43.275h120.568l102.002,3.093l-6.188-46.368l-30.908-6.188l-18.538,3.093v-15.455l21.631,6.174l9.284-15.456
+				l-12.377-15.455l18.548-12.363l9.282,6.189l-3.094,12.362h15.457l-12.363-52.557l-37.1-12.363l-37.102-40.179l-6.175-24.737z"/>
+			<text transform="matrix(1 0 0 1 107.7876 504.377)"><tspan x="0" y="0" style="stroke:none;">Sussex</tspan></text>
+		</g>
+	</g>
+</svg>

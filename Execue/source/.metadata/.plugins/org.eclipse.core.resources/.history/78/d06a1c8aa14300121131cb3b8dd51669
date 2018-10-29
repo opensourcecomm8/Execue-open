@@ -1,0 +1,22 @@
+<queries>
+	
+	<QUERY_DELETE_FEATURE_RANGES_BY_FEATURE_ID>		
+	<![CDATA[delete from FeatureRange  fr where fr.featureId = :featureId]]>	
+	</QUERY_DELETE_FEATURE_RANGES_BY_FEATURE_ID>
+
+	<QUERY_GET_FEATURE_RANGES_BY_FEATURE_ID>
+	<![CDATA[select fr from FeatureRange fr where fr.featureId=:featureId	
+	]]>	
+	</QUERY_GET_FEATURE_RANGES_BY_FEATURE_ID>
+
+	<QUERY_GET_FEATURE_RANGES_BY_FEATURE_ID_EXCLUDING_DEFAULT>
+	<![CDATA[select fr from FeatureRange fr,FeatureRangeInfo fri where fr.featureId= fri.featureId and fr.startValue != fri.defaultValue and fr.endValue != fri.defaultValue and fr.featureId=:featureId  	
+	]]>
+	</QUERY_GET_FEATURE_RANGES_BY_FEATURE_ID_EXCLUDING_DEFAULT>
+
+	<QUERY_GET_FEATURE_RANGE_BY_FEATURE_ID_AND_RANGE_NAME>
+	<![CDATA[select fr from FeatureRange fr where fr.featureId=:featureId and fr.rangeName=:rangeName	
+	]]>	
+	</QUERY_GET_FEATURE_RANGE_BY_FEATURE_ID_AND_RANGE_NAME>
+
+</queries>

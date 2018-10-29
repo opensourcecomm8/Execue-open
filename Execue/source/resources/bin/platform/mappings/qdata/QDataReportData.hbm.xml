@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 9, 2009 3:28:24 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    
+	<class name="com.execue.core.common.bean.qdata.QDataReportData" table="REPORT_DATA">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">REPORT_DATA</param>
+			</generator>
+		</id>
+        
+		<property name="payload" type="string">
+			<column name="PAYLOAD" length="65535" />
+		</property>
+
+		<many-to-one name="aggregatedQuery" class="com.execue.core.common.bean.qdata.QDataAggregatedQuery" column ="AGGREGATED_QUERY_ID"  unique= "true" not-null = "true">
+			<!--<column name="AGGREGATED_QUERY_ID" /> -->
+		</many-to-one>        
+	</class>
+
+</hibernate-mapping>

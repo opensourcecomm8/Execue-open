@@ -1,0 +1,60 @@
+
+<queries>
+
+	<QUERY_GET_MAPPINGS_FOR_AED_SET>
+	<![CDATA[from Mapping mapping where 
+		 mapping.assetEntityDefinition in (:assetEntityDefinitions)
+	]]>
+	</QUERY_GET_MAPPINGS_FOR_AED_SET>
+
+	<QUERY_GET_AEDS_FOR_MEMBER_SET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.membr in (:members) and
+		 assetEntityDefinition.entityType = :memberEntityType
+	]]>
+	</QUERY_GET_AEDS_FOR_MEMBER_SET>
+
+	<QUERY_GET_AEDS_FOR_COLUMN_SET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.colum in 
+		(:columns) and assetEntityDefinition.entityType = :columnEntityType
+	]]>
+	</QUERY_GET_AEDS_FOR_COLUMN_SET>
+
+	<QUERY_GET_AEDS_FOR_TABLE_SET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.tabl in (:tables)
+		 and assetEntityDefinition.entityType = :tableEntityType
+	]]>
+	</QUERY_GET_AEDS_FOR_TABLE_SET>
+
+	<QUERY_GET_AEDS_FOR_ASSET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.asset = :asset and 
+		 assetEntityDefinition.entityType = :assetEntityType
+	]]>
+	</QUERY_GET_AEDS_FOR_ASSET>
+	
+	<QUERY_ASSET_ENTITY_UPDATE_POPULARITY>
+	<![CDATA[update AssetEntityDefinition aed
+		 set aed.popularity = aed.popularity + 1 
+		 where aed.id in (:assetEntityTermIds)
+	]]>
+	</QUERY_ASSET_ENTITY_UPDATE_POPULARITY>	
+
+    <QUERY_GET_COLUMN_IDS_BY_AED_IDS>
+    <![CDATA[select aed.colum.id, aed.id from AssetEntityDefinition aed 
+         where aed.id in (:columnAEDIDs) 
+         and aed.entityType = :entityType
+    ]]>
+    </QUERY_GET_COLUMN_IDS_BY_AED_IDS>
+
+    <QUERY_GET_MEMBER_IDS_BY_AED_IDS>
+    <![CDATA[select aed.membr.id, aed.id from AssetEntityDefinition aed 
+         where aed.id in (:memberAEDIDs) 
+         and aed.entityType = :entityType
+    ]]>
+    </QUERY_GET_MEMBER_IDS_BY_AED_IDS>
+	
+</queries>
+

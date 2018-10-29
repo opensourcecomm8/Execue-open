@@ -1,0 +1,87 @@
+Account#*#10001#*#ID#*#Account,ACCOUNT_ID,Account#*#\N
+AccountAge#*#10002#*#MEASURE#*#AccountAge,MOB,Account Age,Acct_Age#*#\N
+AccountCenterLogin#*#10003#*#MEASURE#*#AccountCenterLogin,AC_LOGIN,Account Center Login#*#\N
+AccountCenterRegistered#*#10004#*#MEASURE#*#AccountCenterRegistered,AC_REG,Account Center Registered#*#\N
+AccountStatus#*#10005#*#SL#*#AccountStatus,EXT_STATUS,Account Status#*#SL_EXT_STATUS
+BalanceTransferAmount#*#10008#*#MEASURE#*#BalanceTransferAmount,BT_AMT,Balance Transfer Amount,BT_Amt_#*#\N
+BalanceTransferAmountFlag#*#10203#*#SL#*#BalanceTransferAmountFlag,BT_AMT_FLAG,Balance Transfer Amount Indicator#*#BalTransAmtInd
+BalanceTransferBalance#*#10011#*#MEASURE#*#BalanceTransferBalance,BT_BAL,Balance Transfer Balance#*#\N
+BalanceTransferBalanceFlag#*#10187#*#SL#*#BalanceTransferBalanceFlag,BT_BAL_FLAG,Balance Transfer Balance Indicator#*#BalTransBalInd
+BalanceTransferFee#*#10009#*#MEASURE#*#BalanceTransferFee,BT_FEE,Balance Transfer Fee#*#\N
+BalanceTransferFeeFlag#*#10188#*#SL#*#BalanceTransferFeeFlag,BT_FEE_FLAG,Balance Transfer Fee Indicator#*#\N
+BehaviorScore#*#10014#*#MEASURE#*#BehaviorScore,BEH_SCORE_NUMBER,Behavior Score,BScore#*#\N
+BillingBalance#*#10015#*#MEASURE#*#BillingBalance,CYCL_BAL,Billing Balance#*#Billing_Bal_,Billing_Bal,RL_CYCL_BAL
+BillingBalanceFlag#*#10189#*#DIMENSION#*#BillingBalanceFlag,CYCL_BAL_FLAG,Billing Balance Indicator#*#BillBalInd
+CashAdvanceAmount#*#10017#*#MEASURE#*#CashAdvanceAmount,CASH_AMT,Cash Advance Amount#*#CASH,Cash_Adv__Amt
+CashAdvanceAmountFlag#*#10206#*#DIMENSION#*#CashAdvanceAmountFlag,CASH_AMT_FLAG,Cash Advance Amount Indicator#*#CashAdvAmtInd
+CashAdvanceBalance#*#10019#*#MEASURE#*#CashAdvanceBalance,CASH_BAL,Cash Advance Balance#*#Cash_Adv_Bal
+CashAdvanceBalanceFlag#*#10209#*#DIMENSION#*#CashAdvanceBalanceFlag,CASH_BAL_FLAG,Cash Advance Balance Indicator#*#\N
+CashbackBonusBalance#*#10021#*#MEASURE#*#CashbackBonusBalance,CBB_BANK,Cash Back Bonus Balance#*#CBB_Bal
+CashbackBonusBalanceFlag#*#10212#*#DIMENSION#*#CashbackBonusBalanceFlag,CBB_BANK_FLAG,Cash Back Bonus Balance Indicator#*#\N
+ChargedOffFlag#*#10245#*#DIMENSION#*#ChargedOffFlag,CHARGED_OFF,Charged Off#*#\N
+CloseFlag#*#10255#*#DIMENSION#*#CloseFlag,CLOSE_IND,Close#*#\N
+CreditLine#*#10065#*#MEASURE#*#CreditLine,CREDIT_LINE,Credit#*#\N
+CyclesDelinquent#*#10025#*#MEASURE#*#CyclesDelinquent,DLQNT_CNT,Cycles Delinquent#*#CyclesDLQ
+DaysDelinquent#*#10026#*#DIMENSION#*#DaysDelinquent,DAYS_DELINQUENT,Days Delinquent#*#\N
+DebitActiveFlag#*#10276#*#DIMENSION#*#DebitActive,DEBIT_ACTIVE_FLAG,Debit Active#*#Debit_Active,SL_DEBIT_ACTIVE_FLAG
+DelinquentBalanceFlag#*#10191#*#DIMENSION#*#DelinquentBlanceFlag,DEL_BAL_FLAG,Delinquent#*#DLQ,DLQ_PERCENT,SL_DEL_BAL_FLAG
+DelinquentBalance#*#10028#*#MEASURE#*#DelinquentBalance,DEL_BAL,Delinquent Balance#*#DLQ_Bal
+DelinquentFive#*#10040#*#MEASURE#*#DelinquentFive,CYCL_5_DLQ,Delinquent Five#*#\N
+DelinquentFiveBalance#*#10041#*#MEASURE#*#DelinquentFiveBalance,CYCL_5_DLQ_BAL,Delinquent Five Balance#*#\N
+DelinquentFour#*#10038#*#DIMENSION#*#DelinquentFour,CYCL_4_DLQ,Delinquent Four#*#DLQFour
+DelinquentFourBalance#*#10039#*#MEASURE#*#DelinquentFourBalance,CYCL_4_DLQ_BAL,Delinquent Four Balance#*#DLQFourBal
+DelinquentOne#*#10029#*#DIMENSION#*#DelinquentOne,CYCL_1_DLQ,Delinquent One#*#DLQOne,DLQOne_PERCENT
+DelinquentOneBalance#*#10030#*#MEASURE#*#DelinquentOneBalance,CYCL_1_DLQ_BAL,Delinquent One Balance#*#DLQOneBal
+DelinquentOnePlus#*#10031#*#DIMENSION#*#DelinquentOnePlus,CYCL_1_PLUS_DLQ,Delinquent One Plus#*#\N
+DelinquentOnePlusBalance#*#10032#*#MEASURE#*#DelinquentOnePlusBalance,CYCL_1_PLUS_DLQ_BAL,Delinquent One Plus Balance#*#\N
+DelinquentSix#*#10044#*#DIMENSION#*#DelinquentSix,CYCL_6_DLQ,Delinquent Six#*#DLQSix_PERCENT
+DelinquentSixBalance#*#10045#*#MEASURE#*#DelinquentSixBalance,CYCL_6_DLQ_BAL,Delinquent Six Balance#*#DLQSixBal
+DelinquentThree#*#10036#*#DIMENSION#*#DelinquentThree,CYCL_3_DLQ,Delinquent Three#*#DLQThree,DLQThree_PERCENT
+DelinquentThreeBalance#*#10037#*#MEASURE#*#DelinquentThreeBalance,CYCL_3_DLQ_BAL,Delinquent Three Balance#*#DLQThreeBal,DLQ_3_Bal
+DelinquentThreePlus#*#10067#*#DIMENSION#*#DelinquentThreePlus,CYCL_3_PLUS_DLQ,Delinquent Three Plus#*#\N
+DelinquentThreePlusBalance#*#10068#*#MEASURE#*#DelinquentThreePlusBalance,CYCL_3_PLUS_DLQ_BAL,Delinquent Three Plus Balance#*#\N
+DelinquentTwo#*#10066#*#DIMENSION#*#DelinquentTwo,CYCL_2_DLQ,Delinquent Two#*#DLQTwo_PERCENT
+DelinquentTwoBalance#*#10033#*#MEASURE#*#DelinquentTwoBalance,CYCL_2_DLQ_BAL,Delinquent Two Balance#*#DLQTwoBal
+DelinquentTwoPlus#*#10034#*#DIMENSION#*#DelinquentTwoPlus,CYCL_2_PLUS_DLQ,Delinquent Two Plus#*#\N
+DelinquentTwoPlusBalance#*#10035#*#MEASURE#*#DelinquentTwoPlusBalance,CYCL_2_PLUS_DLQ_BAL,Delinquent Two Plus Balance#*#\N
+EarnedCashbackBonus#*#10215#*#MEASURE#*#EarnedCashbackBonus,CBB_EARNED,Earned Cash Back Bonus#*#Earned_CBB
+EarnedCashbackBonusFlag#*#10216#*#DIMENSION#*#EarnedCashBackBonusFlag,CBB_EARNED_FLAG,Earned Cash Back Bonus Indicator#*#\N
+ExpiredBalanceTransferBalance#*#1107#*#MEASURE#*#ExpiredBalanceTransferBalance,EXP_BT_BAL,Expired Balance Transfer Balance#*#\N
+ExpiredBalanceTransferBalanceFlag#*#10265#*#DIMENSION#*#ExpiredBalanceTransferBalanceFlag,EXP_BT_BAL_FLAG,Expired Balance Transfer Balance Indicator#*#ExpBalTranBalInd
+FicoScore#*#10049#*#MEASURE#*#FicoScore,FICO_SCORE_NUMBER,Fico Score#*#FICO,FICO_,RL_FICO_SCORE_NUMBER
+FinanceCharge#*#10050#*#MEASURE#*#FinanceCharge,FIN_CHARGE,Finance Charge#*#Finance_Charge
+FinanceChargeFlag#*#10219#*#DIMENSION#*#FinanceChargeFlag,FIN_CHARGE_FLAG,Finance Charge Flag#*#FinChargeInd
+GoodBalance#*#10054#*#MEASURE#*#GoodBalance,GOOD_BAL,Good Balance#*#Good_Bal
+GoodBalanceFlag#*#10221#*#DIMENSION#*#GoodBalanceFlag,GOOD_BAL_FLAG,Good Balance Indicator#*#\N
+GrossActiveFlag#*#10277#*#DIMENSION#*#GrossActiveFlag,GROSS_ACTIVE_FLAG,Gross Active#*#Gross_Active
+JoiningMonth#*#10105#*#SL#*#JoiningMonth,VNTG_YM,Joining Month#*#\N
+LateFee#*#10052#*#MEASURE#*#LateFee,LATE_FEE,Late Fee#*#\N
+LateFeeFlag#*#10220#*#DIMENSION#*#LateFeeFlag,LATE_FEE_FLAG,Late Fee Indicator#*#\N
+MerchandiseAmount#*#10056#*#MEASURE#*#MerchandiseAmount,MRC_AMT,Merchandise Amount,Merchandise Sales Amount#*#Merch_Amt,Merch_Amt_,Merch_Amt_STDDEV
+MerchantAmountFlag#*#10270#*#DIMENSION#*#MerchandiseAmountFlag,MRC_AMT_FLAG,Merchandise Amount Indicator#*#MerchAmtInd
+MerchandiseBalance#*#10057#*#MEASURE#*#MerchandiseBalance,MRC_BAL,Merchandise Balance#*#Merch_Bal,Merch_Bal_STDDEV
+MerchandiseBalanceFlag#*#10262#*#DIMENSION#*#MerchandiseBalanceFlag,MRC_BAL_FLAG,Merchandise Balance Indicator#*#MerchBalInd
+NetIncome#*#10059#*#MEASURE#*#NetIncome,SPF2,Net Income#*#Net_Inc,Net_Income
+NetIncomeExcludingWriteOff#*#10229#*#MEASURE#*#NetIncomeExcludingWriteOff,SPF1,Net Income Excluding Write Off#*#Net_Inc_ex_Write_Off
+NewsletterOptIn#*#10254#*#MEASURE#*#NewsletterOptIn,NEWSLETTER_OPTIN,Newsletter Opt In#*#Newsletter_Opt_In
+OffusBalance#*#10250#*#MEASURE#*#OffUsBalance,OFFUSBAL,Off Us Balance#*#\N
+OffusCreditLine#*#10249#*#MEASURE#*#OffUsCreditLine,OFFUS_CRDTLINE,Off Us Credit Limit#*#Off_Us_Limit
+OffusUtilization#*#10248#*#MEASURE#*#OffUsUtilization,OFFUS_UTIL,Off Us Utilization#*#\N
+OpenFlag#*#10251#*#DIMENSION#*#OpenFlag,OPEN_IND,Open#*#Open
+OverlimitFeeFlag#*#10273#*#DIMENSION#*#Overlimit,OVERLIMIT_FEE_FLAG,Overlimit#*#SL_OVERLIMIT_FEE_FLAG
+OverlimitFee#*#10061#*#MEASURE#*#OverlimitFee,OVERLIMIT_FEE,Overlimit Fee#*#\N
+PaymentAmount#*#10074#*#MEASURE#*#PaymentAmount,PAYMENT_AMOUNT,Payment Amount#*#\N
+PaymentFlag#*#10185#*#DIMENSION#*#PaymentAmountFlag,PAYMENT_FLAG,Payment Amount Indicator#*#\N
+PerformanceMonth#*#10007#*#SL#*#PerformanceMonth,PERF_YM,Performance Month#*#Bill Month,SL_PERF_YM
+PerformanceQuarter#*#10231#*#SL#*#PerformanceQuarter,PERF_QTR,Performance Quarter#*#Quarter
+PerformanceYear#*#10230#*#SL#*#PerformanceYear,PERF_YR,Performance Year#*#Year,SL_PERF_YR
+PortfolioSegment#*#10070#*#SL#*#PortfolioSegment,PORT_SEG,Portfolio Segment#*#SL_PORT_SEG
+PortfolioSegmentGroup#*#10104#*#DIMENSION#*#PortfolioSegmentGroup,PORT_SEG_GRP,Portfolio Segment Group#*#Port_Seg_Grp,SL_PORT_SEG_GRP
+Product#*#10047#*#SL#*#Product,CARD_TYPE_CD,Product#*#SL_CARD_TYPE_CD
+PurchaseActiveFlag#*#10278#*#DIMENSION#*#PurchaseActive,PURCHASE_ACTIVE_FLAG,Purchase Active#*#PurchActiveInd,Purchase Active Indicator,SL_PURCHASE_ACTIVE_FLAG
+RevolveFlag#*#10190#*#DIMENSION#*#RevolveFlag,REVOLVE_FLAG,Revolving#*#SL_REVOLVE_FLAG
+RevolvingBalance#*#10063#*#MEASURE#*#RevolvingBalance,REVOLVE_BAL,Revolving Balance#*#Rev_Bal
+RiskAdjustedNetIncome#*#10228#*#MEASURE#*#RiskAdjustedNetIncome,SPF3,Risk Adjusted Net Income#*#Risk_Adj_Net_Inc
+UsageSegment#*#10069#*#SL#*#UsageSegment,USAGE_SEG,Usage Segment#*#SL_USAGE_SEG
+UsageSegmentGroup#*#10103#*#DIMENSION#*#UsageSegmentGroup,USAGE_SEG_GRP,Usage Segment Group#*#SL_USAGE_SEG_GRP
+Utilization#*#10048#*#MEASURE#*#Utilization,UTIL,Utilization#*#\N

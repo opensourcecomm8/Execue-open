@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<execue-configuration>
+	<qdata>
+		<static-values>
+			<sql-group-concat-default-delimiter><![CDATA[\,]]></sql-group-concat-default-delimiter>
+			<sql-concat-delimiter><![CDATA[~]]></sql-concat-delimiter>		  	
+		</static-values>		
+	</qdata>
+</execue-configuration>

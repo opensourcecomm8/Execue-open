@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="unstructuredCALinkDAO" class="com.execue.uscada.dataaccess.dao.impl.UnstructuredCALinkDAOImpl" >         
+		<property name="unstructuredCAPooledDataManager">
+			<ref bean="unstructuredCAPooledDataManager"/>
+		</property> 
+	</bean>
+	
+	<bean id="unstructuredCAFeedDAO" class="com.execue.uscada.dataaccess.dao.impl.UnstructuredCAFeedDAOImpl" >         
+		<property name="unstructuredCAPooledDataManager">
+			<ref bean="unstructuredCAPooledDataManager"/>
+		</property> 
+	</bean>
+    
+	<bean id="unstructuredCACategoryDAO" class="com.execue.uscada.dataaccess.dao.impl.UnstructuredCACategoryDAOImpl" >         
+		<property name="unstructuredCAPooledDataManager">
+			<ref bean="unstructuredCAPooledDataManager"/>
+		</property> 
+	</bean>
+	
+	<bean id="unstructuredCADataAccessConfigurationService" class="com.execue.uscada.configuration.impl.UnstructuredCADataAccessConfigurationServiceImpl">
+		<property name="unstructuredCADataAccessConfiguration" ref="unstructuredCADataAccessConfiguration" />
+		<property name="databaseProperties" ref="databasePropertiesFactoryBean"/>	
+	</bean>	
+	
+	<bean id="unstructuredCADataAccessConfigurableService" class="com.execue.uscada.configuration.impl.UnstructuredCADataAccessConfigurableService">
+		<property name="unstructuredCAPooledDataManager">
+			<ref bean="unstructuredCAPooledDataManager"/>
+		</property>
+	</bean>	
+	
+	<bean id="unstructuredCAPooledDataManager" 
+		class="com.execue.uscada.configuration.impl.UnstructuredCAPooledDataManager" >
+		<property name="unstructuredCADataAccessConfigurationService">
+			<ref bean="unstructuredCADataAccessConfigurationService"/>
+		</property>
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO"/>
+		</property>	
+		<property name="appDataSourceDAO">
+			<ref bean="appDataSourceDAO"/>
+		</property>
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO"/>
+		</property>				
+		<property name="hibernateTemplateBuilderService">
+			<ref bean="hibernateTemplateBuilderService"/>
+		</property>
+		<property name="applicationDAO">
+			<ref bean="applicationDAO" />
+		</property>	
+	</bean>
+</beans>

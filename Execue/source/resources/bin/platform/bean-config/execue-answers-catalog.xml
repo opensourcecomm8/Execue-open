@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	
+		
+	<bean id="answersCatalogConfigurationService" class="com.execue.ac.configuration.impl.AnswersCatalogConfigurationServiceImpl">
+		<property name="answersCatalogConfiguration">
+			<ref bean="answersCatalogConfiguration"/>
+		</property>
+		<property name="answersCatalogDBConfiguration">
+			<ref bean="answersCatalogDBConfiguration"/>
+		</property>
+	</bean>
+    
+	<bean id="answersCatalogDefaultsService" class="com.execue.ac.service.impl.AnswersCatalogDefaultsServiceImpl">
+		<property name="answersCatalogConfigurationService">
+			<ref bean="answersCatalogConfigurationService"/>
+		</property>		
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService"/>
+		</property>		
+		<property name="dataSourceSelectionService">
+			<ref bean="dataSourceSelectionService"/>
+		</property>
+	</bean>
+
+	<!-- Bean Definitions for Optimal DSet Algorithm - Begin-->
+	<bean id="optimalDSetHelperOld" class="com.execue.ac.algorithm.optimaldsetoldversion.OptimalDSetHelper">
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService"/>
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService"/>
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService"/>
+		</property>
+		<property name="rangeSuggestionService">
+			<ref bean="rangeSuggestionService"/>
+		</property>
+		<property name="answersCatalogDefaultsService">
+			<ref bean="answersCatalogDefaultsService"/>
+		</property>		
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>		
+		<property name="answersCatalogContextBuilderService">
+			<ref bean="answersCatalogContextBuilderService"/>
+		</property>		
+	</bean>
+	<bean id="optimalDSetInvocationServiceOld" class="com.execue.ac.algorithm.optimaldsetoldversion.impl.OptimalDSetInvocationServiceImpl">
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService"/>
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService"/>
+		</property>
+		<property name="queryDataService">
+			<ref bean="queryDataService"/>
+		</property>
+		<property name="optimalDSetGenerator">
+			<ref bean="optimalDSetGenerator"/>
+		</property>
+		<property name="optimalDSetEvaluationService">
+			<ref bean="optimalDSetEvaluationService"/>
+		</property>
+		<property name="optimalDSetHelper">
+			<ref bean="optimalDSetHelperOld"/>
+		</property>
+		<property name="cubeCreationService">
+			<ref bean="cubeCreationService"/>
+		</property>		
+	</bean>     
+	<bean id="optimalDSetEvaluationService" class="com.execue.ac.algorithm.optimaldsetoldversion.impl.OptimalDSetEvaluationServiceImpl">
+	</bean>     
+	<bean id="optimalDSetGenerator" class="com.execue.ac.algorithm.optimaldsetoldversion.OptimalDSetGenerator">
+		<property name="optimalDSetAlgorithmFactory">
+			<bean class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+				<property name="targetBeanName">
+					<idref local="historicalAlgorithm" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="historicalAlgorithm" class="com.execue.ac.algorithm.optimaldsetoldversion.impl.HistoricalDataAlgorithm"  scope="prototype">
+		<property name="inputCoverage" value="80"/>
+		<property name="maxIterations" value="10000"/>
+		<property name="minCommonDimension" value="1"/>
+		<property name="maxCostPerSet" value="10000"/>
+		<property name="maxSetsToReturn" value="10"/>
+	</bean>     
+	<bean id="fatCubeAlgorithm" class="com.execue.ac.algorithm.optimaldsetoldversion.impl.FatCubeAlgorithm"  scope="prototype">
+		<property name="maxIterations" value="10"/>
+		<property name="minCommonDimension" value="1"/>
+		<property name="maxCostPerSet" value="5000"/>
+		<property name="maxSetsToReturn" value="0"/>
+	</bean>
+	<!-- Bean Definitions for Optimal DSet Algorithm - End -->
+	
+	<!-- Bean Definitions for Mart Creation -->
+	<bean id="randomNumberGeneratorService" class="com.execue.ac.service.impl.RandomNumberGeneratorServiceImpl">
+	</bean>
+	<bean id="basicSampleSizeCalculatorService" class="com.execue.ac.service.impl.BasicSampleSizeCalculatorServiceImpl">
+	</bean>
+	
+	<bean id="sampleSizeCalculatorService" class="com.execue.ac.service.impl.SampleSizeCalculatorServiceImpl">
+		<property name="clientSourceDAO" ref="clientSourceDAO"/>
+	</bean>
+	
+	<bean id="martBatchCountPopulationService" class="com.execue.ac.service.impl.MartBatchCountPopulationServiceImpl">
+	</bean>
+	<bean id="martTotalSlicesCalculatorService" class="com.execue.ac.service.impl.MartTotalSlicesCalculatorServiceImpl">
+	</bean>
+	<bean id="answersCatalogDataAccessService" class="com.execue.ac.service.impl.AnswersCatalogDataAccessServiceImpl">
+		<property name="genericJDBCService" ref="genericJDBCService"/>
+		<property name="clientSourceDAO" ref="clientSourceDAO"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+	</bean>
+	<bean id="answersCatalogSQLQueryGenerationService" class="com.execue.ac.service.impl.AnswersCatalogSQLQueryGenerationServiceImpl">
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory"/>
+	</bean>
+	<bean id="martInputValidatorService" class="com.execue.ac.service.impl.MartInputValidatorServiceImpl">
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+	</bean> 
+	<bean id="martCreationServiceHelper" class="com.execue.ac.helper.MartCreationServiceHelper">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"></property>		
+		<property name="sdxManagementService" ref="sdxManagementService"></property>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"></property>
+		<property name="mappingManagementService" ref="mappingManagementService"></property>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"></property>
+		<property name="defaultDynamicValueService" ref="defaultDynamicValueService"></property>
+		<property name="correctMappingService" ref="correctMappingService"></property>
+		<property name="defaultMetricService" ref="defaultMetricService"></property>
+		<property name="assetPublishService" ref="assetPublishServiceImpl"></property>
+		<property name="assetExtractionService" ref="assetExtractionService"></property>
+		<property name="assetDetailService" ref="assetDetailService"></property>		
+		<property name="virtualTableManagementService" ref="virtualTableManagementService"></property>
+		<property name="coreConfigurationService" ref="coreConfigurationService"></property>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="remoteDataTransferService" ref="remoteDataTransferService"/>
+		<property name="jobDataService" ref="jobDataService"/>
+		<property name="securityDefinitionPublishWrapperService" ref="securityDefinitionPublishWrapperService"/>				
+	</bean>
+	<bean id="martContextPopulationService" class="com.execue.ac.service.impl.MartContextPopulationServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="answersCatalogConfigurationService" ref="answersCatalogConfigurationService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"></property>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>
+		<property name="userManagementService" ref="userManagementService"/>
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>
+		<property name="martTotalSlicesCalculatorService" ref="martTotalSlicesCalculatorService"/>	
+		<property name="samplingStrategyIdentificationService" ref="samplingStrategyIdentificationService"/>
+	</bean>
+	<bean id="martPopulationSliceService" class="com.execue.ac.service.impl.MartPopulationSliceServiceImpl">
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="randomNumberGeneratorService" ref="randomNumberGeneratorService"/>	
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>	
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>	
+	</bean>
+	<bean id="martFractionalDatasetPopulationService" class="com.execue.ac.service.impl.MartFractionalDatasetPopulationServiceImpl">
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="basicSampleSizeCalculatorService" ref="basicSampleSizeCalculatorService"/>		
+		<property name="sampleSizeCalculatorService" ref="sampleSizeCalculatorService"/>
+		<property name="cubeQueryEnhancerService" ref="cubeQueryEnhancerService"/>
+	</bean>
+	<bean id="martSfactorPopulationService" class="com.execue.ac.service.impl.MartSfactorPopulationServiceImpl">
+		<property name="martBatchCountPopulationService" ref="martBatchCountPopulationService"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>		
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+	</bean>
+	<bean id="martMergePopulationService" class="com.execue.ac.service.impl.MartMergePopulationServiceImpl">
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>		
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+	</bean>
+	<bean id="martWarehouseExtractionService" class="com.execue.ac.service.impl.MartWarehouseExtractionServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>		
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+		<property name="martBatchCountPopulationService" ref="martBatchCountPopulationService"/>
+	</bean>
+	<bean id="martResourceCleanupService" class="com.execue.ac.service.impl.MartResourceCleanupServiceImpl">
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"/>
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>	
+	</bean>
+	<bean id="martAssetExtractionService" class="com.execue.ac.service.impl.MartAssetExtractionServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="joinService" ref="joinService"></property>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"></property>
+		<property name="mappingManagementService" ref="mappingManagementService"></property>
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService"/>	
+		<property name="martCreationServiceHelper" ref="martCreationServiceHelper"/>
+	</bean>	
+	<bean id="dataMartCreationService" class="com.execue.ac.service.impl.DataMartCreationServiceImpl">
+		<property name="martInputValidatorService" ref="martInputValidatorService"/>
+		<property name="martContextPopulationService" ref="martContextPopulationService"/>
+		<property name="martPopulationSliceService" ref="martPopulationSliceService"/>
+		<property name="martFractionalDatasetPopulationService" ref="martFractionalDatasetPopulationService"/>
+		<property name="martSfactorPopulationService" ref="martSfactorPopulationService"/>
+		<property name="martMergePopulationService" ref="martMergePopulationService"/>
+		<property name="martWarehouseExtractionService" ref="martWarehouseExtractionService"/>		
+		<property name="martResourceCleanupService" ref="martResourceCleanupService"/>
+		<property name="martAssetExtractionService" ref="martAssetExtractionService"/>
+	</bean>
+	
+	
+	<!-- Bean Definitions for Cube Creation -->
+	<bean id="cubeCreationServiceHelper" class="com.execue.ac.helper.CubeCreationServiceHelper">				
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"></property>
+		<property name="sdxManagementService" ref="sdxManagementService"></property>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"></property>
+		<property name="mappingManagementService" ref="mappingManagementService"></property>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"></property>
+		<property name="defaultDynamicValueService" ref="defaultDynamicValueService"></property>
+		<property name="correctMappingService" ref="correctMappingService"></property>
+		<property name="defaultMetricService" ref="defaultMetricService"></property>
+		<property name="assetPublishService" ref="assetPublishServiceImpl"></property>
+		<property name="assetExtractionService" ref="assetExtractionService"></property>
+		<property name="assetDetailService" ref="assetDetailService"></property>		
+		<property name="coreConfigurationService" ref="coreConfigurationService"></property>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="remoteDataTransferService" ref="remoteDataTransferService"/>
+		<property name="jobDataService" ref="jobDataService"/>
+		<property name="remoteDataTransferHelper" ref="remoteDataTransferHelper"/>
+		<property name="securityDefinitionPublishWrapperService" ref="securityDefinitionPublishWrapperService"/>
+	</bean>
+	<bean id="cubeInputValidatorService" class="com.execue.ac.service.impl.CubeInputValidatorServiceImpl">
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+	</bean>
+	<bean id="cubeContextPopulationService" class="com.execue.ac.service.impl.CubeContextPopulationServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="answersCatalogConfigurationService" ref="answersCatalogConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>
+		<property name="userManagementService" ref="userManagementService"/>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+	</bean>	
+	<bean id="cubePreFactPopulationService" class="com.execue.ac.service.impl.CubePreFactPopulationServiceImpl">
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+	</bean>
+	<bean id="cubeFactPopulationService" class="com.execue.ac.service.impl.CubeFactPopulationServiceImpl">
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+	</bean>
+	<bean id="cubeLookupPopulationService" class="com.execue.ac.service.impl.CubeLookupPopulationServiceImpl">
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="answersCatalogSQLQueryGenerationService" ref="answersCatalogSQLQueryGenerationService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+	</bean>
+	<bean id="cubeResourceCleanupService" class="com.execue.ac.service.impl.CubeResourceCleanupServiceImpl">
+		<property name="answersCatalogDataAccessService" ref="answersCatalogDataAccessService"></property>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+	</bean>
+	<bean id="cubeAssetExtractionService" class="com.execue.ac.service.impl.CubeAssetExtractionServiceImpl">
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="sdxManagementService" ref="sdxManagementService"/>
+		<property name="sdxDeletionService" ref="sdxDeletionService"/>
+		<property name="joinService" ref="joinService"></property>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"></property>
+		<property name="mappingManagementService" ref="mappingManagementService"></property>
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService"/>	
+	</bean>	 
+	
+	<bean id="cubeCreationService" class="com.execue.ac.service.impl.CubeCreationServiceImpl">
+		<property name="cubeInputValidatorService" ref="cubeInputValidatorService"/>
+		<property name="cubeContextPopulationService" ref="cubeContextPopulationService"/>
+		<property name="cubePreFactPopulationService" ref="cubePreFactPopulationService"/>
+		<property name="cubeFactPopulationService" ref="cubeFactPopulationService"/>
+		<property name="cubeLookupPopulationService" ref="cubeLookupPopulationService"/>
+		<property name="cubeResourceCleanupService" ref="cubeResourceCleanupService"/>
+		<property name="cubeAssetExtractionService" ref="cubeAssetExtractionService"/>		
+	</bean>
+	
+	
+	<!-- bean definitions for answers catalog refresh -->
+	<bean id="cubeUpdationService" class="com.execue.ac.service.impl.CubeUpdationServiceImpl">
+		<property name="cubeInputValidatorService" ref="cubeInputValidatorService"/>
+		<property name="cubeContextPopulationService" ref="cubeContextPopulationService"/>
+		<property name="cubePreFactPopulationService" ref="cubePreFactPopulationService"/>
+		<property name="cubeFactPopulationService" ref="cubeFactPopulationService"/>
+		<property name="cubeLookupPopulationService" ref="cubeLookupPopulationService"/>
+		<property name="cubeResourceCleanupService" ref="cubeResourceCleanupService"/>
+		<property name="cubeAssetExtractionService" ref="cubeAssetExtractionService"/>		
+
+	</bean>
+	
+	<bean id="dataMartUpdationService" class="com.execue.ac.service.impl.DataMartUpdationServiceImpl">
+	</bean>
+
+	<bean id="answersCatalogUpdationService" class="com.execue.ac.service.impl.AnswersCatalogUpdationServiceImpl">
+		<property name="assetDeletionWrapperService" ref="assetDeletionWrapperService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="sdxManagementService" ref="sdxManagementService"/>		
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="cubeCreationService" ref="cubeCreationService"/>
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>
+		<property name="cubeUpdationService" ref="cubeUpdationService"/>
+		<property name="dataMartCreationService" ref="dataMartCreationService"/>	
+		<property name="dataMartUpdationService" ref="dataMartUpdationService"/>
+		<property name="jobDataService" ref="jobDataService"/>			
+		<property name="assetSyncPopulateService" ref="assetSyncPopulateService"/>
+	</bean>	 	 
+	
+	
+	<!-- optimal Dset algorithm beans starts here -->
+	<bean id="optimalDSetHelper" class="com.execue.ac.algorithm.optimaldset.helper.OptimalDSetHelper">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>	
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService"/>
+		<property name="optimalDSetSpaceCalculationService" ref="optimalDSetSpaceCalculationService"/>
+	</bean>
+	
+	<bean id="optimalDSetSpaceCalculationService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetSpaceCalculationServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="systemDataAccessService" ref="systemDataAccessService"/>		
+	</bean>
+	
+	<bean id="optimalDSetContextPopulationService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetContextPopulationServiceImpl">
+		<property name="optimalDSetSpaceCalculationService" ref="optimalDSetSpaceCalculationService"/>
+		<property name="answersCatalogConfigurationService" ref="answersCatalogConfigurationService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"/>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>		
+		<property name="optimalDSetHelper" ref="optimalDSetHelper"/>
+	</bean>
+	
+	<bean id="optimalDSetIdentificationService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetIdentificationServiceImpl">
+	</bean>
+	
+	<bean id="optimalDSetRestructuringService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetRestructuringServiceImpl">
+		<property name="optimalDSetHelper" ref="optimalDSetHelper"/>
+	</bean>	
+	
+	<bean id="optimalDSetConstraintValidationService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetConstraintValidationServiceImpl">
+	</bean>
+	
+	<bean id="optimalDSetLevelProcessingService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetLevelProcessingServiceImpl">
+		<property name="optimalDSetIdentificationService" ref="optimalDSetIdentificationService"/>
+		<property name="optimalDSetRestructuringService" ref="optimalDSetRestructuringService"/>
+		<property name="optimalDSetHelper" ref="optimalDSetHelper"/>
+		<property name="optimalDSetConstraintValidationService" ref="optimalDSetConstraintValidationService"/>
+	</bean>
+	
+	<bean id="optimalDSetOutputDeciderService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetOutputDeciderServiceImpl">
+	</bean>
+	
+	<bean id="optimalDSetInvocationService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetInvocationServiceImpl">
+		<property name="optimalDSetContextPopulationService" ref="optimalDSetContextPopulationService"/>
+		<property name="optimalDSetLevelProcessingService" ref="optimalDSetLevelProcessingService"/>
+		<property name="optimalDSetOutputDeciderService" ref="optimalDSetOutputDeciderService"/>
+	</bean>
+
+	<bean id="optimalDSetConsumptionService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetConsumptionServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService"/>
+		<property name="jobDataService" ref="jobDataService"/>
+		<property name="answersCatalogContextBuilderService" ref="answersCatalogContextBuilderService"/>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService"/>
+		<property name="optimalDSetHelper" ref="optimalDSetHelper"/>
+		<property name="userManagementService" ref="userManagementService"/>
+	</bean>
+	
+	<bean id="optimalDSetWrapperService" class="com.execue.ac.algorithm.optimaldset.service.impl.OptimalDSetWrapperServiceImpl">
+		<property name="optimalDSetInvocationService" ref="optimalDSetInvocationService"/>
+		<property name="optimalDSetConsumptionService" ref="optimalDSetConsumptionService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService"/>	
+		<property name="jobDataService" ref="jobDataService"/>	
+		<property name="cubeCreationServiceHelper" ref="cubeCreationServiceHelper"/>				
+	</bean>
+
+	<bean id="answersCatalogContextBuilderService" class="com.execue.ac.service.impl.AnswersCatalogContextBuilderServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="answersCatalogDefaultsService" ref="answersCatalogDefaultsService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"/>
+	</bean>
+</beans>

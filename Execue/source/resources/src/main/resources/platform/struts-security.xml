@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for SDX related actions
+
+-->
+<struts>
+    
+	<package name="swi-security" namespace="/swi" extends="execue-console-default">
+	    
+		<!-- Users Actions {Start} -->
+		<action name="listUsers" method="list" class="usersAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/usersList.jsp</result> 
+		</action>
+		
+		<action name="showUsers" method="list" class="usersAction">
+			<result  name="success" type="tiles">sdx.showUsers</result>
+		</action>
+		<action name="showUsersList" method="list" class="usersAction">
+			<result  name="success" >/WEB-INF/jsp/admin/swi/security/usersList.jsp</result>
+		</action>
+		
+		<action name="showUsersSubList" method="showUsersSubList" class="usersAction">
+			<result  name="success" >/WEB-INF/jsp/admin/swi/security/usersList.jsp</result>
+		</action>
+		
+		<action name="saveUser" method="input" class="usersAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/user.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/user.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/security/user.jsp</result>
+		</action>
+		<action name="user" method="input" class="usersAction">
+			<result name="success" type="chain">listUsers</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/user.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/security/user.jsp</result>
+		</action>
+		<action name="updateUserStatus" method="updateUserStatus" class="usersAction">
+			<result  name="success" type="chain">showUsersList</result>
+			<result name="error" type="chain">showUsersList</result>
+			<result name="input" type="chain">showUsersList</result> 			
+		</action>
+		<action name="showUserGroups" method="showUserGroups" class="userGroupAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/userGroups.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/userGroups.jsp</result> 
+		</action>
+		
+		<action name="assignGroups" method="assignGroups" class="userGroupAction">
+			<result name="input" type="chain">showUserGroups</result> 
+			<result name="success" type="chain">showUserGroups</result>
+			<result name="error" type="chain">showUserGroups</result> 
+		</action>
+		
+		<!-- Users Actions {End} -->
+		
+		
+		<action name="listGroups" method="list" class="groupsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/groupList.jsp</result> 
+		</action>
+		
+		<action name="showGroups" method="list" class="groupsAction">
+			<result  name="success" type="tiles">sdx.showGroups</result>
+		</action>
+		
+		<action name="saveGroup" method="input" class="groupsAction">
+			<result name="success" type="chain">listGroups</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/group.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/security/group.jsp</result>
+		</action>
+		
+		<action name="group" method="input" class="groupsAction">
+			<result name="success" type="chain">listGroups</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/group.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/security/group.jsp</result>
+		</action>
+		
+		<action name="updateGroupStatus" method="updateGroupStatus" class="groupsAction">
+			<result  name="success" type="chain">listGroups</result>
+			<result name="error" type="chain">listGroups</result>
+			<result name="input" type="chain">listGroups</result> 			
+		</action>	
+		
+		<action name="showGroupRoles" method="showGroupRoles" class="groupRolesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/groupRoles.jsp</result> 
+		</action>
+		<action name="assignGroupRoles" method="assignRoles" class="groupRolesAction">
+			<result name="input" type="chain">showGroupRoles</result> 
+			<result name="success" type="chain">listGroups</result>
+			<result name="error" type="chain">showGroupRoles</result> 
+		</action>
+		<action name="listRoles" method="list" class="rolesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/security/rolesList.jsp</result> 
+		</action>
+		
+		<action name="showRoles" method="list" class="rolesAction">
+			<result  name="success" type="tiles">sdx.showRoles</result>
+		</action>
+		
+		<action name="role" method="input" class="rolesAction">
+			<result name="success" type="chain">listRoles</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/security/role.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/security/role.jsp</result>
+		</action>
+		<action name="deleteRole" method="delete" class="rolesAction">
+			<result  name="success" type="chain">listRoles</result>
+		</action>
+	</package>
+	<package name="user-security" extends="execue-console-default">				
+		<action name="resetPassword" method="resetPassword" class="userPasswordAction">
+			<result name="success">/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>	
+			<result name="error">/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>		
+		</action>
+		<action name="changePassword" method="changePassword" class="userPasswordAction">
+			<result name="success">/WEB-INF/jsp/main/qi/security/Bilogin.jsp</result>	
+			<result name="error">/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>		
+		</action>
+		<action name="changeUserPassword" class="userPasswordAction">			
+			<result>/WEB-INF/jsp/main/qi/security/changePassword.jsp</result>		
+		</action>
+		<action name="forgotUserPassword" class="userPasswordAction">			
+			<result>/WEB-INF/jsp/main/qi/security/forgotPassword.jsp</result>		
+		</action>
+		<action name="forgotPassword" method="forgotPassword" class="userPasswordAction">
+			<result name="success">/WEB-INF/jsp/main/qi/security/forgotPassword.jsp</result>
+			<result name="error">/WEB-INF/jsp/main/qi/security/forgotPassword.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/qi/security/forgotPassword.jsp</result>				
+		</action>
+	</package>
+
+</struts>

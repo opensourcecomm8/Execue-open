@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Define mapping actions
+
+-->
+<struts>
+    
+	<package name="swi-mapping" namespace="/swi" extends="execue-console-default">
+		<action name="showMappings" method="initializeMappings" class="conceptMappingsAction">
+			<result name="input" type="tiles">mapping.showMapping</result>
+			<result name="error" type="tiles" >mapping.showMapping</result> 
+			<result name="success" type="tiles" >mapping.showMapping</result> 
+		</action>
+		<action name="showAssetSelectionForMappings"  class="assetSelectionAction">
+			<result name="input" type="tiles">mapping.showAssetSelectionForMappings</result>
+			<result name="error" type="tiles" >mapping.showAssetSelectionForMappings</result> 
+			<result name="success" type="tiles">mapping.showAssetSelectionForMappings</result>									
+		</action>
+		<action name="showMappingAssets" method="showMappingAssets" class="assetSelectionAction">
+			<result name="success">/views/showSelectAsset.jsp</result> 
+		</action>
+		<action name="showConcept" method="showMappingConcept" class="kdxMappingAction">
+			<result name="input"  >/WEB-INF/jsp/admin/swi/kdx/addMappingConcept.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addMappingConcept.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addMappingConcept.jsp</result>
+		</action>			
+	</package>
+
+	<package name="swi-mapping-json" namespace="/swi" extends="execue-json-default">
+		<action name="showExistingConceptMappings" method="showExistingConceptMappings" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">conceptMapping</param>
+			</result> 
+		</action>
+		<action name="suggestConceptMappings" method="suggestConceptMappings" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">conceptMapping</param>
+			</result> 
+		</action>
+		<action name="storeConceptMappings" method="storeConceptMappings" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">conceptMapping</param>
+			</result> 
+		</action>
+		<action name="showAssetTables" method="retrieveAssetTables" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">assetTables</param>
+			</result> 
+		</action>
+		<action name="showMappableConcepts" class="mappingSuggestAction" method="showConcepts">
+			<result name="success" type="json">
+				<param name="root">mappableTerm</param>
+			</result> 
+		</action>
+		<action name="suggestConcepts" class="mappingSuggestAction" method="suggestConcepts">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<!-- Instance mapping -->
+		<action name="showColumnMembers" method="retrieveColumnMembers" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">assetColumnMember</param>
+			</result> 
+		</action>
+		<action name="showExistingInstanceMappings" method="showExistingInstanceMappings" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">instanceMapping</param>
+			</result> 
+		</action>
+		<action name="suggestInstanceMappings" method="suggestInstanceMappings" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">instanceMapping</param>
+			</result> 
+		</action>
+		<action name="storeInstanceMappings" method="storeInstanceMappings" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">instanceMapping</param>
+			</result> 
+		</action>
+		<action name="suggestInstances" class="mappingSuggestAction" method="suggestInstances">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<action name="showMappableInstances" class="mappingSuggestAction" method="showInstances">
+			<result name="success" type="json">
+				<param name="root">mappableInstanceTerm</param>
+			</result> 
+		</action>
+		<action name="showInstancePage" method="showPage" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">instanceMapping</param>
+			</result> 
+		</action>
+		<action name="displayInstanceMappings" method="displayInstanceMappings" class="instanceMappingsAction">
+			<result name="success" type="json">
+				<param name="root">instanceMapping</param>
+			</result> 
+		</action>
+		<action name="saveConcept" method="saveConcept" class="kdxMappingAction">
+			<result name="success" type="json">
+				<param name="root">entityStatus</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">entityStatus</param>
+			</result>
+		</action>
+		<action name="saveInstance" method="saveInstance" class="kdxMappingAction">
+			<result name="success" type="json">
+				<param name="root">entityStatus</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">entityStatus</param>
+			</result>
+		</action>
+        
+		<action name="showConceptPage" method="showPage" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">conceptMapping</param>
+			</result> 
+		</action>
+		<action name="displayConceptMappings" method="displayConceptMappings" class="conceptMappingsAction">
+			<result name="success" type="json">
+				<param name="root">conceptMapping</param>
+			</result> 
+		</action>
+		<action name="qiConversion" class="qiSuggestAction" method="suggestConversion">
+			<result name="success" type="json">
+				<param name="root">qiConversionValueDetail</param>
+			</result>
+		</action>
+	</package>
+</struts>

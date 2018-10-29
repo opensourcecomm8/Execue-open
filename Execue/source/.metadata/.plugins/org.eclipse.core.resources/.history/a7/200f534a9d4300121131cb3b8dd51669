@@ -1,0 +1,51 @@
+# ExeCue Application Database Instance and Schema properties
+
+## Provider Details
+
+db.source.swi.provider.type.value = 1
+db.source.swi.driver.class = com.mysql.jdbc.Driver
+db.source.swi.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.swi.connection.validation.query = select 1
+
+db.source.qdata.provider.type.value = 1
+db.source.qdata.driver.class = com.mysql.jdbc.Driver
+db.source.qdata.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.qdata.connection.validation.query = select 1
+
+db.source.sdata.provider.type.value = 1
+db.source.sdata.driver.class = com.mysql.jdbc.Driver
+db.source.sdata.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.sdata.connection.validation.query = select 1
+
+db.source.audit-trail.provider.type.value = 1
+db.source.audit-trail.driver.class = com.mysql.jdbc.Driver
+db.source.audit-trail.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.audit-trail.connection.validation.query = select 1
+
+db.source.uswh.provider.type.value = None
+db.source.uswh.hibernate.dialect = none
+db.source.uswh.connection.validation.query = none
+
+db.source.usca.provider.type.value = none
+db.source.usca.hibernate.dialect = none
+db.source.usca.connection.validation.query = none
+
+## DB Instance and Schema Details
+
+db.source.swi.jdbcURL = jdbc:mysql://localhost/swi
+db.source.swi.userName = root
+db.source.swi.password = execue
+
+db.source.qdata.jdbcURL = jdbc:mysql://localhost/qdata
+db.source.qdata.userName = root
+db.source.qdata.password = execue
+
+db.source.sdata.jdbcURL = jdbc:mysql://localhost/sdata
+db.source.sdata.userName = root
+db.source.sdata.password = execue
+
+db.source.audit-trail.jdbcURL = jdbc:mysql://localhost/audit
+db.source.audit-trail.userName = root
+db.source.audit-trail.password = execue
+
+## NOTE : For USWH and USCA, Schema values are taken from SWI DATA_SOURCE table

@@ -1,0 +1,49 @@
+<queries>
+	<QUERY_GET_ALL_RANGE>
+	<![CDATA[from Range as range]]>
+	</QUERY_GET_ALL_RANGE>
+
+	<QUERY_GET_RANGE_BY_MODEL_ID>
+	<![CDATA[select range from Range as range,BusinessEntityDefinition bed, 
+		 ModelGroupMapping mgm where bed.id=range.conceptBedId 
+		 and bed.entityType= :conceptEntityType 
+		 and bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType 
+	]]>
+	</QUERY_GET_RANGE_BY_MODEL_ID>
+
+	<QUERY_GET_RANGE_BY_CONCEPT_BED_AND_USER_ID>
+	<![CDATA[from Range as range where range.conceptBedId = :conceptBedId and range.user.id = :userId
+	]]>
+	</QUERY_GET_RANGE_BY_CONCEPT_BED_AND_USER_ID>
+
+	<QUERY_GET_RANGE_FOR_MODEL>
+	<![CDATA[select range from Range range, BusinessEntityDefinition be,ModelGroupMapping mgm
+		 where be.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and  mgm.modelGroup.category != :baseModelCategoryType  and be.id=range.conceptBedId 
+		 and be.entityType= :conceptEntityType and range.name=:rangeName
+	]]>
+	</QUERY_GET_RANGE_FOR_MODEL>
+
+	<QUERY_USER_DEFINED_RANGE_FOR_CONCEPT>
+	<![CDATA[from Range as range where range.conceptBedId = :conceptBedId and range.user.id in (:userIds) 
+		 and range.enabled= :enabled order by range.user.id desc
+	]]>
+	</QUERY_USER_DEFINED_RANGE_FOR_CONCEPT>
+	
+	<QUERY_CONCEPTS_ELIGIBLE_FOR_CONCEPT_RANGES>
+	<![CDATA[select distinct con.id,con.name,con.displayName,be.id 
+		 from AssetEntityDefinition as ae, Concept as con, BusinessEntityDefinition as be, Mapping as map, 
+		 Colum as col,ModelGroupMapping as mgm where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id                                         
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null 
+		 and (col.kdxDataType = :measureColumnType or be.type.id= :typeId ) 
+		 and be.modelGroup.id = mgm.modelGroup.id and 
+		 mgm.model.id = :modelId and
+		 mgm.modelGroup.category != :baseModelCategoryType  order by con.displayName 
+	]]>
+	</QUERY_CONCEPTS_ELIGIBLE_FOR_CONCEPT_RANGES>
+
+</queries>

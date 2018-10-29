@@ -1,0 +1,333 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<bean id="nlpConfigurationService" class="com.execue.nlp.configuration.impl.NLPConfigurationServiceImpl">
+		<property name="nlpConfiguration" ref="nlpConfiguration"/>
+		<property name="swiConfigurationService" ref="swiConfigurationService" />		
+	</bean>
+	
+	<bean id="nlpConfigurableService" class="com.execue.nlp.configuration.impl.NLPConfigurableService">
+		<property name="nlpConfigurationService" ref="nlpConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="verbFormService" ref="verbFormService"></property>
+		<property name="regexComponentParser" ref="regexComponentParser" />
+		<property name="validationRulesParser" ref="validationRulesParser" />
+		<property name="weightAssignmentRulesParser" ref="weightAssignmentRulesParser" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+	</bean>
+
+	<bean id="nlpEngine"
+		class="com.execue.nlp.engine.impl.NLPEngineImpl">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+		<property name="RMManager" ref="rMManager" />
+		<property name="reducedFormGenerator"
+			ref="reducedFormGenerator" />
+		<property name="sfTermHitsUpdateHelper"
+			ref="sfTermHitsUpdateHelper" />
+		<property name="semanticScopingHandler"
+			ref="semanticScopingHandler" />
+		<property name="nlpWorkflowManager" ref="nlpWorkflowManager" />
+		<property name="cumulativeDecisionMaker"
+			ref="cumulativeDecisionMaker" />
+		<property name="ontoRecognitionProcessor"
+			ref="semanticScopingOntoRecognitionProcessor" />
+		<property name="summarizationService"
+			ref="summarizationService" />
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="easIndexService" ref="easIndexService" />
+		<property name="preProcessors">
+			<list>
+				<ref bean="queryNormalizer" />
+				<ref bean="exeCueTagger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sfTermHitsUpdateHelper"
+		class="com.execue.nlp.engine.impl.SFLTermHitsUpdateHelper">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxManagementService"
+			ref="kdxManagementService" />
+		<property name="popularityService" ref="popularityService" />
+	</bean>
+
+	<bean id="rMManager"
+		class="com.execue.nlp.engine.barcode.RMManager">
+	</bean>
+	<bean id="nlpWorkflowManager"
+		class="com.execue.nlp.engine.impl.NLPWorkflowManager">
+	</bean>
+
+	<bean id="possibilityController"
+		class="com.execue.nlp.engine.barcode.possibility.PossibilityController"
+		scope="prototype">
+		<property name="semanticScopingHandler" ref="semanticScopingHandler" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="nlpServiceHelper" ref="nlpServiceHelper" />
+		<property name="recogntionRealizationServiceImpl" ref="recogntionRealizationServiceImpl" />
+	</bean>
+
+	<bean id="sequenceExecPossibility"
+		class="com.execue.nlp.engine.barcode.possibility.SequenceExecPossibility"
+		scope="prototype">
+	</bean>
+
+	<bean id="sequenceMatrixExecutor"
+		class="com.execue.nlp.engine.barcode.matrix.SequenceMatrixExecutor">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+	</bean>
+
+	<bean id="barcodeScannerFactory"
+		class="com.execue.nlp.engine.barcode.BarcodeScannerFactory"
+		factory-method="getInstance">
+		<property name="execPossibilityFactory">
+			<bean
+				class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+				<property name="targetBeanName">
+					<idref local="sequenceExecPossibility" />
+				</property>
+			</bean>
+		</property>
+		<property name="matrixExecutorFactory">
+			<bean
+				class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+				<property name="targetBeanName">
+					<idref local="sequenceMatrixExecutor" />
+				</property>
+			</bean>
+		</property>
+		<property name="possibilityControllerFactory">
+			<bean
+				class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+				<property name="targetBeanName">
+					<idref local="possibilityController" />
+				</property>
+			</bean>
+		</property>
+
+	</bean>
+
+	<bean id="reducedFormBusinessQueryGenerator"
+		class="com.execue.nlp.generator.impl.ReducedFormBusinessQueryGenerator">
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="preferencesRetrievalService"
+			ref="preferencesRetrievalService" />
+		<property name="conversionService" ref="conversionService" />
+		<property name="ontologyService" ref="dbOntologyService" />
+	</bean>
+	<bean id="reducedFormGenerator"
+		class="com.execue.nlp.generator.ReducedFormGenerator">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+	<bean id="validationRulesParser"
+		class="com.execue.nlp.parser.ValidationRulesParser">
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+	</bean>
+	<bean id="regexComponentParser"
+		class="com.execue.nlp.parser.RegexComponentParser">
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+	</bean>
+
+	<bean id="weightAssignmentRulesParser"
+		class="com.execue.nlp.parser.WeightAssignmentRulesParser">
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+	</bean>
+
+	<!-- end of processor configuration -->
+	<!-- //TODO: singleSWI Merge : CHANGE BEAN WIRING FOR KDXSERVICE -->
+	<!-- Semantic Scoping beans -->
+	<bean id="semanticScopingSnowFlakeProcessor"
+		class="com.execue.nlp.processor.impl.SemanticScopingSFLProcessor">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="nlpServiceHelper"
+			ref="nlpServiceHelper" />
+	</bean>
+
+	<bean id="semanticScopingOntoRecognitionProcessor"
+		class="com.execue.nlp.processor.impl.SemanticScopingOntoRecognitionProcessor">
+		<property name="nlpConfigurationService" ref="nlpConfigurationService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService"/>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper" />
+	</bean>
+	
+	<bean id="semanticScopingPWProcessor"
+		class="com.execue.nlp.processor.impl.SemanticScopingPWProcessor">
+		<property name="nlpConfigurationService" ref="nlpConfigurationService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="indexFarmService" ref="indexFarmService"></property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper" />
+	</bean>	
+
+	<bean id="semanticScopingHandler"
+		class="com.execue.nlp.engine.barcode.possibility.SemanticScopingHandler">
+		<property name="semanticScopingExecutor"
+			ref="semanticScopingExecutor" />
+				<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="eliminationService" ref="eliminationService" />
+		<property name="cumulativeDecisionMaker"
+			ref="cumulativeDecisionMaker" />
+	</bean>
+	
+	<bean id="eliminationService"
+		class="com.execue.nlp.processor.impl.EliminationServiceImpl">
+	</bean>
+
+	<bean id="semanticScopingExecutor"
+		class="com.execue.nlp.engine.barcode.matrix.SemanticScopingExecutor">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+	</bean>
+
+	<!-- end of Semantic Scoping beans -->
+
+	<!-- Cloud Service Factory and Cloud services -->
+	<bean id="typeCloudService"
+		class="com.execue.nlp.service.impl.TypeCloudServiceImpl">
+		<property name="cloudRuleExecutor" ref="cloudRuleExecutor"></property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="meaningFinderHelper"
+			ref="meaningFinderHelper">
+		</property>
+	</bean>
+
+	<bean id="appCloudService"
+		class="com.execue.nlp.service.impl.AppCloudServiceImpl">
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="pathRulesExecutor" ref="pathRulesExecutor" />
+		<property name="kdxModelService" ref="kdxModelService"></property>
+		<property name="ontologyService" ref="dbOntologyService" />
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+		<property name="kdxRetrievalService"
+			ref="kdxRetrievalService">
+		</property>
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService">
+		</property>
+		<property name="pathDefinitionRetrievalService"
+			ref="pathDefinitionRetrievalService"/>
+	</bean>
+	
+	<bean id="conceptCloudService"
+		class="com.execue.nlp.service.impl.ConceptCloudServiceImpl">
+		<property name="cloudRuleExecutor" ref="cloudRuleExecutor"></property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="meaningFinderHelper"
+			ref="meaningFinderHelper">
+		</property>
+	</bean>
+
+	<bean id="cloudServiceFactory"
+		class="com.execue.nlp.service.CloudServiceFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="TYPE_CLOUD" value="typeCloudService" />
+				<entry key="APP_CLOUD" value="appCloudService" />
+				<entry key="FRAMEWORK_CLOUD"
+					value="frameWorkCloudService" />
+				<entry key="CONCEPT_CLOUD" value="conceptCloudService" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="nlpServiceHelper"
+		class="com.execue.nlp.helper.NLPServiceHelper">
+		<property name="nlpConfigurationService" ref="nlpConfigurationService" />
+		<property name="locationConfigurationService" ref="locationConfigurationService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="cloudServiceFactory" ref="cloudServiceFactory" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />		
+	</bean>
+
+	<bean id="meaningFinder"
+		class="com.execue.nlp.processor.impl.MeaningFinder">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService">
+		</property>
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService">
+		</property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+
+	<bean id="validationRuleProcessingService"
+		class="com.execue.nlp.rule.service.impl.ValidationRuleProcessingService">
+	</bean>
+
+	<bean id="cloudRuleExecutor"
+		class="com.execue.nlp.rule.service.impl.CloudRuleExecutor">
+		<property name="ruleProcessingService"
+			ref="validationRuleProcessingService">
+		</property>
+	</bean>
+	
+	<bean id="pathRulesExecutor"
+		class="com.execue.nlp.rule.service.impl.PathRulesExecutor">
+		<property name="ruleProcessingService"
+			ref="weightRuleProcessingService">
+		</property>
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService">
+		</property>		
+	</bean>
+	
+	<bean id="indexFarmService"
+		class="com.execue.nlp.service.impl.IndexFarmService">
+		<property name="verbFormService" ref="verbFormService"></property>
+		<property name="preferencesManagementService" ref="preferencesManagementService"></property>
+		<property name="preferencesRetrievalService" ref="preferencesRetrievalService"></property>
+	</bean>
+	
+	<bean id="verbFormService"
+		class="com.execue.nlp.service.impl.VerbFormServiceImpl">
+	</bean>
+	
+	<bean id="reducedFormRevesionService"
+		class="com.execue.nlp.processor.ReducedFormRevisionService">
+	</bean>
+	
+	<bean id="queryNormalizer"
+		class="com.execue.nlp.preprocessor.QueryNormalizer">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+	</bean>
+	
+	<bean id="exeCueTagger"
+		class="com.execue.nlp.preprocessor.ExeCueTagger">
+	</bean>
+</beans>

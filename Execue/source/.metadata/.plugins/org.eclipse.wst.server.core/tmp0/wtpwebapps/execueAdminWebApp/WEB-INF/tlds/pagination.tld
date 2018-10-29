@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" 
+"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd"> 
+
+<taglib> 
+	<tlibversion>1.0</tlibversion> 
+	<jspversion>1.1</jspversion>
+	<shortname>pagination</shortname>
+	<uri>http://www.semantify.com</uri>
+
+	<tag> 
+		<name>paginate</name> 
+		<tagclass>com.execue.web.core.util.PaginationImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an HTML formatted generic pagination.</info> 
+		<!--attribute>
+				<name>baseURL</name>
+				<required>true</required>
+				<rtexprvalue>true</rtexprvalue>
+			</attribute>
+			<attribute>
+				<name>pageCount</name>
+				<required>true</required>
+				<rtexprvalue>true</rtexprvalue>
+			</attribute>
+			<attribute>
+				<name>pageSize</name>
+				<required>false</required>
+				<rtexprvalue>true</rtexprvalue>
+			</attribute>
+			<attribute>
+				<name>requestedPage</name>
+				<required>true</required>
+				<rtexprvalue>true</rtexprvalue>
+			</attribute>
+			<attribute>
+				<name>request</name>
+				<required>false</required>
+				<rtexprvalue>true</rtexprvalue>
+			</attribute-->
+	</tag> 
+	
+	<tag> 
+		<name>paginateResults</name> 
+		<tagclass>com.execue.web.core.util.PaginationResultsImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an dynamic formatted pagination.</info> 
+	</tag> 	
+	<tag> 
+		<name>page</name> 
+		<tagclass>com.execue.web.core.util.PaginationTagImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an dynamic formatted pagination.</info>
+		<attribute>
+			<name>targetURL</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>targetPane</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag> 
+		<name>sdxSecurityPage</name> 
+		<tagclass>com.execue.web.core.util.SDXSecurityPaginationTagImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an dynamic formatted pagination.</info>
+		<attribute>
+			<name>targetURL</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>targetPane</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+    
+</taglib>

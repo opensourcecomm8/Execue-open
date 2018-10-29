@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="coreConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${core.configuration.file}</value>
+				<value>${core.configuration.ext.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="coreDBConfiguration" class="com.execue.core.configuration.ExecueDBConfiguration">
+		<constructor-arg index="0" ref="swiDataSource"/>
+		<constructor-arg index="1" value="Core"/>
+	</bean>
+	<bean id="driverConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${driver.configuration.file}</value>
+				<value>${driver.configuration.ext.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="driverDBConfiguration" class="com.execue.core.configuration.ExecueDBConfiguration">
+		<constructor-arg index="0" ref="swiDataSource"/>
+		<constructor-arg index="1" value="Driver"/>
+	</bean>
+	<bean id="nlpConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${nlp.configuration.file}</value>
+				<value>${nlp.configuration.ext.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>

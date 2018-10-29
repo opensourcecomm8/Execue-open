@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.execue.core.common.bean.entity">
+  <class name="com.execue.core.common.bean.entity.SystemVariable" table="system_variable">
+  	
+  	<id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">system_variable</param>
+			</generator>
+     </id>
+     
+     <property name="word" type="string">
+            <column name="word" length="50" />
+      </property>
+      
+      <property name="entityType" type="string">
+            <column name="entity_type" length="5" />
+      </property>
+      
+  </class>
+</hibernate-mapping>

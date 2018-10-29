@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for KDX related actions
+
+-->
+<struts>
+    
+	<package name="kdx" namespace="/swi" extends="execue-console-default">
+        
+		<action name="createNewConcept" method="showConcept" class="conceptTypeAssociationAction">
+			<result name="input"  >/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>
+		</action>
+		
+		<action name="createAdvancedConceptDetails" method="input" class="kdxAction">
+			<result name="input"  >/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result>
+		</action>
+		<action name="showHierarchy" method="showHierarchy" class="tripleDefinitionsAction">
+			<result name="success"  >/WEB-INF/jsp/admin/swi/kdx/addHierarchy.jsp</result>
+		</action>
+		<action name="showHierarchyDetails" method="showHierarchyDetails" class="tripleDefinitionsAction">
+			<result name="success"  >/WEB-INF/jsp/admin/swi/kdx/viewHierarchyDetails.jsp</result>			
+		</action>
+		<action name="showRelation" method="showRelationDetails" class="tripleDefinitionsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addRelation.jsp</result>
+			      
+		</action>	
+		<action name="addRelation" method="createRelation" class="kdxAction">
+			<result name="input" type="chain">createNewRelation</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewRelation.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewRelation.jsp</result>
+		</action>
+		
+		<action name="createNewRelation" method="input" class="kdxAction">
+			<result name="input"  >/WEB-INF/jsp/admin/swi/kdx/addNewRelation.jsp</result>
+		</action>
+        
+		<action name="relationDetail" method="retrieveRelation" class="kdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewRelation.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addRelation.jsp</result>
+           
+		</action>
+		<!-- knowledgebase Dashboard -->
+		<action name="showKnowledgebaseDashboard" method="getKnowledgeDashBoardDetails" class="dashBoardAction">
+			<result type="tiles" >kdx.showKnowledgebaseDashboard</result> 
+		</action>
+		<!-- knowledgebase Dashboard ends -->
+
+		<action name="conceptDetail" method="showConcept" class="conceptTypeAssociationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>           
+		</action>
+		
+		<action name="showAdvancedPathDefinition" method="list" class="conceptTypeAssociationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addAdvancedPathDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addAdvancedPathDefinition.jsp</result>            
+		</action>	
+		<action name="showCRCAssociations" method="showCRCAssociations" class="conceptTypeAssociationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addConceptAssociations.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addConceptAssociations.jsp</result>            
+		</action>	    
+		<action name="showPathDefinition" method="list" class="conceptTypeAssociationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result>            
+		</action>
+		<action name="addInstance" method="createInstance" class="kdxAction">
+			<result name="input" type="chain" >createNewInstance</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			<!--<result name="success" type="redirectAction">
+					<param name="actionName">getAllInstances</param>
+					<param name="concept.id">${concept.id}</param>				
+				</result>-->
+			<result name="success" type="chain">getAllInstances</result>
+		</action>
+		
+		<action name="getAllInstances" method="getPageResults" class="instancesPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+		</action>
+        
+		<action name="createNewInstance" method="input" class="kdxAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+		</action>
+        
+		<action name="instanceDetail" method="retrieveInstance" class="kdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+		</action>
+        
+		<!--	<action name="showInstances" method="showInstances" class="kdxAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+				<result name="create">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+				<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			</action>-->
+		<!-- Use the below action for the paginated instances page -->
+		<action name="getInstances" method="getPageResults" class="instancesPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+			<result name="create">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+		</action>
+		<!--<action name="showSubInstances" method="showSubInstances" class="kdxAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewInstances.jsp</result>
+				<result name="create">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+				<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewInstance.jsp</result>
+			</action>-->
+		<!--action name="showBusinessTerms" method="input" class="kdxAction"-->
+		<action name="showBusinessTerms" method="getPageResults" class="conceptsPaginationAction">
+			<result name="input" type="tiles">kdx.showBusinessTerms</result>
+			<result name="error" type="tiles" >kdx.showBusinessTerms</result> 
+			<result name="success" type="tiles" >kdx.showBusinessTerms</result> 
+		</action>
+		
+		<action name="showAttributeRelations" class="attributeAssociationAction">
+			<result name="input" type="tiles">kdx.showAtributeRelations</result>
+			<result name="error" type="tiles">kdx.showAtributeRelations</result> 
+			<result name="success" type="tiles">kdx.showAtributeRelations</result> 
+		</action>		
+		<action name="getAttributeRelationsBusinessTerms" method="getPageResults" class="attributeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/attributeRelationBusinessTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/attributeRelationBusinessTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/attributeRelationBusinessTerms.jsp</result>
+		</action>	
+	
+		<action name="showAttributeRelationDetails" method="showExistingPathDefinitions" class="attributeAssociationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/attributeRelationDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/attributeRelationDetails.jsp</result>            
+		</action>	
+		
+		<action name="updateAttributeRelations" method="updatePathDefinitions" class="attributeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/attributeRelationDetails.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/attributeRelationDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/attributeRelationDetails.jsp</result>            
+		</action>
+		
+		<action name="showTripleDefinitions" method="getPageResults" class="conceptsPaginationAction">
+			<result name="input" type="tiles">kdx.showDefinitions</result>
+			<result name="error" type="tiles" >kdx.showDefinitions</result> 
+			<result name="success" type="tiles" >kdx.showDefinitions</result> 
+		</action>
+		<!--action name="getBusinessTerms" method="input" class="kdxAction"-->
+		<action name="getBusinessTerms" method="getPageResults" class="conceptsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+		</action>
+		<!--action name="getBusinessTermsBySearchString" method="getBusinessTermsBySearchString" class="kdxAction"-->
+		<action name="getBusinessTermsBySearchString" method="getPageResults" class="conceptsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+		</action>
+		<!--action name="getSubBusinessTerms" method="getSubBusinessTerms" class="kdxAction"-->
+		<action name="getSubBusinessTerms" method="getPageResults" class="conceptsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewBusinessTerms.jsp</result>
+		</action>
+		
+		<action name="showRelations" method="getPageResults" class="relationsPaginationAction">
+			<result name="input" type="tiles">kdx.showRelations</result>
+			<result name="error" type="tiles" >kdx.showRelations</result> 
+			<result name="success" type="tiles" >kdx.showRelations</result> 
+		</action>
+	
+		<action name="getRelations" method="getPageResults" class="relationsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result>
+		</action>
+		<action name="getRelationsBySearchString" method="getPageResults" class="relationsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewRelations.jsp</result>
+		</action>
+		<action name="showWords" method="input" class="kdxAction">
+			<result name="success" type="tiles">kdxWords.showWords</result>   
+			<result name="input" type="tiles">kdxWords.showWords</result>   
+			<result name="error" type="tiles">kdxWords.showWords</result>     
+		</action>
+		<action name="getWords" method="getKDXWords" class="kdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/showKDXWords.jsp</result>   
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/showKDXWords.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/showKDXWords.jsp</result>     
+		</action>
+		<action name="showAdvanceConceptDetails" method="showAdvanceConceptDetails" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result>            
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result>
+		</action>
+		<action name="saveRelationPathDefinitions" method="saveRelationPathDefinitions" class="tripleDefinitionsAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addRelation.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addRelation.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addRelation.jsp</result> 
+		</action>
+		<action name="saveHierarchyPathDefinitions" method="saveHierarchyPathDefinitions" class="tripleDefinitionsAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/viewHierarchyDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/viewHierarchyDetails.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/viewHierarchyDetails.jsp</result> 
+		</action>
+		
+		<!--DDV Start-->
+		<action name="showConceptDefaultValue" method="loadConcepts" class="defaultDynamicValueAction">
+			<result name="input" type="tiles">kdx.showDDV</result>
+			<result name="error" type="tiles">kdx.showDDV</result>
+			<result name="success" type="tiles">kdx.showDDV</result>
+		</action>
+		<action name="showConceptDDVDetails" method="getDefaultDynamicValue" class="defaultDynamicValueAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>            
+		</action>
+		<action name="saveDynamicValues" method="createUpdateDynamicValues" class="defaultDynamicValueAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValueDetails.jsp</result>            
+		</action>
+		
+		<!--DDV End-->    
+		<action name="showHierarchy" class="hierarchyDefinitionAction">
+			<result name="success" type="tiles">kdx.hierarchy</result>   
+			<result name="input" type="tiles">kdx.hierarchy</result>   
+			<result name="error" type="tiles">kdx.hierarchy</result>     
+		</action>
+		
+		<action name="showHierarchies" method="input" class="hierarchyDefinitionAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/hierarchyList.jsp</result>   
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/hierarchyList.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/hierarchyList.jsp</result>     
+		</action>
+		
+		<action name="getHierarchyDefinitions" method="getHierarchyDefinitions" class="hierarchyDefinitionAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>   
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>     
+		</action>
+		
+		<action name="showNewHierarchyDefinition" method="showNewHierarchyDefinition" class="hierarchyDefinitionAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>   
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>     
+		</action>
+		   
+	</package>
+
+	<package name="conceptTypeAssociation" namespace="/swi" extends="execue-json-default">
+		<!--action name="typeCreation" method="input" class="kdxAction"-->
+		<action name="showConceptType" method="list" class="typeConceptAssociationAction">
+			<result name="input" type="tiles">kdx.showConceptType</result>
+			<result name="error" type="tiles" >kdx.showConceptType</result> 
+			<result name="success" type="tiles" >kdx.showConceptType</result> 
+		</action>
+		<action name="saveConceptType" method="associateTypeConcepts" class="typeConceptAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/conceptTypes.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/conceptTypes.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/conceptTypes.jsp</result> 
+		</action>
+		<!-- Below action configuration is no more used -->
+		<!--<action name="saveConceptTypeAssociation" method="saveConceptTypeAssociation" class="conceptTypeAssociationAction">			
+				<result name="input">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result>
+				<result name="error">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result> 
+				<result name="success">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result> 
+			</action>	-->
+		<action name="saveCRCAssociation" method="saveCRCAssociation" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addPathDefinition.jsp</result> 
+		</action>
+		<action name="populateEligibleConcepts" class="typeConceptAssociationAction" method="populateEligibleConcepts">
+			<result name="success" type="json">
+				<param name="root">eligibleConcepts</param>
+			</result>
+		</action>
+            
+		<action name="populateTypesToBeRealized" class="typeConceptAssociationAction" method="populateTypesToBeRealized">
+			<result name="success" type="json">
+				<param name="root">typesToBeRealized</param>
+			</result>
+		</action>       
+		<action name="populateRealizedConcepts" class="typeConceptAssociationAction" method="populateRealizedConcepts">
+			<result name="success" type="json">
+				<param name="root">realizedConcepts</param>
+			</result>
+		</action>
+		<action name="showRealizedConcepts" class="conceptTypeAssociationAction" method="populateRealizedConcepts">
+			<result name="success" type="json">
+				<param name="root">realizedConcepts</param>
+			</result>
+		</action>
+		<action name="suggestRelations" class="tripleDefinitionsAction" method="suggestRelations">
+			<result name="success" type="json">
+				<param name="root">relations</param>
+			</result>
+		</action>
+		
+		<action name="deleteConceptHeirarchy" method="deleteConceptHeirarchy" class="conceptTypeAssociationAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		
+		<action name="deleteInstanceHeirarchy" method="deleteInstanceHeirarchy" class="kdxAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		
+		<action name="deleteRelationHeirarchy" method="deleteRelationHeirarchy" class="kdxAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>		
+		<action name="deleteInstancesHeirarchyForConcept" method="deleteInstancesHeirarchyForConcept" class="conceptTypeAssociationAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>		
+		
+		<action name="saveHierarchyDefinitions" method="saveHierarchyDefinitions" class="hierarchyDefinitionAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/hierarchyDefinition.jsp</result>   
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		
+		<action name="deleteHierarchyDefinitions" method="deleteHierarchyDefinitions" class="hierarchyDefinitionAction">
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>   
+			<result name="error" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+					
+		
+		<action name="saveConceptTypeAssociation" method="saveConceptTypeAssociation" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewConcept.jsp</result> 
+			<result name="success" type="chain">conceptDetail</result>
+		</action>
+		<action name="saveAdvanceConceptTypeAssociation" method="saveAdvanceConceptTypeAssociation" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addAdvancedPathDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addAdvancedPathDefinition.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addAdvancedPathDefinition.jsp</result> 
+		</action>
+		<action name="saveAdvanceConceptDetails" method="saveAdvanceConceptDetails" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addAdvancedConceptDetails.jsp</result> 
+		</action>
+		<action name="saveCRCAssociation" method="saveCRCAssociation" class="conceptTypeAssociationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addConceptAssociations.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addConceptAssociations.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addConceptAssociations.jsp</result> 
+		</action>
+		
+		
+		<!-- Entity Variation Action start -->
+		
+		<action name="showBusinessEntityVariations" class="businessEntityVariationAction">
+			<result name="input" type="tiles">entityVariations.showEntityVariations</result>
+			<result name="error" type="tiles" >entityVariations.showEntityVariations</result> 
+			<result name="success" type="tiles" >entityVariations.showEntityVariations</result> 
+		</action>
+		
+		<action name="showEntityVariationBTs" method="getPageResults" class="businessEntityVariationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/showEntityVariationBTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/showEntityVariationBTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/showEntityVariationBTerms.jsp</result>
+		</action>
+		<action name="getBusinessEntityVariation" method="getBusinessEntityVariation" class="businessEntityVariationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result>
+		</action>
+		
+		<action name="createEntityVariation" method="saveVariations" class="businessEntityVariationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/kdx/addNewEntityVariation.jsp</result>
+		</action>
+		
+		<!-- Entity Variation Action end -->
+		
+	</package>
+</struts>

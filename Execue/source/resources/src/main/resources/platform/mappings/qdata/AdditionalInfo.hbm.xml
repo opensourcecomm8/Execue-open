@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.execue.core.common.bean.qdata.AdditionalInfo" table="ADDITIONAL_INFO">
+        
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+        </id>
+        
+        <property name="beId" type="java.lang.Long">
+            <column name="BE_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="wikiURLId" type="string">
+            <column name="WIKI_URL_ID"/>
+        </property>
+        
+        <property name="netflixURLId" type="string">
+            <column name="NETFLIX_URL_ID"/>
+        </property>
+        
+        <property name="imdbURLId" type="string">
+            <column name="IMDB_URL_ID"/>
+        </property>
+                        
+        <property name="instanceName" type="string">
+            <column name="INSTANCE_NAME"/>
+        </property>
+
+    </class>
+
+</hibernate-mapping>

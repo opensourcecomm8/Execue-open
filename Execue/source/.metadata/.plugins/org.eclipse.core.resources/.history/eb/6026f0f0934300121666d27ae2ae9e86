@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context debug="1">
+
+    <!-- JNDI reference for SWI Data Source -->
+    <Resource name="jdbc/swi-execue" auth="Container" type="javax.sql.DataSource"
+        maxActive="20" maxIdle="5" maxWait="5000" username="@@mysql_swi_username@@"
+        password="@@mysql_swi_password@@" driverClassName="@@mysql_swi_driver_class@@"
+        removeAbandoned="true" removeAbandonedTimeout="180"
+        validationQuery="@@mysql_swi_connection_validation_query@@"
+        testOnBorrow="true" url="@@mysql_swi_schema@@" />
+
+    <!-- JNDI reference for QDATA Data Source -->
+    <Resource name="jdbc/qdata-execue" auth="Container" type="javax.sql.DataSource"
+        maxActive="20" maxIdle="5" maxWait="5000" username="@@mysql_qdata_username@@"
+        password="@@mysql_qdata_password@@" driverClassName="@@mysql_qdata_driver_class@@"
+        removeAbandoned="true" removeAbandonedTimeout="180"
+        validationQuery="@@mysql_qdata_connection_validation_query@@"
+        testOnBorrow="true" url="@@mysql_qdata_schema@@" />
+
+    <!-- JNDI reference for SDATA Data Source -->
+    <Resource name="jdbc/sdata-execue" auth="Container" type="javax.sql.DataSource"
+        maxActive="20" maxIdle="5" maxWait="5000" username="@@mysql_sdata_username@@"
+        password="@@mysql_sdata_password@@" driverClassName="@@mysql_sdata_driver_class@@"
+        removeAbandoned="true" removeAbandonedTimeout="180"
+        validationQuery="@@mysql_sdata_connection_validation_query@@"
+        testOnBorrow="true" url="@@mysql_sdata_schema@@" />
+
+    <!-- JNDI reference for AUDIT TRAIL Data Source -->
+    <Resource name="jdbc/audit-trail-execue" auth="Container"
+        type="javax.sql.DataSource" maxActive="20" maxIdle="5" maxWait="5000"
+        username="@@mysql_audit_trail_username@@" password="@@mysql_audit_trail_password@@"
+        driverClassName="@@mysql_audit_trail_driver_class@@" removeAbandoned="true"
+        removeAbandonedTimeout="180"
+        validationQuery="@@mysql_audit_trail_connection_validation_query@@"
+        testOnBorrow="true" url="@@mysql_audit_trail_schema@@" />
+
+</Context>

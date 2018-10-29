@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="jobSchedulerUtils" 
+		class="com.execue.scheduler.util.JobSchedulerUtils" >
+	</bean>
+	
+	<bean id="execueJobSchedulerServiceHelper" 
+		class="com.execue.scheduler.helper.ExecueJobSchedulerServiceHelper" >
+		<property name="jobSchedulerUtils" >
+			<ref bean="jobSchedulerUtils"/>
+		</property>
+	</bean>
+	
+	<bean id="execueJobSchedulerService" 
+		class="com.execue.scheduler.service.impl.ExecueJobSchedulerServiceImpl" >
+		<property name="execueJobSchedulerServiceHelper" >
+			<ref bean="execueJobSchedulerServiceHelper"/>
+		</property>
+	</bean>
+	
+	<bean id="applicationDeletionJobService" 
+		class="com.execue.scheduler.service.impl.ApplicationDeletionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+		<property name="applicationManagementService">
+			<ref bean="applicationManagementService" />
+		</property>		
+	</bean>
+	
+	<bean id="assetDeletionJobService" 
+		class="com.execue.scheduler.service.impl.AssetDeletionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	
+	<bean id="businessModelPreparationJobService" 
+		class="com.execue.scheduler.service.impl.BusinessModelPreparationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="conceptTypeAssociationJobService" 
+		class="com.execue.scheduler.service.impl.ConceptTypeAssociationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="correctMappingsMaintenanceJobService" 
+		class="com.execue.scheduler.service.impl.CorrectMappingsMaintenanceJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="cubeCreationJobService" 
+		class="com.execue.scheduler.service.impl.CubeCreationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="cubeRefreshJobService" 
+		class="com.execue.scheduler.service.impl.CubeRefreshJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="cubeUpdationJobService" 
+		class="com.execue.scheduler.service.impl.CubeUpdationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="dataMartCreationJobService" 
+		class="com.execue.scheduler.service.impl.DataMartCreationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="dataMartRefreshJobService" 
+		class="com.execue.scheduler.service.impl.DataMartRefreshJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="dataMartUpdationJobService" 
+		class="com.execue.scheduler.service.impl.DataMartUpdationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	
+	<bean id="fileOntologyDataAbsorptionJobService" 
+		class="com.execue.scheduler.service.impl.FileOntologyDataAbsorptionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="indexFormManagementJobService" 
+		class="com.execue.scheduler.service.impl.IndexFormManagementJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="instanceAbsorptionJobService" 
+		class="com.execue.scheduler.service.impl.InstanceAbsorptionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="memberAbsorptionJobService" 
+		class="com.execue.scheduler.service.impl.MemberAbsorptionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="sdxSynchronizationJobService" 
+		class="com.execue.scheduler.service.impl.SDXSynchronizationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="parentAssetSyncAbsorptionJobService" 
+		class="com.execue.scheduler.service.impl.ParentAssetSyncAbsorptionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>	
+	<bean id="popularityCollectionJobService" 
+		class="com.execue.scheduler.service.impl.PopularityCollectionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="popularityDispersionJobService" 
+		class="com.execue.scheduler.service.impl.PopularityDispersionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="popularityHitMaintainenceJobService" 
+		class="com.execue.scheduler.service.impl.PopularityHitMaintainenceJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="publishAssetJobService" 
+		class="com.execue.scheduler.service.impl.PublishAssetJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+		<property name="applicationManagementService">
+			<ref bean="applicationManagementService" />
+		</property>
+	</bean>
+	<bean id="publisherDataAbsorptionJobService" 
+		class="com.execue.scheduler.service.impl.PublisherDataAbsorptionJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+		<property name="publishedFileRetrievalService">
+			<ref bean="publishedFileRetrievalService" />
+		</property>
+		<property name="publishedFileManagementService">
+			<ref bean="publishedFileManagementService" />
+		</property>
+		<property name="applicationManagementService">
+			<ref bean="applicationManagementService" />
+		</property>
+	</bean>
+	<bean id="publisherDataEvaluationJobService" 
+		class="com.execue.scheduler.service.impl.PublisherDataEvaluationJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+		<property name="publishedFileRetrievalService">
+			<ref bean="publishedFileRetrievalService" />
+		</property>
+		<property name="publishedFileManagementService">
+			<ref bean="publishedFileManagementService" />
+		</property>
+		<property name="applicationManagementService">
+			<ref bean="applicationManagementService" />
+		</property>
+	</bean>
+	<bean id="riOntotermPopularityHitMaintainenceJobService" 
+		class="com.execue.scheduler.service.impl.RIOntotermPopularityHitMaintainenceJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="updateSFLTermTokenWeightJobService" 
+		class="com.execue.scheduler.service.impl.UpdateSFLTermTokenWeightJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>
+	<bean id="updateSFLWeightBasedOnSecondaryWordJobService" 
+		class="com.execue.scheduler.service.impl.UpdateSFLWeightBasedOnSecondaryWordJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>
+	</bean>		
+	<bean id="answersCatalogMgmtQueueJobServiceHelper" class="com.execue.scheduler.helper.AnswersCatalogMgmtQueueJobServiceHelper">
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService"/>
+		<property name="cubeCreationJobService" ref="cubeCreationJobService"/>
+		<property name="cubeUpdationJobService" ref="cubeUpdationJobService"/>
+		<property name="cubeRefreshJobService" ref="cubeRefreshJobService"/>
+		<property name="dataMartCreationJobService" ref="dataMartCreationJobService"/>
+		<property name="dataMartUpdationJobService" ref="dataMartUpdationJobService"/>		
+		<property name="dataMartRefreshJobService" ref="dataMartRefreshJobService"/>
+		<property name="parentAssetSyncAbsorptionJobService" ref="parentAssetSyncAbsorptionJobService"/>
+		<property name="assetDeletionJobService" ref="assetDeletionJobService"/>
+	</bean>
+	<bean id="optimalDSetJobService" 
+		class="com.execue.scheduler.service.impl.OptimalDSetJobServiceImpl" >
+		<property name="execueJobSchedulerService">
+			<ref bean="execueJobSchedulerService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="jobSchedulerConfigurationService">
+			<ref bean="jobSchedulerConfigurationService" />
+		</property>		
+	</bean>		
+	
+</beans>

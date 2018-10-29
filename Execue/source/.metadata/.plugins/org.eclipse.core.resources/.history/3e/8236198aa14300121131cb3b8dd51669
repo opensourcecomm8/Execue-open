@@ -1,0 +1,95 @@
+<queries>
+	<QUERY_GET_MEMBERS_BY_LOOKUPVALUE>
+	<![CDATA[select distinct assetEntityDefinition.membr from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.asset = :asset and assetEntityDefinition.tabl = :table 
+		 and assetEntityDefinition.colum = :column 
+		 and assetEntityDefinition.entityType = :memberEntityType and assetEntityDefinition.membr.lookupValue = :lookupValue
+	]]>
+	</QUERY_GET_MEMBERS_BY_LOOKUPVALUE>
+
+	<QUERY_GET_MEMBERS_FOR_COLUMN>
+	<![CDATA[select mebr from AssetEntityDefinition assetEntityDefinition  
+			 join assetEntityDefinition.membr as mebr 
+		 where assetEntityDefinition.colum = :column and
+		 assetEntityDefinition.entityType = :memberEntityType 
+		 order by mebr.lookupValue
+	]]>
+	</QUERY_GET_MEMBERS_FOR_COLUMN>
+
+	<QUERY_GET_MEMBERS_BY_LOOKUPVALUES>
+	<![CDATA[select distinct assetEntityDefinition.membr from 
+		 AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.asset = :asset 
+		 and assetEntityDefinition.tabl = :table 
+		 and assetEntityDefinition.colum = :column 
+		 and assetEntityDefinition.membr.lookupValue in (:lookupValues)
+	]]>
+	</QUERY_GET_MEMBERS_BY_LOOKUPVALUES>
+	<QUERY_GET_MEMBERS_FOR_COLUMN_BY_PAGE>
+	<![CDATA[select mebr from AssetEntityDefinition assetEntityDefinition
+				join assetEntityDefinition.membr as mebr 
+		 where assetEntityDefinition.colum.id = :columnId and assetEntityDefinition.entityType = :memberEntityType
+		  order by mebr.lookupDescription
+	]]>
+	</QUERY_GET_MEMBERS_FOR_COLUMN_BY_PAGE>
+
+	<QUERY_GET_MEMBERS_COUNT_FOR_COLUMN>
+	<![CDATA[select count(assetEntityDefinition.membr.id)from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.colum = :column and assetEntityDefinition.entityType = :memberEntityType
+	]]>
+	</QUERY_GET_MEMBERS_COUNT_FOR_COLUMN>
+	
+	<QUERY_GET_POPULATED_MEMBERS>
+	<![CDATA[from Membr as membr where membr.id in (:memberIds)]]>
+	</QUERY_GET_POPULATED_MEMBERS>	
+	
+	<QUERY_GET_MEMBER_IDS>
+	<![CDATA[select distinct membr.id from AssetEntityDefinition as ae,Tabl as tabl, Membr as membr where 
+		 ae.asset.id = :assetId and ae.tabl.id = :tableId and ae.entityType = :memberEntityType  
+		  and tabl.lookupType != :none and ae.membr.id = membr.id
+	]]>
+	</QUERY_GET_MEMBER_IDS>
+	<QUERY_GET_MAX_MEMBER_VALUE>
+	<![CDATA[select max(m.lookupValue) from Membr m,AssetEntityDefinition aed 
+		 where aed.asset.id = :assetId and aed.tabl.id = :tableId and 
+		 aed.colum.id = :columnId and aed.membr.id = m.id and m.lookupValue != null
+	]]>
+	</QUERY_GET_MAX_MEMBER_VALUE>
+
+	<QUERY_GET_MIN_MEMBER_VALUE>
+	<![CDATA[select min(m.lookupValue) from Membr m,AssetEntityDefinition aed where aed.asset.id = :assetId and
+		 aed.tabl.id = :tableId and aed.colum.id = :columnId and aed.membr.id = m.id and m.lookupValue != null
+	]]>
+	</QUERY_GET_MIN_MEMBER_VALUE>
+
+	<QUERY_GET_MAX_MEMBER_VALUE_FOR_CUBE>
+	<![CDATA[select max(m.lookupValue) from Membr m,AssetEntityDefinition aed
+		 where aed.asset.id = :assetId and aed.tabl.id = :tableId 
+		 and aed.colum.id = :columnId and aed.membr.id = m.id 
+		 and m.lookupValue != 'all' and m.lookupValue != null
+	]]>
+	</QUERY_GET_MAX_MEMBER_VALUE_FOR_CUBE>
+
+	<QUERY_GET_MIN_MEMBER_VALUE_FOR_CUBE>
+	<![CDATA[select min(m.lookupValue) from Membr m,AssetEntityDefinition aed 
+		where aed.asset.id = :assetId and aed.tabl.id = :tableId and aed.colum.id = :columnId
+		and aed.membr.id = m.id and m.lookupValue != 'all' and m.lookupValue != null
+	]]>
+	</QUERY_GET_MIN_MEMBER_VALUE_FOR_CUBE>
+
+	<QUERY_GET_ASSET_TABLE_MEMBERS>
+	<![CDATA[select assetEntityDefinition.membr from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.tabl.id = :tableId and assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType =:memberEntityType
+	]]>
+	</QUERY_GET_ASSET_TABLE_MEMBERS>
+
+	<QUERY_GET_ASSET_TABLE_MEMBERS_COUNT>
+	<![CDATA[select count(assetEntityDefinition.membr.id)from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.tabl.id = :tableId and assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType =:memberEntityType
+	]]>
+	</QUERY_GET_ASSET_TABLE_MEMBERS_COUNT>
+
+</queries>
+

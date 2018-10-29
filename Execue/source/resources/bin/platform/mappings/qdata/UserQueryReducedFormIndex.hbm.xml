@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="rfxType">
+		<param name="enumClass">com.execue.core.common.type.RFXType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+        
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="rfxEntityType">
+		<param name="enumClass">com.execue.core.common.type.RFXEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="rfxVariationSubType">
+		<param name="enumClass">com.execue.core.common.type.RFXVariationSubType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.qdata.UserQueryReducedFormIndex" table="USER_QUERY_RFX">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">USER_QUERY_RFX</param>
+			</generator>
+		</id>
+        
+		<property name="rfxType" type="rfxType">
+			<column name="RFX_TYPE" precision="10" scale="0" />
+		</property>
+
+		<property name="rfxEntityType" type="rfxEntityType">
+			<column name="RFX_ENTITY_TYPE" length="35" />
+		</property>
+        
+		<property name="rfxVariationSubType" type="rfxVariationSubType">
+			<column name="RFX_VARIATION_SUB_TYPE" length="2" />
+		</property>
+        
+		<property name="rfId" type="java.lang.Long">
+			<column name="REDUCED_FORM_ID" precision="20" scale="0" />
+		</property>
+        
+		<property name="applicationId" type="java.lang.Long">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</property>
+                
+		<property name="srcInstanceBEId" type="java.lang.Long">
+			<column name="SRC_INSTANCE_BE_ID" precision="20" scale="0" />
+		</property>
+
+		<property name="srcConceptBEId" type="java.lang.Long">
+			<column name="SRC_CONCEPT_BE_ID" precision="20" scale="0" />
+		</property>  
+
+		<property name="destInstanceBEId" type="java.lang.Long">
+			<column name="DEST_INSTANCE_BE_ID" precision="20" scale="0" />
+		</property>  
+
+		<property name="destConceptBEId" type="java.lang.Long">
+			<column name="DEST_CONCEPT_BE_ID" precision="20" scale="0" />
+		</property> 
+
+		<property name="relationBEId" type="java.lang.Long">
+			<column name="RELATION_BE_ID" precision="20" scale="0" />
+		</property>
+
+		<property name="value" type="string">
+			<column name="VALUE" precision="10" scale="0" />
+		</property>
+
+		<property name="order" type="long">
+			<column name="RFX_ORDER" length="9"/>
+		</property>
+
+        
+		<property name="executionDate" type="java.util.Date">
+			<column name="EXECUTION_DATE" />
+		</property>
+        
+	</class>
+</hibernate-mapping>

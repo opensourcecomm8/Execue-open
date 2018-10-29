@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<typedef name="operationType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.AnswersCatalogOperationType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<typedef name="operationStatusType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ACManagementOperationStatusType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+<class name="com.execue.core.common.bean.ac.AssetOperationDetail" table="ASSET_OPERATION_DETAIL">
+		
+	 <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">ASSET_OPERATION_DETAIL</param>
+			</generator>
+        </id>
+        <property name="jobRequestId" type="java.lang.Long">
+            <column name="JOB_REQUEST_ID" precision="20" scale="0"/>
+        </property>
+
+        <property name="assetId" type="java.lang.Long">
+            <column name="ASSET_ID" precision="20" scale="0"/>
+        </property>
+        
+        <property name="parentAssetId" type="java.lang.Long">
+            <column name="PARENT_ASSET_ID" precision="20" scale="0"/>
+        </property>           
+
+        <property name="assetOperationType" type="operationType">
+            <column name="OPERATION_TYPE" />
+        </property>        
+
+        <property name="assetOperationStatus" type="operationStatusType">
+            <column name="OPERATION_STATUS" />
+        </property>        
+</class>	
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0">
+
+	<xs:element name="optimalDSet">
+		<xs:complexType>
+			<xs:sequence>
+
+				<xs:element name="dimensions" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="usagePercentage" type="xs:double" />
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dimension">
+		<xs:complexType>
+			<xs:sequence>
+
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="noOfUsageCombinations" type="xs:long" />
+			</xs:sequence>
+
+
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dimensions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dimension" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="optimalDSets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="optimalDSet" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+
+</xs:schema>

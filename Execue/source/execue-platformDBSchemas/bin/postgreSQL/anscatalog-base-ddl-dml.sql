@@ -1,0 +1,5 @@
+/*
+
+    Answers Catalog is an empty schema
+
+*/

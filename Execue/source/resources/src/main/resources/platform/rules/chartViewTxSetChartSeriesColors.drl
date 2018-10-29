@@ -1,0 +1,41 @@
+#created on: Oct 01, 2009
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Color;
+import org.apache.commons.lang.StringUtils;
+
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.SeriesAttributes;
+import com.softwarefx.chartfx.server.LegendItemAttributes;
+
+import com.execue.core.common.bean.reports.view.data.ChartAppearanceMeta;
+
+rule "setChartSeriesColors"
+
+	when
+		chartMetaInfo : ChartAppearanceMeta (BARLINECHARTCOLOR.USECUSTOMCOLORS == true)
+		chartServer   : ChartServer ( ID == "" )
+	then
+		String rgb = "";
+        String colors[] = new String[40];
+        String rgbColor[] = new String[3];
+        int noOfSeries = 0;
+         
+        colors = StringUtils.split(chartMetaInfo.getBARLINECHARTCOLOR().getCOLORCODESERIES(), ";");
+
+        noOfSeries = chartServer.getData().getSeries();
+        for (int cntr = 0; cntr < noOfSeries; cntr++) {
+           if (cntr < colors.length) {
+              rgb = colors[cntr];
+              rgbColor = rgb.split(",");
+              SeriesAttributes series = chartServer.getSeries().get(cntr);
+              series.setColor(new Color(Integer.parseInt(rgbColor[0]), Integer.parseInt(rgbColor[1]), Integer.parseInt(rgbColor[2])));
+           }
+        }
+end

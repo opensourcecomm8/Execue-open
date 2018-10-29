@@ -1,0 +1,727 @@
+<com.execue.core.common.bean.governor.AssetQuery>
+  <logicalQuery>
+    <asset>
+      <id>11</id>
+      <name>billing</name>
+      <description>Billing Asset</description>
+      <displayName>Billing</displayName>
+      <priority>100</priority>
+      <dataSource>
+        <id>1</id>
+        <name>Abc Cards Warehouse</name>
+        <description>Connection to warehouse schema for ABC Cards</description>
+        <ownerType>Client</ownerType>
+        <providerType>Oracle</providerType>
+        <type>Relational</type>
+        <connectionType>PROPERTIES</connectionType>
+        <location>localhost</location>
+        <port>1521</port>
+        <userName>whouse</userName>
+        <password>dfsn</password>
+        <schemaName>XE</schemaName>
+      </dataSource>
+      <status>A</status>
+      <grain class="org.hibernate.collection.PersistentSet">
+        <initialized>true</initialized>
+        <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+        <cachedSize>-1</cachedSize>
+        <role>com.execue.core.common.bean.entity.Asset.grain</role>
+        <key class="long">11</key>
+        <dirty>false</dirty>
+        <storedSnapshot class="map">
+          <entry>
+            <com.execue.core.common.bean.entity.DomainEntityDefinition>
+              <id>255</id>
+              <concept>
+                <id>2146</id>
+                <name>Vintage</name>
+                <description>(null)</description>
+                <displayName>Vintage</displayName>
+              </concept>
+            </com.execue.core.common.bean.entity.DomainEntityDefinition>
+            <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+          </entry>
+          <entry>
+            <com.execue.core.common.bean.entity.DomainEntityDefinition>
+              <id>11</id>
+              <concept>
+                <id>2004</id>
+                <name>Account</name>
+                <description>Unique Identifier for an Account</description>
+                <displayName>Account</displayName>
+              </concept>
+            </com.execue.core.common.bean.entity.DomainEntityDefinition>
+            <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+          </entry>
+        </storedSnapshot>
+        <set>
+          <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+          <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+        </set>
+      </grain>
+    </asset>
+    <metrics>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2014</id>
+              <name>MerchandiseAmount</name>
+              <description>Merchandise Sales Amount</description>
+              <displayName>Merchandise Sales Amount</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2014</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>3</id>
+                      <name>AVG</name>
+                      <displayName>Avergae</displayName>
+                      <description>Average of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>2</id>
+                      <name>SUM</name>
+                      <displayName>Summation</displayName>
+                      <description>Summation on data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <businessStat>
+            <stat>
+              <id>0</id>
+              <name>AVG</name>
+            </stat>
+            <requestedByUser>true</requestedByUser>
+          </businessStat>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>1015</id>
+              <name>MRC_AMT</name>
+              <ownerTable>
+                <id>102</id>
+                <name>BILLING2</name>
+                <ownerAsset>
+                  <id>11</id>
+                  <name>billing</name>
+                  <description>Billing Asset</description>
+                  <displayName>Billing</displayName>
+                  <priority>100</priority>
+                  <dataSource>
+                    <id>1</id>
+                    <name>Abc Cards Warehouse</name>
+                    <description>Connection to warehouse schema for ABC Cards</description>
+                    <ownerType>Client</ownerType>
+                    <providerType>Oracle</providerType>
+                    <type>Relational</type>
+                    <connectionType>PROPERTIES</connectionType>
+                    <location>localhost</location>
+                    <port>1521</port>
+                    <userName>warehouse</userName>
+                    <password>execue</password>
+                    <schemaName>XE</schemaName>
+                  </dataSource>
+                  <status>A</status>
+                  <grain class="org.hibernate.collection.PersistentSet">
+                    <initialized>true</initialized>
+                    <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+                    <cachedSize>-1</cachedSize>
+                    <role>com.execue.core.common.bean.entity.Asset.grain</role>
+                    <key class="long">11</key>
+                    <dirty>false</dirty>
+                    <storedSnapshot class="map">
+                      <entry>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition>
+                          <id>11</id>
+                          <concept>
+                            <id>2004</id>
+                            <name>Account</name>
+                            <description>Unique Identifier for an Account</description>
+                            <displayName>Account</displayName>
+                          </concept>
+                        </com.execue.core.common.bean.entity.DomainEntityDefinition>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                      </entry>
+                      <entry>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition>
+                          <id>255</id>
+                          <concept>
+                            <id>2146</id>
+                            <name>Vintage</name>
+                            <description>(null)</description>
+                            <displayName>Vintage</displayName>
+                          </concept>
+                        </com.execue.core.common.bean.entity.DomainEntityDefinition>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                      </entry>
+                    </storedSnapshot>
+                    <set>
+                      <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                      <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                    </set>
+                  </grain>
+                </ownerAsset>
+                <alias>BIL</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>N</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>NUMBER</dataType>
+              <kdxDataType>MEASURE</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <scale>2</scale>
+              <nullable>false</nullable>
+              <precision>13</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2022</id>
+              <name>FicoScore</name>
+              <description>FICO Score Number</description>
+              <displayName>Fico Score</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2022</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>2</id>
+                      <name>SUM</name>
+                      <displayName>Summation</displayName>
+                      <description>Summation on data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>3</id>
+                      <name>AVG</name>
+                      <displayName>Avergae</displayName>
+                      <description>Average of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>1023</id>
+              <name>FICO_SCORE_NUMBER</name>
+              <ownerTable>
+                <id>102</id>
+                <name>BILLING2</name>
+                <ownerAsset reference="../../../../../../../asset"/>
+                <alias>BIL</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>N</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>INT</dataType>
+              <kdxDataType>SL1</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <scale>0</scale>
+              <nullable>false</nullable>
+              <precision>8</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2022</id>
+              <name>Account</name>
+              <description>Account Number</description>
+              <displayName>Account Number</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2022</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>2</id>
+                      <name>SUM</name>
+                      <displayName>Summation</displayName>
+                      <description>Summation on data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>3</id>
+                      <name>AVG</name>
+                      <displayName>Avergae</displayName>
+                      <description>Average of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>1024</id>
+              <name>ACCOUNT_NUMBER</name>
+              <ownerTable>
+                <id>102</id>
+                <name>BILLING2</name>
+                <ownerAsset reference="../../../../../../../asset"/>
+                <alias>BIL</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>N</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>INT</dataType>
+              <kdxDataType>ID</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <scale>0</scale>
+              <nullable>false</nullable>
+              <precision>8</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2013</id>
+              <name>MerchandiseBalance</name>
+              <description>Merchandise Balance Amount</description>
+              <displayName>Merchandise Balance</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2013</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>2</id>
+                      <name>SUM</name>
+                      <displayName>Summation</displayName>
+                      <description>Summation on data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>3</id>
+                      <name>AVG</name>
+                      <displayName>Avergae</displayName>
+                      <description>Average of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>1014</id>
+              <name>MRC_BAL</name>
+              <ownerTable>
+                <id>102</id>
+                <name>BILLING2</name>
+                <ownerAsset reference="../../../../../../../asset"/>
+                <alias>BIL</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>N</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>INT</dataType>
+              <kdxDataType>MEASURE</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <scale>0</scale>
+              <nullable>false</nullable>
+              <precision>8</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+    </metrics>
+    <conditions>
+      <com.execue.core.common.bean.governor.StructuredCondition>
+        <lhsBusinessAssetTerm>
+          <businessTerm>
+            <businessEntityTerm>
+              <businessEntity class="com.execue.core.common.bean.entity.Concept">
+                <id>103</id>
+                <name>Year</name>
+                <description>Transaction Year</description>
+                <displayName>Year</displayName>
+                <stats class="org.hibernate.collection.PersistentSet">
+                  <initialized>true</initialized>
+                  <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                  <cachedSize>-1</cachedSize>
+                  <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                  <key class="long">103</key>
+                  <dirty>false</dirty>
+                  <storedSnapshot class="map">
+                    <entry>
+                      <com.execue.core.common.bean.entity.Stat>
+                        <id>2</id>
+                        <name>SUM</name>
+                        <displayName>Summation</displayName>
+                        <description>Summation on data elements</description>
+                      </com.execue.core.common.bean.entity.Stat>
+                      <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                    </entry>
+                    <entry>
+                      <com.execue.core.common.bean.entity.Stat>
+                        <id>3</id>
+                        <name>AVG</name>
+                        <displayName>Avergae</displayName>
+                        <description>Average of data elements</description>
+                      </com.execue.core.common.bean.entity.Stat>
+                      <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                    </entry>
+                  </storedSnapshot>
+                  <set>
+                    <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                    <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                  </set>
+                </stats>
+              </businessEntity>
+              <businessEntityType>CONCEPT</businessEntityType>
+            </businessEntityTerm>
+            <requestedByUser>false</requestedByUser>
+            <businessTermWeight>5.0</businessTermWeight>
+          </businessTerm>
+          <assetEntityTerms>
+            <com.execue.core.common.bean.governor.AssetEntityTerm>
+              <assetEntity class="com.execue.core.common.bean.entity.Colum">
+                <id>5699</id>
+                <name>PERF_YR</name>
+                <ownerTable>
+                  <id>102</id>
+                  <name>BILLING2</name>
+                  <ownerAsset>
+                    <id>11</id>
+                    <name>billing</name>
+                    <description>Billing Asset</description>
+                    <displayName>Billing</displayName>
+                    <priority>100</priority>
+                    <dataSource>
+                      <id>1</id>
+                      <name>Abc Cards Warehouse</name>
+                      <description>Connection to warehouse schema for ABC Cards</description>
+                      <ownerType>Client</ownerType>
+                      <providerType>Oracle</providerType>
+                      <type>Relational</type>
+                      <connectionType>PROPERTIES</connectionType>
+                      <location>localhost</location>
+                      <port>1521</port>
+                      <userName>warehouse</userName>
+                      <password>execue</password>
+                      <schemaName>XE</schemaName>
+                    </dataSource>
+                    <status>A</status>
+                    <grain class="org.hibernate.collection.PersistentSet">
+                      <initialized>true</initialized>
+                      <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+                      <cachedSize>-1</cachedSize>
+                      <role>com.execue.core.common.bean.entity.Asset.grain</role>
+                      <key class="long">11</key>
+                      <dirty>false</dirty>
+                      <storedSnapshot class="map">
+                        <entry>
+                          <com.execue.core.common.bean.entity.DomainEntityDefinition>
+                            <id>255</id>
+                            <concept>
+                              <id>2146</id>
+                              <name>Vintage</name>
+                              <description>(null)</description>
+                              <displayName>Vintage</displayName>
+                            </concept>
+                          </com.execue.core.common.bean.entity.DomainEntityDefinition>
+                          <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                        </entry>
+                        <entry>
+                          <com.execue.core.common.bean.entity.DomainEntityDefinition>
+                            <id>11</id>
+                            <concept>
+                              <id>2004</id>
+                              <name>Account</name>
+                              <description>Unique Identifier for an Account</description>
+                              <displayName>Account</displayName>
+                            </concept>
+                          </com.execue.core.common.bean.entity.DomainEntityDefinition>
+                          <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                        </entry>
+                      </storedSnapshot>
+                      <set>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                        <com.execue.core.common.bean.entity.DomainEntityDefinition reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.DomainEntityDefinition"/>
+                      </set>
+                    </grain>
+                  </ownerAsset>
+                  <alias>BIL</alias>
+                  <lookupType>(null)</lookupType>
+                  <lookupValueColumn>(null)</lookupValueColumn>
+                  <lookupDescColumn>(null)</lookupDescColumn>
+                  <lowerLimitColumn>(null)</lowerLimitColumn>
+                  <upperLimitColumn>(null)</upperLimitColumn>
+                  <aggregated>N</aggregated>
+                  <virtual>N</virtual>
+                </ownerTable>
+                <dataType>INT</dataType>
+                <kdxDataType>(null)</kdxDataType>
+                <required>N</required>
+                <defaultValue>(null)</defaultValue>
+                <constraintType>(null)</constraintType>
+                <scale>0</scale>
+                <nullable>false</nullable>
+                <precision>4</precision>
+              </assetEntity>
+              <assetEntityType>COLUMN</assetEntityType>
+            </com.execue.core.common.bean.governor.AssetEntityTerm>
+            <com.execue.core.common.bean.governor.AssetEntityTerm>
+              <assetEntity class="com.execue.core.common.bean.entity.Colum">
+                <id>1283</id>
+                <name>PERF_YR</name>
+                <ownerTable>
+                  <id>109</id>
+                  <name>PERF_YM</name>
+                  <ownerAsset reference="../../../../com.execue.core.common.bean.governor.AssetEntityTerm/assetEntity/ownerTable/ownerAsset"/>
+                  <alias>PYM</alias>
+                  <lookupType>SL</lookupType>
+                  <lookupValueColumn>PERF_YM</lookupValueColumn>
+                  <lookupDescColumn>PERF_YM_DESC</lookupDescColumn>
+                  <lowerLimitColumn>(null)</lowerLimitColumn>
+                  <upperLimitColumn>(null)</upperLimitColumn>
+                  <aggregated>N</aggregated>
+                  <virtual>N</virtual>
+                </ownerTable>
+                <dataType>INT</dataType>
+                <kdxDataType>(null)</kdxDataType>
+                <required>N</required>
+                <defaultValue>(null)</defaultValue>
+                <constraintType>(null)</constraintType>
+                <scale>0</scale>
+                <nullable>false</nullable>
+                <precision>4</precision>
+              </assetEntity>
+              <assetEntityType>COLUMN</assetEntityType>
+            </com.execue.core.common.bean.governor.AssetEntityTerm>
+          </assetEntityTerms>
+        </lhsBusinessAssetTerm>
+        <operator>EQUALS</operator>
+        <operandType>VALUE</operandType>
+        <rhsValues>
+        <com.execue.core.common.bean.querygen.QueryValue>
+          <value>2007</value>
+          <dataType>TIME</dataType>
+        </com.execue.core.common.bean.querygen.QueryValue>
+        </rhsValues>
+      </com.execue.core.common.bean.governor.StructuredCondition>
+    </conditions>
+    <summarizations>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <name>FicoScore</name>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <requestedByUser>false</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum" reference="../../../../../metrics/com.execue.core.common.bean.governor.BusinessAssetTerm[2]/assetEntityTerms/com.execue.core.common.bean.governor.AssetEntityTerm/assetEntity"/>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+    </summarizations>
+    <structuredQueryWeight>17.5</structuredQueryWeight>
+  </logicalQuery>
+  <physicalQuery class="com.execue.core.common.bean.querygen.SQLQuery">
+    <selectEntities>
+      <com.execue.core.common.bean.querygen.SelectEntity>
+        <functionName>AVG</functionName>
+        <type>TABLE_COLUMN</type>
+        <tableColumn>
+          <table>
+            <tableName>BILLING2</tableName>
+            <alias>BIL</alias>
+          </table>
+          <column>
+            <columnName>MRC_AMT</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <alias>SE0</alias>
+      </com.execue.core.common.bean.querygen.SelectEntity>
+      <com.execue.core.common.bean.querygen.SelectEntity>
+        <type>TABLE_COLUMN</type>
+        <tableColumn>
+          <table>
+            <tableName>BILLING2</tableName>
+            <alias>BIL</alias>
+          </table>
+          <column>
+            <columnName>FICO_SCORE_NUMBER</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <alias>SE1</alias>
+      </com.execue.core.common.bean.querygen.SelectEntity>
+    </selectEntities>
+    <fromEntities>
+      <com.execue.core.common.bean.querygen.FromEntity>
+        <table>
+          <tableName>BILLING2</tableName>
+          <alias>BIL</alias>
+        </table>
+        <type>TABLE</type>
+      </com.execue.core.common.bean.querygen.FromEntity>
+    </fromEntities>
+    <joinEntities/>
+    <whereEntities>
+      <com.execue.core.common.bean.querygen.ConditionEntity>
+        <tableColumn>
+          <table>
+            <tableName>BILLING2</tableName>
+            <alias>BIL</alias>
+          </table>
+          <column>
+            <columnName>PERF_YR</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <operator>EQUALS</operator>
+        <operandType>VALUE</operandType>
+        <rhsValues reference="../../../../logicalQuery/conditions/com.execue.core.common.bean.governor.StructuredCondition/rhsValues"/>
+      </com.execue.core.common.bean.querygen.ConditionEntity>
+    </whereEntities>
+    <groupingEntities>
+      <com.execue.core.common.bean.querygen.SelectEntity>
+        <type>TABLE_COLUMN</type>
+        <tableColumn>
+          <table>
+            <tableName>BILLING2</tableName>
+            <alias>BIL</alias>
+          </table>
+          <column>
+            <columnName>FICO_SCORE_NUMBER</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <alias>GE0</alias>
+      </com.execue.core.common.bean.querygen.SelectEntity>
+    </groupingEntities>
+    <orderingEntities/>
+    <havingEntities/>
+  </physicalQuery>
+</com.execue.core.common.bean.governor.AssetQuery>

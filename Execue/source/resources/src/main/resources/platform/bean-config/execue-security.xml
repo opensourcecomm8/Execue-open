@@ -1,0 +1,205 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:s="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/security
+						http://www.springframework.org/schema/security/spring-security-3.1.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<s:global-method-security access-decision-manager-ref="businessAccessDecisionManager" secured-annotations="enabled">
+		<s:after-invocation-provider ref="afterAclCollectionRead"/>
+		<!-- <s:after-invocation-provider ref="afterAclRead"/> -->
+	</s:global-method-security>
+	
+	<bean id="execueUserContext"  class="com.execue.security.UserContext"/>
+	
+	<bean id="abstractUserContextService" abstract="true">
+		<property name="userContext" ref="execueUserContext" />
+	</bean>
+
+	<bean id="execueUserDetailsService"  class="com.execue.security.service.impl.ExecueUserDetailsServiceImpl">
+		<property name="userManagementService">
+			<ref bean="userManagementService"/>
+		</property>
+	</bean>
+	
+	<!-- MD5 security start-->
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+		<property name="userPropertyToUse" value="salt" />
+    </bean>
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" /> 
+	<bean  id="daoAuthenticationProvider" 
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">  
+		 <property name="userDetailsService" ref="execueUserDetailsService"/>
+		 <property name="passwordEncoder" ref="passwordEncoder"/>
+		 <property name="saltSource" ref="saltSource"/>  
+	</bean>
+	  
+	<!--   
+	<s:authentication-provider  user-service-ref="execueUserDetailsService">        
+		<s:password-encoder ref="passwordEncoder">
+			<s:salt-source user-property="salt"/>
+		</s:password-encoder>
+	</s:authentication-provider>
+	 -->
+	<!-- ACL permission masks used by this application -->
+	<bean id="administrationPermission"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField" value="org.springframework.security.acls.domain.BasePermission.ADMINISTRATION"/>
+	</bean>
+	<bean id="readPermission"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField" value="org.springframework.security.acls.domain.BasePermission.READ"/>
+	</bean>
+	
+	<!--<bean id="writePermission"
+			class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+			<property name="staticField" value="org.springframework.security.acls.domain.BasePermission.WRITE"/>
+		</bean>-->
+	<!--<bean id="deletePermission"
+			class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+			<property name="staticField" value="org.springframework.security.acls.domain.BasePermission.DELETE"/>
+		</bean> -->
+	
+	<bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter"/>
+	 
+	<bean id="businessAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions" value="true"/>
+		<property name="decisionVoters">
+			<list>
+				<ref local="roleVoter"/>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="lookupStrategy" class="org.springframework.security.acls.jdbc.BasicLookupStrategy">
+		<constructor-arg ref="swiDataSource"/>
+		<constructor-arg ref="aclCache"/>
+		<constructor-arg ref="aclAuthorizationStrategy"/>
+		<constructor-arg>
+			<bean class="org.springframework.security.acls.domain.ConsoleAuditLogger"/>
+		</constructor-arg>
+	</bean>
+	<!-- TODO: -KA- Security: First constructor is deprecated use second constructor -->
+	<bean id="aclCache" class="org.springframework.security.acls.domain.EhCacheBasedAclCache">
+		<constructor-arg>
+			<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+				<property name="cacheManager">
+					<bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
+				</property>
+				<property name="cacheName" value="aclCache"/>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="aclAuthorizationStrategy" class="org.springframework.security.acls.domain.AclAuthorizationStrategyImpl">
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+					<constructor-arg value="ROLE_ADMIN"/>
+				</bean>
+				<bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+					<constructor-arg value="ROLE_ADMIN"/>
+				</bean>
+				<bean class="org.springframework.security.core.authority.GrantedAuthorityImpl">
+					<constructor-arg value="ROLE_ADMIN"/>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	 
+	<bean id="jdbcMutableAclService" class="org.springframework.security.acls.jdbc.JdbcMutableAclService">
+		<constructor-arg ref="swiDataSource"/>
+		<constructor-arg ref="lookupStrategy"/>
+		<constructor-arg ref="aclCache"/>
+		<property name="classIdentityQuery" value="SELECT max(id) from acl_class"/>
+		<property name="sidIdentityQuery" value="SELECT max(id) from acl_sid"/>
+	</bean>
+	 
+	<bean id="afterInvocationManager" class="org.springframework.security.access.intercept.AfterInvocationProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="afterAclRead"/>
+				<ref local="afterAclCollectionRead"/>
+			</list>
+		</property>
+	</bean>
+	<!-- Processes AFTER_ACL_COLLECTION_READ configuration settings -->
+	
+	<bean id="afterAclCollectionRead"
+		class="org.springframework.security.acls.afterinvocation.AclEntryAfterInvocationCollectionFilteringProvider">
+		<constructor-arg ref="jdbcMutableAclService"/>
+		<constructor-arg>
+			<list>
+				<ref local="administrationPermission"/>
+				<ref local="readPermission"/>
+			</list>
+		</constructor-arg>
+	</bean>
+		
+	<!-- Processes AFTER_ACL_READ configuration settings -->
+	<bean id="afterAclRead" class="org.springframework.security.acls.afterinvocation.AclEntryAfterInvocationProvider">
+		<constructor-arg ref="jdbcMutableAclService"/>
+		<constructor-arg>
+			<list>
+				<ref local="administrationPermission"/>
+				<ref local="readPermission"/>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	
+	<!-- UserManagement Beans Configuration -->
+	
+	
+	
+	
+	
+	<!--<bean id="swiAssetSecurity"
+			class="org.springframework.security.intercept.method.aopalliance.MethodSecurityInterceptor">
+			<property name="authenticationManager" ref="authenticationManager"/>
+			<property name="accessDecisionManager" ref="businessAccessDecisionManager"/>
+			<property name="afterInvocationManager" ref="afterInvocationManager"/>
+			<property name="objectDefinitionSource">
+				<value>
+					  com.execue.governor.service.IQueryMappingService.correctMappings=ROLE_ADMIN
+				</value>
+			</property>
+		</bean>
+		-->    
+	<bean id="localAclService" class="com.execue.security.service.impl.ACLServiceImpl">
+		<property name="mutableAclService" ref="jdbcMutableAclService"/>
+	</bean>
+	<bean id="aclService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager"/>
+		<property name="target" ref="localAclService"/>
+		<property name="proxyTargetClass" value="false"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="setAssetObjectPermissions">PROPAGATION_REQUIRED</prop>
+				<prop key="setApplicaitonObjectPermissions">PROPAGATION_REQUIRED</prop>
+				<prop key="createUpdatePermissionByRole">PROPAGATION_REQUIRED</prop>				
+			</props>
+		</property>
+	</bean>
+		
+	<!-- Refer:- http://ogrigas.eu/spring/2010/04/inherit-spring-security-context-in-child-threads -->
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass"
+			value="org.springframework.security.core.context.SecurityContextHolder"/>
+		<property name="targetMethod" value="setStrategyName"/>
+		<property name="arguments">
+			<list>
+				<value>MODE_INHERITABLETHREADLOCAL</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="securityConfigurationService" class="com.execue.security.configuration.impl.SecurityConfigurationServiceImpl">
+		<property name="securityConfiguration" ref="securityConfiguration"/>
+	</bean>
+</beans>

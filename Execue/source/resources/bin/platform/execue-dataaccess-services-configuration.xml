@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<dataaccess-services>
+		<static-values>
+			<remote-ip-location-data-source>remote-ip-data-source</remote-ip-location-data-source>
+			<city-center-zipcode-data-source>CityCenterZipCodeDS</city-center-zipcode-data-source>			
+			<solr>
+				<facet>				
+					<query-parameters>
+						<total-rows>0</total-rows>
+						<facet>true</facet>
+						<facet-method-param-name>facet.method</facet-method-param-name>
+						<facet-method-param-value>enum</facet-method-param-value>
+						<facet-sort-by-count>true</facet-sort-by-count>
+						<fetch-facets-with-min-count>1</fetch-facets-with-min-count>
+						<facet-limit>-1</facet-limit>
+					</query-parameters>
+				</facet>
+				<static-fields>
+					<field>
+						<document-id-name>id</document-id-name>
+						<document-id-type>NUMBER</document-id-type>
+					</field>
+					<field>
+						<context-id-name>ctx_l</context-id-name>
+						<context-id-type>NUMBER</context-id-type>
+					</field>
+					<field>
+						<location-id-name>loc_l</location-id-name>
+						<location-id-type>NUMBER</location-id-type>
+					</field>
+					<field>
+						<latitude-name>lat_d</latitude-name>
+						<latitude-type>NUMBER</latitude-type>
+					</field>
+					<field>
+						<longitude-name>long_d</longitude-name>
+						<longitude-type>NUMBER</longitude-type>
+					</field>
+					<field>
+						<image-present-name>img_s</image-present-name>
+						<image-present-type>STRING</image-present-type>
+					</field>
+					<field>
+						<processing-state-name>prostat_s</processing-state-name>
+						<processing-state-type>STRING</processing-state-type>
+					</field>
+					<field>
+						<content-date-name>date_dt</content-date-name>
+						<content-date-type>STRING</content-date-type>
+					</field>				
+				</static-fields>				
+				<distance>
+					<single-location-distance-formula>{!frange u=#DISTANCE# ignoreu=true}sum(pow(sub(#LONGITUDE#\,#LONGITUDE_FIELD_NAME#)\,2)\,pow(sub(#LATITUDE#\,#LATITUDE_FIELD_NAME#)\,2))</single-location-distance-formula>
+					<multiple-location-distance-formula>{!frange u=#DISTANCE# ignoreu=true}minStLnDist(#LONGITUDE_FIELD_NAME#\,#LATITUDE_FIELD_NAME#\,"#LIST_OF_LOCATIONS#")</multiple-location-distance-formula>
+					<distance-replace-token>#DISTANCE#</distance-replace-token>
+					<longitude-replace-token>#LONGITUDE#</longitude-replace-token>
+					<latitude-replace-token>#LATITUDE#</latitude-replace-token>
+					<!--  #LIST_OF_LOCATIONS#  a semi-colon separated string of comma separated longitude and lantitude values in decimals -->
+					<multiple-longitude-latitude-replace-token>#LIST_OF_LOCATIONS#</multiple-longitude-latitude-replace-token>
+					<longitude-field-replace-token>#LONGITUDE_FIELD_NAME#</longitude-field-replace-token>
+					<latitude-field-replace-token>#LATITUDE_FIELD_NAME#</latitude-field-replace-token>			
+				</distance>
+				<field-info>
+					<long-column-solr-field-suffix>_l</long-column-solr-field-suffix>
+					<number-column-solr-field-suffix>_d</number-column-solr-field-suffix>
+					<date-column-solr-field-suffix>_dt</date-column-solr-field-suffix>
+					<string-column-solr-field-suffix>_s</string-column-solr-field-suffix>
+					<multivalued-seperator-column-solr-field-suffix>_sc</multivalued-seperator-column-solr-field-suffix>				
+					<multi-valued-feature-seperator>:</multi-valued-feature-seperator>
+					<document-id-field-seperator>_</document-id-field-seperator>					
+				</field-info>
+				<default-query>*:*</default-query>
+			</solr>	
+		</static-values>
+	</dataaccess-services>
+</execue-configuration>

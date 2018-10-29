@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<sforce>
+		<static-values>
+			<data-batch-size>400</data-batch-size>
+			<target-datasource-name>sforce</target-datasource-name>
+			<sforce-job-name>OnDemandSforceReplicationJob</sforce-job-name>
+			<sforce-job-group>Sforce_OnDemand</sforce-job-group>
+		</static-values>		
+	</sforce>
+</execue-configuration>

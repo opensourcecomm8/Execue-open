@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+
+	<class name="com.execue.core.common.bean.entity.InstanceMappingSuggestion" table="INSTANCE_MAPPING_SUGGESTION">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">INSTANCE_MAPPING_SUGGESTION</param>
+			</generator>
+		</id>
+		
+		<property name="applicationId" type="java.lang.Long">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</property>
+			
+		<property name="modelId" type="java.lang.Long">
+			<column name="MODEL_ID" precision="20" scale="0" />
+		</property>	
+		
+		<property name="modelGroupId" type="java.lang.Long">
+			<column name="MODEL_GROUP_ID" precision="20" scale="0" />
+		</property>	
+		
+		<property name="assetAEDId" type="java.lang.Long">
+			<column name="ASSET_AE_ID" precision="20" scale="0" />
+		</property>	
+		
+		
+		<property name="tablAEDId" type="java.lang.Long">
+			<column name="TABL_AE_ID" precision="20" scale="0" />
+		</property>	
+				
+		<property name="tablDisplayName" type="string">
+			<column name="TABL_DISPLAY_NAME" length="255"/>
+		</property>
+		
+		<property name="columAEDId" type="java.lang.Long">
+			<column name="COLUM_AE_ID" precision="20" scale="0" />
+		</property>	
+		
+		<property name="columDisplayName" type="string">
+			<column name="COLUM_DISPLAY_NAME" length="255"/>
+		</property>
+		
+		<property name="conceptBEDId" type="java.lang.Long">
+			<column name="CONCEPT_BE_ID" precision="20" scale="0" />
+		</property>	
+		
+		<property name="conceptDisplayName" type="string">
+			<column name="CONCEPT_DISPLAY_NAME" length="255"/>
+		</property>
+				
+	</class>	
+</hibernate-mapping>

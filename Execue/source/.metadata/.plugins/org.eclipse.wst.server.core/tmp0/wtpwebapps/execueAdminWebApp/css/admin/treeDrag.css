@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+BODY {
+	FONT-SIZE: 11px; MIN-HEIGHT: 600px; BACKGROUND: #fff; FONT-FAMILY: Arial; HEIGHT: 100%
+}
+li{
+font-size:11px	;
+}
+.myMap {
+	PADDING-LEFT: 0px; LIST-STYLE-TYPE: none ;
+}
+.myMap LI {
+	PADDING-LEFT: 0px; LIST-STYLE-TYPE: none;
+}
+.expandImage {
+	MARGIN-RIGHT: 0px
+}
+.folderImage {
+	
+}
+.textHolder {
+	PADDING-LEFT: 0px; LINE-HEIGHT: 16px; HEIGHT: 16px
+}
+SPAN.dropOver {
+	PADDING-LEFT: 0px; COLOR: #fff; LINE-HEIGHT: 16px; HEIGHT: 16px; BACKGROUND-COLOR: #00c
+}
+.concept {
+	LIST-STYLE-TYPE: none
+}
+.treeItem {
+	LIST-STYLE-TYPE: none
+}
+.treeItem1 {
+	LIST-STYLE-TYPE: none
+}
+.myJoin {
+	LIST-STYLE-TYPE: none
+}
+.leftColumn {
+	LIST-STYLE-TYPE: none
+}
+.rightColumn {
+	LIST-STYLE-TYPE: none
+}
+.mytable,.column {
+	list-style-type: none;
+	white-space:nowrap;
+}
+
+.conceptHolder{
+white-space:nowrap;	
+}

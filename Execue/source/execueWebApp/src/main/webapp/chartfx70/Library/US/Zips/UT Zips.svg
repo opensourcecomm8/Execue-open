@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg >
+
+<svg  width="477.793pt" height="600.91pt" viewBox="0 0 477.793 600.91" xml:space="preserve">
+	<g id="Layer_x0020_1" style="fill-rule:nonzero;clip-rule:nonzero;stroke:#000000;stroke-miterlimit:4; font-family:'Arial'; font-size:10;">
+		<g>
+			<path style="fill:#FFFFFF;" d="M222.42,0.667v94.554l-41.785,2.355l-7.931-9.218l-33,21.859l-68.14,10.284L0.5,119.649V0.504l98.064,0.858l82.713-0.858l41.143,0.163z"/>
+			<text transform="matrix(1 0 0 1 98.3672 55.7915)"><tspan x="0" y="0" style="stroke:none;">843</tspan></text>
+		</g>
+		<g style="stroke:none;">
+			<path style="fill:#FFFFFF;stroke:#000000;" d="M222.42,0.667l62.142,0.695l0.855,49.715v41.999v25.995h98.142h93.734v42.576v52.286v49.309l-198.087-0.67l-43.928-57.856l-35.358,2.142l-43.927,30.001L0.5,295.359v-42.002v-27.426V119.649l71.065,0.853
+				l68.14-10.284l33-21.859l7.931,9.218l41.785-2.355V0.667z"/>
+			<text transform="matrix(1 0 0 1 255.8643 158.064)"><tspan x="0" y="0">840</tspan><tspan x="0" y="12">842</tspan></text>
+		</g>
+		<g>
+			<path style="fill:#FFFFFF;" d="M0.5,295.359l155.493-58.499l43.927-30.001l35.358-2.142l43.928,57.856h-11.785l-7.501,140.354l38.571,33.213l-5.357,164.27h-32.368H144.667h-36.69H0.5v-72.772v-65.138v-52.285v-10.287V295.359z"/>
+			<text transform="matrix(1 0 0 1 123.0723 467.063)"><tspan x="0" y="0" style="stroke:none;">846-847</tspan></text>
+		</g>
+		<g>
+			<path style="fill:#FFFFFF;" d="M279.206,262.573h-11.785l-7.501,140.354l38.571,33.213l-5.357,164.27h22.133h71.295h90.732v-77.058v-27.426v-34.286v-41.999V315.929v-16.283v-18.001v-18.402l-198.087-0.67z"/>
+			<text transform="matrix(1 0 0 1 381.2192 457.6343)"><tspan x="0" y="0" style="stroke:none;">845</tspan></text>
+		</g>
+	</g>
+</svg>

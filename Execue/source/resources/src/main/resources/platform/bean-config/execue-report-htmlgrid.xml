@@ -1,0 +1,90 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- Simple Grid-->
+	<bean id="htmlSimpleGridHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.HtmlSimpleGridHandler">
+		<property name="reportDataMassageService" ref="simpleGridDataMassage" />
+		<property name="reportDataTxService" ref="simpleGridDataTx" />
+		<property name="reportStructureTxService" ref="simpleGridStructureTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+
+	<bean id="simpleGridDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.SimpleGridDataMassageService" />
+		
+	<bean id="simpleGridDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.SimpleGridDataTxService" />
+		
+	<bean id="simpleGridStructureTx" scope="prototype"
+		class="com.execue.report.presentation.htmlgrid.tx.structure.impl.HtmlSimpleGridStructureTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+		
+	<!-- Group By Grid-->
+	<bean id="htmlGroupByGridHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.HtmlGroupByGridHandler">
+		<property name="reportDataMassageService" ref="groupByGridDataMassage" />
+		<property name="reportDataTxService" ref="groupByGridDataTx" />
+		<property name="reportStructureTxService" ref="groupByGridStructureTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+
+	<bean id="groupByGridDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.GroupByGridDataMassageService" />
+		
+	<bean id="groupByGridDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.GroupByGridDataTxService" />
+		
+	<bean id="groupByGridStructureTx" scope="prototype"
+		class="com.execue.report.presentation.htmlgrid.tx.structure.impl.HtmlGroupByGridStructureTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+		
+	<!-- Across Grid-->
+	<bean id="htmlAcrossGridHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.HtmlAcrossGridHandler">
+		<property name="reportDataMassageService" ref="acrossGridDataMassage" />
+		<property name="reportDataTxService" ref="acrossGridDataTx" />
+		<property name="reportStructureTxService" ref="acrossGridStructureTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>	
+	</bean>
+
+	<bean id="acrossGridDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.AcrossGridDataMassageService" />
+		
+	<bean id="acrossGridDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.AcrossGridDataTxService" />
+		
+	<bean id="acrossGridStructureTx" scope="prototype"
+		class="com.execue.report.presentation.htmlgrid.tx.structure.impl.HtmlAcrossGridStructureTxService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+	
+	<!-- Portrait Grid-->
+	<bean id="htmlPortraitGridHandler" scope="prototype"
+		class="com.execue.handler.reports.impl.HtmlPortraitGridHandler">
+		<property name="reportDataMassageService" ref="portraitGridDataMassage" />
+		<property name="reportDataTxService" ref="portraitGridDataTx" />
+		<property name="reportStructureTxService" ref="portraitGridStructureTx" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="queryDataService" ref="queryDataService"/>	
+	</bean>
+
+	<bean id="portraitGridDataMassage" scope="prototype"
+		class="com.execue.report.presentation.tx.massage.impl.PortraitGridDataMassageService" />
+		
+	<bean id="portraitGridDataTx" scope="prototype"
+		class="com.execue.report.presentation.tx.data.impl.PortraitGridDataTxService" />
+		
+	<bean id="portraitGridStructureTx" scope="prototype"
+		class="com.execue.report.presentation.htmlgrid.tx.structure.impl.HtmlPortraitGridStructureTxService" />
+		
+</beans>
+		

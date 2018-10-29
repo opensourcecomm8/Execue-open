@@ -1,0 +1,244 @@
+<queries>
+	<QUERY_GET_CONCEPT_PROFILES_BY_MODEL_GROUP>
+	<![CDATA[select cp from ConceptProfile as cp, ModelGroupMapping mgm where 
+		 cp.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId and
+		 mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_CONCEPT_PROFILES_BY_MODEL_GROUP>
+
+	<QUERY_GET_BUSINESS_ENTITY_FOR_CONCEPT_PROFILE>
+	<![CDATA[select bed from BusinessEntityDefinition bed, ModelGroupMapping mgm where 
+		 bed.modelGroup.id = mgm.modelGroup.id and bed.entityType= :conceptProfileEntityType  
+		 and bed.conceptProfile.id = :profileId and mgm.modelGroup.id = :modelGroupId 
+		 and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_BUSINESS_ENTITY_FOR_CONCEPT_PROFILE>
+
+	<QUERY_GET_BUSINESS_ENTITY_FOR_INSTANCE_PROFILE>
+	<![CDATA[select bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and bed.entityType = :instanceProfileEntityType 
+		 and bed.instanceProfile.id = :profileId and mgm.modelGroup.id = :modelGroupId 
+		 and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_BUSINESS_ENTITY_FOR_INSTANCE_PROFILE>
+
+	<QUERY_GET_INSTANCE_PROFILES_BY_MODEL_GROUP>
+	<![CDATA[select ip 
+		 from InstanceProfile as ip, ModelGroupMapping mgm
+		 where ip.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType 
+	]]>
+	</QUERY_GET_INSTANCE_PROFILES_BY_MODEL_GROUP>
+
+	<QUERY_GET_CONCEPT_PROFILES_BY_MODEL_GROUP_USER>
+	<![CDATA[select cp from ConceptProfile as cp, ModelGroupMapping as mgm
+		 where (cp.user.id = :userId or cp.user.id = 1) and cp.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType order by cp.displayName 
+	]]>
+	</QUERY_GET_CONCEPT_PROFILES_BY_MODEL_GROUP_USER>
+
+	<QUERY_GET_INSTANCE_PROFILES_BY_MODEL_GROUP_USER>
+	<![CDATA[select ip 
+		 from InstanceProfile as ip, ModelGroupMapping mgm 
+		 where (ip.user.id = :userId or ip.user.id = 1) and ip.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType order by ip.displayName 
+	]]>
+	</QUERY_GET_INSTANCE_PROFILES_BY_MODEL_GROUP_USER>
+
+	<QUERY_MAPPED_CONCEPT_ELIGIBLE_FOR_CONCEPT_PROFILE>
+	<![CDATA[select distinct con 
+		 from AssetEntityDefinition as ae, Concept as con,
+		 BusinessEntityDefinition as be, Mapping as map, Colum as col,
+		 ModelGroupMapping as mgm where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id 
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null
+		 and (col.kdxDataType = :measureColumnType or be.type.id=101) 
+		 and be.modelGroup.id = mgm.modelGroup.id and 
+		 mgm.model.id = :modelId and  mgm.modelGroup.category != :baseModelCategoryType  
+		 order by con.displayName
+	]]>
+	</QUERY_MAPPED_CONCEPT_ELIGIBLE_FOR_CONCEPT_PROFILE>
+
+	<QUERY_CONCEPT_ELIGIBLE_FOR_CONCEPT_PROFILE>
+	<![CDATA[select distinct con 
+		from Concept as con, BusinessEntityDefinition as be, 
+		ModelGroupMapping as mgm 
+		where be.concept.id = con.id 
+		and be.entityType = :conceptEntityType
+		and be.type.id = 101 
+		and be.modelGroup.id = mgm.modelGroup.id  
+		and mgm.model.id = :modelId 
+		and mgm.modelGroup.category != :baseModelCategoryType	 
+		order by con.displayName
+	]]>
+	</QUERY_CONCEPT_ELIGIBLE_FOR_CONCEPT_PROFILE>
+
+	<QUERY_MAPPED_CONCEPTS_ELIGIBLE_FOR_HYBRID_PROFILE>
+	<![CDATA[select distinct con 
+		 from AssetEntityDefinition as ae, Concept as con, 
+		 BusinessEntityDefinition as be,
+		 Mapping as map,Colum as col,ModelGroupMapping as mgm 
+		 where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.entityType= :conceptEntityType and ae.entityType= :columnEntityType 
+		 and be.modelGroup.id = mgm.modelGroup.id and 
+		 mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		 order by con.displayName
+	]]>
+	</QUERY_MAPPED_CONCEPTS_ELIGIBLE_FOR_HYBRID_PROFILE>
+
+	<QUERY_CONCEPTS_ELIGIBLE_FOR_HYBRID_PROFILE>
+	<![CDATA[select distinct con 
+		 from Concept as con, BusinessEntityDefinition as be, 
+			ModelGroupMapping as mgm 
+		 where be.concept.id = con.id  
+			and be.entityType= :conceptEntityType 
+			and be.modelGroup.id = mgm.modelGroup.id 
+			and mgm.model.id = :modelId 
+			and mgm.modelGroup.category != :baseModelCategoryType 
+		 order by con.displayName
+	]]>
+	</QUERY_CONCEPTS_ELIGIBLE_FOR_HYBRID_PROFILE>
+
+	<QUERY_MAPPED_CONCEPT_ELIGIBLE_FOR_INSTANCE_PROFILE>
+	<![CDATA[select distinct con 
+		 from AssetEntityDefinition as ae, Concept as con,
+		 BusinessEntityDefinition as be, 
+		 Mapping as map, ModelGroupMapping as mgm 
+		 where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id 
+		 and be.concept.id = con.id and be.instance.id is not null
+		 and be.modelGroup.id = mgm.modelGroup.id and 
+		 mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType
+		 order by con.displayName 
+	]]>
+	</QUERY_MAPPED_CONCEPT_ELIGIBLE_FOR_INSTANCE_PROFILE>
+
+	<QUERY_CONCEPT_ELIGIBLE_FOR_INSTANCE_PROFILE>
+	<![CDATA[select distinct con 
+		     from Concept as con, BusinessEntityDefinition as be, 
+			 ModelGroupMapping as mgm 
+		     where be.concept.id = con.id 
+			 and be.instance.id is not null 
+			 and be.modelGroup.id = mgm.modelGroup.id 
+			 and mgm.model.id = :modelId 
+			 and mgm.modelGroup.category != :baseModelCategoryType 
+		     order by con.displayName
+	]]>
+	</QUERY_CONCEPT_ELIGIBLE_FOR_INSTANCE_PROFILE>
+
+	<QUERY_GET_CONCEPT_PROFILE_BY_MODEL_GROUP_AND_NAME>
+	<![CDATA[select cp from ConceptProfile cp, ModelGroupMapping mgm 
+		 where cp.name= :profileName and 
+		 cp.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType  
+	]]>
+	</QUERY_GET_CONCEPT_PROFILE_BY_MODEL_GROUP_AND_NAME>
+
+	<QUERY_GET_INSTANCE_PROFILE_BY_MODEL_GROUP_AND_NAME>
+	<![CDATA[select ip 
+		 from InstanceProfile ip,
+		 ModelGroupMapping mgm 
+		 where ip.name= :profileName and 
+		 ip.modelGroup.id = mgm.modelGroup.id
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_INSTANCE_PROFILE_BY_MODEL_GROUP_AND_NAME>
+
+	<QUERY_INSTANCE_PROFILE_BY_MODEL_GROUP_CONCEPT>
+	<![CDATA[select ip 
+		 from InstanceProfile as ip,
+		 ModelGroupMapping mgm, Concept con 
+		 where ip.modelGroup.id = mgm.modelGroup.id
+		 and con.id = ip.concept.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType  and con.id = :conceptId
+	]]>
+	</QUERY_INSTANCE_PROFILE_BY_MODEL_GROUP_CONCEPT>
+
+	<QUERY_GET_CONCEPT_PROFILES_FOR_MODEL_GROUP>
+	<![CDATA[select be.conceptProfile 
+		 from BusinessEntityDefinition as be 
+		 where be.modelGroup in (:userModelGroups) 
+		 and be.entityType = :conceptProfileEntityType
+	]]>
+	</QUERY_GET_CONCEPT_PROFILES_FOR_MODEL_GROUP>
+
+	<QUERY_GET_INSTANCE_PROFILES_FOR_MODEL_GROUP>
+	<![CDATA[select be.instanceProfile
+		 from BusinessEntityDefinition as be where be.modelGroup in 
+		(:userModelGroups) and be.entityType = :instanceProfileEntityType
+	]]>
+	</QUERY_GET_INSTANCE_PROFILES_FOR_MODEL_GROUP>
+		
+	<QUERY_GET_All_CONCEPT_PROFILE_BUSINESS_ENTITY>
+	<![CDATA[select bed.id, bed.conceptProfile.displayName 
+		 from BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.entityType = :conceptProfileEntityType
+	]]>
+	</QUERY_GET_All_CONCEPT_PROFILE_BUSINESS_ENTITY>
+	
+	
+	<QUERY_GET_All_INSTANCE_PROFILE_BUSINESS_ENTITY>
+	<![CDATA[select bed.id, instanceProfile.displayName, concept.displayName 
+		 from BusinessEntityDefinition as bed, Concept concept,InstanceProfile instanceProfile, ModelGroupMapping as mgm 
+		 where bed.instanceProfile.id=instanceProfile.id and instanceProfile.concept.id=concept.id and bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceProfileEntityType
+	]]>
+	</QUERY_GET_All_INSTANCE_PROFILE_BUSINESS_ENTITY>
+	
+	
+	<QUERY_GET_All_CONCEPT_PROFILE_BUSINESS_ENTITY_FOR_MODEL>
+	<![CDATA[select bed.id, bed.conceptProfile.displayName 
+		 from BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :conceptProfileEntityType
+	]]>
+	</QUERY_GET_All_CONCEPT_PROFILE_BUSINESS_ENTITY_FOR_MODEL>	
+	
+	
+	<QUERY_GET_CONCEPT_PROFILE_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	<![CDATA[select count(distinct bed.conceptProfile) 
+		 from BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :conceptProfileEntityType
+	]]>
+	</QUERY_GET_CONCEPT_PROFILE_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	
+	<QUERY_GET_INSTANCE_PROFILE_BEDS_FOR_CONCEPT_BED>
+	<![CDATA[select distinct bed.id 
+		 from BusinessEntityDefinition bed where bed.concept.id = :conceptBEDId 
+		 and bed.entityType = :instanceProfileEntityType
+	]]>
+	</QUERY_GET_INSTANCE_PROFILE_BEDS_FOR_CONCEPT_BED>
+	
+	<QUERY_GET_INSTANCE_PROFILE_BUSINESS_ENTITY_FOR_MODEL>
+	<![CDATA[select bed.id, instanceProfile.displayName, concept.displayName 
+		 from BusinessEntityDefinition as bed, Concept concept,InstanceProfile instanceProfile, ModelGroupMapping as mgm 
+		 where bed.instanceProfile.id=instanceProfile.id and instanceProfile.concept.id=concept.id and bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceProfileEntityType
+	]]>
+	</QUERY_GET_INSTANCE_PROFILE_BUSINESS_ENTITY_FOR_MODEL>	
+	
+	<QUERY_GET_INSTANCE_PROFILE_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	<![CDATA[select count(distinct instanceProfile) 
+		 from BusinessEntityDefinition as bed, Concept concept,InstanceProfile instanceProfile, ModelGroupMapping as mgm 
+		 where bed.instanceProfile.id=instanceProfile.id and instanceProfile.concept.id=concept.id and bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceProfileEntityType
+	]]>
+	</QUERY_GET_INSTANCE_PROFILE_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	
+	<QUERY_GET_CONCEPT_PROFILES_BY_IDS>
+	<![CDATA[from ConceptProfile cp where cp.id in(:conceptProfileIds)		
+	]]>
+	</QUERY_GET_CONCEPT_PROFILES_BY_IDS>
+	
+	<QUERY_GET_INSTANCE_PROFILES_BY_IDS>
+	<![CDATA[from InstanceProfile ip where ip.id in(:instanceProfileIds)
+	]]>
+	</QUERY_GET_INSTANCE_PROFILES_BY_IDS>
+</queries>

@@ -1,0 +1,34 @@
+<queries>
+	<QUERY_GET_ALL_HIERARCHY>
+	<![CDATA[from Hierarchy as Hierarchy]]>
+	</QUERY_GET_ALL_HIERARCHY>
+
+	<QUERY_GET_HIERARCHY_BY_MODEL_ID>
+	<![CDATA[select hierarchy from Hierarchy as hierarchy,ModelGroupMapping mgm 
+		 where hierarchy.modelGroupId = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId
+		 and mgm.modelGroup.category != :baseModelCategoryType 
+	]]>
+	</QUERY_GET_HIERARCHY_BY_MODEL_ID>
+	
+	<QUERY_GET_HIERARCHY_BY_CONCEPT_BED_ID>
+	<![CDATA[select hierarchy from Hierarchy as hierarchy, HierarchyDetail as hierarchyDetail
+		 where hierarchyDetail.conceptBedId = :conceptBedId
+		 and hierarchyDetail.hierarchy.id = hierarchy.id
+	]]>
+	</QUERY_GET_HIERARCHY_BY_CONCEPT_BED_ID>
+	
+	<QUERY_GET_HIERARCHY_BY_NAME_FOR_MODEL>
+	<![CDATA[select hierarchy from Hierarchy hierarchy,ModelGroupMapping mgm
+		 where hierarchy.modelGroupId = mgm.modelGroup.id and  mgm.model.id = :modelId 
+		 and hierarchy.name=:hierarchyName  and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_HIERARCHY_BY_NAME_FOR_MODEL>	
+	
+	<QUERY_GET_HIERARCHIES_BY_CONCEPT_BED_IDS>
+	<![CDATA[select distinct(hierarchy) from Hierarchy as hierarchy, HierarchyDetail as hierarchyDetail
+		 where hierarchyDetail.conceptBedId in (:conceptBEDIds)
+		 and hierarchyDetail.hierarchy.id = hierarchy.id 
+	]]>
+	</QUERY_GET_HIERARCHIES_BY_CONCEPT_BED_IDS>	
+</queries>

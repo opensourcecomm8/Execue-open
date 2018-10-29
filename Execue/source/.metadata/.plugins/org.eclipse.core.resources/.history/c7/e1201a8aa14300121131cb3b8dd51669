@@ -1,0 +1,87 @@
+<queries>
+	
+	<QUERY_GET_ELIGIBLE_DEFAULT_METRICS>
+	<![CDATA[select map.id,con.displayName 
+		 from AssetEntityDefinition as ae, Concept as con, 
+		 BusinessEntityDefinition as be, Mapping as map,Colum as col 
+		 where map.assetEntityDefinition.id = ae.id 
+		 and map.businessEntityDefinition.id = be.id 
+		 and ae.colum.id = col.id and be.concept.id = con.id 
+		 and be.instance.id is null and ae.membr.id is null 
+		 and col.kdxDataType =  :meassure and ae.asset.id = :assetId
+	]]>
+	</QUERY_GET_ELIGIBLE_DEFAULT_METRICS>
+	
+	<QUERY_GET_UI_ASSET_DEFAULT_METRICS>
+	<![CDATA[select mapping.id, mapping.businessEntityDefinition.concept.displayName 
+		 from Mapping as mapping 
+		 where mapping.assetEntityDefinition.asset.id = :assetId 
+		 and mapping.defaultMetric = :defaultMetricFlag
+	]]>	
+	</QUERY_GET_UI_ASSET_DEFAULT_METRICS>
+	
+	<QUERY_DELETE_DEFAULT_METRICS_BY_TABLE>
+	<![CDATA[delete from DefaultMetric where tableId = :tableId]]>
+	</QUERY_DELETE_DEFAULT_METRICS_BY_TABLE>
+	
+	<QUERY_GET_POSSIBLE_DEFAULT_METRICS>
+	<![CDATA[select table.id, mapping.id, bed.popularity,aed.id,column.name, con.name from 
+		 AssetEntityDefinition aed, BusinessEntityDefinition bed, Mapping mapping, 
+		 Asset asset, Tabl table, Colum column, Concept con where
+		 mapping.businessEntityDefinition.id = bed.id 
+		 and mapping.assetEntityDefinition.id = aed.id 
+		 and asset.id = aed.asset.id and table.id = aed.tabl.id
+		 and column.id = aed.colum.id and 
+		 aed.entityType = :columnEntityType and table.lookupType = :none
+		 and (column.kdxDataType = :measure or bed.type.id=101)
+		 and asset.id = :assetId and table.id = :tableId 
+		 and con.id = bed.concept.id 
+		 order by bed.popularity desc
+	]]>
+	</QUERY_GET_POSSIBLE_DEFAULT_METRICS>	
+	
+	<QUERY_GET_INVALID_DEFAULT_METRICS>
+	<![CDATA[from DefaultMetric 
+		 where tableId in (:tableIds) and valid = :invalidDMType
+	]]>
+	</QUERY_GET_INVALID_DEFAULT_METRICS>
+
+	<QUERY_GET_INVALID_EXISTING_DEFAULT_METRICS_PER_TABLE>
+	<![CDATA[select dm.tableId, dm.aedId, colum.name, dm.id from DefaultMetric dm, 
+		AssetEntityDefinition aed, Colum colum 
+		where dm.tableId = :tableId and dm.valid = :invalidDMType 
+		and aed.id = dm.aedId and colum.id = aed.colum.id
+	]]>
+	</QUERY_GET_INVALID_EXISTING_DEFAULT_METRICS_PER_TABLE>
+	
+	<QUERY_GET_VALID_EXISTING_DEFAULT_METRICS_PER_TABLE>
+	<![CDATA[select dm.tableId, dm.mappingId, dm.popularity,dm.aedId,c.name, con.name,dm.id
+		 from DefaultMetric dm, Mapping m, AssetEntityDefinition aed, 
+		 Colum c, BusinessEntityDefinition bed, 
+		 Concept con where dm.tableId =:tableId
+		 and dm.valid = :validDMType and dm.mappingId = m.id 
+		 and m.assetEntityDefinition.id = aed.id 
+		 and m.businessEntityDefinition.id = bed.id 
+		 and aed.colum.id = c.id and bed.concept.id = con.id
+		 order by dm.popularity desc
+	]]>
+	</QUERY_GET_VALID_EXISTING_DEFAULT_METRICS_PER_TABLE>
+	
+	<QUERY_DELETE_DEFAULT_METRICS_BY_AED_IDS>
+	<![CDATA[delete from DefaultMetric where aedId in (:aedIds)]]>
+	</QUERY_DELETE_DEFAULT_METRICS_BY_AED_IDS>
+
+	<QUERY_GET_EXISTING_DEFAULT_METRICS_IN_ASSET>
+	<![CDATA[select dm from DefaultMetric dm, AssetEntityDefinition aed 
+		where aed.id = dm.aedId and aed.asset.id = :assetId order by dm.popularity desc
+	]]>
+	</QUERY_GET_EXISTING_DEFAULT_METRICS_IN_ASSET>
+	
+	<QUERY_GET_EXISTING_VALID_DEFAULT_METRICS_IN_ASSET>
+	<![CDATA[select dm from DefaultMetric dm, AssetEntityDefinition aed 
+		where aed.id = dm.aedId and aed.asset.id = :assetId
+			 and dm.valid = :valid order by dm.popularity desc
+	]]>
+	</QUERY_GET_EXISTING_VALID_DEFAULT_METRICS_IN_ASSET>
+	
+</queries>

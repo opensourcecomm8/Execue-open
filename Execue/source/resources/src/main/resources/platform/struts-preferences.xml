@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for Preferences related actions
+
+-->
+<struts>
+    
+	<package name="preferences" namespace="/swi" extends="execue-console-default">
+        
+		<!--
+			<action name="conceptProfiles" method="getAllConceptProfiles" class="profilesAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/preferences/baseProfile.jsp</result>
+			</action>
+
+			<action name="baseProfiles" method="getAllBaseProfiles" class="profilesAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/preferences/profileList.jsp</result>
+			</action>
+			-->
+        
+		<!-- Actions for Profiles Screen Begin -->
+		<action name="profileDefinition" method="getProfileDefinition" class="profilesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/profileDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/profileDefinition.jsp</result>
+		</action>
+        
+		<action name="newProfileDefinition" method="getNewProfileDefinition" class="profilesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/profileDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/profileDefinition.jsp</result>
+		</action>
+        
+		<action name="userProfiles" method="getAllUserProfiles" class="profilesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/userProfiles.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/userProfiles.jsp</result>
+		</action>
+    
+		<action name="showProfiles" method="input" class="profilesAction">
+			<result type="tiles" name="success">sdx.showProfiles</result>
+			<result type="tiles" name="input">sdx.showProfiles</result>
+			<result type="tiles" name="error">sdx.showProfiles</result>
+		</action>
+		<!-- Actions for Ranges Screen End -->
+    
+		<!-- Actions for Ranges Screen Begin -->
+		<action name="rangeDefinition" method="getRangeDefinition" class="rangesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+		</action>
+		<action name="showRanges" method="input" class="rangesAction">
+			<result type="tiles" name="success">ranges.showRanges</result>
+			<result type="tiles" name="input">ranges.showRanges</result>
+			<result type="tiles" name="error">ranges.showRanges</result>
+		</action>
+		<action name="retrieveRange" method="retrieveRangeForConcept" class="rangesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+		</action>
+		<action name="userRanges" method="userDefinedRanges" class="rangesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/userDefinedRanges.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/userDefinedRanges.jsp</result>
+		</action>
+        
+		<action name="retrieveRangeById" method="getRangeById" class="rangesAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/rangeDefinition.jsp</result>
+		</action>
+		<!-- Actions for Ranges Screen End -->
+		
+		<!-- Actions for Entity variations screen Begin-->
+		<!--action name="showEntityVariations" method="input" class="parallelWordsAction"-->
+	
+		<!--action name="showBTforParallelWords" method="input" class="parallelWordsAction"-->
+		<action name="showBTforParallelWords" method="getPageResults" class="parallelWordsPaginationAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result> 
+		</action>
+		<!-- Actions for parallal words screen Begin-->
+		<!--action name="showParallelWords" method="input" class="parallelWordsAction"-->
+		<action name="showParallelWords" class="parallelWordsPaginationAction">
+			<result name="input" type="tiles">keyWords.showKeyWords</result>
+			<result name="error" type="tiles" >keyWords.showKeyWords</result> 
+			<result name="success" type="tiles" >keyWords.showKeyWords</result> 
+		</action>
+		
+		<!--action name="showBTforParallelWords" method="input" class="parallelWordsAction"-->
+		<action name="showBTforParallelWords" method="getPageResults" class="parallelWordsPaginationAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result> 
+		</action>
+		<!--action name="showSubBTforParallelWords" method="showSubBTforParallelWords" class="parallelWordsAction"-->
+		<action name="showSubBTforParallelWords" method="getPageResults" class="parallelWordsPaginationAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result> 
+		</action>
+		<!--action name="getBusinessTermsForPWsBySearchString" method="getBusinessTermsForPWsBySearchString" class="parallelWordsAction"-->
+		<action name="getBusinessTermsForPWsBySearchString" method="getPageResults" class="parallelWordsPaginationAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/showBusinessTerms.jsp</result>
+		</action>
+		
+		<!--action name="showConceptsforRanges" method="input" class="rangesAction"-->
+		<action name="showConceptsforRanges" method="getPageResults" class="rangesPaginationAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showConcepts.jsp</result> 
+		</action>
+		<!--action name="showSubConceptsforRanges" method="showSubConceptsforRanges" class="rangesAction"-->
+		<action name="showSubConceptsforRanges" method="getPageResults" class="rangesPaginationAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showConcepts.jsp</result> 
+		</action>
+		
+		<action name="showConceptsforProfiles" method="input" class="profilesAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showProfileConcepts.jsp</result> 
+		</action>
+		<action name="showSubConceptsforProfiles" method="showSubConceptsforProfiles" class="profilesAction">
+			<result name="success" >/WEB-INF/jsp/admin/swi/preferences/showProfileConcepts.jsp</result> 
+		</action>
+		
+		<action name="showExistingKeyWords" method="getAllKeyWords" class="parallelWordsAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/existingkeyWords.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/existingkeyWords.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/existingkeyWords.jsp</result> 
+		</action>
+		<action name="getParallelWords" method="getParallelWords" class="parallelWordsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>
+		</action>
+		<action name="showKeyWord" method="getKeyword" class="parallelWordsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>   
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>     
+		</action>
+		<action name="createKeyWordParallelWord" method="createUpdateKeyWordAndParallelWord" class="parallelWordsAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showKeyWord</param>				
+				<param name="keyWordName">${keyWord.word}</param>				
+				<param name="mode">${mode}</param>				
+			</result>              
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>   
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/addNewKeyword.jsp</result>     
+		</action>
+       
+		<action name="showSFLTerms" method="input" class="sflAction">
+			<result name="input" type="tiles">sflWords.showSFLTerms</result>
+			<result name="error" type="tiles" >sflWords.showSFLTerms</result> 
+			<result name="success" type="tiles" >sflWords.showSFLTerms</result> 
+		</action>
+		<action name="showExistingSFLTerms" method="getAllSFLTerms" class="sflAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/existingSFLTerms.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/existingSFLTerms.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/existingSFLTerms.jsp</result>
+		</action>
+		<action name="showSFLTermTokens" method="getSFLTermsTokens" class="sflAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result>
+		</action>
+		<action name="updateSFLTermTokens" method="updateSFLTermTokens" class="sflAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/preferences/sflTermTokens.jsp</result>
+		</action>
+		
+		<!-- Actions for parallal words screen End-->
+	</package>
+
+	<package name="preferences-json" namespace="/swi" extends="execue-json-default">
+		<action name="createProfile" class="profilesAction" method="createProfile">
+			<result name="success" type="json">
+				<param name="root">profileStatus</param>
+			</result>
+		</action>
+		<action name="deleteProfiles" class="profilesAction" method="deleteProfiles">
+			<result name="success" type="json">
+				<param name="root">profileStatus</param>
+			</result>
+		</action>
+		<action name="updateRange" method="updateRange" class="rangesAction">
+			<result name="success" type="json">
+				<param name="root">rangeStatus</param>
+			</result>
+		</action>
+		<action name="deleteRanges" method="deleteRanges" class="rangesAction">
+			<result name="success" type="json">
+				<param name="root">rangeStatus</param>
+			</result>
+		</action>
+		<action name="deleteKeyWords" method="deleteKeyWords" class="parallelWordsAction">			 
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">errorMessage</param>
+			</result>
+		</action>            
+	</package>
+</struts>

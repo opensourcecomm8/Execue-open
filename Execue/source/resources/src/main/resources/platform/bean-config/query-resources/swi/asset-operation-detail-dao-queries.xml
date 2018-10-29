@@ -1,0 +1,13 @@
+<queries>
+	<QUERY_GET_ALL_ASSET_OPERATION_DETAIL_BY_ASSET_ID>
+		<![CDATA[from AssetOperationDetail where assetId = :assetId]]>
+	</QUERY_GET_ALL_ASSET_OPERATION_DETAIL_BY_ASSET_ID>
+
+	<QUERY_GET_ASSET_UNDER_MAINTENANCE_BY_ASSET_ID>
+		<![CDATA[from AssetOperationDetail where assetId = :assetId and assetOperationStatus = :inprogress]]>
+	</QUERY_GET_ASSET_UNDER_MAINTENANCE_BY_ASSET_ID>
+	
+	<QUERY_GET_UNDER_PROCESS_ASSET_OPERATION_DETAILS_BY_PARENT_ASSET_ID>
+		<![CDATA[from AssetOperationDetail where parentAssetId = :parentAssetId and assetOperationStatus = :inprogress]]>
+	</QUERY_GET_UNDER_PROCESS_ASSET_OPERATION_DETAILS_BY_PARENT_ASSET_ID>
+</queries>

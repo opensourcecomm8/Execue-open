@@ -1,0 +1,219 @@
+<queries>
+	<QUERY_CONCEPTS_HAVING_SEARCH_STRING>
+	<![CDATA[Select bed.concept
+		from BusinessEntityDefinition as bed 
+		where bed.concept.id in 
+			(
+			select 
+				distinct con.id 
+			from 
+				BusinessEntityDefinition as bed
+					join bed.concept as con
+					join bed.mappings as mp
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where mp.primary = :primaryMappingType 
+				and mg.category = :userModelCategoryType
+				and mgm.model.id = :modelId
+				and con.displayName like :searchString
+				and bed.entityType = :businessEntityType
+			)
+			and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, bed.concept.displayName, 1),
+			bed.concept.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_CONCEPTS_HAVING_SEARCH_STRING>
+
+	<QUERY_STATS_HAVING_SEARCH_STRING>
+	<![CDATA[
+		select 
+			stat 
+		from 
+			Stat as stat 
+		where 
+			stat.displayName like :searchString 
+		order by 
+			locate(:inStr, stat.displayName, 1),
+			stat.displayName
+	]]>
+	</QUERY_STATS_HAVING_SEARCH_STRING>
+
+	<QUERY_CONCEPTS_HAVING_SEARCH_STRING_WITH_STAT>
+	<![CDATA[
+		Select 
+		   concept
+		from 
+			BusinessEntityDefinition as bed
+			join bed.concept as concept 
+		where concept.id in 
+			(
+			select 
+				distinct concept.id 
+			from 
+				Concept as concept
+					join concept.stats as stat 
+						with stat.displayName = :statName 
+					join
+						concept.businessEntityDefinitions bed
+					join bed.mappings as mapping 
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where 
+				mapping.primary = :primaryMappingType 
+				and concept.displayName like :searchString
+				and mgm.model.id = :modelId
+				and mg.category = :userModelCategoryType 
+				and bed.entityType = :businessEntityType
+			) 
+			and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, concept.displayName, 1),
+			concept.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_CONCEPTS_HAVING_SEARCH_STRING_WITH_STAT>
+
+	<QUERY_MEASURE_CONCEPTS_HAVING_SEARCH_STRING>
+	<![CDATA[Select bed.concept
+		from BusinessEntityDefinition as bed 
+		where bed.concept.id in 
+			(
+			select 
+				distinct con.id 
+			from 
+				BusinessEntityDefinition as bed
+					join bed.concept as con
+					join bed.type as type 
+					join bed.mappings as mp
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where mp.primary = :primaryMappingType 
+				and mg.category = :userModelCategoryType
+				and mgm.model.id = :modelId
+				and type.name = :measurableEntityTypeName
+				and con.displayName like :searchString
+				and bed.entityType = :businessEntityType
+			)
+		and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, bed.concept.displayName, 1),
+			bed.concept.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_MEASURE_CONCEPTS_HAVING_SEARCH_STRING>
+    
+	<QUERY_MEASURE_CONCEPTS_HAVING_SEARCH_STRING_IGNORING_CONSIDERED>
+	<![CDATA[Select bed.concept
+		from BusinessEntityDefinition as bed 
+		where bed.concept.id in 
+			(
+			select 
+				distinct con.id 
+			from 
+				BusinessEntityDefinition as bed
+					join bed.concept as con
+					join bed.type as type 
+					join bed.mappings as mp
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where mp.primary = :primaryMappingType 
+				and mg.category = :userModelCategoryType
+				and mgm.model.id = :modelId
+				and type.name = :measurableEntityTypeName
+				and con.displayName like :searchString
+				and con.id not in (:consideredConceptIds)
+				and bed.entityType = :businessEntityType
+			)
+		and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, bed.concept.displayName, 1),
+			bed.concept.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_MEASURE_CONCEPTS_HAVING_SEARCH_STRING_IGNORING_CONSIDERED>
+
+	<QUERY_CONCEPTS_IN_GRAIN>
+	<![CDATA[
+		Select bed.concept
+		from BusinessEntityDefinition as bed 
+		where bed.concept.id in 
+			(
+			select 
+				distinct con.id 
+			from 
+				BusinessEntityDefinition as bed
+					join bed.concept as con
+					join bed.mappings as mp
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where mp.primary = :primaryMappingType
+				and (mp.assetGrainType = :populationConceptGrainType or mp.assetGrainType = :defaultPopulationConceptGrainType) 
+				and mg.category = :userModelCategoryType
+				and mgm.model.id = :modelId
+				and con.displayName like :searchString
+				and bed.entityType = :businessEntityType
+			)
+			and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, bed.concept.displayName, 1),
+			bed.concept.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_CONCEPTS_IN_GRAIN>
+
+	<QUERY_INSTANCES_OF_CONCEPT_HAVING_SEARCH_STRING>
+	<![CDATA[
+		Select 
+			bed.instance
+		from 
+			BusinessEntityDefinition as bed 
+		where bed.instance.id in 
+			(
+			select 
+				distinct instance.id 
+			from 
+				BusinessEntityDefinition as bed 
+					join bed.instance as instance 
+					join bed.concept as concept 
+					join bed.mappings as mp
+					join bed.modelGroup as mg
+					join mg.modelGroupMappings as mgm 
+			where mp.primary = :primaryMappingType 
+				and mg.category = :userModelCategoryType
+				and mgm.model.id = :modelId
+				and bed.entityType = :businessEntityType
+				and concept.name = :businessTerm 
+				and (instance.displayName like :searchString or instance.abbreviatedName like :searchString)
+			)
+		and bed.entityType = :businessEntityType
+		order by 
+			locate(:inStr, bed.instance.displayName, 1),
+			bed.instance.displayName, 
+			bed.popularity desc
+	]]>
+	</QUERY_INSTANCES_OF_CONCEPT_HAVING_SEARCH_STRING>
+
+	<QUERY_ASSETS_IN_SYSTEM>
+	<![CDATA[from Asset as asset
+	]]>
+	</QUERY_ASSETS_IN_SYSTEM>
+
+	<QUERY_CONCEPT_PROFILES_HAVING_SEARCH_STRING>
+	<![CDATA[select cp from ConceptProfile cp,ModelGroupMapping mgm
+		 where cp.displayName like :searchString and cp.enabled = :enabled
+		 and cp.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType order by locate(:inStr, cp.displayName, 1), cp.displayName
+	]]>
+	</QUERY_CONCEPT_PROFILES_HAVING_SEARCH_STRING>
+
+	<QUERY_INSTANCE_PROFILES_HAVING_SEARCH_STRING>
+	<![CDATA[select ip from InstanceProfile ip, ModelGroupMapping mgm
+		 where ip.displayName like :searchString and ip.enabled = :enabled
+		 and ip.concept.name = :conceptName and ip.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType order by locate(:inStr, ip.displayName, 1), ip.displayName
+	]]>
+	</QUERY_INSTANCE_PROFILES_HAVING_SEARCH_STRING>
+
+</queries>

@@ -1,0 +1,54 @@
+<queries>
+	<QUERY_GET_OPERATIONAL_STATUS_RECORDS>
+	<![CDATA[from JobOperationalStatus as jobOperationStatus where jobOperationStatus.jobRequest.id = :jobRequestId order by jobOperationStatus.jobStatus, jobOperationStatus.endDate desc,jobOperationStatus.id desc]]>
+	</QUERY_GET_OPERATIONAL_STATUS_RECORDS>
+
+	<QUERY_GET_HISTORY_OPERATIONAL_STATUS_RECORDS>
+	<![CDATA[from JobHistoryOperationalStatus as jobHOperationStatus where jobHOperationStatus.jobRequest.id = :jobRequestId order by jobHOperationStatus.jobStatus, jobHOperationStatus.endDate
+		 desc	
+	]]>
+	</QUERY_GET_HISTORY_OPERATIONAL_STATUS_RECORDS>
+
+	<QUERY_GET_LATEST_OPERATIONAL_STATUS_RECORDS>
+	<![CDATA[from JobOperationalStatus as jobOperationStatus where jobOperationStatus.jobRequest.id = :jobRequestId 
+		 order by jobOperationStatus.startDate desc, jobOperationStatus.id desc
+	]]>
+	</QUERY_GET_LATEST_OPERATIONAL_STATUS_RECORDS>
+	
+	<QUERY_GET_LATEST_HISTORY_OPERATIONAL_STATUS_RECORDS>
+	<![CDATA[from JobHistoryOperationalStatus as jobHOperationStatus where jobHOperationStatus.jobRequest.id = :jobRequestId
+		 order by jobHOperationStatus.startDate desc, jobHOperationStatus.id desc
+	]]>
+	</QUERY_GET_LATEST_HISTORY_OPERATIONAL_STATUS_RECORDS>
+	
+	<QUERTY_GET_JOB_REQUEST_BY_TYPE>
+	<![CDATA[from JobRequest as jobRequest where jobRequest.jobType = :jobType order by jobRequest.requestedDate desc
+	]]>
+	</QUERTY_GET_JOB_REQUEST_BY_TYPE>	
+	
+	<QUERY_GET_JOB_REQUEST_RECORDS_BY_USER>
+	<![CDATA[from JobRequest as jobRequest where jobRequest.userId = :userId order by jobRequest.requestedDate desc
+	]]>
+	</QUERY_GET_JOB_REQUEST_RECORDS_BY_USER>	
+	
+	<QUERY_GET_JOBTYPE_BY_LATEST_REQUEST_DATE>
+	<![CDATA[select jobRequest.jobType from JobRequest as jobRequest
+		   where jobRequest.requestedDate = (select max(requestedDate) from JobRequest)
+	]]>
+	</QUERY_GET_JOBTYPE_BY_LATEST_REQUEST_DATE>	
+	
+	<QUERTY_GET_TYPE_BY_JOB_REQUEST_ID>
+	<![CDATA[select jobRequest.jobType from JobRequest as jobRequest where jobRequest.id = :jobRequestId
+	]]>
+	</QUERTY_GET_TYPE_BY_JOB_REQUEST_ID>
+	
+	<QUERY_GET_ANSWERS_CATALOG_CONTEXT_BY_ASSET_ID>
+	<![CDATA[from AnswersCatalogContext as answersCatalogContext where answersCatalogContext.assetId = :assetId order by id desc]]>
+	</QUERY_GET_ANSWERS_CATALOG_CONTEXT_BY_ASSET_ID>
+		
+	<QUERY_GET_ANSWERS_CATALOG_CONTEXT_BY_PARENT_ASSET_ID>
+	<![CDATA[from AnswersCatalogContext as answersCatalogContext where answersCatalogContext.parentAssetId = :parentAssetId and 
+		 latestOperation in(:operationTypes)  
+	]]>
+	</QUERY_GET_ANSWERS_CATALOG_CONTEXT_BY_PARENT_ASSET_ID>		
+</queries>

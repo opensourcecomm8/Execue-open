@@ -1,0 +1,253 @@
+<queries>
+	<QUERY_GET_PAST_USAGE_PATTERN_TOTAL_COUNT>
+	<![CDATA[
+		SELECT COUNT(DISTINCT aq.ID) as pastAggQueryTotalCount
+		FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+		WHERE aq.ASSET_ID = :assetId
+		AND aq.EXECUTION_DATE > :queryExecutionDate
+		AND aq.TYPE = trim(to_char(:businessSummaryType,'999'))
+		AND aq.ID = aqc.AGGREGATED_QUERY_ID
+		AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+		AND ((odi.KDX_DATA_TYPE = :dimension) OR (odi.KDX_DATA_TYPE = :measure AND aqc.QUERY_SECTION = :group
+		AND aqc.VALU = trim(to_char(odi.RANGE_ID,'99999999999999999999'))))
+	]]>
+	</QUERY_GET_PAST_USAGE_PATTERN_TOTAL_COUNT>
+	
+	<QUERY_GET_PAST_USAGE_PATTERN_INFO>
+	<![CDATA[SELECT (COUNT(AQ_ID) * 100) / :pastAggQueryTotalCount as usagePercentage, 
+			 BED_IDS as bedIds FROM(
+			 SELECT a.ID AS AQ_ID, 
+			 ARRAY_TO_STRING(ARRAY_AGG(BED_ID ORDER BY BED_ID ASC), ',') AS BED_IDS   
+			 FROM				
+			 ((SELECT DISTINCT aq.ID, trim(to_char(odi.BUSINESS_ENTITY_ID,'999999999999')) AS BED_ID,
+			 odi.BUSINESS_ENTITY_ID AS BED_ORDER
+			 FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+			 WHERE aq.ASSET_ID = :assetId
+			 AND aq.EXECUTION_DATE > :queryExecutionDate
+			 AND aq.TYPE = trim(to_char(:businessSummaryType,'999'))
+			 AND aq.ID = aqc.AGGREGATED_QUERY_ID
+			 AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+			 AND odi.KDX_DATA_TYPE = :dimension
+			ORDER BY aq.ID, BED_ORDER)		 
+		UNION
+			(SELECT DISTINCT aq.ID,CONCAT(odi.BUSINESS_ENTITY_ID,'~',odi.RANGE_ID) AS BED_ID, odi.BUSINESS_ENTITY_ID AS BED_ORDER
+			FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+			WHERE aq.ASSET_ID = :assetId
+			AND aq.EXECUTION_DATE > :queryExecutionDate
+			AND aq.TYPE =  trim(to_char(:businessSummaryType,'999'))
+			AND aq.ID = aqc.AGGREGATED_QUERY_ID
+			AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+			AND odi.KDX_DATA_TYPE = :measure AND aqc.QUERY_SECTION = :group
+			AND aqc.VALU = trim(to_char(odi.RANGE_ID,'99999999999999999999')) 
+			ORDER BY aq.ID, BED_ORDER)) a GROUP BY AQ_ID ORDER BY AQ_ID)
+		 b GROUP BY BED_IDS
+	]]>
+	</QUERY_GET_PAST_USAGE_PATTERN_INFO>	
+	
+		<STATEMENT_DELETE_RFX_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE r FROM rfx r, udx u 
+		WHERE r.reduced_form_id = u.rf_id AND u.content_date <= :contentDate
+	]]>
+	</STATEMENT_DELETE_RFX_BY_CONTENT_DATE>	
+	<STATEMENT_DELETE_RFX_VALUES_BY_CONTENT_DATA>
+	<![CDATA[
+		DELETE rv FROM rfx_value rv, udx u 
+		WHERE rv.reduced_form_id = u.rf_id AND u.content_date <= :contentDate
+	]]>
+	</STATEMENT_DELETE_RFX_VALUES_BY_CONTENT_DATA>
+	<STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_KEY_WORD_SEARCH_FILTER>	
+	<![CDATA[
+		INSERT INTO UNIVERSAL_SEARCH_RESULT (UDX_ID, RF_ID, QUERY_ID, Match_Weight, 
+		ENTITY_COUNT, SEARCH_TYPE, APPLICATION_ID, MATCHED_TRIPLES, MATCHED_TRIPLES_SUM)
+		select ru.UDX_ID, ru.RF_ID, rq.QUERY_ID , 
+		sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) as Match_Weight, 
+		ru.ENTITY_COUNT, ru.SEARCH_TYPE, ru.APPLICATION_ID, 
+		GROUP_CONCAT(DISTINCT rq.TRIPLE_IDENTIFIER 
+		ORDER BY rq.TRIPLE_IDENTIFIER) as matched_triple_ids,
+		SUM(DISTINCT rq.TRIPLE_IDENTIFIER) as matchedSum 
+		from RI_UDX ru, RI_USER_QUERY rq, udx_key_word_match kwm
+		where kwm.QUERY_ID = :userQueryId and ru.UDX_ID = kwm.UDX_ID  
+		AND rq.QUERY_ID = :userQueryId and rq.BE_ID_1 = ru.BE_ID_1 and rq.BE_ID_2 = ru.BE_ID_2 
+		and rq.BE_ID_3 = ru.BE_ID_3 and rq.VARIATION_SUBTYPE = ru.VARIATION_SUBTYPE 
+		and (rq.DERIVED * ru.DERIVED) = 0 and rq.APPLICATION_ID = ru.APPLICATION_ID 
+		group by ru.RF_ID, ru.UDX_ID, ru.CONTENT_DATE 
+		order by sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		sum(ru.REC_WEIGHT * rq.REC_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		matchedSum desc, ru.CONTENT_DATE desc, (ru.ENTITY_COUNT/rq.ENTITY_COUNT), 
+		ru.UDX_ID desc limit :minResult , :maxResult
+	]]>
+	</STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_KEY_WORD_SEARCH_FILTER>
+	<STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_OUT_KEY_WORD_SEARCH_FILTER>
+	<![CDATA[
+		INSERT INTO UNIVERSAL_SEARCH_RESULT (UDX_ID, RF_ID, QUERY_ID, Match_Weight,
+		ENTITY_COUNT, SEARCH_TYPE, APPLICATION_ID, MATCHED_TRIPLES, MATCHED_TRIPLES_SUM)
+		select ru.UDX_ID, ru.RF_ID, rq.QUERY_ID ,
+		sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) as Match_Weight, 
+		ru.ENTITY_COUNT, ru.SEARCH_TYPE, ru.APPLICATION_ID, 
+		GROUP_CONCAT(DISTINCT rq.TRIPLE_IDENTIFIER 
+		ORDER BY rq.TRIPLE_IDENTIFIER) as matched_triple_ids, 
+		SUM(DISTINCT rq.TRIPLE_IDENTIFIER) as matchedSum 
+		from RI_UDX ru, RI_USER_QUERY rq 
+		where rq.QUERY_ID = :userQueryId and rq.BE_ID_1 = ru.BE_ID_1 and rq.BE_ID_2 = ru.BE_ID_2 
+		and rq.BE_ID_3 = ru.BE_ID_3 and rq.VARIATION_SUBTYPE = ru.VARIATION_SUBTYPE 
+		and (rq.DERIVED * ru.DERIVED) = 0 and rq.APPLICATION_ID = ru.APPLICATION_ID 
+		group by ru.RF_ID, ru.UDX_ID, ru.CONTENT_DATE 
+		order by sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		sum(ru.REC_WEIGHT * rq.REC_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc,
+		matchedSum desc, ru.CONTENT_DATE desc, (ru.ENTITY_COUNT/rq.ENTITY_COUNT), 
+		ru.UDX_ID desc limit :minResult , :maxResult
+	]]>
+	</STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_OUT_KEY_WORD_SEARCH_FILTER>
+	<STATEMENT_DELETE_RI_UNSTRUCTURED_INDEXES_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE ri 
+		FROM ri_udx ri, udx u 
+		WHERE ri.udx_id = u.id 
+		AND u.content_date <= :contentDate 
+		AND u.content_source_type = :contentSourceType
+	]]>
+	</STATEMENT_DELETE_RI_UNSTRUCTURED_INDEXES_BY_CONTENT_DATE>
+	<STATEMENT_DELETE_UDX_RI_ATTRIBUTES_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE ua 
+		FROM udx_attribute ua, udx u 
+		WHERE ua.udx_id = u.id 
+		AND u.content_date <= :contentDate
+	]]>
+	</STATEMENT_DELETE_UDX_RI_ATTRIBUTES_BY_CONTENT_DATE>
+	<STATEMENT_UPDATE_UDX_RESULT_WEIGHT_BASED_ON_RFX_VALUES>
+	<![CDATA[
+		UPDATE  universal_search_result usr 
+		JOIN (SELECT rv.REDUCED_FORM_ID, COUNT(DISTINCT uqrv.id) AS cont,
+		sum(DISTINCT uqrv.TRIPLE_IDENTIFIER) as matchedSum,
+		group_concat(DISTINCT uqrv.TRIPLE_IDENTIFIER
+		ORDER BY uqrv.TRIPLE_IDENTIFIER) as triples  
+		FROM RFX_Value rv, user_query_rfx_value uqrv 
+		where uqrv.QUERY_ID =:userQueryId 
+		AND uqrv.SRC_CONCEPT_BE_ID = rv.SRC_CONCEPT_BE_ID 
+		AND uqrv.RELATION_BE_ID = rv.RELATION_BE_ID 
+		AND uqrv.DEST_CONCEPT_BE_ID = rv.DEST_CONCEPT_BE_ID
+		AND rv.value BETWEEN uqrv.START_VALUE AND uqrv.END_VALUE
+		GROUP BY rv.REDUCED_FORM_ID) AS U
+		ON usr.RF_ID = U.REDUCED_FORM_ID SET usr.Match_Weight = usr.Match_Weight + cont*30,
+		usr.matched_triples=CONCAT_WS(',', usr.matched_triples,triples), 
+		usr.MATCHED_TRIPLES_SUM=usr.MATCHED_TRIPLES_SUM + matchedSum  
+		where usr.QUERY_ID=:userQueryId
+	]]>
+	</STATEMENT_UPDATE_UDX_RESULT_WEIGHT_BASED_ON_RFX_VALUES>
+	<STATEMENT_DELETE_UDX_KEY_WORD_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE uk 
+		FROM udx_key_word uk, udx u 
+		WHERE uk.udx_id = u.id 
+		AND u.content_date <= :contentDate
+	]]>
+	</STATEMENT_DELETE_UDX_KEY_WORD_BY_CONTENT_DATE>
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX>
+	<![CDATA[
+		delete u 
+		from udx u,temp_dup_udx_id tmp 
+		where u.id = tmp.id
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX>
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_RI_UDX>
+	<![CDATA[
+		delete ru 
+		from ri_udx ru, temp_dup_udx_id tmp 
+		where ru.udx_id = tmp.id
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_RI_UDX>
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX_ATTRIBUTE>
+	<![CDATA[
+		delete ua 
+		from udx_attribute ua, temp_dup_udx_id tmp 
+		where ua.udx_id = tmp.id
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX_ATTRIBUTE>
+	<STATEMENT_DUPLICATE_UDX_ARTICLE_IDS>
+	<![CDATA[
+		SELECT DISTINCT t1.id 
+		FROM udx t1, udx t2 
+		WHERE t1.content_source_type = 'Craigslist' 
+		AND t1.content_source_type = t2.content_source_type 
+		AND t1.article_ref_id = t2.article_ref_id AND t1.id < t2.id
+	]]>
+	</STATEMENT_DUPLICATE_UDX_ARTICLE_IDS>
+	<STATEMENT_CREATE_DUPLICATE_UDX_ARTICLES_TABLE>
+	<![CDATA[
+		CREATE TABLE `temp_dup_udx_id` 
+		(`id` BIGINT(20) NOT NULL, PRIMARY KEY (`id`)) 
+		ENGINE=MYISAM DEFAULT CHARSET=latin1
+	]]>
+	</STATEMENT_CREATE_DUPLICATE_UDX_ARTICLES_TABLE>
+	<STATEMENT_DROP_DUPLICATE_UDX_ARTICLES_TABLE>
+	<![CDATA[
+		DROP TABLE IF EXISTS `temp_dup_udx_id`
+	]]>
+	</STATEMENT_DROP_DUPLICATE_UDX_ARTICLES_TABLE>
+	<QUERY_POPULATE_UDX_KEY_WORD_MATCH_RESULT_FOR_USER_QUERY>
+	<![CDATA[
+		INSERT INTO udx_key_word_match(query_id,udx_id,match_score,execution_date) 
+		SELECT :userQueryId  as query_id, udx_id, MATCH(key_word_text) AGAINST (:againstQueryTokens) AS match_score, 
+		:executionDate FROM udx_key_word WHERE MATCH(key_word_text) AGAINST (:againstQueryTokens) 
+		ORDER BY match_score DESC limit :minResult, :maxResult
+	]]>
+	</QUERY_POPULATE_UDX_KEY_WORD_MATCH_RESULT_FOR_USER_QUERY>
+	
+	
+	<QUERY_GET_PAST_USAGE_PATTERN_INFO_EXECUE_OWNED_GROUP_CONCAT>
+	<![CDATA[SELECT a.ID AS AQ_ID, BED_ID AS BED_IDS  FROM
+		 ((SELECT DISTINCT aq.ID, odi.BUSINESS_ENTITY_ID AS BED_ID
+		 FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+		 WHERE aq.ASSET_ID = :assetId
+		 AND aq.EXECUTION_DATE > :queryExecutionDate
+		 AND aq.TYPE = :businessSummaryType
+		 AND aq.ID = aqc.AGGREGATED_QUERY_ID
+		 AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+		 AND odi.KDX_DATA_TYPE = :dimension
+		 ORDER BY aq.ID, odi.BUSINESS_ENTITY_ID)
+		 UNION
+		(SELECT DISTINCT aq.ID, CONCAT (odi.BUSINESS_ENTITY_ID, '~', odi.RANGE_ID) AS BED_ID
+		FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+		WHERE aq.ASSET_ID = :assetId
+		AND aq.EXECUTION_DATE > :queryExecutionDate
+		AND aq.TYPE =  :businessSummaryType
+		AND aq.ID = aqc.AGGREGATED_QUERY_ID
+		AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+		AND odi.KDX_DATA_TYPE = :measure AND aqc.QUERY_SECTION = :group
+		AND aqc.VALU = odi.RANGE_ID 
+		ORDER BY aq.ID, odi.BUSINESS_ENTITY_ID))a
+	]]>
+	</QUERY_GET_PAST_USAGE_PATTERN_INFO_EXECUE_OWNED_GROUP_CONCAT>	
+	
+	
+	<QUERY_GET_PAST_USAGE_PROMINENT_BUSINESS_ENTITIES_TOTAL_COUNT>   
+	<![CDATA[SELECT COUNT(DISTINCT aq.ID) AS pastUsageProminentBETotalCount
+		  FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+		  WHERE aq.ASSET_ID = :assetId
+		  AND aq.EXECUTION_DATE > :queryExecutionDate
+		  AND aq.TYPE = :businessSummaryType
+		  AND aq.ID = aqc.AGGREGATED_QUERY_ID
+		  AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+		  AND ((odi.KDX_DATA_TYPE = :dimension) OR (odi.KDX_DATA_TYPE = :measure))
+	]]>	
+	</QUERY_GET_PAST_USAGE_PROMINENT_BUSINESS_ENTITIES_TOTAL_COUNT>	
+		
+	<QUERY_GET_PAST_USAGE_PROMINENT_BUSINESS_ENTITIES>   
+	<![CDATA[SELECT CONCEPT_NAME, BED_ID, (COUNT(AQ_ID) / :pastUsageProminentBETotalCount * 100) AS usagePercentage 
+		 FROM(SELECT aq.ID AS AQ_ID, odi.BUSINESS_ENTITY_ID AS BED_ID, odi.CONCEPT_NAME
+		 FROM aggregated_query aq, aggregated_query_column aqc, optimal_dset_swi_info odi
+		 WHERE aq.ASSET_ID = :assetId
+		 AND aq.EXECUTION_DATE > :queryExecutionDate
+		 AND aq.TYPE = :businessSummaryType
+		 AND aq.ID = aqc.AGGREGATED_QUERY_ID
+		 AND aqc.BUSINESS_ENTITY_ID = odi.BUSINESS_ENTITY_ID
+		 AND odi.KDX_DATA_TYPE = :columnType
+		 GROUP BY aq.ID, odi.BUSINESS_ENTITY_ID, odi.CONCEPT_NAME)
+		 a GROUP BY a.BED_ID,a.CONCEPT_NAME ORDER BY usagePercentage DESC 
+	]]>	
+	</QUERY_GET_PAST_USAGE_PROMINENT_BUSINESS_ENTITIES>	
+
+	
+</queries>	

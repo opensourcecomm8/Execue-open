@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<loadOnStartUp>true</loadOnStartUp>
+	<!-- Dallas as defaultUserPreferredZipCode -->
+	<defaultUserPreferredZipCode>75214</defaultUserPreferredZipCode>
+	<!-- Vicinity Distance Limit(In Miles) to scope the Craigslist App Search Results  -->
+	<defaultVicinityDistanceLimit>100</defaultVicinityDistanceLimit>
+	<defaultVicinityDistanceLimits>100\,500\,1000\,2000\,5000\,10000</defaultVicinityDistanceLimits>
+	<listPageSize>20</listPageSize>
+	<gridPageSize>30</gridPageSize>
+	<numberOfLinks>16</numberOfLinks>
+	<populateRfx>false</populateRfx>
+	<populateUdxKeyword>true</populateUdxKeyword>
+	<maxLimitForShortDistanceQuery>500</maxLimitForShortDistanceQuery>
+	
+	<InvalidContents>
+		<InvalidContent>Also intrested in</InvalidContent>
+		<InvalidContent>You might be interested in the following vehicles</InvalidContent>
+		<InvalidContent>You may also like</InvalidContent>
+	</InvalidContents>    
+	<InvalidArticleTexts>
+		<InvalidArticleText>This posting has expired</InvalidArticleText>
+		<InvalidArticleText>This posting has been deleted by its author</InvalidArticleText>
+	</InvalidArticleTexts>	
+	<batchsize>100</batchsize>
+	<articleCleanupDays>7</articleCleanupDays>
+	<sentenceTokenLimit>100</sentenceTokenLimit>
+	
+	<minImageSize>7000</minImageSize>
+	<maxImageSize>100000</maxImageSize>
+	<maxImageCount>1</maxImageCount>
+	<!-- Bad Image URLs cleanup related configuration -->
+	<image-batch>
+		<bad-image-urls>
+			<domain-name>www.dfwcarz.com</domain-name>
+			<batch-size>800</batch-size>
+		</bad-image-urls>
+	</image-batch> 
+	<semantified-content-keyword-match-cleanup-time-ms>90000</semantified-content-keyword-match-cleanup-time-ms>
+	<user-query-feature-info-cleanup-time-ms>90000</user-query-feature-info-cleanup-time-ms>
+	<user-query-location-info-cleanup-time-ms>90000</user-query-location-info-cleanup-time-ms>
+</execue-configuration>

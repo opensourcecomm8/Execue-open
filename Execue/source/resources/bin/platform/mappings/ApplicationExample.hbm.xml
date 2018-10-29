@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="userInterfaceType">
+		<param name="enumClass">com.execue.core.common.type.UserInterfaceType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.ApplicationExample" table="APPLICATION_EXAMPLE">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0"/>
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">APPLICATION_EXAMPLE</param>
+			</generator>
+		</id>
+		<property name="queryName" type="string">
+			<column name="QUERY_NAME" length="255" />
+		</property>
+		<property name="queryValue" type="text">
+			<column name="QUERY_VALUE"/>
+		</property>
+		<property name="type" type="userInterfaceType">
+			<column name="TYPE" precision="10" scale="0" />
+		</property>
+		<many-to-one name="application" class="com.execue.core.common.bean.entity.Application"  fetch="select">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</many-to-one>
+	</class>	
+</hibernate-mapping>

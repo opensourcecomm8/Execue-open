@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="attributeType">
+		<param name="enumClass">com.execue.core.common.type.AttributeType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    <class name="com.execue.core.common.bean.qdata.UDXAttribute" table="UDX_ATTRIBUTE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">UDX_ATTRIBUTE</param>
+            </generator>
+        </id>
+        
+        <many-to-one name="udx" class="com.execue.core.common.bean.qdata.UnStructuredIndex" fetch="select">
+            <column name="UDX_ID" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="attributeType" type="attributeType">
+            <column name="ATTRIBUTE_TYPE"/>
+        </property>
+        
+        <property name="attributeValue" type="string">
+            <column name="ATTRIBUTE_VALUE"/>
+        </property>
+    </class>
+</hibernate-mapping>

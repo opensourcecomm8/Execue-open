@@ -1,0 +1,190 @@
+#created on: Jan 13, 2009 by John Mallavalli
+package com.execue.rules.reporting.selection
+
+#list any import classes here.
+import java.util.List;
+import java.util.ArrayList;
+import com.execue.core.common.type.ReportType;
+import com.execue.repoting.aggregation.bean.ReportSelection;
+import com.execue.repoting.aggregation.bean.ReportSelectionConstants;
+
+#list any globals
+global com.execue.repoting.aggregation.bean.ReportSelection ReportSelection;
+
+# Rule A : numberOfRecords <= LOW_RECORDS_LIMIT
+# Rule A1 : A + numberOfEffectiveGroups == LOW_EFF_GROUPS
+rule "A1"
+	when
+		$report : ReportSelection(numberOfRecords <= ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfEffectiveGroups == ReportSelectionConstants.LOW_EFF_GROUPS)
+	then
+		List views = new ArrayList();
+		views.add(ReportType.CsvFile);
+		if($report.isEligibleForPortraitReport()) {
+			views.add(ReportType.PortraitTable);
+		} else {
+			views.add(ReportType.Grid);
+		}
+		System.out.println("In Rule A1");
+		$report.setReportTypes(views);
+end
+
+# Rule A2 : A + numberOfEffectiveGroups == MED_EFF_GROUPS // To be done
+rule "A2"
+	when
+		$report : ReportSelection(numberOfRecords <= ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfEffectiveGroups == ReportSelectionConstants.MED_EFF_GROUPS)
+	then
+		List views = new ArrayList();
+		if($report.getNumberOfMeasures() > 0 && $report.getNumberOfMeasures() <= 5 && $report.getNumberOfRecords()>1 && $report.getNumberOfRecords()<=20 ) {
+			views.add(ReportType.PieChart);
+		}
+		views.add(ReportType.Grid);
+		views.add(ReportType.CsvFile);
+		if ($report.getNumberOfGroups() >= 2 && $report.getNumberOfRecords() > $report.getNumberOfEffectiveRecords()) {
+			views.add(ReportType.PivotTable);
+		}
+		if ($report.isEligibleForPortraitReport()) {
+			views.add(ReportType.PortraitTable);
+			views.remove(ReportType.Grid);
+		}
+		if ($report.getDataPoints() <= ReportSelectionConstants.LOW_DATA_POINTS) { // 60
+			if (($report.getNumberOfMeasures() == 1 && $report.getNumberOfIdColumns() == 0)) {
+				views.add(ReportType.BarChart);
+			} else {
+				if ($report.getNumberOfMeasures() > 0) {
+					views.add(ReportType.BarLineChart);
+					views.add(ReportType.MultiBarChart);
+				}
+				if ($report.getNumberOfMeasures() > 0 && $report.getNumberOfMeasures() < 5) {
+					views.add(ReportType.ClusterBarChart);
+				}
+				if ($report.getNumberOfMeasures() >= 5) {
+					views.add(ReportType.CMultiBarChart);
+				}
+			}
+		} else if ($report.getDataPoints() <= ReportSelectionConstants.MED_DATA_POINTS) { // 120
+			if (($report.getNumberOfMeasures() == 1 && $report.getNumberOfIdColumns() == 0)) {
+				views.add(ReportType.LineChart);
+			} else {
+				if ($report.isProfilePresent() && $report.getNumberOfRecords() <= 3) {
+					views.add(ReportType.PortraitTable);
+				}
+				if ($report.getNumberOfMeasures() > 0) {
+					views.add(ReportType.BarLineChart);
+					views.add(ReportType.MultiLineChart);
+				}
+				if ($report.getNumberOfMeasures() > 0 && $report.getNumberOfMeasures() < 5) {
+					views.add(ReportType.ClusterBarChart);
+				}
+				if ($report.getNumberOfMeasures() >= 5) {
+					views.add(ReportType.CMultiBarChart);
+				}
+			}
+		} else if ($report.getDataPoints() <= ReportSelectionConstants.HIGH_DATA_POINTS) { // 650
+			if ($report.getNumberOfMeasures() == 1) {
+				views.add(ReportType.LineChart);
+			} else {
+				if ($report.getNumberOfMeasures() > 0) {
+					views.add(ReportType.BarLineChart);
+					views.add(ReportType.MultiLineChart);
+					views.add(ReportType.CMultiLineChart);
+				}
+			}
+		} else if ($report.getNumberOfMeasures() > 1) {
+			views.add(ReportType.BarLineChart);
+			views.add(ReportType.MultiLineChart);
+			views.add(ReportType.CMultiLineChart);
+		}
+        System.out.println("In Rule A2");
+		$report.setReportTypes(views);
+end
+
+# Rule A3 : A + numberOfEffectiveGroups == HIGH_EFF_GROUPS
+rule "A3"
+	when
+		$report : ReportSelection(numberOfRecords <= ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfEffectiveGroups == ReportSelectionConstants.HIGH_EFF_GROUPS)
+	then
+		List views = new ArrayList();
+		if ($report.getNumberOfMeasures() == 0) {
+			views.add(ReportType.Grid);
+		} else {
+			views.add(ReportType.CrossTable);
+			views.add(ReportType.GroupTable);
+			views.add(ReportType.PivotTable);
+			if ($report.getDataPoints() <= 60) {
+				views.add(ReportType.CrossBarChart);
+			} else if ($report.getDataPoints() <= 650) {
+				views.add(ReportType.CrossLineChart);
+			}
+		}
+        views.add(ReportType.CsvFile);
+        if ($report.getNumberOfMeasures() == 1) {
+       		// do nothing
+        } else if ($report.getNumberOfMeasures() >= 2) {
+        	if ($report.getDataPoints() <= 60) {
+          		// do nothing
+          	} else if ($report.getDataPoints() <= 600) {
+          		// do nothing
+          	}
+		}
+		System.out.println("In Rule A3");
+		$report.setReportTypes(views);
+end
+
+# Rule A4 : A + numberOfEffectiveGroups > HIGH_EFF_GROUPS
+rule "A4"
+	when
+		$report : ReportSelection(numberOfRecords <= ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfEffectiveGroups > ReportSelectionConstants.HIGH_EFF_GROUPS)
+	then
+		List views = new ArrayList();
+		views.add(ReportType.Grid);
+        views.add(ReportType.PivotTable);
+        views.add(ReportType.CsvFile);
+		System.out.println("In Rule A4");
+		$report.setReportTypes(views);
+end
+
+
+# Rule B : numberOfRecords > ReportSelectionConstants.LOW_RECORDS_LIMIT && numberOfRecords <= ReportSelectionConstants.HIGH_RECORDS_LIMIT
+# Rule B1 : B + numberOfGroups < 2
+rule "B1"
+	when
+		$report : ReportSelection(numberOfRecords > ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfRecords <= ReportSelectionConstants.HIGH_RECORDS_LIMIT, 
+				numberOfGroups < 2)
+	then
+		List views = new ArrayList();
+		views.add(ReportType.CsvFile);
+		System.out.println("In Rule B1");
+		$report.setReportTypes(views);
+end
+
+# Rule B2 : B + numberOfGroups >= 2
+rule "B2"
+	when
+		$report : ReportSelection(numberOfRecords > ReportSelectionConstants.LOW_RECORDS_LIMIT, 
+			numberOfRecords <= ReportSelectionConstants.HIGH_RECORDS_LIMIT, 
+				numberOfGroups >= 2)
+	then
+		List views = new ArrayList();
+		views.add(ReportType.CsvFile);
+		views.add(ReportType.Grid);
+		views.add(ReportType.PivotTable);
+		System.out.println("In Rule B2");
+		$report.setReportTypes(views);
+end
+
+# Rule C : numberOfRecords > ReportSelectionConstants.HIGH_RECORDS_LIMIT
+rule "C"
+	when
+		$report : ReportSelection(numberOfRecords > ReportSelectionConstants.HIGH_RECORDS_LIMIT)
+	then
+		List views = new ArrayList();
+		views.add(ReportType.Grid);
+		views.add(ReportType.CsvFile);
+		System.out.println("In Rule C");
+		$report.setReportTypes(views);
+end

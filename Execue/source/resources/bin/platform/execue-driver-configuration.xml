@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<driver>
+		<flags>
+		</flags>
+		<!-- value in milliseconds -->
+		<aggregate-query-retry-interval>200</aggregate-query-retry-interval>
+		<aggregate-query-retry-count>3</aggregate-query-retry-count>
+		<cached-date-format-pattern>MMM dd\, yyyy HH:mm aaa</cached-date-format-pattern>
+		<content-date-format-pattern>MMM dd\, yyyy</content-date-format-pattern>
+		<generic-unstructured-app-redirect-url>unstructuredSearch</generic-unstructured-app-redirect-url>
+		<no-summary-result-title>Execution restricted by Admin (Query available for review)</no-summary-result-title>
+	</driver>
+</execue-configuration>

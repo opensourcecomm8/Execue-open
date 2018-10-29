@@ -1,0 +1,22 @@
+<queries>
+	
+	<GET_USER_QUERY_FEATURE_INFO_BY_QUERY_ID>
+	<![CDATA[from UserQueryFeatureInformation where queryId = :userQueryId]]>
+	</GET_USER_QUERY_FEATURE_INFO_BY_QUERY_ID>
+
+	<QUERY_GET_SEMANTIFIED_CONTENT_BY_IDS>
+	<![CDATA[from SemantifiedContent sc WHERE sc.contextId = :contextId AND sc.id IN (:semantifiedContentIds)
+	]]>	
+	</QUERY_GET_SEMANTIFIED_CONTENT_BY_IDS>
+	
+	<DELETE_USER_QUERY_FEATURE_INFO_BY_EXECUTION_DATE>
+	<![CDATA[delete from UserQueryFeatureInformation uqfi where uqfi.executionDate <= :executionDate	
+	]]>	
+	</DELETE_USER_QUERY_FEATURE_INFO_BY_EXECUTION_DATE>
+	
+	<QUERY_USER_QUERY_FEATURE_INFO_MAX_EXECUTION_DATE>
+	<![CDATA[select max(executionDate) from UserQueryFeatureInformation 	
+	]]>	
+	</QUERY_USER_QUERY_FEATURE_INFO_MAX_EXECUTION_DATE>
+	
+</queries>

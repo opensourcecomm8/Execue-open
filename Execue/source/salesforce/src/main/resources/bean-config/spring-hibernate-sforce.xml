@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean defintion of data source -->
+	<bean id="sforceDataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://10.10.52.111:3306/sforce-meta"/>
+		<property name="username" value="swi"/>
+		<property name="password" value="execue"/>
+	</bean>
+
+	<!-- Bean defintion of bean session factory -->
+
+	<bean id="sforceSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	
+		<property name="dataSource" ref="sforceDataSource"/>
+		
+		<property name="mappingResources">
+			<list>
+				<!-- Asset related entities -->
+				<value>/mappings/SObjectMetaEntity.hbm.xml</value>				
+			</list>
+		</property>
+    
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<!-- Bean defintion of hibernate template -->
+	<bean id="sforceHibernateTemplate" 
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sforceSessionFactory"/>
+		</property>
+	</bean>
+	
+
+	
+</beans>

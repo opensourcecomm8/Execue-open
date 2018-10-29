@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+
+	<typedef name="statusEnum" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.bean.StatusEnum</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<class name="com.execue.core.common.bean.security.SecurityGroups" table="SECURITY_GROUPS">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">SECURITY_GROUPS</param>
+			</generator>
+		</id>
+		
+		<property name="name" type="string">
+			<column name="NAME" length="50" not-null="true" />
+		</property>
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="255" not-null="true" />
+		</property>
+		<property name="status" type="statusEnum">
+			<column name="STATUS" length="1" not-null="true" />
+		</property>
+		<property name="createdDate" type="timestamp">
+			<column name="DATE_CREATED" />
+		</property>
+		<property name="modifiedDate" type="timestamp">
+			<column name="DATE_MODIFIED" />
+		</property>
+		<set name="roles" inverse="false" table="SECURITY_GROUP_ROLES">
+			<key>
+				<column name="GROUP_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.security.SecurityRoles">
+				<column name="ROLE_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set>
+        
+        
+	</class>
+</hibernate-mapping>

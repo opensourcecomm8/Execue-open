@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="unstructuredRIFeatureContentDAO" class="com.execue.uswhda.dataaccess.dao.impl.UnstructuredRIFeatureContentDAOImpl" >	        
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>	
+	</bean>	
+	
+	<bean id="unstructuredWHDataAccessConfigurationService" class="com.execue.uswhda.configuration.impl.UnstructuredWHDataAccessConfigurationServiceImpl">
+		<property name="unstructuredWHDataAccessConfiguration" ref="unstructuredWHDataAccessConfiguration" />
+		<property name="databaseProperties" ref="databasePropertiesFactoryBean"/>
+	</bean>	
+	<bean id="unstructuredWHDataAccessConfigurableService" class="com.execue.uswhda.configuration.impl.UnstructuredWHDataAccessConfigurableService">
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>
+	</bean>	
+	<bean id="unstructuredWHPooledDataManager" 
+		class="com.execue.uswhda.configuration.impl.UnstructuredWHPooledDataManager" >
+		<property name="unstructuredWHDataAccessConfigurationService">
+			<ref bean="unstructuredWHDataAccessConfigurationService"/>
+		</property>
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO"/>
+		</property>		
+		<property name="appDataSourceDAO">
+			<ref bean="appDataSourceDAO"/>
+		</property>
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO"/>
+		</property>	
+		<property name="applicationDAO">
+			<ref bean="applicationDAO" />
+		</property>	
+		<property name="hibernateTemplateBuilderService">
+			<ref bean="hibernateTemplateBuilderService"/>
+		</property>
+	</bean>
+	
+	<bean id="featureDAO" class="com.execue.uswhda.dataaccess.dao.impl.FeatureDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>
+	
+	<bean id="featureValueDAO" class="com.execue.uswhda.dataaccess.dao.impl.FeatureValueDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>		
+
+	<bean id="featureRangeDAO" class="com.execue.uswhda.dataaccess.dao.impl.FeatureRangeDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>		
+
+	<bean id="featureDetailDAO" class="com.execue.uswhda.dataaccess.dao.impl.FeatureDetailDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>		
+
+	<bean id="featureDependencyDAO" class="com.execue.uswhda.dataaccess.dao.impl.FeatureDependencyDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>		
+
+	<bean id="sourceContentDAO" class="com.execue.uswhda.dataaccess.dao.impl.SourceContentDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>	
+		<property name="unstructuredWHQueryBuilderServiceFactory">
+			<ref bean="unstructuredWHQueryBuilderServiceFactory"/>
+		</property>	
+	</bean>		
+
+	<bean id="semantifiedContentDAO" class="com.execue.uswhda.dataaccess.dao.impl.SemantifiedContentDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>	
+		<property name="unstructuredWHQueryBuilderServiceFactory">
+			<ref bean="unstructuredWHQueryBuilderServiceFactory"/>
+		</property>		
+	</bean>		
+
+	<bean id="userQueryFeatureInformationDAO" class="com.execue.uswhda.dataaccess.dao.impl.UserQueryFeatureInformationDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>	
+		<property name="unstructuredWHQueryBuilderServiceFactory">
+			<ref bean="unstructuredWHQueryBuilderServiceFactory"/>
+		</property>
+			
+	</bean>		
+
+	<bean id="userQueryLocationInformationDAO" class="com.execue.uswhda.dataaccess.dao.impl.UserQueryLocationInformationDAOImpl">	
+		<property name="unstructuredWHPooledDataManager">
+			<ref bean="unstructuredWHPooledDataManager"/>
+		</property>		
+	</bean>		
+
+		
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="com.execue.core.common.bean.entity.Path" table="PATH_DEFINITION_ETD">
+        
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">PATH_DEFINITION_ETD</param>
+			</generator>
+		</id>
+        
+        <many-to-one name="pathDefinition" class="com.execue.core.common.bean.entity.PathDefinition" fetch="select">
+            <column name="PATH_DEFINITION_ID" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="entityTripleDefinition" class="com.execue.core.common.bean.entity.EntityTripleDefinition" fetch="select">
+            <column name="ENTITY_TRIPLE_DEF_ID" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="entityTripleOrder" type="int">
+            <column name="ENTITY_TRIPLE_ORDER" precision="20" scale="0" not-null="true" />
+        </property>
+    
+    </class>
+
+</hibernate-mapping>

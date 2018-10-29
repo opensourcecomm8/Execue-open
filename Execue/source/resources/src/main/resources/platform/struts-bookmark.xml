@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- BOOKMARK Search  START-->
+	<package name="ajax-bookmarks" namespace="/bookmark" extends="execue-json-default">
+		<global-results>
+			<result name="error" type="json">
+				<param name="root">errorMessage</param>
+			</result>
+		</global-results>
+		<!-- createBookmark-->
+	    <!--action name="createBookmark" class="bookmarkAction" method="createBookmark">
+			<result name="success" type="redirect">getUserFolders.action</result>
+		</action-->
+
+		<!--action name="createFolder" class="bookmarkAction" method="createFolder">
+			<result name="success" type="chain">getUserFolders</result>
+		</action-->
+		<!--action name="getBookmarks" class="bookmarkAction" method="getFoldersAndBookmarks">
+			<result name="success" type="json">
+				<param name="root">folderList</param>
+			</result>
+		</action-->
+		<!--showUserFolders -->
+		 <!--action name="showUserFolders" method="getUserFolders" class="bookmarkAction">
+			<result name="success">/bookmarks.jsp</result>
+		</action-->
+		<!-- getUserFolders-->
+		<!--action name="getUserFolders" class="bookmarkAction" method="getUserFolders">
+			<result name="success" type="json">
+				<param name="root">folderList</param>
+			</result>
+		</action-->
+		<!--delete bookmark-->
+		<!--action name="deleteBookmark" class="bookmarkAction" method="deleteBookmark">
+			<result name="success" type="redirect">getUserFolders.action</result>
+		</action-->
+		<!--delete folder-->
+		<!--action name="deleteFolder" class="bookmarkAction" method="deleteFolder">
+			<result name="success" type="redirect">getUserFolders.action</result>
+		</action-->
+        <!--Show bookmark search -->
+		<action name="showBookmarkSearch" method="getUserFolders" class="bookmarkAction">
+	       <result name="success">/WEB-INF/jsp/main/bookmark/searchBookMarks.jsp</result>
+		</action>
+		<!--Retrieve Bookmark -->
+		
+		<action name="retrieveBookmark" class="searchBookmarkAction" method="retrieveBookmark">
+		   <result name="success" type="json">
+				<param name="root">queryForm</param>
+			</result>
+		</action>
+		<!--Search Bookmark -->
+		<action name="searchBookmarks" class="searchBookmarkAction" method="searchBookmarks">
+		   <result name="success" type="json">
+				<param name="root">uiBookmarkSearch</param>
+			</result>
+		</action>			
+	</package>
+	<!-- BOOKMARK Search  End-->
+	
+	<!-- BOOKMARK save and delete  START-->
+	 <package name="bookmarks" namespace="/bookmark" extends="struts-default">
+		<!--showUserFolders -->
+		 <action name="showUserFolders" method="getUserFolders" class="bookmarkAction">
+			<result name="success">/WEB-INF/jsp/main/bookmark/bookmarks.jsp</result>
+			<result name="error">/WEB-INF/jsp/main/bookmark/bookmarks.jsp</result>
+		</action>
+		
+		<!-- getUserFolders-->
+		<action name="getUserFolders" class="bookmarkAction" method="getUserFolders">
+			<result name="success" type="chain">showUserFolders</result>
+		</action>
+		
+		<!-- createBookmark-->
+	    <action name="createBookmark" class="bookmarkAction" method="createBookmark">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result> 
+		</action>
+
+		<action name="createFolder" class="bookmarkAction" method="createFolder">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result>
+		</action>
+		<!--action name="getBookmarks" class="bookmarkAction" method="getFoldersAndBookmarks">
+			<result name="success" type="json">
+				<param name="root">folderList</param>
+			</result>
+		</action-->
+	
+		<!--delete bookmark-->
+		<action name="deleteBookmark" class="bookmarkAction" method="deleteBookmark">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result>
+		</action>
+		<!--delete folder-->
+		<action name="deleteFolder" class="bookmarkAction" method="deleteFolder">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result>
+		</action>	
+		
+		<action name="deleteBookmarkFromSavedQueries" class="bookmarkAction" method="deleteBookmarkFromSavedQueries">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result> 
+			<result name="input" type="chain">showUserFolders</result> 
+		</action>
+		<!--delete folder-->
+		<action name="deleteFolderFromSavedQueries" class="bookmarkAction" method="deleteFolderFromSavedQueries">
+			<result name="success" type="chain">showUserFolders</result>
+			<result name="error" type="chain">showUserFolders</result>
+			<result name="input" type="chain">showUserFolders</result>
+		</action>			
+	</package>
+	<!-- BOOKMARK save and delete  END-->
+</struts>

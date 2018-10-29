@@ -1,0 +1,285 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:execue.properties</value>
+				<value>classpath:execue-database.properties</value>
+			</list>			
+		</property>
+	</bean>
+	
+    <bean id="databasePropertiesFactoryBean" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location">
+            <value>classpath:execue-database.properties</value>
+        </property>
+    </bean>
+
+	<bean id="ruleConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${rules.configuration.file}</value>
+			</list>
+		</constructor-arg>		
+	</bean>
+	
+	<bean id="dataAccessConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${dataaccess.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="unstructuredWHDataAccessConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${unstructured-wh-dataaccess.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="unstructuredWHConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>						
+				<value>${unstructured-wh.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="unstructuredCADataAccessConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${unstructured-ca-dataaccess.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="dataAccessServicesConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${dataaccess-services.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="locationConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${location.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="swiConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${swi.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="timeConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${time.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	
+	
+	<bean id="platformServicesConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${platform-services.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="ontologyConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${ontology.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="publisherConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${publisher.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="governorConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${governor.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="answersCatalogConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${ac.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="answersCatalogDBConfiguration" class="com.execue.core.configuration.ExecueDBConfiguration">
+		<constructor-arg index="0" ref="swiDataSource"/>
+		<constructor-arg index="1" value="AnswersCatalog"/>
+	</bean>
+	
+	<bean id="aggregationConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${aggregation.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="aggregationDBConfiguration" class="com.execue.core.configuration.ExecueDBConfiguration">
+		<constructor-arg index="0" ref="swiDataSource"/>
+		<constructor-arg index="1" value="Aggregation"/>
+	</bean>
+
+	<bean id="rpConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${rp.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="rpDBConfiguration" class="com.execue.core.configuration.ExecueDBConfiguration">
+		<constructor-arg index="0" ref="swiDataSource"/>
+		<constructor-arg index="1" value="Presentation"/>
+	</bean>
+	
+	<bean id="semantificationConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${semantification.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="contentPostProcessorConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${content-postprocessor.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="contentPreProcessorConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${content-preprocessor.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="unstructuredSearchConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${unstructured-search.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>	
+	
+	<bean id="knowledgeSearchConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${knowledge-search.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="sdataConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${sdata.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="qdataConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${qdata.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="queryGenerationConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${query.generation.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="messageConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${message.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="pseudoLanguageConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${pseudoLanguage.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="securityConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${security.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="semanticDriverConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<list>
+				<value>${semantic.driver.configuration.file}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="answersCatalogQueryHistoryConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+        <constructor-arg>
+            <list>
+                <value>${ac.query.history.configuration.file}</value>
+            </list>
+        </constructor-arg>
+    </bean>
+	<bean id="answersCatalogMgmtQueueControllerConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+        <constructor-arg>
+            <list>
+                <value>${acmq.controller.configuration.file}</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="auditTrailConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+        <constructor-arg>
+            <list>
+                <value>${audit.trail.configuration.file}</value>
+            </list>
+        </constructor-arg>
+    </bean>        
+</beans>

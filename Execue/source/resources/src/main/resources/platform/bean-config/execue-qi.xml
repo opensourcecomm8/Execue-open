@@ -1,0 +1,32 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="qiService"
+		class="com.execue.qi.service.impl.QueryInterfaceServiceImpl">
+		<property name="defaultsProcessor" ref="qiDefaultsProcessor" />
+		<property name="businessQueryGenerator" ref="qiBQGenerator" />		
+	</bean>
+	
+	<bean id="queryInterfaceConfiguration" class="com.execue.qi.configuration.impl.QueryInterfaceConfigurationImpl" >
+		<property name="dataSource" ref="swiDataSource"/>
+		<property name="configurationName" value="QueryInterface"/>
+	</bean>
+	<bean id="qiDefaultsProcessor"
+		class="com.execue.qi.processor.DefaultsProcessor">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+	<bean id="qiBQGenerator"
+		class="com.execue.qi.processor.impl.BusinessQueryGenerator">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="preferencesRetrievalService" ref="preferencesRetrievalService" />
+		<property name="businessQueryOrganizationService" ref="businessQueryOrganizationService" />
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService"/>
+		</property>	
+	</bean>
+</beans>

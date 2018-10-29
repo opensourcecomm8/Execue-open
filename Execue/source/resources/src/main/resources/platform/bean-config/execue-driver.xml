@@ -1,0 +1,71 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="queryValidationHelper"
+		class="com.execue.handler.QueryValidationHelper">
+		<property name="nlpEngine" ref="nlpEngine" />
+		<property name="reducedFormBusinessQueryGenerator" ref="reducedFormBusinessQueryGenerator" />
+	</bean>
+	
+	<bean id="driverHelper" class="com.execue.driver.helper.DriverHelper">
+		<property name="queryDataService" ref="queryDataService" />
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory" />
+		<property name="lookupService" ref="lookupService" />
+		<property name="driverConfigurationService" ref="driverConfigurationService" />
+	</bean>
+	
+	<bean id="qiDriver" class="com.execue.driver.qi.QueryInterfaceDriver"  parent="abstractUserContextService">
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService"/>
+		<property name="reportMessage" ref="aggregationThreadMessage"/>
+		<property name="messageService" ref="messageService"/>
+		<property name="governorService" ref="governorService"/>
+		<property name="queryInterfaceService" ref="qiService"/>
+		<property name="queryCacheService" ref="qcacheService"/>
+		<property name="pseudoLanguageService" ref="pseudoLanguageService" />
+		<property name="driverHelper" ref="driverHelper" />
+		<property name="assetDetailService" ref="assetDetailService"/>
+		<property name="userQueryPossibilityService" ref="userQueryPossibilityService" />
+		<property name="queryFederationService" ref="queryFederationService"/>
+		<property name="queryCacheConfiguration" ref="qCacheConfiguration" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+	</bean>
+	
+	<bean id="presentationDriver" class="com.execue.driver.PresentationDriver"  parent="abstractUserContextService">
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService"/>
+		<property name="reportMessage" ref="aggregationThreadMessage"/>
+		<property name="messageService" ref="messageService"/>
+		<property name="governorService" ref="governorService"/>
+		<property name="queryCacheService" ref="qcacheService"/>
+		<property name="pseudoLanguageService" ref="pseudoLanguageService" />		
+		<property name="driverHelper" ref="driverHelper" />
+		<property name="aggregationService" ref="reportAggregationService" />
+	</bean>
+	<bean id="aggregationSequenceMessage" class="com.execue.driver.aggregation.message.AggregationSequenceMessage">
+		<property name="messageProcessor" ref="aggregationMessageProcessor"/>
+	</bean>
+	
+	<bean id="aggregationThreadMessage" class="com.execue.driver.aggregation.message.AggregationThreadMessage">
+		<property name="messageService" ref="messageService"/>
+		<property name="execueSystemCachedThreadPoolManager" ref="execueSystemCachedThreadPoolManager"/>
+		<property name="messageProcessor" ref="aggregationMessageProcessor"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+	</bean>
+	
+	<bean id="aggregationMessageProcessor" class="com.execue.driver.aggregation.message.AggregationMessageProcessor">
+		<property name="aggregationService" ref="reportAggregationService"/>
+		<property name="queryDataService" ref="queryDataService"/>
+		<property name="pseudoLanguageService" ref="pseudoLanguageService" />
+	</bean>	
+	<bean id="driverConfigurationService" class="com.execue.driver.configuration.impl.DriverConfigurationServiceImpl">
+		<property name="driverConfiguration" ref="driverConfiguration" />
+		<property name="driverDBConfiguration" ref="driverDBConfiguration" />	
+	</bean>
+	
+	<bean id="driverConfigurableService" class="com.execue.driver.configuration.impl.DriverConfigurableService">
+		<property name="driverConfigurationService" ref="driverConfigurationService" />
+		<property name="lookupService" ref="lookupService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+</beans>

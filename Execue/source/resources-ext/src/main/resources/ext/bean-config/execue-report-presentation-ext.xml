@@ -1,0 +1,38 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!--  All Factory Entries -->
+	<bean id="reportHandlerFactory"
+		class="com.execue.handler.reports.ReportHandlerFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="Grid" value="htmlSimpleGridHandler" />
+				<entry key="DetailGrid" value="htmlSimpleGridHandler" />
+				<entry key="GroupTable" value="htmlGroupByGridHandler" />
+				<entry key="DetailGroupTable" value="htmlGroupByGridHandler" />
+				<entry key="CrossTable" value="htmlAcrossGridHandler" />
+				<entry key="BarChart" value="chartFxBarChartHandler" />
+				<entry key="PieChart" value="chartFxPieChartHandler" />
+				<entry key="ScatterChart" value="chartFxScatterChartHandler" />
+				<entry key="LineChart" value="chartFxLineChartHandler" />
+				<entry key="BarLineChart" value="chartFxBarlineChartHandler" />
+				<entry key="MultiBarChart" value="chartFxMultibarChartHandler" />
+				<entry key="MultiLineChart" value="chartFxMultilineChartHandler" />
+				<entry key="ClusterBarChart" value="chartFxClusterBarChartHandler" />
+				<entry key="ClusterLineChart" value="chartFxClusterLineChartHandler" />
+				<entry key="CrossBarChart" value="chartFxCrossBarChartHandler" />
+				<entry key="CrossLineChart" value="chartFxCrossLineChartHandler" />
+				<entry key="CountryMapChart" value="chartFxCountryMapHandler" />
+				<entry key="CrossStateMapChart" value="chartFxCrossStateMapHandler" />
+				<entry key="PortraitTable" value="htmlPortraitGridHandler"/>
+				<entry key="MultiPieChart" value="chartFxMultiPieChartHandler"/>
+			</map>
+		</property>
+	</bean>
+	
+
+
+</beans>

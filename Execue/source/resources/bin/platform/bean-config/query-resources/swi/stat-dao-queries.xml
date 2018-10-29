@@ -1,0 +1,11 @@
+<queries>
+	<QUERY_ALL_STATS>
+	<![CDATA[from Stat stat order by stat.displayName]]>
+	</QUERY_ALL_STATS>
+	
+	<QUERY_GET_STAT_BY_BUSINESS_ENTITY_ID>
+	<![CDATA[from Stat stat 
+		 where stat.businessEntityDefinitionId = :businessEntityDefinitionId
+	]]>
+	</QUERY_GET_STAT_BY_BUSINESS_ENTITY_ID>
+</queries>

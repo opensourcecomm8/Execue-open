@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="group.name">
+		<field-validator type="required">
+			<message key="group.name.required"/>
+		</field-validator>		
+		<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*[_0-9a-zA-Z]*)]]>
+			<!--![CDATA[([a-zA-Z][a-zA-Z]*[0-9a-zA-Z]*)]]-->
+			</param>
+			<message>Valid Group name required example kog123</message>
+		</field-validator>		
+	</field>
+	<field name="group.description">
+		<field-validator type="required">
+			<message key="group.description.required"/>
+		</field-validator>
+	</field>
+</validators>

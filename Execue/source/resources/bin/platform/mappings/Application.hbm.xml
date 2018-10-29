@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="statusEnum" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.bean.StatusEnum</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="publishMode">
+		<param name="enumClass">com.execue.core.common.type.PublishAssetMode</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="appSourceType">
+		<param name="enumClass">com.execue.core.common.type.AppSourceType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="appCreationType">
+		<param name="enumClass">com.execue.core.common.type.AppCreationType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.Application" table="APPLICATION">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">APPLICATION</param>
+			</generator>
+		</id>
+		<property name="name" type="string">
+			<column name="NAME" length="255"/>
+		</property>
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="255"/>
+		</property>
+		<property name="sourceType" type="appSourceType">
+			<column name="source_type" length="1" />
+		</property>		
+		<property name="createdDate" type="timestamp">
+			<column name="CREATED_DATE" />
+		</property>
+		<property name="modifiedDate" type="timestamp">
+			<column name="MODIFIED_DATE" />
+		</property>
+		<property name="applicationURL" type="string">
+			<column name="APPLICATION_URL" length="255"/>
+		</property>
+		<property name="popularity" type="java.lang.Long">
+			<column name="POPULARITY" precision="20" scale="0" />
+		</property>	
+		<property name="status" type="statusEnum">
+			<column name="STATUS" length="1" />
+		</property>
+		<property name="imageId" type="java.lang.Long">
+			<column name="IMAGE_ID" precision="11" scale="0" />
+		</property>
+		<property name="rank" type="java.lang.Long">
+			<column name="RANK" precision="20" scale="0"/>
+		</property>
+		<property name="creationType" type="appCreationType">
+			<column name="create_type" length="1" />
+		</property>	
+		<property name="applicationTag" type="string">
+			<column name="TAG"/>
+		</property>
+		<property name="applicationTitle" type="string">
+			<column name="application_title" length="255"/>
+		</property>
+		<many-to-one name="owner" class="com.execue.core.common.bean.security.User" fetch="select">
+			<column name="USER_ID" precision="20" scale="0" />
+		</many-to-one>
+		<set name="models" inverse="false" table="APPLICATION_MODEL_MAPPING" lazy="false">
+			<key>
+				<column name="APPLICATION_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Model">
+				<column name="MODEL_Id" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set> 	
+		<set name="assets" inverse="true">
+			<key>
+				<column name="ASSET_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.Asset" />
+		</set>
+		<property name="publishMode" type="publishMode">
+			<column name="PUBLISH_MODE" length="1" />
+		</property>	
+		
+		<property name="constantRandomFactor" type="java.lang.Double">
+			<column name="CONSTANT_RANDOM_FACTOR" precision="5" scale="2" />
+		</property>
+		<property name="associationExist" type="checkType">
+			<column name="ASSOCIATION_EXIST" length="1" />
+		</property>
+
+		<property name="applicationKey" type="string">
+			<column name="APPLICATION_KEY" length="255"/>
+		</property>
+
+		<set name="appQueryExamples" inverse="false" cascade="delete" order-by="id">
+			<key>
+				<column name="APPLICATION_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.ApplicationExample" />
+		</set>
+		<one-to-one name="unstructuredApplicationDetail" class="com.execue.core.common.bean.entity.UnstructuredApplicationDetail" property-ref="applicationId"
+			cascade="delete" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.unstructured.UserQueryFeatureInformation" table="USER_QUERY_FEATURE_INFO">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">USER_QUERY_FEATURE_INFO</param>
+			</generator>
+		</id>
+        
+        <property name="queryId" type="java.lang.Long">
+            <column name="QUERY_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="contextId" type="java.lang.Long">
+            <column name="CONTEXT_ID" precision="20" scale="0" />
+        </property>        
+        
+		<property name="featureId" type="java.lang.Long">
+			<column name="FEATURE_ID" precision="10" scale="0" />
+        </property>
+        
+		<property name="startValue" type="string">
+			<column name="START_VALUE" length="255" />
+		</property>
+		
+        <property name="endValue" type="string">
+            <column name="END_VALUE" length="255" />
+        </property>
+
+		<property name="featureWeightFactor" type="double">
+			<column name="FEATURE_WEIGHT_FACTOR"/>
+        </property>
+
+        <property name="executionDate" type="java.util.Date">
+			<column name="EXECUTION_DATE" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

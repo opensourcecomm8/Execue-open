@@ -1,0 +1,86 @@
+<queries>
+	
+	<QUERY_GET_SEMANTIFIED_CONTENT_BY_IDS>
+	<![CDATA[from SemantifiedContent sc WHERE sc.contextId = :contextId AND sc.id IN (:semantifiedContentIds)
+	]]>	
+	</QUERY_GET_SEMANTIFIED_CONTENT_BY_IDS>
+
+	<QUERY_DELETE_SEMANTIFIED_CONTENT_FEATURE_INFO>
+	<![CDATA[delete from SemantifiedContentFeatureInformation  scfi where scfi.contextId = :contextId and scfi.semantifiedContentId =:semantifiedContentId
+	]]>	
+	</QUERY_DELETE_SEMANTIFIED_CONTENT_FEATURE_INFO>
+
+	<QUERY_DELETE_SEMANTIFIED_CONTENT_KEYWORD>
+	<![CDATA[delete from SemantifiedContentKeyword  sck where sck.contextId = :contextId and sck.semantifiedContentId =:semantifiedContentId
+	]]>	
+	</QUERY_DELETE_SEMANTIFIED_CONTENT_KEYWORD>
+
+	<QUERY_GET_SEMANTIFIED_CONTENT_IDS_BY_QUERY_ID>
+	<![CDATA[select sc.id from SemantifiedContent sc where sc.contextId =:contextId and sc.userQueryId = :userQueryId  AND sc.processingState = :processing
+	]]>	
+	</QUERY_GET_SEMANTIFIED_CONTENT_IDS_BY_QUERY_ID>
+
+	<UPDATE_SC_IMAGEURL_PROCESSING_STATE_BY_BATCH_ID>
+	<![CDATA[update SemantifiedContent sc set sc.imageUrlProcessed = :updatingProcessedState 
+		 where sc.batchId =:batchId and sc.imageUrlProcessed = :existingProcessedState
+	]]>
+	</UPDATE_SC_IMAGEURL_PROCESSING_STATE_BY_BATCH_ID>
+
+	<QUERY_SEMANTIFIED_CONTENT_IDS_BY_PROCESSED_STATE>
+	<![CDATA[select sc.id from SemantifiedContent sc where sc.imageUrlProcessed = :processed and sc.processingState != :processing order by sc.id desc]]>
+	</QUERY_SEMANTIFIED_CONTENT_IDS_BY_PROCESSED_STATE>
+
+	<QUERY_SC_IDS_BY_IMAGE_URL_LIKE_DOMAIN_NAME>
+	<![CDATA[select sc.id from SemantifiedContent sc where sc.contextId = :contextId and sc.imageUrl like :]]>
+	</QUERY_SC_IDS_BY_IMAGE_URL_LIKE_DOMAIN_NAME>
+
+	<UPDATE_SC_FEATURE_INFO_IMAGE_PRESENT_BY_SEMANTIFIED_CONTENT_ID>
+	<![CDATA[update SemantifiedContentFeatureInformation scfi set scfi.imagePresent = :imagePresent 
+		 where scfi.semantifiedContentId =:semantifiedContentId and scfi.contextId = :contextId
+	]]>
+	</UPDATE_SC_FEATURE_INFO_IMAGE_PRESENT_BY_SEMANTIFIED_CONTENT_ID>
+
+	<UPDATE_SC_IMAGE_URL_TO_NULL_IN_SEMANTIFIED_CONTENT_BY_ID>
+	<![CDATA[
+		   update SemantifiedContent sc set sc.imageUrl = :imageUrl 
+			 where sc.id =:id and sc.contextId = :contextId
+	]]>
+	</UPDATE_SC_IMAGE_URL_TO_NULL_IN_SEMANTIFIED_CONTENT_BY_ID>
+
+	<UPDATE_SC_IMAGE_URL_PROCESSED_STATE>
+	<![CDATA[update SemantifiedContent sc set sc.imageUrlProcessed = :processedState, sc.batchId =:batchId 
+		 where sc.id between :minSemantifiedContentId and :maxSemantifiedContentId and sc.imageUrlProcessed = :notProcessed
+	]]>
+	</UPDATE_SC_IMAGE_URL_PROCESSED_STATE>
+	
+	<QUERY_SEMANTIFIED_CONTENT_KEYWORD_MATCH_MAX_EXECUTION_DATE>
+	<![CDATA[select max(executionDate) from SemantifiedContentKeywordMatch	
+	]]>	
+	</QUERY_SEMANTIFIED_CONTENT_KEYWORD_MATCH_MAX_EXECUTION_DATE>
+	
+	<DELETE_SEMANTIFIED_CONTENT_KEYWORD_MATCH_BY_EXECUTION_DATE>
+	<![CDATA[delete from SemantifiedContentKeywordMatch sckm where sckm.executionDate <= :executionDate	
+	]]>	
+	</DELETE_SEMANTIFIED_CONTENT_KEYWORD_MATCH_BY_EXECUTION_DATE>
+	
+	
+	<DELETE_SEMANTIFIED_CONTENT_KEYWORD_BY_CONTENT_DATE>
+	<![CDATA[delete from SemantifiedContentKeyword sck where sck.contentDate <= :contentDate	
+	]]>	
+	</DELETE_SEMANTIFIED_CONTENT_KEYWORD_BY_CONTENT_DATE>
+	
+	<DELETE_SEMANTIFIED_CONTENT_FEATURE_INFO_BY_CONTENT_DATE>
+	<![CDATA[delete from SemantifiedContentFeatureInformation scfi where scfi.semantifiedContentDate <= :contentDate	
+	]]>	
+	</DELETE_SEMANTIFIED_CONTENT_FEATURE_INFO_BY_CONTENT_DATE>
+	
+	<DELETE_SEMANTIFIED_CONTENT_BY_CONTENT_DATE>
+	<![CDATA[delete from SemantifiedContent sc where sc.contentDate <= :contentDate	
+	]]>	
+	</DELETE_SEMANTIFIED_CONTENT_BY_CONTENT_DATE>	
+	
+	<QUERY_GET_SCFI_BY_SEMANTIFIED_CONTENT_ID>
+	<![CDATA[from SemantifiedContentFeatureInformation scfi where scfi.semantifiedContentId = :semantifiedContentId	
+	]]>	
+	</QUERY_GET_SCFI_BY_SEMANTIFIED_CONTENT_ID>	
+</queries>

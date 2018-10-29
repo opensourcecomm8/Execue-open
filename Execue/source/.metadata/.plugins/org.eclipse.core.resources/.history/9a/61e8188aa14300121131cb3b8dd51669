@@ -1,0 +1,128 @@
+<queries>
+	<ASSET_BY_NAME_QUERY>
+	<![CDATA[from Asset as asset 
+		 where asset.name = :assetName 
+		 and asset.application.id = :applicationId
+	]]>
+	</ASSET_BY_NAME_QUERY>
+
+	<ASSETS_BY_APPLICATION_ID>
+	<![CDATA[from Asset as asset
+		 where asset.application.id = :applicationId
+	]]>
+	</ASSETS_BY_APPLICATION_ID>
+
+	<QUERY_LIGHT_ASSETS_BY_IDS>
+	<![CDATA[select id, baseAssetId,
+		 priority, ownerType,type,subType 
+		 from Asset asset 
+		 where asset.id in (:assetIds)
+	]]>
+	</QUERY_LIGHT_ASSETS_BY_IDS>
+	
+	<QUERY_ASSET_ID_BY_APP_ID>
+	<![CDATA[select asset.id 
+		 from Asset asset where
+		 asset.application.id = :applicationId
+	]]>
+	</QUERY_ASSET_ID_BY_APP_ID>
+	
+	<QUERY_LEAST_LOADED_PUBLIC_DATASOURCE>
+	<![CDATA[select dataSource
+		 from DataSource dataSource left join 
+		 dataSource.users users 
+		 where dataSource.type = :type 
+		 group by dataSource.id 
+		 order by count(users), dataSource.id asc
+	]]>
+	</QUERY_LEAST_LOADED_PUBLIC_DATASOURCE>	
+	
+	<QUERY_GET_ASSETS_BY_APP_ID>
+	<![CDATA[from Asset as asset where asset.application.id = :applicationId]]>
+	</QUERY_GET_ASSETS_BY_APP_ID>
+	
+	<QUERY_GET_INACTIVE_ASSETS_BY_APP_ID>
+	<![CDATA[from Asset as asset
+		 where asset.application.id = :applicationId and asset.status=:inactive
+	]]>
+	</QUERY_GET_INACTIVE_ASSETS_BY_APP_ID>
+	
+	
+	<QUERY_GET_ASSETS_BY_TYPE_FOR_APPLICATION>
+	<![CDATA[from Asset as asset where asset.application.id = :applicationId and asset.type =:assetType ]]>
+	</QUERY_GET_ASSETS_BY_TYPE_FOR_APPLICATION>
+	
+	<QUERY_GET_BASE_ASSET>
+	<![CDATA[from Asset as asset 
+		 where asset.baseAssetId = :assetId 
+		 and asset.application.id = :applicationId
+	]]>
+	</QUERY_GET_BASE_ASSET>
+	
+	<QUERY_PUBLICLY_AVAILABLE_ASSET_COUNT>
+	<![CDATA[select count(asset.id) from Asset asset where asset.application.id = :applicationId 
+		 and asset.publishMode = :communityMode
+	]]>
+	</QUERY_PUBLICLY_AVAILABLE_ASSET_COUNT>
+	
+	<QUERY_GET_CHILD_ASSETS>
+	<![CDATA[from Asset as asset
+		 where asset.baseAssetId = :baseAssetId
+	]]>
+	</QUERY_GET_CHILD_ASSETS>
+	
+	
+	<QUERY_BASE_ASSETS>
+	<![CDATA[from Asset as asset
+		 where asset.baseAssetId is null 
+		 and asset.application.id = :applicationId
+	]]>
+	</QUERY_BASE_ASSETS>
+	
+	<ASSETS_BY_DATASOUCE_QUERY>
+	<![CDATA[from Asset as asset where asset.dataSource.id = :id]]>
+	</ASSETS_BY_DATASOUCE_QUERY>
+	
+	<QUERY_GET_ASSET_NAMES_USING_TABLE_BY_NAME_OWNED_BY_USER>
+	<![CDATA[select distinct aed.asset.displayName from AssetEntityDefinition aed where aed.tabl.name = :tableName 
+		 and aed.asset.application.owner.id = :userId order by aed.asset.displayName
+	]]>
+	</QUERY_GET_ASSET_NAMES_USING_TABLE_BY_NAME_OWNED_BY_USER>
+	
+	<QUERY_GET_POPULARITY_AED_FOR_ASSET>
+	<![CDATA[select aed.asset.name,aed.popularity,aed.entityType from 
+		 AssetEntityDefinition aed
+		 where aed.asset.id = :assetId
+		 and aed.popularity > 0 and aed.entityType = :assetEntityType
+	]]>
+	</QUERY_GET_POPULARITY_AED_FOR_ASSET>
+
+	<QUERY_GET_TABLE_POPULARITY_FOR_ASSET>
+	<![CDATA[select aed.asset.name,aed.tabl.name,aed.popularity,aed.entityType
+		from AssetEntityDefinition aed
+		 where aed.asset.id = :assetId
+		 and aed.popularity > 0 and aed.entityType =:tableEntityType
+	]]>
+	</QUERY_GET_TABLE_POPULARITY_FOR_ASSET>
+
+	<QUERY_GET_COLUMN_POPULARITY_FOR_ASSET>
+	<![CDATA[select aed.asset.name,aed.tabl.name,aed.colum.name,aed.popularity,aed.entityType
+		 from AssetEntityDefinition aed
+		 where aed.asset.id = :assetId
+		 and aed.popularity > 0 and aed.entityType = :columnEntityType
+	]]>
+	</QUERY_GET_COLUMN_POPULARITY_FOR_ASSET>
+
+	<QUERY_GET_MEMBR_POPULARITY_FOR_ASSET>
+	<![CDATA[select aed.asset.name,aed.tabl.name,aed.colum.name,
+		 aed.membr.lookupValue,aed.popularity,aed.entityType 
+		 from AssetEntityDefinition aed
+		 where aed.asset.id = :assetId
+		 and aed.popularity > 0 and aed.entityType = :memberEntityType
+	]]>
+	</QUERY_GET_MEMBR_POPULARITY_FOR_ASSET>
+	<QUERY_UPDATE_ASSET_STATUS_TYPE>
+	<![CDATA[update Asset set status = :status where id = :assetId]]>
+	</QUERY_UPDATE_ASSET_STATUS_TYPE>	
+		
+</queries>

@@ -1,0 +1,16 @@
+<queries>
+	<QUERY_GET_ASSET_DETAIL_BY_ASSET_ID>
+		<![CDATA[from AssetDetail assetDetail
+		         where assetDetail.assetId = :assetId]]>
+	</QUERY_GET_ASSET_DETAIL_BY_ASSET_ID>
+
+	<QUERY_GET_ASSET_EXTENDED_DETAIL_BY_ASSET_DETAIL_ID>
+		<![CDATA[from AssetExtendedDetail assetExtendedDetail 
+		         where assetDetail.id = :assetDetailId]]>
+	</QUERY_GET_ASSET_EXTENDED_DETAIL_BY_ASSET_DETAIL_ID>
+
+	<QUERY_ASSET_EXTENDED_DETAIL_BY_ASSET_ID>
+		<![CDATA[select aed from AssetDetail ad, AssetExtendedDetail aed 
+		         where ad.id = aed.assetDetail.id and ad.assetId =:assetId]]>
+	</QUERY_ASSET_EXTENDED_DETAIL_BY_ASSET_ID>		
+</queries>

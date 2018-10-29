@@ -1,0 +1,138 @@
+/* CSS Document */
+.textbg {
+	background-image: url(image/Button_r2_c4.gif);
+	width: 300px;
+	height: 200px;
+	margin: 0px;
+	background-color: #CDEDFE;
+	background-attachment: scroll;
+	background-repeat: repeat-y;
+	background-position: left top;
+	font-family: Arial;
+	font-size: 12px;
+	color: #000000;
+	line-height: 14px;
+	vertical-align: baseline;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+}
+
+.textDataTable {
+	border-top: 1px;
+	border-right: 1px;
+	border-bottom: 1px;
+	border-left: 1px;
+	border-style: solid;
+	border-collapse: collapse;
+	border-color: #E2DECD;
+}
+
+.gridTitle {
+	font-family: Arial;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #2D3C3E
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	width: 90px;
+	-moz-box-sizing: border-box;
+	background: #CDBE8B none repeat scroll 0 0;
+	border-color: Gray #8AB1E2 #8AB1E2 Gray;
+	border-right: 1px solid #8AB1E2;
+	border-bottom: 1px solid #8AB1E2;
+}
+
+.textHeader {
+	font-family: Arial;
+	font-size: 8pt;
+	font-weight: bold;
+	color: #2D3C3E
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	width: 90px;
+	-moz-box-sizing: border-box;
+	background: #CDBE8B none repeat scroll 0 0;
+	border-color: Gray #8AB1E2 #8AB1E2 Gray;
+	border-right: 1px solid #8AB1E2;
+	border-bottom: 1px solid #8AB1E2;
+	white-space:nowrap;
+}
+
+.textData {
+	font-family: Arial;
+	font-size: 8pt;
+	color: #3f5356;
+	padding-top: 2px;
+	padding-right: 1px;
+	padding-bottom: 2px;
+	padding-left: 3px;
+	-moz-box-sizing: border-box;
+	background: #C9D9E9 none repeat scroll 0 0;
+	border-color: Gray #8AB1E2 #8AB1E2 Gray;
+	border-right: 1px solid #8AB1E2;
+	border-bottom: 1px solid #8AB1E2;
+	#white-space:nowrap;
+	min-width:2in;
+	#max-width:4in;
+}
+
+.textDataItem {
+	font-family: Arial;
+	font-size: 8pt;
+	color: #3f5356;
+	padding-top: 2px;
+	padding-right: 3px;
+	padding-bottom: 2px;
+	padding-left: 3px;
+	-moz-box-sizing: border-box;
+	background: #C9D9E9 none repeat scroll 0 0;
+	border-color: Gray #8AB1E2 #8AB1E2 Gray;
+	border-right: 1px solid #8AB1E2;
+	border-bottom: 1px solid #8AB1E2;
+}
+.textSource {
+	font-family: Arial;
+	font-size: 7pt;
+	font-style: italic;
+	color: gray;
+	padding-top: 2px;
+	padding-right: 1px;
+	padding-bottom: 2px;
+	padding-left: 1px;
+	-moz-box-sizing: border-box;
+	background: #C9D9E9 none repeat scroll 0 0;
+	border-color: Gray #8AB1E2 #8AB1E2 Gray;
+	border-bottom: 1px solid #8AB1E2;
+	text-align: left;
+}
+.textDataTable tr {
+	border-bottom: thin solid threedlightshadow;
+}
+
+.activeIcon {
+	height: 80px;
+	margin-left: 1px;
+}
+
+.inactiveIcon {
+	height: 60px;
+	margin-left: 1px;
+}
+
+.active {
+	display: block;
+}
+
+.inactive {
+	display: none;
+}
+
+.strip_box {
+	background-color: #E8F8FF;
+}

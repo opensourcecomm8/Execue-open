@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="entityType">
+		<param name="enumClass">com.execue.core.common.type.BusinessEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.VerticalEntityBasedRedirection" table="VERTICAL_ENTITY_REDIRECT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="native"/>
+		</id>
+		<property name="verticalId" type="java.lang.Long">
+			<column name="VERTICAL_ID" precision="20" scale="0"/>
+		</property>		
+		<property name="applicationId" type="java.lang.Long">
+			<column name="APPLICAION_ID" precision="20" scale="0"/>
+		</property>
+		<property name="businessEntityId" type="java.lang.Long">
+			<column name="BED_ID" precision="20" scale="0"  />
+		</property>		
+		<property name="businessEntityType" type="entityType">
+			<column name="ENTITY_TYPE" length="20"/>
+		</property>
+		<property name="redirectUrl" type="string">
+			<column name="URL" length="255" />
+		</property>	
+	</class>
+</hibernate-mapping>

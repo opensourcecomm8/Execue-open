@@ -1,0 +1,21 @@
+<queries>
+	<DELETE_RI_SHARED_USER_MODEL_MAPPINGS>
+	<![CDATA[delete from RISharedUserModelMapping ri where ri.modelGroupId in (:userModelGroupIds)
+	]]>
+	</DELETE_RI_SHARED_USER_MODEL_MAPPINGS>
+
+	<QUERY_RI_ONTO_MODEL_MAPPINGS_BY_INSTANCE_BEDIDS>
+	<![CDATA[from RISharedUserModelMapping ri where ri.modelGroupId in (:modelGroupIds) and baseInstanceBedId in(:baseInstanceBedIds)
+	]]>
+	</QUERY_RI_ONTO_MODEL_MAPPINGS_BY_INSTANCE_BEDIDS>
+
+	<QUERY_RI_ONTO_BY_INSTANCE_BEDIDS>
+	<![CDATA[from RISharedUserModelMapping ri where ri.baseInstanceBedId in(:baseInstanceBedIds)
+	]]>
+	</QUERY_RI_ONTO_BY_INSTANCE_BEDIDS>
+	<QUERY_RI_ONTO_MODEL_MAPPING_BY_APP_INSTANCE_BEDID>
+	<![CDATA[from RISharedUserModelMapping ri where ri.modelGroupId in (:modelGroupIds) and ri.instanceBedId =:appInstanceBedId
+	]]>
+	</QUERY_RI_ONTO_MODEL_MAPPING_BY_APP_INSTANCE_BEDID>
+
+</queries>

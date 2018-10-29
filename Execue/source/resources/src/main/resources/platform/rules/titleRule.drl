@@ -1,0 +1,56 @@
+#created on: Jan 22, 2010
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.TitleDockable;
+import com.softwarefx.StringAlignment;
+import com.execue.core.util.ExecueStringUtil;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Font;
+import java.awt.Color;
+
+rule "1"
+	when
+		chart : ChartServer	( ID == "" ) 
+		titleStr : String ()
+	then 
+	    
+	    int chartWidth = chart.getWidth();
+	    int chartTitleLength = titleStr.length();
+	    int maxTitleLength = (int)(chartWidth * 0.14);
+	    boolean showTitle = maxTitleLength > chartTitleLength ? true : false;
+	    
+	    if(showTitle){
+	        chart.getTitles().get(0).setText(titleStr);
+	        chart.getTitles().get(0).setPlotAreaOnly(false);
+	    } else {
+	    	TitleDockable wrappedTitle = new TitleDockable("");
+	    	wrappedTitle.setDock(chart.getTitles().get(0).getDock());
+	    	
+	    	StringAlignment titleAlignment = chart.getTitles().get(0).getAlignment();
+	    	Font titleFont = chart.getTitles().get(0).getFont();
+	    	Color titleColor = chart.getTitles().get(0).getTextColor();
+	    	
+	    	List<String> listOfWrappedTitles = new ArrayList<String>();
+	    	listOfWrappedTitles = ExecueStringUtil.wrapText(titleStr, maxTitleLength);
+	    	int numberOfLinesOfTitle = listOfWrappedTitles.size();
+	    	
+	    	for(int index = 0; index < numberOfLinesOfTitle; index++){
+	    		chart.getTitles().get(index).setText(listOfWrappedTitles.get(index));
+	    		chart.getTitles().get(index).setAlignment(titleAlignment);
+	    		chart.getTitles().get(index).setFont(titleFont);	    		
+	    		chart.getTitles().get(index).setTextColor(titleColor);
+	    		chart.getTitles().get(index).setPlotAreaOnly(false);
+	    		
+	    		if((index + 1) != numberOfLinesOfTitle){
+	    			chart.getTitles().add(wrappedTitle);
+	    			wrappedTitle = new TitleDockable("");
+	    			wrappedTitle.setDock(chart.getTitles().get(index).getDock());
+	    		}
+	    	}
+	    	
+	    }
+end

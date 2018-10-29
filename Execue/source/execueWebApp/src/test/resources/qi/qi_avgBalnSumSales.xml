@@ -1,0 +1,18 @@
+<qf xmlns="http://execue.com/schemas/qf">
+	<selects>
+		<select>
+			<term>
+				<name>MerchandiseAmount</name>
+				<type>CONCEPT</type>
+			</term>
+			<stat>SUM</stat>
+		</select>
+		<select>
+			<term>
+				<name>MerchandiseBalance</name>
+				<type>CONCEPT</type>
+			</term>
+			<stat>AVG</stat>
+		</select>
+	</selects>
+</qf>

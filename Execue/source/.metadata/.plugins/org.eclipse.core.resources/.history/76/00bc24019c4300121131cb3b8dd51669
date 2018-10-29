@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="execueAdminWebApp">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="unstructured-wh.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-wh/unstructured-wh">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="resources.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/resources/resources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core-common/core-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="util-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util-services/util-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/data-access/data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-ca-data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-ca-data-access/unstructured-ca-data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="security.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/security/security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="data-access-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/data-access-services/data-access-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="audit-trail.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/audit-trail/audit-trail">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nlp.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nlp/nlp">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="governor.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/governor/governor">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core/core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="semantic-driver.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/semantic-driver/semantic-driver">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="semantic-util-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/semantic-util-services/semantic-util-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reports-aggregation.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reports-aggregation/reports-aggregation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ac-query-history.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-query-history/ac-query-history">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-ca.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-ca/unstructured-ca">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-wh-data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-wh-data-access/unstructured-wh-data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ac-mgmt-queue-controller.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-mgmt-queue-controller/ac-mgmt-queue-controller">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="offline-batch.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/offline-batch/offline-batch">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="util.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util/util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="knowledge-search.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/knowledge-search/knowledge-search">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="query-interface.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/query-interface/query-interface">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="pseudo-lang.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pseudo-lang/pseudo-lang">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="job-scheduler.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/job-scheduler/job-scheduler">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="content-semantification.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/content-semantification/content-semantification">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="resources-ext.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/resources-ext/resources-ext">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="query-generation.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/query-generation/query-generation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="content-postprocessor.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/content-postprocessor/content-postprocessor">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="shared-data.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/shared-data/shared-data">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core-web.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core-web/core-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="messaging.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/messaging/messaging">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="news-search.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/news-search/news-search">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="driver.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/driver/driver">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="answers-catalog.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/answers-catalog/answers-catalog">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="query-builder.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/query-builder/query-builder">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="content-preprocessor.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/content-preprocessor/content-preprocessor">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ontology.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ontology/ontology">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="rules.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/rules/rules">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="handler.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/handler/handler">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reports-presentation.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reports-presentation/reports-presentation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="query-data.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/query-data/query-data">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="execue-publish.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/execue-publish/execue-publish">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="platform-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/platform-services/platform-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="query-cache.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/query-cache/query-cache">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="swi.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/swi/swi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/execueAdminWebApp/build/classes"/>
+        <property name="context-root" value="execueAdminWebApp"/>
+    </wb-module>
+</project-modules>

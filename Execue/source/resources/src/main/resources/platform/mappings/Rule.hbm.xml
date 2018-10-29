@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.Rule" table="RULES">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RULES</param>
+			</generator>
+		</id>
+		<property name="name" type="string">
+			<column name="RULE_NAME" length="55" not-null="true"/>
+		</property>
+		<set name="clouds" inverse="false" table="CLOUD_RULE">
+			<key>
+				<column name="RULE_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Cloud">
+				<column name="CLOUD_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set>
+		<set name="possibleAttributes" inverse="false" table="possible_attribute_rule">
+			<key>
+				<column name="RULE_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.PossibleAttribute">
+				<column name="POSS_ATTR_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

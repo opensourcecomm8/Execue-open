@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.qdata.news.AppNewsUsageWeight" table="APP_NEWS_WEIGHTS" >
+		<id name="weightsId" column="ID" type="java.lang.Long">        
+			<generator class="increment" />
+		</id>
+		<property name="usageWeight1"  type="java.lang.Double">
+			<column name="APP_USAGE_W1"  />
+		</property>
+		<property name="usageWeight2" type="java.lang.Double">
+			<column name="APP_USAGE_W2"  />
+		</property>
+        <property name="newsWeight1" type="java.lang.Double">
+			<column name="NEWS_USAGE_W1"  />
+		</property>
+		<property name="newsWeight2"  type="java.lang.Double">
+			<column name="NEWS_USAGE_W2"  />
+		</property>
+		<property name="usage" type="java.lang.Double">
+			<column name="USAGE_W"  />
+		</property>
+		<property name="news"  type="java.lang.Double">
+			<column name="NEWS_W"  />
+		</property>
+		<property name="totalApps"  type="java.lang.Integer">
+			<column name="TOTAL_APPS"  />
+		</property>
+		<property name="globalRandFactor"  type="java.lang.Long">
+			<column name="GLOBAL_RAND_FACTOR"  />
+		</property>
+	</class>
+</hibernate-mapping>

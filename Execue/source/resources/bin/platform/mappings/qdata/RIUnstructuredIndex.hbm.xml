@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="variationSubType">
+		<param name="enumClass">com.execue.core.common.type.RFXVariationSubType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.qdata.RIUnStructuredIndex" table="RI_UDX">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RI_UDX</param>
+			</generator>
+		</id>
+        
+		<property name="udxId" type="java.lang.Long">
+			<column name="UDX_ID" precision="20" scale="0" />
+		</property>
+        
+		<property name="applicationId" type="java.lang.Long">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</property>
+        
+		<property name="beId1" type="java.lang.Long">
+			<column name="BE_ID_1" precision="20" scale="0" />
+		</property>
+        
+		<property name="beId2" type="java.lang.Long">
+			<column name="BE_ID_2" precision="20" scale="0" />
+		</property>
+        
+		<property name="beId3" type="java.lang.Long">
+			<column name="BE_ID_3" precision="20" scale="0" />
+		</property>
+        
+		<property name="variationType" type="java.lang.Integer">
+			<column name="VARIATION_TYPE" precision="2" scale="0" />
+		</property>
+        
+		<property name="variationSubType" type="variationSubType">
+			<column name="VARIATION_SUBTYPE" precision="2" scale="0" />
+		</property>
+        
+		<property name="originalSubType" type="variationSubType">
+			<column name="ORIGINAL_SUBTYPE" precision="2" scale="0" />
+		</property>
+                
+		<property name="derived" type="java.lang.Integer">
+			<column name="DERIVED" precision="1" scale="0" />
+		</property>        
+                        
+		<property name="variationWeight" type="java.lang.Double">
+			<column name="VARIATION_WEIGHT" length="8" precision="4" scale="0" />
+		</property>        
+        
+		<property name="maxWeight" type="java.lang.Double">
+			<column name="MAX_WEIGHT" length="8" precision="4"  scale="0" />
+		</property>
+        
+		<property name="recWeight" type="java.lang.Double">
+			<column name="REC_WEIGHT" length="8" precision="4"  scale="0" />
+		</property>
+                        
+		<property name="entityCount" type="java.lang.Double">
+			<column name="ENTITY_COUNT"/>
+		</property>
+                        
+		<property name="searchType" type="java.lang.Integer">
+			<column name="SEARCH_TYPE"/>
+		</property>  
+		<property name="rfId" type="java.lang.Long">
+			<column name="RF_ID" precision="20" scale="0" />
+		</property> 
+		<property name="contentDate" type="timestamp">
+			<column name="CONTENT_DATE"/>
+		</property>     
+	</class>
+</hibernate-mapping>

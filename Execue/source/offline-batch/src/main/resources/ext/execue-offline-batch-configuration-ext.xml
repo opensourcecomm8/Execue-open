@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+    <offline-batch>
+        <location-data-input-source>
+            <default-country-name>U.S.A</default-country-name>
+            <batch-size>500</batch-size>
+            <census>
+                <connection>
+                    <driver-class-name>com.mysql.jdbc.Driver</driver-class-name>
+                    <url><![CDATA[jdbc:mysql://localhost:3306/wh-census-csz]]></url>
+                    <username>root</username>
+                    <password>power1</password>
+                </connection>
+                <select-query><![CDATA[select zip\, city\, state\, latitude\, longitude from zip_city_state order by zip asc limit]]></select-query>
+            </census>
+            <zipcodedb>
+                <connection>
+                    <driver-class-name>com.mysql.jdbc.Driver</driver-class-name>
+                    <url><![CDATA[jdbc:mysql://localhost:3306/loc-zcd]]></url>
+                    <username>root</username>
+                    <password>power1</password>
+                </connection>
+                <!--
+                <select-query><![CDATA[select zip_code\, city_name\, state_code\, latitude\, longitude from limited_zip_city_state_location_for_usa order by zip_code\, city_name\, state_code asc limit]]></select-query>
+                -->
+                
+                <select-query><![CDATA[select zip_code\, city_name\, state_code\, latitude\, longitude from zip_city_state_location_for_usa order by zip_code\, city_name\, state_code asc limit]]></select-query>
+                
+            </zipcodedb>
+        </location-data-input-source>
+    </offline-batch>
+</execue-configuration>

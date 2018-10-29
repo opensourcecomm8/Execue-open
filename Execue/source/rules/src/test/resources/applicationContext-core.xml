@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:execue.properties</value>
+	  </property>
+	</bean>
+	
+	<bean id="systemConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+            <value>${core.configuration.file}</value>
+        </constructor-arg>
+	</bean>
+	
+	<bean id="ruleConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+	    <value>${rules.configuration.file}</value>
+	</constructor-arg>
+	</bean>
+	
+    <bean id="execueSystem" class="com.execue.core.system.ExecueSystem" autowire="byName"/>
+    <bean id="coreConfigurationService" class="com.execue.core.configuration.impl.CoreConfigurationServiceImpl" />
+    <bean id="ruleService" class="com.execue.rules.service.drools.DroolsRuleService" autowire="byName"/>
+    
+</beans>

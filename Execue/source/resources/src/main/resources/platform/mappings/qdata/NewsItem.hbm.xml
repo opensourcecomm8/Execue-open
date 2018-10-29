@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+       
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="categoryType">
+		<param name="enumClass">com.execue.core.common.type.NewsCategory</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+   	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="newsItemProcessedType">
+		<param name="enumClass">com.execue.core.common.type.ProcessingFlagType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    <class name="com.execue.core.common.bean.qdata.NewsItem" table="NEWS_ITEM">
+        
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">NEWS_ITEM</param>
+            </generator>
+        </id>
+        <property name="url" type="string">
+            <column name="URL" />
+        </property>
+        <property name="title" type="string">
+            <column name="TITLE" />
+        </property>
+        <property name="summary" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="source" type="string">
+            <column name="SOURCE" />
+        </property>
+        <property name="category" type="categoryType">
+            <column name="CATEGORY" />
+        </property>
+        <property name="processed" type="newsItemProcessedType">
+            <column name="PROCESSED" />
+        </property>
+        <property name="addedDate" type="timestamp">
+			<column name="ADDED_DATE"/>
+		</property>
+		<property name="failureCause" type="string">
+			<column name="FAILURE_CAUSE"/>
+		</property>
+		<property name="batchId" type="java.lang.Long">
+			<column name="BATCH_ID"/>
+		</property>
+    </class>
+</hibernate-mapping>

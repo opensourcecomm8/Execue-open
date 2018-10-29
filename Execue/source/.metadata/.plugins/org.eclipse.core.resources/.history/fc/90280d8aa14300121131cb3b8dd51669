@@ -1,0 +1,94 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="publisherConfigurationService" class="com.execue.publisher.configuration.impl.PublisherConfigurationServiceImpl">
+		<property name="publisherConfiguration" ref="publisherConfiguration" />
+	</bean>
+	
+	<bean id="publisherConfigurableService" class="com.execue.publisher.configuration.impl.PublisherConfigurableService">
+		<property name="publisherConfigurationService" ref="publisherConfigurationService" />
+	</bean>
+
+	<bean id="publisherColumnValidator" class="com.execue.publisher.validator.impl.PublisherColumnValidatorImpl">
+		<property name="publisherConfigurationService" ref="publisherConfigurationService"/>
+		<property name="publisherDataEvaluationService" ref="publisherDataEvaluationService"/>
+		<property name="publishedFileRetrievalService" ref="publishedFileRetrievalService"/>
+		<property name="conversionService" ref="conversionService"/>		
+	</bean>
+	<bean id="csvFilePublisherDataUploadService" class="com.execue.publisher.upload.file.csv.impl.CSVFilePublisherDataUploadServiceImpl">
+		<property name="publisherConfigurationService" ref="publisherConfigurationService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="publisherColumnValidator" ref="publisherColumnValidator"/>
+	</bean>
+		
+	<bean id="publisherDataEvaluationService" class="com.execue.publisher.evaluate.impl.PublisherDataEvaluationServiceImpl">
+		<property name="publisherConfigurationService"  ref="publisherConfigurationService"/>
+		<property name="queryGenerationUtilServiceFactory"  ref="queryGenerationUtilServiceFactory"/>
+		<property name="publisherDataAbsorbtionService"  ref="publisherDataAbsorbtionService"/>		
+		<property name="conversionService"  ref="conversionService"/>
+		<property name="sdxRetrievalService"  ref="sdxRetrievalService"/>
+		<property name="publishedFileRetrievalService" ref ="publishedFileRetrievalService"/>
+		<property name="publishedFileJDBCHelper" ref="publishedFileJDBCHelper"/>
+		<property name="JDBCSourceColumnMetaService" ref="JDBCSourceColumnMetaService"/>
+	</bean>
+
+	<bean id="localPublisherDataAbsorbtionService" class="com.execue.publisher.absorbtion.impl.PublisherDataAbsorbtionServiceImpl">
+		<property name="publishedFileJDBCHelper" ref="publishedFileJDBCHelper"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"/>
+		<property name="sdx2kdxMappingService" ref="sdx2kdxMappingService"/>
+		<property name="assetExtractionService" ref="assetExtractionService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="swiConfigurationService" ref="swiConfigurationService"/>
+	</bean>
+    
+	<bean id="publisherDataAbsorptionControllerService" class="com.execue.publisher.controller.impl.PublisherDataAbsorptionControllerServiceImpl">
+		<property name="publisherConfigurationService" ref="publisherConfigurationService"/>		
+		<property name="publisherDataAbsorbtionService" ref="publisherDataAbsorbtionService"/>
+		<property name="publisherDataUploadService" ref="csvFilePublisherDataUploadService"/>
+		<property name="publisherDataEvaluationService" ref="publisherDataEvaluationService"/>
+		<property name="jobDataService" ref ="jobDataService"/>
+		<property name="publishedFileRetrievalService" ref ="publishedFileRetrievalService"/>
+		<property name="publishedFileManagementService" ref ="publishedFileManagementService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="dataSourceSelectionService" ref ="dataSourceSelectionService"/>	
+	</bean>
+    
+	<bean id="publisherDataEvaluationControllerService" class="com.execue.publisher.controller.impl.PublisherDataEvaluationControllerServiceImpl">
+		<property name="publisherConfigurationService" ref="publisherConfigurationService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="sdxManagementService" ref="sdxManagementService"/>        
+		<property name="publisherDataAbsorbtionService" ref="publisherDataAbsorbtionService"/>
+		<property name="publisherDataEvaluationService" ref="publisherDataEvaluationService"/>
+		<property name="jobDataService" ref ="jobDataService"/>
+		<property name="publishedFileManagementService" ref ="publishedFileManagementService"/>
+		<property name="publishedFileRetrievalService" ref ="publishedFileRetrievalService"/>
+		<!-- <property name="aclService" ref="aclService"/>-->
+		<property name="conversionService"  ref="conversionService"/>	
+		<property name="userNotificationService"  ref="userNotificationService"/>
+		<property name="assetSourcePublisherMergeService" ref ="assetSourcePublisherMergeService"/>
+		<property name="virtualTableManagementService" ref ="virtualTableManagementService"/>
+		<property name="defaultMetricService" ref ="defaultMetricService"/>
+		<property name="publishedFileJDBCHelper" ref="publishedFileJDBCHelper"/>
+		<property name="publishService" ref ="publishService"/>
+		<property name="businessModelPreparationService" ref="businessModelPreparationService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"></property>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="kdxDataTypePopulationService" ref="kdxDataTypePopulationService"/>	
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>		
+	</bean>
+
+	<bean id="publisherDataAbsorbtionService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager"/>
+		<property name="target" ref="localPublisherDataAbsorbtionService"/>
+		<property name="proxyTargetClass" value="false"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="mapSDX2KDX">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

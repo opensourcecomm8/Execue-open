@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="com.execue.core.common.bean.entity.DefaultInstanceValue" table="DEFAULT_INSTANCE_VALUE">
+        
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">DEFAULT_INSTANCE_VALUE</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="businessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+            <column name="BE_ID" precision="20" scale="0" />
+        </many-to-one>
+        
+        <property name="defaultValue" type="string">
+            <column name="DEFAULT_VALUE" />
+        </property>
+    
+    </class>
+
+</hibernate-mapping>

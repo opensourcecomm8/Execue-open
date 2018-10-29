@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+           classpath:/execue-application.xml
+		</param-value>
+	</context-param>
+	<!-- filter order should maintained -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+            org.apache.struts2.dispatcher.FilterDispatcher
+		</filter-class>
+	</filter>
+    <filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+
+	<!-- listener order should maintained -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener> 
+		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class> 
+	</listener>
+
+
+	<listener>
+		<listener-class>com.execue.web.core.ExecueContextListner</listener-class>
+	</listener>
+ 
+	<listener>
+		<listener-class>com.execue.scheduler.listener.JobSchedulerContextListener</listener-class>
+	</listener>
+	<servlet>
+		<description/>
+		<display-name>SfxWebResourceServlet</display-name>
+		<servlet-name>ChartWebResourceServlet</servlet-name>
+		<servlet-class>com.softwarefx.chartfx.server.servlets.ChartWebResourceServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description/>
+		<display-name>ChartCallbackServlet</display-name>
+		<servlet-name>ChartCallbackServlet</servlet-name>
+		<servlet-class>com.softwarefx.chartfx.server.servlets.ChartCallbackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChartWebResourceServlet</servlet-name>
+		<url-pattern>/SfxWebResourceServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChartCallbackServlet</servlet-name>
+		<url-pattern>/ChartCallbackServlet</url-pattern>
+	</servlet-mapping>
+	<error-page>
+        <error-code>500</error-code>
+        <location>/server_error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/file_not_found.html</location>
+    </error-page>   
+
+</web-app>

@@ -1,0 +1,43 @@
+<queries>
+	<QUERY_GET_RANKING_WEIGHTS_FOR_VARIATION_SUB_TYPE>
+	<![CDATA[SELECT DISTINCT rw.userQueryVariationSubType, rw.matchWeight 
+		 FROM RankingWeight rw WHERE rw.contentVariationSubType = :rfxVariationSubType
+	]]>
+	</QUERY_GET_RANKING_WEIGHTS_FOR_VARIATION_SUB_TYPE>
+
+	<DELETE_USER_QUERY_RFX_BY_MAX_EXECUTION_DATE>
+	<![CDATA[delete from UserQueryReducedFormIndex where executionDate <= :executionDate
+	]]>
+	</DELETE_USER_QUERY_RFX_BY_MAX_EXECUTION_DATE>
+
+	<QUERY_RI_USER_QUERY_MAX_EXECUTION_DATE>
+	<![CDATA[select max(executionDate) from RIUserQuery
+	]]>
+	</QUERY_RI_USER_QUERY_MAX_EXECUTION_DATE>
+	
+	<DELETE_RFX_BY_UDXID>
+	<![CDATA[delete from ContentReducedFormIndex rfx  where rfx.rfId in(:udxIds)
+	]]>
+	</DELETE_RFX_BY_UDXID>
+	
+	<DELETE_RFX_VALUES_BY_UDXID>
+	<![CDATA[delete from ContentRFXValue r where r.rfxId in (:udxIds)
+	]]>
+	</DELETE_RFX_VALUES_BY_UDXID>
+	
+	<QUERY_USER_QUERY_RFX_VALUES_BY_QUERYID>
+	<![CDATA[from UserQueryRFXValue ur where ur.queryId=:queryId
+	]]>
+	</QUERY_USER_QUERY_RFX_VALUES_BY_QUERYID>	
+	
+	<DELETE_USER_QUERY_RFX_VALUE_BY_MAX_EXECUTION_DATE>
+	<![CDATA[delete from UserQueryRFXValue ur where ur.queryId 
+		 in (select rq.queryId from RIUserQuery rq  where rq.executionDate <= :executionDate)
+	]]>
+	</DELETE_USER_QUERY_RFX_VALUE_BY_MAX_EXECUTION_DATE>
+	<QUERY_NEXT_RFX_ID>
+	<![CDATA[
+		select max(rfx.rfId) from ReducedFormIndex rfx
+	]]>	
+	</QUERY_NEXT_RFX_ID>		
+</queries>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="assetQueryGenerationService" 
+		class="com.execue.governor.service.impl.AssetQueryGenerationServiceImpl">
+		<property name="queryGenerationServiceFactory">
+			<ref bean="queryGenerationServiceFactory"/>
+		</property>
+		<property name="structuredQueryTransformerService">
+			<ref bean="structuredQueryTransformerService"/>
+		</property>
+	</bean>
+	
+	<bean id="governorPopularityHitService" class="com.execue.governor.service.impl.GovernorPopularityHitServiceImpl">
+		<property name="popularityService">
+			<ref bean="popularityService"/>
+		</property>	
+	</bean>
+	<bean id="governorTimeFrameHandlerService" class="com.execue.governor.service.impl.GovernorTimeFrameHandlerServiceImpl">
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService"/>
+		</property>	
+		<property name="lookupService">
+			<ref bean="lookupService"/>
+		</property>		
+		<property name="timeFrameHandlerService">
+			<ref bean="timeFrameHandlerService"/>
+		</property>		
+	</bean>
+	<bean id="structuredQueryWeightCalculationService" class="com.execue.governor.service.impl.StructuredQueryWeightCalculationServiceImpl">
+		<property name="governorConfigurationService">
+			<ref bean="governorConfigurationService"/>
+		</property>
+	</bean>
+
+	<bean id="structuredQueryPopulationService" class="com.execue.governor.service.impl.StructuredQueryPopulationServiceImpl">
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService"/>
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService"/>
+		</property>	
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService"/>
+		</property>
+		<property name="governorConfigurationService">
+			<ref bean="governorConfigurationService"/>
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService"/>
+		</property>
+		<property name="typeConvertorFactory">
+			<ref bean="typeConvertorFactory"/>
+		</property>
+		<property name="conversionService">
+			<ref bean="conversionService"/>
+		</property>	
+		<property name="lookupService">
+			<ref bean="lookupService"/>
+		</property>	
+		<property name="governorTimeFrameHandlerService">
+			<ref bean="governorTimeFrameHandlerService"/>
+		</property>			
+		<property name="structuredQueryEntityFilterationService">
+			<ref bean="structuredQueryEntityFilterationService"/>
+		</property>	
+	</bean>
+
+	<bean id="governorService" 
+		class="com.execue.governor.service.impl.GovernorServiceImpl" >
+		<property name="queryMappingService">
+			<ref bean="queryMappingService"/>
+		</property>
+		<property name="queryFederationService">
+			<ref bean="queryFederationService"/>
+		</property>
+		<property name="assetQueryGenerationService">
+			<ref bean="assetQueryGenerationService"/>
+		</property>
+		<property name="structuredQueryWeightCalculationService">
+			<ref bean="structuredQueryWeightCalculationService"/>
+		</property>	
+		<property name="governorPopularityHitService">
+			<ref bean="governorPopularityHitService"/>
+		</property>
+		<property name="structuredQueryPopulationService">
+			<ref bean="structuredQueryPopulationService"/>
+		</property>
+	</bean>
+	
+	<bean id="queryFederationService"
+		class="com.execue.governor.service.impl.QueryFederationServiceImpl" />	
+		
+	<bean id="governorConfigurationService"
+		class="com.execue.governor.configuration.impl.GovernorConfigurationServiceImpl">	
+		<property name="governorConfiguration">
+			<ref bean="governorConfiguration"/>
+		</property>
+	</bean>
+	<bean id="structuredQueryEntityFilterationService"
+		class="com.execue.governor.service.impl.StructuredQueryEntityFilterationServiceImpl">		
+		<property name="securityDefinitionWrapperService">
+			<ref bean="securityDefinitionWrapperService"/>
+		</property>
+		<property name="governorConfigurationService">
+			<ref bean="governorConfigurationService"/>
+		</property>
+	</bean>
+</beans>

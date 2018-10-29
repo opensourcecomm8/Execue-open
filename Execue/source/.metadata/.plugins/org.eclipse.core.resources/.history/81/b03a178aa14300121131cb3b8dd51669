@@ -1,0 +1,67 @@
+<queries>
+
+	<QUERY_GET_ALL_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_OPERATION_STATUS>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE operationStatus = :operationStatusType order by requestedDate]]>
+	</QUERY_GET_ALL_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_OPERATION_STATUS>	
+
+	<QUERY_GET_ALL_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_OPERATION_STATUS_AND_IGNORING_IDS>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE operationStatus = :operationStatusType AND id NOT IN (:idsToIgnore) order by requestedDate]]>
+	</QUERY_GET_ALL_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_OPERATION_STATUS_AND_IGNORING_IDS>
+	
+	<QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_ASSET_ID>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE assetId IN (:assetIds) AND operationStatus IN (:inProgressOperationStatus)]]>
+	</QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_ASSET_ID>
+	
+	<QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_PARENT_ASSET_ID>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE parentAssetId=:parentAssetId AND operationStatus IN (:inProgressOperationStatus)]]>
+	</QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_PARENT_ASSET_ID>		
+	
+	<QUERY_GET_DEPENDANT_COMPLETED_ANSWERS_CATALOG_MANAGEMENT_QUEUE>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE id IN (:dependentManagementIds) AND operationStatus IN (:completionOperationStatus)]]>
+	</QUERY_GET_DEPENDANT_COMPLETED_ANSWERS_CATALOG_MANAGEMENT_QUEUE>	
+
+	<QUERY_GET_DEPENDANT_SUCCESSFULLY_COMPLETED_ANSWERS_CATALOG_MANAGEMENT_QUEUE>
+	<![CDATA[FROM AnswersCatalogManagementQueue WHERE id IN (:dependentManagementIds) AND operationStatus = :successOperationStatus]]>
+	</QUERY_GET_DEPENDANT_SUCCESSFULLY_COMPLETED_ANSWERS_CATALOG_MANAGEMENT_QUEUE>	
+	
+	<QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_FOR_SOURCE_AND_PARENT_ASSET_ID>
+	<![CDATA[FROM AnswersCatalogManagementQueue acmq WHERE acmq.parentAssetId=:parentAssetId AND acmq.operationSourceType=:operationSourceType AND acmq.operationStatus IN (:inProgressOperationStatus)]]>
+	</QUERY_GET_INPROGRESS_ANSWERS_CATALOG_MANAGEMENT_QUEUE_FOR_SOURCE_AND_PARENT_ASSET_ID>
+	
+	<QUERY_GET_ACMQ_INPROGRESS_COUNT_EXCLUDING_USER_REQUEST_SOURCE_TYPE>
+	<![CDATA[SELECT count(acmq) FROM AnswersCatalogManagementQueue acmq WHERE acmq.operationStatus IN (:inProgressOperationStatus) AND acmq.operationSourceType != :userRequestSrcType ]]>
+	</QUERY_GET_ACMQ_INPROGRESS_COUNT_EXCLUDING_USER_REQUEST_SOURCE_TYPE>	
+	
+	<QUERY_GET_ACMQ_CUBE_DELETION_IN_PROGRESS_FOR_ASSET_ID>
+	<![CDATA[FROM AnswersCatalogManagementQueue acmq WHERE acmq.assetId = :assetId AND acmq.operationType = :cubeDeletionOperationType AND acmq.operationStatus IN (:inProgressOperationStatus)]]>
+	</QUERY_GET_ACMQ_CUBE_DELETION_IN_PROGRESS_FOR_ASSET_ID>
+	
+	<UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_BY_ID>
+	<![CDATA[UPDATE AnswersCatalogManagementQueue acmq SET acmq.operationStatus = :operationStatus
+		 WHERE acmq.id =:acmqId
+	]]>
+	</UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_BY_ID>
+	
+	
+	<UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_AND_ASSET_ID_BY_ID>
+	<![CDATA[UPDATE AnswersCatalogManagementQueue acmq SET acmq.operationStatus = :operationStatus, acmq.assetId = :assetId
+		 WHERE acmq.id =:acmqId
+	]]>
+	</UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_AND_ASSET_ID_BY_ID>
+	
+	<UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_AND_REMARKS_BY_ID>
+	<![CDATA[UPDATE AnswersCatalogManagementQueue acmq SET acmq.operationStatus = :operationStatus, acmq.remarks = :remarks
+		 WHERE acmq.id =:acmqId
+	]]>
+	</UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_AND_REMARKS_BY_ID>
+
+	<UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_BY_ASSET_ID>
+	<![CDATA[UPDATE AnswersCatalogManagementQueue acmq SET acmq.operationStatus = :operationStatus
+		 WHERE acmq.assetId IN (:assetIds) and operationStatus = :pending
+	]]>
+	</UPDATE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_OPERATION_STATUS_BY_ASSET_ID>
+	
+	<QUERY_DELETE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_REQUEST_DATE>
+	<![CDATA[DELETE FROM AnswersCatalogManagementQueue WHERE requestedDate < :requestedDate]]>
+	</QUERY_DELETE_ANSWERS_CATALOG_MANAGEMENT_QUEUE_BY_REQUEST_DATE>
+</queries>	

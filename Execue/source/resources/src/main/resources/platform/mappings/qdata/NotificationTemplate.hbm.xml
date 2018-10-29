@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 9, 2009 3:28:24 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+	<typedef name="templateType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.TemplateType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="notificationType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.NotificationType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.qdata.NotificationTemplate" table="NOTIFICATION_TEMPLATE">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">NOTIFICATION_TEMPLATE</param>
+			</generator>
+		</id>
+
+		<property name="notificationType" type="notificationType">
+			<column name="NOTIFICATION_TYPE"/>
+		</property>
+
+		<property name="templateType" type="templateType">
+			<column name="TEMPLATE_TYPE"/>
+		</property>
+
+		<property name="template" type="string">
+			<column name="TEMPLATE"/>
+		</property>
+		<property name="paramNames" type="string">
+			<column name="PARAM_NAMES" length="1024" />
+		</property>
+        
+	</class>
+</hibernate-mapping>

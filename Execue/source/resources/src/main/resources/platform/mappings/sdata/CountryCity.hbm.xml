@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.sdata.location.CountryCity" table="COUNTRY_CITY">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">COUNTRY_CITY</param>
+            </generator>
+		</id>
+		<property name="countryId" type="java.lang.Long">
+			<column name="COUNTRY_ID" precision="20" scale="0" />
+		</property>
+		<property name="cityId" type="java.lang.Long">
+			<column name="CITY_ID" precision="20" scale="0" />
+		</property>
+	</class>
+</hibernate-mapping>

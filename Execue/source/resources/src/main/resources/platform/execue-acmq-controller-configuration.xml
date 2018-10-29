@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<acmq>
+		<max-acmq-in-progress-count>5</max-acmq-in-progress-count>
+	</acmq>
+</execue-configuration>

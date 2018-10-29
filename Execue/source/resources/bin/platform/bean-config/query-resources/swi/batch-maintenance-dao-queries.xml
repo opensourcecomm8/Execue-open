@@ -1,0 +1,38 @@
+<queries>
+	<QUERY_GET_BATCH_PROCESS_BY_APPLICATION_ID>
+		<![CDATA[from BatchProcess as batchProcess 
+		         where batchProcess.applicationId = :applicationId]]>
+	</QUERY_GET_BATCH_PROCESS_BY_APPLICATION_ID>
+
+	<QUERY_GET_BATCH_PROCESS_BY_ASSET_ID>
+		<![CDATA[from BatchProcess as batchProcess
+		         where batchProcess.assetId = :assetId]]>
+	</QUERY_GET_BATCH_PROCESS_BY_ASSET_ID>
+
+	<QUERY_GET_BATCH_PROCESS_BY_MODEL_ID>
+		<![CDATA[from BatchProcess as batchProcess
+		         where batchProcess.modelId = :modelId]]>
+	</QUERY_GET_BATCH_PROCESS_BY_MODEL_ID>
+
+	<QUERY_GET_BATCH_PROCESS_BY_TABLE_ID>
+		<![CDATA[select bpd 
+		         from BatchProcess as bp,BatchProcessDetail as bpd 
+                 where bpd.paramValue = :tableId 
+                 and bpd.batchProcess.id = bp.id 
+                 and bpd.paramName = :tableBatchProcessDetailType]]>
+	</QUERY_GET_BATCH_PROCESS_BY_TABLE_ID>
+
+	<QUERY_GET_BATCH_PROCESS_BY_COLUMN_ID>
+		<![CDATA[select bpd from
+		         BatchProcess as bp,BatchProcessDetail as bpd
+                 where bpd.paramValue = :columnId 
+                 and bpd.batchProcess.id = bp.id
+                 and bpd.paramName = :columnBatchProcessDetailType]]>
+	</QUERY_GET_BATCH_PROCESS_BY_COLUMN_ID>
+
+	<QUERY_GET_BATCH_PROCESS_DETAIL_BY_VALUES>
+		<![CDATA[from BatchProcessDetail as bpd 
+		         where bpd.paramName = :paramName 
+		         and bpd.paramValue = :paramValue]]>
+	</QUERY_GET_BATCH_PROCESS_DETAIL_BY_VALUES>
+</queries>

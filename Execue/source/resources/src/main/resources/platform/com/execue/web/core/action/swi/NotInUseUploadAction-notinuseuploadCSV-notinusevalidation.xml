@@ -1,0 +1,24 @@
+<!--
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+-->
+
+<validators>
+	<!--
+    <field name="absorbDataset">
+        <field-validator type="uploadFileValidator">
+			<message></message>			
+        </field-validator>
+    </field>
+	-->
+    <!--<field name="asset.displayName">
+        <field-validator type="required">
+            <message key="asset.name.required"/>
+        </field-validator>
+    </field>-->
+    <!--<field name="sourceData">
+        <field-validator type="required">
+            <message key="upload.main.file.selection.required"/>
+        </field-validator>
+    </field>  
+    -->
+</validators>

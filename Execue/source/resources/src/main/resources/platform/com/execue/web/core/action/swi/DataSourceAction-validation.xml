@@ -1,0 +1,47 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	
+     <!-- this field is moved from DataSource to Asset
+     <field name="dataSource.subType">
+        <field-validator type="swiValidator">
+			<message key = "dataSource.schemaName.invalid"/>
+        </field-validator>
+    </field>
+    -->
+    <field name="dataSource.connectionType">
+        <field-validator type="dataSourceValidator">
+			<message></message>
+			
+        </field-validator>
+    </field>
+    <field name="dataSource.displayName" >
+		<field-validator type="stringlength">
+			<param name="maxLength">220</param>
+			<param name="minLength">5</param>
+			<message key="execue.datasource.name.reuqired.length"/>
+		</field-validator>
+		<field-validator type="required">
+			<message key="execue.dataSource.name.empty"/>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*[_0-9a-zA-Z\s]*)]]>
+			</param>
+			<message key="execue.datasource.create.name.notvalid"/>
+		</field-validator>
+	</field>
+    <!--field name="dataSource.userName">
+		<field-validator type="required">
+			<message key="dataSource.userName.empty"/>
+		</field-validator>
+	</field-->
+  <!-- We don not nedd validation for password-->
+  <!--<field name="dataSource.password">
+		<field-validator type="required">
+			<message key="dataSource.password.empty"/>
+		</field-validator>
+	</field>-->  
+   
+    
+    
+</validators>

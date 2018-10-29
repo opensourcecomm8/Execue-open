@@ -1,0 +1,51 @@
+<queries>	
+	<QUERY_GET_ATTRIBUTE_ENTITIES>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed, EntityBehavior eb, ModelGroupMapping as mgm 
+		 where bed.id = eb.entityBedId and eb.behaviorType = :attributeBehaviorType
+		 and bed.entityType = :conceptEntityType and bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType
+	]]>
+	</QUERY_GET_ATTRIBUTE_ENTITIES>
+	
+	<QUERY_GET_ALL_ATTRIBUTE_TYPES>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed, PossibleBehavior pb 
+		 where bed.id = pb.typeBeId and pb.behaviorType = :attributeBehaviorType 
+		 and bed.entityType in (:entityTypes)
+	]]>
+	</QUERY_GET_ALL_ATTRIBUTE_TYPES>	
+	
+	<QUERY_GET_ALL_POSSIBLE_ATTRIBUTES>
+	<![CDATA[from PossibleAttribute
+		 where typeBed.id = :typeBeId
+	]]>
+	</QUERY_GET_ALL_POSSIBLE_ATTRIBUTES>
+	
+		
+	<QUERY_GET_POSSIBLE_ATTRIBUTE>
+	<![CDATA[select possibleAttribute from 
+		 PossibleAttribute as possibleAttribute 
+		 where possibleAttribute.typeBed.id = :typeBedId 
+		 and possibleAttribute.componentTypeBed.id = :componentTypeBedId
+		 and possibleAttribute.relationBed.id = :relationBedId
+	]]>
+	</QUERY_GET_POSSIBLE_ATTRIBUTE>
+	
+	
+	<QUERY_GET_POSSIBLE_ATTRIBUTE_BY_TYPE_AND_ATTRIBUTE>
+	<![CDATA[select possibleAttribute 
+		 from PossibleAttribute as possibleAttribute 
+		 where possibleAttribute.typeBed.id = :typeBedId 
+		 and possibleAttribute.componentTypeBed.id = :componentTypeBedId
+	]]>
+	</QUERY_GET_POSSIBLE_ATTRIBUTE_BY_TYPE_AND_ATTRIBUTE>
+	
+	
+	<QUERY_GET_ALL_POSSIBLE_ATTRIBUTE_BY_IDS>
+	<![CDATA[select distinct attribute 
+		 from PossibleAttribute attribute
+		 where attribute.id in(:ids)
+	]]>
+	</QUERY_GET_ALL_POSSIBLE_ATTRIBUTE_BY_IDS>
+</queries>

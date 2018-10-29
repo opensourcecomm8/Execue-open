@@ -1,0 +1,487 @@
+<com.execue.core.common.bean.governor.AssetQuery>
+  <logicalQuery>
+    <asset>
+      <id>19</id>
+      <baseAssetId>11</baseAssetId>
+      <name>cube19</name>
+      <description>Billing Cube 19 Asset</description>
+      <displayName>Billing Cube 19</displayName>
+      <priority>100</priority>
+      <dataSource>
+        <id>3</id>
+        <name>Cube 19</name>
+        <description>Connection to cube 19 schema for Abc Cards</description>
+        <ownerType>ExeCue</ownerType>
+        <providerType>Oracle</providerType>
+        <type>Cube</type>
+        <subType>SuperSet</subType>
+        <connectionType>PROPERTIES</connectionType>
+        <location>localhost</location>
+        <port>1521</port>
+        <userName>cube</userName>
+        <password>execue</password>
+        <schemaName>XE</schemaName>
+      </dataSource>
+      <status>A</status>
+      <grain class="org.hibernate.collection.PersistentSet">
+        <initialized>true</initialized>
+        <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+        <cachedSize>-1</cachedSize>
+        <role>com.execue.core.common.bean.entity.Asset.grain</role>
+        <key class="long">19</key>
+        <dirty>false</dirty>
+        <storedSnapshot class="map"/>
+        <set/>
+      </grain>
+    </asset>
+    <metrics>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2004</id>
+              <name>Account</name>
+              <description>Unique Identifier for an Account</description>
+              <displayName>Account</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2004</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>1</id>
+                      <name>COUNT</name>
+                      <displayName>Count</displayName>
+                      <description>Count of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <businessStat>
+            <stat>
+              <id>0</id>
+              <name>AVG</name>
+            </stat>
+            <requestedByUser>true</requestedByUser>
+          </businessStat>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>3595</id>
+              <name>FRQUNCI</name>
+              <ownerTable>
+                <id>351</id>
+                <name>CUBE_19</name>
+                <ownerAsset>
+                  <id>19</id>
+                  <baseAssetId>11</baseAssetId>
+                  <name>cube19</name>
+                  <description>Billing Cube 19 Asset</description>
+                  <displayName>Billing Cube 19</displayName>
+                  <priority>100</priority>
+                  <dataSource>
+                    <id>3</id>
+                    <name>Cube 19</name>
+                    <description>Connection to cube 19 schema for Abc Cards</description>
+                    <ownerType>ExeCue</ownerType>
+                    <providerType>Oracle</providerType>
+                    <type>Cube</type>
+                    <subType>SuperSet</subType>
+                    <connectionType>PROPERTIES</connectionType>
+                    <location>localhost</location>
+                    <port>1521</port>
+                    <userName>cube</userName>
+                    <password>execue</password>
+                    <schemaName>XE</schemaName>
+                  </dataSource>
+                  <status>A</status>
+                  <grain class="org.hibernate.collection.PersistentSet">
+                    <initialized>true</initialized>
+                    <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+                    <cachedSize>-1</cachedSize>
+                    <role>com.execue.core.common.bean.entity.Asset.grain</role>
+                    <key class="long">19</key>
+                    <dirty>false</dirty>
+                    <storedSnapshot class="map"/>
+                    <set/>
+                  </grain>
+                </ownerAsset>
+                <alias>FT</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>Y</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>NUMBER</dataType>
+              <kdxDataType>MEASURE</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <size>0</size>
+              <nullable>false</nullable>
+              <precision>0</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+      <com.execue.core.common.bean.governor.BusinessAssetTerm>
+        <businessTerm>
+          <businessEntityTerm>
+            <businessEntity class="com.execue.core.common.bean.entity.Concept">
+              <id>2022</id>
+              <name>FicoScore</name>
+              <description>FICO Score Number</description>
+              <displayName>Fico Score</displayName>
+              <stats class="org.hibernate.collection.PersistentSet">
+                <initialized>true</initialized>
+                <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                <cachedSize>-1</cachedSize>
+                <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                <key class="long">2022</key>
+                <dirty>false</dirty>
+                <storedSnapshot class="map">
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>2</id>
+                      <name>SUM</name>
+                      <displayName>Summation</displayName>
+                      <description>Summation on data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                  <entry>
+                    <com.execue.core.common.bean.entity.Stat>
+                      <id>3</id>
+                      <name>AVG</name>
+                      <displayName>Avergae</displayName>
+                      <description>Average of data elements</description>
+                    </com.execue.core.common.bean.entity.Stat>
+                    <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                  </entry>
+                </storedSnapshot>
+                <set>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                  <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                </set>
+              </stats>
+            </businessEntity>
+            <businessEntityType>CONCEPT</businessEntityType>
+          </businessEntityTerm>
+          <requestedByUser>true</requestedByUser>
+          <businessTermWeight>7.5</businessTermWeight>
+        </businessTerm>
+        <assetEntityTerms>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>3581</id>
+              <name>RL_FICO_SCORE_NUMBER</name>
+              <ownerTable>
+                <id>355</id>
+                <name>RL_FICO_SCORE_NUMBER_19</name>
+                <ownerAsset reference="../../../../../../../asset"/>
+                <alias>FS</alias>
+                <lookupType>RL</lookupType>
+                <lookupValueColumn>RL_FICO_SCORE_NUMBER</lookupValueColumn>
+                <lookupDescColumn>RL_FICO_SCORE_NUMBER_DESC</lookupDescColumn>
+                <lowerLimitColumn>LOWER_LIMIT</lowerLimitColumn>
+                <upperLimitColumn>UPPER_LIMIT</upperLimitColumn>
+                <aggregated>N</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>CHARACTER</dataType>
+              <kdxDataType>SL</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>PK</constraintType>
+              <size>0</size>
+              <nullable>false</nullable>
+              <precision>0</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+          <com.execue.core.common.bean.governor.AssetEntityTerm>
+            <assetEntity class="com.execue.core.common.bean.entity.Colum">
+              <id>3610</id>
+              <name>FICO_SCORE_NUMBER</name>
+              <ownerTable>
+                <id>351</id>
+                <name>CUBE_19</name>
+                <ownerAsset reference="../../../../../../../asset"/>
+                <alias>FT</alias>
+                <lookupType>(null)</lookupType>
+                <lookupValueColumn>(null)</lookupValueColumn>
+                <lookupDescColumn>(null)</lookupDescColumn>
+                <lowerLimitColumn>(null)</lowerLimitColumn>
+                <upperLimitColumn>(null)</upperLimitColumn>
+                <aggregated>Y</aggregated>
+                <virtual>N</virtual>
+              </ownerTable>
+              <dataType>NUMBER</dataType>
+              <kdxDataType>MEASURE</kdxDataType>
+              <required>N</required>
+              <defaultValue>(null)</defaultValue>
+              <constraintType>(null)</constraintType>
+              <size>0</size>
+              <nullable>false</nullable>
+              <precision>0</precision>
+            </assetEntity>
+            <assetEntityType>COLUMN</assetEntityType>
+          </com.execue.core.common.bean.governor.AssetEntityTerm>
+        </assetEntityTerms>
+      </com.execue.core.common.bean.governor.BusinessAssetTerm>
+    </metrics>
+    <conditions>
+      <com.execue.core.common.bean.governor.StructuredCondition>
+        <lhsBusinessAssetTerm>
+          <businessTerm>
+            <businessEntityTerm>
+              <businessEntity class="com.execue.core.common.bean.entity.Concept">
+                <id>103</id>
+                <name>Year</name>
+                <description>Transaction Year</description>
+                <displayName>Year</displayName>
+                <stats class="org.hibernate.collection.PersistentSet">
+                  <initialized>true</initialized>
+                  <owner class="com.execue.core.common.bean.entity.Concept" reference="../.."/>
+                  <cachedSize>-1</cachedSize>
+                  <role>com.execue.core.common.bean.entity.Concept.stats</role>
+                  <key class="long">103</key>
+                  <dirty>false</dirty>
+                  <storedSnapshot class="map">
+                    <entry>
+                      <com.execue.core.common.bean.entity.Stat>
+                        <id>2</id>
+                        <name>SUM</name>
+                        <displayName>Summation</displayName>
+                        <description>Summation on data elements</description>
+                      </com.execue.core.common.bean.entity.Stat>
+                      <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                    </entry>
+                    <entry>
+                      <com.execue.core.common.bean.entity.Stat>
+                        <id>3</id>
+                        <name>AVG</name>
+                        <displayName>Avergae</displayName>
+                        <description>Average of data elements</description>
+                      </com.execue.core.common.bean.entity.Stat>
+                      <com.execue.core.common.bean.entity.Stat reference="../com.execue.core.common.bean.entity.Stat"/>
+                    </entry>
+                  </storedSnapshot>
+                  <set>
+                    <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry/com.execue.core.common.bean.entity.Stat"/>
+                    <com.execue.core.common.bean.entity.Stat reference="../../storedSnapshot/entry[2]/com.execue.core.common.bean.entity.Stat"/>
+                  </set>
+                </stats>
+              </businessEntity>
+              <businessEntityType>CONCEPT</businessEntityType>
+            </businessEntityTerm>
+            <requestedByUser>false</requestedByUser>
+            <businessTermWeight>5.0</businessTermWeight>
+          </businessTerm>
+          <assetEntityTerms>
+            <com.execue.core.common.bean.governor.AssetEntityTerm>
+              <assetEntity class="com.execue.core.common.bean.entity.Colum">
+                <id>3586</id>
+                <name>SL_PERF_YR</name>
+                <ownerTable>
+                  <id>356</id>
+                  <name>SL_PERF_YR_19</name>
+                  <ownerAsset>
+                    <id>19</id>
+                    <baseAssetId>11</baseAssetId>
+                    <name>cube19</name>
+                    <description>Billing Cube 19 Asset</description>
+                    <displayName>Billing Cube 19</displayName>
+                    <priority>100</priority>
+                    <dataSource>
+                      <id>3</id>
+                      <name>Cube 19</name>
+                      <description>Connection to cube 19 schema for Abc Cards</description>
+                      <ownerType>ExeCue</ownerType>
+                      <providerType>Oracle</providerType>
+                      <type>Cube</type>
+                      <subType>SuperSet</subType>
+                      <connectionType>PROPERTIES</connectionType>
+                      <location>localhost</location>
+                      <port>1521</port>
+                      <userName>cube</userName>
+                      <password>execue</password>
+                      <schemaName>XE</schemaName>
+                    </dataSource>
+                    <status>A</status>
+                    <grain class="org.hibernate.collection.PersistentSet">
+                      <initialized>true</initialized>
+                      <owner class="com.execue.core.common.bean.entity.Asset" reference="../.."/>
+                      <cachedSize>-1</cachedSize>
+                      <role>com.execue.core.common.bean.entity.Asset.grain</role>
+                      <key class="long">19</key>
+                      <dirty>false</dirty>
+                      <storedSnapshot class="map"/>
+                      <set/>
+                    </grain>
+                  </ownerAsset>
+                  <alias>PY</alias>
+                  <lookupType>SL</lookupType>
+                  <lookupValueColumn>SL_PERF_YR</lookupValueColumn>
+                  <lookupDescColumn>SL_PERF_YR_DESC</lookupDescColumn>
+                  <lowerLimitColumn>(null)</lowerLimitColumn>
+                  <upperLimitColumn>(null)</upperLimitColumn>
+                  <aggregated>N</aggregated>
+                  <virtual>N</virtual>
+                </ownerTable>
+                <dataType>NUMBER</dataType>
+                <kdxDataType>SL</kdxDataType>
+                <required>N</required>
+                <defaultValue>2006 -- 2007</defaultValue>
+                <constraintType>PK</constraintType>
+                <size>0</size>
+                <nullable>false</nullable>
+                <precision>0</precision>
+              </assetEntity>
+              <assetEntityType>COLUMN</assetEntityType>
+            </com.execue.core.common.bean.governor.AssetEntityTerm>
+            <com.execue.core.common.bean.governor.AssetEntityTerm>
+              <assetEntity class="com.execue.core.common.bean.entity.Colum">
+                <id>3588</id>
+                <name>SL_PERF_YR</name>
+                <ownerTable>
+                  <id>351</id>
+                  <name>CUBE_19</name>
+                  <ownerAsset reference="../../../../com.execue.core.common.bean.governor.AssetEntityTerm/assetEntity/ownerTable/ownerAsset"/>
+                  <alias>FT</alias>
+                  <lookupType>(null)</lookupType>
+                  <lookupValueColumn>(null)</lookupValueColumn>
+                  <lookupDescColumn>(null)</lookupDescColumn>
+                  <lowerLimitColumn>(null)</lowerLimitColumn>
+                  <upperLimitColumn>(null)</upperLimitColumn>
+                  <aggregated>Y</aggregated>
+                  <virtual>N</virtual>
+                </ownerTable>
+                <dataType>NUMBER</dataType>
+                <kdxDataType>SL</kdxDataType>
+                <required>N</required>
+                <defaultValue>(null)</defaultValue>
+                <constraintType>FK</constraintType>
+                <size>0</size>
+                <nullable>false</nullable>
+                <precision>0</precision>
+              </assetEntity>
+              <assetEntityType>COLUMN</assetEntityType>
+            </com.execue.core.common.bean.governor.AssetEntityTerm>
+          </assetEntityTerms>
+        </lhsBusinessAssetTerm>
+        <operator>EQUALS</operator>
+        <operandType>VALUE</operandType>
+        <rhsValue>
+          <value>2007</value>
+          <dataType>TIME</dataType>
+        </rhsValue>
+      </com.execue.core.common.bean.governor.StructuredCondition>
+    </conditions>
+    <structuredQueryWeight>10.0</structuredQueryWeight>
+  </logicalQuery>
+  <physicalQuery class="com.execue.core.common.bean.querygen.SQLQuery">
+    <selectEntities>
+      <com.execue.core.common.bean.querygen.SelectEntity>
+        <functionName>AVG</functionName>
+        <type>TABLE_COLUMN</type>
+        <tableColumn>
+          <table>
+            <tableName>CUBE_19</tableName>
+            <alias>FT</alias>
+          </table>
+          <column>
+            <columnName>FRQUNCI</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <alias>SE0</alias>
+      </com.execue.core.common.bean.querygen.SelectEntity>
+      <com.execue.core.common.bean.querygen.SelectEntity>
+        <type>TABLE_COLUMN</type>
+        <tableColumn>
+          <table>
+            <tableName>RL_FICO_SCORE_NUMBER_19</tableName>
+            <alias>FS</alias>
+          </table>
+          <column>
+            <columnName>RL_FICO_SCORE_NUMBER</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <alias>SE1</alias>
+      </com.execue.core.common.bean.querygen.SelectEntity>
+    </selectEntities>
+    <fromEntities>
+      <com.execue.core.common.bean.querygen.FromEntity>
+        <table>
+          <tableName>CUBE_19</tableName>
+          <alias>FT</alias>
+        </table>
+        <type>TABLE</type>
+      </com.execue.core.common.bean.querygen.FromEntity>
+      <com.execue.core.common.bean.querygen.FromEntity>
+        <table>
+          <tableName>RL_FICO_SCORE_NUMBER_19</tableName>
+          <alias>FS</alias>
+        </table>
+        <type>TABLE</type>
+      </com.execue.core.common.bean.querygen.FromEntity>
+      <com.execue.core.common.bean.querygen.FromEntity>
+        <table>
+          <tableName>SL_PERF_YR_19</tableName>
+          <alias>PY</alias>
+        </table>
+        <type>TABLE</type>
+      </com.execue.core.common.bean.querygen.FromEntity>
+    </fromEntities>
+    <joinEntities/>
+    <whereEntities>
+      <com.execue.core.common.bean.querygen.ConditionEntity>
+        <tableColumn>
+          <table>
+            <tableName>SL_PERF_YR_19</tableName>
+            <alias>PY</alias>
+          </table>
+          <column>
+            <columnName>SL_PERF_YR</columnName>
+            <isDistinct>false</isDistinct>
+            <precision>0</precision>
+            <scale>0</scale>
+            <isNullable>true</isNullable>
+          </column>
+        </tableColumn>
+        <operator>EQUALS</operator>
+        <operandType>VALUE</operandType>
+        <rhsValue reference="../../../../logicalQuery/conditions/com.execue.core.common.bean.governor.StructuredCondition/rhsValue"/>
+      </com.execue.core.common.bean.querygen.ConditionEntity>
+    </whereEntities>
+    <groupingEntities/>
+    <orderingEntities/>
+    <havingEntities/>
+  </physicalQuery>
+</com.execue.core.common.bean.governor.AssetQuery>

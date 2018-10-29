@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<ontology>
+		<files>
+			<ontologyFileURL>file:/apps/Ontologies/Investor2MiniOntology.owl</ontologyFileURL>
+		</files>
+		<properties>
+			<ontologyName>Investor2MiniOntology.owl</ontologyName>
+			<ontologyURI>file:/apps/Ontologies/Investor2MiniOntology.owl</ontologyURI>
+			<ontologyNameSpace>file:/apps/Ontologies</ontologyNameSpace>
+		</properties>
+		<serviceImplementations>
+			<ontologyServiceClassName>dbOntologyService</ontologyServiceClassName>
+			<ontologyModelServiceClassName>jenaService</ontologyModelServiceClassName>
+		</serviceImplementations>
+		<skipConcepts>
+			<conceptName>ExeCueConcept</conceptName>
+			<conceptName>Attribute</conceptName>
+			<conceptName>Abstract</conceptName>
+			<conceptName>ComparativeConcept</conceptName>
+			<conceptName>AttributeConcept</conceptName>
+			<conceptName>EnumerationConcept</conceptName>
+			<conceptName>QuantitativeConcept</conceptName>
+			<conceptName>SuperConcept</conceptName>
+			<conceptName>Profile</conceptName>
+			<conceptName>DomainConcept</conceptName>
+			<conceptName>NLPConcept</conceptName>
+			<conceptName>ExcludedConcept</conceptName>
+			<conceptName>PeriodicInformationProfile</conceptName>
+			<conceptName>DomainAdjectives</conceptName>
+			<conceptName>,</conceptName>
+		</skipConcepts>
+		<skipProperties>
+			<propertyName>defaultValue</propertyName>
+			<propertyName>defaultProperty</propertyName>
+			<propertyName>idProperty</propertyName>
+			<propertyName>preferredProperty</propertyName>
+			<propertyName>requiredProperty</propertyName>
+			<propertyName>,</propertyName>
+		</skipProperties>
+	</ontology>
+</execue-configuration>

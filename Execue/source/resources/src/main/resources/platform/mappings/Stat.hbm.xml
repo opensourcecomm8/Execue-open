@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="statType">
+		<param name="enumClass">com.execue.core.common.type.StatType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getStatType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.Stat" table="STAT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">STAT</param>
+			</generator>
+		</id>
+		<property name="statType" type="statType">
+			<column name="NAME" length="35" not-null="true" />
+		</property>
+        
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="255" not-null="true" />
+		</property>
+		<property name="displayName" type="string">
+			<column name="DISPLAY_NAME" length="35" not-null="true" />
+		</property>
+		<property name="businessEntityDefinitionId" type="java.lang.Long">
+			<column name="BUSINESS_ENTITY_ID" length="20" not-null="true" />
+		</property>
+		<set name="concepts" inverse="false" table="CONCEPT_STAT">
+			<key>
+				<column name="STAT_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Concept">
+				<column name="CONCEPT_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

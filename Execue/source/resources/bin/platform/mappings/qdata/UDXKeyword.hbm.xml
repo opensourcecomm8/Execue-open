@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.qdata.UDXKeyword" table="UDX_KEY_WORD">
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">UDX_KEY_WORD</param>
+			</generator>
+		</id>
+        
+		<property name="udxId" type="java.lang.Long">
+			<column name="UDX_ID" precision="20" scale="0" />
+		</property>
+        
+		<property name="keywordText" type="string">
+			<column name="KEY_WORD_TEXT"/>
+		</property>
+		<property name="contentDate" type="java.util.Date">
+			<column name="CONTENT_DATE" />
+		</property>	
+	</class>
+</hibernate-mapping>

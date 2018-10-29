@@ -1,0 +1,8 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="instance.displayName" >
+		<field-validator type="required" short-circuit="true">
+			<message key="execue.instance.displayName.reuqired"/>
+		</field-validator>
+	</field>
+</validators>

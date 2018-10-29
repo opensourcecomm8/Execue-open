@@ -1,0 +1,6 @@
+<queries>		
+	<QUERY_GET_UNSTRUCTURED_APP_DETAIL_BY_APP_ID>
+	<![CDATA[from UnstructuredApplicationDetail uad where uad.applicationId = :applicationId]]>
+	</QUERY_GET_UNSTRUCTURED_APP_DETAIL_BY_APP_ID>	
+</queries>
+	

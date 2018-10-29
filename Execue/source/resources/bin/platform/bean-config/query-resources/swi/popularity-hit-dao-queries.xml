@@ -1,0 +1,48 @@
+<queries>
+	<QUERY_GET_TERMS_BASED_POPULARITY>
+	<![CDATA[select popularityHit.termId, popularityHit.type, count(hits)
+		 from PopularityHit popularityHit where popularityHit.processingState = :processingState 
+		 group by popularityHit.termId,popularityHit.type
+	]]>
+	</QUERY_GET_TERMS_BASED_POPULARITY>
+	
+	<QUERY_GET_PROCESSED_POPULARITY_HITS>
+	<![CDATA[select popularityHit.id from PopularityHit popularityHit 
+		 where popularityHit.processingState = :processingState
+	]]>
+	</QUERY_GET_PROCESSED_POPULARITY_HITS>
+	
+	<QUERY_UPDATE_PROCESSED_POPULARITY_HITS>
+	<![CDATA[update PopularityHit set processingState = :processingState where term_id  in (:termIds)
+	]]>
+	</QUERY_UPDATE_PROCESSED_POPULARITY_HITS>
+	
+	<QUERY_DELETE_PROCESSED_POPULARITY_HITS>
+	<![CDATA[delete from PopularityHit where processingState = :processingState
+	]]>
+	</QUERY_DELETE_PROCESSED_POPULARITY_HITS>
+	
+	<QUERY_GET_INSTANCE_POPULARITY_BED_FOR_MODELGROUP>
+	<![CDATA[select bed.concept.name,bed.instance.name,bed.popularity,bed.entityType 
+		 from BusinessEntityDefinition bed 
+		 where bed.modelGroup.id = :modelGroupId
+		 and bed.popularity > 0 and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_INSTANCE_POPULARITY_BED_FOR_MODELGROUP>
+	
+	<QUERY_GET_CONCEPT_POPULARITY_BED_FOR_MODELGROUP>
+	<![CDATA[select bed.concept.name,bed.popularity,bed.entityType
+		 from BusinessEntityDefinition bed 
+		 where bed.modelGroup.id = :modelGroupId 
+		 and bed.popularity > 0 and bed.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_CONCEPT_POPULARITY_BED_FOR_MODELGROUP>	
+	
+	<QUERY_BUSINESS_ENTITY_UPDATE_POPULARITY>
+	<![CDATA[update BusinessEntityDefinition bed 
+		 set bed.popularity = bed.popularity + 1
+		 where bed.id in (:businessEntityTermIds)
+	]]>
+	</QUERY_BUSINESS_ENTITY_UPDATE_POPULARITY>
+	
+</queries>

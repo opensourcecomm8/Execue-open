@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<ac-query-history>
+		<static-values>
+			<query-history-file-storage-path>				
+				<bed-details>@@query-history-file-storage-bed-details_dir@@</bed-details>
+				<past-usage>@@query-history-file-storage-past-usage_dir@@</past-usage>
+			</query-history-file-storage-path>
+		</static-values>
+	</ac-query-history>
+</execue-configuration>

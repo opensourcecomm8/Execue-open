@@ -1,0 +1,30 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="initialContext" class="javax.naming.InitialContext"/>
+	
+	<bean id="servletContext" class="org.springframework.web.context.support.ServletContextFactoryBean"/>
+	
+	<bean id="execueSystem" class="com.execue.core.system.ExecueSystem"
+		autowire="byName" />
+		
+	<bean id="execueSystemCachedThreadPoolManager" 
+		class="com.execue.core.service.ExecueSystemCachedThreadPoolManager">
+		<constructor-arg value="5" />
+	</bean>		
+		
+	<bean id="coreConfigurableService"
+		class="com.execue.core.configuration.impl.CoreConfigurableService">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="initialContext" ref="initialContext"/>
+        <property name="servletContext" ref="servletContext"/>
+	</bean>
+	
+	<bean id="coreConfigurationService" class="com.execue.core.configuration.impl.CoreConfigurationServiceImpl" >
+		<property name="coreConfiguration" ref="coreConfiguration" />
+		<property name="coreDBConfiguration" ref="coreDBConfiguration" />
+	</bean>
+	
+</beans>

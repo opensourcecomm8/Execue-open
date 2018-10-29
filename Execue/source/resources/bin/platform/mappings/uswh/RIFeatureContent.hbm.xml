@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="featureValueType">
+		<param name="enumClass">com.execue.core.common.type.FeatureValueType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="orderEntityType">
+		<param name="enumClass">com.execue.core.common.type.OrderEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getOrderEntityType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="displayableFeatureAlignmentType">
+		<param name="enumClass">com.execue.core.common.type.DisplayableFeatureAlignmentType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>			
+	<class name="com.execue.core.common.bean.entity.unstructured.RIFeatureContent" table="RI_FEATURE_CONTENT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RI_FEATURE_CONTENT</param>
+			</generator>
+		</id>
+		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" />
+		</property>
+		<property name="featureId" type="java.lang.Long">
+			<column name="FEATURE_ID" />
+		</property>
+		<property name="featureName" type="string">
+			<column name="FEATURE_NAME" />
+		</property>
+		<property name="featureDisplayName" type="string">
+			<column name="FEATURE_DISPLAY_NAME" />
+		</property>
+		<property name="featureSymbol" type="string">
+			<column name="FEATURE_SYMBOL" />
+		</property>		
+		<property name="featureValueType" type="featureValueType">
+			<column name="FEATURE_TYPE" />
+		</property>
+		<property name="featureBedId" type="java.lang.Long">
+			<column name="FEATURE_BE_ID" precision="20" scale="0" />
+		</property>
+		<property name="locationBased" type="checkType">
+			<column name="LOCATION_BASED" length="1" />
+		</property>
+		<property name="multiValued" type="checkType">
+			<column name="MULTI_VALUED" length="1" />
+		</property>
+		<property name="multiValuedGlobalPenalty" type="checkType">
+			<column name="MULTI_VALUED_GLOBAL_PENALTY" length="1" />
+		</property>		
+        <property name="fieldName" type="string">
+            <column name="FIELD_NAME" />
+        </property> 
+		<property name="displayable" type="checkType">
+			<column name="DISPLAYABLE" length="1"/>
+		</property>		
+		<property name="displayableColumnName" type="string">
+			<column name="DISP_COLUMN_NAME" />
+		</property>
+		<property name="displayableDisplayOrder" type="integer">
+			<column name="DISP_ORDER" />
+		</property>
+		<property name="sortable" type="checkType">
+			<column name="SORTABLE" length="1" />
+		</property>
+		<property name="defaultSortOrder" type="orderEntityType">
+			<column name="DEFAULT_SORT_ORDER" length="4"/>
+		</property>		       
+		<property name="displayableFeatureAlignmentType" type="displayableFeatureAlignmentType">
+			<column name="ALIGNMENT" length="5"/>
+		</property>
+		<property name="dataHeader" type="checkType">
+			<column name="DATA_HEADER" length="1"/>
+		</property>	
+		<property name="facetDisplayOrder" type="integer">
+			<column name="FACET_ORDER" />
+		</property>
+		<property name="facet" type="checkType">
+			<column name="FACET" length="1"/>
+		</property>
+		<property name="facetDependency" type="string">
+			<column name="FACET_DEPENDENCY" />
+		</property>
+		<property name="rangeDefaultValue" type="java.lang.Double">
+            <column name="RANGE_DEFAULT_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="rangeMinimumValue" type="java.lang.Double">
+            <column name="RANGE_MINIMUM_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="rangeMaximumValue" type="java.lang.Double">
+            <column name="RANGE_MAXIMUM_VALUE" precision="16" scale="6" />
+        </property>
+        <property name="rangeMinimumImpactValue" type="java.lang.Double">
+            <column name="RANGE_MINIMUM_IMPACT_VALUE" precision="16" scale="6" />
+        </property>      						
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"	name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.Vertical" table="VERTICAL">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">VERTICAL</param>
+			</generator>
+		</id>
+		<property name="name" type="string">
+			<column name="VERTICAL_NAME" length="55" />
+		</property>	
+		<property name="description" type="string">
+			<column name="DESCRIPTION" length="255" />
+		</property>	
+		<property name="importance" type="java.lang.Long">
+			<column name="IMPORTANCE" length="4" />
+		</property>
+		<property name="popularity" type="java.lang.Long">
+			<column name="POPULARITY" length="10" />
+		</property>	
+		<property name="url" type="string">
+			<column name="URL" length="255" />
+		</property>	
+		<property name="homepageVisibility" type="checkType">
+			<column name="HOMEPAGE_VISIBILITY" length="1" />
+		</property>	
+	</class>
+</hibernate-mapping>

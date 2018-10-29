@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+
+	<typedef name="operationType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.AnswersCatalogOperationType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<typedef name="operationSourceType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ACManagementOperationSourceType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<typedef name="operationStatusType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ACManagementOperationStatusType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<class
+		name="com.execue.core.common.bean.ac.AnswersCatalogManagementQueue"
+		table="AC_MGMT_QUEUE">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">AC_MGMT_QUEUE</param>
+			</generator>
+		</id>
+
+		<property name="assetId" type="java.lang.Long">
+			<column name="ASSET_ID" precision="20" scale="0" />
+		</property>
+		<property name="parentAssetId" type="java.lang.Long">
+			<column name="PARENT_ASSET_ID" precision="20" scale="0" />
+		</property>
+		<property name="dependentManagementId" type="string">
+			<column name="DEPENDENT_MGMT_QUEUE_ID"  />
+		</property>
+		<property name="operationType" type="operationType">
+			<column name="OPERATION_TYPE" length="35" not-null="true" />
+		</property>
+		<property name="operationContext" type="string">
+			<column name="OPERATION_CONTEXT" />
+		</property>
+		<property name="requestedDate" type="timestamp">
+			<column name="REQUESTED_DATE" not-null="true" />
+		</property>
+		<property name="operationSourceType" type="operationSourceType">
+			<column name="OPERATION_SRC_TYPE" length="35" not-null="true" />
+		</property>
+		<property name="operationStatus" type="operationStatusType">
+			<column name="OPERATION_STATUS" length="35" not-null="true" />
+		</property>
+		<property name="remarks" type="string">
+			<column name="REMARKS" />
+		</property>
+	</class>
+</hibernate-mapping>

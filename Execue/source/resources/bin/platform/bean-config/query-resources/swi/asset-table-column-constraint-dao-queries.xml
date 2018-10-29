@@ -1,0 +1,11 @@
+<queries>	
+	<QUERY_REFERENCED_CONSTRAINTS>
+	<![CDATA[from Constraint as constraint where constraint.referenceColumn.id = :columId]]>
+	</QUERY_REFERENCED_CONSTRAINTS>	
+	
+	<QUERY_GET_CONSTRAINTS_BY_CONSTRAINT_ID>
+	<![CDATA[from Constraint as constraint where constraint.constraintId = :constraintId]]>
+	</QUERY_GET_CONSTRAINTS_BY_CONSTRAINT_ID>
+	
+
+</queries>

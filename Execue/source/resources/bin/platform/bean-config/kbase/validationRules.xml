@@ -1,0 +1,324 @@
+<execue>
+	<!-- Day Rules -->
+	<validationRule>
+		<example><![CDATA[since|> 29th jan]]></example>
+		<name>Absolute-Day</name>
+		<ruleId>32</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(((%PTID%\s)(%PTIM%\s?))|((%PTIM%\s?)(%PTID%\s?)))(%STI%\s?)?)</rule>
+	</validationRule>
+	<validationRule>
+		<example><![CDATA[since|> monday ]]></example>
+		<name>Absolute-Day-instance</name>
+		<ruleId>34</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(%TDI%(\s)?))</rule>
+	</validationRule>
+	
+    <!-- Month Rules -->
+	<validationRule>
+		<example><![CDATA[jan]]></example>
+		<name>MonthType</name>
+		<ruleId>1</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%TIMEPREP%(\s))?(%OP%(\s))?(%PTIM%)</rule>
+	</validationRule>	
+	<validationRule>
+		<example><![CDATA[since|>= jan 2008 (or) jan and feb 2008]]></example>
+		<name>Month-TF-1</name>
+		<ruleId>2</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(%PTIM%(\s)?)(((%CC%||%TO%)\s)?%PTIM%(\s)?)*(%STI%\s)?)</rule>
+	</validationRule>	
+	<validationRule>
+		<example><![CDATA[since|>= jan 2008 (or) jan 2008 and 2009]]></example>
+		<name>Month-TF-2</name>
+		<ruleId>3</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(%PTIM%\s)(%STI%\s?)(%CC%\s)?(%STI%)?)</rule>
+	</validationRule>
+	<validationRule>
+		<example><![CDATA[since|>= 2008 jan (or) 2008 jan and feb]]></example>
+		<name>Month-TF-3</name>
+		<ruleId>5</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(%STI%\s)(%PTIM%\s?)(%CC%\s)?(%PTIM%\s?)?)</rule>
+	</validationRule>
+	
+	<!-- Quarter Rules -->
+	<validationRule>
+		<example><![CDATA[quarter 1]]></example>
+		<name>QuarterType</name>
+		<ruleId>11</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%PTQ%(\s))(%V%(\s)?)</rule>
+	</validationRule>
+	<validationRule>
+		<example><![CDATA[quarter 1 (to/and)? quarter 2 of 2008]]></example>
+		<name>Quarter-TF-1</name>
+		<ruleId>12</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%PTIQ%(\s))(((%CC%||%TO%)\s)?%PTIQ%\s)+(%STI%\s?)?)</rule>
+	</validationRule>		
+	<validationRule>
+		<example><![CDATA[qtr 1 2008 and 2009]]></example>
+		<name>Quarter-TF-2</name>
+		<ruleId>13</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%PTIQ%(\s))(%V%\s)(%V%\s)(%CC%\s)(%V%))</rule>
+	</validationRule>
+	<validationRule>
+		<name>Quarter-TF-3</name>
+		<ruleId>14</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%OP%(\s))?(%PTIQ%(\s)?)(%STI%(\s)?)?)</rule>
+	</validationRule>
+	
+	<!-- Year Rules -->	
+	<validationRule>
+		<name>Year-1</name>
+		<ruleId>21</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%PTY%(\s)?)?(%YV%))</rule>
+	</validationRule>
+	<validationRule>
+		<example><![CDATA[Year 2004 (to/and)? 2005]]></example>
+		<name>Year-2</name>
+		<ruleId>22</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%PTY%(\s)?)((%YV%\s((%CC%|%TO%)\s)?)+)(%YV%))</rule>
+	</validationRule>
+	
+	<!-- Year TF Rules -->
+	<validationRule>
+		<example><![CDATA[2008 or year 2008 or since 2008 or since year 2008]]></example>
+		<name>Year-TF-1</name>
+		<ruleId>24</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%TIMEPREP%(\s))?(%STI%(\s)?))</rule>
+	</validationRule>	
+
+	<validationRule>
+		<example><![CDATA[> year 2008]]></example>
+		<name>Year-TF-2</name>
+		<ruleId>25</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%OP%(\s))(%YEARSTI%(\s)?))</rule>
+	</validationRule>	
+
+	<!-- Year TF Concept Cloud Rules -->
+	<validationRule>
+		<example><![CDATA[nominal year > 2008 (or) > nominal year 2008]]></example>
+		<name>Year-TF-Concept-1</name>
+		<ruleId>26</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(((%RTF%(\s)?)(%OP%(\s))(%STI%(\s)?))|((%OP%(\s))(%RTF%(\s)?)(%STI%(\s)?)))</rule>
+	</validationRule>	
+	
+     <validationRule>
+		<name>TimeDuration</name>
+		<ruleId>127</ruleId>
+		<ruleType>logical</ruleType>
+        <rule>1 AND 2</rule>
+    </validationRule>  
+    
+	<!-- Relative TF Rules -->	
+	<validationRule>
+		<example><![CDATA[last 2 days]]></example>
+		<name>Relative-Day</name>
+		<ruleId>31</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%ADJC%\s)(%V%\s)?(%PTD%(\s)?))</rule>
+	</validationRule>	
+	<validationRule>
+		<example><![CDATA[before/after sunday (or) before/after sunday of 2010 (or) before/after sunday of jan 2010]]></example>
+		<name>Relative-DayTF</name>
+		<ruleId>33</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%RTID%\s?)(%PTIM%\s?)?(%STI%\s?)?)</rule>
+	</validationRule>	
+	<validationRule>
+		<example><![CDATA[last 2 months]]></example>
+		<name>Relative-Month</name>
+		<ruleId>4</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%ADJC%\s)(%V%\s)?(%PTM%(\s)?))</rule>
+	</validationRule>	
+	<validationRule>
+		<example><![CDATA[last 2 Year]]></example>
+		<name>Relative-Quarter</name>
+		<ruleId>15</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%ADJC%\s)(%V%\s)?(%PTQ%(\s)?)((%PTY%(\s))?(%YV%))?)</rule>
+	</validationRule>		
+	<validationRule>
+		<example><![CDATA[last 2 Year]]></example>
+		<name>Relative-Year</name>
+		<ruleId>23</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>((%ADJC%\s)(%V%\s)?(%PTY%))</rule>
+	</validationRule>	
+    <validationRule>
+		<name>RelativeTimeTF</name>
+		<ruleId>126</ruleId>
+		<ruleType>logical</ruleType>
+        <rule>1 AND 3</rule>
+    </validationRule>        	
+	
+	<!-- Rules for language pattern will start from ID 101-->	
+	<validationRule>
+		<name>Unit-1</name>
+		<ruleId>101</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%DIGIT%(\s)?)(%USCALE%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Value-1</name>
+		<ruleId>102</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%USYM%(\s)?)?(%UNIT%(\s)?)</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Value-3</name>
+		<ruleId>108</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%VALPREP%(\s))(%UNIT%(\s)?)</rule>
+	</validationRule>
+
+	<validationRule>
+		<name>ValueWithPreposition</name>
+		<ruleId>115</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%VALPREP%(\s))(%VAL%(\s)?)</rule>
+	</validationRule>
+			
+	 <validationRule>
+		<name>value-logical</name>
+		<ruleId>116</ruleId>
+		<ruleType>logical</ruleType>
+        <rule>2 OR 3</rule>
+    </validationRule>  
+    
+	<validationRule>
+		<name>Currency-1</name>
+		<ruleId>110</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%CURRSYM%(\s)?)?(%UNIT%(\s)?)(%CURRSYM%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Distance-1</name>
+		<ruleId>111</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%DISTSYM%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Volume-1</name>
+		<ruleId>112</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%VOLSYM%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Power-1</name>
+		<ruleId>113</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%PSYM%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Weight-1</name>
+		<ruleId>117</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%WEIGHTSYM%(\s)?)?</rule>
+	</validationRule>
+		
+	<validationRule>
+		<name>Number-1</name>
+		<ruleId>118</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s)?)?(%UNIT%(\s)?)</rule>
+	</validationRule>
+		
+	<validationRule>
+		<name>Area-1</name>
+		<ruleId>128</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%ASYM%(\s)?)?</rule>
+	</validationRule>
+	
+	<validationRule>
+		<name>Memory-1</name>
+		<ruleId>129</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%MSYM%(\s)?)?</rule>
+	</validationRule>
+		
+	<validationRule>
+		<name>Resolution-1</name>
+		<ruleId>130</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%OP%(\s))?(%UNIT%(\s)?)(%RSYM%(\s)?)?</rule>
+	</validationRule>
+		
+	<!-- Range rules -->
+	<validationRule>
+		<name>BETWEEN-AND-UNIT</name>
+		<ruleId>104</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%BET%(\s))(%UNIT%(\s))(%CC%(\s))?(%UNIT%(\s)?)</rule>
+	</validationRule>
+	<validationRule>
+		<name>BETWEEN-AND-TF</name>
+		<ruleId>105</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%BET%(\s))(%TF%(\s))(%CC%(\s))?(%TF%(\s)?)</rule>
+	</validationRule>
+	<validationRule>
+		<name>BETWEEN-AND-VALUE</name>
+		<ruleId>114</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%BET%(\s))(%VAL%(\s))(%CC%(\s))?(%VAL%(\s)?)</rule>
+	</validationRule>
+	<validationRule>
+		<name>FROM-TO-UNIT</name>
+		<ruleId>106</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%CONJUNCTION%(\s))(%UNIT%(\s))(%TO%(\s))?(%UNIT%(\s)?)</rule>
+	</validationRule>
+	<validationRule>
+		<name>FROM-TO-TF</name>
+		<ruleId>107</ruleId>
+		<ruleType>RegEx</ruleType>
+		<rule>(%CONJUNCTION%(\s))(%TF%(\s))(%TO%(\s))?(%TF%(\s)?)</rule>
+	</validationRule>
+	
+	<!-- Top bottom rules -->
+	<validationRule>
+		<name>TOP-BOTTOM-1</name>
+		<ruleId>121</ruleId>
+		<ruleType>RegEx</ruleType>
+        <rule>(%COMP%(\s))(%QCI%(\s))?(%ADJC%(\s))*(%COMPCONCEPT%(\s)?)?(%IND%(\s)?)*(%CONJUNCTION%(\s))?(%IND%(\s)?)?(%BYCONJ%(\s))?(%ME%(\s)?)</rule>
+    </validationRule>
+	<validationRule>
+		<name>TOP-BOTTOM-2</name>
+		<ruleId>122</ruleId>
+		<ruleType>RegEx</ruleType>
+        <rule>(%ME%(\s))(%CONJUNCTION%(\s))(%COMP%(\s))(%QCI%(\s))(%ADJC%(\s))+(%COMPCONCEPT%(\s))?</rule>
+    </validationRule>
+	<validationRule>
+		<name>TOP-BOTTOM-3</name>
+		<ruleId>123</ruleId>
+		<ruleType>RegEx</ruleType>
+        <rule>(%COMP%(\s))(%QCI%(\s))((%IND%(\s))?(%CONJUNCTION%(\s))?)+(%ME%(\s))(%CONJUNCTION%(\s))?(%COMPCONCEPT%(\s))?</rule>
+    </validationRule>  
+    <validationRule>
+		<name>TOP-BOTTOM-4</name>
+		<ruleId>124</ruleId>
+		<ruleType>logical</ruleType>
+        <rule>1 AND ( 2 OR 3 )</rule>
+    </validationRule>      
+</execue>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	
+	<typedef name="operationType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+        <param name="enumClass">com.execue.core.common.type.AnswersCatalogOperationType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+
+	<class name="com.execue.core.common.bean.entity.AnswersCatalogContext" table="AC_CONTEXT">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">AC_CONTEXT</param>
+			</generator>
+		</id>
+		<property name="assetId" type="java.lang.Long">
+			<column name="ASSET_ID" not-null="true" precision="20" scale="0" />
+		</property>
+		<property name="parentAssetId" type="java.lang.Long">
+            <column name="PARENT_ASSET_ID" not-null="true" precision="20" scale="0" />
+        </property>
+		<property name="contextData" type="string">
+			<column name="CONTEXT_DATA" />
+		</property>
+		<property name="latestOperation" type="operationType">
+			<column name="LATEST_OPERATION" length = "35" not-null="true" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="USER_ID" not-null="true" precision="20" scale="0" />
+		</property>
+
+	</class>
+</hibernate-mapping>

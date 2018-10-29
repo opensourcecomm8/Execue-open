@@ -1,0 +1,40 @@
+<queries>
+	<QUERY_PARALLEL_WORDS_BY_LOOKUP_WORD>
+	<![CDATA[from RIParallelWord rpw where word = :lookupWord]]>
+	</QUERY_PARALLEL_WORDS_BY_LOOKUP_WORD>
+
+	<QUERY_PARALLEL_WORDS_BY_LOOKUP_WORDS>
+	<![CDATA[from RIParallelWord rpw where word in (:lookupWords) and preferedSelect=1]]>
+	</QUERY_PARALLEL_WORDS_BY_LOOKUP_WORDS>
+
+	<QUERY_PARALLEL_WORDS_BY_LOOKUP_WORDS_AND_MODEL_GROUP_ID>
+	<![CDATA[from RIParallelWord rpw where word in (:lookupWords) and modelGroupId in (:modelGroupIds) and preferedSelect=1]]>
+	</QUERY_PARALLEL_WORDS_BY_LOOKUP_WORDS_AND_MODEL_GROUP_ID>
+
+	<QUERY_PARALLEL_WORDS_BY_USER>
+	<![CDATA[from ParallelWord parallelWorld where parallelWorld.keyWord.id = :keyWordId
+		 and parallelWorld.user.id = :userId
+	]]>
+	</QUERY_PARALLEL_WORDS_BY_USER>
+	
+	<QUERY_RI_PARALLEL_WORDS_BY_KEYWORD_ID>
+	<![CDATA[from RIParallelWord riParallelWord where riParallelWord.keyWordId = :keyWordId]]>
+	</QUERY_RI_PARALLEL_WORDS_BY_KEYWORD_ID>
+
+	<QUERY_PARALLEL_WORDS_BY_KEYWORD_ID>
+	<![CDATA[select keyWord.parallelWords from KeyWord keyWord where keyWord.id=:keyWordId]]>
+	</QUERY_PARALLEL_WORDS_BY_KEYWORD_ID>
+	
+	<QUERY_PARALLEL_WORD_BY_NAME>
+	<![CDATA[from ParallelWord parallelWord where parallelWord.parallelWord=:wordName and 
+		 parallelWord.keyWord.id = :keyWordId and parallelWord.user.id = :userId
+	]]>
+	</QUERY_PARALLEL_WORD_BY_NAME>
+
+	<QUERY_PARALLEL_WORD_FOR_MODEL>
+	<![CDATA[SELECT pWord FROM ParallelWord pWord,KeyWord keyWord, ModelGroupMapping mgm
+		 WHERE pWord.keyWord.id=keyWord.id AND pWord.parallelWord=:wordName AND keyWord.modelGroup.id = mgm.modelGroup.id 
+		 AND mgm.model.id = :modelId AND mgm.modelGroup.category = :userModelCategoryType
+	]]>
+	</QUERY_PARALLEL_WORD_FOR_MODEL>
+</queries>

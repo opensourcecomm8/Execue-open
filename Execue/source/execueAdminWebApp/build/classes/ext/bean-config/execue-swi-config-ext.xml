@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean id="systemConfigurationAction" scope="prototype"
+		class="com.execue.web.sysconfig.action.SystemConfigurationAction">
+		<property name="systemConfigurationHandler" ref="systemConfigurationHandler" />
+	</bean>
+	
+	<bean id="systemConfigurationHandler" 
+		class="com.execue.web.sysconfig.handler.impl.SystemConfigurationHandlerImpl">
+		<property name="systemConfigurationService" ref="systemConfigurationService" />
+	</bean>
+	
+	<bean id="systemConfigurationService" 
+		class="com.execue.web.sysconfig.service.impl.SystemConfigurationServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="driverConfigurationService" ref="driverConfigurationService" />
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService" />
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+		<property name="answersCatalogConfigurationService" ref="answersCatalogConfigurationService" />
+		<property name="coreDBConfiguration" ref="coreDBConfiguration"/>
+		<property name="driverDBConfiguration" ref="driverDBConfiguration"/>
+		<property name="answersCatalogDBConfiguration" ref="answersCatalogDBConfiguration"/>
+		<property name="aggregationDBConfiguration" ref="aggregationDBConfiguration"/>
+		<property name="rpDBConfiguration" ref="rpDBConfiguration"/>
+	</bean>
+</beans>

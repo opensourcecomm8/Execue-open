@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 9, 2010 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<class name="com.execue.core.common.bean.entity.ReportComment" table="REPORT_COMMENT">
+		<comment>A Report Comment definiton</comment>		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">REPORT_COMMENT</param>
+			</generator>
+		</id>
+		<property name="assetId" type="java.lang.Long">
+			<column name="ASSET_ID" precision="20" scale="0" />
+		</property>
+		<property name="queryId" type="java.lang.Long">
+			<column name="QUERY_ID" precision="20" scale="0" />
+		</property>
+		<property name="userId" type="java.lang.Long">
+			<column name="USER_ID" precision="20" scale="0" />
+		</property>
+		<property name="userName" type="string">
+			<column name="USER_NAME" length="35" />
+		</property>
+		<property name="queryHash" type="string">
+			<column name="QUERY_HASH" length="255" />
+		</property>
+		<property name="comment" type="text">
+			<column name="COMMENTS" />
+		</property>
+		<property name="createdDate" type="timestamp">
+			<column name="CREATED_DATE" length="255" />
+		</property>
+		<property name="isPublic" type="checkType">
+			<column name="PUBLIC_TYPE" length="1" />
+		</property>
+		<property name="abuseReoprt" type="checkType">
+			<column name="ABUSE_REPORT" length="1" />
+		</property>				
+	</class>
+</hibernate-mapping>

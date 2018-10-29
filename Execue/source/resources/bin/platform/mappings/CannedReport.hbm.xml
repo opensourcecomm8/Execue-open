@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.CannedReport" table="CANNED_REPORT">
+		<comment>Canned Report  definiton</comment>
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">CANNED_REPORT</param>
+			</generator>
+		</id>
+		<property name="name" type="string">
+			<column name="NAME" length="35"/>
+		</property>
+		<property name="queryString" type="string">
+			<column name="QUERY_STRING" length="4000" />
+		</property>
+
+		<property name="headerXML" type="string">
+			<column name="HEADER_XML" length = "4000" />
+		</property>
+		<property name="dataSourceId" type="java.lang.Long">
+			<column name="DATASOURCE_ID"/>
+		</property>
+		<property name="presentationXML" type="string">
+			<column name="PRESENTATION_XML" length="4000" />
+		</property>
+		<property name="type" type="string">
+			<column name="TYPE" length="35" />
+		</property>
+		</class>
+</hibernate-mapping>

@@ -1,0 +1,56 @@
+<queries>
+	
+	<QUERY_MARK_SEMANTIFIED_CONTENT_FOR_RESEMANTIFICATION>
+	<![CDATA[UPDATE sem_content_kw_match sckm, semantified_content sc, sem_content_feature_info scfi
+		SET sc.user_query_id = :userQueryId, sc.processing_state = :scProcessingState, 
+		scfi.processing_state = :scfiProcessingState
+		WHERE sckm.context_id = :contextId AND 
+		sckm.query_id = :userQueryId 
+		AND sckm.semantified_content_id = sc.ID
+		AND sckm.semantified_content_id = scfi.semantified_content_id
+		AND sc.image_url_processed <> :imageURLProcessed
+	]]>	
+	</QUERY_MARK_SEMANTIFIED_CONTENT_FOR_RESEMANTIFICATION>
+	
+	
+	<UPDATE_SEMANTIFIED_CONTENT_PROCESSING_STATE_BY_USER_QUERY_ID>
+	<![CDATA[UPDATE semantified_content sc, sem_content_feature_info scfi 
+		SET sc.processing_state = :processingFlagType, scfi.processing_state = :processingFlagType
+		WHERE sc.context_id = :contextId AND sc.user_query_id = :userQueryId
+		AND sc.ID = scfi.semantified_content_id
+	]]>	
+	</UPDATE_SEMANTIFIED_CONTENT_PROCESSING_STATE_BY_USER_QUERY_ID>	
+	
+	
+	<QUERY_GET_FEATURE_DEPENDENCY_BY_TYPE>
+	<![CDATA[SELECT FEATURE_ID,
+		  ex_orc_grp_concat_hash(DEPENDENCY_FEATURE_ID)
+		  AS DEPENDENCY_FEATURE_ID
+		  FROM Feature_Dependency WHERE context_id= :contextId and dependency_type = :dependencyType
+		  GROUP BY FEATURE_ID  
+	]]>
+	</QUERY_GET_FEATURE_DEPENDENCY_BY_TYPE>	
+	
+	
+	<QUERY_POPULATE_RI_FEATURE_CONTENT>
+	<![CDATA[SELECT b.CONTEXT_ID, b.FEATURE_ID, b.FEATURE_NAME, b.FEATURE_DISPLAY_NAME, b.FEATURE_SYMBOL, 
+		b.FEATURE_BE_ID, b.FEATURE_TYPE, b.LOCATION_BASED, b.MULTI_VALUED, b.MULTI_VALUED_GLOBAL_PENALTY, b.FIELD_NAME, 
+		b.DISPLAYABLE, b.DISP_COLUMN_NAME, b.DISP_ORDER, b.SORTABLE, b.DEFAULT_SORT_ORDER, b.ALIGNMENT, b.DATA_HEADER, 
+		b.FACET, b.FACET_ORDER, b.FACET_DEPENDENCY, fri.DEFAULT_VALUE, fri.MINIMUM_VALUE, fri.MAXIMUM_VALUE, fri.MINIMUM_IMPACT_VALUE FROM 
+		(SELECT a.CONTEXT_ID, a.ID AS FEATURE_ID, a.FEATURE_NAME, a.FEATURE_DISPLAY_NAME, a.FEATURE_SYMBOL, a.FEATURE_BE_ID, a.FEATURE_TYPE, 
+		a.LOCATION_BASED, a.MULTI_VALUED, a.MULTI_VALUED_GLOBAL_PENALTY, NULL AS FIELD_NAME, a.isDisplayable AS DISPLAYABLE, 
+		a.Displayable_Column AS DISP_COLUMN_NAME, a.Displayable_Order AS DISP_ORDER, a.SORTABLE, a.DEFAULT_SORT_ORDER, 
+		a.ALIGNMENT, a.DATA_HEADER, CASE WHEN fd_f.DETAIL_TYPE IS NULL THEN 'N' ELSE 'Y' END AS FACET, 
+		IFNULL(fd_f.DISPLAY_ORDER,0) AS FACET_ORDER, fd_f.FACET_DEPENDENCY FROM 
+		(SELECT f.*, CASE WHEN fd_d.DETAIL_TYPE IS NULL THEN 'N' ELSE 'Y' END isDisplayable, fd_d.COLUMN_NAME AS Displayable_Column, 
+		IFNULL(fd_d.DISPLAY_ORDER,0) AS Displayable_Order, IFNULL(fd_d.SORTABLE,'N') AS SORTABLE, fd_d.DEFAULT_SORT_ORDER, 
+		fd_d.ALIGNMENT, IFNULL(fd_d.DATA_HEADER,'N') AS DATA_HEADER FROM feature f 
+		LEFT OUTER JOIN feature_detail fd_d ON f.id = fd_d.feature_id AND fd_d.detail_type = 'DISPLAYABLE_FEATURE' AND 
+		f.context_id = fd_d.context_id WHERE f.context_id =:contextId) a LEFT OUTER JOIN feature_detail fd_f ON 
+		a.id = fd_f.feature_id AND fd_f.detail_type = 'FACET_FEATURE' AND a.context_id = fd_f.context_id WHERE 
+		a.context_id =:contextId) b LEFT OUTER JOIN feature_range_info fri ON fri.feature_id = b.FEATURE_ID ORDER BY b.FEATURE_ID
+	]]>
+	</QUERY_POPULATE_RI_FEATURE_CONTENT>	
+	
+</queries>
+	

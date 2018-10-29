@@ -1,0 +1,1568 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+
+	<bean id="locationConfigurableService" class="com.execue.swi.configuration.impl.LocationConfigurableService">		
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="locationConfigurationService" ref="locationConfigurationService" />
+	</bean>
+	<bean id="locationConfigurationService" class="com.execue.swi.configuration.impl.LocationConfigurationServiceImpl">
+		<property name="locationConfiguration" ref="locationConfiguration" />		
+	</bean>
+	
+	<bean id="swiConfigurationService"
+		class="com.execue.swi.configuration.impl.SWIConfigurationServiceImpl">	
+		<property name="swiConfiguration" ref="swiConfiguration" />
+	</bean>
+
+	<bean id="timeConfigurableService" class="com.execue.swi.configuration.impl.TimeConfigurableService">
+		<property name="timeConfigurationService" ref="timeConfigurationService" />
+	</bean>
+	
+	<bean id="timeConfigurationService" class="com.execue.swi.configuration.impl.TimeConfigurationServiceImpl">
+		<property name="timeConfiguration" ref="timeConfiguration" />
+	</bean>
+
+
+	<bean id="swiConfigurableService"
+		class="com.execue.swi.configuration.impl.SWIConfigurableService">	
+		<property name="lookupService" ref="lookupService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="verticalService" ref="verticalService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+	</bean>
+
+	<bean id="swiValidator"
+		class="com.execue.swi.validation.impl.SWIValidatorImpl">
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO" />
+		</property>
+		<property name="profileDAO">
+			<ref bean="profileDAO" />
+		</property>
+		<property name="rangeDAO">
+			<ref bean="rangeDAO" />
+		</property>
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="instanceDAO">
+			<ref bean="instanceDAO" />
+		</property>
+		<property name="assetDAO">
+			<ref bean="assetDAO" />
+		</property>		
+	</bean>
+	
+	<bean id="bookMarksAccessManager"
+		class="com.execue.swi.dataaccess.impl.BookmarkDataAccessManagerImpl">
+		<property name="bookMarksDAO">
+			<ref bean="bookmarksDAO" />
+		</property>
+	</bean>
+	
+	<bean id="queryInterfaceSuggestDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.QueryInterfaceSuggestDataAccessManagerImpl">
+		<property name="queryInterfaceSuggestDAO">
+			<ref bean="queryInterfaceSuggestDAO"/>
+		</property>
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO"/>
+		</property>
+		<property name="conceptDAO">
+			<ref bean="conceptDAO"/>
+		</property>	
+	</bean>
+	
+	<bean id="semanticSuggestDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.SemanticSuggestDataAccessManagerImpl">
+		<property name="semanticSuggestDAO">
+			<ref bean="semanticSuggestDAO"/>
+		</property>
+	</bean>
+
+	<bean id="userManagementDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.UserManagementDataAccessManagerImpl" >
+		<property name="userManagementDAO">
+			<ref bean="userManagementDAO"/>
+		</property>
+	</bean>
+
+	<!-- bookmarkService -->
+	<bean id="localbookmarkService"
+		class="com.execue.swi.service.impl.BookmarkServiceImpl">
+		<property name="bookmarkDataAccessManager"
+			ref="bookMarksAccessManager" />
+	</bean>
+
+	<bean id="bookmarkService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localbookmarkService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getFolders">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="assetDetailDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.AssetDetailDataAccessManagerImpl">
+		<property name="assetDetailDAO">
+			<ref bean="assetDetailDAO" />
+		</property>
+	</bean>
+	
+	<bean id="applicationManagementService"
+		class="com.execue.swi.service.impl.ApplicationManagementServiceImpl">
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>	
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService" />
+		</property>		
+	</bean>	
+	
+	<bean id="applicationDeletionService"
+		class="com.execue.swi.service.impl.ApplicationDeletionServiceImpl">		
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>				
+	</bean>
+
+	<bean id="baseKDXDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.BaseKDXDataAccessManagerImpl">
+		<property name="baseBusinessEntityDefinitionDAO">
+			<ref bean="baseBusinessEntityDefinitionDAO" />
+		</property>
+		<property name="ontoReverseIndexDAO">
+			<ref bean="ontoReverseIndexDAO" />
+		</property>
+	</bean>
+
+	<bean id="kdxDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.KDXDataAccessManagerImpl">
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO" />
+		</property>
+		<property name="sflWordDAO">
+			<ref bean="sflWordDAO" />
+		</property>
+		<property name="parallelWordDAO">
+			<ref bean="parallelWordDAO" />
+		</property>
+		<property name="ontoReverseIndexDAO">
+			<ref bean="ontoReverseIndexDAO" />
+		</property>
+		<property name="pathDefinitionDAO">
+			<ref bean="pathDefinitionDAO" />
+		</property>
+		<property name="typeDAO">
+			<ref bean="typeDAO" />
+		</property>
+		<property name="businessEntityVariationDAO">
+			<ref bean="businessEntityVariationDAO" />
+		</property>
+		<property name="contentCleanupPatternDAO">
+			<ref bean="contentCleanupPatternDAO" />
+		</property>
+		<property name="unstructuredApplicationDetailDAO">
+			<ref bean="unstructuredApplicationDetailDAO" />
+		</property>		
+		<property name="riSharedUserModelMappingDAO">
+			<ref bean="riSharedUserModelMappingDAO" />
+		</property>
+		<property name="conceptDAO">
+			<ref bean="conceptDAO" />
+		</property>
+		<property name="instanceDAO">
+			<ref bean="instanceDAO" />
+		</property>
+		<property name="entityBehaviorDAO">
+			<ref bean="entityBehaviorDAO" />
+		</property>
+		<property name="entityAttributeDAO">
+			<ref bean="entityAttributeDAO" />
+		</property>	
+		<property name="relationDAO">
+			<ref bean="relationDAO" />
+		</property>	
+		<property name="applicationDAO">
+			<ref bean="applicationDAO" />
+		</property>	
+		<property name="verticalDAO">
+			<ref bean="verticalDAO" />
+		</property>	
+		<property name="modelDAO">
+			<ref bean="modelDAO" />
+		</property>	
+		<property name="profileDAO">
+			<ref bean="profileDAO" />
+		</property>	
+		<property name="defaultDynamicValueDAO">
+			<ref bean="defaultDynamicValueDAO" />
+		</property>	
+		<property name="statDAO">
+			<ref bean="statDAO" />
+		</property>
+		<property name="businessEntityMaintenanceDAO">
+			<ref bean="businessEntityMaintenanceDAO" />
+		</property>
+		<property name="popularityHitDAO">
+			<ref bean="popularityHitDAO" />
+		</property>	
+		<property name="mappingDAO">
+			<ref bean="mappingDAO" />
+		</property>	
+		<property name="cloudDAO">
+			<ref bean="cloudDAO" />
+		</property>	
+		<property name="hierarchyDAO">
+			<ref bean="hierarchyDAO" />
+		</property>
+				
+	</bean>
+	<bean id="kdxModelDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.KDXModelDataAccessManager">
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO" />
+		</property>
+		<property name="cloudDAO">
+			<ref bean="cloudDAO" />
+		</property>
+	</bean>
+
+	<bean id="kdxCloudDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.KDXCloudDataAccessManager">
+		<property name="cloudDAO">
+			<ref bean="cloudDAO" />
+		</property>
+	</bean>
+
+	<bean id="preferencesDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.PreferencesDataAccessManagerImpl">
+		<property name="profileDAO">
+			<ref bean="profileDAO" />
+		</property>
+		<property name="rangeDAO">
+			<ref bean="rangeDAO" />
+		</property>
+		<property name="keywordDAO">
+			<ref bean="keywordDAO" />
+		</property>
+		<property name="parallelWordDAO">
+			<ref bean="parallelWordDAO" />
+		</property>
+	</bean>
+
+	<bean id="mappingDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.MappingDataAccessManagerImpl">		
+		<property name="mappingDAO">
+			<ref bean="mappingDAO" />
+		</property>
+		<property name="defaultMetricDAO">
+			<ref bean="defaultMetricDAO" />
+		</property>
+	</bean>
+
+	<bean id="joinDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.JoinDataAccessManagerImpl">
+		<property name="joinDAO">
+			<ref bean="joinDAO" />
+		</property>
+		<property name="joinDefinitionDAO">
+			<ref bean="joinDefinitionDAO" />
+		</property>
+	</bean>
+
+	<bean id="lookupDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.LookupDataAccessManagerImpl">
+		<property name="lookupDAO">
+			<ref bean="lookupDAO" />
+		</property>
+	</bean>
+	<bean id="batchMaintenanceDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.BatchMaintenanceDataAccessManagerImpl">
+		<property name="batchMaintenanceDAO">
+			<ref bean="batchMaintenanceDAO" />
+		</property>
+	</bean>
+	
+	<bean id="localSDXManagementService"
+		class="com.execue.swi.service.impl.SDXManagementServiceImpl">		
+		<property name="sdxDataAccessManager">
+			<ref bean="sdxDataAccessManager" />
+		</property>
+		<property name="assetDetailService">
+			<ref bean="assetDetailService" />
+		</property>
+		<property name="swiValidator">
+			<ref bean="swiValidator" />
+		</property>
+		<property name="joinService">
+			<ref bean="joinService" />
+		</property>				
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="localSDXRetrievalService"
+		class="com.execue.swi.service.impl.SDXRetrievalServiceImpl">
+		<property name="sdxDataAccessManager">
+			<ref bean="sdxDataAccessManager" />
+		</property>
+	</bean>
+
+	<!-- Bean defintion of JoinService -->
+	<bean id="localJoinService"
+		class="com.execue.swi.service.impl.JoinServiceImpl">
+		<property name="joinDataAccessManager">
+			<ref bean="joinDataAccessManager" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<!-- Bean defintion of BaseKDXRetrievalService -->
+	<bean id="localBaseKDXRetrievalService"
+		class="com.execue.swi.service.impl.BaseKDXRetrievalServiceImpl">
+		<property name="baseKDXDataAccessManager">
+			<ref bean="baseKDXDataAccessManager" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<!-- Bean defintion of KDXRetrievalService -->
+	<bean id="localKDXRetrievalService"
+		class="com.execue.swi.service.impl.KDXRetrievalServiceImpl">
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>		
+		<property name="mappingDataAccessManager">
+			<ref bean="mappingDataAccessManager" />
+		</property>
+		<property name="locationConfigurationService">
+			<ref bean="locationConfigurationService" />
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService" />
+		</property>
+
+	</bean>
+
+	<bean id="localKDXManagementService"
+		class="com.execue.swi.service.impl.KDXManagementServiceImpl">
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+		<property name="swiValidator">
+			<ref bean="swiValidator" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxModelDataAccessManager">
+			<ref bean="kdxModelDataAccessManager" />
+		</property>
+		<property name="swiConfigurationService"
+			ref="swiConfigurationService" />	
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService" />
+		<property name="kdxCloudManagementService"
+			ref="kdxCloudManagementService" />
+		<property name="kdxCloudDataAccessManager"
+			ref="kdxCloudDataAccessManager" />
+		<property name="businessEntityMaintenanceService"
+			ref="businessEntityMaintenanceService" />
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+	</bean>
+
+	
+	<!-- Bean definition for BatchMaintenanceService -->
+	<bean id="localKdxModelService"
+		class="com.execue.swi.service.impl.KDXModelServiceImpl">
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>	
+	</bean>
+
+	<!-- Bean defintion of LookupService -->
+	<bean id="lookupService"
+		class="com.execue.swi.service.impl.LookupServiceImpl">
+		<property name="lookupDataAccessManager">
+			<ref bean="lookupDataAccessManager" />
+		</property>
+		<property name="conversionService">
+			<ref bean="conversionService" />
+		</property>
+	</bean>
+
+
+	<bean id="localMappingRetrievalService"
+		class="com.execue.swi.service.impl.MappingRetrievalServiceImpl">
+		<property name="mappingDataAccessManager">
+			<ref bean="mappingDataAccessManager" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="mappingManagementService"
+		class="com.execue.swi.service.impl.MappingManagementServiceImpl">
+		<property name="mappingDataAccessManager">
+			<ref bean="mappingDataAccessManager" />
+		</property>
+	</bean>	
+
+	<bean id="sdxDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.SDXDataAccessManagerImpl">
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO" />
+		</property>
+		<property name="assetDAO">
+			<ref bean="assetDAO" />
+		</property>
+		<property name="appDataSourceDAO">
+			<ref bean="appDataSourceDAO" />
+		</property>
+		<property name="assetOperationDAO">
+			<ref bean="assetOperationDAO" />
+		</property>	
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO" />
+		</property>
+		<property name="assetTableDAO">
+			<ref bean="assetTableDAO" />
+		</property>	
+		<property name="assetTableColumnDAO">
+			<ref bean="assetTableColumnDAO" />
+		</property>		
+		<property name="assetTableColumnMemberDAO">
+			<ref bean="assetTableColumnMemberDAO" />
+		</property>
+		<property name="assetTableColumnConstraintDAO">
+			<ref bean="assetTableColumnConstraintDAO" />
+		</property>				
+	</bean>
+		
+	<!--  PreferencesService Definittion -->
+
+	<bean id="localPreferencesRetrievalService"
+		class="com.execue.swi.service.impl.PreferencesRetrievalServiceImpl">
+		<property name="preferencesDataAccessManager">
+			<ref bean="preferencesDataAccessManager" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>	
+	</bean>
+
+	<bean id="preferencesRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localPreferencesRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="get*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+ 
+	<bean id="preferencesManagementService"
+		class="com.execue.swi.service.impl.PreferencesManagementServiceImpl">
+		<property name="preferencesDataAccessManager">
+			<ref bean="preferencesDataAccessManager" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="swiValidator" ref="swiValidator" />
+		<property name="businessEntityMaintenanceService"
+			ref="businessEntityMaintenanceService" />
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+	</bean>
+	
+	<!-- transctional Beans -->
+	<bean id="baseKDXRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localBaseKDXRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getBusinessEntityDefinitionByNames">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptByName">PROPAGATION_REQUIRED</prop>
+				<prop key="getRealizedTypeBEDByName">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="kdxRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localKDXRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getConcepts">PROPAGATION_REQUIRED</prop>
+				<prop key="getGrainConcepts">PROPAGATION_REQUIRED</prop>
+				<prop key="getBusinessEntityDefinitionByNames">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBusinessEntityDefinitionByIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBusinessEntityDefinitionByTypeIds">
+					PROPAGATION_REQUIRED
+				</prop>				
+				<prop key="getPopulatedConceptWithStats">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptWithConceptDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getCentralConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBEDByInstanceDisplayName">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getInstanceBEDByName">
+					PROPAGATION_REQUIRED
+				</prop>
+				
+				<prop key="getRegularExpressionBasedInstances">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDisplayNamesByBEDIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBusinessEntityDefinitionById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBedByInstanceName">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getInstancesByDisplayNameAcrossAllConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getInstanceNameByBedId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="updateOrderForSFLTermTokens">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getSFLTermById">PROPAGATION_REQUIRED</prop>
+				<prop key="getAllSFLTerms">PROPAGATION_REQUIRED</prop>
+				<prop key="getPopulatedSFLTerms">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getModelGroupById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPopulatedModelGroupMapping">
+					PROPAGATION_REQUIRED
+				</prop>
+				<!-- Below Methods does not provide the objects in full. They are transactional just to get the root only -->
+				<prop key="getRelationBEDByNameIncludingBaseGroup">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptByName">PROPAGATION_REQUIRED</prop>
+				<prop key="getConceptByDisplayName">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getFullSFLTermTokensByLookupWords">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getInstanceBEDsByConceptId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptBEDsOfModel">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getOrphanSFLTerms">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getInstanceBEDsByPage">
+					PROPAGATION_REQUIRED
+				</prop>				
+				<prop key="getPossibleAttributesByIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllPossibleAttributes">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPossibleAttributesByInherentFlag">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getTypeBedByName">PROPAGATION_REQUIRED</prop>
+				<prop
+					key="getPopulatedRealizationsForTypeInModelIncludingBaseGroup">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getSFLTermsForInstancesOfConceptByBatchNumber">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllAttributes">PROPAGATION_REQUIRED</prop>
+				<prop key="getPopulatedBEDForIndexForms">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPopulatedTypeBusinessEntityDefinition">
+					PROPAGATION_REQUIRED
+				</prop>				
+				<prop key="getPossibleAttribute">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptsOfParticularType">
+					PROPAGATION_REQUIRED
+				</prop>			
+				<prop key="getPossibleDetailTypes">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPossibleDetailTypesForType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDetailTypeForConcept">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappedConceptBEDForColumn">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDefaultPopulatedDetailType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllNonAttributeEntities">PROPAGATION_REQUIRED</prop>
+				<prop key="getConceptByBEDId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getHierarchiesByModelId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getExistingHierarchiesForConcept">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getHierarchyById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getHierarchyByNameForModel">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getHierarchiesByConceptBEDIds">
+					PROPAGATION_REQUIRED
+				</prop>				
+			</props>
+		</property>
+	</bean>
+
+	<bean id="kdxModelService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localKdxModelService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getPathDefinitionDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEntityTriplesForDestination">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getEntityTriplesForDestinationAndTripleType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEntityTriplesForSource">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEntityTriplesForSourceAndTripleType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllCentralConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllParentConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getImmediateParentConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getConceptToAttributePathDefinitionDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConceptToConceptPathDefinitionDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllParentPathDefinitionsForDestination">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getChildPathDestinationBEDsForSource">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getImmediateParentPathDefinitionsForDestination">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getConceptToConceptShortestPathDefinitionDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getChildPathDestinationBEDsForSourceForModel">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getAllNonParentPathsForSourceAndDestination">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEntityTriplesForSourceAndRelation">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEntityTriplesForDestinationAndRelation">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="kdxManagementService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localKDXManagementService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="createModelGroup">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="sdxRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localSDXRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getForeignKeys">PROPAGATION_REQUIRED</prop>
+				<prop key="getAssetEntityDefinitionByNames">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllAssets">PROPAGATION_REQUIRED</prop>
+				<prop key="getAllChildAssets">PROPAGATION_REQUIRED</prop>				
+				<prop key="getAllParentAssets">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAsset">PROPAGATION_REQUIRED</prop>
+				<prop key="getAssetEntityDefinitionById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPopulatedAssetEntityDefinitionById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAssetEntityDefinitionByIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getForeignKeysForPrimaryKey">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getForiegnKeyConstraint">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getConstraintColumns">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getOrphanTables">PROPAGATION_REQUIRED</prop>
+				<prop key="getAssetPopulatedByApplicationOwner">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDataSourceById">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="sdxManagementService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localSDXManagementService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="analyseKDXDataType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="createConstraints">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="assetDetailService"
+		class="com.execue.swi.service.impl.AssetDetailServiceImpl">
+		<property name="assetDetailDataAccessManager">
+			<ref bean="assetDetailDataAccessManager" />
+		</property>
+	</bean>
+
+	<bean id="mappingRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localMappingRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getAssetEntities">PROPAGATION_REQUIRED</prop>
+				<prop key="getUIMappings">PROPAGATION_REQUIRED</prop>
+				<prop key="getExistingMappingsForColumns">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getExistingMappingsForMembers">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappingsForBED">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappingsForAED">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAssetGrain">PROPAGATION_REQUIRED</prop>
+				<prop key="getAssetGrainByColumnGranularity">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getEligibleDefaultMetrics">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getGrainConcepts">PROPAGATION_REQUIRED</prop>
+				<prop key="getDistributionConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMapping">PROPAGATION_REQUIRED</prop>
+				<prop key="getAssetDefaultMetrics">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getMappingsOfConceptsMappedWithDiffInNature">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getInstanceMatchedByMemberLookupDescription">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMemberMappingsByPage">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMemberMappingsOfPageByStartIndex">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappingsByInstanceDisplayName">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getExistingDefaultMetrics">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappedConceptsOfParticularType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappedConceptForColumn">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getMappedInstanceForMember">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPrimaryMapping">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getNonPrimaryMapping">
+					PROPAGATION_REQUIRED
+				</prop>	
+				<prop key="getMappedConceptsOfParticularType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPrimaryMappingsForConcepts">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="joinService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localJoinService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="suggestDirectJoinsByForeignKey">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	
+
+	<bean id="conversionDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.ConversionDataAccessManagerImpl">
+		<property name="conversionDAO" ref="conversionDAO" />
+		<property name="dateFormatDAO" ref="dateFormatDAO" />
+	</bean>
+
+	<bean id="conversionService"
+		class="com.execue.swi.service.impl.ConversionServiceImpl">
+		<property name="conversionDataAccessManager"
+			ref="conversionDataAccessManager" />
+	</bean>
+
+	
+	<!-- Bean defintion of localPathDefinitionService -->
+	
+
+	<!-- Bean defintion of pathDefinitionDataAccessManager -->
+	<bean id="pathDefinitionDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.PathDefinitionDataAccessManagerImpl">
+		<property name="pathDefinitionDAO">
+			<ref bean="pathDefinitionDAO" />
+		</property>
+	</bean>
+
+	
+
+	<bean id="popularityDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.PopularityDataAccessManagerImpl">		
+		<property name="ontoReverseIndexDAO">
+			<ref bean="ontoReverseIndexDAO" />
+		</property>
+		<property name="popularityHitDAO">
+			<ref bean="popularityHitDAO" />
+		</property>
+		<property name="mappingDAO">
+			<ref bean="mappingDAO" />
+		</property>
+		<property name="defaultMetricDAO">
+			<ref bean="defaultMetricDAO" />
+		</property>	
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO" />
+		</property>			
+	</bean>
+
+	<bean id="localPopularityService"
+		class="com.execue.swi.service.impl.PopularityServiceImpl">
+		<property name="popularityDataAccessManager">
+			<ref bean="popularityDataAccessManager" />
+		</property>
+	</bean>
+
+	<bean id="popularityService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localPopularityService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="updatePopularity">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="localApplicationRetrievalService"
+		class="com.execue.swi.service.impl.ApplicationRetrievalServiceImpl">
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+	</bean>
+	<bean id="applicationRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localApplicationRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getAllApplications">
+					PROPAGATION_REQUIRED
+				</prop>			
+				<prop key="getApplicationByName">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationByKey">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationsForVertical">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getVerticalApplicationsByRank">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationsByRank">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationsByVerticalId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationWithExample">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllEligibleApplicationsByUserId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getApplicationsForByPublishModeOrderByRank">
+					PROPAGATION_REQUIRED
+				</prop>								
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of UserQueryPossibilityManager -->
+	<bean id="userQueryPossibilityManager"
+		class="com.execue.swi.dataaccess.impl.UserQueryPossibilityManagerImpl">
+		<property name="userQueryPossibilityDAO">
+			<ref bean="userQueryPossibilityDAO" />
+		</property>
+	</bean>
+
+	<bean id="userQueryPossibilityService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localUserQueryPossibilityService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="loadAnswerableAssets">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	
+	<!-- Bean definition for BatchMaintenanceService -->
+
+	<bean id="localBatchMaintenanceService"
+		class="com.execue.swi.service.impl.BatchMaintenanceServiceImpl">
+		<property name="batchMaintenanceDataAccessManager">
+			<ref bean="batchMaintenanceDataAccessManager" />
+		</property>
+	</bean>
+	<bean id="batchMaintenanceService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localBatchMaintenanceService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getBatchProcessById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getBatchProcessByIds">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="instanceMappingSuggestionDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.InstanceMappingSuggestionDataAccessManagerImpl">
+		<property name="instanceMappingSuggestionDAO">
+			<ref bean="instanceMappingSuggestionDAO" />
+		</property>
+	</bean>
+
+	<bean id="instanceMappingSuggestionService"
+		class="com.execue.swi.service.impl.InstanceMappingSuggestionServiceImpl">
+		<property name="instanceMappingSuggestionDataAccessManager">
+			<ref bean="instanceMappingSuggestionDataAccessManager" />
+		</property>
+	</bean>
+	
+	<bean id="publishedFileDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.PublishedFileDataAccessManagerImpl">
+		<property name="publishedFileDAO">
+			<ref bean="publishedFileDAOImpl" />
+		</property>
+	</bean>
+	<bean id="publishedFileRetrievalService"
+		class="com.execue.swi.service.impl.PublishedFileRetrievalServiceImpl">
+		<property name="publishedFileDataAccessManager">
+			<ref bean="publishedFileDataAccessManager" />
+		</property>
+		<property name="sdxRetrievalService"
+			ref="sdxRetrievalService">
+		</property>
+	</bean>
+
+	<bean id="publishedFileManagementService"
+		class="com.execue.swi.service.impl.PublishedFileManagementServiceImpl">
+		<property name="publishedFileDataAccessManager">
+			<ref bean="publishedFileDataAccessManager" />
+		</property>
+		<property name="sdxRetrievalService"
+			ref="sdxRetrievalService">
+		</property>
+		<property name="publishedFileRetrievalService"
+			ref="publishedFileRetrievalService">
+		</property>
+	</bean>
+
+	<bean id="dataSourceSelectionService"
+		class="com.execue.swi.service.impl.DataSourceSelectionServiceImpl">
+		<property name="sdxDataAccessManager"
+			ref="sdxDataAccessManager" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />
+		<property name="userManagementService"
+			ref="userManagementService" />
+	</bean>
+
+	<bean id="defaultMetricService"
+		class="com.execue.swi.service.impl.DefaultMetricServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="mappingManagementService">
+			<ref bean="mappingManagementService" />
+		</property>
+		<property name="mappingDeletionService">
+			<ref bean="mappingDeletionService" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+	
+	<bean id="localKDXCloudRetrievalService"
+		class="com.execue.swi.service.impl.KDXCloudRetrievalServiceImpl">
+		<property name="kdxCloudDataAccessManager"
+			ref="kdxCloudDataAccessManager" />
+		<property name="kdxDataAccessManager"
+			ref="kdxDataAccessManager" />
+	</bean>
+
+	<bean id="kdxCloudRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localKDXCloudRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getValidRICloudsByCompBedIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getRICloudsByCompBedIdsAndCloudOutput">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDefaultAppCloud">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getCloudByName">PROPAGATION_REQUIRED</prop>
+				<prop key="getDefaultAppCloudByAppId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllCloudComponentsByCloudIdWithDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getCloudById">PROPAGATION_REQUIRED</prop>
+				<prop key="getCloudsByCategory">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="localKDXCloudManagementService"
+		class="com.execue.swi.service.impl.KDXCloudManagementServiceImpl">
+		<property name="kdxCloudDataAccessManager"
+			ref="kdxCloudDataAccessManager" />
+		<property name="kdxDataAccessManager"
+			ref="kdxDataAccessManager" />
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="pathDefinitionRetrievalService" 
+			ref="pathDefinitionRetrievalService"/>
+	</bean>
+
+	<bean id="pathAbsorptionService"
+		class="com.execue.swi.service.impl.PathAbsorptionServiceImpl">
+		<property name="pathDefinitionRetrievalService"
+			ref="pathDefinitionRetrievalService" />
+		<property name="pathDefinitionManagementService"
+			ref="pathDefinitionManagementService" />
+		<property name="pathDefinitionDeletionService"
+			ref="pathDefinitionDeletionService" />
+		<property name="kdxModelService"
+			ref="kdxModelService" />			
+	</bean>
+
+	<bean id="kdxCloudManagementService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localKDXCloudManagementService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<!--prop key="">PROPAGATION_REQUIRED</prop-->
+			</props>
+		</property>
+	</bean>
+	<bean id="riCloudDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.RICloudDataAccessManagerImpl">
+		<property name="cloudDAO">
+			<ref bean="cloudDAO" />
+		</property>
+	</bean>
+	<bean id="riCloudsAbsorptionService"
+		class="com.execue.swi.service.impl.RICloudsAbsorptionServiceImpl">
+		<property name="riCloudDataAccessManager"
+			ref="riCloudDataAccessManager" />
+	</bean>
+	
+	<bean id="localBusinessEntityMaintenanceService"
+		class="com.execue.swi.service.impl.BusinessEntityMaintenanceServiceImpl">
+		<property name="kdxDataAccessManager"
+			ref="kdxDataAccessManager" />
+	</bean>
+
+	<bean id="businessEntityMaintenanceService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target"
+			ref="localBusinessEntityMaintenanceService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop
+					key="getDistinctUpdatedMisMatchedEnumerationConceptBEDsFromBEMDetails">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="defaultDynamicValueService"
+		class="com.execue.swi.service.impl.DefaultDynamicValueServiceImpl">
+		<property name="kdxDataAccessManager"
+			ref="kdxDataAccessManager" />
+	</bean>
+
+	<bean id="easIndexService"
+		class="com.execue.swi.service.impl.EASIndexServiceImpl">
+		<property name="easIndexDataAccessManager" ref="easIndexDataAccessManager" />
+	</bean>
+	
+	<bean id="easIndexDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.EASIndexDataAccessManagerImpl">
+		<property name="easIndexDAO" ref="easIndexDAO" />
+	</bean>
+
+	<bean id="verticalDataAccessManager"
+		class="com.execue.swi.dataaccess.impl.VerticalDataAccessManagerImpl">
+		<property name="verticalDAO" ref="verticalDAO" />
+	</bean>
+
+	<bean id="verticalService"
+		class="com.execue.swi.service.impl.VerticalServiceImpl">
+		<property name="verticalDataAccessManager"
+			ref="verticalDataAccessManager" />
+	</bean>
+	
+	
+	
+	<!-- Deletion Services Bean Definitons  -->
+	<bean id="mappingDeletionService"
+		class="com.execue.swi.service.impl.MappingDeletionServiceImpl">
+		<property name="mappingDataAccessManager">
+			<ref bean="mappingDataAccessManager" />
+		</property>
+	</bean>
+	
+	<bean id="preferencesDeletionService"
+		class="com.execue.swi.service.impl.PreferencesDeletionServiceImpl">		
+		<property name="preferencesDataAccessManager">
+			<ref bean="preferencesDataAccessManager" />
+		</property>
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="preferencesRetrievalService">
+			<ref bean="preferencesRetrievalService" />
+		</property>
+	</bean>
+	
+	<bean id="kdxDeletionService"
+		class="com.execue.swi.service.impl.KDXDeletionServiceImpl">
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+	</bean>	
+	
+	<bean id="sdxDeletionService"
+		class=" com.execue.swi.service.impl.SDXDeletionServiceImpl">		
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="joinService">
+			<ref bean="joinService" />
+		</property>
+		<property name="assetDetailService">
+			<ref bean="assetDetailService" />
+		</property>
+		<property name="defaultDynamicValueService">
+			<ref bean="defaultDynamicValueService" />
+		</property>		
+		<property name="swiValidator">
+			<ref bean="swiValidator" />
+		</property>	
+		<property name="mappingDataAccessManager">
+			<ref bean="mappingDataAccessManager" />
+		</property>	
+		<property name="sdxDataAccessManager">
+			<ref bean="sdxDataAccessManager" />
+		</property>
+		<property name="swiConfigurationService">
+            <ref bean="swiConfigurationService" />
+        </property>	
+	</bean>
+		
+	<!--  Bean Definitions Of PathDefinition Starts  --> 
+		
+	<bean id="localPathDefinitionRetrievalService"
+		class="com.execue.swi.service.impl.PathDefinitionRetrievalServiceImpl">
+		<property name="pathDefinitionDataAccessManager">
+			<ref bean="pathDefinitionDataAccessManager" />
+		</property>
+		<property name="kdxModelService"
+			ref="kdxModelService" />
+	</bean>	
+	
+	<bean id="pathDefinitionRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localPathDefinitionRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getPathDefinition">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDirectPathDefinitionDetailsByETDIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDirectPathDefRelationByPathDefId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getIndirectPathDefinitionsFromDirectPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllDirectPathsBySourceId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllDirectPathsByDestinationId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllNonParentDirectPathsBySourceId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllNonParentDirectPathsByDestinationId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getNonParentIndirectCCPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getIndirectParentPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllParentPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getNonParentCCPathsForDestination">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllNonParentDirectCCPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getRelatedNonParentDirectCCPaths">
+					PROPAGATION_REQUIRED
+				</prop>				
+				<prop key="getPathDefinitionById">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllDirectPaths">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getAllDirectCRAPathsBySourceId">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getPathDefinitionsBySrcBedAndRelation">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop
+					key="getNonParentPathsByDestIdAndPathSelectionType">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getNonParentPathsByDestBedIds">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getNonParentPathsBySrcBedIds">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<bean id="pathDefinitionManagementService"
+		class="com.execue.swi.service.impl.PathDefinitionManagementServiceImpl">
+		<property name="kdxDataAccessManager">
+			<ref bean="kdxDataAccessManager" />
+		</property>
+		<property name="pathDefinitionRetrievalService">
+			<ref bean="pathDefinitionRetrievalService" />
+		</property>
+		<property name="pathDefinitionDataAccessManager">
+			<ref bean="pathDefinitionDataAccessManager" />
+		</property>
+		<property name="baseKDXDataAccessManager">
+			<ref bean="baseKDXDataAccessManager" />
+		</property>
+	</bean>	
+	
+	<bean id="pathDefinitionDeletionService"
+		class="com.execue.swi.service.impl.PathDefinitionDeletionServiceImpl">
+		<property name="pathDefinitionDataAccessManager">
+			<ref bean="pathDefinitionDataAccessManager" />
+		</property>
+		<property name="pathDefinitionRetrievalService">
+			<ref bean="pathDefinitionRetrievalService" />
+		</property>
+	</bean>	
+	
+	<!--  Bean Definitions Of PathDefinition Ends  -->
+	
+	<!--  Bean Definitions Of KDXCloudDeletionService Begins  -->
+	
+	
+	<bean id="kdxCloudDeletionService"
+		class="com.execue.swi.service.impl.KDXCloudDeletionServiceImpl">
+		<property name="kdxCloudDataAccessManager">
+			<ref bean="kdxCloudDataAccessManager" />
+		</property>	
+		<property name="kdxCloudRetrievalService">
+			<ref bean="kdxCloudRetrievalService" />
+		</property>		
+	</bean>
+	
+	<bean id="dataSourceConnectionManagementService"
+		class="com.execue.swi.service.impl.DataSourceConnectionManagementServiceImpl">
+		<property name="pooledDataSourceManager">
+			<ref bean="pooledDataSourceManager" />
+		</property>	
+	</bean>	
+	
+	<bean id="localUserManagementService"
+		class="com.execue.swi.service.impl.UserManagementServiceImpl" >
+		<property name="userManagementDataAccessManager">
+			<ref bean="userManagementDataAccessManager"/>
+		</property>
+	</bean>
+	<bean id="userManagementService" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager"/>
+		<property name="target" ref="localUserManagementService"/>
+		<property name="proxyTargetClass" value="false"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="assignGroup">PROPAGATION_REQUIRED</prop>
+				<prop key="assignGroupRoles">PROPAGATION_REQUIRED</prop>
+				<prop key="getUserForAuthentication">PROPAGATION_REQUIRED</prop>
+				<prop key="getUserWithGroups">PROPAGATION_REQUIRED</prop>
+				<prop key="getGroupWithRoles">PROPAGATION_REQUIRED</prop>
+				<prop key="getUserForAuthenticationByUserId">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sflDataAccessManager" class="com.execue.swi.dataaccess.impl.SFLDataAccessManagerImpl">
+		<property name="sflWordDAO" ref="sflWordDAO"/>
+	</bean>
+	
+	<bean id="sflService" class="com.execue.swi.service.impl.SFLServiceImpl">
+		<property name="sflDataAccessManager" ref="sflDataAccessManager"/>
+		<property name="swiConfigurationService" ref="swiConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>		
+	</bean>
+	
+	<bean id="assetOperationDetailService" class="com.execue.swi.service.impl.AssetOperationDetailServiceImpl">
+		<property name="assetOperationDetailDataAcessManager" ref="assetOperationDetailDataAcessManager"/>
+	</bean>
+	
+	<bean id="assetOperationDetailDataAcessManager" class="com.execue.swi.dataaccess.impl.AssetOperationDetailDataAcessManagerImpl">
+		<property name="assetOperationDetailDAO" ref="assetOperationDetailDAO"/>
+	</bean>
+
+	
+</beans>

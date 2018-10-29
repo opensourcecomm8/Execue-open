@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+	   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="swi.showHome" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Home" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/consoleHome.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+    
+	<definition name="sdx.showDataSource" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Data Sources" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/defineDataSource.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+  
+	<definition name="sdx.showDataSources" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Data Sources" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/showDataSources.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+  
+	<definition name="sdx.showJoins" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Joins" />
+		<put-attribute name="head" value="/views/admin/joins-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/joins.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="sdx.showAssetSelectionForJoins" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Joins" />
+		<put-attribute name="head" value="/views/admin/joins-head-selectAsset.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/joins.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+  
+	<definition name="sdx.showConstraints" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Constraints" />
+		<put-attribute name="head" value="/views/admin/constraints-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/constraints.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+  
+	<definition name="sdx.showAssets" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assets" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/showAssets.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+  
+	<definition name="sdx.showAsset" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assets" />
+		<put-attribute name="head" value="/views/admin/sdx-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/asset.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="sdx.showAssetDetails" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Asset Details" />
+		<put-attribute name="head" value="/views/admin/sdx-assetDetails-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/assetDetails.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Asset Dashboard Starts -->
+	<definition name="sdx.showAssetsDashboard" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Asset Dashboard" />
+		<put-attribute name="head" value="/views/admin/sdx-assetDashboard-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/assetsDashboard.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Asset Dashboard Endts -->
+	
+	<!-- Search Apps Dashboard Starts -->
+	<definition name="sdx.showSearchAppsDashboard" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Asset Dashboard" />
+		<put-attribute name="head" value="/views/admin/SearchAppsDashboard-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/searchAppsDashboard.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Search Apps Dashboard Endts -->
+	<!-- show assets for grain-->
+	<definition name="sdx.showAssetGrain" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assetgrain" />
+		<put-attribute name="head" value="/views/admin/sdx-assetGrain-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/assetGrain.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="sdx.showProfiles" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Profiles" />
+		<put-attribute name="head" value="/views/admin/profiles-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/preferences/profiles.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+
+	<definition name="sdx.showUsers" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Users" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/security/usersTemplate.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="sdx.showGroups" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Groups" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/security/groupsTemplate.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="sdx.showRoles" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Roles" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/security/rolesTemplate.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="kdx.showAtributeRelations" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Business Terms" />
+		<put-attribute name="head" value="/views/admin/atributeRelations-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/atributeRelations.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="show.Verticals" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Users" />
+		<put-attribute name="head" value="/views/admin/showVerticals-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/vertical/showVerticals.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="kdx.showBusinessTerms" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Business Terms" />
+		<put-attribute name="head" value="/views/admin/kdx-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/businessTerms.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="kdx.showDefinitions" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Business Terms" />
+		<put-attribute name="head" value="/views/admin/kdx-defintions-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/tripleDefinitions.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="kdx.showRelations" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Relations" />
+		<put-attribute name="head" value="/views/admin/relations-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/relations.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="kdx.showConceptType" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Concept Type Creation" />
+		<put-attribute name="head" value="/views/admin/kdx-type-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/conceptTypes.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Knowledgebase Dashboard -->
+	<definition name="kdx.showKnowledgebaseDashboard" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Business Terms" />
+		<put-attribute name="head" value="/views/admin/knowledgebase-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/knowledgebaseDashboard.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>	
+	<definition name="kdx.showDDV" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assets" />
+		<put-attribute name="head" value="/views/admin/knowledgebase-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/kdx/defaultDynamicValue.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Knowledgebase Dashboard ends -->
+    
+	<definition name="ranges.showRanges" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Ranges" />
+		<put-attribute name="head" value="/views/admin/ranges-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/preferences/ranges.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+    
+	<definition name="mapping.showMapping" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin mappings" />
+		<put-attribute name="head" value="/views/admin/mapping-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/mapping/showMappings.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="mapping.showAssetSelectionForMappings" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assets" />
+		<put-attribute name="head" value="/views/admin/mapping-head-selectAsset.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/mapping/showMappings.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+
+	<!-- new template starts-->
+	<definition name="qi.advanceSearch" template="/layouts/search-new.jsp">
+		<put-attribute name="title" value="Semantifi Advanced Search" />
+		<put-attribute name="head" value="/views/main/search/qi-head-advanceSearch.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/home-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/execueAdvanceSearch.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-new.jsp" />
+	</definition>
+	<!-- new template ends -->
+	<definition name="qi.simpleSearch" template="/layouts/search-new.jsp">
+		<put-attribute name="title" value="Semantifi Home" />
+		<put-attribute name="head" value="/views/main/search/qi-head-simpleSearch.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/home-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/execueSimpleSearch.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-new.jsp" />
+	</definition> 
+	
+	<definition name="qi.showAssetMeta" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Dataset Details" />		
+		<put-attribute name="head" value="/views/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/home-bi-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/showAssetMetaInfo.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-search.jsp" />
+	</definition>
+	
+	<definition name="swi.showAppMeta" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Dataset Information" />		
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/home-bi-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/showAppInfo.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-search.jsp" />
+	</definition>
+	<!--BI home Configuration end-->
+	<definition name="search.home" template="/layouts/search.jsp">
+		<put-attribute name="title" value="Semantifi" />
+		<put-attribute name="head" value="/views/main/search/qi-head.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/home-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/home.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-search.jsp" />
+	</definition>
+	<definition name="search.results" template="/layouts/search.jsp">
+		<put-attribute name="title" value="Semantifi Results" />
+		<put-attribute name="head" value="/views/main/search/results-head.jsp" />
+		<put-attribute name="headerLinks" value="/views/main/search/results-links.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/results.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-search.jsp" />
+	</definition>	
+    <definition name="search.singleAssetresult" template="/layouts/search.jsp">
+        <put-attribute name="title" value="Semantifi Results" />
+        <put-attribute name="head" value="/views/main/search/results-head.jsp" />
+        <put-attribute name="headerLinks" value="/views/main/search/results-links.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/main/qi/single-assetResult.jsp" />
+        <put-attribute name="footer" value="/views/main/footer-search.jsp" />
+    </definition>
+
+	<!-- Answers Catalog Related Screen Tiles Definitions Begin -->
+	
+	<definition name="mart.showRequest" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Catalog" />
+		<put-attribute name="head" value="/views/admin/catalog-mart-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/catalog/martDimensions.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="cube.showRequest" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Catalog" />
+		<put-attribute name="head" value="/views/admin/catalog-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/catalog/cubeDimensions.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="cube.showSnapshot" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Cube Creation" />
+		<put-attribute name="head" value="/views/admin/catalog-head-cubesnapshot.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/catalog/cubeCreationSnapshot.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="cube.showStatus" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Catalog" />
+		<put-attribute name="head" value="/views/admin/catalog-head-cubeStatus.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/catalog/cubeCreationStatus.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="cube.showAssetSelectionForCubes" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Catalog" />
+		<put-attribute name="head" value="/views/admin/cube-head-selectAsset.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/catalog/cubeDimensions.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!--<definition name="qi.semantify" template="/layouts/search-new.jsp">
+			<put-attribute name="title" value="Execue homepage" />
+			<put-attribute name="head" value="/views/main/search/qi-head-index.jsp" />
+			<put-attribute name="headerLinks" value="" />
+			<put-attribute name="body" value="/WEB-INF/jsp/main/qi/semantifyIdex.jsp" />
+			<put-attribute name="footer" value="" />
+		</definition> -->
+	<!--<definition name="sementify.results" template="/layouts/layout-semantify.jsp">
+			<put-attribute name="title" value="Execue homepage" />
+			<put-attribute name="head" value="/views/main/search/semantify-results-head.jsp" />
+			<put-attribute name="headerLinks" value="/views/main/search/semantify-results-links.jsp" />
+			<put-attribute name="body" value="/WEB-INF/jsp/main/qi/semantifyResults.jsp" />
+			<put-attribute name="footer" value="/views/main/footer.jsp" />
+		</definition>-->
+	
+	<!-- Answers Catalog Related Screen Tiles Definitions End -->
+	<!--Parallel Words -->
+	<definition name="keyWords.showKeyWords" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Key Words" />
+		<put-attribute name="head" value="/views/admin/keyWords-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/preferences/keyWords.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="kdxWords.showWords" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin KDX Words" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/preferences/searchKDXWord.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="sflWords.showSFLTerms" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Key Words" />
+		<put-attribute name="head" value="/views/admin/sflTerms-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/preferences/sflTerms.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- Publisher Module -->
+	<definition name="swi.showPublisherJobs" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Applications" />
+		<put-attribute name="head" value="/views/admin/jobStatus-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/maintenance/publisherJobRequestDetail.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="publisher.showUploadCSV" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<!--<put-attribute name="head" value="/views/upload-head.jsp" />	-->	
+		<put-attribute name="head" value="/views/admin/locate-upload-dataset-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<!--<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/uploadCSV.jsp" />-->
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/viewUploadCSVTab.jsp" />		
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="publisher.showUploadXL" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/upload-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/uploadXL.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="publisher.saveUploadAppImage" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/upload-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/uploadAppImage.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="publisher.showUploadAppImage" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/upload-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/showUploadedAppImage.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="publisher.showUploadStatus" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/upload-status-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/uploadStatus.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="publisher.showGrainDefinition" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/GrainDefinition-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/grainDefinition.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="publisher.evaluatedColumns" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/evaluateColumns-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/evaluateColumns.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="swi.applications" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Applications" />
+		<put-attribute name="head" value="/views/admin/application-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/applicationInfo.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<!--   publish  -->
+	<definition name="swi.publishDatasets" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Applications" />
+		<put-attribute name="head" value="/views/admin/publishApplication-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/publishInfo.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!--   publish  -->
+
+
+	<definition name="swi.showJobs" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Applications" />
+		<put-attribute name="head" value="/views/admin/jobStatus-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/maintenance/jobRequestDetail.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="swi.showJobStatus" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/jobStatus-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/maintenance/jobRequestStatusDetail.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="swi.showPublishJobStatus" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Absorb Dataset" />
+		<put-attribute name="head" value="/views/admin/jobStatus-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/publishInfoStatus.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>     
+	<definition name="publisher.showJobStatus" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Applications" />
+		<put-attribute name="head" value="/views/admin/jobStatus-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/upload/jobRequestStatus.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="swi.showMaintenanceHome" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Home" />
+		<put-attribute name="head" value="/views/admin/jobmaintenance-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/maintenanceHome.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="swi.selectAsset" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Home" />
+		<put-attribute name="head" value="/views/admin/mapping-head-selectAsset.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/blank.jsp"/>
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="account.profile" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Account Profile" />
+		<put-attribute name="head" value="/views/admin/account-profile-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account/profile.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="account.advancedOptions" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Account Profile" />
+		<put-attribute name="head" value="/views/admin/advanced-options-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account/advancedOptions.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	
+	<definition name="sdx.showUsers" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Users" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/security/usersTemplate.jsp" />
+		<!-- <put-attribute name="body.content" value="/WEB-INF/jsp/admin/swi/security/usersList.jsp" /> -->
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="sdx.showManageUserRequests" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Users" />
+		<put-attribute name="head" value="/views/admin/default-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account/userRequests.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="publisher.showUploadDataset" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assets" />
+		<put-attribute name="head" value="/views/admin/locate-upload-dataset-head.jsp"/>
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/publisher/locate-upload-dataset.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!-- inner page  -->
+	<definition name="qi.browseApps" template="/layouts/inner.jsp">
+		<put-attribute name="title" value="Semantifi " />
+		<put-attribute name="head" value="/views/main/browseApps-head.jsp"/>
+		<put-attribute name="header" value="/views/main/header-inner-pages.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/main/qi/browseApps.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="notification.message" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Account Profile" />
+		<put-attribute name="head" value="/views/admin/notification-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account/notification.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="notification.template" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Account Profile" />
+		<put-attribute name="head" value="/views/admin/notification-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/account/notificationTemplate.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<definition name="sdx.defaultMetrics" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Assetgrain" />
+		<put-attribute name="head" value="/views/admin/sdx-defaultMetrics-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/defaultMetrics.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	
+	<definition name="sdx.showAssetAnalysisReport" template="/layouts/default.jsp">
+		<put-attribute name="title" value="Semantifi Admin Home" />
+		<put-attribute name="head" value="/views/admin/assetAnalysisReport-head.jsp" />
+		<put-attribute name="header" value="/views/main/header.jsp" />
+		<put-attribute name="leftMenu" value="/views/leftMenu.jsp" />
+		<put-attribute name="menu" value="/views/menunew.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/swi/sdx/assetAnalysisReport.jsp" />
+		<put-attribute name="footer" value="/views/main/footer.jsp" />
+	</definition>
+	<!--    app index  -->
+	<definition name="app.index" template="/layouts/app-default.jsp">
+		<put-attribute name="title" value="/views/main/search/app/title.jsp" />
+		<put-attribute name="head" value="/views/main/search/qi-head-simpleSearch.jsp" />
+		<put-attribute name="apphead" value="/views/main/search/app/app-head.jsp" />
+		<put-attribute name="header" value="/views/main/search/app/header.jsp" />
+		<put-attribute name="leftPanel" value="/WEB-INF/jsp/main/qi/app/leftPanel.jsp" />
+		<put-attribute name="middlePanel" value="/WEB-INF/jsp/main/qi/app/middlePanel.jsp" />
+		<put-attribute name="rightPanel" value="/WEB-INF/jsp/main/qi/app/rightPanel.jsp" />
+		<put-attribute name="footer" value="/views/main/footer-search.jsp" />
+	</definition>
+	<!--    app index  -->
+	
+</tiles-definitions>

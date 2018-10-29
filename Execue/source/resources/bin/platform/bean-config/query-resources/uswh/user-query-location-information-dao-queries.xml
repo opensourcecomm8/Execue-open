@@ -1,0 +1,12 @@
+<queries>	
+	<DELETE_USER_QUERY_LOCATION_INFO_BY_EXECUTION_DATE>
+	<![CDATA[delete from UserQueryLocationInformation uqli where uqli.executionDate <= :executionDate	
+	]]>	
+	</DELETE_USER_QUERY_LOCATION_INFO_BY_EXECUTION_DATE>	
+		
+	<QUERY_USER_QUERY_LOCATION_INFO_MAX_EXECUTION_DATE>
+	<![CDATA[select max(executionDate) from UserQueryLocationInformation	
+	]]>	
+	</QUERY_USER_QUERY_LOCATION_INFO_MAX_EXECUTION_DATE>	
+	
+</queries>

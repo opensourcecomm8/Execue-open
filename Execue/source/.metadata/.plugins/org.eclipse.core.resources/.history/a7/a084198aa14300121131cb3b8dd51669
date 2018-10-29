@@ -1,0 +1,30 @@
+<queries>
+	<QUERY_GET_BOOKMARKS_FOR_USER>
+	<![CDATA[from Bookmark as bookmark where bookmark.user = :user]]>
+	</QUERY_GET_BOOKMARKS_FOR_USER>
+
+	<QUERY_GET_BOOKMARKS_FOR_FOLDER_ID>
+	<![CDATA[from Bookmark as bookmark where bookmark.folder = :folder]]>
+	</QUERY_GET_BOOKMARKS_FOR_FOLDER_ID>
+
+	<QUERY_GET_FOLDERS_FOR_USER>
+	<![CDATA[from Folder as folder where folder.user = :user ]]>
+	</QUERY_GET_FOLDERS_FOR_USER>
+	
+	<QUERY_SEARCH_BOOKMARKS>
+	<![CDATA[from Bookmark as bookmark where  bookmark.user = :user and bookmark.type =:type 
+		 and (bookmark.name like :searchString or bookmark.summary like :searchString)
+	]]>
+	</QUERY_SEARCH_BOOKMARKS>
+	
+	<QUERY_BOOKMARKS_EXISTS>
+	<![CDATA[from Bookmark as bookmark where  bookmark.user = :user 
+		 and bookmark.folder =:folder and bookmark.name =:name
+	]]>
+	</QUERY_BOOKMARKS_EXISTS>	
+	
+	<QUERY_FOLDER_EXISTS>
+	<![CDATA[from Folder as folder where  folder.user = :user and folder.name=:name
+	]]>
+	</QUERY_FOLDER_EXISTS>		
+</queries>

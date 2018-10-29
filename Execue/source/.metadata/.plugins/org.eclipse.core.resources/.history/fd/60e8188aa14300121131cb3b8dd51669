@@ -1,0 +1,230 @@
+<queries>
+	<QUERY_GET_ALL_ACTIVE_APPLICATIONS>
+	<![CDATA[from Application app where app.status = :activeStatus order by app.popularity DESC]]>
+	</QUERY_GET_ALL_ACTIVE_APPLICATIONS>
+	
+	
+	<QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS>
+	<![CDATA[from Application app where app.status = :activeStatus and app.sourceType = :structuredAppSourceType
+		 order by app.name
+	]]>
+	</QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS>
+	
+	
+	<QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD>
+	<![CDATA[select application.id, application.name, application.description, 
+		application.status, application.publishMode, model.id, 
+		appOperation.operationType, appOperation.jobRequestId, 
+		appOperation.operationStatus, 
+		(select count(ast.id) from Asset ast right join ast.application app 
+		 where app.id = application.id group by app.id), 
+		application.creationType, application.sourceType 
+		from Application application
+		inner join application.models model, 
+		ApplicationOperation appOperation
+		where appOperation.applicationId = application.id
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD>
+	
+	
+   
+
+	<QUERY_GET_ALL_APP_EXAMPLES>
+	<![CDATA[from ApplicationExample as applicationExample 
+		 where applicationExample.application.id=:appId
+		 order by applicationExample.queryName
+	]]>
+	</QUERY_GET_ALL_APP_EXAMPLES>
+	
+	<QUERY_GET_ALL_APPLICATIONS>
+	<![CDATA[from ApplicationInfo appInfo where 1 = 1]]>
+	</QUERY_GET_ALL_APPLICATIONS>
+	
+		
+	<QUERY_GET_ALL_ORDERED_APPLICATIONS_BY_NAME>
+	<![CDATA[from Application as app order by app.name]]>
+	</QUERY_GET_ALL_ORDERED_APPLICATIONS_BY_NAME>
+	
+	
+	<QUERY_COUNT_EXISTING_APPLICATIONS>
+	<![CDATA[select count(application.id)
+		 from Application as application
+		 where 1 = 1
+	]]>
+	</QUERY_COUNT_EXISTING_APPLICATIONS>
+
+	<QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_GROUP_BY_CLAUSE>
+	<![CDATA[group by model]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_GROUP_BY_CLAUSE>	
+	
+	<QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_FOR_SIMPLE_MENU>
+	<![CDATA[select application.id, application.name, application.description, application.status,
+		 application.publishMode, model.id, appOperation.operationType, appOperation.jobRequestId,
+		 appOperation.operationStatus, count(asset), application.creationType, application.sourceType 
+		 from Asset asset right join asset.application application inner join application.models model, 
+		 ApplicationOperation appOperation 
+		 where appOperation.applicationId = application.id and asset.originType != :assetOriginType
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_FOR_SIMPLE_MENU>
+
+	<QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD_FOR_SIMPLE_MENU>
+	<![CDATA[select count(application.id) from Asset asset right join asset.application application 
+		 inner join application.models model, ApplicationOperation appOperation 
+		 where appOperation.applicationId = application.id 
+		 and asset.originType != :assetOriginType
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD_FOR_SIMPLE_MENU>	
+
+	<QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_FOR_ADAVCNED_MENU>
+	<![CDATA[select application.id, application.name, application.description, application.status,
+		 application.publishMode, model.id, appOperation.operationType, appOperation.jobRequestId, 
+		 appOperation.operationStatus, count(asset), application.creationType 
+		 from Asset asset right join asset.application application 
+		 inner join application.models model, ApplicationOperation appOperation 
+		 where appOperation.applicationId = application.id and asset.originType = :assetOriginType
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_FOR_DASHBOARD_FOR_ADAVCNED_MENU>
+
+	<QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD_FOR_ADAVCNED_MENU>
+	<![CDATA[select count(application.id) from Asset asset right join asset.application application 
+		inner join application.models model, ApplicationOperation appOperation 
+		where appOperation.applicationId = application.id and asset.originType = :assetOriginType
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD_FOR_ADAVCNED_MENU>
+	
+	
+	<QUERY_GET_APP_OPERATIONS_BY_APP_ID>
+	<![CDATA[from ApplicationOperation ao
+		 where ao.applicationId=:applicationId
+	]]>
+	</QUERY_GET_APP_OPERATIONS_BY_APP_ID>
+	
+	
+	<QUERY_GET_APPLICATIONS_BY_USER_ID>
+	<![CDATA[from Application as app 
+		 where app.owner.id = :userId 
+	]]>
+	</QUERY_GET_APPLICATIONS_BY_USER_ID>
+	
+	
+	<QUERY_GET_APPLICATIONS_BY_IMAGE_ID>
+	<![CDATA[from Application app
+		 where app.imageId = :imageId
+	]]>
+	</QUERY_GET_APPLICATIONS_BY_IMAGE_ID>
+	
+	
+	<QUERY_GET_APPLICATIONS_BY_MODEL_ID>
+	<![CDATA[select model.applications 
+		from Model as model
+		where model.id=:modelId
+	]]>
+	</QUERY_GET_APPLICATIONS_BY_MODEL_ID>
+
+	<QUERY_GET_ALL_EXISTING_APPLICATIONS>
+	<![CDATA[from Application as application
+		 where 1 = 1
+	]]>
+	</QUERY_GET_ALL_EXISTING_APPLICATIONS>
+
+	<QUERY_GET_APPLICATIONS_FOR_VERTCAL_BY_PAGE>
+	<![CDATA[select application 
+		from VerticalAppWeight verticalAppWeight, Application application, Vertical vertical 
+		where verticalAppWeight.applicationId = application.id 
+		and verticalAppWeight.verticalId = vertical.id
+	]]>
+	</QUERY_GET_APPLICATIONS_FOR_VERTCAL_BY_PAGE>
+    
+	<QUERY_GET_COUNT_APPLICATIONS_FOR_VERTCAL_BY_PAGE>
+	<![CDATA[select count(application.name) 
+		from VerticalAppWeight verticalAppWeight, Application application, Vertical vertical 
+		where verticalAppWeight.applicationId = application.id 
+		and verticalAppWeight.verticalId = vertical.id
+	]]>
+	</QUERY_GET_COUNT_APPLICATIONS_FOR_VERTCAL_BY_PAGE>
+	
+	
+	<QUERY_GET_APPLICATIONS_BY_RANK>
+	<![CDATA[select app from Application as app 
+		 order by app.rank desc
+	]]>
+	</QUERY_GET_APPLICATIONS_BY_RANK>
+	
+	<QUERY_GET_APPLICATIONS_BY_SOURCE_TYPE>
+	<![CDATA[from Application app where app.sourceType = :appSourceType]]>
+	</QUERY_GET_APPLICATIONS_BY_SOURCE_TYPE>
+	
+	
+	<QUERY_GET_IMAGE_BY_APPLICATION_ID>
+	<![CDATA[from ApplicationDetail applicationDetail 
+		 where applicationDetail.applicationId = :applicationId
+	]]>
+	</QUERY_GET_IMAGE_BY_APPLICATION_ID>
+
+	<QUERY_GET_IMAGE_BY_APPLICATION_IMAGE_ID>
+	<![CDATA[select applicationDetail
+		 from ApplicationDetail applicationDetail,Application application
+		 where applicationDetail.applicationId = application.id 
+		 and application.imageId = :imageId and applicationDetail.applicationId = :applicationId
+	]]>
+	</QUERY_GET_IMAGE_BY_APPLICATION_IMAGE_ID>	
+	
+	<QUERY_APPLICATIONS_EXISTS>
+	<![CDATA[from Application as apps
+		 where apps.name=:applicationName 
+	]]>
+	</QUERY_APPLICATIONS_EXISTS>
+	
+	<QUERY_CLEAN_APPLICATION_OPERATION_DATA>
+	<![CDATA[DELETE FROM ApplicationOperation 
+		 WHERE operationType = :deleteOperationType AND operationStatus = :successStatus
+	]]>
+	</QUERY_CLEAN_APPLICATION_OPERATION_DATA>
+
+	<QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD>
+	<![CDATA[select count(distinct application.id)from Asset asset 
+		 right join asset.application application inner join application.models model, 
+		 ApplicationOperation appOperation 
+		 where appOperation.applicationId = application.id
+	]]>
+	</QUERY_GET_ALL_EXISTING_APP_INFO_COUNT_FOR_DASHBOARD>
+
+	<QUERY_GET_APPLICATION_BY_APP_KEY>
+	<![CDATA[from Application as app
+		 where app.applicationKey = :applicationKey 
+	]]>
+	</QUERY_GET_APPLICATION_BY_APP_KEY>
+	
+	<QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_PUBLISH_MODE>
+	<![CDATA[from Application app where app.status = :activeStatus and app.sourceType = :structuredAppSourceType and app.publishMode=:publishMode
+		 order by app.name
+	]]>
+	</QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_PUBLISH_MODE>
+	
+	<QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_USER_ID_INCLUDING_OTHER_COMMUNITY_APP>
+	<![CDATA[from Application app where app.status = :activeStatus and app.sourceType = :structuredAppSourceType and ((app.publishMode = :communityPublishMode AND app.owner.id != :userId) OR (app.owner.id = :userId))
+		 order by app.name
+	]]>
+	</QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_USER_ID_INCLUDING_OTHER_COMMUNITY_APP>
+	
+	<QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_USER_ID>
+	<![CDATA[from Application app where app.status = :activeStatus and app.sourceType = :structuredAppSourceType and app.owner.id = :userId
+		 order by app.name
+	]]>
+	</QUERY_GET_ALL_ACTIVE_STRUCTURED_APPLICATIONS_BY_USER_ID>
+				
+	
+	<QUERY_GET_ALL_APPLICATIONS_BY_USER_ID_INCLUDING_OTHER_COMMUNITY_APP>
+	<![CDATA[from Application app where (app.publishMode = :communityPublishMode AND app.owner.id != :userId) OR (app.owner.id = :userId)
+		 order by app.rank desc
+	]]>
+	</QUERY_GET_ALL_APPLICATIONS_BY_USER_ID_INCLUDING_OTHER_COMMUNITY_APP>
+	
+	<QUERY_GET_APPLICATION_BY_PUBLISH_MODE_BY_RANK>
+	<![CDATA[from Application as app
+		 where app.publishMode=:publishMode order by app.rank desc
+	]]>
+	</QUERY_GET_APPLICATION_BY_PUBLISH_MODE_BY_RANK>
+
+
+</queries>

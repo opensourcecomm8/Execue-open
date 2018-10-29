@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<rules>
+		<rule>
+			<rule-name>reportSelection</rule-name>
+			<rule-file>/platform/rules/reportSelection.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>1stSeriesOnYAxis</rule-name>
+			<rule-file>/platform/rules/seriesAllocationRules.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>sameColorAcrossMeasures</rule-name>
+			<rule-file>/platform/rules/acrossChartColorCoding.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>removeCommonLegendLabels</rule-name>
+			<rule-file>/platform/rules/acrossChartLegendItems.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>setChartSeriesColors</rule-name>
+			<rule-file>/platform/rules/chartViewTxSetChartSeriesColors.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>chartTitle</rule-name>
+			<rule-file>/platform/rules/titleRule.drl</rule-file>
+		</rule>
+		<rule>
+			<rule-name>barSize</rule-name>
+			<rule-file>/platform/rules/barWidthRule.drl</rule-file>
+		</rule>
+	</rules>
+</execue-configuration>

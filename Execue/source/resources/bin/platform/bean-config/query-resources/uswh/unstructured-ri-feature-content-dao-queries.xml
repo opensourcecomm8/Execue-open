@@ -1,0 +1,9 @@
+<queries>
+	<QUERY_GET_ALL_RI_FEATURE_CONTENT>
+	<![CDATA[from RIFeatureContent rfc where rfc.contextId = :contextId]]>
+	</QUERY_GET_ALL_RI_FEATURE_CONTENT>
+	
+	<QUERY_DELETE_RI_FEATURE_CONTENT_BY_CONTEXT_ID>		
+	<![CDATA[delete from RIFeatureContent  rfc where rfc.contextId = :contextId]]>	
+	</QUERY_DELETE_RI_FEATURE_CONTENT_BY_CONTEXT_ID>
+</queries>

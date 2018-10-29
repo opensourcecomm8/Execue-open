@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<content>
+		<preprocessor>
+			<max-chars-per-sentence>300</max-chars-per-sentence>
+		</preprocessor>
+	</content>
+</execue-configuration>

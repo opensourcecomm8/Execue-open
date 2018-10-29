@@ -1,0 +1,30 @@
+<queries>
+	<QUERY_GET_USER_NOTIFICATION_TEMPLATE>
+	<![CDATA[from NotificationTemplate where notificationType = :notificationType and templateType = :templateType]]>
+	</QUERY_GET_USER_NOTIFICATION_TEMPLATE>
+
+	<QUERY_GET_USER_NOTIFICATION_DETAILS>
+	<![CDATA[from NotificationDetail where notification.id = :notificationId
+	]]>
+	</QUERY_GET_USER_NOTIFICATION_DETAILS>
+
+	<QUERY_GET_USER_NOTIFICATIONS>
+	<![CDATA[from Notification where userId = :userId
+	]]>
+	</QUERY_GET_USER_NOTIFICATIONS>
+	
+	<QUERY_GET_NOTIFICATION_TEMPLATE_PARAMS>
+	<![CDATA[select templateType,paramNames from NotificationTemplate where notificationType = :notificationType
+	]]>
+	</QUERY_GET_NOTIFICATION_TEMPLATE_PARAMS>
+	
+	<QUERY_GET_USER_NOTIFICATIONS_COUNT>
+	<![CDATA[select count(notification.id) from Notification as notification where notification.userId = :userId
+	]]>
+	</QUERY_GET_USER_NOTIFICATIONS_COUNT>	
+	
+	<QUERY_GET_USER_NOTIFICATIONS_BY_PAGE>
+	<![CDATA[from Notification where userId = :userId
+	]]>
+	</QUERY_GET_USER_NOTIFICATIONS_BY_PAGE>	
+</queries>

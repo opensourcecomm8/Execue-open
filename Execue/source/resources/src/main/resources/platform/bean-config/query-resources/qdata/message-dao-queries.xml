@@ -1,0 +1,9 @@
+<queries>
+	<QUERY_DELETE_MESSAGES_BY_DATE>
+	<![CDATA[delete from Message where dateModified <= ?]]>
+	</QUERY_DELETE_MESSAGES_BY_DATE>
+	
+	<QUERY_GET_MESSAGES_BY_MAX_MODIFIED_DATE>
+	<![CDATA[select max(dateModified) from Message]]>
+	</QUERY_GET_MESSAGES_BY_MAX_MODIFIED_DATE>		
+</queries>	

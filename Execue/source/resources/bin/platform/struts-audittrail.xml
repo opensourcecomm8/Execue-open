@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Define mapping actions
+
+-->
+<struts>
+    
+	<package name="audittrail-default" namespace="/audittrail" extends="execue-console-default">
+		<action name="showUserAccessAuditlog"  class="auditLogAction">
+			<result name="input" type="tiles">audittrail.showUsersAuditlog</result>
+			<result name="error" type="tiles">audittrail.showUsersAuditlog</result> 
+			<result name="success" type="tiles">audittrail.showUsersAuditlog</result> 
+		</action>
+		
+		<action name="searchUserAccessAuditlog"  class="searchUserAccessAuditAction">
+			<result name="input" type="tiles">audittrail.searchUsersAuditlog</result>
+			<result name="error" type="tiles" >audittrail.searchUsersAuditlog</result> 
+			<result name="success" type="tiles" >audittrail.searchUsersAuditlog</result> 
+		</action>	
+		
+		<action name="showQISearchAuditlog"  class="auditLogAction">
+			<result name="input" type="tiles">audittrail.showQISearchAuditLog</result>
+			<result name="error" type="tiles">audittrail.showQISearchAuditLog</result> 
+			<result name="success" type="tiles">audittrail.showQISearchAuditLog</result> 
+		</action>
+		
+		<action name="searchQISearchAuditlog"  class="searchQISearchAuditAction">
+			<result name="input" type="tiles">audittrail.searchQISearchAuditlog</result>
+			<result name="error" type="tiles" >audittrail.searchQISearchAuditlog</result> 
+			<result name="success" type="tiles" >audittrail.searchQISearchAuditlog</result> 
+		</action>
+		
+	</package>
+	
+	<package name="audittrail-json" namespace="/audittrail" extends="execue-json-default">
+		<action name="showUsers" class="auditLogAction" method="showUsers">
+			<result name="success" type="json">
+				<param name="root">users</param>
+			</result>
+		</action>
+		
+		<action name="showAuditLogType" class="auditLogAction" method="showAuditLogType">
+			<result name="success" type="json">
+				<param name="root">auditLogTypes</param>
+			</result>
+		</action>
+		
+		<action name="showUserAccessAuditDetail" class="searchUserAccessAuditAction" method="getPageResults">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>	
+		<action name="showQISearchAuditDetail" class="searchQISearchAuditAction" method="getPageResults">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		
+			
+		
+	</package>
+</struts>

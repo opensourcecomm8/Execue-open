@@ -1,0 +1,77 @@
+/**
+ * Licensed to the Execue Software Foundation (ESF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ESF licenses this file
+ * to you under the Execue License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License. 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+package com.execue.handler.bean.mapping;
+
+import java.util.List;
+
+public class AssetTable {
+
+   private long              id;
+   private long              aedId;
+   private String            dispName;
+   private String            tableDisplayName;
+   private List<AssetColumn> cols;
+
+   public long getId () {
+      return id;
+   }
+
+   public void setId (long id) {
+      this.id = id;
+   }
+
+   public String getDispName () {
+      return dispName;
+   }
+
+   public void setDispName (String dispName) {
+      this.dispName = dispName;
+   }
+
+   public List<AssetColumn> getCols () {
+      return cols;
+   }
+
+   public void setCols (List<AssetColumn> cols) {
+      this.cols = cols;
+   }
+
+   public long getAedId () {
+      return aedId;
+   }
+
+   public void setAedId (long aedId) {
+      this.aedId = aedId;
+   }
+
+   /**
+    * @return the tableDisplayName
+    */
+   public String getTableDisplayName () {
+      return tableDisplayName;
+   }
+
+   /**
+    * @param tableDisplayName
+    *           the tableDisplayName to set
+    */
+   public void setTableDisplayName (String tableDisplayName) {
+      this.tableDisplayName = tableDisplayName;
+   }
+
+}

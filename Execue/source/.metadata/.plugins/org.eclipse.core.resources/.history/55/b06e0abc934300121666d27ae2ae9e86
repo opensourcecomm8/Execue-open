@@ -1,0 +1,52 @@
+# Default Properties file for use by StdSchedulerFactory
+# to create a Quartz Scheduler Instance, if a different
+# properties file is not explicitly specified.
+#
+
+org.quartz.scheduler.instanceName = DefaultQuartzScheduler
+org.quartz.scheduler.rmi.export = false
+org.quartz.scheduler.rmi.proxy = false
+org.quartz.scheduler.wrapJobExecutionInUserTransaction = false
+
+org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
+org.quartz.threadPool.threadCount = 10
+org.quartz.threadPool.threadPriority = 5
+org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread = true
+
+org.quartz.jobStore.misfireThreshold = 60000
+
+#org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore
+
+# Using JobStoreTX
+## Be sure to run the appropriate script(under docs/dbTables) first to create tables
+org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX
+
+# Configuring JDBCJobStore with the Table Prefix
+org.quartz.jobStore.tablePrefix = QRTZ_
+
+# Using DriverDelegate
+#org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.OracleDelegate
+#org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.DB2v8Delegate
+#org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.MSSQLDelegate
+#org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+#org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+
+org.quartz.jobStore.driverDelegateClass = @@mysql_quartz_jdbc_delegate_class@@
+
+# Using datasource
+org.quartz.jobStore.dataSource = qzDS
+
+# Define the datasource to use
+#org.quartz.dataSource.qzDS.driver = oracle.jdbc.driver.OracleDriver
+#org.quartz.dataSource.qzDS.URL = jdbc:oracle:thin:@10.10.52.60:1521:DEVDB
+#org.quartz.dataSource.qzDS.user = quartz
+#org.quartz.dataSource.qzDS.password = execue
+#org.quartz.dataSource.qzDS.maxConnections = 30 
+
+# Define the MySQL datasource to use
+org.quartz.dataSource.qzDS.driver = @@mysql_quartz_driver_class@@
+org.quartz.dataSource.qzDS.URL = @@mysql_quartz_schema@@
+org.quartz.dataSource.qzDS.user = @@mysql_quartz_username@@
+org.quartz.dataSource.qzDS.password = @@mysql_quartz_password@@
+org.quartz.dataSource.qzDS.maxConnections = 30 
+org.quartz.dataSource.qzDS.validationQuery = @@mysql_quartz_connection_validation_query@@

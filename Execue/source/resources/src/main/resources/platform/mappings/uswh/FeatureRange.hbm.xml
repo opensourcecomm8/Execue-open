@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.unstructured.FeatureRange" table="FEATURE_RANGE">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">FEATURE_RANGE</param>
+			</generator>
+		</id>
+        
+   		<property name="featureId" type="java.lang.Long">
+			<column name="FEATURE_ID" precision="10" scale="0" />
+        </property>
+        
+        <property name="rangeName" type="string">
+            <column name="RANGE_NAME" length="55"/>
+        </property>
+
+        <property name="startValue" type="java.lang.Double">
+            <column name="START_VALUE" precision="20" scale="0" />
+        </property>
+        
+        <property name="endValue" type="java.lang.Double">
+            <column name="END_VALUE" precision="20" scale="0" />
+        </property>        
+        
+   		<property name="rangeOrder" type="java.lang.Integer">
+			<column name="RANGE_ORDER" precision="10" scale="0" />
+        </property>
+
+        <property name="rangeType" type="checkType">
+			<column name="IS_RANGE_TYPE" length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

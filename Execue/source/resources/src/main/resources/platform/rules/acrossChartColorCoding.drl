@@ -1,0 +1,43 @@
+#created on: Sep 25, 2009
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Color;
+
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.SeriesAttributes;
+
+rule "sameColorAcrossMeasures"
+	when
+		chartCurve : ChartServer ( ID == "" )
+	then
+	
+	// get the number of measures based on the unique series name
+	Set seriesName = new HashSet();
+	
+	for (SeriesAttributes series : chartCurve.getSeries()) {
+		seriesName.add(series.getText());
+	}
+	
+	// over ride the colors for common named series
+	int numberOfDimensions = seriesName.size();
+	List<Color> currentColor = new ArrayList<Color>();
+	int seriesCntr = 0;
+	for (int alCntr = 0; alCntr < chartCurve.getData().getSeries(); alCntr++, seriesCntr++) {
+
+        SeriesAttributes series = chartCurve.getSeries().get(alCntr);
+		 
+		if(alCntr < numberOfDimensions)
+		 	currentColor.add(series.getColor());
+
+		if(seriesCntr == numberOfDimensions)
+			seriesCntr = 0;
+		 	
+        series.setColor(currentColor.get(seriesCntr));
+    }
+end

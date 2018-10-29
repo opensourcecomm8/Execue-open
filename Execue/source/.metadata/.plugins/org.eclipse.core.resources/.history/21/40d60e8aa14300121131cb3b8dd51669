@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	
+	<bean id="unstructuredWHConfigurationService" class="com.execue.uswh.configuration.impl.UnstructuredWHConfigurationServiceImpl">
+		<property name="unstructuredWHConfiguration">
+			<ref bean="unstructuredWHConfiguration"/>
+		</property>	
+	</bean>
+	
+	<bean id="unstructuredWHConfigurableService" class="com.execue.uswh.configuration.impl.UnstructuredWHConfigurableService">
+		<property name="unstructuredWHConfigurationService">
+			<ref bean="unstructuredWHConfigurationService"/>
+		</property>	
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService"/>
+		</property>	
+		<property name="unstructuredWarehouseRetrievalService">
+			<ref bean="unstructuredWarehouseRetrievalService"/>
+		</property>	
+	</bean>	
+		 
+	<bean id="unstructuredWarehouseDataAccessManager" class="com.execue.uswh.dataaccess.impl.UnstructuredWarehouseDataAccessManagerImpl" >
+		<property name="unstructuredRIFeatureContentDAO" ref="unstructuredRIFeatureContentDAO"/>
+		<property name="featureDAO" ref="featureDAO"/>
+		<property name="featureValueDAO" ref="featureValueDAO"/>
+		<property name="featureRangeDAO" ref="featureRangeDAO"/>
+		<property name="userQueryFeatureInformationDAO" ref="userQueryFeatureInformationDAO"/>
+		<property name="sourceContentDAO" ref="sourceContentDAO"/>
+		<property name="userQueryLocationInformationDAO" ref="userQueryLocationInformationDAO"/>
+		<property name="semantifiedContentDAO" ref="semantifiedContentDAO"/>
+		<property name="featureDetailDAO" ref="featureDetailDAO"/>
+		<property name="featureDependencyDAO" ref="featureDependencyDAO"/>			
+	</bean>
+
+	<bean id="unstructuredWarehouseManagementService"
+		class="com.execue.uswh.service.impl.UnstructuredWarehouseManagementServiceImpl">
+		<property name="unstructuredWarehouseDataAccessManager" ref="unstructuredWarehouseDataAccessManager" />
+	</bean>
+	
+	<bean id="unstructuredWarehouseRetrievalService" class="com.execue.uswh.service.impl.UnstructuredWarehouseRetrievalServiceImpl" >
+		<property name="unstructuredWarehouseDataAccessManager" ref="unstructuredWarehouseDataAccessManager"/>
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService"/>
+	</bean>
+	
+	<bean id="unstructuredWHConnectionMgmtService" class="com.execue.uswh.service.impl.UnstructuredWHConnectionMgmtServiceImpl" >
+		<property name="unstructuredWHPooledDataManager" ref="unstructuredWHPooledDataManager"/>
+	</bean>
+	
+	<bean id="unstructuredWHSolrConnectionMgmtService" class="com.execue.uswh.service.impl.UnstructuredWHSolrConnectionMgmtServiceImpl" >
+		<property name="solrPooledDataSourceManager" ref="solrPooledDataSourceManager"/>
+	</bean>
+	
+	<bean id="unstructuredWHFeatureContentLookupService" class="com.execue.uswh.service.impl.UnstructuredWHFeatureContentLookupServiceImpl" >
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService"/>
+	</bean>
+	
+	<bean id="unstructuredWarehouseHelper" class="com.execue.uswh.helper.UnstructuredWarehouseHelper" >
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService"/>
+		<property name="unstructuredWHFeatureContentLookupService" ref="unstructuredWHFeatureContentLookupService"/>
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService"/>        
+	</bean>
+	
+</beans>

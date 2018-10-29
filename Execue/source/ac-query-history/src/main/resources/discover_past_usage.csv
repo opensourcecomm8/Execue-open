@@ -1,0 +1,943 @@
+1#*#Account#*#Account Status#*#PERF_YM=200710,#*#2
+2#*#Account#*#Account Status#*#PERF_YM=JAN 2007,#*#2
+3#*#Account#*#Balance Transfer Amount Indicator#*#PERF_YM=JAN 2007,#*#4
+4#*#Account#*#Balance Transfer Balance Indicator, Bill Month#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=200701,#*#1
+5#*#Account#*#Balance Transfer Balance Indicator, Bill Month, Balance Transfer Amount Indicator#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+6#*#Account#*#Bill Month#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=200710,#*#4
+7#*#Account#*#Bill Month#*#CARD_TYPE_CD=Cash Rewards,#*#24
+8#*#Account#*#Bill Month#*#CARD_TYPE_CD=MORE,#*#4
+9#*#Account#*#Bill Month#*#CARD_TYPE_CD=MORE, PERF_YM=200701,#*#2
+10#*#Account#*#Bill Month#*#CASH_AMT_FLAG=Cash Advance Amount Indicator,#*#2
+11#*#Account#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#16
+12#*#Account#*#Bill Month#*#EXP_BT_FLAG=Non Balance Transfer,#*#2
+13#*#Account#*#Bill Month#*#EXT_STATUS=Bankrupt,#*#2
+14#*#Account#*#Bill Month#*#EXT_STATUS=Frozen,#*#4
+15#*#Account#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#28
+16#*#Account#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active, OPEN_IND=Open,#*#2
+17#*#Account#*#Bill Month#*#MRC_AMT_FLAG=Merchandise Amount Indicator, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+18#*#Account#*#Bill Month#*#MRC_AMT_FLAG=Merchandise Amount Indicator, PURCHASE_ACTIVE_FLAG=Purchase Active,#*#2
+19#*#Account#*#Bill Month#*#OPEN_IND=Open,#*#22
+20#*#Account#*#Bill Month#*#OVERLIMIT_FEE_FLAG=Overlimit,#*#68
+21#*#Account#*#Bill Month#*#PERF_YM=200701,#*#2
+22#*#Account#*#Bill Month#*#PERF_YM=200701, CARD_TYPE_CD=MORE,#*#2
+23#*#Account#*#Bill Month#*#PERF_YM=JAN 2006,#*#1
+24#*#Account#*#Bill Month#*#PERF_YM=JAN 2007,#*#2
+25#*#Account#*#Bill Month#*#PORT_SEG=High Profit Revolver All Other,#*#6
+26#*#Account#*#Bill Month#*#PORT_SEG=Inactive Other,#*#2
+27#*#Account#*#Bill Month#*#PORT_SEG=Moderate Revolver All Other,#*#2
+28#*#Account#*#Bill Month#*#PORT_SEG=Revolver Very High Risk,#*#2
+29#*#Account#*#Bill Month#*#PORT_SEG=Transactor High Revolve Potential,#*#4
+30#*#Account#*#Bill Month#*#PORT_SEG=Transactor Mid,#*#2
+31#*#Account#*#Bill Month#*#PORT_SEG_GRP=Missing,#*#2
+32#*#Account#*#Bill Month#*#PORT_SEG_GRP=Transactor,#*#2
+42#*#Account#*#Bill Month#*#PURCHASE_ACTIVE_FLAG=Purchase Active, MRC_AMT_FLAG=Merchandise Amount Indicator,#*#2
+43#*#Account#*#Bill Month#*#REVOLVE_FLAG=Revolving,#*#18
+44#*#Account#*#Bill Month#*#USAGE_SEG=Almost Monthlies,#*#2
+45#*#Account#*#Bill Month#*#USAGE_SEG=Balance Paid Off,#*#2
+46#*#Account#*#Bill Month#*#USAGE_SEG=Big Ticket,#*#2
+47#*#Account#*#Bill Month#*#USAGE_SEG=Current Balance,#*#6
+48#*#Account#*#Bill Month#*#USAGE_SEG=High Frequency Monthlies,#*#2
+49#*#Account#*#Bill Month#*#USAGE_SEG=Infrequent Users,#*#2
+50#*#Account#*#Bill Month#*#USAGE_SEG=Low Frequency Monthlies,#*#2
+51#*#Account#*#Bill Month#*#USAGE_SEG=Purchased 13-24 months ago,#*#6
+52#*#Account#*#Bill Month#*#USAGE_SEG=Purchased 25-36 mosths Ago,#*#4
+53#*#Account#*#Bill Month#*#USAGE_SEG_GRP=1-5s,#*#2
+54#*#Account#*#Bill Month#*#USAGE_SEG_GRP=Balance Only,#*#6
+55#*#Account#*#Bill Month#*#USAGE_SEG_GRP=Monthlies,#*#2
+56#*#Account#*#Bill Month#*#VNTG_YM=200601,#*#4
+57#*#Account#*#Bill Month#*#VNTG_YM=200701,#*#2
+58#*#Account#*#Bill Month, Account Center Registered#*#PERF_YM=200701, AC_REG=Account Center Registered,#*#16
+59#*#Account#*#Bill Month, Account Center Registered#*#PERF_YM=JAN 2007, AC_REG=Account Center Registered,#*#13
+60#*#Account#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#16
+61#*#Account#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200710, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+62#*#Account#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#14
+63#*#Account#*#Bill Month, Balance Transfer Indicator#*#PERF_YM=200701, EXP_BT_FLAG=Non Balance Transfer,#*#3
+64#*#Account#*#Bill Month, Gross Active#*#PERF_YM=200701, GROSS_ACTIVE_FLAG=Gross Active,#*#5
+65#*#Account#*#Bill Month, Gross Active#*#PERF_YM=JAN 2007, GROSS_ACTIVE_FLAG=Gross Active,#*#7
+66#*#Account#*#Bill Month, Gross Active#*#PERF_YM=OCT 2007, GROSS_ACTIVE_FLAG=Gross Active,#*#1
+67#*#Account#*#Bill Month, Open#*#PERF_YM=200701, OPEN_IND=Open,#*#4
+68#*#Account#*#Bill Month, Open#*#PERF_YM=200710, OPEN_IND=Open,#*#4
+69#*#Account#*#Bill Month, Portfolio Segment Group#*#PERF_YM=JAN 2007, PORT_SEG_GRP=Inactive,#*#1
+70#*#Account#*#Bill Month, Purchase Active Indicator#*#PERF_YM=200710, PURCHASE_ACTIVE_FLAG=Purchase Active,#*#2
+71#*#Account#*#Bill Month, Revolving#*#PERF_YM=JAN 2006, REVOLVE_FLAG=Revolving,#*#1
+72#*#Account#*#Bill Month, Usage Segment#*#PERF_YM=200601, USAGE_SEG=Recent Actives,#*#1
+73#*#Account#*#Bill Month, Usage Segment#*#PERF_YM=200701, USAGE_SEG=Recent Actives,#*#1
+74#*#Account#*#Fico Score#*#PERF_YM=200710,#*#12
+75#*#Account#*#Fico Score#*#PERF_YM=200710, OPEN_IND=Open,#*#2
+76#*#Account#*#Gross Active#*#PERF_YM=JAN 2007,#*#2
+77#*#Account#*#Joining Month, Bill Month#*#VNTG_YM=200702, PERF_YM=200703,#*#1
+78#*#Account#*#Open#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=200710,#*#2
+79#*#Account#*#Overlimit, Bill Month#*#OVERLIMIT_FEE_FLAG=Overlimit, PERF_YM=200701,#*#1
+80#*#Account#*#Portfolio Segment Group#*#PERF_YM=200701,#*#10
+81#*#Account#*#Portfolio Segment Group#*#PERF_YM=200710,#*#6
+82#*#Account#*#Portfolio Segment Group#*#PERF_YM=200710, OPEN_IND=Open,#*#4
+83#*#Account#*#Product#*#PERF_YM=200701, OPEN_IND=Open,#*#2
+84#*#Account#*#Product#*#PERF_YM=200701, PERF_YM=200704, CARD_TYPE_CD=MORE,#*#2
+85#*#Account#*#Product#*#PERF_YM=200710,#*#8
+86#*#Account#*#Product#*#PERF_YM=200710, OPEN_IND=Open,#*#10
+87#*#Account#*#Product#*#PERF_YM=200710, PURCHASE_ACTIVE_FLAG=Purchase Active, GROSS_ACTIVE_FLAG=Gross Active, OPEN_IND=Open,#*#16
+88#*#Account#*#Product#*#PURCHASE_ACTIVE_FLAG=Purchase Active, PERF_YM=200710,#*#6
+89#*#Account#*#Total Credit Limit#*#OPEN_IND=Open, PERF_YM=200701,#*#2
+90#*#Account#*#Total Credit Limit#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#8
+91#*#Account#*#Total Credit Limit#*#PERF_YM=200701, EXP_BT_FLAG=Non Balance Transfer,#*#2
+92#*#Account#*#Usage Segment Group#*#PERF_YM=200710, OPEN_IND=Open,#*#2
+93#*#Account#*#Usage Segment Group#*#PURCHASE_ACTIVE_FLAG=Purchase Active, PERF_YM=200710, OPEN_IND=Open,#*#4
+94#*#Account#*#Usage Segment#*#PERF_YM=200710, OPEN_IND=Open,#*#2
+95#*#Account#*#Year#*#PERF_YR=YR 2007,#*#1
+96#*#Account#*#Account Status#*#SL_PERF_YM=200710,#*#2
+97#*#Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#2
+98#*#Account#*#Bill Month#*#SL_CARD_TYPE_CD=MORE,#*#4
+99#*#Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#2
+100#*#Account#*#Bill Month#*#SL_EXT_STATUS=Bankrupt,#*#2
+101#*#Account#*#Bill Month#*#SL_EXT_STATUS=Frozen,#*#4
+102#*#Account#*#Bill Month#*#SL_OVERLIMIT_FEE_FLAG=Overlimit,#*#68
+103#*#Account#*#Bill Month#*#SL_PERF_YM=200701,#*#3
+104#*#Account#*#Bill Month#*#SL_PERF_YM=200703,#*#1
+105#*#Account#*#Bill Month#*#SL_PORT_SEG=High Profit Revolver All Other,#*#6
+106#*#Account#*#Bill Month#*#SL_PORT_SEG=Inactive Other,#*#2
+107#*#Account#*#Bill Month#*#SL_PORT_SEG=Moderate Revolver All Other,#*#2
+108#*#Account#*#Bill Month#*#SL_PORT_SEG=Revolver Very High Risk,#*#2
+109#*#Account#*#Bill Month#*#SL_PORT_SEG=Transactor High Revolve Potential,#*#4
+110#*#Account#*#Bill Month#*#SL_PORT_SEG=Transactor Mid,#*#2
+111#*#Account#*#Bill Month#*#SL_PORT_SEG_GRP=Missing,#*#2
+112#*#Account#*#Bill Month#*#SL_PORT_SEG_GRP=Transactor,#*#2
+113#*#Account#*#Bill Month#*#SL_REVOLVE_FLAG=Revolving,#*#18
+114#*#Account#*#Bill Month#*#SL_USAGE_SEG=Almost Monthlies,#*#2
+115#*#Account#*#Bill Month#*#SL_USAGE_SEG=Balance Paid Off,#*#2
+116#*#Account#*#Bill Month#*#SL_USAGE_SEG=Big Ticket,#*#2
+117#*#Account#*#Bill Month#*#SL_USAGE_SEG=Current Balance,#*#6
+118#*#Account#*#Bill Month#*#SL_USAGE_SEG=High Frequency Monthlies,#*#2
+119#*#Account#*#Bill Month#*#SL_USAGE_SEG=Infrequent Users,#*#2
+120#*#Account#*#Bill Month#*#SL_USAGE_SEG=Low Frequency Monthlies,#*#2
+121#*#Account#*#Bill Month#*#SL_USAGE_SEG=Purchased 13-24 months ago,#*#6
+122#*#Account#*#Bill Month#*#SL_USAGE_SEG=Purchased 25-36 mosths Ago,#*#4
+123#*#Account#*#Bill Month#*#SL_USAGE_SEG_GRP=1-5s,#*#2
+124#*#Account#*#Bill Month#*#SL_USAGE_SEG_GRP=Balance Only,#*#6
+125#*#Account#*#Bill Month#*#SL_USAGE_SEG_GRP=Monthlies,#*#2
+126#*#Account#*#Bill Month, Portfolio Segment Group#*#SL_PORT_SEG_GRP=Inactive,#*#1
+127#*#Account#*#Fico Score#*#SL_PERF_YM=200710,#*#12
+128#*#Account#*#Overlimit, Bill Month#*#SL_OVERLIMIT_FEE_FLAG=Overlimit, SL_PERF_YM=200701,#*#1
+129#*#Account#*#Portfolio Segment Group#*#SL_PERF_YM=200701,#*#8
+130#*#Account#*#Portfolio Segment Group#*#SL_PERF_YM=200710,#*#6
+131#*#Account#*#Product#*#SL_PERF_YM=200701,#*#2
+132#*#Account#*#Product#*#SL_PERF_YM=200710,#*#4
+133#*#Account#*#Product, Bill Month#*#SL_CARD_TYPE_CD=MORE, SL_PERF_YM=200701,#*#6
+134#*#Account#*#Purchase Active Indicator, Bill Month#*#SL_PURCHASE_ACTIVE_FLAG=Active, SL_PERF_YM=200710,#*#2
+135#*#Account#*#Revolving, Bill Month#*#SL_REVOLVE_FLAG=Revolving,#*#1
+136#*#Account, Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, VNTG_YM=200612, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+137#*#Acct_Age#*#Bill Month#*#OPEN_IND=Open,#*#4
+138#*#Acct_Age#*#Portfolio Segment Group#*#PERF_YM=200710, OPEN_IND=Open,#*#8
+139#*#Acct_Age#*#Portfolio Segment#*#GOOD_BAL_FLAG=Good Balance Indicator,#*#13
+140#*#Acct_Age#*#Portfolio Segment#*#PERF_YM=JAN 2006, GOOD_BAL_FLAG=Good Balance Indicator,#*#4
+141#*#Acct_Age#*#Year, Bill Month, Balance Transfer Amount Indicator, Merchandise Sales Amount#*#PERF_YR=YR 2007, PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator, MRC_AMT=0,#*#1
+142#*#Acct_Age, Good_Bal#*#Portfolio Segment#*#PERF_YR=2006,#*#3
+143#*#BalTransInd, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#3
+144#*#BalTransInd, Account#*#Total Credit Limit#*#SL_PERF_YM=200701,#*#4
+145#*#Billing_Bal#*#Behavior Score#*#PERF_YM=200701,#*#4
+146#*#Billing_Bal#*#Bill Month#*#CHARGED_OFF=Charged Off,#*#6
+147#*#Billing_Bal#*#Bill Month#*#CLOSE_IND=Close,#*#2
+148#*#Billing_Bal#*#Bill Month#*#CYCL_3_PLUS_DLQ=Delinquent Three Plus,#*#2
+149#*#Billing_Bal#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#2
+150#*#Billing_Bal#*#Bill Month#*#FICO_SCORE_NUMBER=0,#*#10
+151#*#Billing_Bal#*#Bill Month#*#FICO_SCORE_NUMBER=750,#*#4
+152#*#Billing_Bal#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#6
+153#*#Billing_Bal#*#Bill Month#*#MRC_AMT=0, CYCL_5_DLQ=Delinquent Five, DAYS_DELINQUENT=90+,#*#2
+154#*#Billing_Bal#*#Bill Month#*#OPEN_IND=Open,#*#4
+155#*#Billing_Bal#*#Bill Month#*#PERF_YM=200701, FICO_SCORE_NUMBER=750,#*#2
+157#*#Billing_Bal#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200701,#*#2
+158#*#Billing_Bal#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=JAN 2007,#*#3
+159#*#Billing_Bal#*#Fico Score#*#PERF_YM=200701,#*#14
+160#*#Billing_Bal#*#Merchandise Sales Amount#*#PERF_YM=200701,#*#2
+161#*#Billing_Bal#*#Overlimit, Bill Month#*#OVERLIMIT_FEE_FLAG=Overlimit, PERF_YM=200701,#*#1
+162#*#Billing_Bal, Account#*#Behavior Score#*#SL_PERF_YM=200701,#*#4
+163#*#Billing_Bal, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=700-720,#*#4
+164#*#Billing_Bal, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#6
+165#*#Billing_Bal, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#4
+166#*#Billing_Bal, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#3
+167#*#Billing_Bal, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal, SL_PERF_YM=200701,#*#2
+168#*#Billing_Bal, Account#*#Fico Score#*#SL_PERF_YM=200701,#*#24
+169#*#Billing_Bal, Account#*#Merchandise Sales Amount#*#SL_PERF_YM=200701,#*#4
+170#*#Billing_Bal, Account#*#Overlimit, Bill Month#*#SL_OVERLIMIT_FEE_FLAG=Overlimit, SL_PERF_YM=200701,#*#1
+171#*#Billing_Bal, Billing_Bal_, Merch_Amt#*#Bill Month#*#PERF_YM=200610,#*#4
+172#*#Billing_Bal, BScore, FICO#*#Fico Score#*#PERF_YM=200610,#*#2
+173#*#Billing_Bal, BT_Bal, Finance_Charge, BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=MAY 2007,#*#4
+174#*#Billing_Bal, BT_Bal, Finance_Charge, BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=MAY 2007, CASH_AMT_FLAG=Cash Advance Amount Indicator,#*#4
+175#*#Billing_Bal, FICO#*#Bill Month#*#CARD_TYPE_CD=MILES,#*#4
+176#*#Billing_Bal, FICO#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#4
+177#*#Billing_Bal, FICO#*#Bill Month#*#PERF_YM=200710,#*#1
+178#*#Billing_Bal, FICO#*#Bill Month#*#PERF_YM=OCT 2007,#*#1
+179#*#Billing_Bal, FICO#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#28
+180#*#Billing_Bal, FICO, Account#*#Bill Month#*#SL_CARD_TYPE_CD=MILES,#*#4
+181#*#Billing_Bal, FICO, Account#*#Bill Month#*#SL_PERF_YM=200710,#*#1
+182#*#Billing_Bal, FICO, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#4
+183#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Behavior Score#*#PERF_YM=200710,#*#2
+184#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#12
+185#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=MAY 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+186#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Fico Score#*#PERF_YM=200701,#*#4
+187#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Fico Score#*#PERF_YM=200710,#*#8
+188#*#Billing_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200610,#*#1
+189#*#Billing_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#5
+190#*#Billing_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200701, CHARGED_OFF=Non Charged Off, REVOLVE_FLAG=Revolving,#*#2
+191#*#Billing_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200710,#*#1
+192#*#Billing_Bal, Merch_Amt#*#Fico Score#*#PERF_YM=200701,#*#4
+193#*#Billing_Bal, Merch_Amt#*#Fico Score#*#PERF_YM=JAN 2007,#*#4
+194#*#Billing_Bal, Merch_Amt, FICO#*#Bill Month#*#VNTG_YM=200701,#*#8
+195#*#Billing_Bal#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#4
+196#*#Billing_Bal#*#Bill Month#*#FICO_SCORE_NUMBER=0,#*#6
+197#*#Billing_Bal#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active, PORT_SEG_GRP=Inactive,#*#2
+198#*#Billing_Bal#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#4
+199#*#Billing_Bal#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200701,#*#2
+200#*#Billing_Bal#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=JAN 2007,#*#2
+201#*#Billing_Bal, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#8
+202#*#Billing_Bal, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#4
+203#*#Billing_Bal, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#2
+204#*#Billing_Bal, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal, SL_PERF_YM=200701,#*#2
+205#*#Billing_Bal, FICO#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#8
+206#*#Billing_Bal, FICO#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#12
+207#*#Billing_Bal, FICO, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#12
+208#*#Billing_Bal, Gross_Active, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#4
+209#*#BScore#*#Bill Month#*#PERF_YM=200701,#*#1
+210#*#BScore, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#1
+211#*#BScore, Billing_Bal, FICO#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#4
+212#*#BScore, FICO#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=200701,#*#4
+213#*#BScore, FICO#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+214#*#BScore, FICO#*#Product#*#PERF_YM=200701,#*#4
+215#*#BScore, FICO, Merch_Amt#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+216#*#BScore, Util, FICO#*#Bill Month#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+217#*#BScore, Util, FICO#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+218#*#BScore, Util, FICO, FICO_#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#4
+219#*#BScore, Util, Merch_Amt, FICO#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=200701,#*#4
+220#*#BT_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200610,#*#2
+221#*#BT_Amt, BT_Amt_, Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007, BT_FEE_FLAG=Balance Transfer Fee Indicator,#*#4
+222#*#BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007, BT_FEE_FLAG=Balance Transfer Fee Indicator,#*#4
+223#*#BT_Amt, Merch_Amt#*#Product#*#EXT_STATUS=Open R,#*#2
+224#*#BT_Amt, Merch_Amt#*#Product#*#PERF_YM=200609, PERF_YM=200701,#*#8
+226#*#BT_Bal#*#Bill Month#*#PERF_YM=200710,#*#1
+227#*#BT_Bal#*#Fico Score#*#PERF_YM=200710,#*#10
+228#*#BT_Bal#*#Fico Score#*#PERF_YM=OCT 2007,#*#6
+229#*#BT_Bal, Account#*#Bill Month#*#SL_PERF_YM=200710,#*#1
+230#*#BT_Bal, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#20
+231#*#BT_Bal, Account#*#Fico Score#*#SL_PERF_YM=OCTOBER 2007,#*#12
+232#*#BT_Bal, BT_Amt, Acct_Age, FICO, Merch_Amt, Net_Inc#*#Bill Month#*#AC_REG=Account Center Registered, PERF_YM=200701,#*#4
+233#*#BT_Bal, Finance_Charge, BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=MAY 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+234#*#BT_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#1
+235#*#BT_Bal, Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#1
+236#*#BT_Bal, Net_Inc, Merch_Amt, BT_Amt, FICO#*#Bill Month#*#CARD_TYPE_CD=Cash Rewards,#*#28
+237#*#BT_Fee#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+238#*#CashAdvAmtInd, Merch_Amt, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#4
+239#*#Cash_Adv_Bal, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#4
+240#*#Cash_Adv__Amt#*#Bill Month#*#CYCL_BAL_FLAG=Billing Balance Indicator,#*#2
+341#*#DLQOneBal#*#Bill Month#*#CYCL_1_DLQ=Delinquent One,#*#4
+342#*#DLQOneBal, DLQTwoBal, DLQThreeBal, Account#*#Bill Month#*#SL_CARD_TYPE_CD=Cash Rewards,#*#60
+343#*#DLQOneBal, DLQTwoBal, DLQThreeBal, Account#*#Bill Month#*#SL_CARD_TYPE_CD=MORE,#*#140
+344#*#DLQThree_PERCENT, DLQOne_PERCENT, DLQTwo_PERCENT, Account#*#Bill Month#*#SL_CARD_TYPE_CD=Cash Rewards,#*#44
+345#*#DLQTwoBal, DLQOneBal, DLQThreeBal#*#Bill Month#*#CARD_TYPE_CD=MORE,#*#4
+346#*#DLQTwoBal, DLQOneBal, DLQThreeBal#*#Bill Month#*#CARD_TYPE_CD=Cash Rewards,#*#84
+347#*#DLQTwoBal, DLQOneBal, DLQThreeBal#*#Bill Month#*#CARD_TYPE_CD=MORE,#*#136
+348#*#DLQ_Bal#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#2
+349#*#DLQ_Bal#*#Bill Month#*#PERF_YM=JAN 2007,#*#1
+350#*#DLQ_Bal#*#Bill Month#*#PERF_YM=OCT 2007,#*#1
+351#*#DLQ_Bal, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#4
+352#*#Earned_CBB, Merch_Amt#*#Bill Month#*#PERF_YM=200701, CARD_TYPE_CD=MORE,#*#2
+353#*#FICO#*#Bill Month#*#AC_LOGIN=Account Center Login,#*#4
+354#*#FICO#*#Bill Month#*#CARD_TYPE_CD=Cash Rewards,#*#2
+355#*#FICO#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#4
+356#*#FICO#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#6
+357#*#FICO#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+358#*#FICO#*#Bill Month#*#PERF_YM=200701, GROSS_ACTIVE_FLAG=Gross Active,#*#2
+359#*#FICO#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#12
+360#*#FICO#*#Bill Month#*#TOT_MRC_BAL_FLAG=Retail Balance With Expired B T Indicator,#*#4
+361#*#FICO#*#Bill Month#*#USAGE_SEG_GRP=Balance Only, USAGE_SEG_GRP=Balance Only,#*#2
+362#*#FICO#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+363#*#FICO, Account#*#Bill Month#*#SL_CARD_TYPE_CD=Cash Rewards,#*#4
+364#*#FICO, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#8
+365#*#FICO, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#24
+366#*#FICO, Billing_Bal, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#24
+367#*#FICO, BScore, Account#*#Product#*#SL_PERF_YM=200701,#*#4
+368#*#FICO, BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=200605,#*#2
+369#*#FICO, Finance_Charge, Merch_Amt, Account#*#Bill Month#*#RL_CYCL_BAL=100-1000,#*#8
+370#*#FICO, Finance_Charge, Merch_Amt, Billing_Bal, Account#*#Fico Score#*#SL_PERF_YM=200701,#*#4
+371#*#FICO, Merch_Amt#*#Bill Month#*#CASH_AMT_FLAG=Cash Advance Amount Indicator,#*#40
+372#*#FICO, Merch_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200706,#*#4
+373#*#FICO, Merch_Amt#*#Bill Month#*#PERF_YM=200610,#*#2
+374#*#FICO, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#4
+375#*#FICO, Merch_Amt#*#Bill Month#*#PERF_YM=200710,#*#4
+376#*#FICO, Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2006,#*#3
+377#*#FICO, Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007,#*#1
+378#*#FICO, Merch_Amt#*#Billing Balance#*#PERF_YM=200710,#*#4
+379#*#FICO, Merch_Amt, Account#*#Bill Month#*#SL_REVOLVE_FLAG=Revolving,#*#4
+380#*#FICO, Merch_Amt, Account#*#Bill Month, Fico Score#*#SL_PERF_YM=200701, RL_FICO_SCORE_NUMBER=760 Plus,#*#1
+381#*#FICO, Merch_Amt, Account#*#Billing Balance#*#SL_PERF_YM=200710,#*#4
+382#*#FICO, Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200701,#*#4
+383#*#FICO, Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#4
+384#*#FICO, Util#*#Bill Month#*#PERF_YM=200701,#*#1
+385#*#FICO, Util#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+386#*#FICO, Util, Merch_Amt#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+387#*#Finance_Charge#*#Bill Month#*#DEL_BAL_FLAG=Delinquent, OPEN_IND=Open, REVOLVE_FLAG=Revolving,#*#24
+388#*#Finance_Charge#*#Bill Month#*#OPEN_IND=Open, CYCL_BAL=0,#*#2
+389#*#Finance_Charge#*#Bill Month#*#PERF_YM=200701, REVOLVE_FLAG=Revolving,#*#18
+390#*#Finance_Charge#*#Bill Month#*#PERF_YM=JAN 2007, REVOLVE_FLAG=Revolving,#*#20
+391#*#Finance_Charge, Billing_Bal#*#Bill Month#*#OPEN_IND=Open,#*#48
+392#*#Finance_Charge, Billing_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#2
+393#*#Finance_Charge, Billing_Bal, Merch_Amt#*#Bill Month#*#VNTG_YM=200701,#*#4
+394#*#Finance_Charge, Billing_Bal, Merch_Amt#*#Fico Score#*#PERF_YM=200701,#*#4
+395#*#Finance_Charge, Billing_Bal, Merch_Amt, FICO#*#Bill Month#*#PERF_YM=200701,#*#1
+396#*#Finance_Charge, FICO, Merch_Amt, Account#*#Bill Month#*#RL_CYCL_BAL=1000-2500,#*#12
+397#*#Finance_Charge, Merch_Amt#*#Behavior Score#*#PERF_YM=200710,#*#2
+399#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#18
+400#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=200702,#*#2
+401#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=FEB 2007,#*#4
+402#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007,#*#1
+403#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PORT_SEG=Transactor High Revolve Potential, PERF_YM=200702,#*#56
+404#*#Finance_Charge, Merch_Amt#*#Bill Month#*#PORT_SEG=Transactor High Revolve Potential, PERF_YM=FEB 2007,#*#60
+405#*#Finance_Charge, Merch_Amt#*#Bill Month#*#REVOLVE_FLAG=Revolving,#*#10
+406#*#Finance_Charge, Merch_Amt#*#Billing Balance#*#PERF_YM=200701,#*#2
+407#*#Finance_Charge, Merch_Amt#*#Billing Balance#*#PERF_YM=200710,#*#8
+408#*#Finance_Charge, Merch_Amt#*#Fico Score#*#PERF_YM=200701,#*#8
+409#*#Finance_Charge, Merch_Amt#*#Fico Score#*#PERF_YM=200701, REVOLVE_FLAG=Revolving,#*#4
+410#*#Finance_Charge, Merch_Amt#*#Fico Score#*#PERF_YM=200710,#*#4
+411#*#Finance_Charge, Merch_Amt, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#4
+413#*#Finance_Charge, Merch_Amt, Account#*#Billing Balance#*#SL_PERF_YM=200710,#*#10
+414#*#Finance_Charge, Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200701,#*#4
+415#*#Finance_Charge, Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#4
+416#*#Finance_Charge, Merch_Amt, Billing_Bal, Account#*#Billing Balance#*#SL_PERF_YM=200710,#*#4
+417#*#Finance_Charge, Merch_Amt, Billing_Bal, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#10
+418#*#Finance_Charge, Merch_Amt, FICO#*#Bill Month#*#PERF_YM=200701,#*#1
+419#*#Finance_Charge, Merch_Amt, Merch_Amt_#*#Bill Month#*#PERF_YM=NOV 2006,#*#16
+420#*#Finance_Charge, Merch_Bal#*#Bill Month, Bill Month#*#PERF_YM=200701, PERF_YM=200702,#*#1
+421#*#Finance_Charge, Rev_Bal, Merch_Amt#*#Bill Month#*#PERF_YM=MAY 2007,#*#4
+422#*#Gross_Active#*#Open#*#PERF_YM=200701,#*#2
+423#*#Gross_Active, Open, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#1
+424#*#Gross_Active, PurchActiveInd, Open, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#1
+425#*#Gross_Active, PurchActiveInd, Open, Account#*#Product#*#SL_PERF_YM=200701,#*#4
+455#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open,#*#2
+456#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#1
+458#*#Merch_Amt#*#Behavior Score#*#PERF_YM=200701,#*#2
+459#*#Merch_Amt#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+460#*#Merch_Amt#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=200701,#*#26
+461#*#Merch_Amt#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#14
+462#*#Merch_Amt#*#Bill Month#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+465#*#Merch_Amt#*#Bill Month#*#CARD_TYPE_CD=Miles Rewards,#*#6
+466#*#Merch_Amt#*#Bill Month#*#CARD_TYPE_CD=MILES,#*#14
+467#*#Merch_Amt#*#Bill Month#*#CARD_TYPE_CD=MORE,#*#14
+468#*#Merch_Amt#*#Bill Month#*#CASH_AMT_FLAG=Cash Advance Amount Indicator,#*#10
+469#*#Merch_Amt#*#Bill Month#*#CYCL_1_DLQ=Delinquent One,#*#2
+470#*#Merch_Amt#*#Bill Month#*#CYCL_BAL=2000,#*#2
+471#*#Merch_Amt#*#Bill Month#*#DEBIT_ACTIVE_FLAG=Debit Active,#*#2
+472#*#Merch_Amt#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#6
+473#*#Merch_Amt#*#Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200705,#*#2
+474#*#Merch_Amt#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#4
+475#*#Merch_Amt#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active, CLOSE_IND=Close,#*#2
+479#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open,#*#12
+480#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open, GROSS_ACTIVE_FLAG=Gross Active,#*#38
+481#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200511,#*#2
+482#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200610,#*#8
+483#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200701,#*#6
+484#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200710,#*#20
+485#*#Merch_Amt#*#Bill Month#*#PERF_YM=200601,#*#6
+486#*#Merch_Amt#*#Bill Month#*#PERF_YM=200610,#*#6
+487#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#47
+488#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#68
+489#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701, CARD_TYPE_CD=MORE,#*#8
+490#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701, REVOLVE_FLAG=Revolving,#*#2
+491#*#Merch_Amt#*#Bill Month#*#PERF_YM=200702,#*#2
+492#*#Merch_Amt#*#Bill Month#*#PERF_YM=200710,#*#3
+493#*#Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007,#*#7
+494#*#Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#34
+495#*#Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, BT_FEE_FLAG=Balance Transfer Fee Indicator,#*#2
+496#*#Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, REVOLVE_FLAG=Revolving,#*#2
+497#*#Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007,#*#4
+498#*#Merch_Amt#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#12
+505#*#Merch_Amt#*#Bill Month#*#REVOLVE_FLAG=Revolving,#*#60
+506#*#Merch_Amt#*#Bill Month#*#VNTG_YM=200301,#*#16
+507#*#Merch_Amt#*#Bill Month#*#VNTG_YM=200601,#*#4
+508#*#Merch_Amt#*#Bill Month#*#VNTG_YM=200701,#*#1054
+509#*#Merch_Amt#*#Bill Month#*#VNTG_YM=200702,#*#2
+510#*#Merch_Amt#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#5
+511#*#Merch_Amt#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+512#*#Merch_Amt#*#Bill Month, Bill Month#*#PERF_YM=200701, PERF_YM=200601,#*#1
+513#*#Merch_Amt#*#Bill Month, Bill Month#*#PERF_YM=200702, PERF_YM=200701,#*#4
+514#*#Merch_Amt#*#Bill Month, Gross Active#*#PERF_YM=200710, GROSS_ACTIVE_FLAG=Gross Active,#*#1
+515#*#Merch_Amt#*#Bill Month, Portfolio Segment Group#*#PERF_YM=200710, PORT_SEG_GRP=Inactive,#*#1
+516#*#Merch_Amt#*#Billing Balance#*#PERF_YM=200701,#*#38
+517#*#Merch_Amt#*#Billing Balance#*#PERF_YM=200710,#*#4
+518#*#Merch_Amt#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200701,#*#1
+519#*#Merch_Amt#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200710,#*#1
+520#*#Merch_Amt#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=JAN 2007,#*#1
+521#*#Merch_Amt#*#Delinquent, Bill Month, Gross Active#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200701, GROSS_ACTIVE_FLAG=Gross Active,#*#1
+522#*#Merch_Amt#*#Fico Score#*#PERF_YM=200601,#*#2
+523#*#Merch_Amt#*#Fico Score#*#PERF_YM=200701,#*#212
+524#*#Merch_Amt#*#Fico Score#*#PERF_YM=200710,#*#8
+525#*#Merch_Amt#*#Fico Score#*#PERF_YM=JAN 2007,#*#2
+526#*#Merch_Amt#*#Overlimit, Bill Month#*#OVERLIMIT_FEE_FLAG=Overlimit, PERF_YM=200710,#*#1
+527#*#Merch_Amt#*#Overlimit, Year#*#OVERLIMIT_FEE_FLAG=Overlimit, PERF_YR=2007,#*#1
+528#*#Merch_Amt#*#Usage Segment Group#*#PERF_YM=200710,#*#2
+529#*#Merch_Amt#*#Year#*#PERF_YR=2007,#*#9
+530#*#Merch_Amt#*#Year#*#PERF_YR=YR 2007,#*#3
+531#*#Merch_Amt, Account#*#Behavior Score#*#SL_PERF_YM=200701,#*#4
+532#*#Merch_Amt, Account#*#Bill Month#*#RL_FICO_SCORE_NUMBER=760-HI,#*#12
+533#*#Merch_Amt, Account#*#Bill Month#*#SL_CARD_TYPE_CD=101,#*#4
+534#*#Merch_Amt, Account#*#Bill Month#*#SL_CARD_TYPE_CD=MILES,#*#8
+535#*#Merch_Amt, Account#*#Bill Month#*#SL_CARD_TYPE_CD=MORE,#*#4
+536#*#Merch_Amt, Account#*#Bill Month#*#SL_DEBIT_ACTIVE_FLAG=Active,#*#4
+537#*#Merch_Amt, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#12
+538#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200601,#*#2
+539#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#26
+540#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200710,#*#1
+541#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=JANUARY 2007,#*#1
+542#*#Merch_Amt, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#24
+543#*#Merch_Amt, Account#*#Billing Balance#*#SL_PERF_YM=200610,#*#4
+544#*#Merch_Amt, Account#*#Billing Balance#*#SL_PERF_YM=200701,#*#62
+545#*#Merch_Amt, Account#*#Billing Balance#*#SL_PERF_YM=200710,#*#12
+546#*#Merch_Amt, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#1
+547#*#Merch_Amt, Account#*#Delinquent, Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal, SL_PERF_YM=200701,#*#1
+548#*#Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200601,#*#4
+549#*#Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200701,#*#232
+550#*#Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#12
+551#*#Merch_Amt, Account#*#Fico Score#*#SL_PERF_YM=JANUARY 2007,#*#4
+552#*#Merch_Amt, Account#*#Portfolio Segment Group, Bill Month#*#SL_PORT_SEG_GRP=Inactive, SL_PERF_YM=200710,#*#1
+553#*#Merch_Amt, Account#*#Usage Segment Group#*#SL_PERF_YM=200710,#*#4
+554#*#Merch_Amt, Account#*#Year#*#SL_PERF_YR=2007,#*#3
+560#*#Merch_Amt, FICO#*#Bill Month#*#CASH_AMT_FLAG=Cash Advance Amount Indicator,#*#32
+561#*#Merch_Amt, FICO#*#Bill Month#*#PERF_YM=200701,#*#1
+562#*#Merch_Amt, FICO#*#Bill Month#*#REVOLVE_FLAG=Revolving,#*#4
+563#*#Merch_Amt, FICO#*#Bill Month, Bill Month#*#PERF_YM=200611, PERF_YM=200701,#*#1
+564#*#Merch_Amt, FICO#*#Bill Month, Bill Month#*#PERF_YM=NOV 2006, PERF_YM=JAN 2007,#*#1
+565#*#Merch_Amt, FICO#*#Billing Balance#*#PERF_YM=200701,#*#4
+566#*#Merch_Amt, FICO, FICO_#*#Bill Month#*#PERF_YM=200701, BT_BAL_FLAG=Balance Transfer Balance Indicator,#*#4
+567#*#Merch_Amt, Finance_Charge#*#Bill Month#*#PERF_YM=200702, PORT_SEG=Transactor High Revolve Potential,#*#8
+568#*#Merch_Amt, Finance_Charge#*#Bill Month, Bill Month, Portfolio Segment#*#PERF_YM=200702, PERF_YM=200710, PORT_SEG=Transactor High Revolve Potential,#*#3
+569#*#Merch_Amt, Finance_Charge, Account#*#Bill Month#*#SL_REVOLVE_FLAG=Revolving,#*#4
+570#*#Merch_Amt, Finance_Charge, Account#*#Billing Balance#*#SL_PERF_YM=200701,#*#4
+571#*#Merch_Amt, Finance_Charge, Account#*#Fico Score#*#SL_PERF_YM=200710,#*#2
+572#*#Merch_Amt, Gross_Active, Account#*#Bill Month, Delinquent#*#SL_PERF_YM=200701, SL_DEL_BAL_FLAG=Delinquent Bal,#*#1
+573#*#Merch_Amt, Merch_Bal#*#Bill Month#*#VNTG_YM=200701,#*#4
+578#*#Merch_Amt#*#Bill Month#*#CYCL_1_PLUS_DLQ=Delinquent One Plus,#*#4
+579#*#Merch_Amt#*#Bill Month#*#DEL_BAL_FLAG=Delinquent,#*#18
+580#*#Merch_Amt#*#Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200701,#*#2
+581#*#Merch_Amt#*#Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=200705,#*#2
+582#*#Merch_Amt#*#Bill Month#*#FICO_SCORE_NUMBER=0,#*#4
+583#*#Merch_Amt#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#4
+584#*#Merch_Amt#*#Bill Month#*#OPEN_IND=Open,#*#6
+585#*#Merch_Amt#*#Bill Month#*#PERF_YM=200601,#*#4
+586#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#3
+587#*#Merch_Amt#*#Bill Month#*#PERF_YM=200701, PORT_SEG_GRP=Inactive,#*#2
+588#*#Merch_Amt#*#Bill Month#*#PERF_YM=200705, PORT_SEG_GRP=Inactive,#*#2
+589#*#Merch_Amt#*#Bill Month#*#PERF_YM=OCT 2007,#*#1
+590#*#Merch_Amt#*#Bill Month#*#PORT_SEG_GRP=Inactive,#*#10
+591#*#Merch_Amt#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=JAN 2007,#*#1
+592#*#Merch_Amt#*#Delinquent, Bill Month#*#DEL_BAL_FLAG=Delinquent, PERF_YM=MAY 2007,#*#1
+593#*#Merch_Amt, Account#*#Bill Month#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#36
+594#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200601,#*#4
+595#*#Merch_Amt, Account#*#Bill Month#*#SL_PERF_YM=200701,#*#7
+596#*#Merch_Amt, Account#*#Bill Month#*#SL_PORT_SEG_GRP=Inactive,#*#16
+597#*#Merch_Amt, Account#*#Bill Month, Delinquent#*#SL_DEL_BAL_FLAG=Delinquent Bal,#*#2
+598#*#Merch_Bal#*#Bill Month#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#2
+614#*#Net_Inc, BT_Bal, FICO, BT_Amt, Acct_Age, Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, AC_REG=Account Center Registered,#*#4
+615#*#Net_Inc, BT_Bal, FICO, BT_Amt, Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, AC_REG=Account Center Registered,#*#32
+616#*#Net_Inc, BT_Fee, Finance_Charge, Late_Fee, BT_Amt, Billing_Bal, Merch_Amt#*#Bill Month#*#VNTG_YM=200701,#*#2
+617#*#Net_Inc, FICO, BT_Amt, BT_Bal, Acct_Age, Merch_Amt#*#Bill Month#*#AC_REG=Account Center Registered, PERF_YM=200701,#*#124
+618#*#Net_Inc, FICO, Util, Late_Fee, Cash_Adv_Bal, Billing_Bal, Merch_Amt#*#Bill Month#*#AC_REG=Account Center Registered, PERF_YM=200701,#*#4
+620#*#Open, Account#*#Usage Segment#*#SL_PERF_YM=200710,#*#4
+621#*#Open#*#Product#*#PERF_YM=200701,#*#2
+622#*#Open, PurchActiveInd, Gross_Active#*#Bill Month#*#PERF_YM=200701,#*#1
+623#*#OTB#*#Bill Month#*#OPEN_IND=Open,#*#6
+624#*#Port_Seg_Grp#*#Fico Score#*#PERF_YM=200701,#*#2
+659#*#Total_Credit_Limit#*#Bill Month#*#GROSS_ACTIVE_FLAG=Gross Active,#*#2
+660#*#Total_Credit_Limit, Billing_Bal, Util, BT_Amt#*#Bill Month#*#PERF_YM=200701,#*#84
+661#*#Total_Credit_Limit, Billing_Bal, Util, BT_Amt#*#Bill Month#*#PERF_YM=JAN 2007,#*#36
+662#*#Total_Credit_Limit, Billing_Bal, Util, Merch_Amt#*#Bill Month#*#PERF_YM=200701,#*#4
+664#*#Util#*#Bill Month#*#OPEN_IND=Open, PERF_YM=200710,#*#12
+665#*#Util#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+666#*#Util#*#Portfolio Segment#*#OPEN_IND=Open, PERF_YM=200710,#*#12
+667#*#Util#*#Portfolio Segment#*#PERF_YM=200710,#*#2
+668#*#Util#*#Portfolio Segment#*#PERF_YM=200710, OPEN_IND=Open,#*#2
+669#*#Util, BScore, FICO#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#16
+670#*#Util, FICO#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#4
+671#*#Util, FICO#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#1
+672#*#Util, FICO#*#Bill Month, Balance Transfer Amount Indicator#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+673#*#Util, FICO, BScore#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=200701,#*#4
+674#*#Util, FICO, BScore#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#24
+675#*#Util, FICO, FICO_#*#Bill Month#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+676#*#Util, Merch_Amt#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=200701,#*#32
+677#*#Util, Merch_Amt#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#24
+678#*#Util, Merch_Amt#*#Bill Month#*#PERF_YM=200701, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#12
+679#*#Util, Merch_Amt#*#Bill Month#*#PERF_YM=JAN 2007, BT_AMT_FLAG=Balance Transfer Amount Indicator,#*#4
+680#*#Util, Merch_Amt, FICO#*#Bill Month#*#BT_AMT_FLAG=Balance Transfer Amount Indicator, PERF_YM=JAN 2007,#*#4
+681#*#Util, Merch_Amt, FICO#*#Bill Month#*#BT_BAL_FLAG=Balance Transfer Balance Indicator, PERF_YM=200701,#*#4
+695#*#\N#*#Bill Month#*#\N#*#16
+696#*#\N#*#Bill Month,Account Center Login#*#\N#*#8
+697#*#\N#*#Bill Month,Account Center Registered#*#\N#*#6
+698#*#\N#*#Bill Month,Account Status#*#\N#*#6
+699#*#\N#*#Bill Month,Balance Transfer Amount Indicator#*#\N#*#6
+700#*#\N#*#Bill Month,Balance Transfer Balance#*#\N#*#2
+701#*#\N#*#Bill Month,Billing Balance Indicator#*#\N#*#4
+702#*#\N#*#Bill Month,Cash Advance Amount Indicator#*#\N#*#6
+703#*#\N#*#Bill Month,Charged Off#*#\N#*#4
+704#*#\N#*#Bill Month,Cycles Delinquent#*#\N#*#2
+705#*#\N#*#Bill Month,Days Delinquent#*#\N#*#4
+706#*#\N#*#Bill Month,Debit Active#*#\N#*#6
+707#*#\N#*#Bill Month,Delinquent#*#\N#*#22
+708#*#\N#*#Bill Month,Delinquent One#*#\N#*#26
+709#*#\N#*#Bill Month,Delinquent Six#*#\N#*#2
+710#*#\N#*#Bill Month,Delinquent Three Plus Balance#*#\N#*#2
+711#*#\N#*#Bill Month,Fico Score#*#\N#*#18
+712#*#\N#*#Bill Month,Finance Charge Indicator#*#\N#*#2
+713#*#\N#*#Bill Month,Gross Active#*#\N#*#4
+715#*#\N#*#Bill Month,Merchandise Balance Indicator#*#\N#*#6
+716#*#\N#*#Bill Month,Merchandise Sales Amount#*#\N#*#2
+718#*#\N#*#Bill Month,Open#*#\N#*#4
+719#*#\N#*#Bill Month,Portfolio Segment#*#\N#*#2
+720#*#\N#*#Bill Month,Portfolio Segment Group#*#\N#*#2
+721#*#\N#*#Bill Month,Product#*#\N#*#38
+722#*#\N#*#Bill Month,Utilization#*#\N#*#2
+723#*#\N#*#Joining Month,Bill Month#*#\N#*#4
+729#*#\N#*#Portfolio Segment Group,Fico Score#*#\N#*#20
+730#*#\N#*#Product,Portfolio Segment Group#*#\N#*#6
+731#*#\N#*#Total Credit Limit,Fico Score#*#\N#*#2
+732#*#\N#*#Usage Segment Group,Fico Score#*#\N#*#2
+733#*#\N#*#Usage Segment,Fico Score#*#\N#*#2
+737#*#\N#*#Bill Month#*#SL_CARD_TYPE_CD=Cash Rewards,#*#4
+738#*#\N#*#Bill Month#*#SL_CARD_TYPE_CD=MORE,#*#24
+739#*#Account#*#Bill Month#*#\N#*#396
+740#*#Account#*#Joining Month#*#\N#*#4
+741#*#Account#*#Bill Month#*#\N#*#184
+742#*#Account#*#Bill Month,Fico Score#*#\N#*#18
+743#*#Account#*#Bill Month,Merchandise Sales Amount#*#\N#*#2
+744#*#Account#*#Bill Month,Portfolio Segment#*#\N#*#2
+745#*#Account#*#Bill Month,Portfolio Segment Group#*#\N#*#2
+746#*#Account#*#Bill Month,Product#*#\N#*#2
+747#*#Acct_Age#*#Bill Month#*#\N#*#8
+748#*#Acct_Age#*#Portfolio Segment Group,Fico Score#*#\N#*#8
+749#*#Acct_Age#*#Portfolio Segment,Fico Score#*#\N#*#4
+750#*#Acct_Age, Account#*#Bill Month#*#\N#*#16
+751#*#Acct_Age, FICO#*#Portfolio Segment#*#\N#*#4
+752#*#Acct_Age, Good_Bal#*#Bill Month#*#\N#*#4
+753#*#Acct_Age, Good_Bal#*#Portfolio Segment#*#\N#*#4
+754#*#Acct_Age, Good_Bal, FICO#*#Bill Month#*#\N#*#16
+755#*#Acct_Age, Good_Bal, FICO#*#Portfolio Segment#*#\N#*#4
+756#*#Acct_Age, Merch_Amt#*#Bill Month#*#\N#*#4
+757#*#Acct_Age,FICO#*#Portfolio Segment,Bill Month#*#\N#*#2
+758#*#Acct_Age,Good_Bal,FICO#*#Portfolio Segment,Bill Month#*#\N#*#2
+759#*#AC_Login, Account#*#Bill Month#*#\N#*#16
+760#*#AC_Reg, Account#*#Bill Month#*#\N#*#12
+761#*#AC_Reg, Newsletter_Opt_In, AC_Login, Account#*#Bill Month#*#\N#*#176
+762#*#Balance Transfer Balance,Merchandise Balance,Cash Advance Balance#*#Bill Month,Fico Score#*#\N#*#2
+763#*#BalTransAmtInd, Account#*#Bill Month#*#\N#*#12
+764#*#BalTransInd, Account#*#Bill Month#*#\N#*#4
+765#*#Behavior Score,Fico Score#*#Bill Month,Product#*#\N#*#4
+766#*#BillBalInd, Account#*#Bill Month#*#\N#*#8
+767#*#Billing_Bal, FICO#*#Bill Month#*#\N#*#12
+768#*#Billing_Bal#*#Bill Month#*#\N#*#196
+769#*#Billing_Bal#*#Bill Month,Balance Transfer Balance#*#\N#*#4
+770#*#Billing_Bal#*#Bill Month,Bill Month#*#\N#*#3
+771#*#Billing_Bal#*#Bill Month,Delinquent#*#\N#*#2
+772#*#Billing_Bal#*#Bill Month,Fico Score#*#\N#*#142
+774#*#Billing_Bal#*#Fico Score#*#\N#*#2
+775#*#Billing_Bal#*#Fico Score,Bill Month#*#\N#*#2
+776#*#Billing_Bal, Account#*#Bill Month#*#\N#*#362
+777#*#Billing_Bal, BScore, FICO, Merch_Amt#*#Bill Month#*#\N#*#4
+778#*#Billing_Bal, BT_Amt#*#Bill Month#*#\N#*#4
+779#*#Billing_Bal, Cash_Adv__Amt, BT_Bal, Account#*#Bill Month#*#\N#*#4
+780#*#Billing_Bal, Cash_Adv__Amt, Merch_Amt#*#Bill Month#*#\N#*#2
+781#*#Billing_Bal, FICO#*#Bill Month#*#\N#*#746
+782#*#Billing_Bal, FICO#*#Usage Segment#*#\N#*#2
+783#*#Billing_Bal, FICO, Merch_Amt#*#Bill Month#*#\N#*#12
+784#*#Billing_Bal, FICO, Merch_Amt, Account#*#Bill Month#*#\N#*#8
+785#*#Billing_Bal, FICO, Merch_Bal#*#Bill Month#*#\N#*#4
+786#*#Billing_Bal, Finance_Charge#*#Bill Month#*#\N#*#4
+787#*#Billing_Bal, Finance_Charge, Account#*#Bill Month#*#\N#*#4
+788#*#Billing_Bal, Finance_Charge, FICO#*#Bill Month#*#\N#*#2
+789#*#Billing_Bal, Finance_Charge, FICO, BT_Amt#*#Bill Month#*#\N#*#2
+790#*#Billing_Bal, Finance_Charge, FICO, Merch_Amt#*#Bill Month#*#\N#*#32
+791#*#Billing_Bal, Finance_Charge, Merch_Amt#*#Bill Month#*#\N#*#74
+792#*#Billing_Bal, Finance_Charge, Rev_Bal, Merch_Amt#*#Bill Month#*#\N#*#4
+793#*#Billing_Bal, Merch_Amt#*#Bill Month#*#\N#*#68
+794#*#Billing_Bal, Merch_Amt, Account#*#Bill Month#*#\N#*#12
+795#*#Billing_Bal, Merch_Amt, Cash_Adv__Amt, Account#*#Bill Month#*#\N#*#8
+796#*#Billing_Bal, Merch_Amt, Finance_Charge#*#Bill Month#*#\N#*#10
+797#*#Billing_Bal, Merch_Amt, Finance_Charge, Account#*#Bill Month#*#\N#*#12
+798#*#Billing_Bal, Merch_Amt, Net_Inc#*#Bill Month#*#\N#*#12
+799#*#Billing_Bal, Merch_Amt, Net_Inc, Account#*#Bill Month#*#\N#*#12
+800#*#Billing_Bal, Merch_Amt#*#Bill Month#*#\N#*#4
+801#*#Billing_Bal, Merch_Bal#*#Bill Month#*#\N#*#14
+802#*#Billing_Bal, Merch_Bal, Account#*#Bill Month#*#\N#*#16
+803#*#Billing_Bal, Merch_Bal, Finance_Charge, Account#*#Bill Month#*#\N#*#4
+804#*#Billing_Bal, Merch_Bal, Merch_Amt, BT_Fee, BT_Amt, Account#*#Bill Month#*#\N#*#4
+805#*#Billing_Bal, Util, Total_Credit_Limit, Account#*#Bill Month#*#\N#*#20
+806#*#Billing_Bal,Account#*#Bill Month,Behavior Score#*#\N#*#2
+807#*#Billing_Bal,Account#*#Bill Month,Delinquent#*#\N#*#2
+808#*#Billing_Bal,Account#*#Bill Month,Fico Score#*#\N#*#256
+809#*#Billing_Bal,Account#*#Bill Month,Product#*#\N#*#2
+810#*#Billing_Bal,Cash_Adv__Amt,Merch_Amt#*#Bill Month,Bill Month#*#\N#*#1
+811#*#Billing_Bal,FICO#*#Bill Month,Behavior Score#*#\N#*#2
+812#*#Billing_Bal,FICO#*#Usage Segment,Bill Month#*#\N#*#2
+813#*#Billing_Bal,Finance_Charge,FICO#*#Bill Month,Behavior Score#*#\N#*#2
+814#*#Billing_Bal,Finance_Charge,FICO,BT_Amt#*#Bill Month,Behavior Score#*#\N#*#2
+815#*#Billing_Bal,Finance_Charge,Merch_Amt#*#Behavior Score,Fico Score#*#\N#*#2
+816#*#Billing_Bal,Finance_Charge,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#22
+817#*#Billing_Bal,Merch_Amt#*#Bill Month,Bill Month#*#\N#*#1
+818#*#Billing_Bal,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#12
+819#*#Billing_Bal,Merch_Amt#*#Bill Month,Finance Charge Indicator#*#\N#*#2
+820#*#Billing_Bal,Merch_Amt#*#Bill Month,Utilization#*#\N#*#2
+821#*#Billing_Bal,Merch_Amt,Finance_Charge#*#Bill Month,Fico Score#*#\N#*#10
+822#*#Billing_Bal,Merch_Bal#*#Bill Month,Fico Score#*#\N#*#2
+823#*#Billing_Bal,Merch_Bal,Account#*#Bill Month,Fico Score#*#\N#*#4
+824#*#Billing_Bal#*#Bill Month,Gross Active#*#\N#*#2
+825#*#Billing_Bal, Billing_Bal, Billing_Bal, Merch_Amt, Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+826#*#Billing_Bal, Merch_Amt#*#Bill Month#*#\N#*#8
+827#*#Billing_Bal, Merch_Amt, Account#*#Bill Month#*#\N#*#8
+828#*#BScore, FICO#*#Bill Month#*#\N#*#4
+829#*#BScore#*#Bill Month#*#\N#*#2
+830#*#BScore, Account#*#Bill Month#*#\N#*#4
+831#*#BScore, Billing_Bal, FICO, Merch_Bal#*#Bill Month#*#\N#*#4
+832#*#BScore, FICO#*#Bill Month#*#\N#*#206
+833#*#BScore, Total_Credit_Limit, FICO#*#Bill Month#*#\N#*#4
+834#*#BScore,FICO#*#Bill Month,Product#*#\N#*#198
+835#*#BScore,FICO#*#Bill Month,Utilization#*#\N#*#2
+836#*#BScore,FICO,Merch_Amt#*#Bill Month,Utilization#*#\N#*#4
+837#*#BT_Amt#*#Bill Month#*#\N#*#2
+838#*#BT_Amt#*#Bill Month#*#\N#*#12
+839#*#BT_Amt#*#Bill Month,Fico Score#*#\N#*#4
+840#*#BT_Amt, Account#*#Bill Month#*#\N#*#20
+841#*#BT_Amt, BT_Bal, Net_Inc, BalTransBalInd, FICO, Acct_Age, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+842#*#BT_Amt, BT_Bal, Net_Inc, FICO, Acct_Age, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+843#*#BT_Amt, BT_Bal, Net_Inc, FICO, Acct_Age, Merch_Amt, Billing_Bal, Account#*#Bill Month#*#\N#*#4
+844#*#BT_Amt, BT_Bal, Net_Inc, FICO, Merch_Amt, Account#*#Bill Month#*#\N#*#12
+845#*#BT_Amt, FICO, Billing_Bal, Late_Fee, BT_Fee, Net_Inc, Finance_Charge, Merch_Amt, Account#*#Bill Month#*#\N#*#6
+846#*#BT_Amt, FICO, Merch_Amt, Account#*#Bill Month#*#\N#*#10
+847#*#BT_Amt, Finance_Charge, Billing_Bal, Account#*#Bill Month#*#\N#*#2
+848#*#BT_Amt, Merch_Amt#*#Bill Month#*#\N#*#8
+849#*#BT_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#6
+850#*#BT_Amt, Net_Inc, BT_Fee, Finance_Charge, Merch_Amt, Late_Fee, Billing_Bal, Account#*#Bill Month#*#\N#*#16
+851#*#BT_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#2
+852#*#BT_Amt,Account#*#Bill Month,Fico Score#*#\N#*#4
+853#*#BT_Amt,Account#*#Bill Month,Year#*#\N#*#2
+854#*#BT_Amt,FICO,Billing_Bal,Late_Fee,BT_Fee,Net_Inc,Finance_Charge,Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#6
+855#*#BT_Amt,FICO,Merch_Amt,Account#*#Bill Month,Product#*#\N#*#2
+856#*#BT_Amt,Merch_Amt#*#Bill Month,Account Status#*#\N#*#2
+857#*#BT_Amt,Merch_Amt#*#Bill Month,Usage Segment Group#*#\N#*#2
+858#*#BT_Amt,Merch_Amt,Account#*#Bill Month,Account Status#*#\N#*#2
+860#*#BT_Amt#*#Bill Month#*#\N#*#2
+861#*#BT_Amt, Account#*#Bill Month#*#\N#*#8
+862#*#BT_Bal, Merch_Bal, Cash_Adv_Bal#*#Bill Month#*#\N#*#4
+863#*#BT_Bal#*#Bill Month#*#\N#*#2
+864#*#BT_Bal#*#Portfolio Segment#*#\N#*#2
+865#*#BT_Bal#*#Portfolio Segment,Bill Month#*#\N#*#2
+866#*#BT_Bal, Account#*#Bill Month#*#\N#*#4
+867#*#BT_Bal, Account#*#Portfolio Segment#*#\N#*#2
+868#*#BT_Bal, BT_Amt, Merch_Bal#*#Bill Month#*#\N#*#4
+869#*#BT_Bal, Cash_Adv_Bal#*#Bill Month#*#\N#*#2
+870#*#BT_Bal, Merch_Amt#*#Bill Month#*#\N#*#2
+871#*#BT_Bal, Merch_Amt, Account#*#Bill Month#*#\N#*#2
+872#*#BT_Bal, Merch_Bal, Cash_Adv_Bal#*#Bill Month#*#\N#*#110
+873#*#BT_Bal,Account#*#Portfolio Segment,Bill Month#*#\N#*#2
+874#*#BT_Bal,Cash_Adv_Bal#*#Bill Month,Fico Score#*#\N#*#2
+875#*#BT_Bal,Merch_Amt#*#Bill Month,Account Status#*#\N#*#2
+876#*#BT_Bal,Merch_Amt,Account#*#Bill Month,Account Status#*#\N#*#2
+877#*#BT_Bal,Merch_Bal,Cash_Adv_Bal#*#Bill Month,Fico Score#*#\N#*#110
+878#*#BT_Fee#*#Bill Month#*#\N#*#6
+879#*#BT_Fee#*#Bill Month,Portfolio Segment Group#*#\N#*#2
+880#*#BT_Fee, Account#*#Bill Month#*#\N#*#10
+881#*#BT_Fee, Billing_Bal, Merch_Amt, BT_Amt, Merch_Bal#*#Bill Month#*#\N#*#4
+882#*#BT_Fee, BT_Amt#*#Bill Month#*#\N#*#4
+883#*#BT_Fee, BT_Amt, Account#*#Bill Month#*#\N#*#4
+884#*#BT_Fee,Account#*#Bill Month,Portfolio Segment Group#*#\N#*#2
+885#*#CashAdvAmtInd, Account#*#Bill Month#*#\N#*#4
+886#*#CashAdvAmtInd, Account#*#Bill Month#*#\N#*#8
+887#*#Cash_Adv_Bal#*#Bill Month#*#\N#*#2
+888#*#Cash_Adv_Bal, Account#*#Bill Month#*#\N#*#4
+889#*#Cash_Adv_Bal, BT_Bal, Account#*#Bill Month#*#\N#*#2
+890#*#Cash_Adv_Bal, BT_Bal, Merch_Bal#*#Bill Month#*#\N#*#4
+891#*#Cash_Adv_Bal, FICO#*#Bill Month#*#\N#*#4
+892#*#Cash_Adv_Bal,BT_Bal,Account#*#Bill Month,Fico Score#*#\N#*#2
+893#*#Cash_Adv__Amt#*#Bill Month#*#\N#*#10
+894#*#Cash_Adv__Amt, Account#*#Bill Month#*#\N#*#20
+895#*#Cash_Adv__Amt, Acct_Age, Merch_Amt, BT_Bal, BT_Amt, Net_Inc, FICO#*#Bill Month#*#\N#*#4
+896#*#Cash_Adv__Amt, Billing_Bal, BT_Bal#*#Bill Month#*#\N#*#4
+897#*#Cash_Adv__Amt, Billing_Bal, Merch_Amt#*#Bill Month#*#\N#*#8
+898#*#Cash_Adv__Amt, Merch_Amt#*#Bill Month#*#\N#*#14
+899#*#Cash_Adv__Amt,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#2
+900#*#CBB_Bal#*#Bill Month#*#\N#*#2
+901#*#CBB_Bal#*#Bill Month,Product#*#\N#*#2
+902#*#Charged_Off, Account#*#Bill Month#*#\N#*#8
+903#*#Charged_Off, DLQ_3_Bal, MerchBalInd, Account#*#Bill Month#*#\N#*#4
+945#*#CyclesDLQ, Account#*#Bill Month#*#\N#*#4
+946#*#CyclesDLQ, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+947#*#Debit_Active, Account#*#Bill Month#*#\N#*#12
+952#*#DLQOneBal#*#Bill Month#*#\N#*#4
+953#*#DLQOneBal#*#Bill Month,Delinquent One#*#\N#*#4
+954#*#DLQOneBal, DLQFourBal, DLQTwoBal, DLQThreeBal, Account#*#Bill Month#*#\N#*#4
+955#*#DLQOneBal, DLQTwoBal, DLQThreeBal, Account#*#Bill Month#*#\N#*#6
+956#*#DLQOneBal,DLQFourBal,DLQTwoBal,DLQThreeBal,Account#*#Bill Month,Product#*#\N#*#4
+957#*#DLQOneBal,DLQTwoBal,DLQThreeBal,Account#*#Bill Month,Product#*#\N#*#2
+958#*#DLQOne_PERCENT, Account#*#Bill Month#*#\N#*#52
+959#*#DLQOne_PERCENT, DLQOneBal, Account#*#Bill Month#*#\N#*#8
+960#*#DLQSixBal#*#Bill Month#*#\N#*#2
+961#*#DLQSixBal, Account#*#Bill Month#*#\N#*#4
+962#*#DLQSix_PERCENT, Account#*#Bill Month#*#\N#*#4
+963#*#DLQThree_PERCENT, DLQOne_PERCENT, DLQTwo_PERCENT, Account#*#Bill Month#*#\N#*#80
+964#*#DLQThree_PERCENT, DLQThree, DLQThree, DLQOne_PERCENT, DLQOne, DLQOne, Account#*#Bill Month#*#\N#*#4
+965#*#DLQTwoBal#*#Bill Month#*#\N#*#2
+966#*#DLQTwoBal, Account#*#Bill Month#*#\N#*#4
+967#*#DLQTwoBal, DLQOneBal, DLQFourBal, DLQThreeBal#*#Bill Month#*#\N#*#4
+968#*#DLQTwoBal, DLQOneBal, DLQThreeBal#*#Bill Month#*#\N#*#2
+969#*#DLQTwoBal,DLQOneBal,DLQFourBal,DLQThreeBal#*#Bill Month,Product#*#\N#*#4
+970#*#DLQTwoBal,DLQOneBal,DLQThreeBal#*#Bill Month,Product#*#\N#*#2
+971#*#DLQTwo_PERCENT, DLQOne_PERCENT, Account#*#Bill Month#*#\N#*#12
+972#*#DLQTwo_PERCENT, DLQOne_PERCENT, DLQFour, DLQThree_PERCENT, Account#*#Bill Month#*#\N#*#8
+973#*#DLQTwo_PERCENT, DLQOne_PERCENT, DLQThree_PERCENT, Account#*#Bill Month#*#\N#*#72
+974#*#DLQ_3_Bal#*#Bill Month#*#\N#*#2
+975#*#DLQ_PERCENT, Account#*#Bill Month#*#\N#*#36
+976#*#DLQ_Bal#*#Bill Month#*#\N#*#20
+977#*#DLQ_Bal, Account#*#Bill Month#*#\N#*#40
+978#*#DLQ_Bal, FICO, Account#*#Bill Month#*#\N#*#4
+979#*#DLQ, Account#*#Bill Month#*#\N#*#8
+980#*#Earned_CBB#*#Bill Month#*#\N#*#2
+981#*#Earned_CBB#*#Bill Month,Product#*#\N#*#2
+982#*#Earned_CBB, Account#*#Bill Month#*#\N#*#2
+983#*#Earned_CBB,Account#*#Bill Month,Product#*#\N#*#2
+984#*#Earned_CBB,Merch_Amt#*#Bill Month,Product#*#\N#*#2
+989#*#FICO#*#Bill Month#*#\N#*#86
+990#*#FICO#*#Bill Month,Expired Balance Transfer Balance Indicator#*#\N#*#2
+991#*#FICO#*#Bill Month,Merchandise Sales Amount#*#\N#*#2
+992#*#FICO#*#Bill Month,Product#*#\N#*#32
+993#*#FICO#*#Bill Month,Usage Segment Group#*#\N#*#2
+994#*#FICO, Account#*#Bill Month#*#\N#*#104
+995#*#FICO, Acct_Age, Merch_Amt, Net_Inc, Cash_Adv__Amt, BT_Amt, BT_Bal, Account#*#Bill Month#*#\N#*#4
+996#*#FICO, Billing_Bal, Account#*#Bill Month#*#\N#*#4
+997#*#FICO, BScore, Account#*#Bill Month#*#\N#*#212
+998#*#FICO, BT_Amt#*#Bill Month#*#\N#*#8
+999#*#FICO, BT_Amt, Merch_Amt#*#Bill Month#*#\N#*#10
+1000#*#FICO, ExpBalTranBalInd, Account#*#Bill Month#*#\N#*#4
+1001#*#FICO, FICO, FICO, Billing_Bal, Billing_Bal, Billing_Bal, Account#*#Bill Month#*#\N#*#12
+1002#*#FICO, FICO, FICO, BScore, BScore, BScore, Account#*#Bill Month#*#\N#*#4
+1003#*#FICO, Finance_Charge, Merch_Amt, Account#*#Bill Month#*#\N#*#18
+1004#*#FICO, Merch_Amt#*#Bill Month#*#\N#*#74
+1005#*#FICO, Merch_Amt, Account#*#Bill Month#*#\N#*#46
+1006#*#FICO, Merch_Bal#*#Bill Month#*#\N#*#6
+1007#*#FICO, Merch_Bal, Account#*#Bill Month#*#\N#*#4
+1008#*#FICO,Account#*#Bill Month,Merchandise Sales Amount#*#\N#*#2
+1009#*#FICO,Account#*#Bill Month,Product#*#\N#*#6
+1010#*#FICO,Billing_Bal,BT_Bal,Finance_Charge,BScore,Merch_Amt,Account#*#Bill Month,Quarter#*#\N#*#8
+1011#*#FICO,BScore,Account#*#Bill Month,Product#*#\N#*#200
+1012#*#FICO,BT_Amt,Merch_Amt#*#Bill Month,Product#*#\N#*#2
+1013#*#FICO,Finance_Charge,Merch_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#14
+1014#*#FICO,Finance_Charge,Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#4
+1015#*#FICO,Merch_Amt#*#Bill Month,Billing Balance#*#\N#*#6
+1016#*#FICO,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#2
+1017#*#FICO,Merch_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#6
+1018#*#FICO,Merch_Bal#*#Bill Month,Finance Charge#*#\N#*#2
+1019#*#FICO, FICO, FICO, BScore, BScore, BScore, Account#*#Bill Month#*#\N#*#4
+1020#*#FICO, FICO, FICO, DLQ_Bal, DLQ_Bal, DLQ_Bal, Account#*#Bill Month#*#\N#*#4
+1021#*#FICO, DLQ_Bal#*#Bill Month#*#\N#*#8
+1022#*#Finance_Charge#*#Bill Month#*#\N#*#66
+1023#*#Finance_Charge#*#Bill Month,Billing Balance#*#\N#*#46
+1024#*#Finance_Charge, Account#*#Bill Month#*#\N#*#86
+1025#*#Finance_Charge, Billing_Bal#*#Bill Month#*#\N#*#12
+1026#*#Finance_Charge, Billing_Bal, Account#*#Bill Month#*#\N#*#6
+1027#*#Finance_Charge, Billing_Bal, Merch_Amt#*#Bill Month#*#\N#*#30
+1028#*#Finance_Charge, Billing_Bal, Merch_Bal#*#Bill Month#*#\N#*#4
+1029#*#Finance_Charge, FICO#*#Bill Month#*#\N#*#12
+1030#*#Finance_Charge, FICO, BT_Amt, Merch_Amt#*#Bill Month#*#\N#*#4
+1031#*#Finance_Charge, FICO, Merch_Amt#*#Bill Month#*#\N#*#58
+1032#*#Finance_Charge, FICO, Merch_Amt, Billing_Bal, Account#*#Bill Month#*#\N#*#4
+1033#*#Finance_Charge, FICO, Merch_Bal#*#Bill Month#*#\N#*#4
+1034#*#Finance_Charge, Finance_Charge, Finance_Charge, Merch_Amt, Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#12
+1035#*#Finance_Charge, Merch_Amt#*#Bill Month#*#\N#*#306
+1036#*#Finance_Charge, Merch_Amt#*#Fico Score#*#\N#*#2
+1037#*#Finance_Charge, Merch_Amt, Account#*#Bill Month#*#\N#*#214
+1038#*#Finance_Charge, Merch_Amt, Billing_Bal, Account#*#Bill Month#*#\N#*#38
+1039#*#Finance_Charge, Merch_Amt, FICO#*#Bill Month#*#\N#*#56
+1040#*#Finance_Charge, Rev_Bal, Merch_Amt#*#Bill Month#*#\N#*#4
+1041#*#Finance_Charge,Account#*#Bill Month,Billing Balance#*#\N#*#46
+1042#*#Finance_Charge,Account#*#Bill Month,Fico Score#*#\N#*#4
+1043#*#Finance_Charge,Billing_Bal,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#2
+1044#*#Finance_Charge,FICO,Merch_Amt#*#Bill Month,Billing Balance#*#\N#*#18
+1045#*#Finance_Charge,FICO,Merch_Amt,Billing_Bal,Account#*#Bill Month,Fico Score#*#\N#*#4
+1046#*#Finance_Charge,Merch_Amt#*#Behavior Score,Fico Score#*#\N#*#2
+1047#*#Finance_Charge,Merch_Amt#*#Bill Month,Billing Balance#*#\N#*#6
+1048#*#Finance_Charge,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#22
+1050#*#Finance_Charge,Merch_Amt#*#Bill Month,Product#*#\N#*#2
+1051#*#Finance_Charge,Merch_Amt#*#Billing Balance,Fico Score#*#\N#*#10
+1052#*#Finance_Charge,Merch_Amt#*#Fico Score,Bill Month#*#\N#*#1
+1053#*#Finance_Charge,Merch_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#20
+1054#*#Finance_Charge,Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#38
+1055#*#Finance_Charge,Merch_Amt,Account#*#Billing Balance,Fico Score#*#\N#*#2
+1056#*#Finance_Charge,Merch_Amt,Billing_Bal,Account#*#Bill Month,Fico Score#*#\N#*#18
+1057#*#Finance_Charge,Merch_Amt,Billing_Bal,Account#*#Fico Score,Behavior Score#*#\N#*#2
+1058#*#Finance_Charge,Merch_Amt,FICO#*#Bill Month,Billing Balance#*#\N#*#4
+1059#*#Finance_Charge,Merch_Amt,Merch_Amt#*#Bill Month,Behavior Score#*#\N#*#6
+1060#*#Finance_Charge,Merch_Amt,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#4
+1061#*#Finance_Charge, Finance_Charge, Finance_Charge, Merch_Amt, Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+1062#*#FinChargeInd, Account#*#Bill Month#*#\N#*#4
+1063#*#FinChargeInd, Merch_Amt, Account#*#Bill Month#*#\N#*#6
+1064#*#FinChargeInd,Merch_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#2
+1065#*#Gross_Active, Account#*#Bill Month#*#\N#*#8
+1084#*#MerchAmtInd, PurchActiveInd, Account#*#Bill Month#*#\N#*#4
+1085#*#Merchandise Sales Amount#*#Bill Month,Revolving#*#\N#*#6
+1086#*#MerchBalInd, Account#*#Bill Month#*#\N#*#12
+1087#*#Merch_Amt#*#Bill Month#*#\N#*#34
+1088#*#Merch_Amt, FICO#*#Bill Month#*#\N#*#10
+1089#*#Merch_Amt#*#Bill Month#*#\N#*#2220
+1090#*#Merch_Amt#*#Bill Month,Account Age#*#\N#*#24
+1091#*#Merch_Amt#*#Bill Month,Account Status#*#\N#*#2
+1092#*#Merch_Amt#*#Bill Month,Balance Transfer Amount#*#\N#*#4
+1093#*#Merch_Amt#*#Bill Month,Balance Transfer Amount Indicator#*#\N#*#2
+1094#*#Merch_Amt#*#Bill Month,Behavior Score#*#\N#*#74
+1095#*#Merch_Amt#*#Bill Month,Bill Month#*#\N#*#2
+1096#*#Merch_Amt#*#Bill Month,Billing Balance#*#\N#*#52
+1097#*#Merch_Amt#*#Bill Month,Close#*#\N#*#2
+1098#*#Merch_Amt#*#Bill Month,Debit Active#*#\N#*#2
+1099#*#Merch_Amt#*#Bill Month,Fico Score#*#\N#*#370
+1100#*#Merch_Amt#*#Bill Month,Finance Charge Indicator#*#\N#*#2
+1101#*#Merch_Amt#*#Bill Month,Joining Month#*#\N#*#2
+1103#*#Merch_Amt#*#Bill Month,Open#*#\N#*#2
+1104#*#Merch_Amt#*#Bill Month,Product#*#\N#*#78
+1105#*#Merch_Amt#*#Bill Month,Revolving#*#\N#*#100
+1106#*#Merch_Amt#*#Bill Month,Usage Segment Group#*#\N#*#14
+1107#*#Merch_Amt#*#Bill Month,Utilization#*#\N#*#58
+1108#*#Merch_Amt#*#Billing Balance,Fico Score#*#\N#*#16
+1109#*#Merch_Amt#*#Joining Month#*#\N#*#2
+1110#*#Merch_Amt#*#Joining Month,Bill Month#*#\N#*#2
+1111#*#Merch_Amt#*#Product#*#\N#*#2
+1112#*#Merch_Amt#*#Product,Bill Month#*#\N#*#2
+1113#*#Merch_Amt#*#Usage Segment#*#\N#*#2
+1114#*#Merch_Amt#*#Usage Segment,Bill Month#*#\N#*#2
+1115#*#Merch_Amt#*#Year#*#\N#*#18
+1116#*#Merch_Amt, Account#*#Bill Month#*#\N#*#3688
+1117#*#Merch_Amt, Account#*#Billing Balance#*#\N#*#2
+1118#*#Merch_Amt, Account#*#Product#*#\N#*#2
+1119#*#Merch_Amt, Account#*#Usage Segment#*#\N#*#2
+1120#*#Merch_Amt, Account#*#Year#*#\N#*#36
+1121#*#Merch_Amt, Billing_Bal, Account#*#Bill Month#*#\N#*#18
+1122#*#Merch_Amt, BT_Amt, BT_Bal, Account#*#Bill Month#*#\N#*#2
+1123#*#Merch_Amt, BT_Bal, BT_Amt#*#Bill Month#*#\N#*#2
+1124#*#Merch_Amt, Cash_Adv__Amt, Account#*#Bill Month#*#\N#*#16
+1125#*#Merch_Amt, FICO#*#Bill Month#*#\N#*#90
+1126#*#Merch_Amt, FICO#*#Usage Segment#*#\N#*#2
+1127#*#Merch_Amt, Finance_Charge, Account#*#Bill Month#*#\N#*#102
+1128#*#Merch_Amt, Gross_Active, Open, Account#*#Bill Month#*#\N#*#24
+1129#*#Merch_Amt, Merch_Amt, Merch_Amt, Close, Close, Close, Account#*#Bill Month#*#\N#*#4
+1130#*#Merch_Amt, Merch_Amt#*#Bill Month#*#\N#*#2
+1131#*#Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#10
+1132#*#Merch_Amt, Merch_Bal#*#Bill Month#*#\N#*#8
+1133#*#Merch_Amt, Merch_Bal, Account#*#Bill Month#*#\N#*#4
+1134#*#Merch_Amt, Net_Inc#*#Bill Month#*#\N#*#22
+1135#*#Merch_Amt, Net_Inc, Account#*#Bill Month#*#\N#*#22
+1136#*#Merch_Amt, Util#*#Bill Month#*#\N#*#4
+1137#*#Merch_Amt, Util, Account#*#Bill Month#*#\N#*#4
+1138#*#Merch_Amt,Account#*#Bill Month,Account Status#*#\N#*#2
+1139#*#Merch_Amt,Account#*#Bill Month,Behavior Score#*#\N#*#18
+1140#*#Merch_Amt,Account#*#Bill Month,Billing Balance#*#\N#*#62
+1141#*#Merch_Amt,Account#*#Bill Month,Debit Active#*#\N#*#2
+1142#*#Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#484
+1143#*#Merch_Amt,Account#*#Bill Month,Finance Charge#*#\N#*#8
+1144#*#Merch_Amt,Account#*#Bill Month,Product#*#\N#*#70
+1145#*#Merch_Amt,Account#*#Bill Month,Revolving#*#\N#*#106
+1146#*#Merch_Amt,Account#*#Bill Month,Usage Segment Group#*#\N#*#30
+1147#*#Merch_Amt,Account#*#Bill Month,Utilization#*#\N#*#4
+1148#*#Merch_Amt,Account#*#Billing Balance,Bill Month#*#\N#*#2
+1149#*#Merch_Amt,Account#*#Billing Balance,Fico Score#*#\N#*#2
+1150#*#Merch_Amt,Account#*#Product,Bill Month#*#\N#*#2
+1151#*#Merch_Amt,Account#*#Usage Segment,Bill Month#*#\N#*#2
+1152#*#Merch_Amt,Billing_Bal,Account#*#Bill Month,Billing Balance#*#\N#*#2
+1153#*#Merch_Amt,Billing_Bal,Account#*#Bill Month,Fico Score#*#\N#*#4
+1157#*#Merch_Amt,BT_Amt,BT_Bal,Account#*#Bill Month,Account Status#*#\N#*#2
+1159#*#Merch_Amt,BT_Bal,BT_Amt#*#Bill Month,Account Status#*#\N#*#2
+1160#*#Merch_Amt,Cash_Adv__Amt,Account#*#Bill Month,Fico Score#*#\N#*#4
+1161#*#Merch_Amt,FICO#*#Bill Month,Behavior Score#*#\N#*#4
+1162#*#Merch_Amt,FICO#*#Bill Month,Bill Month#*#\N#*#6
+1163#*#Merch_Amt,FICO#*#Bill Month,Cash Advance Amount Indicator#*#\N#*#2
+1164#*#Merch_Amt,FICO#*#Bill Month,Portfolio Segment Group#*#\N#*#2
+1165#*#Merch_Amt,FICO#*#Usage Segment,Bill Month#*#\N#*#2
+1166#*#Merch_Amt,Finance_Charge,Account#*#Bill Month,Billing Balance#*#\N#*#10
+1167#*#Merch_Amt,Finance_Charge,Account#*#Bill Month,Fico Score#*#\N#*#2
+1168#*#Merch_Amt,Finance_Charge,Account#*#Bill Month,Product#*#\N#*#2
+1169#*#Merch_Amt,Finance_Charge,Account#*#Fico Score,Behavior Score#*#\N#*#2
+1170#*#Merch_Amt,Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#2
+1171#*#Merch_Amt,Net_Inc#*#Bill Month,Product#*#\N#*#2
+1172#*#Merch_Amt,Net_Inc,Account#*#Bill Month,Product#*#\N#*#2
+1174#*#Merch_Amt, Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#2
+1175#*#Merch_Amt,Merch_Amt,Merch_Amt,Account#*#Bill Month,Finance Charge#*#\N#*#2
+1176#*#Merch_Amt#*#Bill Month#*#\N#*#172
+1177#*#Merch_Amt#*#Bill Month,Bill Month#*#\N#*#2
+1178#*#Merch_Amt#*#Bill Month,Cycles Delinquent#*#\N#*#2
+1179#*#Merch_Amt#*#Bill Month,Fico Score#*#\N#*#6
+1180#*#Merch_Amt#*#Fico Score,Year#*#\N#*#2
+1181#*#Merch_Amt, Account#*#Bill Month#*#\N#*#386
+1182#*#Merch_Amt, Merch_Amt#*#Bill Month#*#\N#*#8
+1183#*#Merch_Amt, Merch_Amt#*#Fico Score#*#\N#*#2
+1184#*#Merch_Amt,Account#*#Bill Month,Fico Score#*#\N#*#2
+1185#*#Merch_Bal#*#Bill Month#*#\N#*#20
+1186#*#Merch_Bal#*#Bill Month,Account Status#*#\N#*#2
+1187#*#Merch_Bal#*#Bill Month,Fico Score#*#\N#*#2
+1188#*#Merch_Bal, Account#*#Bill Month#*#\N#*#38
+1189#*#Merch_Bal, BT_Bal, BT_Amt, Account#*#Bill Month#*#\N#*#4
+1190#*#Merch_Bal, Cash_Adv_Bal#*#Bill Month#*#\N#*#4
+1191#*#Merch_Bal, Cash_Adv_Bal, Account#*#Bill Month#*#\N#*#4
+1192#*#Merch_Bal, Cash_Adv_Bal, BT_Bal, Account#*#Bill Month#*#\N#*#118
+1193#*#Merch_Bal, FICO#*#Bill Month#*#\N#*#4
+1194#*#Merch_Bal, Finance_Charge, Cash_Adv_Bal#*#Bill Month#*#\N#*#2
+1195#*#Merch_Bal, Finance_Charge, Cash_Adv_Bal, Account#*#Bill Month#*#\N#*#2
+1196#*#Merch_Bal, Merch_Bal, Merch_Bal_STDDEV, Merch_Bal, Merch_Amt, Merch_Amt, Merch_Amt_STDDEV, Merch_Amt, Account#*#Bill Month#*#\N#*#8
+1197#*#Merch_Bal,Account#*#Bill Month,Account Status#*#\N#*#2
+1198#*#Merch_Bal,Account#*#Bill Month,Fico Score#*#\N#*#4
+1199#*#Merch_Bal,Cash_Adv_Bal,BT_Bal,Account#*#Bill Month,Fico Score#*#\N#*#114
+1200#*#Merch_Bal,Finance_Charge,Cash_Adv_Bal#*#Bill Month,Billing Balance#*#\N#*#2
+1201#*#Merch_Bal,Finance_Charge,Cash_Adv_Bal,Account#*#Bill Month,Billing Balance#*#\N#*#2
+1202#*#Merch_Bal, Merch_Bal_STDDEV, Merch_Bal, Merch_Bal, Merch_Amt, Merch_Amt_STDDEV, Merch_Amt, Merch_Amt, Account#*#Year#*#\N#*#4
+1203#*#Merch_Bal#*#Bill Month#*#\N#*#4
+1204#*#Merch_Bal#*#Bill Month,Account Status#*#\N#*#4
+1205#*#Merch_Bal, Account#*#Bill Month#*#\N#*#4
+1206#*#Merch_Bal,Account#*#Bill Month,Account Status#*#\N#*#4
+1227#*#Net_Inc#*#Bill Month#*#\N#*#4
+1228#*#Net_Inc, Account#*#Bill Month#*#\N#*#8
+1229#*#Net_Inc, Billing_Bal, BT_Bal, FICO, Acct_Age, BT_Amt, Merch_Amt#*#Bill Month#*#\N#*#4
+1230#*#Net_Inc, Billing_Bal, BT_Fee, Finance_Charge, BT_Amt, Late_Fee, Merch_Amt#*#Bill Month#*#\N#*#16
+1231#*#Net_Inc, BT_Bal, FICO, BT_Amt, Acct_Age, Merch_Amt#*#Bill Month#*#\N#*#6
+1232#*#Net_Inc, BT_Bal, FICO, BT_Amt, Merch_Amt#*#Bill Month#*#\N#*#12
+1233#*#Net_Inc, Net_Inc, Net_Inc, Net_Inc_ex_Write_Off, Net_Inc_ex_Write_Off, Net_Inc_ex_Write_Off, Account#*#Bill Month#*#\N#*#4
+1235#*#Net_Inc,BT_Bal,FICO,BT_Amt,Acct_Age,Merch_Amt#*#Bill Month,Balance Transfer Balance Indicator#*#\N#*#2
+1236#*#Net_Inc,BT_Fee,Finance_Charge,Late_Fee,BT_Amt,Billing_Bal,Merch_Amt#*#Bill Month,Fico Score#*#\N#*#2
+1237#*#Net_Inc_ex_Write_Off, Net_Inc#*#Bill Month#*#\N#*#4
+1238#*#Net_Inc_ex_Write_Off, Net_Inc#*#Usage Segment#*#\N#*#68
+1239#*#Net_Inc_ex_Write_Off, Net_Inc, Account#*#Usage Segment#*#\N#*#68
+1240#*#Net_Inc_ex_Write_Off,Net_Inc#*#Usage Segment,Bill Month#*#\N#*#68
+1241#*#Net_Inc_ex_Write_Off,Net_Inc,Account#*#Usage Segment,Bill Month#*#\N#*#68
+1242#*#Newsletter_Opt_In, AC_Login, AC_Reg#*#Bill Month#*#\N#*#20
+1245#*#Off_Us_Limit, Total_Credit_Limit#*#Bill Month#*#\N#*#4
+1246#*#Off_Us_Limit, Total_Credit_Limit, Account#*#Bill Month#*#\N#*#4
+1247#*#Open, Account#*#Bill Month#*#\N#*#8
+1269#*#Rev_Bal#*#Bill Month#*#\N#*#48
+1270#*#Rev_Bal#*#Bill Month,Fico Score#*#\N#*#44
+1271#*#Rev_Bal, Account#*#Bill Month#*#\N#*#54
+1272#*#Rev_Bal,Account#*#Bill Month,Fico Score#*#\N#*#46
+1273#*#Risk_Adj_Net_Inc#*#Bill Month#*#\N#*#2
+1274#*#Risk_Adj_Net_Inc, Account#*#Bill Month#*#\N#*#4
+1280#*#Total_Credit_Limit#*#Bill Month#*#\N#*#2
+1281#*#Total_Credit_Limit#*#Bill Month#*#\N#*#8
+1282#*#Total_Credit_Limit, Account#*#Bill Month#*#\N#*#20
+1283#*#Total_Credit_Limit, Billing_Bal, Util#*#Bill Month#*#\N#*#16
+1288#*#Util#*#Bill Month,Portfolio Segment Group#*#\N#*#4
+1289#*#Util#*#Bill Month,Usage Segment Group#*#\N#*#8
+1290#*#Util#*#Portfolio Segment,Bill Month#*#\N#*#14
+1291#*#Util, Billing_Bal, Total_Credit_Limit#*#Bill Month#*#\N#*#6
+1292#*#Util, Merch_Amt#*#Bill Month#*#\N#*#4
+1293#*#Util,Billing_Bal,Total_Credit_Limit#*#Bill Month,Bill Month#*#\N#*#1
+1294#*#Util, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+1305#*#Net_Income#*#\N#*##*#2
+1321#*#Account#*#Bill Month#*#\N#*#3
+1322#*#Account#*#Year#*#\N#*#1
+1323#*#BalTransAmtInd, Account#*#Bill Month#*#\N#*#2
+1324#*#BT_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#4
+1325#*#BT_Bal, Finance_Charge, FICO, BScore, Merch_Amt, Billing_Bal, Account#*#Bill Month#*#\N#*#12
+1333#*#DLQ_Bal, DLQ_Bal, DLQ_Bal, Account#*#Bill Month#*#\N#*#2
+1334#*#FICO, Billing_Bal, BT_Bal, Finance_Charge, BScore, Merch_Amt, Account#*#Bill Month#*#\N#*#18
+1335#*#FICO, FICO, FICO, Billing_Bal, Billing_Bal, Billing_Bal, Account#*#Bill Month#*#\N#*#1
+1336#*#FICO, Merch_Amt, Account#*#Bill Month#*#\N#*#3
+1337#*#Finance_Charge, Finance_Charge, Finance_Charge, Merch_Amt, Merch_Amt, Merch_Amt, Account#*#Bill Month#*#\N#*#1
+1338#*#Gross_Active, Account#*#Bill Month#*#\N#*#1
+1343#*#Merch_Amt, Account#*#Bill Month#*#\N#*#10
+1344#*#Merch_Amt, Account#*#Year#*#\N#*#2
+1345#*#Merch_Amt, Account#*#Bill Month#*#\N#*#1

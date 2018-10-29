@@ -1,0 +1,37 @@
+<queries>
+	<QUERY_CONVERSIONS_BY_TYPE>
+		<![CDATA[from Conversion conversion 
+		         where conversion.type = :conversionType 
+		         order by order asc]]>
+	</QUERY_CONVERSIONS_BY_TYPE>
+
+	<QUERY_BASE_CONVERSION_BY_TYPE>
+		<![CDATA[from Conversion conversion
+		         where conversion.type = :conversionType
+		         and conversion.base = :baseValue]]>
+	</QUERY_BASE_CONVERSION_BY_TYPE>
+
+	<QUERY_CONVERSIONS_BY_UNITS>
+		<![CDATA[from ConversionFormula conversionFormula
+		         where conversionFormula.type = :conversionType and
+		         conversionFormula.source = :source 
+		         and conversionFormula.target = :target]]>
+	</QUERY_CONVERSIONS_BY_UNITS>
+
+	<QUERY_GET_VALUE_REALIZATION_BY_CONVERSION_TYPE>
+		<![CDATA[select distinct valueRealizationBedId 
+		         from Conversion where type = :conversionType]]>
+	</QUERY_GET_VALUE_REALIZATION_BY_CONVERSION_TYPE>
+
+	<QUERY_GET_DETAIL_TYPE_BY_CONVERSION_TYPE_AND_UNIT>
+		<![CDATA[select distinct detailTypeBedId 
+		        from Conversion where type = :conversionType
+                and unit = :unit]]>
+	</QUERY_GET_DETAIL_TYPE_BY_CONVERSION_TYPE_AND_UNIT>
+
+	<QUERY_BASE_CONVERSION_BY_CONCEPT_AND_INSTANCE_BED_IDS>
+		<![CDATA[from Conversion conversion
+		         where conversion.valueRealizationBedId  = :conceptBedId  
+		         and conversion.valueRealizationInstanceBedId = :instanceBedId]]>
+	</QUERY_BASE_CONVERSION_BY_CONCEPT_AND_INSTANCE_BED_IDS>
+</queries>

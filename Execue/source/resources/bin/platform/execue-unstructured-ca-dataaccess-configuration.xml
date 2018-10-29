@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<unstructured-ca-dataaccess>
+		<static-values>
+			<initialSize>1</initialSize>
+			<maxActive>2</maxActive>
+			<testWhileIdle>true</testWhileIdle>
+			<testOnBorrow>true</testOnBorrow>
+			<validationQuery>db.source.usca.connection.validation.query</validationQuery>					
+			<mapping-resources>
+				<value>platform/mappings/usca/Category.hbm.xml</value>
+				<value>platform/mappings/usca/Feed.hbm.xml</value>
+				<value>platform/mappings/usca/Link.hbm.xml</value>
+			</mapping-resources>		
+			<hibernate-properties>
+				<map>
+					<key>hibernate.dialect</key>
+					<value>db.source.usca.hibernate.dialect</value>
+					<key>hibernate.show_sql</key>
+					<value>false</value>
+					<key>hibernate.cache.provider_class</key>
+					<value>org.hibernate.cache.EhCacheProvider</value>
+					<key>hibernate.cache.use_second_level_cache</key>
+					<value>false</value>
+				</map>
+			</hibernate-properties>
+		</static-values>		
+	</unstructured-ca-dataaccess>
+</execue-configuration>

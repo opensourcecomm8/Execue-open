@@ -1,0 +1,16 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="ruleConfigurationService" class="com.execue.rules.configuration.impl.RuleConfigurationServiceImpl">
+		<property name="ruleConfiguration" ref="ruleConfiguration"></property>
+	</bean>
+	<bean id="ruleConfigurableService" class="com.execue.rules.configuration.impl.RuleConfigurableService">
+		<property name="ruleConfigurationService" ref="ruleConfigurationService"></property>
+	</bean>	
+	
+	<bean id="ruleService" class="com.execue.rules.service.impl.RuleServiceImpl">
+		<property name="ruleConfigurationService" ref="ruleConfigurationService"></property>
+	</bean>	
+</beans>

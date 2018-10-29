@@ -1,0 +1,138 @@
+<queries>		
+	<QUERY_GET_TABLE_BY_TABLE_NAME_ASSET_ID>
+	<![CDATA[select aed.tabl from AssetEntityDefinition aed 
+		 where aed.asset.id =:assetId 
+		 and upper(aed.tabl.name) =:tableName
+		 and aed.entityType = :entityType
+	]]>
+	</QUERY_GET_TABLE_BY_TABLE_NAME_ASSET_ID>		
+	
+	<QUERY_GET_TAB_BY_PARENT_TABLE>
+	<![CDATA[select assetEntityDefinition.tabl from
+		 AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.asset.id = :assetId
+		 and assetEntityDefinition.tabl.parentTable = :parentTableName
+		  and assetEntityDefinition.entityType = :entityType)
+	]]>
+	</QUERY_GET_TAB_BY_PARENT_TABLE>
+	
+	<QUERY_TABLE_BY_LOOKUP_TYPE>
+	<![CDATA[select aed.tabl 
+        from AssetEntityDefinition aed 
+        where aed.asset.id = :assetId 
+        and aed.tabl.lookupType = :lookupType 
+        and aed.entityType = :aedType
+	]]>
+	</QUERY_TABLE_BY_LOOKUP_TYPE>
+	
+	<QUERY_GET_VIR_TAB_FOR_TAB>
+	<![CDATA[select assetEntityDefinition.tabl from 
+		 AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.asset.id = :assetId
+		 and  assetEntityDefinition.tabl.actualName = :actualName 
+		 and assetEntityDefinition.entityType = :entityType)
+	]]>
+	</QUERY_GET_VIR_TAB_FOR_TAB>
+	
+	<QUERY_GET_NOT_ALREADY_CONSIDERED_VIRTUAL_TABLES_FROM_TABLES>
+	<![CDATA[select aed.tabl from
+		 AssetEntityDefinition aed where aed.asset.id = :assetId 
+		 and aed.tabl.actualName in (:consideredTableNames)
+		 and aed.tabl.id not in (:consideredTableIds) 
+		 and aed.entityType = :tableEntityType and aed.tabl.virtual = :yes
+	]]>
+	</QUERY_GET_NOT_ALREADY_CONSIDERED_VIRTUAL_TABLES_FROM_TABLES>
+  
+	<QUERY_GET_FACT_TABLES_FOR_ASSET>
+	<![CDATA[select aed.tabl from AssetEntityDefinition aed, Asset asset,
+		 Tabl table where asset.id = :assetId and aed.asset.id = asset.id and  
+		 aed.entityType = :tableEntityType and table.id = aed.tabl.id and table.lookupType= :lookupType
+	]]>
+	</QUERY_GET_FACT_TABLES_FOR_ASSET>
+	
+	<QUERY_GET_FACT_TABLES_ELIGIBLE_FOR_SYSTEM_METRICS_IN_ASSET>
+	<![CDATA[select aed.tabl from AssetEntityDefinition aed, Asset asset,
+		 Tabl table where asset.id = :assetId and aed.asset.id = asset.id and aed.entityType = :tableEntityType 
+		  and table.id = aed.tabl.id and table.eligibleDefaultMetric = :yes and table.lookupType= :none
+	]]>
+	</QUERY_GET_FACT_TABLES_ELIGIBLE_FOR_SYSTEM_METRICS_IN_ASSET>
+	
+	<QUERY_GET_ALL_TABLE_IDS_EXCLUDING_VIRTUAL_FOR_ASSET>
+	<![CDATA[select distinct ae.tabl.id from AssetEntityDefinition ae 
+		where ae.asset.id = :assetId and ae.entityType =:tableEntityType and ae.tabl.virtual=:no
+	]]>
+	</QUERY_GET_ALL_TABLE_IDS_EXCLUDING_VIRTUAL_FOR_ASSET>
+	
+	<QUERY_GET_ALL_TABLE_IDS_FOR_ASSET>
+	<![CDATA[select distinct ae.tabl.id from AssetEntityDefinition ae 
+		 where ae.asset.id = :assetId and ae.entityType = :tableEntityType
+	]]>
+	</QUERY_GET_ALL_TABLE_IDS_FOR_ASSET>
+	
+	<QUERY_GET_LOOKUP_TABLE_IDS_FOR_ASSET>
+	<![CDATA[select distinct tabl.id from AssetEntityDefinition as ae,Tabl as tabl
+		where ae.asset.id = :assetId and ae.tabl.id = tabl.id and 
+		tabl.lookupType != :none
+	]]>
+	</QUERY_GET_LOOKUP_TABLE_IDS_FOR_ASSET>
+	
+	<QUERY_GET_LOOKUP_TABLES_FOR_ASSET>
+	<![CDATA[select distinct tabl from AssetEntityDefinition as ae, Tabl as tabl
+		 where ae.asset.id = :assetId and ae.tabl.id = tabl.id
+		 and ae.entityType = :tableEntityType and tabl.lookupType != :none
+	]]>
+	</QUERY_GET_LOOKUP_TABLES_FOR_ASSET>
+	
+	<QUERY_GET_LOOKUP_TABLE_IDS_HAVING_MEMBERS>
+	<![CDATA[select distinct tabl.id from AssetEntityDefinition as ae,Tabl as tabl where 
+		   ae.asset.id = :assetId and ae.tabl.id = tabl.id and tabl.lookupType != :none 
+		   and ae.entityType = :memberEntityType 
+	]]>
+	</QUERY_GET_LOOKUP_TABLE_IDS_HAVING_MEMBERS>
+	
+	<QUERY_GET_TABLES_EXCLUDING_VIRTUAL_FOR_ASSET>
+	<![CDATA[select distinct assetEntityDefinition.tabl from
+		 AssetEntityDefinition assetEntityDefinition
+		 where assetEntityDefinition.asset.id = :assetId
+		 and assetEntityDefinition.entityType =:tableEntityType
+		 and assetEntityDefinition.tabl.virtual = :no 
+		 order by assetEntityDefinition.tabl.name
+	]]>
+	</QUERY_GET_TABLES_EXCLUDING_VIRTUAL_FOR_ASSET>
+	
+	<QUERY_GET_VIRTUAL_TABLE_FROM_FACT_TABLE_COLUMN>
+	<![CDATA[select virtualTable from AssetEntityDefinition aed, Asset asset, Tabl tabl, Tabl virtualTable 
+		 where aed.asset.id = asset.id and aed.tabl.id = tabl.id and aed.entityType = :tableEntityType
+		 and asset.id = :assetId and tabl.id = :factTableId and tabl.name = virtualTable.actualName
+		 and virtualTable.lookupValueColumn = :factTableColumn
+	]]>
+	</QUERY_GET_VIRTUAL_TABLE_FROM_FACT_TABLE_COLUMN>
+
+	<QUERY_GET_ASSET_TABLES>
+	<![CDATA[select tabl from Tabl as tabl, AssetEntityDefinition as aed 
+		 where aed.asset.id = :assetId 
+		 and aed.tabl.id = tabl.id 
+		 and tabl.name in (:tableNames) and aed.entityType=:tableEntityType
+	]]>
+	</QUERY_GET_ASSET_TABLES>
+	
+	<QUERY_GET_TABLES_FOR_ASSET>
+	<![CDATA[
+		select tbl from AssetEntityDefinition assetEntityDefinition
+			join assetEntityDefinition.tabl as tbl
+		 where assetEntityDefinition.asset.id = :assetId 
+		 and assetEntityDefinition.entityType =:tableEntityType 
+		 order by tbl.displayName
+	]]>
+	</QUERY_GET_TABLES_FOR_ASSET>	
+	
+	<QUERY_GET_CONSTRAINT_FOR_COLUMN>
+	<![CDATA[from Constraint constraint 
+		 where constraint.referenceColumn.id = :id
+		 and constraint.columOrder = :order
+		 and constraint.type = :type
+	]]>
+	</QUERY_GET_CONSTRAINT_FOR_COLUMN>
+
+	
+</queries>

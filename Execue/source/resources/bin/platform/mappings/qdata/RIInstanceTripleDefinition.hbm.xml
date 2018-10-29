@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.execue.core.common.bean.qdata.RIInstanceTripleDefinition" table="RI_INSTANCE_TRIPLE_DEFINITION">
+        
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">RI_INSTANCE_TRIPLE_DEFINITION</param>
+            </generator>
+        </id>
+        
+        <property name="beId1" type="java.lang.Long">
+            <column name="BE_ID_1" precision="20" scale="0" />
+        </property>
+        
+        <property name="beId2" type="java.lang.Long">
+            <column name="BE_ID_2" precision="20" scale="0" />
+        </property>
+        
+        <property name="beId3" type="java.lang.Long">
+            <column name="BE_ID_3" precision="20" scale="0" />
+        </property>
+        
+		<property name="beId1Name" type="string">
+			<column name="BE_ID_1_NAME" length="255" />
+		</property>
+		
+		<property name="beId2Name" type="string">
+			<column name="BE_ID_2_NAME" length="255" />
+		</property>		        
+		
+		<property name="beId3Name" type="string">
+			<column name="BE_ID_3_NAME" length="255" />
+		</property>
+		
+        <property name="sourceBEID" type="java.lang.Long">
+            <column name="SOURCE_BE_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="relationBEID" type="java.lang.Long">
+            <column name="RELATION_BE_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="destinationBEID" type="java.lang.Long">
+            <column name="DESTINATION_BE_ID" precision="20" scale="0" />
+        </property>
+		
+        <property name="beType" type="java.lang.Integer">
+            <column name="BE_TYPE" precision="2" scale="0" />
+        </property>
+        
+        <property name="variationType" type="java.lang.Integer">
+            <column name="VARIATION_TYPE" precision="2" scale="0" />
+        </property>
+                
+         <property name="variationSubType" type="java.lang.Integer">
+            <column name="VARIATION_SUB_TYPE" precision="2" scale="0" />
+        </property>
+        
+          <property name="matchWeight" type="java.lang.Double">
+            <column name="MATCH_WEIGHT" length="8" precision="4" scale="0" />
+        </property>
+        
+        <property name="instanceTripeId" type="java.lang.Long">
+            <column name="INSTANCE_TRIPLE_ID" precision="20" scale="0" />
+        </property>        
+        
+        <property name="searchType" type="java.lang.Integer">
+            <column name="SEARCH_TYPE" precision="1" scale="0" />
+        </property>
+        
+		<property name="contentSource" type="string">
+			<column name="CONTENT_SOURCE" length="255" />
+		</property>              
+    </class>
+
+</hibernate-mapping>

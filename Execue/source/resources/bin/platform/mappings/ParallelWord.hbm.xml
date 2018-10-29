@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="pwdType">
+        <param name="enumClass">com.execue.core.common.type.ParallelWordType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.entity.ParallelWord" table="PARALLEL_WORD">
+        
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">PARALLEL_WORD</param>
+			</generator>
+		</id>
+        
+        <many-to-one name="keyWord" class="com.execue.core.common.bean.entity.KeyWord" fetch="select">
+            <column name="KEY_WORD_ID" precision="20" scale="0" not-null="true" />
+        </many-to-one>
+        
+		<many-to-one name="user" class="com.execue.core.common.bean.security.User" fetch="select">
+			<column name="USER_ID" precision="20" scale="0" />
+		</many-to-one>
+	
+        <property name="parallelWord" type="string">
+            <column name="PARALLEL_WORD" not-null="true" />
+        </property>
+        
+        <property name="prefixSpace" type="boolean">
+            <column name="PREFIX_SPACE" length="1" not-null="true" />
+        </property>
+        
+		<property name="suffixSpace" type="boolean">
+			<column name="SUFFIX_SPACE" length="1" not-null="true" />
+		</property>
+        <property name="quality" type="java.lang.Double">
+			<column name="relevance" precision="10" />
+		</property>
+		 <property name="posType" type="string">
+			<column name="POS_TYPE" />
+		</property>
+		<property name="popularity" type="java.lang.Long">
+			<column name="popularity" precision="20" scale="0" />
+		</property>
+        
+        <property name="pwdType" type="pwdType">
+            <column name="PWD_TYPE" precision="2" scale="0" />
+        </property>
+        <property name="isDifferentWord" type="checkType">
+            <column name="IS_DIFFERENT_WORD" length="1" />
+        </property>
+        
+        <set name="cluster" inverse="false" table="PARALLEL_WORD_CLUSTER">
+            <key>
+                <column name="PARALLEL_WORD_ID" precision="20" scale="0" not-null="true" />
+            </key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.BusinessEntityDefinition">
+                <column name="BE_ID" precision="20" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
+    
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<queries>
+
+	<UPDATE_SOURCE_CONTENT_PROCESSING_STATE_BY_BATCH_ID>
+	<![CDATA[update SourceContent sc set sc.processed = :targetProcessedState 
+		where sc.batchId = :batchId and sc.processed = :existingProcessedState
+	]]>	
+	</UPDATE_SOURCE_CONTENT_PROCESSING_STATE_BY_BATCH_ID>
+
+	<UPDATE_SOURCE_CONTENT_BY_GIVEN_PROCESSING_STATE>
+	<![CDATA[update SourceContent sc set sc.processed = :processingFlagType, 
+		 sc.batchId =:batchId where sc.id between :startSourceContentId 
+		 and :endSourceContentId and sc.processed = :notProcessed
+	]]>	
+	</UPDATE_SOURCE_CONTENT_BY_GIVEN_PROCESSING_STATE>
+	
+	<QUERY_GET_LATEST_SOURCE_CONTENT_IDS>
+	<![CDATA[select sc.id from SourceContent sc where sc.processed = :notProcessed order by sc.id desc]]>	
+	</QUERY_GET_LATEST_SOURCE_CONTENT_IDS>
+	
+	<QUERY_GET_MAX_SOURCE_ITEM_ID_BY_CONTEXT_AND_SOURCE_NODE>
+	<![CDATA[select max(sourceItemId) from SourceContent sourceContent
+		 where sourceContent.contextId = :contextId 
+		 and sourceContent.sourceNodeId = :sourceNodeId
+	]]>	
+	</QUERY_GET_MAX_SOURCE_ITEM_ID_BY_CONTEXT_AND_SOURCE_NODE>
+
+	<DELETE_SOURCE_CONTENT_BY_CONTENT_DATE>
+	<![CDATA[
+	   delete from SourceContent sc where sc.addedDate <= :contentDate    
+    ]]>
+	</DELETE_SOURCE_CONTENT_BY_CONTENT_DATE>
+		
+</queries>

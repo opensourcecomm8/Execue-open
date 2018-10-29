@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="featureValueType">
+        <param name="enumClass">com.execue.core.common.type.FeatureValueType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<class name="com.execue.core.common.bean.entity.unstructured.Feature" table="FEATURE">
+		<id name="featureId" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">FEATURE</param>
+			</generator>
+		</id>
+		<property name="featureName" type="string">
+			<column name="FEATURE_NAME" />
+		</property>
+		<property name="featureDisplayName" type="string">
+			<column name="FEATURE_DISPLAY_NAME" />
+		</property>
+		<property name="featureSymbol" type="string">
+			<column name="FEATURE_SYMBOL" />
+		</property>
+		<property name="featureValueType" type="featureValueType">
+			<column name="FEATURE_TYPE" />
+		</property>
+   		<property name="featureBedId" type="java.lang.Long">
+			<column name="FEATURE_BE_ID" precision="20" scale="0" />
+        </property>
+   		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" precision="20" scale="0" />
+        </property>	
+        <property name="locationBased" type="checkType">
+			<column name="LOCATION_BASED" length="1" />
+        </property>
+        <property name="multiValued" type="checkType">
+			<column name="MULTI_VALUED" length="1" />
+        </property>
+        <property name="multiValuedGlobalPenalty" type="checkType">
+            <column name="MULTI_VALUED_GLOBAL_PENALTY" length="1" />
+        </property>
+            						
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,161 @@
+<queries>
+	<QUERY_BASE_MODEL>
+	<![CDATA[from Model model 
+		 where model.category= :baseModelCategoryType
+	]]>
+	</QUERY_BASE_MODEL>
+
+	<QUERY_BASE_MODEL_GROUP>
+	<![CDATA[select mg from 
+		 ModelGroup mg 
+		 where mg.category= :baseModelCategoryType
+	]]>
+	</QUERY_BASE_MODEL_GROUP>
+	
+	<QUERY_GET_BASE_AND_SYSTEM_MODEL_GROUPS>
+	<![CDATA[select mg from 
+		 ModelGroup mg where mg.category in (:modelCategoryTypes)
+	]]>
+	</QUERY_GET_BASE_AND_SYSTEM_MODEL_GROUPS>
+
+
+	<QUERY_BED_BY_RELATION_NAME>
+	<![CDATA[select distinct bed
+		 from BusinessEntityDefinition bed 
+		 where bed.modelGroup.id = :groupId 
+		 and bed.relation.name = :relationName
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_RELATION_NAME>
+
+	<QUERY_BED_BY_CONCEPT_NAME>
+	<![CDATA[select distinct bed
+		 from BusinessEntityDefinition bed 
+		 where bed.modelGroup.id = :groupId 
+		 and bed.concept.name = :conceptName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_CONCEPT_NAME>
+
+	<QUERY_BED_BY_TYPE_NAME>
+	<![CDATA[select distinct bed
+		 from BusinessEntityDefinition bed 
+		 where bed.modelGroup.id = :groupId 
+		 and bed.type.name = :typeName
+		 and bed.entityType in (:entityType)
+	]]>
+	</QUERY_BED_BY_TYPE_NAME>
+
+	<QUERY_GET_CONCEPT_BY_NAME>
+	<![CDATA[select distinct bed.concept 
+		 from BusinessEntityDefinition bed, 
+		 ModelGroupMapping mgm,Model model
+		 where bed.modelGroup.id = mgm.modelGroup.id  
+		 and mgm.model.id = :modelId  
+		 and mgm.modelGroup.category= :baseModelCategoryType
+		 and bed.concept.name = :conceptName 
+		 order by bed.concept.name)
+	]]>
+	</QUERY_GET_CONCEPT_BY_NAME>
+
+	<QUERY_GET_INSTANCE_BY_TYPE_BED_ID>
+	<![CDATA[select distinct bed.instance
+		from BusinessEntityDefinition bed 
+		where bed.modelGroup.id = :groupId 
+		and bed.type.id = :typeBedId
+		and bed.entityType in (:entityTypes))
+	]]>
+	</QUERY_GET_INSTANCE_BY_TYPE_BED_ID>
+
+	<QUERY_GET_BED_IN_BASE_MODEL>
+	<![CDATA[from BusinessEntityDefinition
+		 where entityType = :entityType
+		 and modelGroup=:baseModelGroup
+	]]>
+	</QUERY_GET_BED_IN_BASE_MODEL>
+
+	<QUERY_GET_UNITS_MAP_BY_CONCEPT_NAME>
+	<![CDATA[select i.displayName,i.abbreviatedName
+		 from BusinessEntityDefinition bed,Concept c, Instance i 
+		 where c.name = :conceptName and c.id = bed.concept.id 
+		 and i.id = bed.instance.id 
+		 and bed.modelGroup.id = :modelGroupId
+		 and bed.entityType = :realizedTypeLIEntityType
+	]]>
+	</QUERY_GET_UNITS_MAP_BY_CONCEPT_NAME>
+
+	<QUERY_GET_OPERATOR_MAP_BY_CONCEPT_NAME>
+	<![CDATA[select i.description,i.expression
+		 from BusinessEntityDefinition bed,Concept c, Instance i 
+		 where c.name = :conceptName and c.id = bed.concept.id 
+		 and i.id = bed.instance.id 
+		 and bed.modelGroup.id = :modelGroupId
+		 and bed.entityType = :realizedTypeLIEntityType
+	]]>
+	</QUERY_GET_OPERATOR_MAP_BY_CONCEPT_NAME>
+
+	<QUERY_GET_OPERATOR_NAMES_AND_EXPR>
+	<![CDATA[select i.name,i.expression 
+		 from BusinessEntityDefinition bed,Concept c, Instance i 
+		 where c.name = :conceptName and c.id = bed.concept.id 
+		 and i.id = bed.instance.id 
+		 and bed.modelGroup.id = :modelGroupId 
+		 and bed.entityType = :realizedTypeLIEntityType
+	]]>
+	</QUERY_GET_OPERATOR_NAMES_AND_EXPR>
+
+	<QUERY_GET_RULES_FOR_BEHAVIOR_IDS>
+	<![CDATA[select ar.rule 
+		 from BehaviorAssociationRule ar 
+		 where ar.behaviorBeId in (:behaviorIds) and 
+		 ar.behaviorAssociationPos=:behaviorAssociationPos
+	]]>
+	</QUERY_GET_RULES_FOR_BEHAVIOR_IDS>
+
+	<QUERY_ALL_SYSTEM_VARIABLES>
+	<![CDATA[from SystemVariable]]>
+	</QUERY_ALL_SYSTEM_VARIABLES>
+
+	<QUERY_ONTO_TERM_BY_WORD_AND_TYPE_NAME>
+	<![CDATA[from RIOntoTerm ri 
+		 where ri.typeName=:typeName and ri.word=:word
+		 and ri.modelGroupId=:modelGroupId
+	]]>
+	</QUERY_ONTO_TERM_BY_WORD_AND_TYPE_NAME>
+
+	<QUERY_GET_BASE_RELATIONS>
+	<![CDATA[select distinct r 
+		 from BusinessEntityDefinition as be , Relation as r,
+		 ModelGroupMapping as mgm
+		 where r.id = be.relation.id and be.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category= :baseModelCategoryType  
+		 and be.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_BASE_RELATIONS>
+	
+	<QUERY_GET_NON_REALIZABLE_TYPES>
+	<![CDATA[select distinct be.id 
+		 from BusinessEntityDefinition as be , Type as t,
+		 ModelGroupMapping as mgm
+		 where  be.type.id = t.id and t.realizable= :realizableValue
+		 and be.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category= :baseModelCategoryType 
+		 and be.entityType IN (:entityTypes)
+	]]>
+	</QUERY_GET_NON_REALIZABLE_TYPES>
+	
+	<QUERY_GET_RIONTO_TERM_FOR_BASE>
+	<![CDATA[SELECT DISTINCT ri.word FROM ModelGroupMapping mgm,RIOntoTerm ri
+		WHERE mgm.modelGroup.category= :baseModelCategoryType
+		AND mgm.model.id = :modelId
+		AND ri.modelGroupId=mgm.modelGroup.id
+		AND ri.entityType <> 'RI'
+		AND ri.word NOT LIKE '% %'
+	]]>
+	</QUERY_GET_RIONTO_TERM_FOR_BASE>
+	
+</queries>
+
+
+
+

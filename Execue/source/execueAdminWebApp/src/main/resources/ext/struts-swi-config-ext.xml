@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+	<!--
+
+		# Defiens the actions for SWI Config Screen extentions
+	-->
+<struts>
+	<package name="swi-config-ext" extends="swi-ext">
+		<action name="systemConfiguration" class="systemConfigurationAction"
+			method="showSystemConfiguration">
+			<result type="tiles">sdx.systemConfiguration</result>
+		</action>
+	</package>
+	
+	<package name="swi-config-json-ext" namespace="/swi" extends="execue-json-default">
+		<action name="saveCommonConfigurations" class="systemConfigurationAction" method="saveCommonConfigurations">
+			<result name="success" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+		</action>
+		
+		<action name="saveAnswersCatalogConfigurations" class="systemConfigurationAction" method="saveAnswersCatalogConfigurations">
+			<result name="success" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+		</action>
+		
+		<action name="saveReportAggregationConfigurations" class="systemConfigurationAction" method="saveReportAggregationConfigurations">
+			<result name="success" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+		</action>
+		
+		<action name="saveReportPresentationConfigurations" class="systemConfigurationAction" method="saveReportPresentationConfigurations">
+			<result name="success" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">actionStatus</param>
+			</result>
+		</action>
+	</package>
+</struts>

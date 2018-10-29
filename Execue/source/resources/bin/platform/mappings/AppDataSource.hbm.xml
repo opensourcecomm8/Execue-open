@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+	<class name="com.execue.core.common.bean.entity.AppDataSource" table="APP_DATA_SOURCE">
+		<comment>A App Data Source Mapping definiton</comment>
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">APP_DATA_SOURCE</param>
+			</generator>
+		</id>
+		<property name="appId" type="java.lang.Long">
+			<column name="app_id" length="20" not-null="true" />
+		</property>
+		<property name="dataSourceId" type="java.lang.Long">
+			<column name="data_source_id" length="20" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

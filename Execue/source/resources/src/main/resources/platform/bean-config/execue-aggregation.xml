@@ -1,0 +1,96 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="reportAggregationHelper" class="com.execue.repoting.aggregation.helper.ReportAggregationHelper">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"/>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory"/>
+		<property name="clientSourceDAO" ref="clientSourceDAO"/>
+		<property name="rangeProcessor" ref="rangeProcessor"/>
+		<property name="structuredQueryTransformerService" ref="structuredQueryTransformerService"/>
+	</bean>	
+	
+	<bean id="reductionProcessor" class="com.execue.repoting.aggregation.analyze.processor.ReductionProcessor">
+		<property name="reportAggregationHelper" ref="reportAggregationHelper"/>
+	</bean>
+
+	<bean id="rangeProcessor" class="com.execue.repoting.aggregation.analyze.processor.RangeProcessor">
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+		<property name="preferencesRetrievalService" ref="preferencesRetrievalService"/>
+		<property name="dynamicRangeSuggestionService" ref="dynamicRangeSuggestionService"/>
+	</bean>
+
+	<bean id="statisticsProcessor" class="com.execue.repoting.aggregation.analyze.processor.StatisticsProcessor">
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+	</bean>	
+
+	<bean id="hierarchyProcessor" class="com.execue.repoting.aggregation.analyze.processor.HierarchyProcessor">
+	</bean>
+	
+	<bean id="scatterProcessor" class="com.execue.repoting.aggregation.analyze.processor.ScatterProcessor">
+	</bean>	
+	
+	<bean id="postProcessor" class="com.execue.repoting.aggregation.analyze.processor.PostProcessor">
+		<property name="reportAggregationHelper" ref="reportAggregationHelper"/>
+	</bean>
+
+	<bean id="reportMetadataAnalyzerService" class="com.execue.repoting.aggregation.service.impl.ReportMetadataAnalyzerServiceImpl">
+		<property name="detailReportProcessor" ref="detailReportProcessor"/>
+		<property name="reductionProcessor" ref="reductionProcessor"/>
+		<property name="rangeProcessor" ref="rangeProcessor"/>
+		<property name="statisticsProcessor" ref="statisticsProcessor"/>
+		<property name="hierarchyProcessor" ref="hierarchyProcessor"/>
+		<property name="scatterProcessor" ref="scatterProcessor"/>
+		<property name="postProcessor" ref="postProcessor"/>
+	</bean>
+	
+	<bean id="reportQueryGenerationService" class="com.execue.repoting.aggregation.service.impl.ReportQueryGenerationServiceImpl">
+		<property name="reportAggregationHelper" ref="reportAggregationHelper"/>
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+	</bean>
+	
+	<bean id="reportDataExtractionService" class="com.execue.repoting.aggregation.service.impl.ReportDataExtractionServiceImpl">
+		<property name="clientSourceDAO" ref="clientSourceDAO"/>
+		<property name="structuredQueryTransformerService" ref="structuredQueryTransformerService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory"/>
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+	</bean>
+	
+	<bean id="reportPostProcessorService" class="com.execue.repoting.aggregation.service.impl.ReportPostProcessorServiceImpl">
+		<property name="reportAggregationHelper" ref="reportAggregationHelper"/>
+		<property name="structuredQueryTransformerService" ref="structuredQueryTransformerService"/>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory"/>
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="reportSelectionService" class="com.execue.repoting.aggregation.service.impl.ReportSelectionServiceImpl">
+		<!-- Comment out the reportRuleService property so that the Java based logic gets executed -->
+		<property name="ruleService" ref="ruleService"/>
+		<property name="aggregationConfigurationService" ref="aggregationConfigurationService"/>
+		<property name="reportSelectionHelper" ref="reportSelectionHelper"/>
+	</bean>
+	
+	<bean id="reportAggregationService" class="com.execue.repoting.aggregation.service.impl.ReportAggregationServiceImpl">
+		<property name="reportMetadataAnalyzerService" ref="reportMetadataAnalyzerService"/>
+		<property name="reportQueryGenerationService" ref="reportQueryGenerationService"/>
+		<property name="reportDataExtractionService" ref="reportDataExtractionService"/>
+		<property name="reportPostProcessorService" ref="reportPostProcessorService"/>
+		<property name="reportSelectionService" ref="reportSelectionService"/>
+		<property name="reportAggregationHelper" ref="reportAggregationHelper"/>
+	</bean> 
+	
+	<bean id="aggregationConfigurationService" class="com.execue.repoting.aggregation.configuration.impl.AggregationConfigurationServiceImpl">
+		<property name="aggregationConfiguration" ref="aggregationConfiguration"/>
+		<property name="aggregationDBConfiguration" ref="aggregationDBConfiguration"/>
+	</bean>
+
+</beans>

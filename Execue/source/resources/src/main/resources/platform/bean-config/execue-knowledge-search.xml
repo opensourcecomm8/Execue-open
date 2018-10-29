@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="knowledgeSearchEngine"
+		class="com.execue.ks.service.impl.KnowledgeBaseSearchEngineImpl">
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="udxService" ref="udxService" />
+		<property name="rfIdGenerationService" ref="rfIdGenerationService" />
+		<property name="rfxService" ref="rfxService" />
+		<property name="rfxServiceHelper" ref="rfxServiceHelper" />
+	</bean>
+
+	<bean id="entityLookupEngine" class="com.execue.ks.service.impl.EntityLookupImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+	</bean>
+	
+	<bean id="knowledgeSearchConfigurationService" class="com.execue.ks.configuration.impl.KnowledgeSearchConfigurationServiceImpl">
+		<property name="knowledgeSearchConfiguration" ref="knowledgeSearchConfiguration" />		
+	</bean>
+</beans>

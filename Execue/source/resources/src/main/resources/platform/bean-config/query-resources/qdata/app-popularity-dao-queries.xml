@@ -1,0 +1,37 @@
+<queries>
+	<QUERY_GET_APP_NEWS_USAGE_WEIGHT>
+	<![CDATA[from AppNewsUsageWeight]]>
+	</QUERY_GET_APP_NEWS_USAGE_WEIGHT>
+
+	<QUERY_GET_APP_NEWS_TOP_N>
+	<![CDATA[select max(id), min(id) from UnStructuredIndex udx order by createdDate desc]]>
+	</QUERY_GET_APP_NEWS_TOP_N>
+
+	<QUERY_GET_APP_NEWS_POPULARITY_BYLIMIT>
+	<![CDATA[select appId, count(udxId) as appHits,sum(hits)
+		 as newsEntityPopularity from AppNewsPopularity where udxId >= :minUdxId group by appId	
+	]]>
+	</QUERY_GET_APP_NEWS_POPULARITY_BYLIMIT>
+	
+	<QUERY_GET_APP_NEWS_POPULARITY>
+	<![CDATA[select appId, count(udxId) as appHits,sum(hits) 
+		 as newsEntityPopularity from AppNewsPopularity  group by appId
+	]]>
+	</QUERY_GET_APP_NEWS_POPULARITY>
+	<QUERY_UPDATE_APPLICATION_RANK>
+	<![CDATA[
+		update Application set rank = :rank where id = :appId
+	]]>	
+	</QUERY_UPDATE_APPLICATION_RANK>
+	<QUERY_GET_APP_USAGE_POPULARITY>
+	<![CDATA[
+		select a.id, a.popularity, sum(bed.popularity), a.appConstanRandFactor, a.name 
+		from Application as a 
+		inner join  a.models as model 
+		inner join model.modelGroupMappings as mgm 
+		inner join model.modelGroups as mg 
+		inner join mg.businessEntityDefinitions as bed 
+		where mgm.base = :checkType group by a.id
+	]]>	
+	</QUERY_GET_APP_USAGE_POPULARITY>
+</queries>	

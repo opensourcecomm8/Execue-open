@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<audit>
+		<static-values>	
+		    <execue-audit-trail-history-access-time-limit-key>30</execue-audit-trail-history-access-time-limit-key>
+		</static-values>        
+	</audit>
+</execue-configuration>

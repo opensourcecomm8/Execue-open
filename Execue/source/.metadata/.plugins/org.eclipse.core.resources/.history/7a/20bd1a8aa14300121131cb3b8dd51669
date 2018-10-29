@@ -1,0 +1,30 @@
+<queries>
+	<QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAILS>
+		<![CDATA[from InstanceMappingSuggestionDetail as insMapSuggDetail 
+		          where insMapSuggDetail.instanceMappingSuggestionId = :instanceMappingSuggestionId]]>
+	</QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAILS>
+
+	<QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAILS_BY_COLUM_AED_ID>
+		<![CDATA[select insMapSuggDetail 
+		         from InstanceMappingSuggestionDetail as insMapSuggDetail,
+		         InstanceMappingSuggestion as insMapSugg 
+		         where insMapSugg.columAEDId = :columAEDId 
+		         and insMapSuggDetail.instanceMappingSuggestionId = insMapSugg.id]]>
+	</QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAILS_BY_COLUM_AED_ID>
+	
+	<QUERY_GET_INSTANCE_MAPPING_SUGGESTION_COUNT>
+		<![CDATA[select imsd.id 
+		         from InstanceMappingSuggestionDetail as imsd, InstanceMappingSuggestion as ims
+		         where ims.columAEDId = :selColAedId and imsd.instanceMappingSuggestionId = ims.id]]>
+	</QUERY_GET_INSTANCE_MAPPING_SUGGESTION_COUNT>
+	
+	<QUERY_GET_INSTANCE_MAPPING_SUGGESTION_BY_COLUMN_AED_ID>
+		<![CDATA[from InstanceMappingSuggestion as ims 
+		         where ims.columAEDId = :columnAEDId]]>
+	</QUERY_GET_INSTANCE_MAPPING_SUGGESTION_BY_COLUMN_AED_ID>
+
+	<QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAIL_BY_INSTANCE_DISPLAY_NAME>
+		<![CDATA[select imsd from InstanceMappingSuggestionDetail as imsd 
+		         where imsd.instanceDisplayName = :instanceDisplayName]]>
+	</QUERY_GET_INSTANCE_MAPPING_SUGGESTION_DETAIL_BY_INSTANCE_DISPLAY_NAME>	
+</queries>

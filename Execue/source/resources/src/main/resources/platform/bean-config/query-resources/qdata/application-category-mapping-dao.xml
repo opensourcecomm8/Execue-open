@@ -1,0 +1,6 @@
+<queries>	
+	<QUERY_GET_ALL_APP_CATEGORY_MAPPINGS>
+	<![CDATA[from AppCategoryMapping
+	]]>
+	</QUERY_GET_ALL_APP_CATEGORY_MAPPINGS>		
+</queries>

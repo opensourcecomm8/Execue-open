@@ -1,0 +1,1346 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<bean id="transactionIdGenerationService"
+		class="com.execue.platform.impl.TransactionIdGenerationServiceImpl">
+		<property name="nodeId" value="1" />
+		<property name="queryDataPlatformRetrievalService">
+			<ref bean="queryDataPlatformRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="rfIdGenerationService" class="com.execue.platform.impl.RFIdGenerationServiceImpl">
+		<property name="nodeId" value="1" />
+		<property name="queryDataPlatformRetrievalService">
+			<ref bean="queryDataPlatformRetrievalService" />
+		</property>
+	</bean>
+	<bean id="knowledgeIdGenerationService"
+		class="com.execue.platform.impl.KnowledgeIdGenerationServiceImpl" />
+
+	<bean id="platformServicesConfigurationService"
+		class="com.execue.platform.configuration.impl.PlatformServicesConfigurationServiceImpl">
+		<property name="platformServicesConfiguration" ref="platformServicesConfiguration" />
+	</bean>
+
+	<bean id="platformServicesConfigurableService"
+		class="com.execue.platform.configuration.impl.PlatformServicesConfigurableService">
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService" />
+		<property name="rfIdGenerationService" ref="rfIdGenerationService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="swiPlatformRetrievalService" ref="swiPlatformRetrievalService" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+	</bean>
+
+	<bean id="indexFormManagementHelper" class="com.execue.platform.helper.IndexFormManagementHelper">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="popularityServiceHelper" class="com.execue.platform.helper.PopularityServiceHelper">
+		<property name="queryGenerationUtilServiceFactory">
+			<ref bean="queryGenerationUtilServiceFactory" />
+		</property>
+	</bean>
+
+	<bean id="publishedFileJDBCHelper" class="com.execue.platform.helper.PublishedFileJDBCHelper">
+		<property name="genericJDBCService" ref="genericJDBCService" />
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory" />
+	</bean>
+
+	<bean id="samplingStrategyIdentificationService"
+		class="com.execue.platform.impl.SamplingStrategyIdentificationServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="clientSourceDAO" ref="clientSourceDAO" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+	</bean>
+
+	<bean id="businessModelPreparationService"
+		class="com.execue.platform.impl.BusinessModelPreparationServiceImpl">
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="modelAbsorbtionService" ref="modelAbsorbtionService" />
+		<property name="conceptTypeEvaluationService" ref="conceptTypeEvaluationService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="assetActivationService" ref="assetActivationServiceImpl" />
+		<property name="indexFormManagementService" ref="indexFormManagementService" />
+		<property name="pathAbsorptionService" ref="pathAbsorptionService" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="kdxCloudManagementService" ref="kdxCloudManagementService" />
+		<property name="kdxManagementService" ref="kdxManagementService" />
+		<property name="kdxMaintenanceService" ref="kdxMaintenanceService" />
+		<property name="sdx2kdxMappingService" ref="sdx2kdxMappingService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="sflService" ref="sflService" />
+		<property name="businessEntityMaintenanceService" ref="businessEntityMaintenanceService" />
+		<property name="easIndexPopulationService" ref="easIndexPopulationService" />
+		<property name="joinService" ref="joinService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="unstructuredWarehouseManagementWrapperService"
+			ref="unstructuredWarehouseManagementWrapperService" />
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService" />
+		<property name="defaultDynamicValuePopulationService" ref="defaultDynamicValuePopulationService" />
+		<property name="businessEntityDeletionWrapperService" ref="businessEntityDeletionWrapperService" />
+	</bean>
+
+	<bean id="businessQueryOrganizationService"
+		class="com.execue.platform.impl.BusinessQueryOrganizationServiceImpl">
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"></property>
+		<property name="kdxModelService" ref="kdxModelService" />
+	</bean>
+
+	<bean id="modelAbsorbtionService" class="com.execue.platform.impl.ModelAbsorbtionServiceImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxManagementService" ref="kdxManagementService" />
+		<property name="conceptTypeAssociationService" ref="conceptTypeAssociationService" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService" />
+		<property name="pathDefinitionDeletionService" ref="pathDefinitionDeletionService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+	</bean>
+
+	<bean id="popularityJBDCService" class="com.execue.platform.impl.PopularityJBDCServiceImpl">
+	</bean>
+
+	<bean id="popularityCollectionService"
+		class="com.execue.platform.impl.PopularityCollectionServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+		<property name="popularityJBDCService">
+			<ref bean="popularityJBDCService" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+		<property name="popularityServiceHelper">
+			<ref bean="popularityServiceHelper" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+	</bean>
+
+	<bean id="popularityDispersionService"
+		class="com.execue.platform.impl.PopularityDispersionServiceImpl">
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="kdxMaintenanceService">
+			<ref bean="kdxMaintenanceService" />
+		</property>
+		<property name="popularityJBDCService">
+			<ref bean="popularityJBDCService" />
+		</property>
+		<property name="popularityDataAccessManager">
+			<ref bean="popularityDataAccessManager" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+		<property name="popularityServiceHelper">
+			<ref bean="popularityServiceHelper" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+	</bean>
+
+	<bean id="localQueryInterfaceSuggestService"
+		class="com.execue.platform.impl.QueryInterfaceSuggestServiceImpl">
+		<property name="queryInterfaceSuggestDataAccessManager" ref="queryInterfaceSuggestDataAccessManager" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+
+	<bean id="localSemanticSuggestService" class="com.execue.platform.impl.SemanticSuggestServiceImpl">
+		<property name="semanticSuggestDataAccessManager" ref="semanticSuggestDataAccessManager" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />	
+	</bean>
+
+	<bean id="queryInterfaceSuggestService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localQueryInterfaceSuggestService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="suggestBTsForPopulation">PROPAGATION_REQUIRED</prop>
+				<prop key="suggestBTsForWhereLHS">PROPAGATION_REQUIRED</prop>
+				<prop key="suggestBTsAndStatsForWhereLHS">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="semanticSuggestService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localSemanticSuggestService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getSuggestTerms">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="virtualTableManagementService"
+		class="com.execue.platform.impl.VirtualTableManagementServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="sourceMetaDataService" ref="sourceMetaDataService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+	</bean>
+
+	<bean id="localQueryDataPlatformRetrievalService"
+		class="com.execue.platform.querydata.impl.QueryDataPlatformRetrievalServiceImpl">
+		<property name="queryDataService" ref="queryDataService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="udxService" ref="udxService" />
+	</bean>
+
+	<bean id="queryDataPlatformRetrievalService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localQueryDataPlatformRetrievalService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getLoadedAggregatedQueryById">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="answersCatalogManagementQueueWrapperService" class="com.execue.platform.querydata.impl.AnswersCatalogManagementQueueWrapperServiceImpl">
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService" />
+	</bean>
+
+	<bean id="cleanQDataRuntimeTablesService"
+		class="com.execue.platform.querydata.impl.CleanQDataRuntimeTablesServiceImpl">
+		<property name="udxService">
+			<ref bean="udxService" />
+		</property>
+		<property name="rfxService">
+			<ref bean="rfxService" />
+		</property>
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="messageService" ref="messageService" />
+	</bean>
+
+	<bean id="unstructuredWarehouseManagementWrapperService"
+		class="com.execue.platform.unstructured.impl.UnstructuredWarehouseManagementWrapperServiceImpl">
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+		<property name="unstructuredWarehouseRetrievalService">
+			<ref bean="unstructuredWarehouseRetrievalService" />
+		</property>
+		<property name="unstructuredWarehouseManagementService">
+			<ref bean="unstructuredWarehouseManagementService" />
+		</property>
+		<property name="unstructuredFacetManagementService">
+			<ref bean="unstructuredFacetManagementService" />
+		</property>
+	</bean>
+
+	<bean id="unstructuredPlatformManagementService"
+		class="com.execue.platform.unstructured.impl.UnstructuredPlatformManagementServiceImpl">
+		<property name="dataAccessServicesConfigurationService" ref="dataAccessServicesConfigurationService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="systemDataAccessService" ref="systemDataAccessService" />
+	</bean>
+
+	<bean id="unstructuredPlatformDeletionService"
+		class="com.execue.platform.unstructured.impl.UnstructuredPlatformDeletionServiceImpl">
+	</bean>
+
+	<bean id="unstructuredPlatformRetrievalService"
+		class="com.execue.platform.unstructured.impl.UnstructuredPlatformRetrievalServiceImpl">
+	</bean>
+
+	<bean id="unstructuredFacetServiceHelper"
+		class="com.execue.platform.unstructured.UnstructuredFacetServiceHelper">
+		<property name="dataAccessServicesConfigurationService" ref="dataAccessServicesConfigurationService" />
+		<property name="unstructuredWHFeatureContentLookupService"
+			ref="unstructuredWHFeatureContentLookupService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="unstructuredWarehouseHelper" ref="unstructuredWarehouseHelper" />
+	</bean>
+
+
+	<bean id="unstructuredFacetRetrievalService"
+		class="com.execue.platform.unstructured.impl.UnstructuredFacetRetrievalServiceImpl">
+		<property name="solrRetrievalService">
+			<ref bean="solrRetrievalService" />
+		</property>
+		<property name="unstructuredFacetServiceHelper">
+			<ref bean="unstructuredFacetServiceHelper" />
+		</property>
+	</bean>
+
+	<bean id="unstructuredFacetManagementService"
+		class="com.execue.platform.unstructured.impl.UnstructuredFacetManagementServiceImpl">
+		<property name="solrManagementService">
+			<ref bean="solrManagementService" />
+		</property>
+		<property name="unstructuredFacetServiceHelper">
+			<ref bean="unstructuredFacetServiceHelper" />
+		</property>
+	</bean>
+
+
+	<bean id="realTimeBusinessEntityWrapperService"
+		class="com.execue.platform.impl.RealTimeBusinessEntityWrapperServiceImpl">
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="businessEntityManagementWrapperService">
+			<ref bean="businessEntityManagementWrapperService" />
+		</property>
+		<property name="indexFormManagementService">
+			<ref bean="indexFormManagementService" />
+		</property>
+		<property name="unstructuredWarehouseManagementWrapperService">
+			<ref bean="unstructuredWarehouseManagementWrapperService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+	</bean>
+
+
+	<!-- bean definitions for Type Converter's and Factory begins   -->
+
+	<bean id="numberTypeConvertor"
+		class="com.execue.platform.swi.conversion.unitscale.impl.NumberTypeConvertorImpl">
+		<property name="conversionService" ref="conversionService" />
+		<property name="arithmeticExpressionEvaluator" ref="arithmeticExpressionEvaluator" />
+	</bean>
+
+	<bean id="unitTypeConvertor"
+		class="com.execue.platform.swi.conversion.unitscale.impl.UnitTypeConvertorImpl">
+		<property name="conversionService" ref="conversionService" />
+		<property name="arithmeticExpressionEvaluator" ref="arithmeticExpressionEvaluator" />
+	</bean>
+
+	<bean id="typeConvertorFactory"
+		class="com.execue.platform.swi.conversion.unitscale.TypeConvertorFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="NUMBER" value="numberTypeConvertor" />
+				<entry key="DEFAULT" value="unitTypeConvertor" />
+			</map>
+		</property>
+	</bean>
+
+	<!--  Bean Definitions Of LocationSharedModelServiceImpl -->
+
+	<bean id="locationSharedModelService"
+		class=" com.execue.platform.swi.shared.location.impl.LocationSharedModelServiceImpl">
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="mappingManagementService">
+			<ref bean="mappingManagementService" />
+		</property>
+		<property name="realTimeBusinessEntityWrapperService">
+			<ref bean="realTimeBusinessEntityWrapperService" />
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="sharedModelServiceFactory"
+		class="com.execue.platform.swi.shared.SharedModelServiceFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="301" value="locationSharedModelService" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="assetAnalysisService"
+		class="com.execue.platform.swi.operation.analysis.impl.AssetAnalysisServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sdxDeletionService">
+			<ref bean="sdxDeletionService" />
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="joinService">
+			<ref bean="joinService" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="localAssetSyncPopulateService"
+		class="com.execue.platform.swi.operation.synchronization.impl.AssetSyncPopulateServiceImpl">
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxDeletionService">
+			<ref bean="sdxDeletionService" />
+		</property>
+		<property name="sourceMetaDataService">
+			<ref bean="sourceMetaDataService" />
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="localParentAssetSyncAbsorptionService"
+		class="com.execue.platform.swi.operation.synchronization.impl.ParentAssetSyncAbsorptionServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sdxDeletionService">
+			<ref bean="sdxDeletionService" />
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="sdx2kdxMappingService">
+			<ref bean="sdx2kdxMappingService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="businessModelPreparationService">
+			<ref bean="businessModelPreparationService" />
+		</property>
+		<property name="sdxDeletionWrapperService">
+            <ref bean="sdxDeletionWrapperService" />
+        </property>
+	</bean>
+
+	<bean id="localAssetSynchronizationWrapperService"
+		class="com.execue.platform.swi.operation.synchronization.impl.AssetSynchronizationWrapperServiceImpl">
+		<property name="assetSyncConsumptionService">
+			<ref bean="assetSyncConsumptionService" />
+		</property>
+		<property name="assetSyncPopulateService">
+			<ref bean="assetSyncPopulateService" />
+		</property>
+	</bean>
+
+	<bean id="parentAssetSyncAbsorptionService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localParentAssetSyncAbsorptionService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="absorbAssetSyncInfo">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="assetSyncPopulateService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localAssetSyncPopulateService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getAddedMembers">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="getDeletedMembers">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="assetSynchronizationWrapperService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localAssetSynchronizationWrapperService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="assetSynchronization">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="assetSyncConsumptionService"
+		class="com.execue.platform.swi.operation.synchronization.impl.AssetSyncConsumptionServiceImpl">
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService" />	
+	</bean>
+
+
+	<bean id="accessControlPublishService"
+		class="com.execue.platform.swi.impl.AccessControlPublishServiceImpl">
+		<property name="aclService" ref="aclService" />
+		<property name="userManagementService" ref="userManagementService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+	</bean>
+
+	<bean id="applicationDeletionWrapperService"
+		class="com.execue.platform.swi.impl.ApplicationDeletionWrapperServiceImpl">
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="userManagementService">
+			<ref bean="userManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxDeletionService">
+			<ref bean="kdxDeletionService" />
+		</property>
+		<property name="kdxCloudRetrievalService">
+			<ref bean="kdxCloudRetrievalService" />
+		</property>
+		<property name="kdxCloudManagementService">
+			<ref bean="kdxCloudManagementService" />
+		</property>
+		<property name="kdxCloudDeletionService">
+			<ref bean="kdxCloudDeletionService" />
+		</property>
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="pathDefinitionRetrievalService">
+			<ref bean="pathDefinitionRetrievalService" />
+		</property>
+		<property name="pathDefinitionDeletionService">
+			<ref bean="pathDefinitionDeletionService" />
+		</property>
+		<property name="preferencesRetrievalService">
+			<ref bean="preferencesRetrievalService" />
+		</property>
+		<property name="preferencesManagementService">
+			<ref bean="preferencesManagementService" />
+		</property>
+		<property name="preferencesDeletionService">
+			<ref bean="preferencesDeletionService" />
+		</property>
+		<property name="unstructuredApplicationConnectionManagementService">
+			<ref bean="unstructuredApplicationConnectionManagementService" />
+		</property>
+		<property name="unstructuredWarehouseManagementWrapperService">
+			<ref bean="unstructuredWarehouseManagementWrapperService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxDeletionService">
+			<ref bean="sdxDeletionService" />
+		</property>
+		<property name="easIndexService">
+			<ref bean="easIndexService" />
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+		<property name="riCloudsAbsorptionWrapperService">
+			<ref bean="riCloudsAbsorptionWrapperService" />
+		</property>
+		<property name="publishedFileRetrievalService">
+			<ref bean="publishedFileRetrievalService" />
+		</property>
+		<property name="applicationDeletionService">
+			<ref bean="applicationDeletionService" />
+		</property>
+		<property name="assetDeletionWrapperService">
+			<ref bean="assetDeletionWrapperService" />
+		</property>
+		<property name="swiPlatformDeletionService">
+			<ref bean="swiPlatformDeletionService" />
+		</property>
+	</bean>
+
+	<bean id="applicationManagementWrapperService"
+		class="com.execue.platform.swi.impl.ApplicationManagementWrapperServiceImpl">
+		<property name="applicationManagementService">
+			<ref bean="applicationManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="kdxCloudManagementService">
+			<ref bean="kdxCloudManagementService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="easIndexService">
+			<ref bean="easIndexService" />
+		</property>
+		<property name="unstructuredApplicationConnectionManagementService">
+			<ref bean="unstructuredApplicationConnectionManagementService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="assetActivationServiceImpl" class="com.execue.platform.swi.impl.AssetActivationServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="correctMappingService" ref="correctMappingService" />
+		<property name="defaultMetricService" ref="defaultMetricService" />
+	</bean>
+
+	<bean id="assetDeletionWrapperService"
+		class="com.execue.platform.swi.impl.AssetDeletionWrapperServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxDeletionService" ref="sdxDeletionService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="systemDataAccessService" ref="systemDataAccessService" />
+		<property name="assetDetailService" ref="assetDetailService" />
+		<property name="defaultDynamicValueService" ref="defaultDynamicValueService" />
+		<property name="securityDefinitionWrapperService" ref="securityDefinitionWrapperService" />
+		<property name="sdxDeletionWrapperService" ref="sdxDeletionWrapperService"/>
+	</bean>
+
+    <bean id="sdxDeletionWrapperService"
+        class="com.execue.platform.swi.impl.SDXDeletionWrapperServiceImpl">
+        <property name="sdxRetrievalService" ref="sdxRetrievalService" />
+        <property name="mappingDeletionService" ref="mappingDeletionService" />
+        <property name="sdxDeletionService" ref="sdxDeletionService" />
+        <property name="securityDefinitionWrapperService" ref="securityDefinitionWrapperService" />
+        <property name="joinService" ref="joinService" />
+        <property name="swiConfigurationService" ref="swiConfigurationService" />
+    </bean>
+
+	<bean id="assetExtractionService" class="com.execue.platform.swi.impl.AssetExtractionServiceImpl">
+		<property name="joinService">
+			<ref bean="joinService" />
+		</property>
+		<property name="assetSourceConnectionProvider">
+			<ref bean="assetSourceConnectionProvider" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sourceMetaDataService">
+			<ref bean="sourceMetaDataService" />
+		</property>
+		<property name="assetDetailService">
+			<ref bean="assetDetailService" />
+		</property>
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="constraintPopulationService" ref="constraintPopulationService" />
+		<property name="systemDataAccessService" ref="systemDataAccessService" />
+	</bean>
+
+	<bean id="assetPublishServiceImpl" class="com.execue.platform.swi.impl.AssetPublishServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="accessControlPublishService" ref="accessControlPublishService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+	</bean>
+
+	<bean id="assetSourcePublisherMergeService"
+		class="com.execue.platform.swi.impl.AssetSourcePublisherMergeServiceImpl">
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="publishedFileRetrievalService" ref="publishedFileRetrievalService" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+	</bean>
+
+	<bean id="bulkInstanceMappingCreation"
+		class="com.execue.platform.swi.impl.BulkInstanceMappingCreation">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="mappingManagementService">
+			<ref bean="mappingManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+	</bean>
+
+	<bean id="businessEntityDeletionWrapperService"
+		class="com.execue.platform.swi.impl.BusinessEntityDeletionWrapperServiceImpl">
+		<property name="preferencesDeletionService">
+			<ref bean="preferencesDeletionService" />
+		</property>
+		<property name="preferencesRetrievalService">
+			<ref bean="preferencesRetrievalService" />
+		</property>
+		<property name="indexFormManagementService">
+			<ref bean="indexFormManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxDeletionService">
+			<ref bean="kdxDeletionService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="mappingDeletionService">
+			<ref bean="mappingDeletionService" />
+		</property>
+		<property name="defaultDynamicValueService">
+			<ref bean="defaultDynamicValueService" />
+		</property>
+		<property name="userQueryPossibilityService">
+			<ref bean="userQueryPossibilityService" />
+		</property>
+		<property name="pathDefinitionDeletionService">
+			<ref bean="pathDefinitionDeletionService" />
+		</property>
+		<property name="kdxCloudDeletionService">
+			<ref bean="kdxCloudDeletionService" />
+		</property>
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="preferencesManagementService">
+			<ref bean="preferencesManagementService" />
+		</property>
+		<property name="kdxCloudRetrievalService">
+			<ref bean="kdxCloudRetrievalService" />
+		</property>
+		<property name="kdxCloudManagementService">
+			<ref bean="kdxCloudManagementService" />
+		</property>
+		<property name="kdxModelService">
+			<ref bean="kdxModelService" />
+		</property>
+		<property name="unstructuredWarehouseManagementWrapperService">
+			<ref bean="unstructuredWarehouseManagementWrapperService" />
+		</property>
+		<property name="applicationRetrievalService">
+			<ref bean="applicationRetrievalService" />
+		</property>
+	</bean>
+
+	<bean id="businessEntityManagementWrapperService"
+		class="com.execue.platform.swi.impl.BusinessEntityManagementWrapperServiceImpl">
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="knowledgeIdGenerationService">
+			<ref bean="knowledgeIdGenerationService" />
+		</property>
+	</bean>
+
+	<bean id="cleanSWIRuntimeTablesService"
+		class="com.execue.platform.swi.impl.CleanSWIRuntimeTablesServiceImpl">
+		<property name="userQueryPossibilityService" ref="userQueryPossibilityService" />
+		<property name="popularityService" ref="popularityService" />
+		<property name="applicationDeletionService" ref="applicationDeletionService" />
+		<property name="jobDataService" ref="jobDataService" />
+	</bean>
+
+	<bean id="conceptTypeAssociationService"
+		class="com.execue.platform.swi.impl.ConceptTypeAssociationServiceImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService" />
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService" />
+		<property name="pathDefinitionDeletionService" ref="pathDefinitionDeletionService" />
+		<property name="kdxManagementService" ref="kdxManagementService" />
+		<property name="kdxDeletionService" ref="kdxDeletionService" />
+		<property name="businessEntityMaintenanceService" ref="businessEntityMaintenanceService" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="conversionService" ref="conversionService" />
+	</bean>
+
+	<bean id="localConceptTypeEvaluationService"
+		class="com.execue.platform.swi.impl.ConceptTypeEvaluationServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="conversionService" ref="conversionService" />
+	</bean>
+
+	<bean id="conceptTypeEvaluationService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localConceptTypeEvaluationService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="evaluateConceptsForBaseTypes">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="constraintPopulationService"
+		class="com.execue.platform.swi.impl.ConstraintPopulationServiceImpl">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="sourceMetaDataService" ref="sourceMetaDataService" />
+	</bean>
+
+	<bean id="correctMappingService" class="com.execue.platform.swi.impl.CorrectMappingServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="mappingManagementService">
+			<ref bean="mappingManagementService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+
+	</bean>
+
+
+	<bean id="defaultDynamicValuePopulationService"
+		class="com.execue.platform.swi.impl.DefaultDynamicValuePopulationServiceImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="defaultDynamicValueService" ref="defaultDynamicValueService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="sourceMetaDataService" ref="sourceMetaDataService" />
+	</bean>
+
+	<bean id="defaultMetricPopulationService"
+		class="com.execue.platform.swi.impl.DefaultMetricPopulationServiceImpl">
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="defaultMetricService" ref="defaultMetricService" />
+	</bean>
+
+	<bean id="easIndexPopulationService"
+		class="com.execue.platform.swi.impl.EASIndexPopulationServiceImpl">
+		<property name="easIndexService" ref="easIndexService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+		<property name="jobDataService" ref="jobDataService" />
+	</bean>
+
+	<bean id="indexFormManagementService"
+		class="com.execue.platform.swi.impl.IndexFormManagementServiceImpl">
+		<property name="indexFormManagementHelper" ref="indexFormManagementHelper" />
+		<property name="riOntoTermAbsorbtionService" ref="riOntoTermAbsorbtionService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="sflService" ref="sflService" />
+		<property name="riCloudsAbsorptionWrapperService" ref="riCloudsAbsorptionWrapperService" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="businessEntityMaintenanceService" ref="businessEntityMaintenanceService" />
+		<property name="userManagementService" ref="userManagementService" />
+		<property name="preferencesRetrievalService" ref="preferencesRetrievalService" />
+		<property name="preferencesManagementService" ref="preferencesManagementService" />
+		<property name="preferencesDeletionService" ref="preferencesDeletionService" />
+		<property name="kdxManagementService" ref="kdxManagementService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<!-- Bean definiton for JDBCSourceColumnMetaServiceImpl -->
+	<bean id="JDBCSourceColumnMetaService"
+		class="com.execue.platform.swi.impl.JDBCSourceColumnMetaServiceImpl">
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory" />
+		<property name="conversionService" ref="conversionService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="genericJDBCDAO" ref="genericJDBCDAO" />
+	</bean>
+
+	<!-- Bean definition for ISourceMetaDataService Interface -->
+	<bean id="sourceMetaDataService"
+		class="com.execue.platform.swi.impl.JDBCSourceMetaDataServiceImpl">
+		<property name="assetSourceConnectionProvider">
+			<ref bean="assetSourceConnectionProvider" />
+		</property>
+		<property name="genericJDBCService">
+			<ref bean="genericJDBCService" />
+		</property>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory">
+		</property>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory">
+		</property>
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="conversionService" ref="conversionService" />
+		<property name="clientSourceDAO" ref="clientSourceDAO" />
+	</bean>
+
+	<bean id="kdxDataTypePopulationService"
+		class="com.execue.platform.swi.impl.KDXDataTypePopulationServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="genericJDBCService" ref="genericJDBCService">
+		</property>
+		<property name="coreConfigurationService" ref="coreConfigurationService">
+		</property>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory" />
+	</bean>
+
+	<!-- Bean defintion of KDXMaintenanceService -->
+	<bean id="kdxMaintenanceService" class="com.execue.platform.swi.impl.KDXMaintenanceServiceImpl">
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="preferencesRetrievalService">
+			<ref bean="preferencesRetrievalService" />
+		</property>
+		<property name="preferencesManagementService">
+			<ref bean="preferencesManagementService" />
+		</property>
+		<property name="preferencesDeletionService">
+			<ref bean="preferencesDeletionService" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="businessEntityMaintenanceService">
+			<ref bean="businessEntityMaintenanceService" />
+		</property>
+		<property name="kdxDeletionService">
+			<ref bean="kdxDeletionService" />
+		</property>
+	</bean>
+
+	<bean id="popularityPopulationService"
+		class="com.execue.platform.swi.impl.PopularityPopulationServiceImpl">
+		<property name="popularityService">
+			<ref bean="popularityService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="swiConfigurationService">
+			<ref bean="swiConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="publishService" class="com.execue.platform.swi.impl.PublishServiceImpl">
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="assetPublishService" ref="assetPublishServiceImpl" />
+		<property name="applicationManagementService" ref="applicationManagementService" />
+		<property name="businessModelPreparationService" ref="businessModelPreparationService" />
+		<property name="securityDefinitionPublishWrapperService" ref="securityDefinitionPublishWrapperService" />
+	</bean>
+	
+	<bean id="localRangeSuggestionService" class="com.execue.platform.swi.impl.RangeSuggestionServiceImpl">
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="genericJDBCService" ref="genericJDBCService" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+	</bean>
+
+	<bean id="rangeSuggestionService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localRangeSuggestionService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="deduceRange">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="dynamicRangeSuggestionService" class="com.execue.platform.swi.impl.DynamicRangeSuggestionServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="clientSourceDAO" ref="clientSourceDAO"/>
+		<property name="queryGenerationServiceFactory" ref="queryGenerationServiceFactory"/>
+		<property name="clientSourceQueryBuilderServiceFactory" ref="clientSourceQueryBuilderServiceFactory"/>
+	</bean>
+	
+	<bean id="riCloudsAbsorptionWrapperService"
+		class="com.execue.platform.swi.impl.RICloudsAbsorptionWrapperServiceImpl">
+		<property name="indexFormManagementHelper" ref="indexFormManagementHelper" />
+		<property name="kdxCloudRetrievalService" ref="kdxCloudRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="swiConfigurationService" ref="swiConfigurationService" />
+		<property name="riCloudsAbsorptionService" ref="riCloudsAbsorptionService" />
+	</bean>
+
+	<bean id="riOntoTermAbsorbtionService"
+		class="com.execue.platform.swi.impl.RIOntoTermAbsorbtionServiceImpl">
+		<property name="kdxManagementService" ref="kdxManagementService" />
+	</bean>
+
+	<!--Bean definition of SDX2KDXMappingService -->
+	<bean id="localSDX2KDXMappingService" class="com.execue.platform.swi.impl.SDX2KDXMappingServiceImpl">
+		<property name="mappingRetrievalService">
+			<ref bean="mappingRetrievalService" />
+		</property>
+		<property name="mappingManagementService">
+			<ref bean="mappingManagementService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="kdxManagementService">
+			<ref bean="kdxManagementService" />
+		</property>
+		<property name="instanceMappingSuggestionService">
+			<ref bean="instanceMappingSuggestionService" />
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService" />
+		</property>
+		<property name="batchMaintenanceService">
+			<ref bean="batchMaintenanceService" />
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="businessEntityManagementWrapperService">
+			<ref bean="businessEntityManagementWrapperService" />
+		</property>
+	</bean>
+
+
+	<bean id="sdx2kdxMappingService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="swiTxManager" />
+		<property name="target" ref="localSDX2KDXMappingService" />
+		<property name="proxyTargetClass" value="false" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="mapSDX2KDXForAsset">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapSDX2KDXForTable">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapSDX2KDXForColumn">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapSDX2KDXForMember">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapSDX2KDXForColumnMembers">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapColumnsForAssetSyncUpProcess">
+					PROPAGATION_REQUIRED
+				</prop>
+				<prop key="mapMembersForAssetSyncUpProcess">
+					PROPAGATION_REQUIRED
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="sdxBatchMaintenanceService"
+		class="com.execue.platform.swi.impl.SDXBatchMaintenanceServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="sdxManagementService">
+			<ref bean="sdxManagementService" />
+		</property>
+		<property name="sourceMetaDataService">
+			<ref bean="sourceMetaDataService" />
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService" />
+		</property>
+		<property name="batchMaintenanceService">
+			<ref bean="batchMaintenanceService" />
+		</property>
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+	</bean>
+
+	<bean id="swiPlatformDeletionService"
+		class="com.execue.platform.swi.impl.SWIPlatformDeletionServiceImpl">
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="publishedFileRetrievalService">
+			<ref bean="publishedFileRetrievalService" />
+		</property>
+		<property name="publishedFileManagementService">
+			<ref bean="publishedFileManagementService" />
+		</property>
+		<property name="publishedFileJDBCHelper">
+			<ref bean="publishedFileJDBCHelper" />
+		</property>
+	</bean>
+
+	<bean id="swiPlatformManagementService"
+		class="com.execue.platform.swi.impl.SWIPlatformManagementServiceImpl">
+		<property name="preferencesManagementService">
+			<ref bean="preferencesManagementService" />
+		</property>
+		<property name="kdxCloudRetrievalService">
+			<ref bean="kdxCloudRetrievalService" />
+		</property>
+		<property name="kdxCloudManagementService">
+			<ref bean="kdxCloudManagementService" />
+		</property>
+		<property name="conceptTypeAssociationService">
+			<ref bean="conceptTypeAssociationService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="pathDefinitionRetrievalService">
+			<ref bean="pathDefinitionRetrievalService" />
+		</property>
+		<property name="pathDefinitionManagementService">
+			<ref bean="pathDefinitionManagementService" />
+		</property>
+		<property name="knowledgeIdGenerationService">
+			<ref bean="knowledgeIdGenerationService" />
+		</property>
+	</bean>
+
+	<bean id="swiPlatformRetrievalService"
+		class="com.execue.platform.swi.impl.SWIPlatformRetrievalServiceImpl">
+		<property name="publishedFileJDBCHelper">
+			<ref bean="publishedFileJDBCHelper" />
+		</property>
+		<property name="publishedFileRetrievalService">
+			<ref bean="publishedFileRetrievalService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+		<property name="preferencesRetrievalService">
+			<ref bean="preferencesRetrievalService" />
+		</property>
+		<property name="kdxRetrievalService">
+			<ref bean="kdxRetrievalService" />
+		</property>
+		<property name="baseKDXRetrievalService">
+			<ref bean="baseKDXRetrievalService" />
+		</property>
+		<property name="locationConfigurationService">
+			<ref bean="locationConfigurationService" />
+		</property>
+	</bean>
+
+	<bean id="verticalPopularityUpdationService"
+		class="com.execue.platform.swi.impl.VerticalPopularityUpdationServiceImpl">
+		<property name="jobDataService">
+			<ref bean="jobDataService" />
+		</property>
+		<property name="verticalService">
+			<ref bean="verticalService" />
+		</property>
+	</bean>
+
+	<bean id="locationDataPopulationService"
+		class="com.execue.platform.shareddata.location.impl.LocationDataPopulationServiceImpl">
+		<property name="locationManagementService">
+			<ref bean="locationManagementService" />
+		</property>
+		<property name="locationRetrievalService">
+			<ref bean="locationRetrievalService" />
+		</property>
+		<property name="locationSharedModelService">
+			<ref bean="locationSharedModelService" />
+		</property>
+	</bean>
+
+	<bean id="unstructuredApplicationConnectionManagementService"
+		class="com.execue.platform.unstructured.impl.UnstructuredApplicationConnectionManagementServiceImpl">
+		<property name="unstructuredWHSolrConnectionMgmtService">
+			<ref bean="unstructuredWHSolrConnectionMgmtService" />
+		</property>
+		<property name="unstructuredWHConnectionMgmtService">
+			<ref bean="unstructuredWHConnectionMgmtService" />
+		</property>
+		<property name="unstructuredCAConnectionMgmtService">
+			<ref bean="unstructuredCAConnectionMgmtService" />
+		</property>
+		<property name="sdxRetrievalService">
+			<ref bean="sdxRetrievalService" />
+		</property>
+	</bean>
+
+
+	<!-- Content Transport Beans Begin -->
+	<bean id="unstructuredContentTransporterHelper"
+		class="com.execue.platform.helper.UnstructuredContentTransporterHelper">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+	</bean>
+
+	<bean id="unstructuredContentTransporter"
+		class="com.execue.platform.unstructured.content.transporter.impl.UnstructuredContentTransporterImpl">
+		<property name="unstructuredContentTransporterHelper" ref="unstructuredContentTransporterHelper" />
+		<property name="systemDataAccessService" ref="systemDataAccessService" />
+		<property name="genericJDBCService" ref="genericJDBCService" />
+		<property name="remoteDataTransferService" ref="remoteDataTransferService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+	</bean>
+
+	<bean id="unstructuredAppBasedContentTransporter"
+		class="com.execue.platform.unstructured.content.transporter.impl.UnstructuredAppBasedContentTransporterImpl">
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="unstructuredContentTransporter" ref="unstructuredContentTransporter" />
+	</bean>
+
+	<bean id="unstructuredTargetBasedContentTransporter"
+		class="com.execue.platform.unstructured.content.transporter.impl.UnstructuredTargetBasedContentTransporterImpl">
+		<property name="unstructuredAppBasedContentTransporter" ref="unstructuredAppBasedContentTransporter" />
+		<property name="unstructuredContentTransporterHelper" ref="unstructuredContentTransporterHelper" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="genericJDBCService" ref="genericJDBCService" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+	</bean>
+	<!-- Content Transport Beans End -->
+
+    <!-- Security Definition Wrapper Service -->
+    <bean id="securityDefinitionWrapperService"
+        class="com.execue.platform.security.impl.SecurityDefinitionWrapperServiceImpl">
+        <property name="coreConfigurationService" ref="coreConfigurationService" />
+        <property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+        <property name="aclService" ref="aclService" />
+        <property name="sdxRetrievalService" ref="sdxRetrievalService" />
+        <property name="mappingRetrievalService" ref="mappingRetrievalService" />
+    </bean>
+    
+	<bean id="securityDefinitionPublishWrapperService" class="com.execue.platform.security.impl.SecurityDefinitionPublishWrapperServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="aclService" ref="aclService" />
+		<property name="securityDefinitionWrapperService" ref="securityDefinitionWrapperService" />
+		<property name="userManagementService" ref="userManagementService" />
+	</bean>
+	<bean id="auditTrailWrapperService" class="com.execue.platform.audittrail.impl.AuditTrailWrapperServiceImpl">
+		<property name="auditTrailService" ref="auditTrailService" />	
+		<property name="userManagementService" ref="userManagementService" />
+		<property name="queryDataService" ref="queryDataService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="coreConfigurationService" ref="coreConfigurationService" />		
+	</bean>
+	
+</beans>

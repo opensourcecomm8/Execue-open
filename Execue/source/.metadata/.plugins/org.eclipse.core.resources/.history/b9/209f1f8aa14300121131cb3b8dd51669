@@ -1,0 +1,15 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="pseudoLanguageService" class="com.execue.pseudolang.service.impl.PseudoLanguageServiceImpl">
+		<property name="conversionService" ref="conversionService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="swiConfigurationService" ref="swiConfigurationService"/>
+	</bean>
+	
+	<bean id="pseudoLanguageConfigurationService" class="com.execue.pseudolang.configuration.impl.PseudoLanguageConfigurationServiceImpl">
+		<property name="pseudoLanguageConfiguration" ref="pseudoLanguageConfiguration"/>		
+	</bean>
+</beans>

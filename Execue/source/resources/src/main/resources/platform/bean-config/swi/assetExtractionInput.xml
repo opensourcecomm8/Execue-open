@@ -1,0 +1,60 @@
+<AssetRegistrationInput>
+	<remainingTablesAreFacts></remainingTablesAreFacts> 
+	<sourceAsset>
+		<baseAssetId>2</baseAssetId> 
+		<name>WareHouseAssegg</name> 
+		<description>WasreHouseAsset to be registered</description> 
+		<displayName>assetExtraction</displayName> 
+		<priority>0</priority>
+		<dataSource> 
+			<id>4</id>
+			<name>Abc Cards Warehouse</name>
+			<providerType>Oracle</providerType> 
+			<location>10.10.52.111</location> 
+			<port>1521</port> 
+			<userName>warehouse</userName> 
+			<password>execue</password> 
+			<schemaName>ORCL1</schemaName>
+		</dataSource> 
+		<status>ACTIVE</status> 
+	</sourceAsset>
+	<tables>
+		<tables>
+			<name>ACCOUNT2</name> 
+		</tables>
+		<tables>
+			<name>BILLING2</name> 
+		</tables>
+		<!--<tables>
+			<name>OFFER_GROUP</name> 
+		</tables>-->
+		<tables>
+			<name>PORT_SEG_GRP</name> 
+		</tables>
+		<tables>
+			<name>CARD_TYPE</name> 
+			<lookupType>SIMPLE_LOOKUP</lookupType> 
+			<lookupValueColumn>CARD_TYPE_CD</lookupValueColumn>
+			<lookupDescColumn>CARD_TYPE</lookupDescColumn> 
+		</tables>
+		<!--<tables>
+			<name>OFFER</name> 
+			<lookupType>SIMPLE_LOOKUP</lookupType> 
+			<lookupValueColumn>OFFER</lookupValueColumn>
+			<lookupDescColumn>OFFER_DESC</lookupDescColumn> 
+		</tables>-->
+		<tables>
+			<name>PORT_SEG</name> 
+			<lookupType>SIMPLE_LOOKUP</lookupType> 
+			<lookupValueColumn>PORT_SEG</lookupValueColumn>
+			<lookupDescColumn>PORT_SEG_DESC</lookupDescColumn> 
+		</tables>
+		<!--<tables>
+			<name>USAGE_SEG</name> 
+			<lookupType>SIMPLE_LOOKUP</lookupType> 
+			<lookupValueColumn>USAGE_SEG</lookupValueColumn>
+			<lookupDescColumn>USAGE_SEG_DESC</lookupDescColumn> 
+		</tables>-->
+		
+	</tables>
+</AssetRegistrationInput>

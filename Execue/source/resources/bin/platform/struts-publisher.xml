@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for Publisher related actions
+
+-->
+<struts>
+	
+	
+	<package name="publisher" namespace="/publisher" extends="execue-console-default">
+		<!-- Upload Related Actions {Start} -->
+		<action name="showUploadCSV" method="input" class="uploadAction">
+			<result type="tiles" >publisher.showUploadCSV</result> 
+		</action>
+		<action name="showUploadXL" method="inputXL" class="uploadAction">
+			<result type="tiles" >publisher.showUploadXL</result> 
+		</action>
+		<action name="uploadCSV" method="uploadCSVData" class="uploadAction">
+			<result type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result> 
+		</action>
+		
+		<action name="uploadXL" method="uploadXLData" class="uploadAction">
+			<interceptor-ref name="execue-console-stack"/>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">application/vnd.ms-excel</param>     
+			</interceptor-ref>
+			<result name="success" type="tiles" >publisher.showUploadStatus</result>
+			<result name="error" type="tiles" >publisher.showUploadXL</result>
+			<result name="input" type="tiles" >publisher.showUploadXL</result> 
+		</action>
+		
+		<action name="showUploadStatus" method="showUploadStatus" class="uploadAction">
+			<result type="tiles">publisher.showUploadStatus</result> 
+		</action>
+		
+		<action name="showUploadStatusDetails" method="showUploadStatusDetails" class="uploadAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/uploadStatusDetails.jsp</result> 
+		</action>
+        
+		<action name="uploadStatus" class="uploadAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/uploadCSV.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/publisher/upload/uploadCSV.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/upload/uploadCSV.jsp</result>
+		</action>
+		<action name="absorbEvaluatedData" method="absorbEvaluatedData" class="uploadAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showUploadStatus</param>                
+				<param name="jobRequest.id">${jobRequest.id}</param>                
+			</result>
+		</action>
+		<!-- Upload Related Actions {End} -->
+		<action name="showGrainDefinitions" class="publishedFileAbsorptionAction">
+			<result name="success" type="tiles">publisher.showGrainDefinition</result> 
+			<result name="input" type="tiles">publisher.showGrainDefinition</result>
+			<result name="error" type="tiles">publisher.showGrainDefinition</result>
+		</action>
+		<!--action name="showPublishedFileTables" method="showPublishedFileTables" class="publishedFileAbsorptionAction">
+				<result name="success" type="tiles">publisher.evaluatedColumns</result> 
+				<result name="input" type="tiles">publisher.evaluatedColumns</result>
+				<result name="error" type="tiles">publisher.evaluatedColumns</result>
+			</action-->
+		<action name="getEvaluatedColumns" method="getEvaluatedColumns" class="publishedFileAbsorptionAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result>	
+		</action>
+		<action name="getGrainDefinitions" method="showGrainDefinitions" class="publishedFileAbsorptionAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/GrainDefinitionsInfo.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/publisher/upload/GrainDefinitionsInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/upload/GrainDefinitionsInfo.jsp</result>
+		</action>
+		<action name="updateGrainDefinitions" method="updateGrainDefinitions" class="publishedFileAbsorptionAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getGrainDefinitions</param>				
+				<param name="fileTableInfoId">${fileTableInfoId}</param>				
+			</result>
+			<result name="input" type="tiles">publisher.showGrainDefinition</result>
+			<result name="error" type="tiles">publisher.showGrainDefinition</result>
+		</action>
+		<!--action name="updateEvaluatedColumns" method="updateEvaluatedColumns" class="publishedFileColumnEvaluationAction">
+				<result name="success" type="redirectAction">
+					<param name="actionName">getEvaluatedColumns</param>				
+					<param name="fileTableInfoId">${fileTableInfoId}</param>				
+					<param name="columnsUpdateStatus">success</param>
+				</result>
+				<result name="error" type="redirectAction">
+					<param name="actionName">getEvaluatedColumns</param>				
+					<param name="fileTableInfoId">${fileTableInfoId}</param>
+					<param name="updateValidationErrorMessages">${updateValidationErrorMessages}</param>
+					<param name="columnsUpdateStatus">error</param>					
+				</result>
+			</action-->
+		<action name="getEvaluatedSubColumnsInfo" method="showEvaluatedSubColumnInfo" class="publishedFileAbsorptionAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/upload/evaluateColumnsInfo.jsp</result>	
+		</action>
+		<action name="showApplications">
+			<result name="success" >/WEB-INF/jsp/admin/swi/sdx/showApplicationsForUploadCSV.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/swi/sdx/showApplicationsForUploadCSV.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/admin/swi/sdx/showApplicationsForUploadCSV.jsp</result>			
+		</action>
+		<action name="showMemberEvaluation" method="getMemberEvaluationList" class="memberColumnEvaluationAction">
+			<result name="success" >/WEB-INF/jsp/admin/publisher/upload/memberMetaData.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/publisher/upload/memberMetaData.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/admin/publisher/upload/memberMetaData.jsp</result>			
+		</action>
+		<action name="showJobRequestStatus" method="showJobRequestStatus" class="publishedFileAbsorptionAction">
+			<result name="success" type="tiles">publisher.showJobStatus</result> 
+			<result name="input" type="tiles">publisher.showJobStatus</result>
+			<result name="error" type="tiles">publisher.showJobStatus</result>	
+		</action>
+		<action name="showUploadDataset" class="uploadAction">
+			<result type="tiles">publisher.showUploadDataset</result> 
+		</action>	
+		<action name="uploadDataset" method="input" class="uploadAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/viewUploadCSVTab.jsp</result> 
+		</action>
+		<action name="showSimplifiedUpload" method="input" class="uploadAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/upload/uploadCSV.jsp</result> 
+		</action>
+		<!-- File Absorption Dashboard Starts -->
+		<action name="absorbUploadedFileDatasetCollection" method="absorbUploadedPublishedFile" class="uploadAction">
+			<result name="success" type="tiles" >publisher.showUploadStatus</result>
+			<result name="error" type="tiles" >sdx.showAssetsDashboard</result>
+			<result name="input" type="tiles" >sdx.showAssetsDashboard</result>
+		</action>		
+		
+		<action name="showPublishedFileTables" method="showPublishedFileTables" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="tiles">publisher.evaluatedColumns</result> 
+			<result name="input" type="tiles">publisher.evaluatedColumns</result>
+			<result name="error" type="tiles">publisher.evaluatedColumns</result>
+		</action>
+        
+		<action name="showMetadata" method="showMetadata" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showPublishedFileTables</param>                
+				<param name="infoSource">${infoSource}</param> 
+				<param name="applicationId">${applicationId}</param>               
+				<param name="assetId">${assetId}</param>
+				<param name="publishedFileId">${publishedFileId}</param>
+				<param name="jobRequestId">${jobRequestId}</param>
+			</result>
+			<result name="normal_metadata" type="tiles">sdx.showAsset</result>            
+		</action>
+        
+		<action name="editMetadata" method="showMetadata" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showPublishedFileTables</param>                
+				<param name="infoSource">${infoSource}</param> 
+				<param name="applicationId">${applicationId}</param>               
+				<param name="assetId">${assetId}</param>
+				<param name="publishedFileId">${publishedFileId}</param>
+				<param name="jobRequestId">${jobRequestId}</param>
+			</result>
+			<result name="normal_metadata" type="tiles">sdx.showAsset</result>          
+		</action>
+		<!-- Files Upload Dashboard Ends -->
+	</package>
+
+	<package name="publisher-json" namespace="/publisher" extends="execue-json-default">
+		<action name="invokeUploadedFileAbsorption" method="invokeUploadedFileAbsorption" class="uploadAction">
+			<result type="json">
+				<param name="root">jobRequestResult</param>
+			</result>
+		</action>
+		<action name="invokeAbsorbEvaluatedData" method="invokeAbsorbEvaluatedData" class="uploadAction">
+			<result type="json">
+				<param name="root">jobRequestResult</param>
+			</result>
+		</action>
+		<action name="deleteUploadedDataset" method="deleteUploadedDataset" class="uploadAction">
+			<result type="json">
+				<param name="root">operationStatus</param>
+			</result>
+		</action>
+		
+		
+		<action name="updateEvaluatedColumns" method="updateEvaluatedColumns" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="json">
+				<param name="root">updateValidationErrorMessages</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">updateValidationErrorMessages</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">updateValidationErrorMessages</param>
+			</result>
+		</action>
+			
+		<action name="updateEvaluatedMembers" method="updateEvaluatedMembers" class="memberColumnEvaluationAction">
+			<result name="success" type="json">
+				<param name="root">updateValidationErrorMessage</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">updateValidationErrorMessage</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">updateValidationErrorMessage</param>
+			</result>
+		</action>
+		
+		<action name="showEvalutedColumnDetails" method="getPageResults" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		<action name="showColumnData" method="getPageResults" class="publishedFileColumnDataAction">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		<action name="showMemberEvaluationData" method="getPageResults" class="memberColumnEvaluationAction">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		<action name="getConversionTypeJSON" method="getUIPublishedFileColumnInfo" class="publishedFileColumnEvaluationAction">
+			<result name="success" type="json">
+				<param name="root">uiPublishedFileColumnInfo</param>
+			</result>
+		</action>			
+	</package>
+</struts>

@@ -1,0 +1,109 @@
+<queries>	
+	<QUERY_GET_All_RELATION_BUSINESS_ENTITY>
+	<![CDATA[select bed.id, bed.relation.displayName from BusinessEntityDefinition as bed,
+		 ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_All_RELATION_BUSINESS_ENTITY>
+	
+	
+	<QUERY_BED_BY_RELATION_NAME>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType
+		 and bed.relation.name = :relationName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_RELATION_NAME>
+	
+	<QUERY_BED_BY_RELATION_ID>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType
+		 and bed.relation.id = :relationId 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_RELATION_ID>
+	
+	
+	<QUERY_BED_BY_RELATION_NAME_INCLUDING_BASE_GROUP>
+	<![CDATA[select distinct bed from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.relation.name = :relationName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_RELATION_NAME_INCLUDING_BASE_GROUP>
+	
+	
+	
+	<QUERY_GET_All_RELATION_BUSINESS_ENTITY_FOR_MODEL>
+	<![CDATA[select bed.id, bed.relation.displayName from BusinessEntityDefinition as bed,
+		 ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_All_RELATION_BUSINESS_ENTITY_FOR_MODEL>
+	
+	
+	
+	<QUERY_GET_All_RELATION_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	<![CDATA[select count(distinct bed.relation) from BusinessEntityDefinition as bed,
+		 ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_All_RELATION_BUSINESS_ENTITY_COUNT_FOR_MODEL>
+	
+	<QUERY_GET_RELATION_BY_NAME_FROM_BASE_ALSO>
+	<![CDATA[select rel 
+		 from BusinessEntityDefinition bed 
+		      join bed.relation as rel, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and rel.name = :relationName 
+		 and bed.entityType = :entityType 
+		 order by rel.name
+	]]>
+	</QUERY_GET_RELATION_BY_NAME_FROM_BASE_ALSO>
+	
+	<QUERY_GET_RELATION_BY_NAME>
+	<![CDATA[select rel 
+	     from BusinessEntityDefinition bed  
+              join bed.relation as rel, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category = :userModelCategoryType and rel.name = :relationName 
+		 and bed.entityType = :entityType order by rel.name
+	]]>
+	</QUERY_GET_RELATION_BY_NAME>
+
+	<QUERY_GET_RELATIONS_FOR_MODEL_GROUP>
+	<![CDATA[select be.relation 
+		 from BusinessEntityDefinition as be
+		 where be.modelGroup in (:userModelGroups)
+		 and be.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_RELATIONS_FOR_MODEL_GROUP>
+	
+	<QUERY_GET_RELATIONS_FOR_MODEL>
+	<![CDATA[select r
+		 from BusinessEntityDefinition as be , 
+		 Relation as r , ModelGroupMapping as mgm 
+		 where r.id = be.relation.id and be.modelGroup.id = mgm.modelGroup.id  
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType
+		 and be.entityType = :relationEntityType order by r.displayName
+	]]>
+	</QUERY_GET_RELATIONS_FOR_MODEL>
+	
+
+	<QUERY_FOR_RELATIONS_HAVING_SEARCH_STRING>
+	<![CDATA[select r
+		 from BusinessEntityDefinition as be , Relation as r , ModelGroupMapping as mgm 
+		 where r.id = be.relation.id and r.name like :searchString 
+		 and be.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category in (:modelCategoryTypes) and be.entityType = :relationBusinessEntityType 
+		 order by locate(:inStr, r.displayName, 1), r.displayName, be.popularity desc
+	]]>
+	</QUERY_FOR_RELATIONS_HAVING_SEARCH_STRING>
+</queries>

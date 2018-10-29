@@ -1,0 +1,28 @@
+<queries>
+	
+	<QUERY_GET_ALL_FEATURE_DETAILS>
+	<![CDATA[from FeatureDetail fd where fd.contextId =:contextId
+	]]>	
+	</QUERY_GET_ALL_FEATURE_DETAILS>
+	
+	<QUERY_GET_FEATURE_DETAIL_BY_FEATURE_ID>
+	<![CDATA[from FeatureDetail  fd where fd.contextId =:contextId and fd.featureId =:featureId 
+	]]>	
+	</QUERY_GET_FEATURE_DETAIL_BY_FEATURE_ID>	
+	
+	<QUERY_GET_ALL_FEATURE_DETAILS_WITH_ADDITIONAL_FEATURE_INFO>
+	<![CDATA[select fd.id, fd.contextId, fd.featureId, fd.columnName,
+		  fd.displayOrder, fd.sortable, fd.defaultSortOrder, fd.featureDetailType,
+		  fd.diplayableFeatureAlignmentType, feature.featureName, feature.featureDisplayName,
+		  feature.featureSymbol, feature.featureValueType 
+		  from FeatureDetail fd, Feature feature 
+		  where fd.featureId=feature.id and fd.featureDetailType =:displayableFeatureType 
+		  and fd.contextId =:contextId	
+	]]>	
+	</QUERY_GET_ALL_FEATURE_DETAILS_WITH_ADDITIONAL_FEATURE_INFO>
+	
+	<QUERY_ALL_FEATURE_DETAIL_BY_DETAIL_TYPE>
+	<![CDATA[ from FeatureDetail fd where fd.featureDetailType =:detailType and fd.contextId =:contextId	
+	]]>	
+	</QUERY_ALL_FEATURE_DETAIL_BY_DETAIL_TYPE>	
+</queries>

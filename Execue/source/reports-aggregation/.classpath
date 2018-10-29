@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/core-common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/swi"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/query-data"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/query-generation"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/platform-services"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rules"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/resources"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/resources-ext"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EXECUE_LIB"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/data-access"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

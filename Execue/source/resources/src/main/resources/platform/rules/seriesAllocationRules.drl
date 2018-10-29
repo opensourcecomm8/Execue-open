@@ -1,0 +1,39 @@
+#created on: Aug 25, 2009
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.SeriesAttributes;
+import com.softwarefx.chartfx.server.AxisStyles;
+import com.softwarefx.chartfx.server.AxisPosition;
+import java.util.EnumSet;
+
+rule "1stSeriesOnYAxis"
+	when
+		chartCurve : ChartServer ( ID == "" )
+	then
+	
+	for (int alCntr = 0; alCntr < chartCurve.getData().getSeries(); alCntr++) {
+
+         SeriesAttributes serie4 = chartCurve.getSeries().get(alCntr);
+
+         if (alCntr == 0) {
+            serie4.setAxisY(chartCurve.getAxisY());
+            chartCurve.getAxisY().getTitle().setText(serie4.getText());
+         } else {
+            serie4.setAxisY(chartCurve.getAxisY2());
+            chartCurve.getAxisY2().setVisible(true); // to override the default hidden property
+            chartCurve.getAxisY2().setPosition(AxisPosition.FAR);
+            EnumSet<AxisStyles> axisStyle = chartCurve.getAxisY2().getStyle();
+            axisStyle.add(AxisStyles.LEFT_ALIGNED);
+            chartCurve.getAxisY2().setStyle(axisStyle);
+            
+            // only 2 series exists so we can plot there names on both axis.
+		    if(chartCurve.getData().getSeries() == 2){
+		    	chartCurve.getAxisY2().getTitle().setText(serie4.getText());
+		    }
+         }
+         serie4.bringToFront();
+    }
+end

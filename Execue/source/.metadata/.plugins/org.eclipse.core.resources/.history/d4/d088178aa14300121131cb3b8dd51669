@@ -1,0 +1,5 @@
+<queries>
+	<QUERY_DELETE_OPTIMAL_DSET_SWI_INFO_BY_ASSET_ID>
+	<![CDATA[delete from OptimalDSetSWIInfo where assetId = :assetId]]>
+	</QUERY_DELETE_OPTIMAL_DSET_SWI_INFO_BY_ASSET_ID>	
+</queries>	

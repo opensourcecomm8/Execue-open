@@ -1,0 +1,24 @@
+<queries>
+	
+	<QUERY_GET_FEATURE_VALUE_BY_BE_IDS>
+	<![CDATA[from FeatureValue where featureValueBeId IN(:featureValueBedIds)]]>
+	</QUERY_GET_FEATURE_VALUE_BY_BE_IDS>
+
+	<QUERY_GET_FEATURE_VALUE_BY_FEATURE_VALUE_BE_ID>
+	<![CDATA[from FeatureValue fv where fv.featureValueBeId = :featureValueBedId]]>	
+	</QUERY_GET_FEATURE_VALUE_BY_FEATURE_VALUE_BE_ID>
+
+	<QUERY_DELETE_FEATURE_VALUES_BY_FEATURE_ID>
+	<![CDATA[delete from FeatureValue  fv where fv.featureId = :featureId]]>	
+	</QUERY_DELETE_FEATURE_VALUES_BY_FEATURE_ID>
+
+	<QUERY_GET_FEATURE_VALUES_BY_FEATURE_ID>
+	<![CDATA[from FeatureValue where featureId = :featureId]]>	
+	</QUERY_GET_FEATURE_VALUES_BY_FEATURE_ID>	
+
+	<QUERY_GET_FEATURE_VALUE_BY_FEATURE_ID_AND_FEATURE_VALUE>
+	<![CDATA[select fv from FeatureValue fv where fv.featureId=:featureId and fv.featureValue=:featureValue
+	]]>	
+	</QUERY_GET_FEATURE_VALUE_BY_FEATURE_ID_AND_FEATURE_VALUE>
+
+</queries>

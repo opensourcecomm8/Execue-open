@@ -1,0 +1,139 @@
+<queries>
+	<GET_APPLICATIONS_BY_VERTICAL>
+		<![CDATA[select app
+		         from VerticalAppWeight vertical, Application app
+                  where vertical.verticalId = :verticalId 
+                  and vertical.applicationId = app.id 
+                  order by app.name]]>
+	</GET_APPLICATIONS_BY_VERTICAL>
+
+	<GET_ALL_VERTICALS>
+		<![CDATA[from Vertical 
+		         order by importance desc]]>
+	</GET_ALL_VERTICALS>
+
+	<GET_ALL_VERTICAL_IDS>
+		<![CDATA[select id from Vertical
+		         order by importance desc]]>
+	</GET_ALL_VERTICAL_IDS>
+
+	<GET_ALL_VISIBILE_VERTICALS>
+		<![CDATA[from Vertical 
+		          where homepageVisibility = :noHomePageVisibility
+		          order by importance desc]]>
+	</GET_ALL_VISIBILE_VERTICALS>
+
+	<GET_APPLICATION_VERTICALS>
+		<![CDATA[select verticalId
+		         from VerticalAppWeight
+		         where applicationId = :applicationId]]>
+	</GET_APPLICATION_VERTICALS>
+
+	<DELETE_FROM_VERTICAL>
+		<![CDATA[delete from Vertical 
+		         where id = :verticalId]]>
+	</DELETE_FROM_VERTICAL>
+
+	<DELETE_FROM_VERTICAL_APP_WEIGHT>
+		<![CDATA[delete from VerticalAppWeight 
+	             where verticalId = :verticalId
+	             and applicationId in (:applications)]]>
+	</DELETE_FROM_VERTICAL_APP_WEIGHT>
+
+	<GET_ALL_EXCLUDED_VERTICAL_APPS>
+		<![CDATA[select applicationId 
+		         from VerticalAppWeight 
+		         where applicationId in (:applicationIds) 
+		         and verticalId != :selectedVerticalId]]>
+	</GET_ALL_EXCLUDED_VERTICAL_APPS>
+
+	<GET_VERTICAL_BY_NAME>
+		<![CDATA[from Vertical where name = :name]]>
+	</GET_VERTICAL_BY_NAME>
+
+	<GET_POPULARITY_COUNT_BY_VERTICAL>
+		<![CDATA[select sum(app.popularity) as popularity 
+		         from Application app, VerticalAppWeight vaw
+                 where vaw.applicationId = app.id 
+                 and vaw.verticalId = :verticalId]]>
+	</GET_POPULARITY_COUNT_BY_VERTICAL>
+
+	<QUERY_GET_VERTICALS_BY_APP>
+	<![CDATA[select vertical from VerticalAppWeight vaw, Vertical vertical
+		 where vaw.verticalId = vertical.id 
+		 and vaw.applicationId = :applicationId
+	]]>
+	</QUERY_GET_VERTICALS_BY_APP>	
+	
+	<QUERY_GET_APPLICATIONNAMES_FOR_VERTICAL>
+	<![CDATA[select application.name 
+		 from VerticalAppWeight verticalAppWeight, Application application, Vertical vertical 
+		 where verticalAppWeight.applicationId = application.id 
+		 and verticalAppWeight.verticalId = vertical.id 
+		 and vertical.name = :verticalName
+	]]>
+	</QUERY_GET_APPLICATIONNAMES_FOR_VERTICAL>
+	
+	<QUERY_GET_APPLICATION_BY_VERTICAL_ID>
+	<![CDATA[select app from VerticalAppWeight vaw, Vertical v, Application app 
+		 where vaw.verticalId = v.id 
+		 and vaw.applicationId = app.id and v.id = :verticalId
+	]]>
+	</QUERY_GET_APPLICATION_BY_VERTICAL_ID>	
+	
+	<QUERY_GET_APPLICATIONS_FOR_VERTICAL>
+	<![CDATA[select application
+		 from VerticalAppWeight verticalAppWeight, Application application, Vertical vertical 
+		 where verticalAppWeight.applicationId = application.id
+		 and verticalAppWeight.verticalId = vertical.id and vertical.name = :verticalName
+	]]>
+	</QUERY_GET_APPLICATIONS_FOR_VERTICAL>	
+	
+	<QUERY_GET_VERTICAL_APP_EXAMPLES_BY_VERTICAL_ID>
+	<![CDATA[from VerticalAppExample
+		 where verticalId=:verticalId
+	]]>
+	</QUERY_GET_VERTICAL_APP_EXAMPLES_BY_VERTICAL_ID>	
+	
+	<QUERY_GET_VERTICAL_APP_EXAMPLESBY_APP_ID>
+	<![CDATA[from VerticalAppExample vae 
+		 where vae.applicationId=:applicationId
+	]]>
+	</QUERY_GET_VERTICAL_APP_EXAMPLESBY_APP_ID>
+
+	<QUERY_GET_VERTICAL_APP_EXAMPLES_BY_DAY>
+	<![CDATA[from VerticalAppExample 
+		 where day=:day order by id
+	]]>
+	</QUERY_GET_VERTICAL_APP_EXAMPLES_BY_DAY>
+
+	<QUERY_GET_VERTICAL_APP_WEIGHT_BY_APP_ID>
+	<![CDATA[from VerticalAppWeight vaw 
+		 where vaw.applicationId=:id
+	]]>
+	</QUERY_GET_VERTICAL_APP_WEIGHT_BY_APP_ID>	
+	
+	<QUERY_GET_VERTICAL_APPLICATIONS_BY_RANK>
+	<![CDATA[select app from Application app,VerticalAppWeight vaw 
+		 where vaw.applicationId=app.id 
+		 and vaw.verticalId=:verticalId 
+		 order by app.rank desc
+	]]>
+	</QUERY_GET_VERTICAL_APPLICATIONS_BY_RANK>
+
+	<QUERY_GET_VERTICAL_REDIRECT_ENTITIES_BY_APP_ID>
+	<![CDATA[from VerticalEntityBasedRedirection vebr 
+		 where vebr.applicationId=:id
+	]]>
+	</QUERY_GET_VERTICAL_REDIRECT_ENTITIES_BY_APP_ID>
+
+	<QUERY_GET_VERTICAL>
+	<![CDATA[from Vertical order by id]]>
+	</QUERY_GET_VERTICAL>
+	
+	<DELETE_VERTICAL_ENTITY_REDIRECT_ENTITIES_BY_BEDID>
+	<![CDATA[delete from VerticalEntityBasedRedirection 
+		 where businessEntityId = :entityBedId and businessEntityType = :entityType 
+	]]>
+	</DELETE_VERTICAL_ENTITY_REDIRECT_ENTITIES_BY_BEDID>
+</queries>

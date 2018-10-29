@@ -1,0 +1,28 @@
+<queries>
+	<QUERY_NEWS_ITEMS>
+	<![CDATA[from NewsItem news where news.processed = :notProcessed]]>
+	</QUERY_NEWS_ITEMS>
+
+	<QUERY_GET_LATEST_NEWS_ITEM_IDS>
+	<![CDATA[select news.id from NewsItem news where news.processed = :notProcessed order by news.id desc
+	]]>
+	</QUERY_GET_LATEST_NEWS_ITEM_IDS>
+
+	<QUERY_GET_NEWS_ITEMS_BY_CATEGORY>
+	<![CDATA[from NewsItem news where news.category = :category order by news.addedDate desc
+	]]>
+	</QUERY_GET_NEWS_ITEMS_BY_CATEGORY>
+	
+	<UPDATE_NEWS_ITEM_PROCESSING_STATE>
+	<![CDATA[update NewsItem news set news.processed = :processedState ,news.batchId =:batchId 
+		 where news.id between :minNewsItemId and :maxNewsItemId and news.processed = :notProcessed
+	]]>
+	</UPDATE_NEWS_ITEM_PROCESSING_STATE>
+	
+	<UPDATE_NEWS_ITEM_PROCESSING_STATE_BY_BATCH_ID>
+	<![CDATA[update NewsItem news set news.processed = :updatingProcessedState
+		 where news.batchId = :batchId and news.processed = :existingProcessedState
+	]]>
+	</UPDATE_NEWS_ITEM_PROCESSING_STATE_BY_BATCH_ID>
+	
+</queries>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<execue>
+	<remote-asset-properties>
+		<driver>oracle.jdbc.driver.OracleDriver</driver>
+		<url>jdbc:oracle:thin:@10.10.50.250:1521:hydbd1</url>
+		<userid>dfs</userid>
+		<password>onet123</password>
+	</remote-asset-properties>
+	<local-asset-properties>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://localhost:3307/test</url>
+		<userid>etl</userid>
+		<password>execue</password>
+	</local-asset-properties>
+	<select-statement>
+		SELECT CARD_TYPE_CD\,CARD_TYPE FROM CARD_TYPE
+	</select-statement>
+	<insert-statement>
+		INSERT INTO CARD_TYPE (CARD_TYPE_CD\,CARD_TYPE) VALUES(?CARD_TYPE_CD\,?CARD_TYPE)
+	</insert-statement>
+</execue>	

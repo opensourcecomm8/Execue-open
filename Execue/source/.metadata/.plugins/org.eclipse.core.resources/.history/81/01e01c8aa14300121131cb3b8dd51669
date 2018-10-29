@@ -1,0 +1,11 @@
+unstructured-warehouse-dao = /platform/bean-config/query-resources/uswh/unstructured-warehouse-dao-queries.xml
+unstructured-ri-feature-content-dao = /platform/bean-config/query-resources/uswh/unstructured-ri-feature-content-dao-queries.xml
+feature-dao = /platform/bean-config/query-resources/uswh/feature-dao-queries.xml
+feature-value-dao = /platform/bean-config/query-resources/uswh/feature-value-dao-queries.xml
+feature-range-dao = /platform/bean-config/query-resources/uswh/feature-range-dao-queries.xml
+feature-dependency-dao = /platform/bean-config/query-resources/uswh/feature-dependency-dao-queries.xml
+feature-detail-dao = /platform/bean-config/query-resources/uswh/feature-detail-dao-queries.xml
+source-content-dao = /platform/bean-config/query-resources/uswh/source-content-dao-queries.xml
+semantified-content-dao = /platform/bean-config/query-resources/uswh/semantified-content-dao-queries.xml
+user-query-feature-information-dao = /platform/bean-config/query-resources/uswh/user-query-feature-information-dao-queries.xml
+user-query-location-information-dao = /platform/bean-config/query-resources/uswh/user-query-location-information-dao-queries.xml

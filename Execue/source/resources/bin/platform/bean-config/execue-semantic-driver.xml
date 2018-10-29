@@ -1,0 +1,48 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="semanticDriver" class="com.execue.driver.semantic.impl.SemanticDriver"  parent="abstractUserContextService">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="queryCacheConfiguration" ref="qCacheConfiguration" />
+		<property name="unstructuredSearchConfigurationService" ref="unstructuredSearchConfigurationService" />
+		<property name="nlpEngine" ref="nlpEngine"/>
+		<property name="reducedFormBQGenerator" ref="reducedFormBusinessQueryGenerator"/>
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService"/>
+		<property name="reportMessage" ref="aggregationThreadMessage"/>
+		<property name="messageService" ref="messageService"/>
+		<property name="governorService" ref="governorService"/>
+		<property name="queryCacheService" ref="qcacheService"/>
+		<property name="pseudoLanguageService" ref="pseudoLanguageService" />       
+		<property name="businessQueryOrganizationService" ref="businessQueryOrganizationService" /> 
+		<property name="kdxManagementService" ref="kdxManagementService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="userQueryPossibilityService" ref="userQueryPossibilityService" />
+		<property name="queryFederationService" ref="queryFederationService"/>
+		<property name="assetDetailService" ref="assetDetailService"/>
+		<property name="knowledgeSearchEngine" ref="knowledgeSearchEngine"/>
+		<property name="entitySearchEngine" ref="entitySearchEngine"/>
+		<property name="unstructuredWarehouseSearchEngine" ref="unstructuredWarehouseSearchEngine"/>
+		<property name="udxService" ref="udxService" />
+		<property name="rfxService" ref="rfxService" />
+		<property name="driverHelper" ref="driverHelper" />
+		<property name="semanticDriverHelper" ref="semanticDriverHelper" />
+		<property name="rfxServiceHelper" ref="rfxServiceHelper" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />		
+	</bean>
+    
+	<bean id="unstructuredSearchDriver" class="com.execue.driver.uss.impl.UnstructuredSearchDriver"  parent="abstractUserContextService">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="unstructuredSearchConfigurationService" ref="unstructuredSearchConfigurationService" />
+		<property name="nlpEngine" ref="nlpEngine"/>
+		<property name="queryCacheService" ref="qcacheService"/>
+		<property name="rfxService" ref="rfxService" />
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService"/>
+		<property name="pseudoLanguageService" ref="pseudoLanguageService"/>
+		<property name="semanticDriverHelper" ref="semanticDriverHelper" />
+	</bean>
+	<bean id="semanticDriverConfigurationService" class="com.execue.driver.semantic.configuration.impl.SemanticDriverConfigurationServiceImpl">
+		<property name="semanticDriverConfiguration" ref="semanticDriverConfiguration" />		
+	</bean>
+</beans>

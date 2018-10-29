@@ -1,0 +1,6 @@
+<queries>
+	<QUERY_GET_CONTENT_CLEANUP_PATTERN_BY_APPID>
+	<![CDATA[from ContentCleanupPattern where active = :activeValue 
+	         AND applicationId in (:applicationIds)]]>
+	</QUERY_GET_CONTENT_CLEANUP_PATTERN_BY_APPID>
+</queries>

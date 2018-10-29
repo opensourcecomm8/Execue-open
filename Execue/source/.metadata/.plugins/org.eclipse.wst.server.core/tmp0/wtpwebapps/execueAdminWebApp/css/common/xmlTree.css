@@ -1,0 +1,61 @@
+#container-1 {
+	background-color:#FFFFFF;
+	white-space:nowrap;
+	min-width:170px;
+	width:auto;
+}
+#container-1 span {
+padding-right:6px;
+}
+#container-1 .trigger{
+	display: block;
+	font: 12px Arial;
+	background-color:#E8ECEE;
+	padding-top:1px;
+	line-height: 20px;
+	border-bottom:1px solid #FFFFFF;
+
+}
+#container-1 .trigger img{
+	cursor:pointer;
+}
+#container-1 a.group{
+	font: 12px Arial;
+	padding-top:1px;
+	line-height: 20px;
+	color:#000;
+	text-decoration:underline;
+
+}
+#container-1 a.group:hover{
+	cursor: pointer;
+	cursor: hand;
+	font: 12px Arial;
+	padding-top:1px;
+	line-height: 20px;
+	color:#000;
+	text-decoration:none;
+
+}
+#container-1 .branch{
+	
+	padding-left: 10px;
+	font: 11px Arial;
+	padding-top:3px;
+	padding-bottom:3px;
+	background-color:#FFFFFF;
+	width:100%;
+}
+#container-1 a.leaf{
+	text-decoration: underline;
+	font: 11px Arial;
+	color:#039;
+	line-height:20px;
+	padding-left:18px;
+}
+#container-1 a.leaf:hover{
+	text-decoration: none;
+	font: 11px Arial;
+	line-height:20px;
+	color:#039;
+}

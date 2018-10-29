@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Service Handler definitions -->
+	<bean id="sdxServiceHandler"
+		class="com.execue.handler.swi.impl.SDXServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxDeletionService" ref="sdxDeletionService" />
+		<property name="sdxManagementService"
+			ref="sdxManagementService" />
+		<property name="sourceMetaDataService"
+			ref="sourceMetaDataService" />
+		<property name="joinService" ref="joinService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />
+		<property name="mappingManagementService"
+			ref="mappingManagementService" />
+		<property name="mappingDeletionService"
+			ref="mappingDeletionService" />
+		<property name="dataSourceConnectionManagementService"
+			ref="dataSourceConnectionManagementService" />
+		<property name="assetDeletionJobService"
+			ref="assetDeletionJobService" />
+		<property name="memberAbsorptionJobService"
+			ref="memberAbsorptionJobService" />
+		<property name="batchMaintenanceService"
+			ref="batchMaintenanceService" />
+		<property name="dataSourceSelectionService"
+			ref="dataSourceSelectionService" />
+		<property name="defaultMetricService"
+			ref="defaultMetricService" />
+		<property name="assetSourcePublisherMergeService"
+			ref="assetSourcePublisherMergeService" />
+		<property name="virtualTableManagementService"
+			ref="virtualTableManagementService" />
+		<property name="cryptographyService"
+			ref="cryptographyService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />	
+		<property name="assetOperationDetailService"
+			ref="assetOperationDetailService" />
+		<property name="answersCatalogManagementQueueService"
+			ref="answersCatalogManagementQueueService" />
+		<property name="sdxDeletionWrapperService"
+			ref="sdxDeletionWrapperService" />
+	</bean>
+	
+	<bean id="assetDetailServiceHandler"
+		class="com.execue.handler.swi.impl.AssetDetailServiceHandlerImpl">
+		<property name="assetDetailService" ref="assetDetailService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />		
+	</bean>
+
+	<bean id="preferencesServiceHandler"
+		class="com.execue.handler.swi.impl.PreferencesServiceHandlerImpl" parent="abstractUserContextService">
+		<property name="preferencesRetrievalService"
+			ref="preferencesRetrievalService" />
+		<property name="preferencesManagementService"
+			ref="preferencesManagementService" />
+		<property name="preferencesDeletionService"
+			ref="preferencesDeletionService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="userManagementService"
+			ref="userManagementService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="kdxMaintenanceService"
+			ref="kdxMaintenanceService" />
+		<property name="businessEntityMaintenanceService"
+			ref="businessEntityMaintenanceService" />
+		<property name="rangeSuggestionService"
+			ref="rangeSuggestionService" />
+		<property name="swiPlatformManagementService"
+			ref="swiPlatformManagementService" />
+		<property name="businessEntityDeletionWrapperService"
+			ref="businessEntityDeletionWrapperService" />
+	</bean>
+
+   
+	<bean id="kdxServiceHandler"
+		class="com.execue.handler.swi.impl.KDXServiceHandlerImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxManagementService"
+			ref="kdxManagementService" />
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="businessEntityManagementWrapperService"
+			ref="businessEntityManagementWrapperService" />
+		<property name="realTimeBusinessEntityWrapperService"
+			ref="realTimeBusinessEntityWrapperService" />	
+		<property name="unstructuredWarehouseRetrievalService"
+			ref="unstructuredWarehouseRetrievalService" />
+		<property name="businessEntityDeletionWrapperService"
+			ref="businessEntityDeletionWrapperService" />
+							
+	</bean>
+
+	<bean id="mappingServiceHandler"
+		class="com.execue.handler.swi.mappings.impl.MappingServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxManagementService"
+			ref="kdxManagementService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />
+		<property name="mappingManagementService"
+			ref="mappingManagementService" />
+		<property name="sdx2kdxMappingService"
+			ref="sdx2kdxMappingService" />
+		<property name="instanceMappingSuggestionService"
+			ref="instanceMappingSuggestionService" />
+		<property name="instanceAbsorptionJobService"
+			ref="instanceAbsorptionJobService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />
+		<property name="mappingDeletionService"
+			ref="mappingDeletionService" />
+		<property name="businessEntityManagementWrapperService"
+			ref="businessEntityManagementWrapperService" />
+		<property name="swiConfigurationService"
+			ref="swiConfigurationService" />
+	</bean>
+
+	<bean id="joinServiceHandler"
+		class="com.execue.handler.swi.joins.impl.JoinServiceHandlerImpl">
+		<property name="joinService" ref="joinService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+	</bean>
+
+	<bean id="constraintServiceHandler"
+		class="com.execue.handler.swi.constraints.impl.ConstraintServiceHandlerImpl">
+		<property name="joinService" ref="joinService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxDeletionService" ref="sdxDeletionService" />
+		<property name="sdxManagementService"
+			ref="sdxManagementService" />
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService"></property>
+	</bean>
+
+	<bean id="cubeManagementServiceHandler"
+		class="com.execue.handler.swi.impl.CubeManagementServiceHandlerImpl" 
+		parent="abstractUserContextService">
+		<property name="cubeCreationJobService"
+			ref="cubeCreationJobService" />
+		<property name="cubeRefreshJobService"
+			ref="cubeRefreshJobService" />
+		<property name="cubeUpdationJobService"
+			ref="cubeUpdationJobService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />
+		<property name="answersCatalogDefaultsService"
+			ref="answersCatalogDefaultsService" />
+		<property name="jobDataService"
+			ref="jobDataService" />
+		<property name="answersCatalogContextBuilderService"
+			ref="answersCatalogContextBuilderService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />	
+		<property name="answersCatalogManagementQueueService"
+			ref="answersCatalogManagementQueueService" />
+		<property name="preferencesServiceHandler"
+			ref="preferencesServiceHandler" />
+		<property name="rangeSuggestionService"
+			ref="rangeSuggestionService" />
+		<property name="assetDetailService"
+            ref="assetDetailService" />
+	</bean>
+	
+	<bean id="martManagementServiceHandler" class="com.execue.handler.swi.impl.MartManagementServiceHandlerImpl" 
+		parent="abstractUserContextService">		
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="mappingRetrievalService" ref="mappingRetrievalService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="answersCatalogDefaultsService" ref="answersCatalogDefaultsService"/>
+		<property name="dataMartCreationJobService" ref="dataMartCreationJobService"/>		
+		<property name="dataMartRefreshJobService" ref="dataMartRefreshJobService"/>
+		<property name="dataMartUpdationJobService" ref="dataMartUpdationJobService"/>
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="answersCatalogContextBuilderService" ref="answersCatalogContextBuilderService" />
+		<property name="answersCatalogManagementQueueService" ref="answersCatalogManagementQueueService" />
+		<property name="assetDetailService" ref="assetDetailService" />				
+	</bean>
+
+	<bean id="jobStatusServiceHandler"
+		class="com.execue.handler.swi.impl.JobStatusServiceHandlerImpl">
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="usersManagementService"
+			ref="userManagementService" />
+	</bean>
+
+	<bean id="usersHandler"
+		class="com.execue.handler.swi.impl.UsersHandlerImpl">
+		<property name="userManagementService"
+			ref="userManagementService" />
+		<property name="smtpMailService" ref="smtpMailService" />
+		<property name="cryptographyService" ref="cryptographyService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="saltSource" ref="saltSource" />
+	</bean>
+
+	<bean id="accountHandler"
+		class="com.execue.handler.swi.account.impl.AccountHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="userManagementService"
+			ref="userManagementService" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		<property name="lookupService" ref="lookupService" />
+		<property name="saltSource" ref="saltSource" />		
+	</bean>
+
+	<bean id="groupsHandler"
+		class="com.execue.handler.swi.impl.GroupsHandlerImpl">
+		<property name="userManagementService"
+			ref="userManagementService" />
+	</bean>
+
+	<bean id="rolesHandler"
+		class="com.execue.handler.swi.impl.RolesHandlerImpl">
+		<property name="userManagementService"
+			ref="userManagementService" />
+	</bean>
+
+	<bean id="uploadServiceHandler"
+		class="com.execue.handler.swi.impl.UploadServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="publisherConfigurationService"
+			ref="publisherConfigurationService" />
+		<property name="publisherDataAbsorbtionJobService"
+			ref="publisherDataAbsorptionJobService" />
+		<property name="publishedFileRetrievalService"
+			ref="publishedFileRetrievalService" />
+		<property name="publishedFileManagementService"
+			ref="publishedFileManagementService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="publisherDataEvaluationJobService"
+			ref="publisherDataEvaluationJobService" />
+		<property name="publisherDataEvaluationService"
+			ref="publisherDataEvaluationService" />
+		<property name="applicationManagementWrapperService"
+			ref="applicationManagementWrapperService" />
+		<property name="publisherColumnValidator"
+			ref="publisherColumnValidator" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="swiPlatformDeletionService" ref="swiPlatformDeletionService" />
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />		
+	</bean>
+	
+	<bean id="userNotificationHandler"
+		class="com.execue.handler.qdata.impl.UserNotificationHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="userNotificationService"
+			ref="userNotificationService" />
+	</bean>
+
+	<bean id="attributeAssociationServiceHandler"
+		class="com.execue.handler.swi.impl.AttributeAssociationServiceHandlerImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService"/>
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService"/>
+		<property name="pathDefinitionDeletionService" ref="pathDefinitionDeletionService"/>
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService" />
+	</bean>
+	
+	<bean id="dashBoardServiceHandler"
+		class="com.execue.handler.swi.impl.DashBoardServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="publishedFileRetrievalService"
+			ref="publishedFileRetrievalService" />
+		<property name="jobDataService" ref="jobDataService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="applicationRetrievalService"
+			ref="applicationRetrievalService" />
+	</bean>
+	
+	<bean id="publishedFileColumnEvaluationServiceHandler"
+		class="com.execue.handler.swi.impl.PublishedFileColumnEvaluationServiceHandlerImpl">
+		<property name="publishedFileManagementService"
+			ref="publishedFileManagementService" />
+		<property name="publishedFileRetrievalService"
+			ref="publishedFileRetrievalService" />
+		<property name="conversionServiceHandler"
+			ref="conversionServiceHandler" />
+		<property name="publisherDataEvaluationService"
+			ref="publisherDataEvaluationService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxManagementService"
+			ref="sdxManagementService" />
+		<property name="sdxDeletionService"
+			ref="sdxDeletionService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />
+		<property name="mappingManagementService"
+			ref="mappingManagementService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxManagementService"
+			ref="kdxManagementService" />
+		<property name="virtualTableManagementService"
+			ref="virtualTableManagementService" />
+		<property name="sdx2kdxMappingService"
+			ref="sdx2kdxMappingService" />
+		<property name="conversionService" ref="conversionService" />
+		<property name="kdxMaintenanceService"
+			ref="kdxMaintenanceService" />
+		<property name="publisherColumnValidator"
+			ref="publisherColumnValidator" />
+		<property name="swiPlatformRetrievalService"
+			ref="swiPlatformRetrievalService" />
+		<property name="sdxDeletionWrapperService"
+			ref="sdxDeletionWrapperService" />
+	</bean>
+	
+	<bean id="jobMaintenanceServiceHandler"
+		class="com.execue.handler.swi.impl.JobMaintenanceServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="fileOntologyDataAbsorptionJobService"
+			ref="fileOntologyDataAbsorptionJobService" />
+		<property name="publisherConfigurationService"
+			ref="publisherConfigurationService" />
+		<property name="correctMappingsMaintenanceJobService"
+			ref="correctMappingsMaintenanceJobService" />
+		<property name="popularityHitMaintainenceJobService"
+			ref="popularityHitMaintainenceJobService" />
+		<property name="popularityCollectionJobService"
+			ref="popularityCollectionJobService" />
+		<property name="popularityDispersionJobService"
+			ref="popularityDispersionJobService" />
+		<property name="updateSFLTermTokenWeightJobService"
+			ref="updateSFLTermTokenWeightJobService" />
+		<property name="updateSFLWeightBasedOnSecondaryWordJobService"
+			ref="updateSFLWeightBasedOnSecondaryWordJobService" />			
+		<property name="riOntotermPopularityHitMaintainenceJobService"
+			ref="riOntotermPopularityHitMaintainenceJobService" />
+		<property name="businessModelPreparationJobService"
+			ref="businessModelPreparationJobService" />			
+		<property name="publishAssetJobService"
+			ref="publishAssetJobService" />	
+		<property name="indexFormManagementJobService"
+			ref="indexFormManagementJobService" />
+		<property name="conceptTypeAssociationJobService"
+			ref="conceptTypeAssociationJobService" />
+		<property name="sdxSynchronizationJobService"
+			ref="sdxSynchronizationJobService" />
+		<property name="optimalDSetJobService"
+			ref="optimalDSetJobService" />	
+	</bean>
+	
+	<bean id="typeConceptAssociationServiceHandler"
+		class="com.execue.handler.swi.impl.TypeConceptAssociationServiceHandlerImpl">
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService" />
+		<property name="businessEntityManagementWrapperService"
+			ref="businessEntityManagementWrapperService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="conceptTypeAssociationService"
+			ref="conceptTypeAssociationService" />
+		<property name="baseKDXRetrievalService"
+			ref="baseKDXRetrievalService" />
+		<property name="pathDefinitionRetrievalService" 
+			ref="pathDefinitionRetrievalService"/>
+		<property name="swiConfigurationService"
+			ref="swiConfigurationService" />
+		<property name="locationConfigurationService" ref="locationConfigurationService" />
+	</bean>
+
+	<bean id="assetPublishServiceHandler"
+		class="com.execue.handler.swi.impl.AssetPublishServiceHandlerImpl"
+		parent="abstractUserContextService">
+		<property name="publishAssetJobService"
+			ref="publishAssetJobService" />
+		<property name="assetAnalysisService"
+			ref="assetAnalysisService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />		
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+	</bean>
+	
+	<bean id="tripleDefinitionsServiceHandler"
+		class="com.execue.handler.swi.impl.TripleDefinitionsServiceHandlerImpl">		
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="kdxModelService" ref="kdxModelService" />
+		<property name="coreConfigurationService"
+			ref="coreConfigurationService" />
+	</bean>
+	
+	<bean id="defaultDynamicValueServiceHandler"
+		class="com.execue.handler.swi.impl.DefaultDynamicValueServiceHandlerImpl">
+		<property name="defaultDynamicValueService"
+			ref="defaultDynamicValueService" />
+		<property name="mappingRetrievalService"
+			ref="mappingRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+	</bean>
+	
+	<bean id="verticalServiceHandler"
+		class="com.execue.handler.swi.impl.VerticalServiceHandlerImpl">
+		<property name="verticalService" ref="verticalService" />
+		<property name="swiConfigurationService"
+			ref="swiConfigurationService" />
+	</bean>
+	
+	<bean id="unstructuredAppDataSourceServiceHandler"
+		class="com.execue.handler.swi.impl.UnstructuredAppDataSourceServiceHandlerImpl">
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+		<property name="sdxRetrievalService" ref="sdxRetrievalService" />
+		<property name="sdxDeletionService" ref="sdxDeletionService" />
+		<property name="sdxManagementService" ref="sdxManagementService" />
+		<property name="unstructuredApplicationConnectionManagementService" ref="unstructuredApplicationConnectionManagementService" />
+	</bean>
+	
+	<bean id="conversionServiceHandler" class="com.execue.handler.swi.impl.ConversionServiceHandlerImpl">
+		<property name="conversionService" ref="conversionService"/>		
+	</bean>
+	
+	<bean id="unstructuredSearchServiceHandler" class="com.execue.handler.uss.impl.UnstructuredSearchServiceHandlerImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService" />
+		<property name="unstructuredSearchConfigurationService" ref="unstructuredSearchConfigurationService" />
+		<property name="handlerRequest" ref="qiHandlerRequest" />
+		<property name="handlerResponse" ref="qiHandlerResponse" />		
+		<property name="unstructuredSearchDriver" ref="unstructuredSearchDriver" />
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService" />
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService" />
+		<property name="locationRetrievalService" ref="locationRetrievalService" />
+		<property name="genericArticleResemantificationService" ref="genericArticleResemantificationService" />
+		<property name="transactionIdGenerationService" ref="transactionIdGenerationService" />
+		<property name="genericArticleResemantificationThreadMessage" ref="genericArticleResemantificationThreadMessage" />		
+		<property name="unstructuredWHFeatureContentLookupService" ref="unstructuredWHFeatureContentLookupService"/>
+		<property name="unstructuredWHConfigurationService" ref="unstructuredWHConfigurationService"/>
+		<property name="unstructuredFacetRetrievalService" ref="unstructuredFacetRetrievalService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="locationSharedModelService" ref="locationSharedModelService"/>
+		<property name="driverHelper" ref="driverHelper" />
+		<property name="semantificationHelper" ref="semantificationHelper" />
+		<property name="reducedFormHelper" ref="reducedFormHelper" />
+		<property name="unstructuredWarehouseHelper" ref="unstructuredWarehouseHelper"/>
+	</bean>	
+	
+	<bean id="unstructuredDynamicKnowledgeServiceHandler" class="com.execue.handler.uss.impl.UnstructuredDynamicKnowledgeServiceHandlerImpl">
+		<property name="kdxServiceHandler" ref="kdxServiceHandler" />		
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+		<property name="unstructuredSearchConfigurationService" ref="unstructuredSearchConfigurationService" />	
+		<property name="locationConfigurationService" ref="locationConfigurationService" />	
+		<property name="applicationRetrievalService" ref="applicationRetrievalService" />
+	</bean>	
+	
+	<bean id="auditTrailServiceHandler" class="com.execue.handler.audittrail.impl.AuditTrailServiceHandlerImpl">
+		<property name="userManagementService" ref="userManagementService" />
+		<property name="auditTrailWrapperService" ref="auditTrailWrapperService" />
+		<property name="auditTrailConfigurationService" ref="auditTrailConfigurationService" />		
+	</bean>	
+</beans>

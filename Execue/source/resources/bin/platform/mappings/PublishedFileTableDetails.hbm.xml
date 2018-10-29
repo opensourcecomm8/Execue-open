@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="dataType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.DataType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="columnType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ColumnType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getColumnType</param>
+	</typedef>
+	<typedef name="unitType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ConversionType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="granularityType">
+		<param name="enumClass">com.execue.core.common.type.GranularityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.PublishedFileTableDetails" table="PUBLISHED_FILE_TABLE_DETAILS">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">PUBLISHED_FILE_TABLE_DETAILS</param>
+			</generator>
+		</id>
+		<property name="baseColumnName" type="string">
+			<column name="BASE_COLUMN_NAME" length="255"/>
+		</property>
+		<property name="evaluatedColumnName" type="string">
+			<column name="EVALUATED_COLUMN_NAME" length="255"/>
+		</property>
+		<property name="evaluatedColumnDisplayName" type="string">
+			<column name="EVALUATED_COLUMN_DISPLAY_NAME" length="255"/>
+		</property>
+		<property name="baseDataType" type="dataType">
+			<column name="BASE_DATA_TYPE" length="55"/>
+		</property>
+		<property name="evaluatedDataType" type="dataType">
+			<column name="EVALUATED_DATA_TYPE" length="55"/>
+		</property>
+		<property name="originalEvaluatedDataType" type="dataType">
+			<column name="ORIGINAL_EVALUATED_DATA_TYPE" length="55"/>
+		</property>
+		<property name="basePrecision" type="int">
+			<column name="BASE_PRECISION"  precision="10" scale="0" />
+		</property>
+		<property name="evaluatedPrecision" type="int">
+			<column name="EVALUATED_PRECISION"  precision="10" scale="0"/>
+		</property>
+		<property name="originalEvaluatedPrecision" type="int">
+			<column name="ORIGINAL_EVALUATED_PRECISION"  precision="10" scale="0"/>
+		</property>
+		<property name="baseScale" type="int">
+			<column name="BASE_SCALE"  precision="10" scale="0"/>
+		</property>
+		<property name="evaluatedScale" type="int">
+			<column name="EVALUATED_SCALE"  precision="10" scale="0"/>
+		</property>
+		<property name="originalEvaluatedScale" type="int">
+			<column name="ORIGINAL_EVALUATED_SCALE"  precision="10" scale="0"/>
+		</property>
+		<property name="kdxDataType" type="columnType">
+			<column name="KDXTYPE" length="55"/>
+		</property>
+		<property name="format" type="string">
+			<column name="FORMAT" length="35" />
+		</property>
+		<property name="unit" type="string">
+			<column name="UNIT" length="35" />
+		</property> 
+		<property name="unitType" type="unitType">
+			<column name="UNIT_TYPE" length="35" />
+		</property>
+		<property name="originalUnitType" type="unitType">
+			<column name="ORIGINAL_UNIT_TYPE" length="35" />
+		</property> 
+		<property name="columnIndex" type="int">
+			<column name="COLUM_INDEX"  precision="2" scale="0"/>
+		</property>	
+		<property name="population" type="checkType">
+			<column name="POPULATION" length="1" />
+		</property>	
+		<property name="distribution" type="checkType">
+			<column name="DISTRIBUTION" length="1" />
+		</property>					
+		<!--<property name="isTimeBased" type="checkType">
+				<column name="IS_TIME_BASED" length="1" />
+			</property>	
+			<property name="isLocationBased" type="checkType">
+				<column name="IS_LOCATION_BASED" length="1" />
+			</property>-->
+		<property name="granularity" type="granularityType">
+			<column name="GRANULARITY" length="25" not-null="true" />
+		</property> 
+		<property name="defaultMetric" type="checkType">
+			<column name="DEFAULT_METRIC" length="1" />
+		</property> 
+		<many-to-one name="publishedFileTableInfo" class="com.execue.core.common.bean.entity.PublishedFileTableInfo"  fetch="select">
+			<column name="FILE_TABLE_INFO_ID" precision="20" scale="0"  not-null="true"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

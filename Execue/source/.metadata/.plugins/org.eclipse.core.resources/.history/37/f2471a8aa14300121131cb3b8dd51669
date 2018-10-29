@@ -1,0 +1,201 @@
+<queries>	
+	<QUERY_GET_All_INSTANCE_BUSINESS_ENTITY>
+	<![CDATA[select bed.id, bed.instance.displayName, bed.concept.displayName 
+		 from BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_All_INSTANCE_BUSINESS_ENTITY>
+	
+	<QUERY_BED_BY_INSTANCE_NAME>
+	<![CDATA[select distinct bed from BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.concept.name = :conceptName 
+		 and bed.instance.name = :instanceName and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_INSTANCE_NAME>
+	
+	<QUERY_GET_INSTANCE_BEDS_FOR_CONCEPT_ID>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed 
+		 where bed.concept.id = :conceptId
+		 and bed.entityType = :instanceEntityType	
+	]]>
+	</QUERY_GET_INSTANCE_BEDS_FOR_CONCEPT_ID>
+	
+	<QUERY_GET_COUNT_OF_INSTANCES_FOR_CONCEPT>
+	<![CDATA[select count(ins.id) 
+		 from Instance as ins,BusinessEntityDefinition bed
+		 where ins.id = bed.instance.id
+		 and bed.concept.id = :conceptId and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_COUNT_OF_INSTANCES_FOR_CONCEPT>
+	
+	<QUERY_GET_INSTANCE_BY_NAME>
+	<![CDATA[select instance 
+		 from BusinessEntityDefinition bed1, BusinessEntityDefinition bed2, Instance instance 
+		 where bed1.entityType = :conceptEntityType and bed2.entityType = :instanceEntityType and bed1.id = :conceptBedId
+		 and bed1.concept.id = bed2.concept.id 
+		 and instance.id = bed2.instance.id and instance.name = :instanceName
+	]]>
+	</QUERY_GET_INSTANCE_BY_NAME>
+	
+	<QUERY_GET_INSTANCES_COUNT_FOR_CONCEPT>
+	<![CDATA[select count(distinct bed.instance) 
+		from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and  mgm.modelGroup.category != :baseModelCategoryType 
+		 and bed.instance.id is not null
+	]]>
+	</QUERY_GET_INSTANCES_COUNT_FOR_CONCEPT>
+	
+		
+	<QUERY_GET_INSTANCE_IDS_BY_CONCEPT_ID>
+	<![CDATA[select bed.instance.id
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and
+		 bed.entityType = :instanceEntityType and mgm.modelGroup.category = :userModelCategoryType
+		 and bed.instance.id is not null
+	]]>
+	</QUERY_GET_INSTANCE_IDS_BY_CONCEPT_ID>	
+	
+	<QUERY_GET_INSTANCES_FOR_CONCEPT_BY_MODEL>
+	<![CDATA[select distinct bed.instance
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category != :baseModelCategoryType
+		 and bed.instance.id is not null
+	]]>
+	</QUERY_GET_INSTANCES_FOR_CONCEPT_BY_MODEL>
+	
+	<QUERY_GET_INSTANCES_ACROSS_CONCEPTS>
+	<![CDATA[select bed 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		 and bed.instance is not null 
+		 and bed.instance.displayName = :displayName
+	]]>
+	</QUERY_GET_INSTANCES_ACROSS_CONCEPTS>
+	
+	<QUERY_GET_INSTANCES_FOR_ASSET_META_INFO>
+	<![CDATA[select distinct bed.instance 
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and bed.concept.id = :conceptId and  mgm.modelGroup.category != :baseModelCategoryType 
+		 and bed.instance.id is not null
+		 order by bed.instance.id
+	]]>
+	</QUERY_GET_INSTANCES_FOR_ASSET_META_INFO>
+	
+	<QUERY_GET_INSTANCES_OF_CONCEPT_BY_SEARCHSTRING>
+	<![CDATA[select distinct bed.instance
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category != :baseModelCategoryType
+		 and bed.instance.id is not null and bed.instance.displayName like :searchString 
+		 order by bed.instance.displayName
+	]]>
+	</QUERY_GET_INSTANCES_OF_CONCEPT_BY_SEARCHSTRING>
+	
+	<QUERY_GET_LATEST_INSTANCE_INSERTED>
+	<![CDATA[from Instance as instance where instance.id = (select max(bed.instance.id) 
+		 from BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.concept.id = :conceptId)
+	]]>
+	</QUERY_GET_LATEST_INSTANCE_INSERTED>
+	
+	<QUERY_GET_TOP_POPULARITY_INSTANCE>
+	<![CDATA[select i from BusinessEntityDefinition be,
+		Concept c ,Instance i , ModelGroupMapping mgm where c.name = :conceptName
+		and be.concept.id = c.id and be.instance.id = i.id 
+		and be.modelGroup.id = mgm.modelGroup.id 
+		and mgm.model.id = :modelId order by be.popularity desc
+	]]>
+	</QUERY_GET_TOP_POPULARITY_INSTANCE>
+	
+	<QUERY_GET_INSTANCE_BUSINESS_ENTITY_FOR_MODEL>
+	<![CDATA[select bed.id, bed.instance.displayName, bed.concept.displayName 
+		 from BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		 and mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_INSTANCE_BUSINESS_ENTITY_FOR_MODEL>
+	
+		
+	<QUERY_GET_INSTANCES_COUNT_FOR_MODEL>
+	<![CDATA[select count(distinct bed.instance) 
+		from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and  mgm.modelGroup.category = :userModelCategoryType and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_INSTANCES_COUNT_FOR_MODEL>
+	
+	<QUERY_GET_INSTANCES_BY_BED_IDS>
+	<![CDATA[select bed.instance from BusinessEntityDefinition as bed where 
+		 bed.id in (:instanceBEDIds) 
+	]]>
+	</QUERY_GET_INSTANCES_BY_BED_IDS>
+	
+	
+	<QUERY_GET_INSTANCES_FOR_CONCEPT_BY_MODEL_BY_POPULARITY>
+	<![CDATA[select bed.instance from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category != :baseModelCategoryType
+		 and bed.instance.id is not null order by bed.popularity desc
+	]]>
+	</QUERY_GET_INSTANCES_FOR_CONCEPT_BY_MODEL_BY_POPULARITY>
+	
+	<QUERY_GET_INSTANCE_BEDIDS_FOR_CONCEPT>
+	<![CDATA[select distinct bed.id 
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category != :baseModelCategoryType
+		 and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_INSTANCE_BEDIDS_FOR_CONCEPT>
+	
+	<QUERY_GET_INSTANCE_BEDS_FOR_CONCEPT>
+	<![CDATA[select bed 
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category != :baseModelCategoryType
+		 and bed.entityType = :instanceEntityType
+		 order by bed.instance.displayName
+	]]>
+	</QUERY_GET_INSTANCE_BEDS_FOR_CONCEPT>	
+	
+	<QUERY_BED_BY_INSTANCE_DISPLAY_NAME>
+	<![CDATA[select distinct bed from BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and mgm.modelGroup.category != :baseModelCategoryType and bed.concept.name = :conceptName 
+		 and bed.instance.displayName = :instanceDisplayName and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_INSTANCE_DISPLAY_NAME>
+	
+	
+	<QUERY_ALL_REGEX_INSTANCES>
+	<![CDATA[from BusinessEntityDefinition bed 
+		 where bed.entityType = :regExEntityType
+	]]>
+	</QUERY_ALL_REGEX_INSTANCES>
+	
+	<QUERY_GET_INSTANCES_FOR_TYPE_BY_MODEL>
+	<![CDATA[select distinct bed.instance
+		 from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.type.id = :typeId and
+		 bed.entityType = :typeLookupInstanceEntityType 
+		 and bed.instance.id is not null
+	]]>
+	</QUERY_GET_INSTANCES_FOR_TYPE_BY_MODEL>	
+	
+	<QUERY_DELETE_INSTANCES_BY_IDS>
+	<![CDATA[delete from Instance ins
+		 where ins.id in (:instanceIds)
+	]]>
+	</QUERY_DELETE_INSTANCES_BY_IDS>
+
+</queries>

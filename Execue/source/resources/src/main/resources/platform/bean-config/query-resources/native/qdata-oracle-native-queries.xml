@@ -1,0 +1,160 @@
+<queries>	
+	<STATEMENT_DELETE_RFX_BY_CONTENT_DATE>
+	<![CDATA[
+		 delete from  rfx where rfx.id in
+		 (select r.id from rfx r , udx u 
+		 where r.reduced_form_id = u.rf_id and u.content_date < = :contentDate)
+	]]>
+	</STATEMENT_DELETE_RFX_BY_CONTENT_DATE>	
+	
+	<STATEMENT_DELETE_RFX_VALUES_BY_CONTENT_DATA>
+	<![CDATA[
+		  delete from rfx_value where rfx_value.id in 
+		  (select rv.id FROM rfx_value rv, udx u 
+		  WHERE rv.reduced_form_id = u.rf_id AND u.content_date <= :contentDate)
+	]]>
+	</STATEMENT_DELETE_RFX_VALUES_BY_CONTENT_DATA>	
+	
+	<STATEMENT_DELETE_RI_UNSTRUCTURED_INDEXES_BY_CONTENT_DATE>
+	<![CDATA[
+		 delete from ri_udx where ri_udx.id in
+		 (select ri.id FROM ri_udx ri, udx u 
+		 WHERE ri.udx_id = u.id 
+		 AND u.content_date <= :contentDate 
+		 AND u.content_source_type = :contentSourceType)
+	]]>
+	</STATEMENT_DELETE_RI_UNSTRUCTURED_INDEXES_BY_CONTENT_DATE>	
+	
+	<STATEMENT_DELETE_UDX_RI_ATTRIBUTES_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE from udx_attribute where udx_attribute.id in(     
+		select ua.id    
+		FROM udx_attribute ua, udx u 
+		WHERE ua.udx_id = u.id 
+		AND u.content_date <= :contentDate)
+	]]>
+	</STATEMENT_DELETE_UDX_RI_ATTRIBUTES_BY_CONTENT_DATE>		
+	
+	<STATEMENT_DELETE_UDX_KEY_WORD_BY_CONTENT_DATE>
+	<![CDATA[
+		DELETE from udx_key_word where udx_key_word.id in
+		(select uk.id FROM udx_key_word uk, udx u 
+		WHERE uk.udx_id = u.id 
+		AND u.content_date <= :contentDate)
+	]]>
+	</STATEMENT_DELETE_UDX_KEY_WORD_BY_CONTENT_DATE>	
+	
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX>
+	<![CDATA[
+		delete from udx where udx.id in
+		(select u.id from udx u, temp_dup_udx_id tmp where u.id = tmp.id)
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX>	
+	
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_RI_UDX>
+	<![CDATA[
+		  delete from ri_udx where ri_udx.id in 
+		  (select ru.id from ri_udx ru, temp_dup_udx_id tmp	where ru.udx_id = tmp.id)
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_RI_UDX>	
+	
+	<STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX_ATTRIBUTE>
+	<![CDATA[
+		delete from udx_attribute where udx_attribute.id in  
+		(select ua.id from udx_attribute ua, temp_dup_udx_id tmp 
+		where ua.udx_id = tmp.id)
+	]]>
+	</STATEMENT_CLEAN_DUPLICATE_UDX_BY_DUPLICATE_UDX_ARTICLE_TABLE_FROM_UDX_ATTRIBUTE>	
+	
+	<STATEMENT_DUPLICATE_UDX_ARTICLE_IDS>
+	<![CDATA[
+		SELECT DISTINCT t1.id 
+		FROM udx t1, udx t2 
+		WHERE t1.content_source_type = 'Craigslist' 
+		AND t1.content_source_type = t2.content_source_type 
+		AND t1.article_ref_id = t2.article_ref_id AND t1.id < t2.id
+	]]>
+	</STATEMENT_DUPLICATE_UDX_ARTICLE_IDS>
+	
+	<STATEMENT_CREATE_DUPLICATE_UDX_ARTICLES_TABLE>
+	<![CDATA[
+		 CREATE TABLE temp_dup_udx_id 
+		(id number(20) NOT NULL, PRIMARY KEY(id))
+	]]>
+	</STATEMENT_CREATE_DUPLICATE_UDX_ARTICLES_TABLE>	
+	
+	<STATEMENT_DROP_DUPLICATE_UDX_ARTICLES_TABLE>
+	<![CDATA[
+		DROP TABLE temp_dup_udx_id
+	]]>
+	</STATEMENT_DROP_DUPLICATE_UDX_ARTICLES_TABLE>
+	
+	<STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_KEY_WORD_SEARCH_FILTER>	
+	<![CDATA[
+		INSERT INTO UNIVERSAL_SEARCH_RESULT (UDX_ID, RF_ID, QUERY_ID, Match_Weight, 
+		ENTITY_COUNT, SEARCH_TYPE, APPLICATION_ID, MATCHED_TRIPLES, MATCHED_TRIPLES_SUM)		
+		select ru.UDX_ID, ru.RF_ID, rq.QUERY_ID , 
+		sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) as Match_Weight, 
+		ru.ENTITY_COUNT, ru.SEARCH_TYPE, ru.APPLICATION_ID, 
+		ex_orc_grp_concat(DISTINCT rq.TRIPLE_IDENTIFIER 
+		ORDER BY rq.TRIPLE_IDENTIFIER) as matched_triple_ids,
+		SUM(DISTINCT rq.TRIPLE_IDENTIFIER) as matchedSum		 
+		from RI_UDX ru, RI_USER_QUERY rq, udx_key_word_match kwm		
+		where kwm.QUERY_ID = :userQueryId and ru.UDX_ID = kwm.UDX_ID		  
+		AND rq.QUERY_ID = :userQueryId and rq.BE_ID_1 = ru.BE_ID_1 and rq.BE_ID_2 = ru.BE_ID_2 
+		and rq.BE_ID_3 = ru.BE_ID_3 and rq.VARIATION_SUBTYPE = ru.VARIATION_SUBTYPE 
+		and (rq.DERIVED * ru.DERIVED) = 0 and rq.APPLICATION_ID = ru.APPLICATION_ID 
+		group by ru.RF_ID, ru.UDX_ID, ru.CONTENT_DATE 
+		order by sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		sum(ru.REC_WEIGHT * rq.REC_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		matchedSum desc, ru.CONTENT_DATE desc, (ru.ENTITY_COUNT/rq.ENTITY_COUNT), 
+		ru.UDX_ID desc limit :minResult , :maxResult
+	]]>
+	</STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_KEY_WORD_SEARCH_FILTER>
+	
+	
+	<STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_OUT_KEY_WORD_SEARCH_FILTER>
+	<![CDATA[
+		INSERT INTO UNIVERSAL_SEARCH_RESULT (UDX_ID, RF_ID, QUERY_ID, Match_Weight,
+		ENTITY_COUNT, SEARCH_TYPE, APPLICATION_ID, MATCHED_TRIPLES, MATCHED_TRIPLES_SUM)
+		select ru.UDX_ID, ru.RF_ID, rq.QUERY_ID ,
+		sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) as Match_Weight, 
+		ru.ENTITY_COUNT, ru.SEARCH_TYPE, ru.APPLICATION_ID, 
+		ex_orc_grp_concat(DISTINCT rq.TRIPLE_IDENTIFIER 
+		ORDER BY rq.TRIPLE_IDENTIFIER) as matched_triple_ids, 
+		SUM(DISTINCT rq.TRIPLE_IDENTIFIER) as matchedSum 
+		from RI_UDX ru, RI_USER_QUERY rq 
+		where rq.QUERY_ID = :userQueryId and rq.BE_ID_1 = ru.BE_ID_1 and rq.BE_ID_2 = ru.BE_ID_2 
+		and rq.BE_ID_3 = ru.BE_ID_3 and rq.VARIATION_SUBTYPE = ru.VARIATION_SUBTYPE 
+		and (rq.DERIVED * ru.DERIVED) = 0 and rq.APPLICATION_ID = ru.APPLICATION_ID 
+		group by ru.RF_ID, ru.UDX_ID, ru.CONTENT_DATE 
+		order by sum(ru.MAX_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc, 
+		sum(ru.REC_WEIGHT * rq.REC_WEIGHT * ru.VARIATION_WEIGHT * rq.VARIATION_WEIGHT) desc,
+		matchedSum desc, ru.CONTENT_DATE desc, (ru.ENTITY_COUNT/rq.ENTITY_COUNT), 
+		ru.UDX_ID desc limit :minResult , :maxResult
+	]]>
+	</STATEMENT_POPULATE_UNIVERSAL_SEARCH_REASULT_WITH_OUT_KEY_WORD_SEARCH_FILTER>
+	
+	<STATEMENT_UPDATE_UDX_RESULT_WEIGHT_BASED_ON_RFX_VALUES>
+	<![CDATA[
+		UPDATE  universal_search_result usr 
+		JOIN (SELECT rv.REDUCED_FORM_ID, COUNT(DISTINCT uqrv.id) AS cont,
+		sum(DISTINCT uqrv.TRIPLE_IDENTIFIER) as matchedSum,
+		ex_orc_grp_concat(DISTINCT uqrv.TRIPLE_IDENTIFIER
+		ORDER BY uqrv.TRIPLE_IDENTIFIER) as triples  
+		FROM RFX_Value rv, user_query_rfx_value uqrv 
+		where uqrv.QUERY_ID =:userQueryId 
+		AND uqrv.SRC_CONCEPT_BE_ID = rv.SRC_CONCEPT_BE_ID 
+		AND uqrv.RELATION_BE_ID = rv.RELATION_BE_ID 
+		AND uqrv.DEST_CONCEPT_BE_ID = rv.DEST_CONCEPT_BE_ID
+		AND rv.value BETWEEN uqrv.START_VALUE AND uqrv.END_VALUE
+		GROUP BY rv.REDUCED_FORM_ID) AS U
+		ON usr.RF_ID = U.REDUCED_FORM_ID SET usr.Match_Weight = usr.Match_Weight + cont*30,
+		usr.matched_triples=usr.matched_triples||','||triples, 
+		usr.MATCHED_TRIPLES_SUM=usr.MATCHED_TRIPLES_SUM + matchedSum  
+		where usr.QUERY_ID=:userQueryId
+	]]>
+	</STATEMENT_UPDATE_UDX_RESULT_WEIGHT_BASED_ON_RFX_VALUES>	
+			
+</queries>
+	

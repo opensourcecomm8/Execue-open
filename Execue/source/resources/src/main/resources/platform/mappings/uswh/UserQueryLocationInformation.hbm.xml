@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.unstructured.UserQueryLocationInformation" table="USER_QUERY_LOCATION_INFO">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="increment" />
+		</id>
+		<property name="queryId" type="java.lang.Long">
+			<column name="QUERY_ID" precision="12" scale="0" />
+		</property>
+		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" precision="12" scale="0" />
+		</property>
+		<property name="locationId" type="java.lang.Long">
+			<column name="LOCATION_ID" precision="12" scale="0" />
+		</property>
+		<property name="latitude" type="double">
+			<column name="LATITUDE" />
+		</property>	
+		<property name="longitude" type="double">
+			<column name="LONGITUDE" />
+		</property>	
+        <property name="executionDate" type="java.util.Date">
+			<column name="EXECUTION_DATE" />
+		</property>															
+	</class>
+</hibernate-mapping>

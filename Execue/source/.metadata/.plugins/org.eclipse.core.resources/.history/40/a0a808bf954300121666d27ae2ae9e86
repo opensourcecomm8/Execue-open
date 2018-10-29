@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<publisher>
+		<static-values>
+			<default-column-name>column</default-column-name>
+			<max-data-type-length>255</max-data-type-length>
+			<drop-temp-table>true</drop-temp-table>
+			<max-scale-length>10</max-scale-length>
+			<batch-size>500</batch-size>
+			<max-string-column-length-lookup-eligiblity>35</max-string-column-length-lookup-eligiblity>
+			<minimum-members-eligibility-lookup>6</minimum-members-eligibility-lookup>
+			<force-system-evaluation-to-amend-user-selection-for-lookups>false</force-system-evaluation-to-amend-user-selection-for-lookups>
+			<lookup-eligibility-criteria>
+				<criteria>
+					<records>1000</records>
+					<percentage>5</percentage>
+				</criteria>
+				<criteria>
+					<records>10000</records>
+					<percentage>2</percentage>
+				</criteria>
+				<criteria>
+					<records>100000</records>
+					<percentage>1</percentage>
+				</criteria>
+				<criteria>
+					<records>500000</records>
+					<percentage>.1</percentage>
+				</criteria>
+			</lookup-eligibility-criteria>
+			<date-lookup-eligibility-criteria>
+				<criteria>
+					<records>1000</records>
+					<percentage>10</percentage>
+				</criteria>
+				<criteria>
+					<records>10000</records>
+					<percentage>5</percentage>
+				</criteria>
+				<criteria>
+					<records>100000</records>
+					<percentage>2</percentage>
+				</criteria>
+				<criteria>
+					<records>500000</records>
+					<percentage>1</percentage>
+				</criteria>
+			</date-lookup-eligibility-criteria>
+			<prefix-table-name>exeq</prefix-table-name>
+			<characters-to-escape>',\</characters-to-escape>
+			<escape-character>\</escape-character>
+			<default-data-type>string</default-data-type>
+			<fallback-data-type>text</fallback-data-type>
+			<column-count-limit-to-fallback-data-type>80</column-count-limit-to-fallback-data-type>
+			<date-regex>^([0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[ ]*[0-9]*[:]*[0-9]*[:]*[0-9]*)$</date-regex>
+			<integer-regex>^(-|\\\\+)?([0-9]+)$</integer-regex>
+			<number-regex>^(-|\\\\+)?([0-9]+\\\\.[0-9]*|[0-9]*\\\\.[0-9]+|[0-9]+)$</number-regex>
+			<plain-date-regex>^([0-9]+)$</plain-date-regex>
+			<escape-special-characters-regex>[^a-zA-Z0-9_\\s]</escape-special-characters-regex>
+			<escape-special-characters-for-table-name-regex>[^a-zA-Z0-9_]</escape-special-characters-for-table-name-regex>
+			<string-data-type-size-buffer>2</string-data-type-size-buffer>
+			<decimal-data-type-precision-buffer>2</decimal-data-type-precision-buffer>
+			<decimal-data-type-scale-buffer>2</decimal-data-type-scale-buffer>
+			<integer-data-type-size-buffer>2</integer-data-type-size-buffer>
+			<integer-data-type-maximum-length>9</integer-data-type-maximum-length>
+			<min-plain-date-field-length>4</min-plain-date-field-length>
+			<min-date-field-length>8</min-date-field-length>	
+			<sample-date-records-size>10</sample-date-records-size>
+			<publisher-file-storage-path>				
+				<CSV>@@apps_storage_files_csv_dir@@</CSV>
+				<TSV>@@apps_storage_files_csv_dir@@</TSV>
+				<EXCEL>@@apps_storage_files_excel_dir@@</EXCEL>
+				<EXCELDB>@@apps_storage_files_exceldb_dir@@</EXCELDB>
+				<IMAGE>@@apps_storage_files_image_dir@@</IMAGE>
+				<OTHER>@@apps_storage_files_other_dir@@</OTHER>
+			</publisher-file-storage-path>
+			<publisher-filename-timestamp-format>yyyyMMddHHMMssSSS</publisher-filename-timestamp-format>
+			<tablename-randomstring-length>3</tablename-randomstring-length>
+			<column-validation-message-precision>For column @@columnName@@ Precision must be greater than or equal than original precision </column-validation-message-precision>
+			<column-validation-message-scale>For column @@columnName@@ Scale must be greater than or equal than original scale</column-validation-message-scale>
+			<column-validation-message-invalid-dateformat>For column @@columnName@@\, Date format : @@dateformat@@ is not valid></column-validation-message-invalid-dateformat>
+			<column-validation-message-invalid-precision>For column @@columnName@@ precision is not valid</column-validation-message-invalid-precision>
+			<column-validation-message-invalid-scale>For column @@columnName@@ scale is not valid</column-validation-message-invalid-scale>
+			<column-validation-message-invalid-unittype>For column @@columnName@@ unit type is not valid </column-validation-message-invalid-unittype>
+			<column-validation-message-invalid-unit>For column @@columnName@@ unit is not valid</column-validation-message-invalid-unit>
+			<column-validation-message-invalid-datetype>For column @@columnName@@ Data type change is not compatible</column-validation-message-invalid-datetype>
+			<data-replace>
+				<for-avoiding-script-injection>
+					<map>
+						<key><![CDATA[<script]]></key>
+						<value><![CDATA[< script]]></value>
+						<key><![CDATA[<noscript]]></key>
+						<value><![CDATA[< noscript]]></value>
+					</map>
+				</for-avoiding-script-injection>
+			</data-replace>
+		</static-values>		
+	</publisher>
+	<ontology-file-storage-path>
+		<OWL>/apps/Ontologies/files</OWL>
+	</ontology-file-storage-path>
+</execue-configuration>

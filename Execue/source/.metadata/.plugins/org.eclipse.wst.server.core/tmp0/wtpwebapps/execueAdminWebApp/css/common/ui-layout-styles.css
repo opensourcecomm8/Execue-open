@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		
+		padding: 5px; 
+		overflow: auto;
+		
+	} 
+
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		
+		background-image:url(../../images/admin/seperator.gif);
+		background-repeat:no-repeat;
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+		background-image:url(../../images/admin/leftArrow.gif);
+	} 
+
+.ui-layout-toggler-east-open{
+	background-image:url(../../images/admin/rightArrow.gif);
+}
+.ui-layout-toggler-west-open{
+	background-image:url(../../images/admin/leftArrow.gif);
+}
+.ui-layout-toggler-west-closed{
+	background-image:url(../../images/admin/rightArrow.gif);
+}

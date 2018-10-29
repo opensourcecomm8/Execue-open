@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<class name="com.execue.core.common.bean.entity.audittrail.AnonymousUser" table="ANONYMOUS_USER">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">ANONYMOUS_USER</param>
+			</generator>
+		</id>
+        
+		<property name="countryCode" type="string">
+			<column name="COUNTRY_CODE" length="15"/>
+		</property>
+        
+		<property name="countryName" type="string">
+			<column name="COUNTRY_NAME" length="255"/>
+		</property>
+        
+		<property name="cityName" type="string">
+			<column name="CITY_NAME" length="255"/>
+		</property>
+        
+		<property name="stateName" type="string">
+			<column name="STATE_NAME" length="255"/>
+		</property>
+        
+		<property name="stateCode" type="string">
+			<column name="STATE_CODE" length="15"/>
+		</property>
+        
+		<property name="zipCode" type="string">
+			<column name="ZIP_CODE" length="25"/>
+		</property>
+        
+		<property name="ipLocation" type="string">
+			<column name="IP_LOCATION" length="255"/>
+		</property>
+        
+		<property name="latitude" type="string">
+			<column name="LATITUDE" length="255"/>
+		</property>
+        
+		<property name="longitude" type="string">
+			<column name="LONGITUDE" length="255"/>
+		</property>        
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+		
+	<bean id="locationRetrievalService" class="com.execue.sdata.service.impl.location.LocationRetrievalServiceImpl" >
+		<property name="locationDataAccessManager">
+			<ref bean="locationDataAccessManager"/>
+		</property>
+	</bean>
+	<bean id="locationDataAccessManager" class="com.execue.sdata.dataaccess.impl.location.LocationDataAccessManagerImpl" >
+		<property name="locationDAO">
+			<ref bean="locationDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="locationManagementService" class="com.execue.sdata.service.impl.location.LocationManagementServiceImpl" >
+		<property name="locationDataAccessManager">
+			<ref bean="locationDataAccessManager"/>
+		</property>
+		<property name="locationRetrievalService">
+			<ref bean="locationRetrievalService"/>
+		</property>
+	</bean>
+	
+	<bean id="sharedDataConfigurationService" class="com.execue.sdata.configuration.impl.SharedDataConfigurationServiceImpl" >
+		<property name="sdataConfiguration">
+			<ref bean="sdataConfiguration"/>
+		</property>
+	</bean>
+     
+    
+</beans>

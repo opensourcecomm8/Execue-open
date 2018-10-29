@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 23, 2009 9:52:51 AM by Hibernate Tools 3.2.1.NK -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="entityType">
+		<param name="enumClass">com.execue.core.common.type.BusinessEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<class name="com.execue.core.common.bean.swi.UserQueryPossibility" table="user_query_possibility">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">USER_QUERY_POSSIBILITY</param>
+            </generator>
+		</id>
+		<property name="modelId" type="java.lang.Long">
+			<column name="MODEL_ID" precision="20" scale="0" />
+		</property>
+		<property name="possibilityId" type="java.lang.Long">
+			<column name="POSSIBILITY_ID" precision="20" scale="0" />
+		</property>
+		<property name="entityBedId" type="java.lang.Long">
+			<column name="ENTITY_BED_ID" precision="20" scale="0" />
+		</property>		
+		<property name="entityType" type="entityType">
+			<column name="ENTITY_TYPE" length="1" />
+		</property>
+		<property name="recWeight" type="java.lang.Double">
+			<column name="REC_WEIGHT"  precision="10" scale="0" />
+		</property>
+		<property name="maxPossibleWeight" type="java.lang.Double">
+			<column name="MAX_POSSIBLE_WEIGHT"  precision="10" scale="0" />
+		</property>
+		<property name="typeBasedWeight" type="java.lang.Double">
+			<column name="TYPE_BASED_WEIGHT"  precision="10" scale="0" />
+		</property>
+		<property name="measureGroupBy" type="checkType">
+			<column name="MEASURE_GROUP_BY" length="1" />
+		</property>		
+		<property name="measureConditionWithoutStat" type="checkType">
+			<column name="MEASURE_CONDITION_WITHOUT_STAT" length="1" />
+		</property>		
+		<property name="userQueryId" type="java.lang.Long">
+			<column name="USER_QUERY_ID" precision="20" scale="0" />
+		</property>	
+		<property name="executionDate" type="java.util.Date">
+			<column name="EXECUTION_DATE"/>
+		</property>
+	</class>
+</hibernate-mapping>

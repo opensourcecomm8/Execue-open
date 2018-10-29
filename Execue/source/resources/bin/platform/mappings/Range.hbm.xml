@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.execue.core.common.bean.entity.Range" table="RANGES">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">RANGES</param>
+			</generator>
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="255" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="255" />
+        </property>
+         <property name="conceptBedId" type="long">
+            <column name="CONCEPT_BED_ID" length="20" />
+        </property>		
+		<many-to-one name="user" class="com.execue.core.common.bean.security.User" fetch="select">
+			<column name="USER_ID" precision="20" scale="0" />
+		</many-to-one>
+		<property name="enabled" type="boolean">
+            <column name="ENABLED" length="1"/>
+        </property>
+        <set name="rangeDetails" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="RANGE_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.RangeDetail" />
+		</set>
+    </class>
+</hibernate-mapping>

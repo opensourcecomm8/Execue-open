@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<unstructured-wh>
+		<static-values>
+			<dummy-feature-id>-1</dummy-feature-id>
+			<default-feature-weight-factor>10</default-feature-weight-factor>
+			<dummy-feature-weight-factor>0</dummy-feature-weight-factor>
+			<feature-string-unknown-value>Unknown</feature-string-unknown-value>
+			<feature-string-column-name-prefix>DISP_S</feature-string-column-name-prefix>
+			<feature-number-column-name-prefix>DISP_N</feature-number-column-name-prefix>
+			<remove-invalid-range-conditions>true</remove-invalid-range-conditions>			
+			<facet>
+				<facet-dependency-delimeter>~</facet-dependency-delimeter>
+				<max-prominent-facet>3</max-prominent-facet>							
+			</facet>
+			<feature-range>
+				<default-value>-1</default-value>
+				<minimum-value>0</minimum-value>
+				<maximum-value>99999999</maximum-value>
+				<minimum-impact-value>1</minimum-impact-value>
+			</feature-range>		
+		</static-values>		
+	</unstructured-wh>
+</execue-configuration>
+

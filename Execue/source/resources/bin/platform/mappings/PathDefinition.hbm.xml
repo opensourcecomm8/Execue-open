@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+        <param name="enumClass">com.execue.core.common.type.CheckType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="pathType">
+        <param name="enumClass">com.execue.core.common.type.EntityTripleDefinitionType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="associationType">
+        <param name="enumClass">com.execue.core.common.type.AssociationType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+     <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="hierarchyType">
+        <param name="enumClass">com.execue.core.common.type.HierarchyType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+     <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="pathSelectionType">
+        <param name="enumClass">com.execue.core.common.type.PathSelectionType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    
+    
+	<class name="com.execue.core.common.bean.entity.PathDefinition" table="PATH_DEFINITION">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">PATH_DEFINITION</param>
+			</generator>
+		</id>
+        
+		<many-to-one name="destinationBusinessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="DESTINATION_BE_ID" precision="20" scale="0" not-null="true" />
+		</many-to-one>
+        
+		<many-to-one name="sourceBusinessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="SOURCE_BE_ID" precision="20" scale="0" not-null="true" />
+		</many-to-one>
+        
+		<property name="pathLength" type="int">
+			<column name="PATH_LENGTH" precision="5" scale="0" not-null="true" />
+		</property>
+        
+		<property name="priority" type="int">
+			<column name="PRIORITY" precision="2" scale="0" />
+		</property>
+        
+        <property name="type" type="pathType">
+            <column name="PATH_TYPE"/>
+        </property>
+        
+        <property name="hierarchyType" type="hierarchyType">
+            <column name="HIERARCHY_TYPE"/>
+        </property>
+        
+        <property name="centralConceptType" type="checkType">
+            <column name="CENTRAL_CONCEPT"/>
+        </property>
+         <property name="associationType" type="associationType">
+            <column name="association_type"/>
+        </property>
+         <property name="pathSelectionType" type="pathSelectionType">
+            <column name="PATH_SELECTION_TYPE"/>
+        </property>
+        
+        
+        <property name="cloudId" type="java.lang.Long">
+			<column name="cloud_id" precision="10" scale="0" />
+		</property>
+        
+		<set name="paths" inverse="true" cascade="save-update,delete">
+			<key>
+				<column name="PATH_DEFINITION_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.Path" />
+		</set>  
+		
+		<set name="pathRules" inverse="false" table="path_definition_rule">
+			<key>
+				<column name="PATH_DEF_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.execue.core.common.bean.entity.Rule">
+				<column name="RULE_ID" precision="20" scale="0" not-null="true" />
+			</many-to-many>
+		</set> 			      
+	</class>
+
+</hibernate-mapping>

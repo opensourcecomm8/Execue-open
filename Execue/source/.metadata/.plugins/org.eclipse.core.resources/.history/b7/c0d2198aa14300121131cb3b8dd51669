@@ -1,0 +1,20 @@
+<queries>
+	<BUSINESS_ENTITY_VARIATION_NAMES_BY_BEDID>
+	<![CDATA[select bev.variation from BusinessEntityVariation bev where bev.businessEntityId = :entityBedId ]]>
+	</BUSINESS_ENTITY_VARIATION_NAMES_BY_BEDID>
+
+	<BUSINESS_ENTITY_VARIATIONS_BY_BEDID>
+	<![CDATA[from BusinessEntityVariation where businessEntityId = :entityBedId]]>
+	</BUSINESS_ENTITY_VARIATIONS_BY_BEDID>
+	<DELETE_BUSINESS_ENTITY_VARIATIONS_BY_MODELGROUPID>
+	<![CDATA[delete from BusinessEntityVariation bev
+		 where bev.modelGroupId in (:modelGroupIds)
+	]]>
+	</DELETE_BUSINESS_ENTITY_VARIATIONS_BY_MODELGROUPID>
+	
+	<DELETE_BUSINESS_ENTITY_VARIATIONS_BY_ENTITY_BED_ID>
+	<![CDATA[delete from BusinessEntityVariation bev
+		 where bev.businessEntityId =:businessEntityId
+	]]>
+	</DELETE_BUSINESS_ENTITY_VARIATIONS_BY_ENTITY_BED_ID>
+</queries>

@@ -1,0 +1,19 @@
+<queries>
+	<QUERY_GET_ASSET_OPERATION_BY_ASSET_ID_AND_OPERATION_TYPE>
+		<![CDATA[from AssetOperationInfo
+		         where assetId = :assetId 
+		         and assetOperationType = :assetOperationType]]>
+	</QUERY_GET_ASSET_OPERATION_BY_ASSET_ID_AND_OPERATION_TYPE>
+
+	<QUERY_GET_ASSET_OPERATION_DATA_BY_ASSET_ID_AND_OPERATION_TYPE>
+		<![CDATA[select assetOperationData
+		         from AssetOperationInfo
+		         where assetId = :assetId 
+		         and assetOperationType =:assetOperationType]]>
+	</QUERY_GET_ASSET_OPERATION_DATA_BY_ASSET_ID_AND_OPERATION_TYPE>
+
+	<QUERY_GET_ASSET_OPERATION_DATA_BY_ID>
+		<![CDATA[select assetOperationData
+		         from AssetOperationInfo where id = :id]]>
+	</QUERY_GET_ASSET_OPERATION_DATA_BY_ID>		
+</queries>

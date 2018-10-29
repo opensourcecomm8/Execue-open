@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="dataAccessServicesConfigurationService" class="com.execue.das.configuration.impl.DataAccessServicesConfigurationServiceImpl">
+		<property name="dataAccessServicesConfiguration">
+			<ref bean="dataAccessServicesConfiguration"/>
+		</property>	
+	</bean>	
+	
+	<bean id="genericJDBCDataAccessManager"
+		class="com.execue.das.jdbc.dataaccess.impl.GenericJDBCDataAccessManagerImpl">
+		<property name="genericJDBCDAO">
+			<ref bean="genericJDBCDAO" />
+		</property>
+	</bean>
+	
+	<bean id="genericJDBCService"
+		class="com.execue.das.jdbc.service.impl.GenericJDBCServiceImpl">
+		<property name="genericJDBCDataAccessManager">
+			<ref bean="genericJDBCDataAccessManager" />
+		</property>
+	</bean>
+	
+	<bean id="userRemoteLocationPopulationService"
+		class="com.execue.das.util.impl.UserRemoteLocationPopulationServiceImpl">
+		<property name="genericJDBCService">
+			<ref bean="genericJDBCService" />
+		</property>
+		<property name="dataAccessServicesConfigurationService"
+			ref="dataAccessServicesConfigurationService" />
+	</bean>
+	
+	<bean id="cityCenterZipCodeLookupService"
+		class="com.execue.das.util.impl.CityCenterZipCodeLookupServiceImpl">
+		<property name="genericJDBCService">
+			<ref bean="genericJDBCService" />
+		</property>
+		<property name="dataAccessServicesConfigurationService"
+			ref="dataAccessServicesConfigurationService" />
+	</bean>
+	
+	<bean id="systemDataAccessService" class="com.execue.das.dataaccess.impl.SystemDataAccessServiceImpl">
+		<property name="genericJDBCService" ref="genericJDBCService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+	</bean>
+
+	<!-- Bean defintion of etlService -->
+	<bean id="etlService" 
+		class="com.execue.das.datatransfer.etl.service.impl.ScriptellaETLServiceImpl" >
+	</bean>
+	
+	<bean id="remoteDataTransferHelper" 
+		class="com.execue.das.datatransfer.etl.helper.RemoteDataTransferHelper" >
+		<property name="systemDataAccessService" ref="systemDataAccessService"/>
+		<property name="dataAccessConfigurationService" ref ="dataAccessConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"></property>
+		<property name="dataAccessUtilService" ref ="dataAccessUtilService"></property>
+		
+	</bean>
+	
+	<!-- Bean defintion of etlService -->
+	<bean id="remoteDataTransferService" 
+		class="com.execue.das.datatransfer.etl.service.impl.RemoteDataTransferServiceImpl" >
+		<property name="etlService" >
+			<ref bean="etlService"/>			
+		</property>
+		<property name="remoteDataTransferHelper" >
+			<ref bean="remoteDataTransferHelper"/>			
+		</property>
+	</bean>	
+	
+	<bean id="solrDataAccessManager" 
+		class="com.execue.das.solr.dataaccess.impl.SolrDataAccessManagerImpl" >
+		<property name="solrDAO" >
+			<ref bean="solrDAO"/>			
+		</property>
+	</bean>
+	
+	<bean id="solrQueryGenerationService" 
+		class="com.execue.das.solr.service.impl.SolrQueryGenerationServiceImpl" >
+		<property name="dataAccessServicesConfigurationService"
+			ref="dataAccessServicesConfigurationService" />
+	</bean>
+	
+	
+	<bean id="solrManagementService" 
+		class="com.execue.das.solr.service.impl.SolrManagementServiceImpl" >
+		<property name="solrDataAccessManager" >
+			<ref bean="solrDataAccessManager"/>			
+		</property>
+		<property name="solrQueryGenerationService" >
+			<ref bean="solrQueryGenerationService"/>			
+		</property>
+	</bean>
+
+	<bean id="solrRetrievalService" 
+		class="com.execue.das.solr.service.impl.SolrRetrievalServiceImpl" >
+		<property name="solrDataAccessManager" >
+			<ref bean="solrDataAccessManager"/>			
+		</property>
+		<property name="solrQueryGenerationService" >
+			<ref bean="solrQueryGenerationService"/>			
+		</property>
+	</bean>	
+</beans>

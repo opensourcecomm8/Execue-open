@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Left means the Concept is on the LeftSide
+Right means the Concept is on the RightSide
+-->
+<execue>
+
+    <regexComponents>
+        <component>
+            <name>Time Concept</name>
+            <patternHolder>%TIME%</patternHolder>
+            <excludeNlpTag>OC, Profile</excludeNlpTag>
+            <concept>Time</concept>
+            <!--<regex><![CDATA[Token@word:[\\w\\d#\-]+#superConcept:([\\w~]*)(Time)([\\w~]*)#nlpTag:(OI)]]></regex>-->
+            <regex><![CDATA[Token@word:[\\w\\d#\-]+#type:TimeFrame#nlpTag:(OI)#behavior:[\\w~]+]]></regex>
+        </component>
+
+        <component>
+            <name>Value Concept</name>
+            <patternHolder>%VALUE%</patternHolder>
+            <excludeNlpTag>OC, Profile</excludeNlpTag>
+            <concept>Value</concept>
+            <!--<regex><![CDATA[Token@word:\\w+#superConcept:([\\w~]*)(Value)([\\w~]*)#nlpTag:(^(OC|Profile))]]></regex>-->
+            <regex><![CDATA[Token@word:\\w+#type:Value#nlpTag:(^(OC|Profile))#behavior:[\\w~]+]]></regex>
+        </component>
+
+        <component>
+            <name>Indicator Concept</name>
+            <patternHolder>%INDICATOR%</patternHolder>
+            <excludeNlpTag>OC, Profile</excludeNlpTag>
+            <concept>Indicator</concept>
+            <!--<regex><![CDATA[Token@word:\\w+#superConcept:([\\w~]*)(Indicator)([\\w~]*)#nlpTag:(^(OC|Profile))]]></regex>-->
+            <regex><![CDATA[Token@word:\\w+#type:Indicator#nlpTag:(^(OC|Profile))#behavior:[\\w~]+]]></regex>
+        </component>
+
+        <component>
+            <name>Statistics Concept</name>
+            <patternHolder>%STAT%</patternHolder>
+            <excludeNlpTag>OC, Profile</excludeNlpTag>
+            <concept>Statistics</concept>
+            <!--<regex><![CDATA[Token@word:\\w+#superConcept:([\\w~]*)(Statistics)([\\w~]*)#nlpTag:(^(OC|Profile))]]></regex>-->
+            <regex><![CDATA[Token@word:\\w+#type:Statistics#nlpTag:(OI|ORTI)#behavior:[\\w~]+]]></regex>
+        </component>
+
+        <component>
+            <name>General Word</name>
+            <patternHolder>%WORD%</patternHolder>
+            <!--<regex><![CDATA[Token@word:\\w+#superConcept:[\\w-~]*#nlpTag:[\\w]]]></regex>-->
+            <regex><![CDATA[Token@word:\\w+#type:\\w+#nlpTag:\\w+#behavior:[\\w~]+]]></regex>
+        </component>
+
+        <component>
+            <name>Conjunction Instance</name>
+            <patternHolder>%CONJUNCTION%</patternHolder>
+            <excludeNlpTag>OC, CP</excludeNlpTag>
+            <concept>Conjunction</concept>
+            <!--<regex><![CDATA[Token@word:[\\w\\d#\-]+#superConcept:([\\w-~]*)(Conjunction)([\\w~]*)#nlpTag:(OI)]]></regex>-->
+            <regex><![CDATA[Token@word:\\w+#type:Conjunction#nlpTag:(OI|ORTI)#behavior:[\\w~]+]]></regex>
+        </component>    
+    
+        <component>
+            <name>NON-Periodic Information Entity</name>
+            <patternHolder>%NON-PERIODIC-INFO%</patternHolder>
+            <excludeNlpTag>OP</excludeNlpTag>
+            <concept>PeriodicInformation</concept>
+            <regex><![CDATA[Token@word:[\\w\\d]+#superConcept:([\\w-~]*)((?<!(PeriodicInformation|Conjunction))(~Thing~)(?!(PeriodicInformation|Conjunction)))([\\w~]*)#nlpTag:[\\w]+]]></regex>
+        </component>    
+
+    </regexComponents>
+
+    <associationWeights>
+
+        <associationWeight>
+            <associationDirection>Left</associationDirection>
+            <proximityReduction>0.05</proximityReduction>
+            <weight>1</weight>
+            <associationWordsInfo>
+                <associationWord>
+                    <word>IN</word>
+                    <weight>0.9</weight>
+                </associationWord>
+                <associationWord>
+                    <word>OF</word>
+                    <weight>0.7</weight>
+                </associationWord>
+            </associationWordsInfo>
+        </associationWeight>
+
+        <associationWeight>
+            <associationDirection>Right</associationDirection>
+            <proximityReduction>0.05</proximityReduction>
+            <weight>0.7</weight>
+        </associationWeight>
+
+    </associationWeights>
+
+    <associationInfo>
+        <direction>Left</direction>
+        <ruleId>10001</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Time</object>
+                <predicate>hasTimeFrame</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>136</objectBedId>
+                <predicateBedId>206</predicateBedId>                
+            </tripleInfo>
+        </tripleInfos>
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%TIME%</regex>
+                    <required>false</required>
+                    <weightReductionValue>1</weightReductionValue>
+                    <!-- RIGHT-OBJECT, IMMEDIATE RIGHT-OBJECT, IMMEDIATE RIGHT-SUBJECT, MIDDLE, LEFT-SUBJECT, IMMEDIATE LEFT-SUBJECT, IMMEDIATE LEFT-OBJECT -->
+                    <position>MIDDLE</position>
+                </part>
+
+                <weightReductionRule>
+                    <part>
+                        <partType>ALLOWED</partType>
+                        <partID>1</partID>
+                        <regex>%CONJUNCTION%</regex>
+                        <required>false</required>
+                        <weightReductionValue>0</weightReductionValue>
+                        <!-- RIGHT-OBJECT, IMMEDIATE RIGHT-OBJECT, IMMEDIATE RIGHT-SUBJECT, MIDDLE, LEFT-SUBJECT, IMMEDIATE LEFT-SUBJECT, IMMEDIATE LEFT-OBJECT -->
+                        <position>MIDDLE</position>
+                    </part>
+                </weightReductionRule>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+    <associationInfo>
+        <direction>Right</direction>
+        <ruleId>10002</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Time</object>
+                <predicate>hasTimeFrame</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>136</objectBedId>
+                <predicateBedId>206</predicateBedId>
+            </tripleInfo>
+        </tripleInfos>
+
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%TIME%</regex>
+                    <required>true</required>
+                    <weightReductionValue>1</weightReductionValue>
+                    <position>MIDDLE</position>
+                </part>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+    <associationInfo>
+        <direction>Left</direction>
+        <ruleId>10003</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Value</object>
+                <predicate>hasValue</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>105</objectBedId>
+                <predicateBedId>205</predicateBedId>
+            </tripleInfo>
+        </tripleInfos>
+
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%VALUE%</regex>
+                    <required>false</required>
+                    <weightReductionValue>1</weightReductionValue>
+                </part>
+            </weightReductionRule>
+            <weightReductionRule>
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%WORD%</regex>
+                    <required>false</required>
+                    <weightReductionValue>0.5</weightReductionValue>
+                </part>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+    <associationInfo>
+        <direction>Right</direction>
+        <ruleId>10004</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Value</object>
+                <predicate>hasValue</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>105</objectBedId>
+                <predicateBedId>205</predicateBedId>
+            </tripleInfo>
+        </tripleInfos>
+
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%WORD%</regex>
+                    <required>false</required>
+                    <weightReductionValue>1</weightReductionValue>
+                </part>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+    <associationInfo>
+        <direction>Right</direction>
+        <ruleId>10005</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Statistics</object>
+                <predicate>hasStatistics</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>106</objectBedId>
+                <predicateBedId>208</predicateBedId>
+            </tripleInfo>
+        </tripleInfos>
+
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%VALUE%</regex>
+                    <required>false</required>
+                    <weightReductionValue>1</weightReductionValue>
+                </part>
+            </weightReductionRule>
+            <weightReductionRule>
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%Statistics%</regex>
+                    <required>false</required>
+                    <weightReductionValue>1</weightReductionValue>
+                </part>
+            </weightReductionRule>
+            <weightReductionRule>
+                <part>
+                    <partType>NOT_ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%WORD%</regex>
+                    <required>false</required>
+                    <weightReductionValue>0.5</weightReductionValue>
+                </part>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+    <associationInfo>
+        <direction>Right</direction>
+        <ruleId>10006</ruleId>
+        <tripleInfos>
+            <tripleInfo>
+                <subject>PeriodicInformation</subject>
+                <object>Indicator</object>
+                <predicate>isAssociatedWithIndicator</predicate>
+                <subjectBedId>111</subjectBedId>
+                <objectBedId>108</objectBedId>
+                <predicateBedId>214</predicateBedId>
+            </tripleInfo>
+        </tripleInfos>
+
+        <associationType>AdjectiveAssociation</associationType>
+        <weightReductionRules>
+
+            <weightReductionRule>
+                <part>
+                    <partType>ALLOWED</partType>
+                    <partID>1</partID>
+                    <regex>%INDICATOR%</regex>
+                    <required>false</required>
+                    <weightReductionValue>0</weightReductionValue>
+                </part>
+
+            </weightReductionRule>
+        </weightReductionRules>
+    </associationInfo>
+
+</execue>

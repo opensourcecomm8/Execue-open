@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<driver>
+		<unique-app-possibility-redirection>
+			<app>
+			    <!-- NK:: NOTE: Kept dummy info for now, change this with the corret id and redirect url when we needed this -->
+				<id>0</id>
+				<redirect-url>dummyurl</redirect-url>
+			</app>
+		</unique-app-possibility-redirection>
+	</driver>
+</execue-configuration>

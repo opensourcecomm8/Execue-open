@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="unstructuredWarehouseSearchEngineFactory"
+		class="com.execue.uss.beanfactory.UnstructuredWarehouseSearchEngineFactory"
+		factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="Default" value="unstructuredWarehouseSearchEngine" />
+			</map>
+		</property>
+	</bean>
+
+</beans>

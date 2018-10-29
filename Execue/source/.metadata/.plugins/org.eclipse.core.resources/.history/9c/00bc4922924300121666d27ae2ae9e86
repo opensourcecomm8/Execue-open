@@ -1,0 +1,51 @@
+# ExeCue Application Database Instance and Schema properties
+
+## Provider Details
+
+db.source.swi.provider.type.value = MySql
+db.source.swi.driver.class = com.mysql.jdbc.Driver
+db.source.swi.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.swi.connection.validation.query = select 1
+
+db.source.qdata.provider.type.value = MySql
+db.source.qdata.driver.class = com.mysql.jdbc.Driver
+db.source.qdata.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.qdata.connection.validation.query = @@mysql_qdata_connection_validation_query@@
+
+db.source.sdata.provider.type.value = @@mysql_sdata_provider_type_value@@
+db.source.sdata.driver.class = com.mysql.jdbc.Driver
+db.source.sdata.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.sdata.connection.validation.query = @@mysql_sdata_connection_validation_query@@
+
+db.source.audit-trail.provider.type.value = @@mysql_audit_trail_provider_type_value@@
+db.source.audit-trail.driver.class = com.mysql.jdbc.Driver
+db.source.audit-trail.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+db.source.audit-trail.connection.validation.query = @@mysql_audit_trail_connection_validation_query@@
+
+db.source.uswh.provider.type.value = None
+db.source.uswh.hibernate.dialect = none
+db.source.uswh.connection.validation.query = none
+
+db.source.usca.provider.type.value = none
+db.source.usca.hibernate.dialect = none
+db.source.usca.connection.validation.query = none
+
+## DB Instance and Schema Details
+
+db.source.swi.jdbcURL = @@mysql_swi_schema@@
+db.source.swi.userName = @@mysql_swi_username@@
+db.source.swi.password = @@mysql_swi_password@@
+
+db.source.qdata.jdbcURL = @@mysql_qdata_schema@@
+db.source.qdata.userName = @@mysql_qdata_username@@
+db.source.qdata.password = @@mysql_qdata_password@@
+
+db.source.sdata.jdbcURL = @@mysql_sdata_schema@@
+db.source.sdata.userName = @@mysql_sdata_username@@
+db.source.sdata.password = @@mysql_sdata_password@@
+
+db.source.audit-trail.jdbcURL = @@mysql_audit_trail_schema@@
+db.source.audit-trail.userName = @@mysql_audit_trail_username@@
+db.source.audit-trail.password = @@mysql_audit_trail_password@@
+
+## NOTE : For USWH and USCA, Schema values are taken from SWI DATA_SOURCE table

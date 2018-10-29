@@ -1,0 +1,67 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="convertionForChart" class="com.execue.reporting.presentation.service.impl.ConvertionForChart"/>
+	
+	<bean id="grid" class="com.execue.reporting.presentation.service.impl.Grid"/>
+	
+	<bean id="pivotTransform" class="com.execue.reporting.presentation.service.impl.transform.PivotPresentationTransformService">
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="gridTransform" class="com.execue.reporting.presentation.service.impl.transform.GridPresentationTransformService">
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="csvTransform" class="com.execue.reporting.presentation.service.impl.transform.CSVPresentationTransformService">
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="presentationTransformServiceFactory" class="com.execue.reporting.presentation.service.PresentationTransformServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="pivot" value="pivotTransform"/>
+				<entry key="grid" value="gridTransform"/>
+				<entry key="csv" value="csvTransform"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- from the standalone platform-->
+	<bean id="reportListWrapper" scope="prototype"
+		class="com.execue.core.common.bean.ReportListWrapper" />
+	
+	<!--bean id="reportViewRulesService" class="com.execue.report.view.rule.service.impl.ReportViewRuleServiceImpl" >
+			<constructor-arg ref="ruleService"/>
+			<constructor-arg ref="ruleConfiguration"/>
+		</bean>
+
+		<bean id="ruleService" class="com.execue.report.view.rule.service.drools.DroolsViewRulesService"/-->
+	
+	<!--<bean id="reportViewRulesService" class="com.execue.rules.service.drools.DroolsRuleService" autowire="byName"/>-->
+	<bean id="presentationConfigurationService" class="com.execue.report.configuration.service.imp.PresentationConfigurationServiceImpl">
+		<property name="rpConfiguration" ref="rpConfiguration"/>
+		<property name="rpDBConfiguration" ref="rpDBConfiguration"/>
+	</bean>
+	<bean id="presentaionConfigurableService" class="com.execue.report.configuration.service.imp.PresentationConfigurableService">
+		<property name="presentationConfigurationService" ref="presentationConfigurationService"/>
+	</bean>
+	
+	<bean id="reportController" scope="prototype"	class="com.execue.controller.reports.ReportController" >
+		<property name="queryDataService" ref="queryDataService" />
+	</bean>
+	
+	<bean id="detailReportController" scope="prototype"	class="com.execue.controller.reports.DetailReportController" >
+		<property name="gridTransform" ref="gridTransform"/>
+	</bean>	
+	
+	<bean id="hierarchicalReportController" scope="prototype"	class="com.execue.controller.reports.HierarchicalReportController" >	
+	</bean>	
+	
+	<bean id="scatterChartController" scope="prototype"	class="com.execue.controller.reports.ScatterChartController" >	
+	</bean>	
+	
+
+</beans>

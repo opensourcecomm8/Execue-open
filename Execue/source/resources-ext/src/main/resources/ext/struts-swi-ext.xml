@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+	<!--
+
+    # Defiens the actions for SWI extentions
+
+-->
+<struts>
+	<package name="swi-ext" extends="swi">
+
+		<action name="showApplications" class="applicationAction"
+			method="input">
+			<result type="tiles">swi.applications</result>
+		</action>
+		
+		<action name="getAllApplications" class="applicationAction"
+			method="getAllApplications">
+			<result name="success">/WEB-INF/jsp/swi/sdx/showApps.jsp
+			</result>
+			<result name="error">/WEB-INF/jsp/swi/sdx/showApps.jsp
+			</result>
+			<result name="input">/WEB-INF/jsp/swi/sdx/showApps.jsp
+			</result>
+		</action>
+		
+	</package>
+</struts>

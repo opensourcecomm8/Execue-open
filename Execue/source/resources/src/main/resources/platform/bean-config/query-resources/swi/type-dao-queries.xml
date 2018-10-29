@@ -1,0 +1,108 @@
+<queries>
+	<QUERY_GET_TYPE_BY_NAME><![CDATA[from Type where name=:typeName]]></QUERY_GET_TYPE_BY_NAME>
+
+	
+	<QUERY_ALL_TYPES>
+	<![CDATA[from Type type order by type.displayName]]>
+	</QUERY_ALL_TYPES>	
+	
+	<QUERY_ALL_VISIBLE_TYPES>
+	<![CDATA[from Type type where type.visibility= :visibilityValue
+		 order by type.displayName
+	]]>
+	</QUERY_ALL_VISIBLE_TYPES>	
+	
+	<QUERY_BED_BY_REALIZATION_NAME>
+	<![CDATA[select distinct bed from BusinessEntityDefinition bed, ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId and
+		 bed.concept.name = :realizationName  and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_REALIZATION_NAME>	
+	
+	<QUERY_GET_DEFAULT_DETAIL_TYPE_FOR_TYPE>
+	<![CDATA[select pdt.detailTypeBed
+		 from PossibleDetailType as pdt 
+		 where pdt.typeBed.id =:typeBedId and pdt.dfault = :defaultValue
+	]]>
+	</QUERY_GET_DEFAULT_DETAIL_TYPE_FOR_TYPE>	
+	
+	<QUERY_GET_ENTITY_DETAIL_TYPE_BY_CONCEPT_BED_ID>
+	<![CDATA[from  EntityDetailType as edt
+		 where edt.entityBed.id=:conceptBedId
+	]]>
+	</QUERY_GET_ENTITY_DETAIL_TYPE_BY_CONCEPT_BED_ID>
+	
+	
+	<QUERY_GET_POSSIBLE_DETAIL_TYPE_BY_TYPE_BED_ID>
+	<![CDATA[from  PossibleDetailType as pdt
+		 where pdt.typeBed.id=:typeBedId 
+	]]>
+	</QUERY_GET_POSSIBLE_DETAIL_TYPE_BY_TYPE_BED_ID>
+
+	<QUERY_GET_POSSIBLE_DETAIL_TYPE_BED_BY_TYPE_BED_ID>
+	<![CDATA[select pdt.detailTypeBed from  PossibleDetailType as pdt
+		  where pdt.typeBed.id=:typeBedId
+	]]>
+	</QUERY_GET_POSSIBLE_DETAIL_TYPE_BED_BY_TYPE_BED_ID>
+	
+	
+	<QUERY_GET_ALL_REALIZATION_FOR_TYPE_IN_MODEL>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed,ModelGroupMapping mgm
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.type.id = :typeId and bed.entityType= :conceptEntityType
+	]]>
+	</QUERY_GET_ALL_REALIZATION_FOR_TYPE_IN_MODEL>	
+	
+	<QUERY_BED_BY_TYPE_NAME>
+	<![CDATA[select distinct bed 
+		 from BusinessEntityDefinition bed 
+		 where bed.type.name = :typeName 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_TYPE_NAME>	
+	
+	<QUERY_BED_BY_TYPE_ID>
+	<![CDATA[select distinct bed
+		 from BusinessEntityDefinition bed
+		 where bed.type.id = :typeId 
+		 and bed.entityType = :entityType
+	]]>
+	</QUERY_BED_BY_TYPE_ID>	
+	
+	<QUERY_GET_BED_FOR_TYPE>
+	<![CDATA[from BusinessEntityDefinition 
+		 where type.id = :typeId and entityType in (:entityTypes)
+	]]>
+	</QUERY_GET_BED_FOR_TYPE>
+	
+
+		
+	<QUERY_GET_CONCEPTS_IN_MODEL_BY_TYPE_BE_ID>
+	<![CDATA[SELECT COUNT(a.id) 
+		FROM BusinessEntityDefinition AS a, BusinessEntityDefinition AS b, ModelGroupMapping AS mgm 
+		WHERE b.modelGroup.id = 1 AND 
+			b.id IN (:typeBEDIds) AND 
+			b.type.id = a.type.id AND 
+			a.entityType = :conceptEntityType AND 
+			a.modelGroup.id = mgm.modelGroup.id AND 
+			mgm.model.id = :modelId AND 
+			mgm.modelGroup.category = :userModelCategoryType
+	]]>	
+	</QUERY_GET_CONCEPTS_IN_MODEL_BY_TYPE_BE_ID>
+	
+	<QUERY_GET_MATCHED_CONCEPT_BY_TYPE>
+	<![CDATA[select bed 
+		 from BusinessEntityDefinition bed,ModelGroupMapping mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId 
+		 and bed.concept.id = :conceptId and mgm.modelGroup.category = :userModelCategoryType
+		 and bed.entityType= :conceptBusinessEntityType and bed.type.name = :typeName
+	]]>
+	</QUERY_GET_MATCHED_CONCEPT_BY_TYPE>	
+
+	<QUERY_GET_MATCHED_BUSINESS_ENTITY_BY_TYPE>
+	<![CDATA[select bed from BusinessEntityDefinition bed 
+		 where bed.id = :bedId and bed.type.name = :typeName
+	]]>
+	</QUERY_GET_MATCHED_BUSINESS_ENTITY_BY_TYPE>	
+</queries>

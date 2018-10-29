@@ -1,0 +1,259 @@
+<queries>
+	<QUERY_LEAST_LOADED_SYSTEM_DATASOURCE>
+	<![CDATA[select ds.id as id from data_source ds left join app_data_source ads on ads.data_source_id = ds.id where ds.type = :type group by ds.id order by count(ads.app_id), ds.id asc]]>
+	</QUERY_LEAST_LOADED_SYSTEM_DATASOURCE>
+	
+	<QUERY_GET_ORPHAN_SFL_TERM>
+	<![CDATA[SELECT sfl.id sflId FROM sfl_term sfl LEFT OUTER JOIN
+		 ri_onto_term ri ON lower(sfl.business_term) = ri.word  LEFT OUTER JOIN parallel_word pw 
+		 ON sfl.business_term = pw.parallel_word WHERE ri.id IS NULL AND pw.id IS NULL and sfl.context_id = :contextId
+	]]>
+	</QUERY_GET_ORPHAN_SFL_TERM>
+	
+	<QUERY_DELETE_INSTANCE_MAPPINGS_BY_CONCEPT_ID>
+	<![CDATA[delete map from mapping as map,business_entity as be, model_group as mg where
+		 mg.id in (:modelGroupIds) and  be.concept_id = :conceptId 
+		 and be.entity_type = :instanceBusinessEntityType and be.id = map.business_entity_id 		    
+	]]>
+	</QUERY_DELETE_INSTANCE_MAPPINGS_BY_CONCEPT_ID>
+
+	<QUERY_DELETE_INSTANCE_MAPPINGS_FOR_CONCEPT>
+	<![CDATA[delete m from mapping m join business_entity be join model_group_mapping mgm join model_group mg 
+		where m.BUSINESS_ENTITY_ID = be.id and be.ENTITY_TYPE = :instanceEntityType and 
+		be.concept_id = :conceptId and be.MODEL_GROUP_ID = mgm.MODEL_GROUP_ID and 
+		mgm.model_id = :modelId and mg.id = mgm.MODEL_GROUP_ID and mg.category = :userCategoryType 		    
+	]]>
+	</QUERY_DELETE_INSTANCE_MAPPINGS_FOR_CONCEPT>
+
+	<QUERY_UPDATE_PRE_INDEX_TOKEN_WEIGHT_FOR_SFL>
+	<![CDATA[update eas_pre_index set token_weight = sfl_weight_percentage * entity_weight 
+		 where source_type = 'SFL' and model_group_id = :modelGroupId 
+		 and app_id = :applicationId
+	]]>
+	</QUERY_UPDATE_PRE_INDEX_TOKEN_WEIGHT_FOR_SFL>
+	
+		<QUERY_UPDATE_PRE_INDEX_TOKEN_WEIGHT_FOR_ENTITY>
+	<![CDATA[update eas_pre_indexset token_weight = entity_weight 
+		  where source_type = 'ENTITY' and model_group_id = :modelGroupId 
+		  and app_id = :applicationId
+	]]>
+	</QUERY_UPDATE_PRE_INDEX_TOKEN_WEIGHT_FOR_ENTITY>
+	
+	<STMT_POPULATE_INDEX_FROM_PRE_INDEX>
+	<![CDATA[insert into eas_index (token,token_weight,appearances,model_group_id,app_id) 
+		 Select token as token,max(token_weight) as token_weight, 
+		 count(token) as appearances, model_group_id as model_group_id, 
+		 app_id as app_id from eas_pre_index 
+		 where model_group_id = :modelGroupId and  app_id = :applicationId 
+		 group by model_group_id, token
+	]]>
+	</STMT_POPULATE_INDEX_FROM_PRE_INDEX>
+	
+	<QUERY_DELETE_BEM_INSTANCES_BY_CONCEPT_ID>
+	<![CDATA[delete bem from business_entity_maintenance bem join business_entity be join model_group_mapping mgm 
+		join model_group mg where bem.PARENT_BED_ID = be.id and be.ENTITY_TYPE = :conceptEntityType
+		and be.concept_id = :conceptId and be.MODEL_GROUP_ID = mgm.MODEL_GROUP_ID 
+		and mgm.model_id = :modelId and mg.id = mgm.MODEL_GROUP_ID 
+		and mg.category = :userModelCategoryType
+	]]>
+	</QUERY_DELETE_BEM_INSTANCES_BY_CONCEPT_ID>
+	
+	<QUERY_DELETE_INSTANCE_BEDS_FOR_CONCEPT>
+	<![CDATA[delete be from business_entity be join model_group_mapping mgm join model_group mg 
+		  where be.MODEL_GROUP_ID = mgm.MODEL_GROUP_ID 
+		  and mgm.model_id = :modelId and mg.id = mgm.MODEL_GROUP_ID
+		  and mg.category = :userModelCategoryType and be.ENTITY_TYPE = :instanceEntityType and be.concept_id = :conceptId		  
+	]]>	
+	</QUERY_DELETE_INSTANCE_BEDS_FOR_CONCEPT>	
+	
+	
+	<QUERY_GET_MACTCHING_INSTANCE_BED_IDS_INCLUDING_VARIATIONS>
+	<![CDATA[SELECT be.id AS bedId 
+		FROM business_entity be, instance i 
+		WHERE be.instance_id = i.id 
+		AND be.model_group_id = :modelGroupId 
+		and be.type_id = :typeId 
+		AND be.entity_type = :entityType 
+		AND (i.description = :instanceValue OR i.display_name  = :instanceValue OR i.abbr = :instanceValue) 
+		UNION 
+		SELECT DISTINCT be.id AS bedId 
+		FROM business_entity_variation bev, business_entity be 
+		WHERE bev.entity_be_id = be.id 
+		AND be.model_group_id = bev.model_group_id 
+		AND be.model_group_id = :modelGroupId 
+		and be.type_id = :typeId 
+		AND be.entity_type = :entityType 
+		AND bev.variation = :instanceValue
+	]]>
+	</QUERY_GET_MACTCHING_INSTANCE_BED_IDS_INCLUDING_VARIATIONS>	
+	
+	<QUERY_POPULATE_PRE_INDEX_FROM_SFL>
+	<![CDATA[insert into eas_pre_index (token,sfl_token_id,sfl_weight_percentage,entity_type, entity_bed_id,entity_weight,
+		 source_type,model_group_id,app_id) Select stt.BUSINESS_TERM_TOKEN as Token, stt.id as sflTokenId, 
+		 stt.WEIGHT/100 as sflWeightPercentage, rio.ENTITY_TYPE as entityType, case rio.ENTITY_TYPE 
+		 when 'C' then rio.CONCEPT_BE_ID when 'CLI' then rio.INSTANCE_BE_ID when 'CP' then rio.PROFILE_BE_ID 
+		 when 'IP' then rio.PROFILE_BE_ID when 'R' then rio.RELATION_BE_ID end as entityBedId, case rio.ENTITY_TYPE 
+		 when 'C' then 1.00 when 'CLI' then 0.90 when 'CP' then 1.00 when 'IP' then 0.975 when 'R' then 0.9 end as entityBedWeight, 
+		 'SFL' as source, rio.model_group_id as modelGroupId,:applicationId as appId From sfl_term st, sfl_term_token stt, 
+		 ri_onto_term rio where st.ID = stt.SFL_TERM_ID and rio.MODEL_GROUP_ID = :modelGroupId 
+		 and st.context_id = rio.model_group_ID and rio.word = st.BUSINESS_TERM
+	]]>
+	</QUERY_POPULATE_PRE_INDEX_FROM_SFL>
+	
+	<QUERY_POPULATE_PRE_INDEX_FROM_RIO>
+	<![CDATA[insert into eas_pre_index(token,entity_type, entity_bed_id,entity_weight,source_type,model_group_id,app_id)
+		Selectword as token,rio.ENTITY_TYPE as entityType, case rio.ENTITY_TYPE when 'C' then rio.CONCEPT_BE_ID 
+		when 'CLI' then rio.INSTANCE_BE_ID when 'CP' then rio.PROFILE_BE_ID when 'IP' then rio.PROFILE_BE_ID
+		when 'R' then rio.RELATION_BE_ID end as entityBedId, case rio.ENTITY_TYPE when 'C' then 1.00 when 'CLI' then 0.90
+		when 'CP' then 1.00 when 'IP' then 0.975 when 'R' then 0.9 end as entityBedWeight, 'ENTITY' as source,
+		rio.MODEL_GROUP_ID as modelGroupId,:applicationId as appId From ri_onto_term rio 
+		Where rio.MODEL_GROUP_ID = :modelGroupId and rio.word not like '% %'
+	]]>
+	</QUERY_POPULATE_PRE_INDEX_FROM_RIO>
+	
+	<QUERY_POPULATE_PRE_INDEX_FROM_NON_SPACE_RI_PARALLEL_WORD>
+	<![CDATA[INSERT INTO eas_pre_index (token,sfl_token_id,sfl_weight_percentage,entity_type,entity_bed_id,
+		entity_weight,source_type,model_group_id,app_id) SELECT ri.WORD AS Token, ri.id AS sflTokenId, 
+		ri.quality AS sflWeightPercentage, rio.ENTITY_TYPE AS entityType, CASE rio.ENTITY_TYPE 
+		WHEN 'C' THEN rio.CONCEPT_BE_ID WHEN 'CLI' THEN rio.INSTANCE_BE_ID WHEN 'CP' THEN rio.PROFILE_BE_ID 
+		WHEN 'IP' THEN rio.PROFILE_BE_ID WHEN 'R' THEN rio.RELATION_BE_ID END AS entityBedId,CASE rio.ENTITY_TYPE 
+		WHEN 'C' THEN 1.00 WHEN 'CLI' THEN 0.90 WHEN 'CP' THEN 1.00 WHEN 'IP' THEN 0.975 WHEN 'R' THEN 0.9 END AS entityBedWeight,
+		'PW' AS source, rio.model_group_id AS modelGroupId, :applicationId AS appId 
+		FROM ri_parallel_word ri, ri_onto_term rio WHERE rio.MODEL_GROUP_ID = :modelGroupId AND 
+		ri.MODEL_GROUP_ID = rio.model_group_ID  AND rio.word = ri.EQUIVALENT_WORDAND ri.word NOT LIKE '% %'
+	]]>
+	</QUERY_POPULATE_PRE_INDEX_FROM_NON_SPACE_RI_PARALLEL_WORD>
+	
+	<QUERY_POPULATE_PRE_INDEX_FROM_WITH_SPACE_RI_PARALLEL_WORD>
+	<![CDATA[INSERT INTO eas_pre_index (token,sfl_token_id,sfl_weight_percentage,entity_type,
+		entity_bed_id,entity_weight,source_type,model_group_id,app_id) SELECT DISTINCTstt.BUSINESS_TERM_TOKEN AS Token, 
+		stt.id AS sflTokenId, stt.Weight/100 AS sflWeightPercentage, rio.ENTITY_TYPE AS entityType, CASE rio.ENTITY_TYPE 
+		WHEN 'C' THEN rio.CONCEPT_BE_ID WHEN 'CLI' THEN rio.INSTANCE_BE_ID WHEN 'CP' THEN rio.PROFILE_BE_ID 
+		WHEN 'IP' THEN rio.PROFILE_BE_ID WHEN 'R'  THEN rio.RELATION_BE_ID END AS entityBedId, CASE rio.ENTITY_TYPE 
+		WHEN 'C' THEN 1.00 WHEN 'CLI' THEN 0.90 WHEN 'CP' THEN 1.00 WHEN 'IP' THEN 0.975 WHEN 'R' THEN 0.9 END AS entityBedWeight,
+		'PW' AS source, rio.model_group_id AS modelGroupId, :applicationId  AS appId 
+		FROM ri_parallel_word ri, ri_onto_term rio , sfl_term_token stt WHERE rio.MODEL_GROUP_ID = :modelGroupId AND 
+		ri.MODEL_GROUP_ID = rio.model_group_ID AND stt.context_id=ri.MODEL_GROUP_ID AND ri.word = stt.business_term AND 
+		rio.word = ri.EQUIVALENT_WORD AND ri.word LIKE '% %'
+	]]>
+	</QUERY_POPULATE_PRE_INDEX_FROM_WITH_SPACE_RI_PARALLEL_WORD>
+	
+	<QUERY_DELETE_EAS_INDEX_BY_APP_ID>
+	<![CDATA[DELETE eas FROM eas_index eas WHERE eas.app_id = :applicationId]]>
+	</QUERY_DELETE_EAS_INDEX_BY_APP_ID>
+	
+	<QUERY_DELETE_EAS_PRE_INDEX_BY_APP_ID>
+	<![CDATA[DELETE eas_pre FROM eas_pre_index eas_pre WHERE eas_pre.app_id = :applicationId]]>
+	</QUERY_DELETE_EAS_PRE_INDEX_BY_APP_ID>
+	
+	<QUERY_GET_INSTANCE_PROFILE_IDS_FOR_INSTANCE>
+	<![CDATA[SELECT DISTINCT ipd.profile_id FROM instance_profile_detail ipd,instance i WHERE i.id=ipd.instance_id AND i.id=:instanceId
+	]]>
+	</QUERY_GET_INSTANCE_PROFILE_IDS_FOR_INSTANCE>
+
+	<QUERY_GET_CONCEPT_PROFILE_IDS_FOR_CONCEPT>
+	<![CDATA[SELECT DISTINCT cpd.profile_id FROM concept_profile_detail cpd,concept c WHERE c.id=cpd.concept_id AND c.id=:conceptId
+	]]>
+	</QUERY_GET_CONCEPT_PROFILE_IDS_FOR_CONCEPT>
+	
+	<QUERY_DELETE_INSTANCE_VARIATIONS_FOR_CONCEPT>
+	<![CDATA[DELETE bev FROM business_entity_variation bev JOIN business_entity be JOIN model_group_mapping mgm 
+		JOIN model_group mg WHERE bev.entity_be_id = be.id AND be.ENTITY_TYPE = :instanceEntityType AND be.concept_id= :conceptId
+		AND be.MODEL_GROUP_ID = mgm.MODEL_GROUP_ID 
+		AND mgm.model_id = :modelId AND mg.id = mgm.MODEL_GROUP_ID 
+		AND mg.category = :userModelCategoryType
+	]]>
+	</QUERY_DELETE_INSTANCE_VARIATIONS_FOR_CONCEPT>
+	
+	<QUERY_BEDIDS_FOR_CONCEPTS_MAPPED_WITH_DIFFENT_NATURE_ON_CUBES>
+	   <![CDATA[SELECT BE.ID as bedId 
+			FROM MAPPING MAP, BUSINESS_ENTITY BE, ASSET_ENTITY AE, ASSET AST, COLUM COL 
+			WHERE MAP.BUSINESS_ENTITY_ID = BE.ID AND MAP.ASSET_ENTITY_ID = AE.ID 
+			AND AE.ASSET_ID = AST.ID AND AE.COLUMN_ID = COL.ID AND MAP.PRIMRY != :primary 
+			AND BE.ENTITY_TYPE = :conceptEntityType AND AE.ENTITY_TYPE = :columnEntityType 
+			AND AE.ASSET_ID = :assetId AND AST.OWNER = :execueOwner 
+			AND AST.TYPE = :cubeType AND COL.KDX_DATA_TYPE IN (:columnTypes) 
+			GROUP BY BE.ID HAVING COUNT(*)>1
+        ]]>
+	</QUERY_BEDIDS_FOR_CONCEPTS_MAPPED_WITH_DIFFENT_NATURE_ON_CUBES>
+	
+	<QUERY_POSSIBLE_ASSET_FOR_USER_REQUEST>
+	   <![CDATA[SELECT uqp.MODEL_ID AS MODEL_ID, uqp.POSSIBILITY_ID AS POSSIBILITY_ID, ae.ASSET_ID AS ASSET_ID, 
+	   			SUM(uqp.TYPE_BASED_WEIGHT) AS TYPE_BASED_WEIGHT 
+			FROM user_query_possibility uqp, MAPPING m, ASSET_ENTITY ae, ASSET a, colum c 
+			WHERE uqp.ENTITY_BED_ID = m.BUSINESS_ENTITY_ID 
+			AND m.ASSET_ENTITY_ID = ae.ID 
+			AND ae.ASSET_ID = a.ID 
+			AND ae.COLUMN_ID = c.ID 
+			AND uqp.USER_QUERY_ID = :userQueryId 
+			AND m.primry = :primary 
+			AND a.STATUS = :active 
+			AND 
+			(
+				(uqp.MEASURE_GROUP_BY = :no) 
+				OR 
+				(uqp.MEASURE_GROUP_BY = :yes AND a.type = :cubeType AND c.KDX_DATA_TYPE = :rangeLookupType ) 
+				OR 
+				(uqp.MEASURE_GROUP_BY = :yes AND a.type != :cubeType) 
+			) 
+			AND 
+			( 
+				(uqp.MEASURE_CONDITION_WITHOUT_STAT = :no) 
+				OR 
+				(uqp.MEASURE_CONDITION_WITHOUT_STAT = :yes AND a.type = :cubeType AND c.KDX_DATA_TYPE = :rangeLookupType) 
+				OR 
+				(uqp.MEASURE_CONDITION_WITHOUT_STAT = :yes AND a.type != :cubeType) 
+			) 
+			GROUP BY uqp.MODEL_ID, uqp.POSSIBILITY_ID, ae.ASSET_ID 
+        ]]>
+	</QUERY_POSSIBLE_ASSET_FOR_USER_REQUEST>
+
+	<QUERY_GET_CHILD_TO_PARENT_INFO_OLD>
+	<![CDATA[SELECT etd2.id, GROUP_CONCAT(etd1.id SEPARATOR '##'),
+		 GROUP_CONCAT(etd1.sourceBusinessEntityDefinition.id,'-',
+		 etd1.relation.id,'-',etd1.destinationBusinessEntityDefinition.id SEPARATOR '##') 
+		 FROM EntityTripleDefinition etd1, EntityTripleDefinition etd2, 
+		 BusinessEntityDefinition be, ModelGroupMapping mgm 
+		 WHERE etd1.relation.id = :relationBedID AND etd1.destinationBusinessEntityDefinition.id = be.id 
+		 AND be.modelGroup.id = mgm.modelGroup.id AND mgm.model.id = :modelId and mgm.owner = :ownerType
+		 AND etd1.destinationBusinessEntityDefinition.id = etd2.sourceBusinessEntityDefinition.id 
+		 AND etd2.relation.id = :relationBedID GROUP BY etd2.id
+	]]>
+	</QUERY_GET_CHILD_TO_PARENT_INFO_OLD>
+	
+	<QUERY_GET_CHILD_TO_PARENT_INFO_ENCHANCED>
+	<![CDATA[SELECT etd2.id child_etd, array_to_STRING(array_agg(etd1.id),'##') parent_etds, 
+		 array_to_STRING(array_agg(etd1.SOURCE_BE_ID,'-',etd1.RELATION_BE_ID,'-',etd1.DESTINATION_BE_ID),'##') parent_triples 
+		 FROM entity_triple_definition etd1, entity_triple_definition etd2, 
+		 business_entity be, model_group_mapping mgm WHERE etd1.relation_be_id = :relationBedID AND etd1.destination_be_id = be.id AND 
+		 be.model_group_id = mgm.model_group_id AND mgm.model_id = :modelId
+		 AND mgm.owner = :ownerType AND etd1.destination_be_id = etd2.source_be_id AND etd2.relation_be_id = :relationBedID GROUP BY etd2.id
+	]]>	
+	</QUERY_GET_CHILD_TO_PARENT_INFO_ENCHANCED>
+
+	<QUERY_GET_PARENT_TO_CHILD_INFO_OLD>
+	<![CDATA[SELECT etd1.id, GROUP_CONCAT(etd2.id SEPARATOR '##'), 
+		 GROUP_CONCAT(etd2.sourceBusinessEn
+		 tityDefinition.id,'-',etd2.relation.id,'-',
+		 etd2.destinationBusinessEntityDefinition.id SEPARATOR '##')
+		 FROM EntityTripleDefinition etd1, EntityTripleDefinition etd2, 
+		 BusinessEntityDefinition be, ModelGroupMapping mgm 
+		 WHERE etd2.relation.id = :relationBedID AND etd2.sourceBusinessEntityDefinition.id = be.id 
+		 AND be.modelGroup.id = mgm.modelGroup.id AND mgm.model.id = :modelId and mgm.owner = :ownerType
+		 AND etd2.sourceBusinessEntityDefinition.id = etd1.destinationBusinessEntityDefinition.id 
+		 AND etd1.relation.id = :relationBedID GROUP BY etd1.id
+	]]>
+	</QUERY_GET_PARENT_TO_CHILD_INFO_OLD>
+	
+	<QUERY_GET_PARENT_TO_CHILD_INFO_ENCHANCED>
+	<![CDATA[SELECT etd1.id parent_etd, array_to_STRING(array_agg(etd2.id), '##') child_etds, 
+		 array_to_STRING(array_agg(etd2.SOURCE_BE_ID,'-',etd2.RELATION_BE_ID,'-',etd2.DESTINATION_BE_ID), '##') child_triples
+		 FROM entity_triple_definition etd1, entity_triple_definition etd2, business_entity be, model_group_mapping mgm 
+		 WHERE etd2.relation_be_id = :relationBedID AND etd2.source_be_id = be.id AND be.model_group_id = mgm.model_group_id 
+		 AND mgm.model_id = :modelId AND mgm.owner = :ownerType AND etd2.source_be_id = etd1.destination_be_id 
+		 AND etd1.relation_be_id = :relationBedID GROUP BY etd1.id
+	]]>
+	</QUERY_GET_PARENT_TO_CHILD_INFO_ENCHANCED>
+
+
+</queries>	

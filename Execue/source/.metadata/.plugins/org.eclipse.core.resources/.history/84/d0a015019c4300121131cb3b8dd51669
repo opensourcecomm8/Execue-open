@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="execueAdminWebApp">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="unstructured-wh.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-wh/unstructured-wh">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="resources.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/resources/resources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core-common/core-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="util-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util-services/util-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/data-access/data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-ca-data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-ca-data-access/unstructured-ca-data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="security.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/security/security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="data-access-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/data-access-services/data-access-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="audit-trail.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/audit-trail/audit-trail">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="nlp.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/nlp/nlp">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="governor.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/governor/governor">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core/core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="semantic-driver.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/semantic-driver/semantic-driver">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="semantic-util-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/semantic-util-services/semantic-util-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reports-aggregation.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reports-aggregation/reports-aggregation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ac-query-history.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-query-history/ac-query-history">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-ca.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-ca/unstructured-ca">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-wh-data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-wh-data-access/unstructured-wh-data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ac-mgmt-queue-controller.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ac-mgmt-queue-controller/ac-mgmt-queue-controller">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="offline-batch.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/offline-batch/offline-batch">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="util.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util/util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="knowledge-search.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/knowledge-search/knowledge-search">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/execueAdminWebApp/build/classes"/>
+        <property name="context-root" value="execueAdminWebApp"/>
+    </wb-module>
+</project-modules>

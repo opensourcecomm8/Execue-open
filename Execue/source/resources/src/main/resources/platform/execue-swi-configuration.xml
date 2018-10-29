@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<swi>
+		<static-values>
+			<max-hops-indirect-joins>1</max-hops-indirect-joins>			
+			<member-null-value-representation>NA</member-null-value-representation>
+			<maintain-user-query-possibiliity-time-ms>900000</maintain-user-query-possibiliity-time-ms>
+			<popularity-restoration-job-info-provider-type>2</popularity-restoration-job-info-provider-type>
+			<popularity-restoration-job-info-driver-class-name>com.mysql.jdbc.Driver</popularity-restoration-job-info-driver-class-name>
+			<popularity-restoration-job-info-url>jdbc:mysql://10.10.56.111:3306/answerscatalog</popularity-restoration-job-info-url>
+			<popularity-restoration-job-info-user-name>root</popularity-restoration-job-info-user-name>
+			<popularity-restoration-job-info-password>execue</popularity-restoration-job-info-password>
+			<popularity-restoration-job-info-delimeter>~</popularity-restoration-job-info-delimeter>
+			<popularity-batch-size>50</popularity-batch-size>
+			<virtual-lookup-desc-column-suffix>_DESC</virtual-lookup-desc-column-suffix>
+			<enum-lookup-name-value-separator>~#~</enum-lookup-name-value-separator>
+			<max-default-metrics-per-table>2</max-default-metrics-per-table>
+			<type-names-restricted-for-secondary-ricloud-entry>OntoEntity,MeasurableEntity,Name</type-names-restricted-for-secondary-ricloud-entry>
+			<default-threshold-for-secondary-words>150</default-threshold-for-secondary-words>
+			<default-weight-for-conjunction-secondary-words>5.0</default-weight-for-conjunction-secondary-words>
+			<default-weight-for-number-secondary-words>10.0</default-weight-for-number-secondary-words>
+			<default-weight-for-single-char-token>10.0</default-weight-for-single-char-token>          
+			<default-weight-for-base-riontoterm-words>5.0</default-weight-for-base-riontoterm-words>
+			<min-plain-date-field-length>4</min-plain-date-field-length>  
+			<upload-regex>
+				<number-regex>
+					<default>^(-|\\\\+)?([0-9]+\\\\.[0-9]*|[0-9]*\\\\.[0-9]+|[0-9]+)$</default>
+					<POSTGRES>^(-|\\+)?([0-9]+\\.[0-9]*|[0-9]*\\.[0-9]+|[0-9]+)$</POSTGRES>
+				</number-regex>
+				<integer-regex>
+					<default>^(-|\\\\+)?([0-9]+)$</default>
+					<POSTGRES>^(-|\\+)?([0-9]+)$</POSTGRES>
+				</integer-regex>
+				<plain-date-regex>
+					<default>^([0-9]+)$</default>
+					<POSTGRES>^([0-9]+)$</POSTGRES>
+				</plain-date-regex>
+				<date-regex>
+					<default>^([0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[ ]*[0-9]*[:]*[0-9]*[:]*[0-9]*)$</default>
+					<POSTGRES>^([0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[:.\/-][0-9A-Za-z]+[ ]*[0-9]*[:]*[0-9]*[:]*[0-9]*)$</POSTGRES>
+				</date-regex>		
+			</upload-regex>
+			<min-date-field-length>8</min-date-field-length>	
+			<integer-data-type-size-buffer>2</integer-data-type-size-buffer>
+			<integer-data-type-maximum-length>9</integer-data-type-maximum-length>
+			<decimal-data-type-precision-buffer>2</decimal-data-type-precision-buffer>
+			<decimal-data-type-scale-buffer>2</decimal-data-type-scale-buffer>
+			<string-data-type-size-buffer>2</string-data-type-size-buffer>
+			<sample-date-records-size>10</sample-date-records-size>
+			<max-scale-length>10</max-scale-length>
+			<member-deletion-batch-size>5000</member-deletion-batch-size>     	 
+		</static-values>
+		<asset-analysis-treshold>
+			<lookup-tables-without-members>20</lookup-tables-without-members>
+			<columns-without-kdxtype>20</columns-without-kdxtype>
+			<tables-without-joins>20</tables-without-joins>
+			<unmapped-columns>20</unmapped-columns>
+			<unmapped-members>25</unmapped-members>
+		</asset-analysis-treshold>
+		<publish>
+			<community-roles>
+				<role>ROLE_PUBLISHER</role>
+				<role>ROLE_USER</role>
+				<role>ROLE_ANONYMOUS</role>
+			</community-roles>
+		</publish>	
+		<sfl-secondary-words>
+			<type-names>
+				<name>MeasurableEntity</name>
+				<name>OntoEntity</name>
+				<name>Name</name>
+				<name>Location</name>
+				<name>Country</name>
+				<name>State</name>
+				<name>City</name>
+				<name>County</name>
+				<name>Street</name>
+				<name>Zip</name>
+				<name>Address</name>
+				<name>Region</name>
+			</type-names>
+		</sfl-secondary-words>	
+		<mappings>
+			<page-size>30</page-size>
+		</mappings>		
+		<wizard>
+			<source-type-url-param>sourceType</source-type-url-param>
+			<wizard-based-url-param>wizardBased</wizard-based-url-param>
+			<source-types>
+				<source-type>CSV</source-type>
+				<source-type>EXCEL</source-type>
+				<source-type>EXCELDB</source-type>
+				<source-type>RDBMS</source-type>
+			</source-types>
+			<wizard-paths>
+				<path>HOME</path>
+				<path>UPLOAD</path>
+				<path>LOCATE</path>
+				<path>ABSORB-STATUS</path>
+				<path>COLUMN-METADATA</path>
+				<path>ABSORB-DATASET</path>
+				<path>EVALUATE-STATUS</path>
+				<path>DATASET-DEFINITION</path>
+				<path>CONSTRAINTS</path>
+				<path>JOINS</path>
+				<path>MAPPINGS</path>
+				<path>GRAIN</path>
+				<path>PUBLISH</path>
+			</wizard-paths>
+			<url-params>
+				<param>wizardBased</param>
+				<param>sourceType</param>
+			</url-params>
+			<source-paths>
+				<CSV>
+					<path>HOME</path>
+					<path>UPLOAD</path>
+					<path>ABSORB-STATUS</path>
+					<path>COLUMN-METADATA</path>
+					<path>ABSORB-DATASET</path>
+					<path>EVALUATE-STATUS</path>
+					<path>DATASET-DEFINITION</path>
+					<path>MAPPINGS</path>
+					<path>PUBLISH</path>
+					<path>HOME</path>
+				</CSV>
+				<EXCEL>
+					<path>HOME</path>
+					<path>UPLOAD</path>
+					<path>ABSORB-STATUS</path>
+					<path>COLUMN-METADATA</path>
+					<path>ABSORB-DATASET</path>
+					<path>EVALUATE-STATUS</path>
+					<path>DATASET-DEFINITION</path>
+					<path>MAPPINGS</path>
+					<path>PUBLISH</path>
+					<path>HOME</path>
+				</EXCEL>
+				<EXCELDB>
+					<path>HOME</path>
+					<path>UPLOAD</path>
+					<path>ABSORB-STATUS</path>
+					<path>COLUMN-METADATA</path>
+					<path>ABSORB-DATASET</path>
+					<path>EVALUATE-STATUS</path>
+					<path>DATASET-DEFINITION</path>
+					<path>JOINS</path>
+					<path>MAPPINGS</path>
+					<path>PUBLISH</path>
+					<path>HOME</path>
+				</EXCELDB>
+				<RDBMS>
+					<path>HOME</path>
+					<path>LOCATE</path>
+					<path>DATASET-DEFINITION</path>
+					<path>JOINS</path>
+					<path>MAPPINGS</path>
+					<path>PUBLISH</path>
+					<path>HOME</path>
+				</RDBMS>
+			</source-paths>
+			<page-details>
+				<HOME>
+					<linkDescription>Home</linkDescription>
+					<breadcrumbDescription>Home</breadcrumbDescription>
+					<baseLink>../swi/showConsole.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</HOME>
+				<LOCATE>
+					<linkDescription>Manage Location</linkDescription>
+					<breadcrumbDescription>Location</breadcrumbDescription>
+					<baseLink>showDataSource.action</baseLink>
+					<scriptCall>false</scriptCall>              
+				</LOCATE>
+				<UPLOAD>
+					<linkDescription>Upload</linkDescription>
+					<breadcrumbDescription>Upload</breadcrumbDescription>
+					<baseLink>../publisher/uploadCSV.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</UPLOAD>
+				<ABSORB-STATUS> <!-- Not needed in execution but needed as part of flow -->
+					<linkDescription>Check Dataset Upload Status</linkDescription>
+					<breadcrumbDescription>Check Dataset Upload Status</breadcrumbDescription>
+					<baseLink>javascript:showUploadStatus();</baseLink>
+					<scriptCall>true</scriptCall>
+				</ABSORB-STATUS>
+				<COLUMN-METADATA>
+					<linkDescription>Review Column Metadata</linkDescription>
+					<breadcrumbDescription>Review Column Metadata</breadcrumbDescription>
+					<baseLink>javascript:showConfirmationScreen();</baseLink>
+					<scriptCall>true</scriptCall>
+					<param>publishedFileId</param>
+					<param>jobRequestId</param>
+				</COLUMN-METADATA>
+				<ABSORB-DATASET>
+					<linkDescription>Absorb Evaluated Dataset</linkDescription>
+					<breadcrumbDescription>Absorb Evaluated Dataset</breadcrumbDescription>
+					<baseLink>javascript:submitForAbsorption();</baseLink>
+					<scriptCall>true</scriptCall>
+				</ABSORB-DATASET>
+				<EVALUATE-STATUS> <!-- Not needed in execution but needed as part of flow -->
+					<linkDescription>Check Dataset Absorption Status</linkDescription>
+					<breadcrumbDescription>Check Dataset Absorption Status</breadcrumbDescription>
+					<baseLink>javascript:showUploadStatus();</baseLink>
+					<scriptCall>true</scriptCall>
+				</EVALUATE-STATUS>
+				<DATASET-DEFINITION>
+					<linkDescription>Manage Datasets</linkDescription>
+					<breadcrumbDescription>Dataset</breadcrumbDescription>
+					<baseLink>javascript:showAssetScreen()</baseLink>
+					<scriptCall>true</scriptCall>
+				</DATASET-DEFINITION>
+				<CONSTRAINTS>
+					<linkDescription>Manage Constraints</linkDescription>
+					<breadcrumbDescription>Constraints</breadcrumbDescription>
+					<baseLink>showConstraints.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</CONSTRAINTS>
+				<JOINS>
+					<linkDescription>Manage Joins</linkDescription>
+					<breadcrumbDescription>Joins</breadcrumbDescription>
+					<baseLink>showJoins.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</JOINS>
+				<MAPPINGS>
+					<linkDescription>Manage Mapping</linkDescription>
+					<breadcrumbDescription>Mapping</breadcrumbDescription>
+					<baseLink>showMappings.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</MAPPINGS>
+				<GRAIN>
+					<linkDescription>Manage Dataset Grain</linkDescription>
+					<breadcrumbDescription>Grain</breadcrumbDescription>
+					<baseLink>showAssetsGrain.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</GRAIN>
+				<PUBLISH>
+					<linkDescription>Publish Dataset</linkDescription>
+					<breadcrumbDescription>Publish Dataset</breadcrumbDescription>
+					<baseLink>showPublishDatasets.action</baseLink>
+					<scriptCall>false</scriptCall>
+				</PUBLISH>               
+			</page-details>
+		</wizard>
+	</swi>
+</execue-configuration>

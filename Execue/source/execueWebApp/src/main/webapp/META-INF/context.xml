@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context debug="1">
+	<!-- JNDI reference for SWI Data Source -->
+	<Resource name="jdbc/swi-execue" auth="Container"
+		type="javax.sql.DataSource" maxActive="20" maxIdle="5" maxWait="5000"
+		username="@@mysql_swi_username@@" password="@@mysql_swi_password@@" 
+		driverClassName="com.mysql.jdbc.Driver"
+		removeAbandoned="true" removeAbandonedTimeout="180" validationQuery="SELECT 1"
+		testOnBorrow="true"
+		url="@@mysql_swi_schema@@?autoReconnect=true" />
+
+	<!-- JNDI reference for SWI Data Source -->
+	<Resource name="jdbc/qdata-execue" auth="Container"
+		type="javax.sql.DataSource" maxActive="20" maxIdle="5" maxWait="5000"
+		username="@@mysql_qdata_username@@" password="@@mysql_qdata_password@@" 
+		driverClassName="com.mysql.jdbc.Driver"
+		removeAbandoned="true" removeAbandonedTimeout="180" validationQuery="SELECT 1"
+		testOnBorrow="true"
+		url="@@mysql_qdata_schema@@?autoReconnect=true" />
+		
+    <!-- 
+    <Resource name="jdbc/swi-execue" auth="Container"
+        type="javax.sql.DataSource" maxActive="20" maxIdle="5" maxWait="5000"
+        username="root" password="power1" driverClassName="com.mysql.jdbc.Driver"
+        removeAbandoned="true" removeAbandonedTimeout="180" validationQuery="SELECT 1"
+        testOnBorrow="true"
+        url="jdbc:mysql://localhost:3306/ss-base?autoReconnect=true" />
+
+    <Resource name="jdbc/qdata-execue" auth="Container"
+        type="javax.sql.DataSource" maxActive="20" maxIdle="5" maxWait="5000"
+        username="root" password="power1" driverClassName="com.mysql.jdbc.Driver"
+        removeAbandoned="true" removeAbandonedTimeout="180" validationQuery="SELECT 1"
+        testOnBorrow="true"
+        url="jdbc:mysql://localhost:3306/ss-qdata?autoReconnect=true" />
+    -->
+</Context>

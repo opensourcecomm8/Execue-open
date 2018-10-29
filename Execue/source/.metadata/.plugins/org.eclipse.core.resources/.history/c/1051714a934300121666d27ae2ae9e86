@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean defintion of data source -->
+	<!-- TODO: -KA- Need to find better alternative to testOnBorrow -->
+
+	<bean id="sDataDataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+		<property name="driverClassName" value="${db.source.sdata.driver.class}"/>
+		<property name="url" value="${db.source.sdata.jdbcURL}"/>
+		<property name="username" value="${db.source.sdata.userName}"/>
+		<property name="password" value="${db.source.sdata.password}"/>
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="20" /> 
+		<property name="testOnBorrow" value="true" />
+		<property name="testWhileIdle" value="true" /> 
+		<property name="validationQuery" value="${db.source.qdata.connection.validation.query}" />
+	</bean>
+=
+<!--
+	<bean id="sDataDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+			<property name="jndiName" value="java:/comp/env/jdbc/sdata-execue" />
+		</bean>
+-->
+
+	<!-- Bean defintion of bean session factory -->
+	<bean id="sDataSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="sDataDataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>platform/mappings/sdata/CountryCity.hbm.xml</value>
+				<value>platform/mappings/sdata/CountryState.hbm.xml</value>
+				<value>platform/mappings/sdata/StateCity.hbm.xml</value>
+				<value>platform/mappings/sdata/LocationPointInfo.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.source.sdata.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Bean defintion of hibernate template -->
+	<bean id="sDataHibernateTemplate" 
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sDataSessionFactory"/>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<typedef name="auditLogType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.AuditLogType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<typedef name="systemType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ExeCueSystemType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.entity.audittrail.UserAccessAudit" table="USER_ACCESS_AUDIT">
+
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">USER_ACCESS_AUDIT</param>
+			</generator>
+		</id>
+		
+		<property name="userId" type="java.lang.Long">
+			<column name="USER_ID" precision="20" scale="0" />
+		</property>
+		
+		<property name="accessedTime" type="timestamp">
+			<column name="ACCESSED_TIME"/>
+		</property>
+
+		<property name="ipLocation" type="string">
+			<column name="IP_LOCATION" length="255"/>
+		</property>
+        
+		<property name="auditLogType" type="auditLogType">
+			<column name="AUDIT_LOG_TYPE" length="25"/>
+		</property>
+        
+		<property name="accessedSystemType" type="systemType">
+			<column name="ACCESSED_SYSTEM" length="15"/>
+		</property>
+        
+		<property name="anonymousUser" type="checkType">
+			<column name="ANONYMOUS_USER" length="3"/>
+		</property>
+        
+		<property name="comments" type="string">
+			<column name="COMMENTS" length="255"/>
+		</property>
+        
+	</class>
+</hibernate-mapping>

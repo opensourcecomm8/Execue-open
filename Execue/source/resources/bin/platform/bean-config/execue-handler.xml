@@ -1,0 +1,82 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="qiSuggestHandler" class="com.execue.handler.qi.impl.QueryInterfaceSuggestHandlerImpl" parent="abstractUserContextService">
+		<property name="queryInterfaceSuggestService" ref="queryInterfaceSuggestService"/>
+	</bean>
+	
+	<bean id="semanticSuggestHandler" class="com.execue.handler.sementic.SemanticSuggestHandler" parent="abstractUserContextService">
+		<property name="semanticSuggestService" ref="semanticSuggestService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+	</bean>
+	
+	<bean id="qiWebHandler" class="com.execue.handler.qi.QueryInterfaceHandler" parent="abstractUserContextService">
+		<property name="driver" ref="qiDriver"/>
+		<property name="handlerRequest" ref="qiHandlerRequest"/>
+		<property name="handlerResponse" ref="qiHandlerResponse"/>
+	</bean>
+	
+	<bean id="qiHandlerRequest" class="com.execue.handler.qi.QueryInterfaceHandlerReqeust"/>
+	
+	<bean id="qiHandlerResponse" class="com.execue.handler.qi.QueryInterfaceHandlerResponse"/>
+	
+	<bean id="presentationHandler" class="com.execue.handler.presentation.impl.PresentationHandler">		
+		<property name="presentationDriver" ref="presentationDriver"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="queryDataService" ref="queryDataService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="presentationConfigurationService" ref="presentationConfigurationService" />
+	</bean>
+		
+	<!-- bookmarks realted -->
+	<bean id="bookmarkHandlerImpl" class="com.execue.handler.swi.impl.BookmarkHandlerImpl" parent="abstractUserContextService">
+		<property name="bookmarkService" ref="bookmarkService"/>		
+		<property name="pseudoLanguageService" ref="pseudoLanguageService"/>
+	</bean>
+
+	<bean id="reportHandler" class="com.execue.handler.reports.impl.ReportsHandlerImpl">
+		<property name="messageService" ref="messageService"/>
+		<property name="queryInterfaceDriver" ref="qiDriver"/>
+	</bean>
+	
+	<bean id="semanticSearchHandler" class="com.execue.handler.sementic.SemanticSearchHandler" parent="abstractUserContextService">
+		<property name="driver" ref="semanticDriver"/>
+		<property name="handlerRequest" ref="qiHandlerRequest"/>
+		<property name="handlerResponse" ref="qiHandlerResponse"/>
+	</bean>
+	
+	<bean id="qdataServiceHandler" class="com.execue.handler.qdata.impl.QdataServiceHandlerImpl">
+		<property name="queryDataService" ref="localQueryDataService"/>
+	</bean>
+	
+	<bean id="applicationServiceHandler" class="com.execue.handler.swi.impl.ApplicationServiceHandlerImpl" parent="abstractUserContextService">
+		<property name="applicationRetrievalService" ref="applicationRetrievalService"/>
+		<property name="applicationManagementService" ref="applicationManagementService"/>
+		<property name="applicationManagementWrapperService" ref="applicationManagementWrapperService"/>
+		<property name="applicationDeletionService" ref="applicationDeletionService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="kdxManagementService" ref="kdxManagementService"/>
+		<property name="applicationDeletionJobService" ref="applicationDeletionJobService"/>
+		<property name="userManagementService" ref="userManagementService"/>
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+	</bean>
+	
+	<bean id="reportServiceHandler" class="com.execue.handler.reports.impl.ReportServiceHandlerImpl" parent="abstractUserContextService">
+		<property name="reportService" ref="reportService"/>
+		<property name="md5StringEncoder" ref="passwordEncoder"/>					
+	</bean>
+    
+	<bean id="sdxSecurityServiceHandler" class="com.execue.handler.security.impl.SDXSecurityServiceHandlerImpl" parent="abstractUserContextService">
+		<property name="securityDefinitionWrapperService" ref="securityDefinitionWrapperService"/>	
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>			
+	</bean>
+	
+	<bean id="hierarchyDefinitionServiceHandler" class="com.execue.handler.swi.impl.HierarchyDefinitionServiceHandlerImpl" parent="abstractUserContextService">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="kdxManagementService" ref="kdxManagementService"/>
+	    <property name="coreConfigurationService" ref="coreConfigurationService"/>		
+	</bean>
+	
+</beans>

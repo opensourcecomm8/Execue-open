@@ -1,0 +1,34 @@
+<com.execue.core.common.bean.QueryForm>
+  <selects>
+    <com.execue.core.common.bean.qi.QISelect>
+      <term>
+        <name>FicoScore</name>
+        <type>CONCEPT</type>
+      </term>
+      <stat>SUM</stat>
+    </com.execue.core.common.bean.qi.QISelect>
+  </selects>
+  <summarizations>
+    <com.execue.core.common.bean.qi.QIBusinessTerm>
+      <name>Product</name>
+      <type>CONCEPT</type>
+    </com.execue.core.common.bean.qi.QIBusinessTerm>
+  </summarizations>
+  <conditions>
+    <com.execue.core.common.bean.qi.QICondition>
+      <lhsBusinessTerm>
+        <term>
+          <name>MerchandiseAmount</name>
+          <type>CONCEPT</type>
+        </term>
+        <stat>SUM</stat>
+      </lhsBusinessTerm>
+      <operator>EQUALS</operator>
+      <rhlValue>
+        <values>
+          <string>500</string>
+        </values>
+      </rhlValue>
+    </com.execue.core.common.bean.qi.QICondition>
+  </conditions>
+</com.execue.core.common.bean.QueryForm>

@@ -1,0 +1,33 @@
+#created on: Jan 25, 2010
+#author: Shobhit
+package com.execue.report;
+
+#list any import classes here.
+import com.softwarefx.chartfx.server.ChartServer;
+import com.softwarefx.chartfx.server.SeriesAttributes;
+import com.softwarefx.chartfx.server.Gallery;
+
+rule "barSizeRule"
+	when
+		chartCurve : ChartServer	( ID == "" ) 
+	then 
+	    
+	    int chartWidth = chartCurve.getWidth(); 
+	    
+		for (int alCntr = 0; alCntr < chartCurve.getData().getSeries(); alCntr++) {
+			SeriesAttributes series = chartCurve.getSeries().get(alCntr);
+	       	if (series.getGallery().compareTo(Gallery.BAR) == 0) {
+	        	int xAxisPoints = chartCurve.getData().getPoints();
+	        	short defaultBarWidth = (short) (chartWidth * .064);
+	        	if(xAxisPoints <= 2) {
+	        		series.setVolume((short) (defaultBarWidth * 0.25));
+	        	}
+	        	else if(xAxisPoints <= 5) {
+	        		series.setVolume((short) (defaultBarWidth * 0.75));
+	        	}
+	        	else if(xAxisPoints <= 10) {
+	        		series.setVolume(defaultBarWidth);
+	        	}
+	       	}
+    	}
+end

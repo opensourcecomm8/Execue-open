@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<execue>
+
+    <regexComponents>
+
+        <component>
+            <name>Number</name>
+            <patternHolder>%NUM%</patternHolder>
+            <concept>Number</concept>
+            <regex><![CDATA[Token@word:[((\\d+)?(.)?(\\d+)(%)?)]+#superConcept:([\\w~]*)(Number)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>
+        <component>
+            <name>Operator</name>
+            <patternHolder>%OP%</patternHolder>
+            <concept>Operator</concept>
+            <regex><![CDATA[Token@word:[\\w,]+#superConcept:([\\w~]*)(Operator)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>
+        <component>
+            <name>UnitSymbol</name>
+            <patternHolder>%USYM%</patternHolder>
+            <concept>UnitSymbol</concept>
+            <regex><![CDATA[Token@word:[\\w]++#superConcept:([\\w~]*)(UnitSymbol)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>
+        <component>
+            <name>UnitScale</name>
+            <patternHolder>%USCALE%</patternHolder>
+            <concept>UnitScale</concept>
+            <regex><![CDATA[Token@word:[\\w]++#superConcept:([\\w~]*)(UnitScale)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>
+        <component>
+            <name>UnitSymbol</name>
+            <patternHolder>%USYM%</patternHolder>
+            <concept>UnitSymbol</concept>
+            <regex><![CDATA[Token@word:[\\w]++#superConcept:([\\w~]*)(UnitSymbol)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>
+		 <component>
+            <name>PeriodicInformation</name>
+            <patternHolder>%PI%</patternHolder>
+            <concept>PeriodicInformation</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(PeriodicInformation)([\\w~]*)#nlpTag:OC#type:[\\w]+]]></regex>
+        </component>
+        <component>
+            <name>Conjunction</name>
+            <patternHolder>%CONJ%</patternHolder>
+            <concept>Conjunction</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(Conjunction)([\\w~]*)#nlpTag:OI#type:[\\w~]+]]></regex>
+        </component>   
+         <component>
+            <name>QuantitativeConceptInstance</name>
+            <patternHolder>%QCI%</patternHolder>
+            <concept>QuantitativeConcept</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:((?![\\w~]*Number)[\\w~]*)((?=[\\w~]*QuantitativeConcept)[\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component> 
+        <component>
+            <name>EnumerationConceptInstance</name>
+            <patternHolder>%ECI%</patternHolder>
+            <concept>EnumerationConcept</concept>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(EnumerationConcept)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component>       
+        <component>
+           <name>QuantitativeConcept</name>
+           <patternHolder>%QC%</patternHolder>
+           <concept>QuantitativeConcept</concept>
+           <regex><![CDATA[Token@word:[\\w]+#superConcept:((?![\\w~]*Number)[\\w~]*)((?=[\\w~]*QuantitativeConcept)[\\w~]*)#nlpTag:OC#type:[\\w]+]]></regex>
+       </component>
+       <component>
+           <name>EnumerationConceptInstance</name>
+           <patternHolder>%EC%</patternHolder>
+           <concept>EnumerationConcept</concept>
+           <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(EnumerationConcept)([\\w~]*)#nlpTag:OC#type:[\\w]+]]></regex>
+       </component>
+        <component>
+            <name>BETWEEN</name>
+            <patternHolder>%BET%</patternHolder>
+            <regex><![CDATA[Token@word:[\\w]+#superConcept:([\\w~]*)(RangePreposition)([\\w~]*)#nlpTag:OI#type:[\\w]+]]></regex>
+        </component> 
+          
+    </regexComponents>
+
+  <!-- Replacement Rules -->
+
+  <!--  Value Rules -->
+
+  <languagePatternRule>
+
+    <name>Value</name>
+    <ruleString>(%OP%(\s))(%USYM%(\s))?(%NUM%(\s)?)(%USCALE%(\s)?)?(%USYM%(\s)?)?</ruleString>
+    <type>recognition,flag</type>
+    <flagInfo>
+      <flagValue>SimpleValue</flagValue>
+      <flagStoargeCadidates>1,2,3,4,5</flagStoargeCadidates>
+    </flagInfo>
+    <rule>
+      <pattern>
+        <regex><![CDATA[[\w,]+]]></regex>
+        <superConcept>Operator</superConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <required>true</required>
+        <partID>1</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>UnitSymbol</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>false</required>
+        <partID>2</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[((\d+)?(\.)?(\d+)(%)?)]]></regex>
+        <superConcept>Number</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>3</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>UnitScale</superConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <required>false</required>
+        <partID>4</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>UnitSymbol</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>false</required>
+        <partID>5</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>false</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+
+        <recognitionGroup>Value</recognitionGroup>
+        <recognitionConcept>Value</recognitionConcept>
+
+        <recognitionValue>
+          <valueExpression>normVal(1) normVal(3) normVal(4) normVal(2)/normaVal(5)</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>1</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>3</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>4</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>2</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>5</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <languagePatternRule>
+
+    <name>Value-1</name>
+    <type>recognition,flag</type>
+    <ruleString>(%NUM%(\s))(%OP%(\s))(%PI%(\s)?)</ruleString>
+    <flagInfo>
+      <flagValue>SimpleValue</flagValue>
+      <flagStoargeCadidates>1,2</flagStoargeCadidates>
+    </flagInfo>
+    <rule>
+      <pattern>
+        <regex><![CDATA[((\d+)?(\.)?(\d+)(%)?)]]></regex>
+        <superConcept>Number</superConcept>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>1</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>Operator</superConcept>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>2</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w]+]]></regex>
+        <superConcept>PeriodicInformation</superConcept>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>3</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>false</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+        <recognitionGroup>Value</recognitionGroup>
+        <recognitionConcept>Value</recognitionConcept>
+
+        <recognitionValue>
+          <valueExpression>normVal(2) normVal(1)</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>2</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[&nbsp;]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>1</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <!--  Range Rules -->
+
+  <languagePatternRule>
+
+    <name>BETWEEN-AND</name>
+    <ruleString>(%BET%(\s))(%QCI%(\s))(%CONJ%(\s))?(%QCI%(\s)?)</ruleString>
+    <type>recognition,flag</type>
+    <flagInfo>
+      <flagValue>Range</flagValue>
+    </flagInfo>
+    <rule>
+        <pattern>
+          <regex><![CDATA[[\w\d#\-]+]]></regex>
+          <superConcept>RangePreposition</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <partID>1</partID>
+        </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>QuantitativeConcept</superConcept>
+        <excludeSuperConcept>Number</excludeSuperConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <partID>2</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>Conjunction</superConcept>
+        <fixedpart>false</fixedpart>
+        <required>false</required>
+        <partID>3</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>QuantitativeConcept</superConcept>
+        <excludeSuperConcept>Number</excludeSuperConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <partID>4</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>true</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+        <recognitionNlpTag>Range</recognitionNlpTag>
+        <recognitionGroupSuffix>Range</recognitionGroupSuffix>
+        <recognitionConceptReference>
+          <partIDs>2,4</partIDs>
+        </recognitionConceptReference>
+
+        <recognitionValue>
+          <valueExpression>normVal(2)--normVal(4)</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>2</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ -- ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>4</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <languagePatternRule>
+
+    <name>FROM-TO</name>
+    <ruleString>(%CONJ%(\s))(%QCI%(\s))(%CONJ%(\s))(%QCI%(\s)?)</ruleString>
+    <type>recognition,flag</type>
+    <flagInfo>
+      <flagValue>Range</flagValue>
+    </flagInfo>
+    <rule>
+      <pattern>
+        <regex>from</regex>
+        <superConcept/>
+        <fixedpart>true</fixedpart>
+        <required>true</required>
+        <partID>1</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>QuantitativeConcept</superConcept>
+        <excludeSuperConcept>Number</excludeSuperConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <partID>2</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>Conjunction</superConcept>
+        <fixedpart>true</fixedpart>
+        <required>true</required>
+        <partID>3</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>QuantitativeConcept</superConcept>
+        <excludeSuperConcept>Number</excludeSuperConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <partID>4</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>true</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+        <recognitionNlpTag>Range</recognitionNlpTag>
+        <recognitionGroupSuffix>Range</recognitionGroupSuffix>
+        <recognitionConceptReference>
+          <partIDs>2,4</partIDs>
+        </recognitionConceptReference>
+
+        <recognitionValue>
+          <valueExpression>normVal(2)--normVal(4)</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>2</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ -- ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>4</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+        <recognitionCandidates>
+          <partIDs>1,2,3,4</partIDs>
+        </recognitionCandidates>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <languagePatternRule>
+
+    <name>BETWEEN/FROM-AND/TO-NUMBERS</name>
+    <type>recognition,flag</type>
+    <ruleString>(%BET%(\s))(%USYM%(\s))?(%NUM%(\s))(%USCALE%(\s))?(%USYM%(\s))?(%CONJ%(\s))?(%USYM%(\s))?(%NUM%(\s)?)(%USCALE%(\s)?)?(%USYM%(\s)?)?</ruleString>
+    <flagInfo>
+      <flagValue>Range</flagValue>
+    </flagInfo>
+    <rule>
+        <pattern>
+          <regex><![CDATA[[\w\d#\-]+]]></regex>
+          <superConcept>RangePreposition</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <partID>01</partID>
+        </pattern>
+      <pattern>
+          <regex><![CDATA[[\w\d]+]]></regex>
+          <superConcept>UnitSymbol</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <required>false</required>
+          <partID>02</partID>
+        </pattern>
+      <pattern>
+        <regex><![CDATA[[\w#\-]+]]></regex>
+        <superConcept>Number</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <partID>03</partID>
+      </pattern>
+        <pattern>
+          <regex><![CDATA[[\w\d]+]]></regex>
+          <superConcept>UnitScale</superConcept>
+          <fixedpart>false</fixedpart>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <required>false</required>
+          <partID>04</partID>
+        </pattern>
+        <pattern>
+          <regex><![CDATA[[\w\d]+]]></regex>
+          <superConcept>UnitSymbol</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <required>false</required>
+          <partID>05</partID>
+        </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d#\-]+]]></regex>
+        <superConcept>Conjunction</superConcept>
+        <fixedpart>true</fixedpart>
+        <required>false</required>
+        <partID>06</partID>
+      </pattern>
+      <pattern>
+          <regex><![CDATA[[\w\d]+]]></regex>
+          <superConcept>UnitSymbol</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <required>false</required>
+          <partID>07</partID>
+        </pattern>
+      <pattern>
+        <regex><![CDATA[[\w#\-]+]]></regex>
+        <superConcept>Number</superConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <partID>08</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>UnitScale</superConcept>
+        <fixedpart>false</fixedpart>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <required>false</required>
+        <partID>09</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>UnitSymbol</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>false</required>
+        <partID>10</partID>
+      </pattern>
+
+    </rule>
+    <equivalentPatterns>false</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+        <recognitionNlpTag>Range</recognitionNlpTag>
+        <recognitionConcept>Value</recognitionConcept>
+        <recognitionGroup>Value</recognitionGroup>
+
+        <recognitionValue>
+          <valueExpression>normVal(03)-normaVal(04)-normVal(05)-normVal(02)--normVal(08)-normVal(09)-normVal(07)-normVal(10)</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>03</partID>
+            </args>
+          </valuePart>
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ ]]></value>
+          </valuePart>
+            <valuePart>
+              <type>FUNCTION</type>
+              <function>normVal</function>
+              <args>
+                <partID>04</partID>
+              </args>
+            </valuePart>
+            <valuePart>
+              <type>SEPARATOR</type>
+              <value><![CDATA[ ]]></value>
+            </valuePart>
+            <valuePart>
+              <type>FUNCTION</type>
+              <function>normVal</function>
+              <args>
+                <partID>05</partID>
+              </args>
+            </valuePart>
+		 	<valuePart>
+              <type>FUNCTION</type>
+              <function>normVal</function>
+              <args>
+                <partID>02</partID>
+              </args>
+            </valuePart>
+
+          <valuePart>
+            <type>SEPARATOR</type>
+            <value><![CDATA[ -- ]]></value>
+          </valuePart>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>normVal</function>
+            <args>
+              <partID>08</partID>
+            </args>
+          </valuePart>
+            <valuePart>
+              <type>SEPARATOR</type>
+              <value><![CDATA[ ]]></value>
+            </valuePart>
+              <valuePart>
+                <type>FUNCTION</type>
+                <function>normVal</function>
+                <args>
+                  <partID>09</partID>
+                </args>
+              </valuePart>
+              <valuePart>
+                <type>SEPARATOR</type>
+                <value><![CDATA[ ]]></value>
+              </valuePart>
+              <valuePart>
+                <type>FUNCTION</type>
+                <function>normVal</function>
+                <args>
+                  <partID>10</partID>
+                </args>
+              </valuePart>
+			  <valuePart>
+                <type>FUNCTION</type>
+                <function>normVal</function>
+                <args>
+                  <partID>07</partID>
+                </args>
+              </valuePart>
+
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <!--  List Rules -->
+
+  <languagePatternRule>
+
+    <name>List</name>
+    <ruleString>((%ECI%(\s)?)((,)(\s)?)?(%CONJ%(\s))?)+</ruleString>
+    <type>recognition,flag</type>
+    <flagInfo>
+      <flagValue>List</flagValue>
+    </flagInfo>
+    <rule>
+      <repetitivePattern>
+        <repetitivePatternID>2</repetitivePatternID>
+        <repPattern>
+          <patternType>REGULAR</patternType>
+          <regex><![CDATA[[\w]+]]></regex>
+          <superConcept>EnumerationConcept</superConcept>
+          <excludeSuperConcept>Number</excludeSuperConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <required>true</required>
+          <partID>2-1</partID>
+        </repPattern>
+        <repPattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[(,)]]></regex>
+          <superConcept/>
+          <fixedpart>true</fixedpart>
+          <required>false</required>
+          <partID>2-2</partID>
+        </repPattern>
+        <repPattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[[\w\d#\-]+]]></regex>
+          <superConcept>Conjunction</superConcept>
+          <fixedpart>true</fixedpart>
+          <required>false</required>
+          <partID>2-3</partID>
+        </repPattern>
+        <!--
+        <pattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[[\w]+]]></regex>
+          <superConcept>NULL</superConcept>
+          <fixedpart>false</fixedpart>
+          <required>false</required>
+          <partID>1-3</partID>
+        </pattern>
+        -->
+        <minOccurance>2</minOccurance>
+        <maxOccurance>99</maxOccurance>
+      </repetitivePattern>
+    </rule>
+    <equivalentPatterns>true</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+        <recognitionNlpTag>List</recognitionNlpTag>
+        <recognitionGroupSuffix>List</recognitionGroupSuffix>
+        <recognitionConceptReference>
+          <partIDs>2-1</partIDs>
+        </recognitionConceptReference>
+
+        <recognitionValue>
+
+          <valueExpression>normVal(2-1),normVal(2-1),...</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>loopNormVal</function>
+            <args>
+              <partID>2-1</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <languagePatternRule>
+
+    <name>List-Numbers</name>
+    <ruleString>((%NUM%(\s))(%USCALE%(\s))?(%USYM%(\s))?((,)(\s)?)?(%CONJ%(\s))?)+</ruleString>
+    <type>recognition,flag</type>
+    <flagInfo>
+      <flagValue>List</flagValue>
+    </flagInfo>
+    <rule>
+      <repetitivePattern>
+        <repetitivePatternID>2</repetitivePatternID>
+        <repPattern>
+          <patternType>REGULAR</patternType>
+          <regex><![CDATA[[\w]+]]></regex>
+          <superConcept>Number</superConcept>
+          <recognitionNlpTag>OI</recognitionNlpTag>
+          <fixedpart>false</fixedpart>
+          <required>true</required>
+          <partID>2-1</partID>
+        </repPattern>
+          <pattern>
+            <regex><![CDATA[[\w\d]+]]></regex>
+            <superConcept>UnitScale</superConcept>
+            <fixedpart>false</fixedpart>
+            <recognitionNlpTag>OI</recognitionNlpTag>
+            <required>false</required>
+            <partID>2-2</partID>
+          </pattern>
+          <pattern>
+            <regex><![CDATA[[\w\d]+]]></regex>
+            <superConcept>UnitSymbol</superConcept>
+            <recognitionNlpTag>OI</recognitionNlpTag>
+            <fixedpart>false</fixedpart>
+            <required>false</required>
+            <partID>2-3</partID>
+          </pattern>
+        <repPattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[(,)]]></regex>
+          <superConcept/>
+          <fixedpart>true</fixedpart>
+          <required>false</required>
+          <partID>2-4</partID>
+        </repPattern>
+        <repPattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[[\w\d#\-]+]]></regex>
+          <superConcept>Conjunction</superConcept>
+          <fixedpart>true</fixedpart>
+          <required>false</required>
+          <partID>2-5</partID>
+        </repPattern>
+        <minOccurance>2</minOccurance>
+        <maxOccurance>99</maxOccurance>
+      </repetitivePattern>
+    </rule>
+    <equivalentPatterns>false</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+
+	  <recognitionNlpTag>List</recognitionNlpTag>
+        <recognitionConcept>Value</recognitionConcept>
+        <recognitionGroup>Value</recognitionGroup>
+
+        <recognitionValue>
+          <valueExpression>normVal(2-1),normVal(2-1),...</valueExpression>
+          <valuePart>
+            <type>FUNCTION</type>
+            <function>loopNormVal</function>
+            <args>
+              <partID>2-1</partID>
+            </args>
+          </valuePart>
+        </recognitionValue>
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <!-- Unification Rules -->
+
+  <!-- Instance Unification -->
+
+  <languagePatternRule>
+
+    <name>Instance-1</name>
+    <ruleString>(%ECI%(\s))(%EC%(\s)?)</ruleString>
+    <type>unify,weightUpdate</type>
+    <weightUpdateInfo>
+        <weightUpdationCandidates>1</weightUpdationCandidates>
+        <weightUpdateValue>5</weightUpdateValue>
+    </weightUpdateInfo>
+
+    <rule>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>EnumerationConcept</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>1</partID>
+      </pattern>
+      <pattern>
+        <regex><![CDATA[[\w]+]]></regex>
+        <superConcept>EnumerationConcept</superConcept>
+        <recognitionNlpTag>OC</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>2</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>true</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+
+        <recognitionValueReference>
+          <partID>1</partID>
+        </recognitionValueReference>
+        <recognitionCandidates>
+          <partIDs>2</partIDs>
+        </recognitionCandidates>
+
+
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+  <languagePatternRule>
+
+    <name>Instance-2</name>
+    <ruleString>(%EC%\s)(%CONJ%)?(%ECI%(\s)?)</ruleString>
+    <weightUpdateInfo>
+        <weightUpdationCandidates>3</weightUpdationCandidates>
+        <weightUpdateValue>5</weightUpdateValue>
+    </weightUpdateInfo>
+    <type>unify,weightUpdate</type>
+    <rule>
+      <pattern>
+        <regex><![CDATA[[\w]+]]></regex>
+        <superConcept>EnumerationConcept</superConcept>
+        <recognitionNlpTag>OC</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>1</partID>
+      </pattern>
+      <repetitivePattern>
+        <repetitivePatternID>2</repetitivePatternID>
+        <repPattern>
+          <patternType>ALLOWED</patternType>
+          <regex><![CDATA[[\w\d#\-]+]]></regex>
+          <superConcept>Conjunction</superConcept>
+          <fixedpart>false</fixedpart>
+          <required>false</required>
+          <partID>2-1</partID>
+        </repPattern>
+        <minOccurance>1</minOccurance>
+        <maxOccurance>99</maxOccurance>
+      </repetitivePattern>
+      <pattern>
+        <regex><![CDATA[[\w\d]+]]></regex>
+        <superConcept>EnumerationConcept</superConcept>
+        <recognitionNlpTag>OI</recognitionNlpTag>
+        <fixedpart>false</fixedpart>
+        <required>true</required>
+        <partID>3</partID>
+      </pattern>
+    </rule>
+    <equivalentPatterns>true</equivalentPatterns>
+
+    <recognitionInfoSet>
+
+      <recognitionInfo>
+
+        <recognitionValueReference>
+          <partID>3</partID>
+        </recognitionValueReference>
+        <recognitionCandidates>
+          <partIDs>1</partIDs>
+        </recognitionCandidates>
+
+
+      </recognitionInfo>
+
+    </recognitionInfoSet>
+
+  </languagePatternRule>
+
+</execue>

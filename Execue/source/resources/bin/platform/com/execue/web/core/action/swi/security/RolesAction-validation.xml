@@ -1,0 +1,20 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="role.name">
+		<field-validator type="required">
+			<message key="role.name.required"/>
+		</field-validator>
+				
+		<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*[_0-9a-zA-Z]*)]]>
+			</param>
+			<message>Valid Role name required example: kog123 </message>
+		</field-validator>		 
+	</field>
+	<field name="role.description">
+		<field-validator type="required">
+			<message key="role.description.required"/>
+		</field-validator>
+	</field>
+</validators>

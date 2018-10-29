@@ -1,0 +1,7 @@
+<queries>
+	<GET_BUSINESS_QUERY>
+	<![CDATA[from QDataBusinessQuery as qDataBusinessQuery 
+		 where qDataBusinessQuery.userQuery = :userQuery
+	]]>
+	</GET_BUSINESS_QUERY>	
+</queries>

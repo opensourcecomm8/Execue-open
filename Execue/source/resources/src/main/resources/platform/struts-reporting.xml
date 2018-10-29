@@ -1,0 +1,75 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="reporting" extends="struts-default">
+		<!-- <bean class="tutorial.FormBeans" name="default" optional="true"/> -->
+		<action name="reportView" class="reportViewAction" method="execute">
+			<result name="success">/WEB-INF/jsp/main/reporting/reportViewer.jsp</result>
+			<result name="newsuccess">/WEB-INF/jsp/main/reporting/presentationContainer.jsp</result>
+			<result name="error">server_error.html</result>
+		</action>
+		<action name="showStockChart" class="stockChartAction" method="execute">			
+			<result name="success">/WEB-INF/jsp/main/reporting/stockChart.jsp</result>			
+		</action>
+		<!-- Add your actions here -->
+		<action name="showCSV" class="showCSVAction" method="showCSV">
+			<result>/WEB-INF/jsp/main/reporting/reportViewer.jsp</result>
+		</action>
+		<action name="showPivot" class="showPivotAction" method="showPivot">
+			<result name="success">/WEB-INF/jsp/main/reporting/pivotViewer.jsp</result> 
+		</action>
+		<action name="viewDetailReport" class="dataBrowserAction" method="retrieveHeaderData">
+			<result name="success">/WEB-INF/jsp/main/reporting/dataBrowserViewer.jsp</result> 
+		</action>
+		
+		<action name="showHierarchyReportGrid" class="hierarchicalGridAction">
+			<result name="success">/WEB-INF/jsp/main/reporting/hierarchyReportGrid.jsp</result> 
+		</action>
+		<action name="showScatterChartSubIcons" method="showScatterChartSubIcons" class="chartFxScatterChartAction">
+			<result name="success">/WEB-INF/jsp/main/reporting/scatterChartIcon.jsp</result> 
+		</action>
+		<action name="showScatterChart" method="showScatterChart" class="chartFxScatterChartAction">
+			<result name="success">/WEB-INF/jsp/main/reporting/scatterChart.jsp</result> 
+		</action>
+		
+		<action name="showHierarchyReport" class="hierarchicalGridAction">
+			<result name="success">/WEB-INF/jsp/main/reporting/hierarchyReportViewer.jsp</result> 
+		</action>
+		
+		<action name="showDetailReport" class="dataBrowserAction" method="retrieveHeaderData">
+			<result name="success">/WEB-INF/jsp/main/reporting/detailReportViewer.jsp</result>
+		</action>	
+		<action name="showReportComments" class="reportAction" method="input">
+			<result name="success">/WEB-INF/jsp/main/reporting/reportComment.jsp</result> 
+			<result name="error">/WEB-INF/jsp/main/reporting/reportComment.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/reporting/reportComment.jsp</result>
+		</action>
+		<action name="saveReportComment" class="reportAction" method="saveComment">
+			<result name="success">/WEB-INF/jsp/main/reporting/reportComment.jsp</result>
+			<result name="error">/WEB-INF/jsp/main/reporting/reportComment.jsp</result>
+			<result name="input">/WEB-INF/jsp/main/reporting/reportComment.jsp</result>
+		</action>
+		<action name="getReportImage" method="getReportData" class="reportViewAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">inline</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name="reporting-json" extends="execue-json-default">
+		<action name="getJsonDataBrowserCells" method="getPageResults" class="dataBrowserAction">
+			<result type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		<action name="showHierarchicalReport" method="showHierarchicalReport" class="hierarchicalGridAction">
+			<result type="json">
+				<param name="root">hierarchicalReportInfo</param>
+			</result>
+		</action>
+	</package>
+</struts>

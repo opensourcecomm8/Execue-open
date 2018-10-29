@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+
+	<typedef name="qualifierType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.DynamicValueQualifierType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="operatorType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.OperatorType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getOperatorType</param>
+	</typedef>
+	<typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.DefaultDynamicValue" table="DEFAULT_DYNAMIC_VALUE">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">DEFAULT_DYNAMIC_VALUE</param>
+			</generator>
+		</id>
+		<property name="assetId" type="java.lang.Long">
+			<column name="ASSET_ID" length="20" not-null="true" />
+		</property>
+		<property name="lhsDEDId" type="java.lang.Long">
+			<column name="BE_ID" length="20" not-null="true" />
+		</property>
+		<property name="qualifier" type="qualifierType">
+			<column name="QUALIFIER" length="55" not-null="true" />
+		</property>
+		<property name="defaultValue" type="java.lang.String">
+			<column name="DEFAULT_VALUE" length="35" not-null="true" />
+		</property>      
+	</class>
+</hibernate-mapping>

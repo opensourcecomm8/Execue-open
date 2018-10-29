@@ -1,0 +1,66 @@
+<queries>
+	<QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID>
+	<![CDATA[delete from BusinessEntityMaintenanceInfo
+		 where modelId = :modelId
+	]]>
+	</QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID>
+	
+	<QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID_AND_BUSINESS_ENTITY_TYPE>
+	<![CDATA[delete from BusinessEntityMaintenanceInfo 
+		 where modelId = :modelId and entityType = :entityType
+	]]>
+	</QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID_AND_BUSINESS_ENTITY_TYPE>
+	
+
+	<QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID_AND_BUSINESS_ENTITY_TYPE_AND_ENTITY_BED_ID>
+	<![CDATA[delete from BusinessEntityMaintenanceInfo 
+		 where modelId = :modelId and entityType = :entityType 
+		 and entityId in (:entityBedIds)
+	]]>
+	</QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_MODEL_ID_AND_BUSINESS_ENTITY_TYPE_AND_ENTITY_BED_ID>
+	
+	<QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_ENTITY_BED_ID>
+	<![CDATA[delete from BusinessEntityMaintenanceInfo
+		 where entityId = :entityBedId
+	]]>
+	</QUERY_DELETE_BED_MAINTENACE_DETAILS_BY_ENTITY_BED_ID>	
+
+	<QUERY_GET_BED_MAINTENANCE_DETAILS>
+	<![CDATA[select b.entityId 
+		 from BusinessEntityMaintenanceInfo b where b.modelId = :modelId and
+		 b.operationType = :operationType and b.entityType = :entityType
+	]]>
+	</QUERY_GET_BED_MAINTENANCE_DETAILS>
+	
+	<QUERY_GET_BED_MAINTENANCE_DETAILS_BY_PARENT_ID>
+	<![CDATA[select b.entityId
+		 from BusinessEntityMaintenanceInfo b where b.modelId = :modelId 
+		 and b.operationType = :operationType and b.entityType = :entityType 
+		 and b.parentId =:parentId
+	]]>
+	</QUERY_GET_BED_MAINTENANCE_DETAILS_BY_PARENT_ID>
+	
+	<QUERY_GET_BED_PARENT_MAINTENANCE_DETAILS>
+	<![CDATA[select distinct b.parentId 
+		 from BusinessEntityMaintenanceInfo b where b.modelId = :modelId 
+		 and b.entityType = :entityType
+	]]>
+	</QUERY_GET_BED_PARENT_MAINTENANCE_DETAILS>	
+	
+
+	<QUERY_GET_DISTINCT_UPDATED_BED_MAINTENANCE_DETAILS>
+	<![CDATA[select distinct b.entityId 
+		from BusinessEntityMaintenanceInfo b where
+		b.modelId = :modelId and b.operationType = :operationType 
+		and b.entityType = :entityType
+	]]>
+	</QUERY_GET_DISTINCT_UPDATED_BED_MAINTENANCE_DETAILS>
+		
+	<QUERY_GET_NON_SHARED_BED_MAINTENANCE_DETAILS_BY_PARENT_ID>
+	<![CDATA[select bem.entityId
+		 from BusinessEntityMaintenanceInfo bem, BusinessEntityDefinition as bed 
+		 where bem.modelId = :modelId and bem.operationType = :operationType and bem.entityType = :entityType 
+		 and bem.parentId =:parentId and bed.id = bem.entityId and bed.fromShared = :fromSharedValue 
+	]]>
+	</QUERY_GET_NON_SHARED_BED_MAINTENANCE_DETAILS_BY_PARENT_ID>
+</queries>

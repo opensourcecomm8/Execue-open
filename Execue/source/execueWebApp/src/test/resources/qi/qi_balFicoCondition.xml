@@ -1,0 +1,26 @@
+<qf xmlns="http://execue.com/schemas/qf">
+	<selects>
+		<select>
+			<term>
+				<name>MerchandiseBalance</name>
+				<type>CONCEPT</type>
+			</term>
+		</select>
+	</selects>
+	<conditions>
+		<condition>
+			<lhsBusinessTerm>
+				<term>
+					<name>FicoScore</name>
+					<type>CONCEPT</type>
+				</term>
+			</lhsBusinessTerm>
+			<operator>GREATER_THAN</operator>
+			<rhlValue>
+				<values>
+					<value>720</value>
+				</values>
+			</rhlValue>
+		</condition>
+	</conditions>
+</qf>

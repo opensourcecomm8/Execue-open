@@ -1,0 +1,105 @@
+a {
+	white-space: normal;
+}
+
+p {
+	text-align: inherit;
+}
+
+a.linkWhite {
+	color: #FFF;
+	text-decoration: none;
+}
+
+a.linkWhite:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.appsExamplesLinks {
+	margin-bottom: 20px;
+}
+
+#govExpo {
+	position: absolute;
+	width: 130px;
+	height: 115px;
+	z-index: 21;
+	right: 7px;
+	top: 35px;
+	font-weight: bold
+}
+
+#innovaterAward {
+	position: absolute;
+	width: 130px;
+	height: 115px;
+	z-index: 21;
+	left: 7px;
+	top: 35px;
+	font-weight: bold
+}
+
+.comingsoon {
+	text-align: left;
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	display: none;
+}
+
+a.morelink {
+	background-position: left 50%;
+	background-repeat: no-repeat;
+	color: #990000;
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	font-weight: normal;
+	text-indent: 5px;
+	padding-left: 10px;
+	text-decoration: none;
+}
+
+.appsExamplesLinks .headding-apps {
+	color: #3E5356;
+	font-family: "trebuchet ms";
+	font-size: 16px;
+	text-align: left;
+	padding-left: 8px;
+}
+.no-active{
+color:#3C71A1;	
+}
+.arrowOrange{
+color:#F60;
+font-size:10px;
+padding-right:2px;
+}
+a#uservoice-feedback-tab {
+	color: #F00;
+}
+
+a.footer-sublink-bottom {
+	font-family: "trebuchet ms";
+	font-size: 11px;
+	font-weight: normal;
+	color: #3E5356;
+	text-align: left;
+	text-decoration:  underline;
+}
+a.footer-sublink-bottom:hover {
+	font-family: "trebuchet ms";
+	font-size: 11px;
+	font-weight: normal;
+	color: #3E5356;
+	text-decoration: none;
+	text-indent: 5;
+}
+.copyright {
+	font-family: "trebuchet ms";
+	font-size: 10px;
+	font-weight: normal;
+	color: #3E5356;
+	text-align: right;
+	margin-right: 8px;
+	padding-right: 8px;
+}

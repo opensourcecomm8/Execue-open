@@ -1,0 +1,662 @@
+<queries>
+	<QUERY_PATH_DEFINITION_BY_BED>
+	<![CDATA[from PathDefinition pathDefinition where
+		 pathDefinition.sourceBusinessEntityDefinition = :sourceBusinessEntityDefinition and 
+		 pathDefinition.destinationBusinessEntityDefinition = :destinationBusinessEntityDefinition
+		 order by pathDefinition.id
+	]]>
+	</QUERY_PATH_DEFINITION_BY_BED>
+
+	<QUERY_GET_ALL_PATHS>
+	<![CDATA[from PathDefinition pathDefinition where pathDefinition.type = :crcPathType
+		 and pathDefinition.pathLength = 1  order by pathDefinition.id
+	]]>
+	</QUERY_GET_ALL_PATHS>
+
+	<QUERY_INS_PATH_DEF_BY_ALL_ENTITIES>
+	<![CDATA[from InstancePathDefinition where sourceDEDId = :sourceBEDId 
+		 and destinationDEDId = :destinationBEDId and pathDefinitionId = :pathDefinitionId
+		 order by pathDefinitionId,sourceDEDId,destinationDEDId
+	]]>
+	</QUERY_INS_PATH_DEF_BY_ALL_ENTITIES>
+
+	<QUERY_INS_PATH_DEF_BY_DEST_PATH>
+	<![CDATA[from InstancePathDefinition ipd where destinationDEDId = :destinationBEDId
+		 and pathDefinitionId = :pathDefinitionId 
+		 order by pathDefinitionId, sourceDEDId, destinationDEDId
+	]]>
+	</QUERY_INS_PATH_DEF_BY_DEST_PATH>
+
+	<QUERY_INS_PATH_DEF_BY_SRC_PATH>
+	<![CDATA[from InstancePathDefinition ipd where sourceDEDId = :sourceBEDId 
+		 and pathDefinitionId = :pathDefinitionId 
+		 order by pathDefinitionId, sourceDEDId, destinationDEDId
+	]]>
+	</QUERY_INS_PATH_DEF_BY_SRC_PATH>
+
+	<QUERY_DEST_BED_IDS_DEF_BY_SOURCE_PATH>
+	<![CDATA[select distinct destinationDEDId from InstancePathDefinition ipd
+		 where sourceDEDId = :sourceBEDId and pathDefinitionId = :pathDefinitionId
+		 order by pathDefinitionId, sourceDEDId
+	]]>
+	</QUERY_DEST_BED_IDS_DEF_BY_SOURCE_PATH>
+
+	<QUERY_PATH_DEF_IDS_BY_SOURCE_DEST>
+	<![CDATA[select distinct pd.id 
+		 from PathDefinition pd where 
+		 pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+		 order by pd.id
+	]]>
+	</QUERY_PATH_DEF_IDS_BY_SOURCE_DEST>
+
+	<QUERY_PATH_FOR_MANY_SOURCE_TO_ONE_DEST>
+	<![CDATA[select distinct pd from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id in (:sourceBEDId)
+		 and pd.hierarchyType = :nonHierarchyType
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+	]]>
+	</QUERY_PATH_FOR_MANY_SOURCE_TO_ONE_DEST>
+
+	<QUERY_PATH_DEF_BY_SOURCE_DEST>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 order by pd.id
+	]]>
+	</QUERY_PATH_DEF_BY_SOURCE_DEST>
+
+	<QUERY_PATH_DEF_BY_SOURCE_REL_DEST_ETD_IDS>
+	<![CDATA[select path.pathDefinition from Path path
+		 where path.entityTripleDefinition.sourceBusinessEntityDefinition.id =:sourceETDBEDId 
+		 and path.entityTripleDefinition.relation.id =:relationETDBEDId 
+		 and path.entityTripleDefinition.destinationBusinessEntityDefinition.id =:destinationETDBEDId 
+		 and path.pathDefinition.pathLength = 1
+	]]>
+	</QUERY_PATH_DEF_BY_SOURCE_REL_DEST_ETD_IDS>
+
+	<QUERY_PATH_DEF_BY_SOURCE_REL_DEST_ETD_NAMES>
+	<![CDATA[select path.pathDefinition.id from Path path 
+		 where path.entityTripleDefinition.sourceBusinessEntityDefinition.concept.name =:sourceConceptName 
+		 and path.entityTripleDefinition.relation.relation.name =:relationName
+		 and path.entityTripleDefinition.destinationBusinessEntityDefinition.concept.name =:destinationConceptName
+		 and path.pathDefinition.pathLength = 1
+	]]>
+	</QUERY_PATH_DEF_BY_SOURCE_REL_DEST_ETD_NAMES>
+
+	<QUERY_CA_PATH_DEF_BY_SOURCE_DEST>
+	<![CDATA[from PathDefinition pd where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+		 and pd.type = :craPathType 
+		 order by pd.pathLength, pd.id
+	]]>
+	</QUERY_CA_PATH_DEF_BY_SOURCE_DEST>
+
+	<QUERY_CC_PATH_DEF_BY_SOURCE_DEST>
+	<![CDATA[from PathDefinition pd
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and pd.type = :crcPathType
+		 order by pd.pathLength, pd.id
+	]]>
+	</QUERY_CC_PATH_DEF_BY_SOURCE_DEST>
+
+	<QUERY_RR_PATH_DEF_BY_SOURCE_DEST>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and pd.type = :rrrPathType
+		 order by pd.pathLength, pd.id
+	]]>
+	</QUERY_RR_PATH_DEF_BY_SOURCE_DEST>
+
+	<QUERY_PATH_DEF_BY_SOURCE_DEST_LT_LENGTH>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and pd.pathLength < :pathLength
+	]]>
+	</QUERY_PATH_DEF_BY_SOURCE_DEST_LT_LENGTH>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_REL_DEST_IDS>
+	<![CDATA[from EntityTripleDefinition etd
+		 where etd.sourceBusinessEntityDefinition.id = :sourceBEDId
+		 and etd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and etd.relation.id = :relBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_REL_DEST_IDS>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_ID>
+	<![CDATA[from EntityTripleDefinition etd 
+		 where etd.sourceBusinessEntityDefinition.id = :sourceBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_ID>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_ID_AND_TRIPLE_TYPE>
+	<![CDATA[from EntityTripleDefinition etd
+		 where etd.sourceBusinessEntityDefinition.id = :sourceBEDId
+		 and etd.tripleType = :tripleType
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_ID_AND_TRIPLE_TYPE>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_REL_IDS>
+	<![CDATA[from EntityTripleDefinition etd 
+		 where etd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and etd.relation.id = :relBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_SOURCE_REL_IDS>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_DEST_REL_IDS>
+	<![CDATA[from EntityTripleDefinition etd
+		 where etd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and etd.relation.id = :relBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_DEST_REL_IDS>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_REL_ID>
+	<![CDATA[from EntityTripleDefinition etd 
+		 where etd.relation.id = :relBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_REL_ID>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_DEST_ID>
+	<![CDATA[from EntityTripleDefinition etd
+		 where etd.destinationBusinessEntityDefinition.id = :destinationBEDId
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_DEST_ID>
+
+	<QUERY_ENTITY_TRIPLE_DEF_BY_DEST_ID_AND_TRIPLE_TYPE>
+	<![CDATA[from EntityTripleDefinition etd 
+		 where etd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and etd.tripleType = :tripleType
+	]]>
+	</QUERY_ENTITY_TRIPLE_DEF_BY_DEST_ID_AND_TRIPLE_TYPE>
+
+	<QUERY_PARENT_PATH_DEF_BY_SOURCE_DEST>
+	<![CDATA[from PathDefinition pd where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId 
+		 and pd.hierarchyType = :parentageHierarchyType
+	]]>
+	</QUERY_PARENT_PATH_DEF_BY_SOURCE_DEST>
+
+	<QUERY_CHILD_PATH_DEF>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.hierarchyType = :parentageHierarchyType
+	]]>
+	</QUERY_CHILD_PATH_DEF>
+
+	<QUERY_ALL_PARENT_PATH_DEF_BY_DEST>
+	<![CDATA[from PathDefinition pd where
+		 hierarchyType = :parentageHierarchyType
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+	]]>
+	</QUERY_ALL_PARENT_PATH_DEF_BY_DEST>
+
+	<QUERY_ALL_PARENT_PATH_DEF>
+	<![CDATA[select distinct pd
+		from PathDefinition pd, BusinessEntityDefinition bed, 
+		BusinessEntityDefinition bed1, ModelGroupMapping mgm, ModelGroupMapping mgm2 
+		where pd.hierarchyType = :parentageHierarchyType and pd.destinationBusinessEntityDefinition.id = bed.id 
+		and pd.sourceBusinessEntityDefinition.id = bed1.id and mgm.model.id = :modelId and
+		mgm.model.id = mgm2.model.id and bed.modelGroup.id = mgm.modelGroup.id 
+		and bed1.modelGroup.id = mgm2.modelGroup.id
+		order by pd.id
+	]]>
+	</QUERY_ALL_PARENT_PATH_DEF>
+
+	<QUERY_IMMEDIATE_PARENT_PATH_DEF>
+	<![CDATA[from PathDefinition pd
+		 where hierarchyType = :parentageHierarchyType and pathLength = 1
+	]]>
+	</QUERY_IMMEDIATE_PARENT_PATH_DEF>
+
+	<QUERY_ALL_NON_PARENT_PATH_DEF>
+	<![CDATA[from PathDefinition pd
+		 where hierarchyType = :nonHierarchyType
+	]]>
+	</QUERY_ALL_NON_PARENT_PATH_DEF>
+
+	<QUERY_ALL_NON_PARENT_DIRECT_CC_PATH_DEF>
+	<![CDATA[select distinct pd 
+		 from PathDefinition pd, BusinessEntityDefinition bed, BusinessEntityDefinition bed1, 
+		 ModelGroupMapping mgm, ModelGroup mg 
+		 where pd.hierarchyType = :nonHierarchyType and pd.type = :crcPathType
+		 and pd.pathLength = 1 and pd.destinationBusinessEntityDefinition.id = bed.id
+		 and pd.sourceBusinessEntityDefinition.id = bed1.id 
+		 and mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id
+		 and bed1.modelGroup.id = mgm.modelGroup.id
+		 order by pd.id
+	]]>
+	</QUERY_ALL_NON_PARENT_DIRECT_CC_PATH_DEF>
+
+	<QUERY_IMMEDIATE_PARENT_PATH_DEF_BY_DEST>
+	<![CDATA[from PathDefinition pd
+		 where hierarchyType = :parentageHierarchyType
+		 and pathLength = 1 
+		 and pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+	]]>
+	</QUERY_IMMEDIATE_PARENT_PATH_DEF_BY_DEST>
+
+	<QUERY_RELATED_BEDIDS_BY_SRC_INSTANCE_CONCEPT_BEDIDS>
+	<![CDATA[select distinct ipd.sourceDEDId as bedId 
+		 from InstancePathDefinition as ipd, PathDefinition as pd
+		 where ipd.pathDefinitionId = pd.id and ipd.destinationDEDId in (:instanceBEDIds) 
+		 and (pd.sourceBusinessEntityDefinition.id in (:conceptBEDIds) or
+		 pd.destinationBusinessEntityDefinition in (:conceptBEDIds))
+	]]>
+	</QUERY_RELATED_BEDIDS_BY_SRC_INSTANCE_CONCEPT_BEDIDS>
+
+	<QUERY_RELATED_BEDIDS_BY_DEST_INSTANCE_CONCEPT_BEDIDS>
+	<![CDATA[select distinct ipd.destinationDEDId as bedId 
+		 from InstancePathDefinition as ipd, PathDefinition as pd
+		 where ipd.pathDefinitionId = pd.id and ipd.sourceDEDId in (:instanceBEDIds)
+		 and (pd.sourceBusinessEntityDefinition.id in (:conceptBEDIds) 
+		 or pd.destinationBusinessEntityDefinition in (:conceptBEDIds))
+	]]>
+	</QUERY_RELATED_BEDIDS_BY_DEST_INSTANCE_CONCEPT_BEDIDS>
+
+	<QUERY_RELATED_BEDIDS_BY_SRC_CONCEPT_BEDIDS>
+	<![CDATA[select distinct ipd.sourceDEDId as bedId from InstancePathDefinition as ipd, 
+		 PathDefinition as pd 
+		 where ipd.pathDefinitionId = pd.id 
+		 and (pd.sourceBusinessEntityDefinition.id in (:conceptBEDIds) 
+		 or pd.destinationBusinessEntityDefinition in (:conceptBEDIds))
+	]]>
+	</QUERY_RELATED_BEDIDS_BY_SRC_CONCEPT_BEDIDS>
+
+	<QUERY_RELATED_BEDIDS_BY_DEST_CONCEPT_BEDIDS>
+	<![CDATA[select distinct ipd.destinationDEDId as bedId 
+		 from InstancePathDefinition as ipd, PathDefinition as pd 
+		 where ipd.pathDefinitionId = pd.id and
+		 (pd.sourceBusinessEntityDefinition.id in (:conceptBEDIds)
+		 or pd.destinationBusinessEntityDefinition in (:conceptBEDIds))
+	]]>
+	</QUERY_RELATED_BEDIDS_BY_DEST_CONCEPT_BEDIDS>
+
+	<QUERY_INS_PATH_DEF_BY_PATH>
+	<![CDATA[from InstancePathDefinition ipd
+		 where pathDefinitionId = :pathDefinitionId
+		 order by pathDefinitionId, sourceDEDId, destinationDEDId
+	]]>
+	</QUERY_INS_PATH_DEF_BY_PATH>
+
+	<QUERY_SOURCE_BED_IDS_DEF_BY_DEST_PATH>
+	<![CDATA[select distinct sourceDEDId 
+		 from InstancePathDefinition ipd 
+		 where destinationDEDId = :destinationBEDId 
+		 and pathDefinitionId = :pathDefinitionId 
+		 order by pathDefinitionId, destinationDEDId
+	]]>
+	</QUERY_SOURCE_BED_IDS_DEF_BY_DEST_PATH>
+
+	<QUERY_PATH_DEFINITION_BY_SOURCE>
+	<![CDATA[select distinct pd 
+		 from PathDefinition pd, BusinessEntityDefinition bed, ModelGroupMapping mgm, 
+		 ModelGroup mg 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId and pd.pathLength = 1 
+		 and pd.destinationBusinessEntityDefinition.id = bed.id and mgm.model.id = :modelId 
+		 and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_PATH_DEFINITION_BY_SOURCE>
+
+	<QUERY_TYPE_ORIGIN_PATH_DEFINITION_BY_SOURCE>
+	<![CDATA[select distinct pd 
+		 from EntityTripleDefinition pd, BusinessEntityDefinition bed,
+		 ModelGroupMapping mgm, ModelGroup mg 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId and pd.origin= :type
+		 and pd.destinationBusinessEntityDefinition.id = bed.id and mgm.model.id = :modelId 
+		 and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_TYPE_ORIGIN_PATH_DEFINITION_BY_SOURCE>
+
+	<QUERY_PATH_DEFINITION_BY_DESTINATION>
+	<![CDATA[select distinct pd
+		 from PathDefinition pd, BusinessEntityDefinition bed, ModelGroupMapping mgm,
+		 ModelGroup mg 
+		 where pd.destinationBusinessEntityDefinition.id = :destBEDId and pd.pathLength = 1 
+		 and pd.sourceBusinessEntityDefinition.id = bed.id and mgm.model.id = :modelId 
+		 and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_PATH_DEFINITION_BY_DESTINATION>
+
+	<QUERY_NON_PARENT_PATH_DEFINITION_BY_SOURCE>
+	<![CDATA[select distinct pd from PathDefinition pd, BusinessEntityDefinition bed,
+		 ModelGroupMapping mgm,ModelGroup mg 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId and pd.pathLength = 1
+		 and pd.hierarchyType = :nonHierarchyType and pd.destinationBusinessEntityDefinition.id = bed.id
+		 and mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_NON_PARENT_PATH_DEFINITION_BY_SOURCE>
+
+	<QUERY_NON_PARENT_PATH_DEFINITION_BY_DESTINATION>
+	<![CDATA[select distinct pd from PathDefinition pd, 
+		 BusinessEntityDefinition bed, ModelGroupMapping mgm, ModelGroup mg 
+		 where pd.destinationBusinessEntityDefinition.id = :destBEDId and pd.pathLength = 1
+		 and pd.hierarchyType = :nonHierarchyType and 
+		 pd.sourceBusinessEntityDefinition.id = bed.id and mgm.model.id = :modelId
+		 and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_NON_PARENT_PATH_DEFINITION_BY_DESTINATION>
+
+	<QUERY_PARENT_PATH_DEF_BY_SOURCE_DEST_IDS>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id in (:destinationBEDId) 
+		 and pd.hierarchyType = :parentageHierarchyType
+	]]>
+	</QUERY_PARENT_PATH_DEF_BY_SOURCE_DEST_IDS>
+
+	<QUERY_ALL_NON_PARENT_CC_PATH_DEF_FOR_DESTINATION>
+	<![CDATA[FROM PathDefinition pd 
+		 WHERE pd.destinationBusinessEntityDefinition.id = :destinationBEDId
+		 AND pd.hierarchyType = :nonHierarchicalType
+		 AND pd.type = :crcPathType
+	]]>
+	</QUERY_ALL_NON_PARENT_CC_PATH_DEF_FOR_DESTINATION>
+
+	<QUERY_CHILD_PATH_DEF_FOR_MODEL>
+	<![CDATA[select distinct pd 
+		 from PathDefinition pd, BusinessEntityDefinition bed, ModelGroupMapping mgm,
+		 ModelGroup mg where pd.sourceBusinessEntityDefinition.id = :sourceBEDId 
+		 and pd.destinationBusinessEntityDefinition.id = bed.id 
+		 and mgm.modelGroup.id = :modelId and mgm.primary= :primaryValue
+		 and bed.modelGroup.id = mgm.modelGroup.id and pd.hierarchyType = :parentageHierarchyType
+	]]>
+	</QUERY_CHILD_PATH_DEF_FOR_MODEL>
+
+	<QUERY_CENTRAL_PATH_DEFINITION_BY_DESTINATION>
+	<![CDATA[select distinct pd
+		 from PathDefinition pd
+		 where pd.destinationBusinessEntityDefinition.id = :destBEDId 
+		 and pd.centralConceptType = :centralConceptTypeValue
+	]]>
+	</QUERY_CENTRAL_PATH_DEFINITION_BY_DESTINATION>
+
+	<QUERY_CENTRAL_PATH_DEFINITION>
+	<![CDATA[select distinct pd2 
+		 from PathDefinition pd1, PathDefinition pd2, BusinessEntityDefinition bed, 
+		 ModelGroupMapping mgm, ModelGroup mg 
+		 where pd1.sourceBusinessEntityDefinition.id = :populationBedID and pd1.hierarchyType = :parentageHierarchyType
+		 and pd2.sourceBusinessEntityDefinition.id = pd1.destinationBusinessEntityDefinition.id
+		 and pd2.hierarchyType = :nonHierarchyType and pd2.sourceBusinessEntityDefinition.id = bed.id 
+		 and mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_CENTRAL_PATH_DEFINITION>
+
+	<QUERY_ALL_PATH_DEF_TRIPLES_FOR_MODEL>
+	<![CDATA[SELECT distinct pd.sourceBusinessEntityDefinition.id, etd.relation.id,
+		 pd.destinationBusinessEntityDefinition.id, pd.pathLength
+		 FROM PathDefinition pd, Path pd_etd, EntityTripleDefinition etd, BusinessEntityDefinition be,
+		 ModelGroupMapping mgm, ModelGroup mg WHERE 
+		 pd.id = pd_etd.pathDefinition.id AND pd_etd.entityTripleDefinition.id = etd.id AND
+		 etd.sourceBusinessEntityDefinition.id = be.id
+		 AND mgm.model.id = :modelId AND mgm.modelGroup.id = be.modelGroup.id
+	]]>
+	</QUERY_ALL_PATH_DEF_TRIPLES_FOR_MODEL>
+
+	<QUERY_ALL_NON_PARENT_PATH_DEF_BY_SOURCE_AND_DEST>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id in(:sourceBEDId)
+		 and pd.destinationBusinessEntityDefinition.id in (:destinationBEDId) and pd.hierarchyType = :nonHierarchyType
+		 order by pd.pathLength, pd.id
+	]]>
+	</QUERY_ALL_NON_PARENT_PATH_DEF_BY_SOURCE_AND_DEST>
+
+	<QUERY_DELETE_ALL_PATHS>
+	<![CDATA[delete from Path 
+		 where pathDefinition.id in (:pathDefinitionIds)
+	]]>
+	</QUERY_DELETE_ALL_PATHS>
+
+	<QUERY_DELETE_ALL_PATH_DEFINITIONS>
+	<![CDATA[delete from PathDefinition 
+		 where id in (:pathDefinitionIds)
+	]]>
+	</QUERY_DELETE_ALL_PATH_DEFINITIONS>
+
+	<QUERY_DELETE_ALL_ENTITY_TRIPLE_DEFINITIONS>
+	<![CDATA[delete from EntityTripleDefinition 
+		 where id in (:etdIds)
+	]]>
+	</QUERY_DELETE_ALL_ENTITY_TRIPLE_DEFINITIONS>
+
+	<QUERY_GET_NON_BASE_PATH_DEFINITIONS>
+	<![CDATA[select pd.id from PathDefinition pd, BusinessEntityDefinition sbe,
+		 BusinessEntityDefinition dbe 
+		 where pd.sourceBusinessEntityDefinition.id = sbe.id
+		 and sbe.modelGroup in (:userModelGroups)
+		 and pd.destinationBusinessEntityDefinition.id = dbe.id 
+		 and dbe.modelGroup in (:userModelGroups)
+	]]>
+	</QUERY_GET_NON_BASE_PATH_DEFINITIONS>
+
+	<QUERY_GET_BASE_TO_NON_BASE_PATH_DEFINITIONS>
+	<![CDATA[select pd.id 
+		 from PathDefinition pd, BusinessEntityDefinition sbe,
+		 BusinessEntityDefinition dbe
+		 where pd.sourceBusinessEntityDefinition.id = sbe.id 
+		 and sbe.modelGroup = :baseModelGroup and 
+		 pd.destinationBusinessEntityDefinition.id = dbe.id
+		 and dbe.modelGroup in (:userModelGroups)
+	]]>
+	</QUERY_GET_BASE_TO_NON_BASE_PATH_DEFINITIONS>
+
+	<QUERY_GET_NON_BASE_TO_BASE_PATH_DEFINITIONS>
+	<![CDATA[select pd.id 
+		 from PathDefinition pd, BusinessEntityDefinition sbe, BusinessEntityDefinition dbe 
+		 where pd.sourceBusinessEntityDefinition.id = sbe.id
+		 and sbe.modelGroup in (:userModelGroups) 
+		 and pd.destinationBusinessEntityDefinition.id = dbe.id 
+		 and dbe.modelGroup = :baseModelGroup
+	]]>
+	</QUERY_GET_NON_BASE_TO_BASE_PATH_DEFINITIONS>
+
+	<QUERY_GET_NON_BASE_ENTITY_TRIPLE_DEFINITIONS>
+	<![CDATA[select etd.id
+		 from EntityTripleDefinition etd, BusinessEntityDefinition sbe,
+		 BusinessEntityDefinition dbe 
+		 where etd.sourceBusinessEntityDefinition.id = sbe.id and 
+		 sbe.modelGroup in (:userModelGroups) and 
+		 etd.destinationBusinessEntityDefinition.id = dbe.id
+		 and dbe.modelGroup in (:userModelGroups)
+	]]>
+	</QUERY_GET_NON_BASE_ENTITY_TRIPLE_DEFINITIONS>
+
+	<QUERY_GET_BASE_TO_NON_BASE_ENTITY_TRIPLE_DEFINITIONS>
+	<![CDATA[select etd.id from EntityTripleDefinition etd, BusinessEntityDefinition sbe,
+		 BusinessEntityDefinition dbe where
+		 etd.sourceBusinessEntityDefinition.id = sbe.id and sbe.modelGroup = :baseModelGroup and 
+		 etd.destinationBusinessEntityDefinition.id = dbe.id
+		 and dbe.modelGroup in (:userModelGroups)
+	]]>
+	</QUERY_GET_BASE_TO_NON_BASE_ENTITY_TRIPLE_DEFINITIONS>
+
+	<QUERY_GET_NON_BASE_TO_BASE_ENTITY_TRIPLE_DEFINITIONS>
+	<![CDATA[select etd.id from EntityTripleDefinition etd, BusinessEntityDefinition sbe,
+		 BusinessEntityDefinition dbe 
+		 where etd.sourceBusinessEntityDefinition.id = sbe.id
+		 and sbe.modelGroup in (:userModelGroups) and 
+		 etd.destinationBusinessEntityDefinition.id = dbe.id 
+		 and dbe.modelGroup = :baseModelGroup
+	]]>
+	</QUERY_GET_NON_BASE_TO_BASE_ENTITY_TRIPLE_DEFINITIONS>
+
+	<QUERY_GET_ALL_PATH_DEFINITION_BY_SOURCE_BEHAVIOR>
+	<![CDATA[select pd from PathDefinition pd, BusinessEntityDefinition bed, ModelGroupMapping mgm, 
+		 EntityBehavior eb 
+		 where pd.sourceBusinessEntityDefinition.id = bed.id and
+		 bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId and
+		 bed.id = eb.entityBedId and eb.behaviorType = :behaviorType
+	]]>
+	</QUERY_GET_ALL_PATH_DEFINITION_BY_SOURCE_BEHAVIOR>
+
+	<QUERY_GET_ALL_INDIRECT_PATH_DEF_IDS_FOR_CLOUD>
+	<![CDATA[select pd.id from PathDefinition pd
+		 where pd.pathLength > 1 and pd.cloudId = :cloudId
+	]]>
+	</QUERY_GET_ALL_INDIRECT_PATH_DEF_IDS_FOR_CLOUD>
+
+	<QUERY_GET_INDIRECT_PATHS_DEF_IDS_FOR_DIRECT_PATH>
+	<![CDATA[SELECT DISTINCT pdetd2.pathDefinition.id FROM PathDefinition pd, Path pdetd, 
+		 Path pdetd2 WHERE pd.id = :pathDefinitionId AND pdetd.pathDefinition.id = pd.id AND 
+		 pdetd.entityTripleDefinition.id = pdetd2.entityTripleDefinition.id 
+		 and pdetd2.pathDefinition.id != :pathDefinitionId
+	]]>
+	</QUERY_GET_INDIRECT_PATHS_DEF_IDS_FOR_DIRECT_PATH>
+
+	<QUERY_GET_ALL_PATH_DEFINITIONS_FOR_CLOUD>
+	<![CDATA[select pd from PathDefinition pd where pd.cloudId = :cloudId]]>
+	</QUERY_GET_ALL_PATH_DEFINITIONS_FOR_CLOUD>
+
+	<QUERY_PATH_DEFINITION_FOR_ENTITY_BY_PATH_TYPE>
+	<![CDATA[select distinct pd from PathDefinition pd, BusinessEntityDefinition bed, 
+		 ModelGroupMapping mgm,ModelGroup mg 
+		 where (pd.sourceBusinessEntityDefinition.id = :entityBedId
+		 or pd.destinationBusinessEntityDefinition.id = :entityBedId)
+		 and pd.pathLength = 1 and pd.type = :pathType 
+		 and pd.destinationBusinessEntityDefinition.id = bed.id
+		 and mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id
+	]]>
+	</QUERY_PATH_DEFINITION_FOR_ENTITY_BY_PATH_TYPE>
+
+	<QUERY_GET_PATHS_DEF_IDS_FOR_ETD>
+	<![CDATA[SELECT DISTINCT pdetd.pathDefinition.id FROM 
+		 Path pdetd where pdetd.entityTripleDefinition.id = :etdId
+	]]>
+	</QUERY_GET_PATHS_DEF_IDS_FOR_ETD>
+
+	<QUERY_GET_PATH_DEFINITIONS>
+	<![CDATA[from PathDefinition pd 
+		 where  pd.id in (:pathDefinitionIds)
+	]]>
+	</QUERY_GET_PATH_DEFINITIONS>
+
+	<QUERY_INSTANCE_TRIPLE_DEF>
+	<![CDATA[from InstanceTripleDefinition itd 
+		 where itd.srcInstanceBedId = :srcInstanceBedId 
+		 and itd.relationBedId = :relationBedId 
+		 and itd.destInstanceBedId = :destInstanceBedId
+	]]>
+	</QUERY_INSTANCE_TRIPLE_DEF>
+
+	<QUERY_CONVERTABLE_PATH_DEF_BY_SOURCE_AND_DEST>
+	<![CDATA[from PathDefinition pd 
+		 where pd.sourceBusinessEntityDefinition.id in(:sourceBEDId)
+		 and pd.destinationBusinessEntityDefinition.id in (:destinationBEDId)
+		 and pd.associationType= :convertableAssociationType
+	]]>
+	</QUERY_CONVERTABLE_PATH_DEF_BY_SOURCE_AND_DEST>
+
+	<QUERY_INSTANCE_TRIPLE_SRC_IDS_BY_DEST_IDS>
+	<![CDATA[SELECT DISTINCT itd.srcInstanceBedId
+		 from InstanceTripleDefinition itd where
+		 itd.destInstanceBedId in (:destInstanceBedIds)
+	]]>
+	</QUERY_INSTANCE_TRIPLE_SRC_IDS_BY_DEST_IDS>
+
+	<QUERY_INSTANCE_TRIPLE_DEST_IDS_BY_SRC_IDS>
+	<![CDATA[SELECT DISTINCT itd.destInstanceBedId 
+		 from InstanceTripleDefinition itd  where
+		 itd.srcInstanceBedId in (:srcInstanceBedIds)
+	]]>
+	</QUERY_INSTANCE_TRIPLE_DEST_IDS_BY_SRC_IDS>
+
+	<QUERY_PATH_DEF_BY_SOURCE_AND_RELATION>
+	<![CDATA[select path.pathDefinition
+		 FROM Path path where path.entityTripleDefinition.relation.id =:relationBedId
+		 and (path.entityTripleDefinition.sourceBusinessEntityDefinition.id =:bedId
+		 or path.entityTripleDefinition.destinationBusinessEntityDefinition.id =:bedId)
+		 and path.pathDefinition.pathLength = 1
+	]]>
+	</QUERY_PATH_DEF_BY_SOURCE_AND_RELATION>
+
+	<QUERY_NON_PARENT_PATH_DEF_BY_DEST_IDS_AND_SELECTION_TYPE>
+	<![CDATA[select distinct pd 
+		 from PathDefinition pd, BusinessEntityDefinition bed 
+		 where pd.destinationBusinessEntityDefinition.id in (:destBEDIds) and pd.pathLength = 1 
+		 and pd.hierarchyType = :nonHierarchyType and
+		 pd.pathSelectionType = :defaultValuePathSelectionType 
+		 and pd.sourceBusinessEntityDefinition.id = bed.id 
+		 and bed.modelGroup.id = :modelGroupId
+	]]>
+	</QUERY_NON_PARENT_PATH_DEF_BY_DEST_IDS_AND_SELECTION_TYPE>
+
+	<QUERY_NON_PARENT_PATH_DEF_BY_DEST_IDS>
+	<![CDATA[select distinct pd from PathDefinition pd, BusinessEntityDefinition bed 
+		 where pd.destinationBusinessEntityDefinition.id in (:destBEDIds) and pd.pathLength = 1 
+		 and pd.hierarchyType = :nonHierarchyType
+		 and pd.sourceBusinessEntityDefinition.id = bed.id and bed.modelGroup.id = :modelGroupId
+	]]>
+	</QUERY_NON_PARENT_PATH_DEF_BY_DEST_IDS>
+
+	<QUERY_NON_PARENT_PATH_DEF_BY_SRC_IDS>
+	<![CDATA[select distinct pd from PathDefinition pd, BusinessEntityDefinition bed
+		 where pd.sourceBusinessEntityDefinition.id in (:srcBEDIds) and pd.pathLength = 1
+		 and pd.hierarchyType = :nonHierarchyType
+		 and pd.destinationBusinessEntityDefinition.id = bed.id 
+		 and bed.modelGroup.id = :modelGroupId 
+	]]>
+	</QUERY_NON_PARENT_PATH_DEF_BY_SRC_IDS>
+
+	<QUERY_PATH_DEFS_BY_SOURCE_BED_ID>
+	<![CDATA[select distinct pd.id from PathDefinition pd where pd.cloudId = :cloudId 
+		 and pd.sourceBusinessEntityDefinition.id = :sourceBedId
+	]]>
+	</QUERY_PATH_DEFS_BY_SOURCE_BED_ID>
+
+	<QUERY_ALL_NON_PARENT_RELATED_DIRECT_CC_PATH_DEF>
+	<![CDATA[select distinct pd from PathDefinition pd where pd.cloudId = :cloudId
+		  AND pd.hierarchyType = :nonHierarchicalType AND pd.type = :crcPathType
+		 AND pd.pathLength = 1 AND ((pd.destinationBusinessEntityDefinition.id = :sourceBedId 
+		 OR pd.sourceBusinessEntityDefinition.id = :sourceBedId) OR
+		 (pd.destinationBusinessEntityDefinition.id = :destinationBedId 
+		 OR pd.sourceBusinessEntityDefinition.id = :destinationBedId))
+	]]>
+	</QUERY_ALL_NON_PARENT_RELATED_DIRECT_CC_PATH_DEF>
+
+	<QUERY_CONVERTABLE_PATH_DEF_BY_SOURCE_OR_DEST>
+	<![CDATA[from PathDefinition pd
+		 where (pd.sourceBusinessEntityDefinition.id in(:sourceBEDId) 
+		 or pd.destinationBusinessEntityDefinition.id in (:destinationBEDId)) 
+		 and pd.associationType= :convertableAssociationType)
+	]]>
+	</QUERY_CONVERTABLE_PATH_DEF_BY_SOURCE_OR_DEST>
+
+	<QUERY_GET_INSTANCE_TRIPLES_BY_DEST_INSTANCE_BED_ID>       
+	<![CDATA[SELECT itd from InstanceTripleDefinition itd where itd.destInstanceBedId = :destInstanceBedId]]>
+	</QUERY_GET_INSTANCE_TRIPLES_BY_DEST_INSTANCE_BED_ID>
+
+
+	<QUERY_VALUE_TYPE_PATH>
+	<![CDATA[select distinct pd
+		from PathDefinition pd, BusinessEntityDefinition bed 
+		   where pd.cloudId = :cloudId and pd.destinationBusinessEntityDefinition.id = bed.id 
+		and  bed.type.id = 152
+		order by pd.id
+	]]>
+	</QUERY_VALUE_TYPE_PATH>
+
+	<QUERY_PATH_DEFINITION_FOR_ENTITY>
+	<![CDATA[select pd from PathDefinition pd, EntityTripleDefinition etd where
+		 etd.sourceBusinessEntityDefinition.id = pd.sourceBusinessEntityDefinition.id and
+		 etd.destinationBusinessEntityDefinition.id = pd.destinationBusinessEntityDefinition.id and
+		 (etd.sourceBusinessEntityDefinition.id = :entityBedId or
+		  etd.destinationBusinessEntityDefinition.id = :entityBedId or
+		  etd.relation.id = :entityBedId)		
+	]]>
+	</QUERY_PATH_DEFINITION_FOR_ENTITY>
+		
+	<QUERY_PATH_BY_ETD>
+	<![CDATA[from Path path
+		 where path.pathDefinition.sourceBusinessEntityDefinition = 
+		 path.entityTripleDefinition.sourceBusinessEntityDefinition and
+		 path.pathDefinition.destinationBusinessEntityDefinition = 
+		 path.entityTripleDefinition.destinationBusinessEntityDefinition and 
+		 path.entityTripleDefinition.sourceBusinessEntityDefinition.id = :sid 
+		 and path.entityTripleDefinition.destinationBusinessEntityDefinition.id = :did
+		 and path.entityTripleDefinition.relation.id = :rid
+	]]>
+	</QUERY_PATH_BY_ETD>
+
+</queries>

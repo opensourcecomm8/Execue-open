@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+	<!-- Bean defintion of MessageDAO -->
+	<bean id="messageDAO" class="com.execue.dataaccess.qdata.dao.impl.MessageDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+	<!-- Bean defintion of QDataUserQueryDAO -->
+	<bean id="qDataUserQueryDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.QDataUserQueryDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of QDataBusinessQueryDAO -->
+	<bean id="qDataBusinessQueryDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.QDataBusinessQueryDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of QDataReducedQueryDAO -->
+	<bean id="qDataReducedQueryDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.QDataReducedQueryDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of QDataAggregatedQueryDAO -->
+	<bean id="qDataAggregatedQueryDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.QDataAggregatedQueryDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+		<property name="assetDAO">
+			<ref bean="assetDAO"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of QDataUserQueryDAO -->
+	<bean id="jobDataDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.JobDataDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of JoinDefinitionDAO -->
+	<bean id="udxDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.UDXDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+		<property name="qdataQueryBuilderServiceFactory">
+			<ref bean="qdataQueryBuilderServiceFactory"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of RFXDAO -->
+	<bean id="rfxDAO" 
+		class="com.execue.dataaccess.qdata.dao.impl.RFXDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+	<!-- Bean definition of reportDAO --> 
+	<bean id="reportDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.ReportDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="userNotificationDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.UserNotificationDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>
+	<bean id="newsItemDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.NewsItemDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>
+	<bean id="applicationCategoryMappingDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.ApplicationCategoryMappingDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>	
+	
+	<!-- bean definition for OptimalDSetSWIDAOImpl -->
+	
+	<bean id="optimalDSetSWIDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.OptimalDSetSWIDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>
+	<!-- bean definition for AnswersCatalogManagementQueueDAO -->
+	<bean id="answersCatalogManagementQueueDAO"
+		class="com.execue.dataaccess.qdata.dao.impl.AnswersCatalogManagementQueueDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate" />
+		</property>
+	</bean>			
+</beans>

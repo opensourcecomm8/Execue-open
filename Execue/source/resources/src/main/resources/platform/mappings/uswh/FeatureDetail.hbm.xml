@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="featureDetailType">
+		<param name="enumClass">com.execue.core.common.type.FeatureDetailType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="orderEntityType">
+		<param name="enumClass">com.execue.core.common.type.OrderEntityType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getOrderEntityType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="diplayableFeatureAlignmentType">
+		<param name="enumClass">com.execue.core.common.type.DisplayableFeatureAlignmentType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>			
+	<class name="com.execue.core.common.bean.entity.unstructured.FeatureDetail" table="FEATURE_DETAIL">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">FEATURE_DETAIL</param>
+			</generator>
+		</id>
+		<property name="featureId" type="java.lang.Long">
+			<column name="FEATURE_ID" />
+		</property>
+		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" />
+		</property>
+		<property name="columnName" type="string">
+			<column name="COLUMN_NAME" />
+		</property>
+		<property name="displayOrder" type="integer">
+			<column name="DISPLAY_ORDER" />
+		</property>
+		 <property name="sortable" type="checkType">
+			<column name="SORTABLE" length="1" />
+        </property>
+         <property name="defaultSortOrder" type="orderEntityType">
+			<column name="DEFAULT_SORT_ORDER" length="4"/>
+        </property>
+        <property name="featureDetailType" type="featureDetailType">
+			<column name="DETAIL_TYPE" />
+        </property>        
+         <property name="diplayableFeatureAlignmentType" type="diplayableFeatureAlignmentType">
+			<column name="ALIGNMENT" length="5"/>
+        </property>
+        <property name="dataHeader" type="checkType">
+            <column name="DATA_HEADER" length="1"/>
+        </property>
+        <property name="facetDependency" type="string">
+			<column name="FACET_DEPENDENCY" />
+		</property>			        						
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,294 @@
+BODY {
+	PADDING-BOTTOM: 25px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: arial; BACKGROUND: #fff; COLOR: #000; FONT-SIZE: 10pt; PADDING-TOP: 100px
+}
+DIV#header {
+	POSITION: absolute; BACKGROUND-COLOR: #fff; WIDTH: 100%; HEIGHT: 100px; TOP: 0px; LEFT: 0px
+}
+DIV#footer {
+	POSITION: absolute; WIDTH: 100%; BOTTOM: 0px; HEIGHT: 25px; LEFT: 0px
+}
+DIV#content {
+	PADDING-BOTTOM: 50px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; PADDING-TOP: 120px
+}
+
+@media Screen    
+{
+BODY > DIV#header {
+	POSITION: fixed
+}
+BODY > DIV#footer {
+	POSITION: fixed
+}
+    }
+* HTML BODY {
+	OVERFLOW: hidden
+}
+* HTML DIV#content {
+	HEIGHT: 100%; OVERFLOW: auto
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-REPEAT: repeat-x; PADDING-TOP: 0px
+}
+body {
+	font-family: arial
+	margin: 0px;
+	padding: 0px;
+
+}
+.snapshotText {
+	font-size: 11px;
+	float:none;
+	text-align:left;
+	color:#000;
+}
+.footer_text {
+	font-size: 10px;
+	background-image: url(images/index_r4_c1.jpg);
+	text-align: center;
+	padding-top: 10px;
+	background-repeat: repeat-x;
+}
+
+.qiHeaderDiv {
+
+	font-size: 11px;
+	margin-top: 50px;
+}
+#apDiv1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+	top: 73px;
+	left: 682px;
+}
+a.defaultColor {
+	background-color: #FFF;
+}
+a.selectedColor {
+	background-color: #CCCCCC;
+}
+.header_bg {
+	background-image: url(../images/bg_Search_Header.jpg);
+	background-position: 5px top;
+	background-repeat: repeat-x;
+}
+
+td img {display: block;cursor:pointer;}
+.footer_bg {
+	BACKGROUND-IMAGE: url(../images/index_r6_c1.jpg); PADDING-BOTTOM: 3px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; COLOR: #000; FONT-SIZE: 11px; PADDING-TOP: 10px
+}
+.searchButton {
+	font-weight: bold;
+	width: 150px;
+}
+
+#divcontainer{
+	width:750px;
+	margin-bottom: 0px;
+	padding: 0px;
+	background-color: #ECF0FD;
+	border: thin solid #D5E0F7;
+	position: relative;
+	margin: auto;
+	height: 140px;
+	height: auto !important;
+}
+.search_header_text {
+	font-size: 13px;
+	color: #036;
+	padding-top: 10px;
+}
+.search_header {
+	font-size: 13px;
+	color: #036;
+	padding-bottom: 1px;
+	margin-bottom: 1px;
+
+}
+.text_boxes {
+	border: 1px solid #CCC;
+	padding-top: 5px;
+	padding-left: 5px;
+	height: 22px;
+	background-image: url(images/main/searchTextBg.jpg);
+}
+.text_boxes_small {
+	border: 1px solid #CCC;
+	padding-top: 2px;
+	padding-left: 2px;
+	height: 16px;
+	background-image: url(images/main/searchTextBg.jpg);
+}
+.boxes_border {
+	border: 1px solid #CCC;
+
+}
+#moreOptions {
+	font-size: 12px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	position: relative;
+}
+.buttonAddMetrics {
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #5A8EC7;
+}
+.searchButtonTd {
+	padding-left: 5px;
+
+}
+a {
+	color: #03C;
+	white-space:nowrap;
+}
+a:hover {
+
+	text-decoration: none;
+}
+.divBorder {
+	border: 1px solid #D5E0F7;
+	height: 70px;
+	background-color: #FAFBFE;
+	width: 900px;
+	margin: 4;
+	height: auto !important;
+}
+#population{
+width:750px;
+margin:auto;
+margin-bottom:5px;
+height:auto;	
+display:none;
+}
+.divBorderPopulation {
+	border: 1px solid #D5E0F7;
+	background-color: #FAFBFE;
+	margin: 4;
+	width:750px;
+	height:auto;
+
+}
+.divCohorBorder {
+	border: 1px solid #D5E0F7;
+	height: 140px;
+	background-color: #FAFBFE;
+	width: 900px;
+	margin: 4;
+
+}
+.divBorderWhite {
+	border: 1px solid #D5E0F7;
+	height: 70px;
+	background-color: #FFF;
+	width: 900px;
+	margin: 4;
+}
+.fieldsText {
+	font-size: 11px;
+
+}
+#q_metrics,#q_select,#q_group,#q_condition{
+	
+	color:#000;
+}
+#q_condition{
+width:600px;	
+}
+#q_conditionInner{
+float:left;	
+width:600px;
+height:20px;
+}
+
+
+
+/* TextboxList CSS */
+ul.qiSuggestTerm-holder { margin: 0; border: 1px solid #999; overflow: hidden; height: auto !important; height: 1%; padding: 2px 3px 2px 0; }
+*:first-child+html ul.qiSuggestTerm-holder { padding-bottom: 2px; } * html ul.qiSuggestTerm-holder { padding-bottom: 2px; } /* ie7 and below */
+ul.qiSuggestTerm-holder li { float: left; list-style-type: inherit; margin: 0 1px 4px 0; }
+body:last-child ul.qiSuggestTerm-holder li { list-style-type: none;}
+ul.qiSuggestTerm-holder li.bit-box, ul.qiSuggestTerm-holder li.bit-input input { font: 11px Arial; }
+ul.qiSuggestTerm-holder li.bit-box { -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; border: 0px solid #CAD8F3; background: #ECF0FD; padding: 4px 1px 2px; white-space:nowrap; } /**box border and baclground */
+ul.qiSuggestTerm-holder li.bit-box-focus { border-color: #598BEC; background: #ECF0FD; color: #000; }
+ul.qiSuggestTerm-holder li.bit-input input { width: 150px; margin: 0; border: none; outline: 0; padding: 3px 0 2px; z-index:1;background:#FAFBFE} /* no left/right padding here please */
+td#metrics ul.qiSuggestTerm-holder li.bit-input input { width: 150px; margin: 0; border: none; outline: 0; padding: 3px 0 2px; z-index:1;background:#ECF0FD} 
+ul.qiSuggestTerm-holder li.bit-input input.smallinput { width: 20px; }
+
+form ol { font: 11px arial; }
+form ol li.qiSuggestTerm-input-text { margin-bottom: 10px; list-style-type: none; padding-bottom: 10px; }
+form ol li.qiSuggestTerm-input-text label { font-weight: bold; cursor: pointer; display: block; font-size: 13px; margin-bottom: 10px; }
+form ol li.qiSuggestTerm-input-text input { width: 600px; padding: 5px 5px 6px; font: 11px arial; border: 1px solid #999; }
+form ul.qiSuggestTerm-holder { width: 530px;  }
+
+td div#selectMetrics form ul.qiSuggestTerm-holder input { background-color:red; }
+ul.qiSuggestTerm-holder li.bit-hover { background: #ECF0FD; border: 0px solid #6D95E0; } /**box hover */
+ul.qiSuggestTerm-holder li.bit-box-focus { border-color: #598BEC; background: #ECF0FD; color: #000; }
+ul.qiSuggestTerm-holder li.bit-box a.closebutton { position: absolute; right: 4px; top: 5px; display: block; width: 7px; height: 7px; font-size: 1px; background: url('../images/close.gif');color: #000;  }
+ul.qiSuggestTerm-holder li.bit-box a.closebutton:hover { background-position: 7px;color: #000;  }
+ul.qiSuggestTerm-holder li.bit-box-focus a.closebutton, ul.qiSuggestTerm-holder li.bit-box-focus a.closebutton:hover { background-position: bottom; color: #000; }
+ul.qiSuggestTerm-holder li.bit-box { padding-right: 15px; position: relative; }
+
+/** Textboxlist Autocompleter */
+.qiSuggestTerm-auto { display: none; position: absolute; width: 240px; background: #eee;}
+.qiSuggestTerm-auto .default { padding: 5px 7px; border: 1px solid #ccc; border-width: 0 1px 1px; }
+.qiSuggestTerm-auto ul { display: none; margin: 0; padding: 0; }
+.qiSuggestTerm-auto ul li {width: 240px; padding: 5px 0px 2px 0px; margin: 0; list-style-type: inherit; border: 1px solid #ccc; border-width: 0 1px 1px; font: 11px arial; text-indent:5px; }
+body:last-child ul.qiSuggestTerm-auto ul li { list-style-type: none;}
+.qiSuggestTerm-auto ul li em { font-weight: bold; font-style: normal; background: #ccc; }
+.qiSuggestTerm-auto ul li.auto-focus { background: #4173CC; color: #fff; }
+.qiSuggestTerm-auto ul li.auto-focus em { background: none; }
+
+
+/* TextboxList CSS */
+ul.qiSuggestCondition-holder { margin: 0; border: 1px solid #999; overflow: hidden; height: auto !important; height: 1%; padding: 2px 3px 2px 0; }
+*:first-child+html ul.qiSuggestCondition-holder { padding-bottom: 2px; } * html ul.qiSuggestCondition-holder { padding-bottom: 2px; } /* ie7 and below */
+ul.qiSuggestCondition-holder li { float: left; list-style-type: none; margin: 0 5px 4px 0; }
+.bit-box, ul.qiSuggestCondition-holder li.bit-box, ul.qiSuggestCondition-holder li.bit-input input { font: 11px arial;z-index:1; }
+.bit-box, ul.qiSuggestCondition-holder li.bit-box { -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; border: 0px solid #CAD8F3; background: #FAFBFE; padding: 4px 1px 2px; } /**box border and baclground */
+ul.qiSuggestCondition-holder li.bit-box-focus { border-color: #598BEC; background: #598BEC; color: #fff; }
+ul.qiSuggestCondition-holder li.bit-input input { width: 150px; margin: 0; border: none; outline: 0; padding: 3px 0 2px;  } /* no left/right padding here please */
+ul.qiSuggestCondition-holder li.bit-input input.smallinput { width: 20px; }
+
+form ol { font: 11px arial; }
+form ol li.qiSuggestCondition-input-text { margin-bottom: 10px; list-style-type: none; padding-bottom: 10px; border: 1px solid #000; }
+form ol li.qiSuggestCondition-input-text label { font-weight: bold; cursor: pointer; display: block; font-size: 13px; margin-bottom: 10px; }
+.suggestTemplate, form ol li.qiSuggestCondition-input-text input { width: 300px;  font: 11px arial; margin: 0; border: none; outline: 0; padding: 3px 0 2px 2px;  } 
+form ul.qiSuggestCondition-holder { width: 530px;}
+.suggestTemplate, form ul.qiSuggestCondition-holder input { background-color: #FAFBFE; }
+.suggestTemplate, form ul.qiSuggestCondition-holder select { font-size:: 10px; }
+ul.qiSuggestCondition-holder li.bit-hover { background: #FAFBFE; border: 0px solid #6D95E0; } /**box hover */
+ul.qiSuggestCondition-holder li.bit-box-focus { border-color: #598BEC; background: #598BEC; color: #fff; }
+ul.qiSuggestCondition-holder li.bit-box a.closebutton { position: absolute; right: 4px; top: 5px; display: block; width: 7px; height: 7px; font-size: 1px; background: url('../images/close.gif'); }
+ul.qiSuggestCondition-holder li.bit-box a.closebutton:hover { background-position: 11px; }
+ul.qiSuggestCondition-holder li.bit-box-focus a.closebutton, ul.qiSuggestCondition-holder li.bit-box-focus a.closebutton:hover { background-position: bottom; }
+ul.qiSuggestCondition-holder li.bit-box { padding-right: 15px; position: relative;z-index:1;}
+
+/** Textboxlist Autocompleter */
+.qiSuggestCondition-auto { display: none; position: absolute; width: 240px; background: #eee; }
+.qiSuggestCondition-auto .default { padding: 5px 7px; border: 1px solid #ccc; border-width: 0 1px 1px; }
+.qiSuggestCondition-auto ul { display: none; margin: 0; padding: 0; }
+.qiSuggestCondition-auto ul li {width: 240px; padding: 5px 0px 2px 0px; margin: 0; list-style-type: none; border: 1px solid #ccc; border-width: 0 1px 1px; font: 11px arial; text-indent:5px; }
+.qiSuggestCondition-auto ul li em { font-weight: bold; font-style: normal; background: #ccc; }
+.qiSuggestCondition-auto ul li.auto-focus { background: #4173CC; color: #fff; }
+.qiSuggestCondition-auto ul li.auto-focus em { background: none; }
+.qiSearchBg {
+	background-image: url(../images/biSearchbg.jpg);
+	background-repeat: repeat-x;
+}
+.dateCombo{
+	font-size:11px;
+	border:#CCC solid 1px;
+}
+.messageDiv{
+	font-size:11px;
+	color:#F00;
+}
+.showhide{
+color:#000;
+line-height:22px;
+vertical-align:middle;
+padding-left:7px;
+}

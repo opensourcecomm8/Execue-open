@@ -1,0 +1,328 @@
+
+.login_bg {
+	background-image: url('../../images/main/login_r2_c1.jpg');
+}
+.dynamicPaneBgLoader{
+background-image:	url('../../images/main/uss/Loader.gif');
+background-repeat:no-repeat;
+background-position:center ;
+}
+.dynamicPaneBgNoLoader{
+background-image:	none;
+}
+</style>
+
+<style>
+.login_bg {
+	background-image: url('../../images/main/login_r2_c1.jpg')
+		;
+}
+
+.top-bg {
+	background-image: url('../../images/main/results_header_bg.jpg')
+		;
+	background-repeat: repeat-x;
+	background-position: left bottom;
+	height: 25px;
+	background-color: #FBFBFB;
+}
+
+.technology-1 {
+	background-image: url('../../images/main/top-bg-inner-2.png');
+	background-repeat: repeat-x;
+	background-position: left top;
+	height: 52px;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #cccccc;
+}
+
+input[type='text'],input[type='password'],textarea,.inputText,select {
+	border: 1px solid #ccc;
+}
+
+ul li {
+	line-height: 22px;
+}
+
+.choicebox {
+	background-color: #FFFFFF;
+	min-height: 18px;
+	height: auto;
+	padding: 2px;
+	width: 170px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #D3E1F9;
+}
+
+div.choicebox td {
+	pdding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.imgFade {
+	opacity: .50;
+	filter: Alpha(Opacity = 50);
+}
+
+.imgDontFade {
+	opacity: 1;
+	filter: Alpha(Opacity = 100);
+}
+
+<!--
+.subheading {
+	font-weight: bold;
+	color: #900;
+	padding-left:5px;
+}
+.arrowRight{
+font-size:10px;
+color:#C30;
+}
+.citiesMoreTr,.makesMoreTr,.modelsMoreTr,.featuresMoreTr{
+display:none;
+
+}
+.moreLink{padding:3px;padding-left:17px;text-align:left;}
+.smallGrey{
+font-size:11px;
+}
+table#advancedOption input{
+margin-right:4px;	
+}
+tr.displayControl{
+
+}
+.normalText{
+height:18px;	
+}
+.match{
+margin-top:2px;font-weight:bold;	
+}
+table.tableGrid td{ 
+	
+	border-top:0px solid #D3E1F9;
+	font-size:12px;
+}
+#imageViewU table.tableGrid td{ 
+	
+	border-bottom:1px solid #D3E1F9;
+	padding:5px;
+	font-size:12px;
+}
+table.tableGrid td img{ 
+	
+	border:1px solid #999;
+	padding:2px;
+
+}
+table.tableGrid td.bottom{ 
+	border-bottom:1px solid #D3E1F9;
+
+}
+table.tableGrid td.right{ 
+	border-right:1px solid #D3E1F9;
+
+}
+table.tableGrid td.left{ 
+	border-left:1px solid #D3E1F9;
+
+}
+
+.makeModel{
+width: 100%; padding: 3px 0px;font-weight:bold;font-size:12px;	
+}
+.gridPopupData{
+	width: 100%; padding: 3px 0px;font-weight:bold;font-size:12px;	float:left;text-align:left;
+}
+.location{
+width: 100%; padding: 3px 0px;
+}
+a.titleLink{
+text-decoration:none;
+line-height:18px;
+white-space:normal;
+}
+a {
+    color: #0000FF;
+    font-size: 9pt;
+    white-space:normal
+}
+a.titleLinkGrid,a#gridPopupTitle{
+	color: #333333;
+    line-height: 16px;
+    text-align: justify;
+    text-decoration: none;
+	white-space:normal;
+}
+.colHeadBg{
+height:28px;background-color:#E0E4EB;border-bottom:#B3BDCE 1px solid;border-right:#B3BDCE 1px solid;border-left:#fff 1px solid;border-top:#fff 1px solid;width:99%;margin-bottom:10px;	
+white-space:nowrap;
+}
+.colHead{
+font-size:11px;	
+}
+
+#listViewDiv{ 
+	text-decoration: none; color: #fff;background:url(../../images/main/uss/listView.png) no-repeat;padding-left:21px;color:#000;
+	height:17px;white-space:nowrap;margin-right:7px;
+}
+#gridViewDiv{
+padding-top:2px;"><div style="text-decoration: none; color: #fff;background:url(../../images/main/uss/gridViewLink.png) no-repeat;padding-left:21px;color:#0000FF; 
+height:18px;white-space:nowrap;margin-right:5px;
+}
+
+#advancedMenu td{
+padding-right:8px;	
+}
+
+
+#showKnowledgePopup{
+	
+	display: none;
+	background-color:#FFF;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+	border: 1px solid #414141;
+	border-radius: 10px 10px 10px 5px;
+	padding:20px;  overflow: auto; 
+	width:260px ; 
+	min-height: 100px;height:auto;position:absolute;z-index:10001;left:100px;top:100px;border:3px soild #333;
+	
+}
+
+-->
+-->
+
+a.colHeadLink{
+	color:#3F5356;font-weight:bold;
+	font-size:10px;
+}
+a.colHeadLink:hover{
+	color:#3F5356;font-weight:bold;
+	text-decoration:none;
+	font-size:10px;
+}
+.colHead{
+font-size:10px;	
+}
+#content{
+width:100%;	
+}
+
+.suggest-holder { width:120px; margin: 0;
+border: 1px solid #ccc; overflow: hidden; 
+min-height:14px; height: auto !important; 
+height: 1%; padding: 0px 3px 0px 0; 
+background-color:#FFF;
+}
+.suggest-holder-hover { width:120px; margin: 0;
+border: 1px solid #8FC787; overflow: hidden; 
+min-height:14px; height: auto !important; 
+height: 1%; padding: 0px 3px 0px 0; 
+background-color:#CCE3D3;
+box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+}
+
+.suggest-distance-holder { width:40px; margin: 0;
+border: 1px solid #ccc; overflow: hidden; 
+min-height:14px; height: auto !important; 
+height: 1%; padding: 0px 3px 0px 0; 
+background-color:#FFF;
+}
+.suggest-distance-holder-hover { width:40px; margin: 0;
+border: 1px solid #8FC787; overflow: hidden; 
+min-height:14px; height: auto !important; 
+height: 1%; padding: 0px 3px 0px 0; 
+background-color:#CCE3D3;
+box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+}
+
+div.suggest-holder div,div.suggest-holder-hover div,div.suggest-distance-holder div,div.suggest-distance-holder-hover div{
+	white-space:nowrap;
+	line-height:18px;
+	padding-left:2px;
+}
+.displayText{
+cursor:pointer;	
+}
+div.suggest-holder .myinput,div.suggest-holder-hover .myinput{
+width:120px;	
+border:none none none;
+}
+
+div.suggest-distance-holder .myinput,div.suggest-distance-holder-hover .myinput{
+width:40px;	
+border:none none none;
+}
+
+.myinput1{
+	color: #3F5356;
+    font-family: arial;
+    font-size: 9pt;
+	border:none none none;
+}
+.suggest-holder input[type='text'],.suggest-holder-hover input[type='text'],.suggest-distance-holder input[type='text'],.suggest-distance-holder-hover input[type='text']{
+	border:none none none;
+	 color: #3F5356;
+    font-family: arial;
+    font-size: 9pt;
+}
+.facetHeading{
+	margin:10px 0px 5px 5px;
+	width:100%;
+	float:left;
+	font-weight:bold;
+	cursor:pointer;
+}
+.facetHeadingHidden{
+	margin:10px 0px 5px 5px;
+	width:100%;
+	float:left;
+	font-weight:bold;
+	cursor:pointer;
+}
+.facetItem{
+margin:0px 0px 0px 20px;
+width:100%;
+	float:left;
+}
+
+.moreLinkDiv{
+	float:left;width:40px;
+	margin-top:3px;
+}
+.moreToggle{
+	float:left;
+	padding-bottom:5px;
+	margin-top:3px;
+}
+.moreFacetDetailsDiv{
+width:100%;
+margin-left:28px ;
+}
+.hiddenFacetItems{
+display:none;
+width:100%;
+float:left;
+margin-left:20px;
+}
+.facetItemHidden{
+	width:100%;
+}
+.facetItemsHidden{
+	display:none;
+	width:100%;
+}
+.moreFacetToggle{
+	float:left;
+	width:17px;
+}
+.facetName{
+	float:left;
+}

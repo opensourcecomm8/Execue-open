@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<unstructured-wh-dataaccess>
+		<static-values>
+			<initialSize>5</initialSize>
+			<maxActive>5</maxActive>
+			<testWhileIdle>true</testWhileIdle>
+			<testOnBorrow>true</testOnBorrow>
+			<validationQuery>db.source.uswh.connection.validation.query</validationQuery>					
+			<mapping-resources>
+				<value>platform/mappings/uswh/Feature.hbm.xml</value>
+				<value>platform/mappings/uswh/FeatureValue.hbm.xml</value>
+				<value>platform/mappings/uswh/FeatureRange.hbm.xml</value>
+				<value>platform/mappings/uswh/FeatureRangeInfo.hbm.xml</value>
+				<value>platform/mappings/uswh/SemantifiedContent.hbm.xml</value>			
+				<value>platform/mappings/uswh/SemantifiedContentFeatureInformation.hbm.xml</value>
+				<value>platform/mappings/uswh/SemantifiedContentKeyword.hbm.xml</value>
+				<value>platform/mappings/uswh/SemantifiedContentKeywordMatch.hbm.xml</value>
+				<value>platform/mappings/uswh/UserQueryFeatureInformation.hbm.xml</value>
+				<value>platform/mappings/uswh/UserQueryLocationInformation.hbm.xml</value>
+				<value>platform/mappings/uswh/SourceContent.hbm.xml</value>
+				<value>platform/mappings/uswh/FeatureDetail.hbm.xml</value>
+				<value>platform/mappings/uswh/FeatureDependency.hbm.xml</value>
+				<value>platform/mappings/uswh/RIFeatureContent.hbm.xml</value>				
+			</mapping-resources>		
+			<hibernate-properties>
+				<map>
+					<key>hibernate.dialect</key>
+					<value>db.source.uswh.hibernate.dialect</value>
+					<key>hibernate.show_sql</key>
+					<value>false</value>
+					<key>hibernate.cache.provider_class</key>
+					<value>org.hibernate.cache.EhCacheProvider</value>
+					<key>hibernate.cache.use_second_level_cache</key>
+					<value>false</value>
+				</map>
+			</hibernate-properties>
+		</static-values>		
+	</unstructured-wh-dataaccess>
+</execue-configuration>

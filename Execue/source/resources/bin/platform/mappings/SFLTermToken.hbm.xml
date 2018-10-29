@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 4, 2009 11:51:22 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+
+	<class name="com.execue.core.common.bean.entity.SFLTermToken" table="SFL_TERM_TOKEN">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">SFL_TERM_TOKEN</param>
+			</generator>
+		</id>
+
+		<property name="businessTermToken" type="string">
+			<column name="BUSINESS_TERM_TOKEN" />
+		</property>
+        
+		<property name="hits" type="java.lang.Long">
+			<column name="HITS" precision="20" scale="0" />
+		</property>
+        
+		<property name="weight" type="java.lang.Double">
+			<column name="WEIGHT" precision="10" />
+		</property>
+        
+		<property name="group" type="int">
+			<column name="GR0UP" precision="3" scale="0" />
+		</property>
+        
+		<property name="sflTermId" type="java.lang.Long" insert="false" update="false">
+			<column name="SFL_TERM_ID" precision="20" scale="0" />
+		</property>
+		<property name="order" type="int">
+			<column name="TOKEN_ORDER" precision="3" scale="0" />
+		</property>
+		<property name="primaryWord" type="int">
+			<column name="PRIMARY_WORD" precision="1" scale="0" />
+		</property>
+        <property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" precision="20" scale="0" />
+		</property>
+		<property name="required" type="java.lang.Integer">
+			<column name="required" precision="1" scale="0" />
+		</property>
+		<property name="requiredTokenCount" type="java.lang.Integer">
+			<column name="required_token_count" precision="2" scale="0" />
+		</property>
+		<property name="businessTerm" type="string">
+			<column name="business_term" length="255" />
+		</property>
+		<many-to-one name="sflTerm" class="com.execue.core.common.bean.entity.SFLTerm" fetch="select">
+			<column name="SFL_TERM_ID" precision="20" scale="0" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

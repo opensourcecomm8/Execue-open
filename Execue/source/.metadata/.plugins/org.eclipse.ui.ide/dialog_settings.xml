@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="false" key="ShowDerived"/>
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/execueAdminWebApp/src/main/webapp/META-INF/context.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources-ext/src/main/resources/spring-hibernate.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources/src/main/resources/platform/mappings/DataSource.hbm.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/execueBaseWebApp/src/main/webapp/META-INF/context.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources-ext/src/main/resources/execue-log4j.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources-ext/src/main/resources/execue.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources-ext/src/main/resources/quartz.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources/src/main/resources/platform/execue-publisher-configuration.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources/src/main/resources/platform/execue-core-configuration.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources/src/main/resources/platform/execue-dataaccess-configuration.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/resources/src/main/resources/platform/execue-ac-query-history-configuration.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="8" key="DIALOG_Y_ORIGIN"/>
+			<item value="245" key="DIALOG_X_ORIGIN"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="1|Sans|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		</section>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="563" key="DIALOG_WIDTH"/>
+		<item value="62" key="DIALOG_Y_ORIGIN"/>
+		<item value="358" key="DIALOG_HEIGHT"/>
+		<item value="267" key="DIALOG_X_ORIGIN"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+	<section name="org.eclipse.ui.internal.views.markers.FiltersConfigurationDialog">
+		<item value="All Errors" key="SELECTED_FILTER_GROUP"/>
+	</section>
+</section>

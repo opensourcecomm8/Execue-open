@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="attributeType">
+		<param name="enumClass">com.execue.core.common.type.AttributeType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    <class name="com.execue.core.common.bean.qdata.EntityAttribute" table="ENTITY_ATTRIBUTES">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="10" scale="0" />
+        </id>
+        
+        <property name="entityBedId" type="java.lang.Long">
+            <column name="ENTITY_BE_ID" precision="10" scale="0" />
+        </property>
+        
+        <property name="attributeType" type="attributeType">
+            <column name="ATTRIBUTE"/>
+        </property>
+        
+        <property name="attributeValue" type="string">
+            <column name="ATTRIBUTE_VALUE"/>
+        </property>
+        
+    </class>
+
+</hibernate-mapping>

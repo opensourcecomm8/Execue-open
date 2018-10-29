@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">	
+	   
+	<bean id="answersCatalogQueryHistoryConfigurationService"
+		class="com.execue.acqh.configuration.impl.AnswersCatalogQueryHistoryConfigurationServiceImpl">	
+		<property name="answersCatalogQueryHistoryConfiguration" ref="answersCatalogQueryHistoryConfiguration" />
+	</bean>
+	
+	<bean id="answersCatalogQueryHistoryConfigurableService"
+		class="com.execue.acqh.configuration.impl.AnswersCatalogQueryHistoryConfigurableService">		
+		<property name="answersCatalogQueryHistoryConfigurationService" ref="answersCatalogQueryHistoryConfigurationService" />
+	</bean>
+	
+	<bean id="qdataQueryHistoryRetrievalService" class="com.execue.acqh.service.impl.QDataQueryHistoryRetrievalServiceImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="queryDataConfigurationService" ref="queryDataConfigurationService" />
+		<property name="queryDataService" ref="queryDataService" />	
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="preferencesRetrievalService" ref="preferencesRetrievalService" />
+		<property name="rangeSuggestionService" ref="rangeSuggestionService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>	
+	
+	<bean id="fileBasedQueryHistoryRetrievalService" class="com.execue.acqh.service.impl.FileBasedQueryHistoryRetrievalServiceImpl">
+		<property name="mappingRetrievalService" ref="mappingRetrievalService" />
+		<property name="rangeSuggestionService" ref="rangeSuggestionService" />
+		<property name="answersCatalogQueryHistoryConfigurationService" ref="answersCatalogQueryHistoryConfigurationService" />		
+	</bean>
+	
+	<bean id="queryHistoryRetrievalServiceFactory" 
+		class="com.execue.acqh.service.QueryHistoryRetrievalServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="QDATA" value="qdataQueryHistoryRetrievalService"/>
+				<entry key="FILE_BASED" value="fileBasedQueryHistoryRetrievalService"/>
+			</map>
+		</property>
+	</bean>
+</beans>

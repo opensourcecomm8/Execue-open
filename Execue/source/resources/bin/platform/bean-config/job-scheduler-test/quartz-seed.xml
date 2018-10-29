@@ -1,0 +1,62 @@
+<job-scheduler>
+	<execueJobs>
+		<execueJob>
+			<jobData>
+				<jobName>job1</jobName>
+				<jobType>0</jobType>
+				<jobClass>com.execue.scheduler.job.OptimalDSetJob</jobClass>
+				<jobDuration>0</jobDuration>
+				<jobStatus>0</jobStatus>
+				<jobGroup>default</jobGroup>
+				<jobDescription>job1 description</jobDescription>
+				<seedOperation>ADD</seedOperation>
+			</jobData>
+     
+			<jobSchedule>
+				<periodicity>1</periodicity> 
+				<noOfRepeats>0</noOfRepeats>
+				<isIndefinite>false</isIndefinite>
+				<startTime>2009-02-25 11:27:18.294 IST</startTime>
+				<endTime>2009-05-25 11:27:18.294 IST</endTime>
+				<dayOfMonth>1</dayOfMonth>
+				<dayOfWeek>0</dayOfWeek>
+				<hourOfDay>9</hourOfDay>
+				<minuteOfHour>9</minuteOfHour>
+				<everyNthHour>0</everyNthHour>
+				<seedOperation>ADD=jayaMonthly</seedOperation>
+			</jobSchedule>
+			<executionStatus>0</executionStatus>
+		</execueJob>
+    
+    
+		<execueJob>
+			<jobData>
+				<jobName>job2</jobName>
+				<jobType>0</jobType>
+				<jobClass>com.execue.scheduler.job.OptimalDSetJob</jobClass>
+				<jobDuration>0</jobDuration>
+				<jobStatus>0</jobStatus>
+				<jobGroup>default</jobGroup>
+				<jobDescription>job2 description</jobDescription>
+				<seedOperation>ADD</seedOperation>
+			</jobData>
+			<executionStatus>0</executionStatus>
+		</execueJob>
+		
+		<execueJob>
+			<jobData>
+				<jobName>job2</jobName>
+				<jobType>0</jobType>
+				<jobClass>com.execue.scheduler.job.OptimalDSetJob</jobClass>
+				<jobDuration>0</jobDuration>
+				<jobStatus>0</jobStatus>
+				<jobGroup>default2</jobGroup>
+				<jobDescription>job2 description</jobDescription>
+				<seedOperation>ADD</seedOperation>
+			</jobData>
+
+			<executionStatus>0</executionStatus>
+		</execueJob>
+		
+	</execueJobs>
+</job-scheduler>

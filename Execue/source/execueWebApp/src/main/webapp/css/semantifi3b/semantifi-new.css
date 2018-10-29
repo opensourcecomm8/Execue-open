@@ -1,0 +1,599 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.copyright {
+	font-family: "trebuchet ms";
+	font-size: 10px;
+	font-weight: normal;
+	color: #3E5356;
+	text-align: right;
+	margin-right: 8px;
+	padding-right: 8px;
+}
+.top-bg {
+	background-image: url(../../images/semantifi3b/header_top.png);
+	background-repeat: repeat-x;
+	background-position: left bottom;
+	height: 25px;
+	background-color: #FBFBFB;
+}
+.center-bg {
+	background-image: url(../../images/semantifi3b/center-bg.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height: 354px;
+
+}
+.center-bg1 {
+	background-image: url(../../images/semantifi3b/center1-bg.png);
+	background-repeat: repeat-x;
+	background-position: left top;
+	height: 250px;
+}
+.box1 {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0px;
+	margin-left: 0;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0px;
+	padding-left: 0;
+	height: 550px;
+	width: 320px;
+}
+.center-content {
+	top: -45px;
+}
+
+.inputBox {
+	border: 0px solid #3A5F8B;
+	width: 535px;
+	height: 33.5px;
+	left: -10px;
+	clip: rect(auto,auto,auto,-10px);
+	background: url(../../images/semantifi3b/search-bar1.png) no-repeat;
+	font-family: "trebuchet ms";
+	font-size: 20px;
+	font-weight: normal;
+	color: #525252;
+	margin-top: 5px;
+	padding-top:5px;
+	padding-left:3px;
+}
+
+.searchButton {
+	background-image: url(../../images/semantifi3b/semantifi-search.png);
+	height: 37px;
+	width: 117px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	top: 1px;
+	clip: rect(1px,auto,auto,auto);
+}
+
+/* footer */
+/* footer about us link */
+.footer-link {
+	font-family: "Trebuchet MS";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	text-align: right;
+	text-transform: uppercase;
+
+}
+a.footer-link {
+	font-family: "trebuchet ms";
+	font-size: 18px;
+	font-weight: normal;
+	color: #C2C2C2;
+	text-align: right;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+a.footer-link:hover {
+	color: #FFF;
+	text-decoration: none;
+	text-indent: 5;
+}
+
+.footer-sublink {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	text-align: right;
+	text-transform: uppercase;
+
+}
+a.footer-sublink {
+	font-family: "trebuchet ms";
+	font-size: 10px;
+	font-weight: normal;
+	color: #C2C2C2;
+	text-align: right;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+a.footer-sublink:hover {
+	color: #FFF;
+	text-decoration: underline;
+	text-indent: 5;
+}
+
+.footer-sublink-bottom {
+	font-family: "trebuchet ms", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	text-align: left;
+	text-transform: none;
+}
+a.footer-sublink-bottom {
+	font-family: "trebuchet ms";
+	font-size: 11px;
+	font-weight: normal;
+	color: #3E5356;
+	text-align: left;
+	text-decoration: none;
+}
+a.footer-sublink-bottom:hover {
+	font-family: "trebuchet ms";
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFF;
+	text-decoration: underline;
+	text-indent: 5;
+}
+.footer-bg {
+	background-image: url(../../images/semantifi3b/footer-bg1.png);
+	height: 60px;
+}
+BODY {
+	font-family: "Century Gothic";
+	font-size: 13px;
+	color: #333;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+.content-text {
+	font-family: "trebuchet ms";
+	text-align: left;
+}
+.link {
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: normal;
+	color: #F00;
+	text-align: right;
+
+}
+a.link {
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	font-weight: normal;
+	color: #900;
+	text-transform: uppercase;
+	background-image: url(../../images/semantifi3b/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left;
+	text-indent: 5px;
+	float: left;
+}
+a.link:hover {
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	font-weight: normal;
+	color: #900;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-indent: 5;
+}
+.headding {
+	font-family: "trebuchet ms";
+	font-size: 22px;
+	font-weight: bold;
+	color: #376092;
+	text-indent: 15px;
+	text-align: left;
+}
+.box2 {	/* background-color: #999;*/
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0px;
+	margin-left: 0;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0px;
+	padding-left: 0;
+	height: 559px;
+	width: 385px;
+}
+.box3 {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: solid;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0px;
+	margin-left: 0;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0px;
+	padding-left: 0;
+	height: auto;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #95B3D7;
+	border-right-color: #95B3D7;
+	border-bottom-color: #95B3D7;
+	border-left-color: #95B3D7;
+	width: 310px;
+}
+.content-headding {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	color: #3E73A2;
+}
+.box2-link {
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	font-weight: normal;
+	color: #F00;
+
+}
+a.box2-link {
+	font-family: "trebuchet ms";
+	font-size: 12px;
+	font-weight: normal;
+	color: #3C71A1;
+	text-transform: none;
+	float: left;
+	text-decoration: underline;
+	line-height: 19px;
+}
+a.box2-link:hover {
+	text-indent: 5;
+	text-decoration: underline;
+}
+.headding2 {
+	font-family: "trebuchet ms";
+	font-size: 17px;
+	font-weight: bold;
+	color: #376092;
+	text-indent: 0px;
+	text-align: left;
+}
+.headding3 {
+	font-family: "trebuchet ms";
+	font-size: 22px;
+	font-weight: bold;
+	color: #376092;
+	text-indent: 0px;
+	text-align: left;
+}
+.main-box {
+	
+	top: -45px;
+	position: relative;
+}
+
+.main-inner-box {
+	border: 1px solid #CCC;
+	margin: 5px;
+	padding: 5px;
+	background-color: #F9F9F9;
+	box-shadow: 0 0 1px #0FCA5F;
+	-o-box-shadow: 0 0 51px #0FCA5F;
+	-icab-box-shadow: 0 0 1px #0FCA5F;
+	-khtml-box-shadow: 0 0 1px #0FCA5F;
+	-moz-box-shadow: 0 0 1px #0FCA5F;
+	-webkit-box-shadow: 0 0 1px #0FCA5F
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+.menus {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	filter: DropShadow(Color=white, OffX=50, OffY=50, Positive=300);
+}
+a.menus {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	filter: DropShadow(Color=white, OffX=50, OffY=50, Positive=300);
+	text-decoration: underline;
+}
+a.menus:hover {
+	text-indent: 5;
+	text-decoration: none;
+}
+.menu-signin {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	left: 2px;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	clip: rect(2px,2px,2px,2px);
+	margin: 1px;
+	line-height: 22px;
+	padding-top: 1px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.menus-inner {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #3F73A3;
+	filter: DropShadow(Color=white, OffX=50, OffY=50, Positive=300);
+}
+a.menus-inner {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #3F73A3;
+	filter: DropShadow(Color=white, OffX=50, OffY=50, Positive=300);
+	text-decoration: none;
+}
+a.menus-inner:hover {
+	text-indent: 5;
+	text-decoration: none;
+}
+.menu-inner-signin {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #3F73A3;
+	left: 2px;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	clip: rect(2px,2px,2px,2px);
+	margin: 1px;
+	line-height: 22px;
+	padding-top: 1px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+
+#main FORM {
+	FLOAT: left; WIDTH: 100%
+}
+#main FORM P {
+	BORDER-RIGHT: #6c91b5 1px solid; BORDER-TOP: #6c91b5 1px solid; DISPLAY: block; FLOAT: left; BORDER-LEFT: #6c91b5 1px solid; WIDTH: 542px; BORDER-BOTTOM: #6c91b5 1px solid
+}
+#main FORM INPUT#q {
+	BORDER-RIGHT: #4f7ca4 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #4f7ca4 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 22px; BACKGROUND: url(../../images/semantifi3b/chrome.png) #fff repeat-x 0px -392px; FLOAT: left; PADDING-BOTTOM: 5px; BORDER-LEFT: #4f7ca4 1px solid; WIDTH: 530px; COLOR: #444; PADDING-TOP: 5px; BORDER-BOTTOM: #4f7ca4 1px solid
+}
+#main FORM INPUT#q:unknown {
+	outline: 0
+}
+#main FORM BUTTON#submit {
+	BACKGROUND: url(../../images/semantifi3b/submit.png) no-repeat left top; FLOAT: right; WIDTH: 93px; BORDER-TOP-STYLE: none; TEXT-INDENT: -5000px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 40px; BORDER-BOTTOM-STYLE: none
+}
+#main FORM BUTTON#submit:hover {
+	BACKGROUND-POSITION: left -40px
+}
+#main FORM BUTTON#submit:active {
+	BACKGROUND-POSITION: left -80px
+}
+
+
+.headding-apps {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 21px;
+	color: #3E5356;
+}
+.headding-apps-2 {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 17px;
+	color: #3E5356;
+}
+.headding-apps-3 {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 21px;
+	color: #3E5356;
+}
+
+#four_descriptions {
+	HEIGHT: 157px
+}
+#four_descriptions DIV {
+	PADDING-RIGHT: 20px;
+	PADDING-LEFT: 10px;
+	FLOAT: left;
+	BACKGROUND-IMAGE: url(../../images/semantifi3b/box1_selector1_1900.jpg);
+	PADDING-BOTTOM: 10px;
+	LINE-HEIGHT: 18px;
+	PADDING-TOP: 10px;
+	POSITION: relative;
+	HEIGHT: auto;
+	TEXT-ALIGN: center
+}
+.advancedSearch {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFF;
+}
+a.advancedSearch {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFF;
+	text-decoration: none;
+}
+a.advancedSearch:hover {
+	font-family: "trebuchet ms";
+	text-align: left;
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFF;
+	text-decoration: underline;
+}
+.home-page-bg {
+	background-image: url(../../images/semantifi3b/home-page-bg-center.png);
+	background-repeat: repeat;
+	
+
+}
+.home-page-bg-bottom {
+	background-image: url(../../images/semantifi3b/home-page-bg-bottom.png);
+	background-repeat: no-repeat;
+
+}
+.searchbar-top-line {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-color: #0B96F4;
+	border-right-color: #0B96F4;
+	border-bottom-color: #0B96F4;
+	border-left-color: #0B96F4;
+}
+.ac_results {
+	padding: 0px;
+	border: 1px solid #ccc;
+	background-color: white;
+	overflow: none;
+	z-index: 99999;
+	
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 3;
+	margin: 0;
+	overflow: none;
+	
+}
+
+.ac_results li {
+	margin: 2px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	FONT-FAMILY:  arial;
+	font-size:14px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 22px;
+	overflow: none;
+	text-align:left;
+	
+	border: 1px solid #EBEBEB; 
+	border-width: 0 1px 1px;  
+	background-color:#F9F9F9;
+}
+
+/*.ac_loading {
+	background: white url('../images/semantifi3/search-bar.png') right center no-repeat;
+}
+*/
+.ac_odd {
+	background-color: #fff;
+}
+
+.ac_results li.ac_over {
+	background-color: #E5E5E5;
+	color: black;
+}
+
+a.links_sem3 {
+	font-family: "trebuchet ms";
+	font-size: 14px;
+	font-weight: normal;
+	color: #FFF;
+	filter: DropShadow(Color=white, OffX=50, OffY=50, Positive=300);
+	text-decoration:none;
+}
+
+a:hover.links_sem3 {
+
+	text-decoration:underline;
+}
+
+
+.white{
+color:#FFF;	
+}
+
+
+.centerImage{
+
+background: url(../../images/semantifi3/centerImage.jpg) no-repeat ;
+}
+.centerNoImage{
+
+background: url(../../images/semantifi3/centerImage-hover.jpg) no-repeat ;
+}
+.centerNoImagePlain{
+
+background: url(../../images/semantifi3/centerImage-plane.jpg) no-repeat ;
+}
+.No-highlight {
+	font-family: "trebuchet ms";
+	text-align: left;
+	color: #999;
+	text-decoration: underline;
+	font-size: 12px;
+}

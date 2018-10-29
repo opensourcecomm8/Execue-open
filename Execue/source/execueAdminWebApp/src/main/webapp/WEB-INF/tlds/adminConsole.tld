@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" 
+"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>adminMenu</shortname>
+	<uri>http://www.semantify.com</uri>
+
+	<tag>
+		<name>showMenu</name>
+		<tagclass>com.execue.web.core.util.AdminMenuPageImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an HTML formatted menu for admin console.</info>
+	</tag>
+	<tag>
+		<name>showBreadcrumb</name>
+		<tagclass>com.execue.web.core.util.AdminBreadcrumbImpl</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>To create an HTML formatted breadcrumb for admin console.</info>
+		<attribute>
+			<name>homeName</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>homeLink</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>separator</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>appDisplayName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>assetDisplayName</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

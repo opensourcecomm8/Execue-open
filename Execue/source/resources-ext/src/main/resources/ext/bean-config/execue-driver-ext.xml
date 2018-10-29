@@ -1,0 +1,14 @@
+<beans default-lazy-init="true"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    <bean id="semanticDriverHelper" class="com.execue.driver.semantic.helper.SemanticDriverHelper">
+		<property name="coreConfigurationService" ref="coreConfigurationService" />
+		<property name="queryCacheConfiguration" ref="qCacheConfiguration" />
+		<property name="rfxServiceHelper" ref="rfxServiceHelper" />
+		<property name="udxService" ref="udxService" />
+		<property name="rfxService" ref="rfxService" />
+		<property name="queryDataService" ref="queryDataService" />
+    </bean>
+</beans>

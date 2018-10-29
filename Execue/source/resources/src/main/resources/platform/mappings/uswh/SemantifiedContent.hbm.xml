@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef name="processingFlagType"
+		class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.ProcessingFlagType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class
+		name="com.execue.core.common.bean.entity.unstructured.SemantifiedContent"
+		table="SEMANTIFIED_CONTENT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">SEMANTIFIED_CONTENT</param>
+			</generator>
+		</id>
+	
+
+		<property name="contentSource" type="string">
+			<column name="SOURCE" />
+		</property>
+
+		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" />
+		</property>
+
+		<property name="articleRefId" type="java.lang.Long">
+			<column name="SOURCE_CONTENT_ID" />
+		</property>
+
+		<property name="url" type="string">
+			<column name="URL" />
+		</property>
+
+		<property name="imageUrl" type="string">
+			<column name="IMAGE_URL" />
+		</property>
+
+		<property name="shortDescription" type="string">
+			<column name="SHORT_DESC" />
+		</property>
+
+		<property name="longDescription" type="string">
+			<column name="LONG_DESC" />
+		</property>
+	
+		<property name="contentDate" type="timestamp">
+			<column name="CONTENT_DATE" />
+		</property>
+
+		<property name="createdDate" type="timestamp">
+			<column name="CREATED_DATE" />
+		</property>
+
+		<property name="imageUrlProcessed" type="processingFlagType">
+			<column name="IMAGE_URL_PROCESSED" />
+		</property>
+		<property name="batchId" type="java.lang.Long">
+			<column name="BATCH_ID" />
+		</property>
+		<property name="processingState" type="processingFlagType">
+			<column name="PROCESSING_STATE" />
+		</property>
+		<property name="userQueryId" type="java.lang.Long">
+			<column name="USER_QUERY_ID" />
+		</property>
+		
+		<property name="locationId" type="java.lang.Long">
+			<column name="LOCATION_ID" precision="12" scale="0" />
+		</property>
+		
+		<property name="locationDisplayName" type="string">
+			<column name="LOCATION_DISPLAY_NAME" length="75" />
+		</property> 
+		
+		<property name="latitude" type="double">
+			<column name="LATITUDE" />
+		</property>	
+		
+		<property name="longitude" type="double">
+			<column name="LONGITUDE" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

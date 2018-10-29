@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<core>
+		<files>
+			<jobs-config>/apps/dfsApp/config/execue_jobs.properties</jobs-config>
+		</files>
+		<flags>
+			<printTrace>true</printTrace>
+		</flags>
+		<encryption>
+			<configuration>false</configuration>
+			<metaData>false</metaData>
+		</encryption>
+		<masking>
+			<metaSchema>false</metaSchema>
+		</masking>
+		<logging>
+			<log>true</log>
+		</logging>
+		<static-values>	
+			<execue-datasource-password-encyption-decryption-key>execueDatasourceConnection</execue-datasource-password-encyption-decryption-key>	
+			<admin-user-id>1</admin-user-id>		
+			<max-user-query-length>500</max-user-query-length>
+			<page-size>10</page-size>
+			<application-retrieval-limit>10</application-retrieval-limit>
+			<application-example-truncated-char-length>50</application-example-truncated-char-length>
+			<app-specific-example-truncated-char-length>60</app-specific-example-truncated-char-length>
+			<application-example-retrieval-limit>50</application-example-retrieval-limit>
+			<app-specific-example-retrieval-limit>10</app-specific-example-retrieval-limit>
+			<application-description-truncated-char-length>115</application-description-truncated-char-length>
+			<concept-retrieval-limit>50</concept-retrieval-limit>
+			<instance-retrieval-limit>10</instance-retrieval-limit>
+			<app-scoping-enabled>false</app-scoping-enabled>
+			<app-scoping-refresh-index-enabled>false</app-scoping-refresh-index-enabled>
+			<detail-page-size>50</detail-page-size>
+			<xml-request>XML_REQUEST</xml-request>			
+			<dimension-threshold>30</dimension-threshold>
+			<system-max-dimension-value>80</system-max-dimension-value>
+			<oracle-default-date-format>dd-MMM-yyyy</oracle-default-date-format>
+			<mysql-default-date-format>yyyy-MM-dd</mysql-default-date-format>
+			<mssql-default-date-format>MM/dd/yyyy</mssql-default-date-format>
+			<teradata-default-date-format>MM/dd/yyyy</teradata-default-date-format>
+			<sas-default-date-format>MM/dd/yyyy</sas-default-date-format>
+			<postgresql-default-date-format>YYYY-MM-DD</postgresql-default-date-format>
+			<oracle-default-datetime-format>dd-MMM-yyyy HH:mm:ss</oracle-default-datetime-format>
+			<mysql-default-datetime-format>yyyy-MM-dd HH:mm:ss</mysql-default-datetime-format>
+			<mssql-default-datetime-format>MM/dd/yyyy HH:mm:ss</mssql-default-datetime-format>
+			<teradata-default-datetime-format>MM/dd/yyyy HH:mm:ss</teradata-default-datetime-format>
+			<sas-default-datetime-format>MM/dd/yyyy HH:mm:ss</sas-default-datetime-format>
+			<postgresql-default-datetime-format>YYYY-MM-DD HH24:MI:SS</postgresql-default-datetime-format>
+			<max-db-object-length>30</max-db-object-length>
+			<mail-server-from>support@semantifi.com</mail-server-from>
+			<mail-server-to>support@semantifi.com</mail-server-to>
+			<mail-server-host-name>mail.execue.com</mail-server-host-name>
+			<mail-server-subject>Execue Email Confirmation</mail-server-subject>
+			<mail-server-subject-advanced-options-request>Advanced Options Activation Request</mail-server-subject-advanced-options-request>
+			<mail-server-user-reset-password-subject>Change Password</mail-server-user-reset-password-subject>
+			<mail-server-publisher-subject>Request to Publish Application</mail-server-publisher-subject>			
+			<mail-server-demorequest-subject>Demo Request</mail-server-demorequest-subject>
+			<mail-server-semantifi-enterprise-subject>Semantifi Enterprise Request</mail-server-semantifi-enterprise-subject>
+			<mail-server-feedback-subject>Feedback</mail-server-feedback-subject>
+			<mail-server-user-name>support@semantifi.com</mail-server-user-name>
+			<mail-server-password>support2006</mail-server-password>			
+			<mail-server-url>http://www.semantifi.com/activateUser.action?encryptedKey</mail-server-url>
+			<mail-server-reset-password-url>http://www.semantifi.com/resetPassword.action?encryptedKey</mail-server-reset-password-url>
+			<mail-server-publisher-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Request to Publish Application</strong></p></br><p>Publisher:</p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>App Description: @@app_description@@</p></body></html>]]></mail-server-publisher-message-body>
+			<mail-server-feedback-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>User's Feedback</strong></p></br><p>Name: @@user_name@@</p></br><p>Email: @@email@@</p></br><p>Feedback: @@feedback@@</p></body></html>]]></mail-server-feedback-message-body>
+			<mail-server-demorequest-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Demo Request</strong></p></br><p>Name: @@demoRequest_name@@</p></br><p>Organization: @@demoRequest_org@@</p></br><p>Job title: @@jobTitle@@</p></br><p>Region: @@demoRequest_region@@</p></br><p>Email: @@email@@</p></br><p>Phone number: @@phNumber@@</p></br><p>Comments: @@comment@@</p></body></html>]]></mail-server-demorequest-message-body>
+			<mail-server-semantifi-enterprise-message-body><![CDATA[<html><head><title>Untitled Document</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/></head><body ><p><strong>Semantify Enterprise Request</strong></p></br><p>Name: @@publisher_name@@</p></br><p>Company: @@company@@</p></br><p>Address: @@address@@</p></br><p>Email: @@email@@</p></br><p>Search Requirement: @@app_description@@</p></body></html>]]></mail-server-semantifi-enterprise-message-body>
+			<mail-server-user-activation-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>Thank you for registering with us. Please click on the below link to activate your account</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>]]></mail-server-user-activation-message-body>
+			<mail-server-user-reset-password-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you filled out a form on the semantifi.com website indicating that you had forgotten your password.
+				 Please click here(link) to reset your password on Semantifi.com</p></br><p><a href='@@url@@=@@encryptedKey@@'><u>@@url@@=@@encryptedKey@@</u></a></p></body></html>
+			]]></mail-server-user-reset-password-message-body>           
+			<mail-server-user-advanced-options-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>An user requires Advanced Options to be activated. His details are 
+				</p></br>Email Id : <u>@@emailId@@</u></p></br>Phone Number : <u>@@contactNum@@</u></body></html>
+			]]></mail-server-user-advanced-options-message-body>			
+			<mail-server-user-advanced-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for advance options on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+			]]></mail-server-user-advanced-request-accept-reject-message-body>
+			<mail-server-user-demo-request-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have made a request for Demo on the semantifi.com.</p></br><p>Status: @@comments@@</p></body></html>
+			]]></mail-server-user-demo-request-accept-reject-message-body>
+			<mail-server-user-feedback-accept-reject-message-body><![CDATA[<html><head><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'></head><body><p>You are receiving this email because you have sent your feedback on the semantifi.com.</p></br><p>Status: @@comments@@</body></html>
+			]]></mail-server-user-feedback-accept-reject-message-body>
+			<default-datasource-uploaded>uploaded</default-datasource-uploaded>
+			<default-datasource-catalog>answerscatalog</default-datasource-catalog>
+			<max-allowed-instance-mapping-suggestions>1000</max-allowed-instance-mapping-suggestions>
+			<cube>
+				<cube-all-value>all</cube-all-value>
+				<statistics-column-name>SL_STAT</statistics-column-name>
+			</cube>
+			<stock-chart-valid-apps-combinations>
+				<app-concept>
+					<appId>101</appId>
+					<conceptBedId>10001</conceptBedId>
+				</app-concept>
+				<app-concept>
+					<appId>859</appId>
+					<conceptBedId>89168\,89175</conceptBedId>
+				</app-concept>
+				<app-concept>
+					<appId>1316</appId>
+					<conceptBedId>375579\,384776</conceptBedId>
+				</app-concept>
+				<app-concept>
+					<appId>1318</appId>
+					<conceptBedId>384811</conceptBedId>
+				</app-concept>
+				<app-concept>
+					<appId>1320</appId>
+					<conceptBedId>393982</conceptBedId>
+				</app-concept>
+				<app-concept>
+					<appId>1322</appId>
+					<conceptBedId>404904</conceptBedId>
+				</app-concept>
+			</stock-chart-valid-apps-combinations>
+			<handle-class-cast-time-frame-condition>true</handle-class-cast-time-frame-condition>
+			<maintain-ri-user-query-execution-time-ms>90000</maintain-ri-user-query-execution-time-ms>
+			<filter-universal-search-result-by-value-match>true</filter-universal-search-result-by-value-match>
+			<universal-search-match-query-limit>100</universal-search-match-query-limit>
+			<universal-search-top-cluster-limit>100</universal-search-top-cluster-limit>
+			<thread-pool-use-aggregation-processing>true</thread-pool-use-aggregation-processing>
+			<universal-search-from-warehouse>true</universal-search-from-warehouse>
+			<message-cleanup-hours>1</message-cleanup-hours>
+			<unstructured-app-grouping-result-count>3</unstructured-app-grouping-result-count>
+			<max-default-metrics>2</max-default-metrics>
+			<prefix-uploaded-table-name>exeq</prefix-uploaded-table-name>
+			<prefix-uploaded-temp-table-name>tmp</prefix-uploaded-temp-table-name>
+			<web-main-context>execueBaseWebApp</web-main-context>
+			<web-admin-context>execueAdminWebApp</web-admin-context>
+			<user-remote-location-url>http://localhost:8080/</user-remote-location-url>
+			<application-search-url-prefix>appIndex.action?applicationId=</application-search-url-prefix>
+			<user-remote-location-connect-timeout>5000</user-remote-location-connect-timeout>
+			<user-remote-location-read-timeout>5000</user-remote-location-read-timeout>
+			<total-range-bands>3</total-range-bands>
+			<dynamic-range-id>-1</dynamic-range-id>
+			<max-hierarchy-size>5</max-hierarchy-size>
+			<force-pooled-data-sources-via-jndi>false</force-pooled-data-sources-via-jndi>
+			<group-concat-db-supported>true</group-concat-db-supported>
+			<single-asset-redirect>false</single-asset-redirect>
+		</static-values>
+		<skip-derived-user-query-variation>
+			<app-name>Craigslist Autos</app-name>
+		</skip-derived-user-query-variation>		
+		<default-asset-based-recognition-weights>
+			<concept-weight>10</concept-weight>
+			<instance-weight>1</instance-weight>
+			<relation-weight>10</relation-weight>
+		</default-asset-based-recognition-weights>
+		<default-model-based-recognition-weights>
+			<concept-weight>1</concept-weight>
+			<instance-weight>1</instance-weight>
+			<relation-weight>1</relation-weight>
+		</default-model-based-recognition-weights>
+		<batch-maintenance>
+			<batch-sizes>
+				<member-absorption>1000</member-absorption>
+				<instance-mapping>500</instance-mapping>
+			</batch-sizes>
+		</batch-maintenance>		
+	</core>
+</execue-configuration>

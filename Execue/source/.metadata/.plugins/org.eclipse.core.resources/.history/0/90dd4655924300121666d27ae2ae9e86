@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean defintion of data source -->
+	<!-- TODO: -KA- Need to find better alternative to testOnBorrow -->
+
+<!--
+		<bean id="swiDataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+				<property name="driverClassName" value="${db.source.swi.driver.class}"/>
+				<property name="url" value="${db.source.swi.jdbcURL}"/>
+				<property name="username" value="${db.source.swi.userName}"/>
+				<property name="password" value="${db.source.swi.password}"/>
+				<property name="initialSize" value="5" />
+				<property name="maxActive" value="20" />
+				<property name="testOnBorrow" value="true" />
+				<property name="testWhileIdle" value="true" />
+				<property name="validationQuery" value="${db.source.swi.connection.validation.query}" />
+			</bean>
+
+-->
+	<bean id="swiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/swi-execue" />
+	</bean>
+
+	<!-- Bean defintion of bean session factory -->
+
+	<bean id="swiSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="swiDataSource" />
+
+		<property name="mappingResources">
+			<list>
+				<!-- Asset related entities -->
+				<value>platform/mappings/Application.hbm.xml</value>
+				<value>platform/mappings/ApplicationOperation.hbm.xml</value>
+				<value>platform/mappings/ApplicationDetail.hbm.xml</value>
+				<value>platform/mappings/UnstructuredApplicationDetail.hbm.xml</value>
+				<value>platform/mappings/AppDataSource.hbm.xml</value>
+				<value>platform/mappings/DataSource.hbm.xml</value>
+				<value>platform/mappings/Asset.hbm.xml</value>
+				<value>platform/mappings/AssetDetail.hbm.xml</value>
+				<value>platform/mappings/AssetExtendedDetail.hbm.xml</value>
+				<value>platform/mappings/Tabl.hbm.xml</value>
+				<value>platform/mappings/Colum.hbm.xml</value>
+				<value>platform/mappings/Constraint.hbm.xml</value>
+				<value>platform/mappings/Membr.hbm.xml</value>
+				<value>platform/mappings/AssetEntityDefinition.hbm.xml</value>
+				<value>platform/mappings/Join.hbm.xml</value>
+				<value>platform/mappings/JoinDefinition.hbm.xml</value>
+				<value>platform/mappings/Conversion.hbm.xml</value>
+				<value>platform/mappings/ConversionFormula.hbm.xml</value>
+				<value>platform/mappings/AssetOperationInfo.hbm.xml</value>
+				<value>platform/mappings/HistoryAssetOperationInfo.hbm.xml</value>
+				<value>platform/mappings/AssetOperationDetail.hbm.xml</value>
+
+				<!-- Business related entities -->
+				<value>platform/mappings/Model.hbm.xml</value>
+				<value>platform/mappings/ModelGroup.hbm.xml</value>
+				<value>platform/mappings/ModelGroupMapping.hbm.xml</value>
+				<value>platform/mappings/Concept.hbm.xml</value>
+				<value>platform/mappings/ConceptProfile.hbm.xml</value>
+				<value>platform/mappings/Stat.hbm.xml</value>
+				<value>platform/mappings/Instance.hbm.xml</value>
+				<value>platform/mappings/InstanceProfile.hbm.xml</value>
+				<value>platform/mappings/BusinessEntityDefinition.hbm.xml</value>
+				<value>platform/mappings/Mapping.hbm.xml</value>
+				<value>platform/mappings/Range.hbm.xml</value>
+				<value>platform/mappings/RangeDetail.hbm.xml</value>
+				<value>platform/mappings/Hierarchy.hbm.xml</value>
+				<value>platform/mappings/HierarchyDetail.hbm.xml</value>
+				
+				<!-- Bookmark related entities -->
+				<value>platform/mappings/ReportGroup.hbm.xml</value>
+				<value>platform/mappings/ReportType.hbm.xml</value>
+				
+				<!-- Bookmark related entities -->
+				<value>platform/mappings/Bookmark.hbm.xml</value>
+				<value>platform/mappings/Folder.hbm.xml</value>
+				
+				<!-- Security related entities -->
+				<value>platform/mappings/User.hbm.xml</value>
+				<value>platform/mappings/SecurityGroups.hbm.xml</value>
+				<value>platform/mappings/SecurityRoles.hbm.xml</value>
+				
+				<!-- Tables from v3-v4 merge -->
+				<value>platform/mappings/Relation.hbm.xml</value>
+				<value>platform/mappings/DefaultInstanceValue.hbm.xml</value>
+				<value>platform/mappings/KeyWord.hbm.xml</value>
+				<value>platform/mappings/ParallelWord.hbm.xml</value>
+				<value>platform/mappings/EntityTripleDefinition.hbm.xml</value>
+				<value>platform/mappings/PathDefinition.hbm.xml</value>
+				<value>platform/mappings/Path.hbm.xml</value>
+				<value>platform/mappings/RIOntoTerm.hbm.xml</value>
+				<value>platform/mappings/RIParallelWord.hbm.xml</value>
+				<value>platform/mappings/SecondaryWord.hbm.xml</value>
+				<value>platform/mappings/SFLTerm.hbm.xml</value>
+				<value>platform/mappings/SFLTermToken.hbm.xml</value>
+				<value>platform/mappings/RISharedUserModelMapping.hbm.xml</value>
+                
+				<!--
+					<value>mappings/InstancePathDefinition.hbm.xml</value>
+					-->
+
+				<!-- System Information Table -->
+				<value>platform/mappings/SystemVariable.hbm.xml</value>
+				
+				<!--<value>mappings/SystemInformation.hbm.xml</value>-->
+				<!-- Default dynamic value  -->
+				<value>platform/mappings/DefaultDynamicValue.hbm.xml</value>
+				<value>platform/mappings/PopularityHit.hbm.xml</value>
+                
+				<!-- User query possibility entities -->
+				<value>platform/mappings/UserQueryPossibility.hbm.xml</value>
+				<value>platform/mappings/ApplicationInfo.hbm.xml</value>
+				<value>platform/mappings/DateFormat.hbm.xml</value>
+				<value>platform/mappings/BatchProcess.hbm.xml</value>
+				<value>platform/mappings/BatchProcessDetail.hbm.xml</value>
+                
+				<!-- Instance Mapping Suggestion entities -->
+				<value>platform/mappings/InstanceMappingSuggestion.hbm.xml</value>
+				<value>platform/mappings/InstanceMappingSuggestionDetail.hbm.xml</value>
+				
+				<value>platform/mappings/EnumLookup.hbm.xml</value>
+                
+				<!-- Resource table-->
+				<value>platform/mappings/Resource.hbm.xml</value>
+				<!-- Country lookup table-->
+				<value>platform/mappings/CountryLookup.hbm.xml</value>
+				<value>platform/mappings/PublishedFileInfo.hbm.xml</value>
+				<value>platform/mappings/PublishedFileInfoDetails.hbm.xml</value>
+				<value>platform/mappings/PublishedFileTableInfo.hbm.xml</value>
+				<value>platform/mappings/PublishedFileTableDetails.hbm.xml</value>
+				<value>platform/mappings/ApplicationExample.hbm.xml</value>
+				<value>platform/mappings/DefaultMetric.hbm.xml</value>
+				
+				<!-- NLP4 Classes-->
+				<value>platform/mappings/Cloud.hbm.xml</value>
+				<value>platform/mappings/CloudComponent.hbm.xml</value>
+				<value>platform/mappings/Type.hbm.xml</value>
+				<value>platform/mappings/BehaviorComponent.hbm.xml</value>
+				<value>platform/mappings/Behavior.hbm.xml</value>
+				<value>platform/mappings/RICloud.hbm.xml</value>
+				<value>platform/mappings/Rule.hbm.xml</value>
+				<value>platform/mappings/PossibleBehavior.hbm.xml</value>
+				<value>platform/mappings/EntityBehavior.hbm.xml</value>  
+				<value>platform/mappings/PossibleAttribute.hbm.xml</value>
+				
+				<value>platform/mappings/BusinessEntityMaintenanceInfo.hbm.xml</value>
+				<value>platform/mappings/BusinessEntityVariation.hbm.xml</value>
+				
+				<value>platform/mappings/VerticalAppWeight.hbm.xml</value>
+				<value>platform/mappings/Vertical.hbm.xml</value>
+				<value>platform/mappings/CannedReport.hbm.xml</value>
+				<value>platform/mappings/VerticalEntityBasedRedirection.hbm.xml</value>
+				<value>platform/mappings/InstanceTripleDefinition.hbm.xml</value>
+				<value>platform/mappings/UserRequest.hbm.xml</value>
+				<value>platform/mappings/VerticalAppExample.hbm.xml</value>
+				<value>platform/mappings/PossibleDetailType.hbm.xml</value>
+				<value>platform/mappings/EntityDetailType.hbm.xml</value>
+				<value>platform/mappings/ApplicationScopeIndex.hbm.xml</value>
+				<value>platform/mappings/ApplicationScopeIndexDetail.hbm.xml</value>
+				<value>platform/mappings/BehaviorAssociationRule.hbm.xml</value>
+								
+				<!-- Content Processing entities -->
+				
+				<value>platform/mappings/ContentCleanupPattern.hbm.xml</value>
+				
+			</list>
+		</property>
+    
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.source.swi.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">@@hibernate_cache_flag@@</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<!-- Bean defintion of hibernate template -->
+	<bean id="hibernateTemplate" 
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="swiSessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="swiTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="swiDataSource"/>
+	</bean>
+	
+</beans>

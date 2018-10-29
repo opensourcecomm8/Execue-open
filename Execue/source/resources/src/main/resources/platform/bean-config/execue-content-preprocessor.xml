@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">	
+	   
+	<bean id="contentPreProcessorConfigurationService"
+		class="com.execue.content.preprocessor.configuration.impl.ContentPreProcessorConfigurationServiceImpl">	
+		<property name="contentPreProcessorConfiguration" ref="contentPreProcessorConfiguration" />
+	</bean>
+	
+	<bean id="contentPreProcessorConfigurableService"
+		class="com.execue.content.preprocessor.configuration.impl.ContentPreProcessorConfigurableService">		
+		<property name="contentPreProcessorConfigurationService" ref="contentPreProcessorConfigurationService" />
+	</bean>
+	
+	<bean id="contentMarkupTagCleanupProcessor"
+		class="com.execue.content.preprocessor.service.impl.ContentMarkupTagCleanupProcessorImpl">
+	</bean>
+	
+	<bean id="contentMeaningExtractingProcessor"
+		class="com.execue.content.preprocessor.service.impl.ContentMeaningExtractingProcessorImpl">
+	</bean>
+
+	<bean id="contentCleanupPatternProcessor"
+		class="com.execue.content.preprocessor.service.impl.ContentCleanupPatternProcessorImpl">
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+
+	<bean id="escapeUnescapeContentProcessor"
+		class="com.execue.content.preprocessor.service.impl.EscapeUnescapeContentProcessorImpl">
+	</bean>
+
+	<bean id="unwantedContentCleanupProcessor"
+		class="com.execue.content.preprocessor.service.impl.UnwantedContentCleanupProcessorImpl">
+	</bean>
+	
+	<bean id="contentPreProcessingService"
+		class="com.execue.content.preprocessor.service.impl.ContentPreProcessingServiceImpl">
+		<property name="contentPreProcessorConfigurationService" ref="contentPreProcessorConfigurationService" />
+		<property name="contentMarkupTagCleanupProcessor" ref="contentMarkupTagCleanupProcessor" />
+		<property name="contentMeaningExtractingProcessor" ref="contentMeaningExtractingProcessor" />
+		<property name="contentCleanupPatternProcessor" ref="contentCleanupPatternProcessor" />
+		<property name="escapeUnescapeContentProcessor" ref="escapeUnescapeContentProcessor" />
+		<property name="unwantedContentCleanupProcessor" ref="unwantedContentCleanupProcessor" />
+	</bean>
+	
+</beans>

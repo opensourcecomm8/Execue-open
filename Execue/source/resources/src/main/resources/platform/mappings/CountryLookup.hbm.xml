@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.CountryLookup" table="COUNTRY_LOOKUP">
+	   <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+            <generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">COUNTRY_LOOKUP</param>
+            </generator>
+		</id>
+		<property name="countryCode" type="string">
+			<column name="COUNTRY_CODE" length="20" not-null="true"/>
+		</property>
+		<property name="description" type="string">
+			<column name="COUNTRY_DESC" length="55" not-null="true"/>
+		</property>
+	</class>
+</hibernate-mapping>

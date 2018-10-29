@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+	<typedef name="assetProviderType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.AssetProviderType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getWordType</param>
+	</typedef>
+	<typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="dateQualifier" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.DateQualifier</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef name="dataType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.type.DataType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.DateFormat" table="DATE_FORMAT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">DATE_FORMAT</param>
+			</generator>
+		</id>		
+		<property name="format" type="string">
+			<column name="FORMAT" length="35"/>
+		</property>
+		<property name="assetProviderType" type="assetProviderType">
+			<column name="PROVIDER_TYPE"  length="1"/>
+		</property>
+		<property name="dbFormat" type="string">
+			<column name="DB_FORMAT" length="35"/>
+		</property>
+		<property name="isPlainFormat" type="checkType">
+			<column name="PLAIN_FORMAT" length="1"/>
+		</property>
+		<property name="qualifier" type="dateQualifier">
+			<column name="QUALIFIER" length="35"/>
+		</property>
+		<property name="supported" type="checkType">
+			<column name="API_SUPPORTED" length="1" not-null="true" />
+		</property>
+		<property name="qualifierBEDId" type="java.lang.Long">
+			<column name="QUALIFIER_BE_ID" length="20"/>
+		</property>
+		<property name="dataType" type="dataType">
+			<column name="DATA_TYPE" />
+		</property>
+		<property name="evaluated" type="checkType">
+			<column name="EVALUATED" length="1" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

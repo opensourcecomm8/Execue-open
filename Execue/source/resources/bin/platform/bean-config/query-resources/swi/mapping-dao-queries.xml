@@ -1,0 +1,657 @@
+<queries>
+	
+	<MAPPING_BY_AED_QUERY>
+	<![CDATA[from AssetEntityDefinition as assetEntityDefinition
+		 where assetEntityDefinition.asset = :asset
+	]]>
+	</MAPPING_BY_AED_QUERY>
+	
+	<MAPPING_BY_BED_QUERY>
+	<![CDATA[select bed from BusinessEntityDefinition bed, ModelGroupMapping mgm 
+		 where businessEntityDefinition.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType
+	]]>
+	</MAPPING_BY_BED_QUERY>
+	
+	<MAPPING_BY_ASSET_BUSINESS_ENTITY_QUERY>
+	<![CDATA[from Mapping as mapping where mapping.assetEntityDefinition in 
+		 (:assetEntityDefinition) and businessEntityDefinition in (:businessEntityDefinition)
+	]]>
+	</MAPPING_BY_ASSET_BUSINESS_ENTITY_QUERY>
+	
+	<QUERY_GET_MAPPING>
+	<![CDATA[from Mapping as mapping
+		where mapping.assetEntityDefinition.id = :assetEntityDefinitionId
+	]]>
+	</QUERY_GET_MAPPING>	
+		
+	<MAPPING_BY_AEDS_QUERY>
+	<![CDATA[from Mapping as mapping 
+		 where mapping.assetEntityDefinition in (:assetEntityDefinition)
+	]]>
+	</MAPPING_BY_AEDS_QUERY>
+	
+	
+	<SINGLE_MAPPING_QUERY>
+	<![CDATA[from Mapping as mapping 
+		 where mapping.assetEntityDefinition.id = :assetEntityDefinitionId and
+		 mapping.businessEntityDefinition.id = :businessEntityDefinitionId
+	]]>
+	</SINGLE_MAPPING_QUERY>
+	
+	<QUERY_GET_MAPPING_BY_BED>
+	<![CDATA[from Mapping as mapping
+		 where mapping.businessEntityDefinition.id = :businessEntityDefinitionId
+	]]>
+	</QUERY_GET_MAPPING_BY_BED>
+	
+	<QUERY_GET_MAPPINGS_FOR_ASSET>
+	<![CDATA[select mapping from Mapping as mapping , AssetEntityDefinition as ae 
+		 where mapping.assetEntityDefinition.id = ae.id and ae.asset.id = :assetId 
+		 order by mapping.businessEntityDefinition.id
+	]]>
+	</QUERY_GET_MAPPINGS_FOR_ASSET>
+	
+	<QUERY_GET_ASSET_GRAIN>
+	<![CDATA[from Mapping as mapping 
+		 where mapping.assetEntityDefinition.asset.id = :assetId 
+		 and mapping.assetGrainType is not null
+	]]>
+	</QUERY_GET_ASSET_GRAIN>	
+	
+	<QUERY_NON_UNIQUELY_MAPPED_BED_IDS_FOR_ASSET>
+	<![CDATA[Select mapping.businessEntityDefinition.id from Mapping mapping 
+		 where mapping.assetEntityDefinition.asset.id = :assetId 
+		 group by mapping.businessEntityDefinition.id 
+		 having count(mapping.businessEntityDefinition.id) > 1
+	]]>
+	</QUERY_NON_UNIQUELY_MAPPED_BED_IDS_FOR_ASSET>
+	
+	<QUERY_PRIMARY_MAPPINGS_BY_BED_IDS>
+	<![CDATA[from Mapping mapping 
+		 where mapping.primary != :primary 
+		 and mapping.businessEntityDefinition.id in (:bedIds)
+	]]>
+	</QUERY_PRIMARY_MAPPINGS_BY_BED_IDS>
+	
+	<QUERY_GET_NON_PRIMARY_MAPPING_FOR_CONCEPT>
+	<![CDATA[SELECT map FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed,Concept con,
+		 Asset asset,Model model,ModelGroupMapping mgm 
+		 WHERE map.assetEntityDefinition.id = aed.id
+		 AND map.businessEntityDefinition.id = bed.id
+		 AND aed.asset.id = asset.id AND bed.concept.id = con.id 
+		 AND bed.modelGroup.id = mgm.modelGroup.id
+		 AND mgm.model.id = :modelId AND mgm.modelGroup.category != :baseCategoryType 
+		 AND aed.entityType = :columnEntityType AND bed.entityType = :conceptEntityType
+		 AND asset.id = :assetId AND con.id = :conceptId AND map.primary = :nonPrimary
+	]]>
+	</QUERY_GET_NON_PRIMARY_MAPPING_FOR_CONCEPT>
+	
+	<QUERY_GET_PRIMARY_MAPPING_FOR_COLUMN>
+	<![CDATA[SELECT map 
+		 FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed, Asset asset,
+		 Tabl tabl,Colum col,Model model,ModelGroupMapping mgm
+		 WHERE map.assetEntityDefinition.id = aed.id 
+		 AND map.businessEntityDefinition.id = bed.id
+		 AND aed.asset.id = asset.id AND aed.tabl.id = tabl.id
+		 AND aed.colum.id = col.id
+		 AND bed.modelGroup.id = mgm.modelGroup.id 
+		 AND mgm.model.id = :modelId
+		 AND mgm.modelGroup.category != :baseCategoryType AND aed.entityType = :columnEntityType
+		 AND asset.id = :assetId AND tabl.id = :tableId
+		 AND col.id = :columnId AND map.primary = :primary
+	]]>
+	</QUERY_GET_PRIMARY_MAPPING_FOR_COLUMN>
+	
+	<QUERY_GET_PRIMARY_MAPPING_FOR_MEMBER>
+	<![CDATA[SELECT map 
+		 FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed,Asset asset,
+		 Tabl tabl,Colum col,Membr membr,Model model,ModelGroupMapping mgm
+		 WHERE map.assetEntityDefinition.id = aed.id 
+		 AND map.businessEntityDefinition.id = bed.id
+		 AND aed.asset.id = asset.id AND aed.tabl.id = tabl.id 
+		 AND aed.colum.id = col.id AND aed.membr.id = membr.id 
+		 AND bed.modelGroup.id = mgm.modelGroup.id AND mgm.model.id = :modelId
+		 AND mgm.modelGroup.category != :baseCategoryType AND aed.entityType = :memberEntityType 
+		 AND asset.id = :assetId
+		 AND tabl.id = :tableId AND col.id = :columnId 
+		 AND membr.id = :memberId AND map.primary = :primary
+	]]>
+	</QUERY_GET_PRIMARY_MAPPING_FOR_MEMBER>
+	
+	<QUERY_GET_PRIMARY_MAPPING_FOR_CONCEPT>
+	<![CDATA[SELECT map FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed,Concept con,
+		 Asset asset,Model model,ModelGroupMapping mgm 
+		 WHERE map.assetEntityDefinition.id = aed.id
+		 AND map.businessEntityDefinition.id = bed.id
+		 AND aed.asset.id = asset.id AND bed.concept.id = con.id 
+		 AND bed.modelGroup.id = mgm.modelGroup.id
+		 AND mgm.model.id = :modelId AND mgm.modelGroup.category != :baseCategoryType 
+		 AND aed.entityType = :columnEntityType AND bed.entityType = :conceptEntityType
+		 AND asset.id = :assetId AND con.id = :conceptId AND map.primary = :primary
+	]]>
+	</QUERY_GET_PRIMARY_MAPPING_FOR_CONCEPT>
+
+	<QUERY_GET_PRIMARY_MAPPING_FOR_CONCEPT_BE_IDS>
+	<![CDATA[SELECT map FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed,Asset asset   
+		 WHERE map.assetEntityDefinition.id = aed.id 
+		 AND map.businessEntityDefinition.id in (:conceptBedIds) 
+		 AND aed.asset.id = asset.id 		 	   
+		 AND aed.entityType = :columnEntityType AND bed.entityType = :conceptEntityType 
+		 AND asset.id = :assetId AND map.primary = :primary 
+	]]>
+	</QUERY_GET_PRIMARY_MAPPING_FOR_CONCEPT_BE_IDS>
+
+	<QUERY_GET_PRIMARY_MAPPING_FOR_MODEL_ID>
+	<![CDATA[SELECT map FROM Mapping map,AssetEntityDefinition aed,
+		 BusinessEntityDefinition bed,Asset asset,ModelGroupMapping mgm    
+		 WHERE map.assetEntityDefinition.id = aed.id 
+		 AND map.businessEntityDefinition.id = bed.id
+		 AND bed.modelGroup.id = mgm.modelGroup.id
+		 AND mgm.model.id = :modelId AND mgm.modelGroup.category != :baseCategoryType
+		 AND aed.asset.id = asset.id 		 	   
+		 AND aed.entityType = :columnEntityType AND bed.entityType = :conceptEntityType 
+		 AND asset.id = :assetId AND map.primary = :primary 
+	]]>
+	</QUERY_GET_PRIMARY_MAPPING_FOR_MODEL_ID>
+
+	<QUERY_GET_MAPPED_INSTANCE_FOR_MEMBER>
+	<![CDATA[select map 
+		 from Mapping map, AssetEntityDefinition aed,
+		 Asset a, Tabl t, Membr m
+		 where map.assetEntityDefinition.id = aed.id 
+		 and aed.asset.id = a.id and aed.tabl.id = t.id
+		 and aed.membr.id = m.id and a.id = :assetId 
+		 and t.id = :tableId and m.id = :memberId
+		 and aed.entityType = :memberEntityType
+	]]>
+	</QUERY_GET_MAPPED_INSTANCE_FOR_MEMBER>
+	
+	<QUERY_GET_MAPPED_CONCEPT_FOR_COLUMN>
+	<![CDATA[select map 
+		 from Mapping map, AssetEntityDefinition aed,
+		 Asset a, Tabl t, Colum c
+		 where map.assetEntityDefinition.id = aed.id 
+		 and aed.asset.id = a.id and aed.tabl.id = t.id
+		 and aed.colum.id = c.id and a.id = :assetId 
+		 and t.id = :tableId and c.id = :columnId
+		 and aed.entityType = :columnEntityType
+	]]>
+	</QUERY_GET_MAPPED_CONCEPT_FOR_COLUMN>	
+	
+	<QUERY_DELETE_MAPPINGS_FOR_BUSINESS_ENTITY>
+	<![CDATA[delete from Mapping where businessEntityDefinition.id = :entityBedId
+	]]>
+	</QUERY_DELETE_MAPPINGS_FOR_BUSINESS_ENTITY>
+	
+	
+	<QUERY_GET_COLUMN_AEDS_FOR_ASSET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.asset.id = :assetId and 
+		 assetEntityDefinition.colum is not null 
+		 and assetEntityDefinition.membr is null
+	]]>
+	</QUERY_GET_COLUMN_AEDS_FOR_ASSET>
+
+	<QUERY_GET_MEMBER_AEDS_FOR_ASSET>
+	<![CDATA[from AssetEntityDefinition assetEntityDefinition 
+		 where assetEntityDefinition.asset.id = :assetId and 
+		 assetEntityDefinition.membr is not null
+	]]>
+	</QUERY_GET_MEMBER_AEDS_FOR_ASSET>
+	
+	<QUERY_GET_EXISTING_DEFAULT_METRICS_IN_ASSET>
+	<![CDATA[select m
+		 from DefaultMetric dm, Mapping m, AssetEntityDefinition aed 
+		 where dm.mappingId = m.id and 
+		 m.assetEntityDefinition.id = aed.id and
+		 aed.id = dm.aedId and aed.asset.id = :assetId 
+		 and dm.valid = :validDefaultMetric order by dm.popularity desc 
+	]]>
+	</QUERY_GET_EXISTING_DEFAULT_METRICS_IN_ASSET>
+	
+	
+	<QUERY_MAPPING_BY_BUSINESS_ENTITY_AND_ASSET>
+	<![CDATA[from Mapping mapping 
+		 where mapping.businessEntityDefinition = :businessEntityDefinition 
+		 and mapping.assetEntityDefinition.asset.id = :assetId
+	]]>
+	</QUERY_MAPPING_BY_BUSINESS_ENTITY_AND_ASSET>
+	
+	<QUERY_GET_MEMBER_MAPPINGS>
+	<![CDATA[select mapping
+		 from Mapping mapping, AssetEntityDefinition aed 
+		 where aed.colum.id = :columnId and
+		 aed.entityType = :memberAssetEntityType and mapping.assetEntityDefinition.id = aed.id
+		 order by aed.membr.lookupDescription
+	]]>
+	</QUERY_GET_MEMBER_MAPPINGS>
+	
+	<QUERY_GET_MAPPINGS_BY_INSTANCE_DISPLAY_NAME>
+	<![CDATA[select mapping from Mapping as mapping, AssetEntityDefinition as aed,
+		 BusinessEntityDefinition as bed, Instance as ins where 
+		 mapping.assetEntityDefinition.colum.id = :columId and 
+		 mapping.assetEntityDefinition.membr.id != :membrId and 
+		 aed.id = mapping.assetEntityDefinition.id and 
+		 bed.id = mapping.businessEntityDefinition.id and bed.instance.id = ins.id and 
+		 ins.displayName = :instanceDisplayName and
+		 bed.concept.id = :conceptId and bed.entityType = :instance and aed.entityType = :member
+	]]>
+	</QUERY_GET_MAPPINGS_BY_INSTANCE_DISPLAY_NAME>	
+	
+	<QUERY_GET_EXISTING_DEFAULT_METRICS>
+	<![CDATA[select m 
+		 from DefaultMetric dm,Mapping m 
+		 where dm.tableId in (:tableIds) 
+		 and m.id = dm.mappingId and dm.valid = :validDMType 
+		 order by dm.popularity desc
+	]]>
+	</QUERY_GET_EXISTING_DEFAULT_METRICS>
+	
+	
+	<QUERY_GET_ASSET_GRAIN_BY_COLUMN_GRANULARITY>
+	<![CDATA[select map 
+		 from Mapping map, AssetEntityDefinition aed, Asset asset, Colum colum 
+		 where map.assetEntityDefinition = aed and aed.asset = asset
+		 and aed.colum = colum and aed.entityType = :columnEntityType
+		 and colum.granularity = :grain and map.primary = :primary and asset.id = :assetId
+	]]>
+	</QUERY_GET_ASSET_GRAIN_BY_COLUMN_GRANULARITY>
+	
+	
+	<QUERY_GET_MAPPED_CONCEPTS_OF_PARTICULAR_TYPE>
+	<![CDATA[select map 
+		 from Mapping map, ModelGroupMapping mgm, 
+		 BusinessEntityDefinition bed,AssetEntityDefinition aed
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and map.assetEntityDefinition.id = aed.id
+		 and map.businessEntityDefinition.id = bed.id 
+		 and bed.type.name = :typeName and bed.entityType=:conceptEntityType
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType
+		 and aed.asset.id = :assetId and map.primary = :primary
+	]]>
+	</QUERY_GET_MAPPED_CONCEPTS_OF_PARTICULAR_TYPE>
+	
+	<QUERY_DELETE_BUSINESS_ENTITY_MAPPING_FOR_MODEL>
+	<![CDATA[delete from Mapping where businessEntityDefinition.id in (select bed.id from BusinessEntityDefinition bed, 
+		ModelGroupMapping mgm  where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType
+	]]>
+	</QUERY_DELETE_BUSINESS_ENTITY_MAPPING_FOR_MODEL>
+	
+	<QUERY_GET_MODEL_BY_MODEL_GROUP_ID>
+	<![CDATA[select mgm.model from ModelGroupMapping mgm
+		 where mgm.modelGroup.id = :modelGroupId
+	]]>
+	</QUERY_GET_MODEL_BY_MODEL_GROUP_ID>
+ 
+  
+	<QUERY_GET_MAPPING>
+	<![CDATA[from Mapping as mapping
+		where mapping.assetEntityDefinition.id = :assetEntityDefinitionId
+	]]>
+	</QUERY_GET_MAPPING>
+
+	<QUERY_MAPPING_BY_BUSINESS_ENTITY_ACROSS_ASSETS>
+	<![CDATA[select aed.id, a.id, t.lookupType,c.kdxDataType,c.primaryKey 
+		 from Mapping map, ModelGroupMapping mgm, 
+		 BusinessEntityDefinition bed, AssetEntityDefinition aed, Asset a, Tabl t, Colum c
+		 where bed.modelGroup.id = mgm.modelGroup.id and map.assetEntityDefinition.id = aed.id
+		 and map.businessEntityDefinition.id = bed.id and (map.primary = :primary or map.primary = :nonPrimaryMeasure)
+		 and bed.id = :businessEntityDefinitionId and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType 
+		 and a.id = aed.asset.id and t.id = aed.tabl.id and c.id = aed.colum.id 
+		 and aed.asset.status = :active order by map.primary desc
+	]]>
+	</QUERY_MAPPING_BY_BUSINESS_ENTITY_ACROSS_ASSETS>
+
+	<QUERY_MAPPING_BY_BUSINESS_ENTITY_ACROSS_ASSETS_IN_BASE_GROUP>
+	<![CDATA[select aed.id, a.id, t.lookupType,c.kdxDataType,c.primaryKey from Mapping map,
+		 ModelGroupMapping mgm, BusinessEntityDefinition bed, AssetEntityDefinition aed,
+		 Asset a, Tabl t, Colum c where bed.modelGroup.id = mgm.modelGroup.id and 
+		 map.assetEntityDefinition.id = aed.id and map.businessEntityDefinition.id = bed.id 
+		 and (map.primary = :primary or map.primary = :nonPrimaryMeasure) and bed.id = :businessEntityDefinitionId 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :baseCategoryType 
+		 and a.id = aed.asset.id and t.id = aed.tabl.id and c.id = aed.colum.id
+		 and aed.asset.status = :active order by map.primary desc
+	]]>
+	</QUERY_MAPPING_BY_BUSINESS_ENTITY_ACROSS_ASSETS_IN_BASE_GROUP>
+
+	<QUERY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSET>
+	<![CDATA[select aed.id, a.id, t.lookupType,c.kdxDataType,c.primaryKey from Mapping map, 
+		 ModelGroupMapping mgm, BusinessEntityDefinition bed, AssetEntityDefinition aed, 
+		 Asset a, Tabl t, Colum c where bed.modelGroup.id = mgm.modelGroup.id 
+		 and map.assetEntityDefinition.id = aed.id and map.businessEntityDefinition.id = bed.id 
+		 and bed.id = :businessEntityDefinitionId and mgm.model.id = :modelId 
+		 and aed.asset.id = :assetId and t.id = aed.tabl.id and c.id = aed.colum.id
+	]]>
+	</QUERY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSET>
+
+	<QUERY_PRIMARY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSETS>
+	<![CDATA[select aed.id, a.id, t.lookupType,c.kdxDataType,c.primaryKey 
+		from Mapping map, ModelGroupMapping mgm, BusinessEntityDefinition bed,
+		AssetEntityDefinition aed, Asset a, Tabl t, Colum c 
+		where bed.modelGroup.id = mgm.modelGroup.id and map.assetEntityDefinition.id = aed.id
+		and map.businessEntityDefinition.id = bed.id and (map.primary = :primary or map.primary = :nonPrimaryMeasure)
+		and bed.id = :businessEntityDefinitionId and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType 
+		and a.id IN (:assetIds)and a.id = aed.asset.id and t.id = aed.tabl.id 
+		and c.id = aed.colum.id and aed.asset.status = :active order by map.primary desc
+	]]>
+	</QUERY_PRIMARY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSETS>
+	
+	<QUERY_PRIMARY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSETS_IN_BASE_GROUP>
+	<![CDATA[select aed.id, a.id, t.lookupType,c.kdxDataType,c.primaryKey 
+		 from Mapping map, ModelGroupMapping mgm, BusinessEntityDefinition bed,
+		 AssetEntityDefinition aed, Asset a, Tabl t, Colum c
+		 where bed.modelGroup.id = mgm.modelGroup.id and map.assetEntityDefinition.id = aed.id
+		 and map.businessEntityDefinition.id = bed.id and 
+		 (map.primary = :primary or map.primary = :nonPrimaryMeasure) and bed.id = :businessEntityDefinitionId
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :baseCategoryType and a.id IN (:assetIds)
+		 and a.id = aed.asset.id and t.id = aed.tabl.id and c.id = aed.colum.id
+		 and aed.asset.status = :active order by map.primary desc
+	]]>
+	</QUERY_PRIMARY_MAPPING_BY_BUSINESS_ENTITY_FOR_ASSETS_IN_BASE_GROUP>
+	
+	<QUERY_GET_DISTRIBUTION_MAPPED_CONCEPTS_BY_ENTITY_BEHAVIOR>
+	<![CDATA[select distinct mapping.businessEntityDefinition.concept 
+		 from Mapping as mapping, ModelGroupMapping mgm,
+		 EntityBehavior eb where mapping.assetEntityDefinition.asset.id = :assetId 
+		 and mapping.businessEntityDefinition.entityType = :entityType 
+		 and mapping.businessEntityDefinition.modelGroup.id = mgm.modelGroup.id and mgm.modelGroup.category != :baseCategoryType 
+		 and mapping.businessEntityDefinition.id = eb.entityBedId and eb.behaviorType = :distributionType
+	]]>
+	</QUERY_GET_DISTRIBUTION_MAPPED_CONCEPTS_BY_ENTITY_BEHAVIOR>
+
+	<QUERY_GET_GRAIN_MAPPED_CONCEPTS>
+	<![CDATA[select distinct mapping.businessEntityDefinition.concept 
+		 from Mapping as mapping 
+		 where mapping.assetEntityDefinition.asset.id = :assetId and 
+		 mapping.businessEntityDefinition.entityType = :entityType
+		 and mapping.businessEntityDefinition.grainConcept = :checkType
+	]]>
+	</QUERY_GET_GRAIN_MAPPED_CONCEPTS>
+
+	<QUERY_GET_GRAIN_MAPPED_CONCEPTS_BY_COLUMN_GRANULARITY>
+	<![CDATA[select map.id, map.businessEntityDefinition.concept.displayName,
+		 map.assetEntityDefinition.colum.granularity 
+		 from Mapping map where map.assetEntityDefinition.asset.id = :assetId
+		 and map.assetEntityDefinition.colum.granularity is not null
+		 and map.assetEntityDefinition.entityType = :columnEntityType and map.primary = :primary and
+		 map.assetEntityDefinition.colum.granularity != :notApplicable
+	]]>
+	</QUERY_GET_GRAIN_MAPPED_CONCEPTS_BY_COLUMN_GRANULARITY>
+
+	<QUERY_GET_GRAIN_MAPPED_CONCEPTS_INCLUDING_DISTRIBUTION_BY_ENTITY_BEHAVIOR>
+	<![CDATA[select mapping.id,mapping.businessEntityDefinition.concept.displayName,eb.behaviorType 
+		 from Mapping as mapping, ModelGroupMapping mgm, EntityBehavior eb where 
+		 mapping.assetEntityDefinition.asset.id = :assetId
+		 and mapping.businessEntityDefinition.entityType = :entityType
+		 and mapping.businessEntityDefinition.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.modelGroup.category != :baseCategoryType and mapping.businessEntityDefinition.id = eb.entityBedId
+		 and mapping.primary = :primary and (eb.behaviorType = :grainType OR eb.behaviorType = :distributionType 
+		 OR eb.behaviorType = :populationType) order by mapping.id
+	]]>
+	</QUERY_GET_GRAIN_MAPPED_CONCEPTS_INCLUDING_DISTRIBUTION_BY_ENTITY_BEHAVIOR>	
+
+	<QUERY_GET_MAPPED_INSTANCES>
+	<![CDATA[select distinct map.businessEntityDefinition.instance 
+		 from Mapping as map, ModelGroupMapping mgm 
+		 where map.businessEntityDefinition.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseCategoryType  
+		 and map.businessEntityDefinition.concept.id = :conceptId 
+		 and map.assetEntityDefinition.asset.id = :assetId
+	]]>
+	</QUERY_GET_MAPPED_INSTANCES>
+	
+	<QUERY_GET_MAPPED_MEMBERS_OF_COLUMN>
+	<![CDATA[select mbr.id 
+		 from Membr mbr, AssetEntityDefinition ae,
+		 Mapping map where mbr.id = ae.membr.id and 
+		 ae.id = map.assetEntityDefinition.id and ae.colum.id = :columnId 
+		 and ae.entityType = :member
+		 order by mbr.lookupDescription
+	]]>
+	</QUERY_GET_MAPPED_MEMBERS_OF_COLUMN>
+
+	<QUERY_GET_COUNT_OF_MAPPED_MEMBERS_OF_COLUMN>
+	<![CDATA[select count(mbr.id)
+		 from Membr as mbr, AssetEntityDefinition as ae, Mapping as map
+		 where mbr.id = ae.membr.id and ae.id = map.assetEntityDefinition.id and 
+		 ae.colum.id = :columnId and ae.entityType = :member
+	]]>
+	</QUERY_GET_COUNT_OF_MAPPED_MEMBERS_OF_COLUMN>
+
+	<QUERY_GET_ALL_MEMBERS_OF_COLUMN>
+	<![CDATA[select ae.membr.id from  AssetEntityDefinition as ae 
+		 where ae.colum.id = :columnId and ae.entityType = :member
+	]]>
+	</QUERY_GET_ALL_MEMBERS_OF_COLUMN>
+
+	<QUERY_GET_INSTANCE_BED_BY_MEMBER_LOOK_UP_DESC>
+	<![CDATA[select be from  BusinessEntityDefinition be, Membr mbr,Instance as ins 
+		 where be.concept.id = :conceptId and be.entityType = :instance and
+		 mbr.id = :memberId and mbr.lookupDescription = be.instance.displayName 
+		 and be.instance.id = ins.id
+	]]>
+	</QUERY_GET_INSTANCE_BED_BY_MEMBER_LOOK_UP_DESC>
+
+	<QUERY_GET_UNMAPPED_MEMBERS>
+	<![CDATA[select aed.membr
+		 from AssetEntityDefinition aed
+		 where aed.colum.id = :columnId and 
+		 aed.entityType = :member and aed.id not in 
+		(select ae.id from AssetEntityDefinition ae,Mapping m,
+		 BusinessEntityDefinition bed 
+		 where m.businessEntityDefinition.id = bed.id and bed.entityType = :instance
+		 and bed.concept.id = :conceptId 
+		 and m.assetEntityDefinition.id = ae.id) 
+		 order by aed.membr.lookupDescription
+	]]>
+	</QUERY_GET_UNMAPPED_MEMBERS>		
+	
+	<QUERY_GET_DISTINCT_FACT_TABLES_FOR_BEDIDS_BY_NON_PRIMARY_MAPPING>
+	<![CDATA[select distinct t.id 
+		 from Mapping m, AssetEntityDefinition aed, Tabl t, Asset a
+		 where m.businessEntityDefinition.id in(:bedIds)
+		 and m.assetEntityDefinition.id = aed.id 
+		 and t.id = aed.tabl.id and a.id = aed.asset.id 
+		 and a.id = :assetId and m.primary = :nonPrimary
+	]]>
+	</QUERY_GET_DISTINCT_FACT_TABLES_FOR_BEDIDS_BY_NON_PRIMARY_MAPPING>	
+
+	<QUERY_GET_MAPPED_TABLE_COLUMNS>
+	<![CDATA[select colum.id from Mapping as map, AssetEntityDefinition as aed,
+		 Asset as asset, Tabl as tabl,Colum as colum 
+		 where map.assetEntityDefinition.id = aed.id and asset.id = :assetId 
+		 and aed.asset.id = :assetId and tabl.id = :tableId
+		 and aed.tabl.id = tabl.id and colum.id = aed.colum.id 
+		 and aed.entityType = :columnEntityType group by map.id having count(map.id) > 0
+	]]>
+	</QUERY_GET_MAPPED_TABLE_COLUMNS>
+
+	<QUERY_GET_MAPPED_TABLE_MEMBERS>
+	<![CDATA[select membr.id 
+		 from Mapping as map, AssetEntityDefinition as aed,
+		 Asset as asset, Tabl as tabl,Colum as colum, Membr as membr 
+		 where aed.id = map.assetEntityDefinition.id and asset.id = :assetId 
+		 and aed.asset.id = asset.id and aed.tabl.id = tabl.id 
+		 and tabl.id = :tableId and aed.colum.id = colum.id 
+		 and aed.membr.id = membr.id and aed.entityType = :memberEntityType 
+		 and  tabl.lookupType != :none group by map.id having count(map.id) > 0 
+	]]>
+	</QUERY_GET_MAPPED_TABLE_MEMBERS>
+	
+	<QUERY_OTHER_CONCEPTS_MAPPED_BY_DISPLAY_NAME_ON_TABLE>
+	<![CDATA[select con.id from Mapping map, ModelGroupMapping mgm, 
+		 AssetEntityDefinition aed,Asset a, Tabl t, Colum c, 
+		 BusinessEntityDefinition bed, Concept con 
+		 where map.assetEntityDefinition.id = aed.id 
+		 and map.businessEntityDefinition.id = bed.id and
+		 mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.modelGroup.category != :baseCategoryType and bed.concept.id = con.id and
+		 aed.asset.id = :assetId and aed.tabl.id = :tableId 
+		 and aed.entityType = :columnEntityType and bed.entityType = :conceptEntityType and
+		 con.id != :conceptId and con.displayName = :conceptDisplayName
+	]]>
+	</QUERY_OTHER_CONCEPTS_MAPPED_BY_DISPLAY_NAME_ON_TABLE>
+
+	<QUERY_OTHER_MAPPED_CONCEPT_DISPLAY_NAMES>
+	<![CDATA[select bed.concept.displayName 
+		 from Mapping map, ModelGroupMapping mgm, AssetEntityDefinition aed, 
+		 BusinessEntityDefinition bed where map.assetEntityDefinition.id = aed.id and 
+		 map.businessEntityDefinition.id = bed.id 
+		 and mgm.model.id = :modelId and bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.modelGroup.category != :baseCategoryType  and aed.asset.id = :assetId and aed.tabl.id = :tableId and
+		 aed.entityType = :columnEntityType and bed.entityType = :conceptEntityType
+	]]>
+	</QUERY_OTHER_MAPPED_CONCEPT_DISPLAY_NAMES>
+
+	<QUERY_GET_ASSET_BY_MAPPING_CONCEPT_BED_ID_AND_ASSET_TYPE>
+	<![CDATA[select distinct a 
+		from Mapping m, AssetEntityDefinition aed, Asset a
+		where m.businessEntityDefinition.id = :conceptBedId
+		and m.assetEntityDefinition.id = aed.id
+		and aed.entityType = :columnEntityType and aed.asset.id = a.id 
+		and aed.asset.baseAssetId = :sourceAssetId
+		and a.type = :assetType
+	]]>
+	</QUERY_GET_ASSET_BY_MAPPING_CONCEPT_BED_ID_AND_ASSET_TYPE>
+	
+	
+	<QUERY_GET_COUNT_OF_MAPPED_MEMBERS_OF_BUSINESS_ENTITY_AND_ASSET>
+	<![CDATA[SELECT count(ae2.id)
+		from AssetEntityDefinition as ae, AssetEntityDefinition as ae2, 
+		Mapping as map WHERE map.businessEntityDefinition.id = :businessEntityId
+		AND map.primary = :primary AND map.assetEntityDefinition.id = ae.id 
+		AND ae.asset.id = :assetId AND ae.colum.id = ae2.colum.id and ae2.entityType = :memberEntityType
+	]]>
+	</QUERY_GET_COUNT_OF_MAPPED_MEMBERS_OF_BUSINESS_ENTITY_AND_ASSET>
+	
+	<QUERY_GET_MAPPED_INSTANCES_BED_IDS_BY_MODEL_AND_CONCEPT_ID>
+	<![CDATA[select distinct(bed.id)from
+		 Mapping as map,BusinessEntityDefinition as bed,
+		 ModelGroupMapping as mgm where
+		 map.businessEntityDefinition.id = bed.id and bed.entityType = :instanceBusinessEntityType and
+		 bed.concept.id = :conceptId and bed.modelGroup.id = mgm.modelGroup.id and 
+		 mgm.model.id = :modelId
+	]]>
+	</QUERY_GET_MAPPED_INSTANCES_BED_IDS_BY_MODEL_AND_CONCEPT_ID>
+	
+	<QUERY_GET_UNIQUELY_MAPPED_BEDID_FOR_ASSET>
+	<![CDATA[select distinct businessEntityDefinition.id from Mapping mapping where mapping.assetEntityDefinition.asset.id = :assetId 
+		group by mapping.businessEntityDefinition having count(mapping.businessEntityDefinition) = 1
+	]]>
+	</QUERY_GET_UNIQUELY_MAPPED_BEDID_FOR_ASSET>
+	
+	<QUERY_UPDATE_PRIMARY_FOR_UNIQUE_MAPPINGS_BY_ASSET>
+	<![CDATA[update Mapping set primary = :primary where assetEntityDefinition in 
+		(from AssetEntityDefinition ae where ae.asset.id = :innerAssetId) and businessEntityDefinition.id in (:bedIds)
+	]]>
+	</QUERY_UPDATE_PRIMARY_FOR_UNIQUE_MAPPINGS_BY_ASSET>
+	
+	<QUERY_UPDATE_NON_PRIMARY_FOR_NON_UNIQUE_MAPPINGS_BY_BED>
+	<![CDATA[update Mapping set primary = :nonPrimary where assetEntityDefinition in 
+		(from AssetEntityDefinition ae where ae.asset.id = :innerAssetId) and businessEntityDefinition.id = :businessEntityDefinitionId
+	]]>
+	</QUERY_UPDATE_NON_PRIMARY_FOR_NON_UNIQUE_MAPPINGS_BY_BED>
+	
+
+	<QUERY_GET_BED_BY_MAPPING_CONCEPT_NAME>
+	<![CDATA[select bed from
+		 BusinessEntityDefinition as bed, ModelGroupMapping as mgm 
+		 where bed.modelGroup.id = mgm.modelGroup.id 
+		 and mgm.model.id = :modelId and mgm.modelGroup.category != :baseModelCategoryType 
+		 and bed.entityType = :conceptEntityType
+		 and bed.concept.displayName = :conceptDisplayName
+		 and bed.id = (select mapping.businessEntityDefinition.id 
+		 from Mapping mapping where id = :mappingId)
+	]]>
+	</QUERY_GET_BED_BY_MAPPING_CONCEPT_NAME>
+
+	<QUERY_JOINED_COLUMNS_BY_MAPPED_CONCEPT>
+	<![CDATA[select aedt.colum 
+		from Mapping map, BusinessEntityDefinition bed, AssetEntityDefinition aeds, AssetEntityDefinition aedt, Mapping mapt 
+		where aeds.colum.id = :columnId 
+		and aeds.entityType = :aedEntityTpe 
+		and map.assetEntityDefinition.id = aeds.id 
+		and map.businessEntityDefinition.id = bed.id 
+		and bed.entityType = :bedEntityType 
+		and aedt.entityType = :aedEntityTpe 
+		and mapt.assetEntityDefinition.id = aedt.id 
+		and mapt.businessEntityDefinition.id = bed.id 
+		and aeds.asset.id = aedt.asset.id 
+		and aeds.colum.id != aedt.colum.id
+	]]>
+	</QUERY_JOINED_COLUMNS_BY_MAPPED_CONCEPT>
+
+	<QUERY_MAPPED_CONCEPT_BEDID_COLUMN_IDS_BY_ASSET_ID>
+	<![CDATA[select bed.id, aed.colum.id 
+		from Mapping map, BusinessEntityDefinition bed, AssetEntityDefinition aed 
+		where aed.asset.id = :assetId 
+		and aed.entityType = :aedEntityTpe 
+		and map.assetEntityDefinition.id = aed.id 
+		and map.businessEntityDefinition.id = bed.id 
+		and bed.entityType = :bedEntityType 
+		order by bed.id, aed.colum.id
+	]]>
+	</QUERY_MAPPED_CONCEPT_BEDID_COLUMN_IDS_BY_ASSET_ID>
+
+	<QUERY_MAPPED_COLUMN_IDS_FOR_CONCEPT_BEDID_ASSET_ID>
+	<![CDATA[select aed.colum.id 
+		from Mapping map, BusinessEntityDefinition bed, AssetEntityDefinition aed 
+		where aed.asset.id = :assetId 
+		and aed.entityType = :aedEntityTpe 
+		and map.assetEntityDefinition.id = aed.id 
+		and map.businessEntityDefinition.id = bed.id 
+		and bed.id = :conceptBEDID 
+		and bed.entityType = :bedEntityType 
+		order by aed.colum.id
+	]]>
+	</QUERY_MAPPED_COLUMN_IDS_FOR_CONCEPT_BEDID_ASSET_ID>
+
+	<QUERY_MAPPED_MEMBER_ID_BY_INSTANCE_BEDID_BY_PAGE>
+	<![CDATA[select ibed.id, aed.membr.id 
+		from Mapping map, BusinessEntityDefinition ibed, AssetEntityDefinition aed, BusinessEntityDefinition cbed 
+		where aed.asset.id = :assetId 
+		and aed.entityType = :aedEntityTpe 
+		and map.assetEntityDefinition.id = aed.id 
+		and map.businessEntityDefinition.id = ibed.id 
+		and ibed.concept.id = cbed.concept.id
+		and cbed.id = :conceptBEDID 
+		and cbed.entityType = :cbedEntityType
+		and ibed.entityType = :ibedEntityType 
+		order by ibed.id
+	]]>
+	</QUERY_MAPPED_MEMBER_ID_BY_INSTANCE_BEDID_BY_PAGE>
+    
+	<QUERY_MAPPED_INSTANCE_COUNT>
+	<![CDATA[select count(ibed.id)
+		from Mapping map, BusinessEntityDefinition ibed, AssetEntityDefinition aed, BusinessEntityDefinition cbed 
+		where aed.asset.id = :assetId 
+		and aed.entityType = :aedEntityTpe 
+		and map.assetEntityDefinition.id = aed.id 
+		and map.businessEntityDefinition.id = ibed.id 
+		and ibed.concept.id = cbed.concept.id
+		and cbed.id = :conceptBEDID 
+		and cbed.entityType = :cbedEntityType
+		and ibed.entityType = :ibedEntityType
+	]]>
+	</QUERY_MAPPED_INSTANCE_COUNT>
+
+	<QUERY_STATISTICS_MAPPED_LOOKUP_TABLE_ON_CUBE>
+	<![CDATA[select aed.tabl
+		from Mapping map, BusinessEntityDefinition bed, AssetEntityDefinition aed 
+		where aed.asset.id = :cubeAssetId 
+		and aed.entityType = :aedEntityTpe
+		and aed.tabl.lookupType = :simpleLookupType
+		and map.assetEntityDefinition.id = aed.id 
+		and map.businessEntityDefinition.id = bed.id 
+		and bed.concept.name = :statisticsRealizedTypeName
+		and bed.entityType = :bedEntityType
+	]]>
+	</QUERY_STATISTICS_MAPPED_LOOKUP_TABLE_ON_CUBE>
+
+</queries>

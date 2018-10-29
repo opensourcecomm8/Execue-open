@@ -1,0 +1,45 @@
+# ExeCue properties
+core.configuration.file = /platform/execue-core-configuration.xml
+core.configuration.ext.file = /ext/execue-core-configuration-ext.xml
+rules.configuration.file = /platform/execue-rules-configuration.xml
+dataaccess.configuration.file = /platform/execue-dataaccess-configuration.xml
+unstructured-wh-dataaccess.configuration.file = /platform/execue-unstructured-wh-dataaccess-configuration.xml
+unstructured-ca-dataaccess.configuration.file = /platform/execue-unstructured-ca-dataaccess-configuration.xml
+unstructured-wh.configuration.file = /platform/execue-unstructured-wh-configuration.xml
+unstructured-search.configuration.file = /platform/execue-unstructured-search-configuration.xml
+dataaccess-services.configuration.file = /platform/execue-dataaccess-services-configuration.xml
+swi.configuration.file = /platform/execue-swi-configuration.xml
+time.configuration.file = /platform/execue-time-configuration.xml
+location.configuration.file = /platform/execue-location-configuration.xml
+platform-services.configuration.file = /platform/execue-platform-services-configuration.xml
+ontology.configuration.file = /platform/execue-ontology-configuration.xml
+publisher.configuration.file = /platform/execue-publisher-configuration.xml
+governor.configuration.file = /platform/execue-governor-configuration.xml
+aggregation.configuration.file = /platform/execue-aggregation-configuration.xml
+rp.configuration.file = /platform/execue-reports-presentation-configuration.xml
+ac.configuration.file = /platform/execue-answers-catalog-configuration.xml
+nlp.configuration.file = /platform/execue-nlp-configuration.xml
+nlp.configuration.ext.file = /ext/execue-nlp-configuration-ext.xml
+semantification.configuration.file = /platform/execue-semantification-configuration.xml
+content-postprocessor.configuration.file = /platform/execue-content-postprocessor-configuration.xml
+content-preprocessor.configuration.file = /platform/execue-content-preprocessor-configuration.xml
+driver.configuration.file = /platform/execue-driver-configuration.xml
+driver.configuration.ext.file = /ext/execue-driver-configuration-ext.xml
+knowledge-search.configuration.file = /platform/execue-knowledge-search-configuration.xml
+sdata.configuration.file = /platform/execue-sdata-configuration.xml
+qdata.configuration.file = /platform/execue-qdata-configuration.xml
+query.generation.configuration.file = /platform/execue-query-generation-configuration.xml
+message.configuration.file = /platform/execue-message-configuration.xml
+pseudoLanguage.configuration.file = /platform/execue-pseudo-language-configuration.xml
+security.configuration.file = /platform/execue-security-configuration.xml
+semantic.driver.configuration.file = /platform/execue-semantic-driver-configuration.xml
+ac.query.history.configuration.file = /platform/execue-ac-query-history-configuration.xml
+acmq.controller.configuration.file = /platform/execue-acmq-controller-configuration.xml
+audit.trail.configuration.file = /platform/execue-audit-trail-configuration.xml
+
+## Quartz seed file
+quartz.seed.file = /quartz-seed.xml
+
+
+app.node.id = @@app_node_id@@
+## app.node.id = 2

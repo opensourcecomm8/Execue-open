@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+	<bean id="cumulativeDecisionMaker"
+		class="com.execue.nlp.engine.impl.CumulativeDecisionMaker">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService" />
+	</bean>
+	<bean id="frameWorkCloudService" class="com.execue.nlp.service.impl.FrameworkCloudServiceImpl">
+		<property name="cloudRuleExecutor" ref="cloudRuleExecutor"></property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+	</bean>
+	<bean id="meaningFinderHelper" class="com.execue.nlp.service.impl.MeaningFinderHelper">
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="timeConfigurationService" ref="timeConfigurationService"></property>
+	</bean>
+	<bean id="meaningEnhancer" class="com.execue.nlp.processor.impl.MeaningEnhancer">
+		<property name="nlpConfigurationService"
+			ref="nlpConfigurationService">
+		</property>
+		<property name="kdxCloudRetrievalService"
+			ref="kdxCloudRetrievalService">
+		</property>
+		<property name="nlpServiceHelper" ref="nlpServiceHelper"></property>
+		<property name="associationService" ref="associationService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+	
+	<bean id="summarizationService"
+		class="com.execue.nlp.processor.SummarizationServiceImpl">
+		<property name="nlpServiceHelper" ref="nlpServiceHelper" />
+		<property name="nlpConfiguration" ref="nlpConfigurationService" />
+		<property name="reducedFormRevesionService"
+			ref="reducedFormRevesionService" />
+	</bean>
+	<bean id="associationService" class="com.execue.nlp.processor.impl.AssociationServiceImpl">
+		<property name="ontologyService" ref="dbOntologyService" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+	<bean id="weightRuleProcessingService" class="com.execue.nlp.rule.service.impl.WeightRuleProcessingService">
+	</bean>
+	
+	<bean id="recogntionRealizationServiceImpl" class="com.execue.nlp.service.impl.RecogntionRealizationServiceImpl">
+	</bean>
+	
+	
+</beans>

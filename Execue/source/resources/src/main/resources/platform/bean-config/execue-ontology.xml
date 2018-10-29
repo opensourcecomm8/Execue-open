@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/webflow-config
+	http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<bean id="ontologyConfigurationService"
+		class="com.execue.ontology.configuration.impl.OntologyConfigurationImpl">
+		<property name="ontologyConfiguration" ref="ontologyConfiguration" />
+		<property name="kdxRetrievalService" ref="kdxRetrievalService" />
+	</bean>
+	
+	<!-- Bean Definition for OntologyConfigurableService Starts  -->
+	<bean id="ontologyConfigurableService"
+		class="com.execue.ontology.configuration.impl.OntologyConfigurableService">
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService" />	
+	</bean>
+	<!-- Bean Definition for OntologyConfigurableService Ends  -->
+	
+	<bean id="fileOntologyService" class="com.execue.ontology.service.impl.DBFileOntologyServiceImpl" >
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+	</bean>
+	<bean id="dbOntologyService" class="com.execue.ontology.service.impl.DBOntologyServiceImpl" >
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService"/>
+		<property name="kdxModelService" ref="kdxModelService"/>
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService"/>
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService"/>
+	</bean>
+	<bean id="jenaService" class="com.execue.ontology.service.ontoModel.impl.JenaServices">
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService"/>
+	</bean>
+	
+	<bean id="ontologyFactory" class="com.execue.ontology.service.OntologyFactory" factory-method="getInstance">
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService"/>
+	</bean>
+	
+	<bean id="fileOntologyDataAbsorptionService" class="com.execue.ontology.absorbtion.impl.FileOntologyDataAbsorptionServiceImpl" >
+		<property name="ontologyConfigurationService" ref="ontologyConfigurationService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="baseKDXRetrievalService" ref="baseKDXRetrievalService"/>
+		<property name="kdxManagementService" ref="kdxManagementService"/>
+		<property name="ontologyService" ref="dbOntologyService"/>
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService"/>
+		<property name="pathDefinitionManagementService" ref="pathDefinitionManagementService"/>
+		<property name="pathAbsorptionService" ref="pathAbsorptionService"/>
+		<property name="kdxModelService" ref="kdxModelService"/>
+		<property name="jobDataService" ref="jobDataService"/>			
+	</bean>	
+</beans>

@@ -1,0 +1,64 @@
+<queries>
+	<QUERY_GET_DATE_FORMAT_BY_ID>
+	<![CDATA[from DateFormat as dateFormat 
+		 where dateFormat.id=:id and dateFormat.supported = :supportedValue
+	]]>
+	</QUERY_GET_DATE_FORMAT_BY_ID>
+
+	<QUERY_GET_DATE_FORMAT_BY_PROVIDER_TYPE>
+	<![CDATA[from DateFormat as dateFormat 
+		 where dateFormat.format=:format and 
+		 dateFormat.assetProviderType=:assetProviderType
+		 and dateFormat.supported = :supportedValue
+	]]>
+	</QUERY_GET_DATE_FORMAT_BY_PROVIDER_TYPE>
+
+	<QUERY_GET_PLAIN_DATE_FORMAT_BY_PROVIDER_TYPE>
+	<![CDATA[from DateFormat as dateFormat 
+		 where dateFormat.isPlainFormat=:isPlainFormat
+		 and dateFormat.assetProviderType=:assetProviderType
+		 and dateFormat.supported = :supportedValue and dateFormat.evaluated = :evaluatedValue
+	]]>
+	</QUERY_GET_PLAIN_DATE_FORMAT_BY_PROVIDER_TYPE>
+
+	<QUERY_GET_ALL_DATE_FORMAT>
+	<![CDATA[from DateFormat as dateFormat 
+		 where dateFormat.supported = :supportedValue
+	]]>
+	</QUERY_GET_ALL_DATE_FORMAT>
+
+	<QUERY_GET_DATE_QUALIFIER_BY_FORMAT>
+	<![CDATA[select distinct qualifier
+		 from DateFormat where format = :format
+	]]>
+	</QUERY_GET_DATE_QUALIFIER_BY_FORMAT>
+	
+	<QUERY_GET_DATA_TYPE_BY_FORMAT>
+	<![CDATA[select distinct dataType 
+		 from DateFormat where format = :format
+	]]>
+	</QUERY_GET_DATA_TYPE_BY_FORMAT>
+	
+	<QUERY_GET_ALL_DATE_FORMATS>
+	<![CDATA[from DateFormat dateFormat]]>
+	</QUERY_GET_ALL_DATE_FORMATS>
+	
+	<QUERY_GET_FORMAT_NATURE_BY_FORMAT>
+	<![CDATA[select distinct isPlainFormat 
+		 from DateFormat where format = :format
+	]]>
+	</QUERY_GET_FORMAT_NATURE_BY_FORMAT>
+	
+	<QUERY_GET_FORMAT_SUPPORTED_BY_FORMAT>
+	<![CDATA[select distinct supported 
+		from DateFormat where format = :format
+	]]>
+	</QUERY_GET_FORMAT_SUPPORTED_BY_FORMAT>
+	
+	<QUERY_GET_QUALIFIER_BED_ID_BY_FORMAT_PROVIDER_TYPE>
+	<![CDATA[select distinct qualifierBEDId 
+		   from DateFormat where 
+		   format = :format and assetProviderType=:assetProviderType
+	]]>
+	</QUERY_GET_QUALIFIER_BED_ID_BY_FORMAT_PROVIDER_TYPE>
+</queries>

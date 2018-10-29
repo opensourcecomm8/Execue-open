@@ -1,0 +1,25 @@
+<queries>
+	<GET_DEFAULT_DYNAMIC_VALUE>
+		<![CDATA[from DefaultDynamicValue as defaultDynamicValue 
+		         where defaultDynamicValue.assetId=:assetId and 
+		         defaultDynamicValue.lhsDEDId=:lhsDEDId 
+		         and defaultDynamicValue.qualifier=:qualifier]]>
+	</GET_DEFAULT_DYNAMIC_VALUE>	
+	
+	<QUERY_ENUM_LOOKUP_VALUE_DESCRIPTION>
+		<![CDATA[from EnumLookup 
+		         order by type, displayOrder asc]]>
+	</QUERY_ENUM_LOOKUP_VALUE_DESCRIPTION>
+
+	<QUERY_COUNRTY_LOOKUP_CODE>
+		<![CDATA[from CountryLookup as countryLookup]]>
+	</QUERY_COUNRTY_LOOKUP_CODE>
+
+	<QUERY_VERTICAL_ENTITY_REDIRECT>
+		<![CDATA[from VerticalEntityBasedRedirection as verticalEntityBasedRedirection]]>
+	</QUERY_VERTICAL_ENTITY_REDIRECT>
+
+	<QUERY_GET_FORMAT_AND_DATE_QUALIFIER>
+		<![CDATA[select distinct format, qualifier from DateFormat]]>
+	</QUERY_GET_FORMAT_AND_DATE_QUALIFIER>	
+</queries>

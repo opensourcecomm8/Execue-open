@@ -1,0 +1,191 @@
+<queries>
+	<QUERY_UDX_IDS_BY_RF_IDS>
+	<![CDATA[select udx.id from UnStructuredIndex udx 
+		 where udx.rfId = :rfId
+	]]>
+	</QUERY_UDX_IDS_BY_RF_IDS>
+
+	<QUERY_UDX_BY_RF_IDS>
+	<![CDATA[from UnStructuredIndex udx where udx.rfId = :rfId
+	]]>
+	</QUERY_UDX_BY_RF_IDS>
+
+	<QUERY_UDXS_BY_RF_IDS>
+	<![CDATA[from UnStructuredIndex udx where udx.rfId in (:rfIds)
+	]]>
+	</QUERY_UDXS_BY_RF_IDS>
+
+	<QUERY_PERFORM_ENTITY_SEARCH_ON_RI_UDX>
+	<![CDATA[select ru.udxId, sum(ru.maxWeight * ru.variationWeight * rq.variationWeight) 
+		as MatchWeight, ru.searchType, ru.applicationId, ru.entityCount, ru.rfId, ru.contentDate 
+		from RIUnStructuredIndex ru, RIUserQuery rq where rq.queryId = :userQueryId and 
+		rq.beId1 = ru.beId1 and rq.beId2 = ru.beId2 and rq.beId3 = ru.beId3 
+		and rq.variationSubType = ru.variationSubType and (rq.derived * ru.derived) = 0 
+		and rq.applicationId = ru.applicationId group by ru.rfId, ru.udxId, ru.contentDate
+		order by sum(ru.maxWeight * ru.variationWeight * rq.variationWeight) desc, 
+		sum(ru.recWeight * rq.recWeight * ru.variationWeight * rq.variationWeight) desc, 
+		ru.contentDate desc, (ru.entityCount/rq.entityCount), ru.udxId desc
+	]]>
+	</QUERY_PERFORM_ENTITY_SEARCH_ON_RI_UDX>
+
+	<QUERY_PERFORM_UNIVERSAL_SEARCH_ON_QUERY_CACHE>
+	<![CDATA[
+		select 
+			qc.userQueryId,
+	 		sum(qc.maxWeight * qc.variationWeight * rq.variationWeight) as MatchWeight,
+			qc.searchType, 
+			qc.applicationId,
+			qc.entityCount 
+		from 
+			RIQueryCache qc, 
+			RIUserQuery rq 
+		where 
+			rq.queryId = :userQueryId 
+			and rq.beId1 = qc.beId1 
+			and rq.beId2 = qc.beId2 
+			and rq.beId3 = qc.beId3
+			and rq.variationSubType = qc.variationSubType 
+			and (rq.derived * qc.derived) = 0
+			and rq.applicationId = qc.applicationId 
+		group by
+			qc.userQueryId, 
+			qc.applicationId,
+			qc.searchType,
+			qc.entityCount,
+			rq.entityCount
+		order by 
+			sum(qc.maxWeight * qc.variationWeight * rq.variationWeight) desc,
+			sum(qc.recWeight * rq.recWeight * qc.variationWeight * rq.variationWeight) desc,
+	 		(qc.entityCount/rq.entityCount), 
+			qc.userQueryId desc
+	]]>
+	</QUERY_PERFORM_UNIVERSAL_SEARCH_ON_QUERY_CACHE>
+
+	<QUERY_PERFORM_UNIVERSAL_SEARCH_FOR_RELATED_QUERY>
+	<![CDATA[
+		select qc.userQueryId, 
+			sum(qc.maxWeight * qc.variationWeight * rq.variationWeight) as MatchWeight, 
+		 	qc.searchType, 
+		 	qc.applicationId, 
+		 	qc.entityCount 
+		 from 
+		 	RIQueryCache qc, 
+		 	RIUserQuery rq 
+		 where 
+		 	rq.queryId = :userQueryId
+		 	and rq.beId1 = qc.beId1 
+		 	and rq.beId2 = qc.beId2 
+		 	and rq.beId3 = qc.beId3 
+		 	and rq.variationSubType = qc.variationSubType 
+		 	and rq.applicationId = qc.applicationId 
+		 group by 
+		 	qc.userQueryId, 
+			qc.applicationId,
+			qc.searchType,
+			qc.entityCount,
+			rq.entityCount
+		 order by 
+		 	(qc.entityCount/rq.entityCount) desc, 
+		 	sum(qc.maxWeight * qc.variationWeight * rq.variationWeight) desc, 
+		 	sum(qc.recWeight * rq.recWeight * qc.variationWeight * rq.variationWeight) desc, 
+		 	qc.userQueryId desc
+	]]>
+	</QUERY_PERFORM_UNIVERSAL_SEARCH_FOR_RELATED_QUERY>
+
+	<QUERY_RI_INSTANCE_TRIPES_FOR_USERY_QUERY>
+	<![CDATA[select distinct ri from RIInstanceTripleDefinition ri, 
+		 RIUserQuery rq where rq.queryId = :userQueryId and rq.beId1 = ri.beId1
+		 and rq.beId2 = ri.beId2 and rq.beId3 = ri.beId3 and rq.variationType = ri.variationType 
+		 and rq.variationSubType = ri.variationSubType order by ri.matchWeight desc
+	]]>
+	</QUERY_RI_INSTANCE_TRIPES_FOR_USERY_QUERY>
+
+	<QUERY_COUNT_RI_UDXS_BY_UDX_IDS>
+	<![CDATA[select count(distinct ru.udxId)from RIUnStructuredIndex ru, RIUserQuery rq 
+		 where rq.queryId = :userQueryId and rq.beId1 = ru.beId1 and rq.beId2 = ru.beId2
+		 and rq.beId3 = ru.beId3 and rq.variationSubType = ru.variationSubType
+		 and (rq.derived * ru.derived) = 0 and rq.applicationId = ru.applicationId
+		 group by ru.rfId, ru.udxId, ru.contentDate
+	]]>
+	</QUERY_COUNT_RI_UDXS_BY_UDX_IDS>
+
+	<UPDATE_UDX_PROCESSING_STATE>
+	<![CDATA[update UnStructuredIndex udx set udx.imageUrlProcessed = :processedState, udx.batchId =:batchId 
+		 where udx.id between :minUDXId and :maxUDXId and udx.imageUrlProcessed = :imageURLProcessedValue
+	]]>
+	</UPDATE_UDX_PROCESSING_STATE>
+
+	<QUERY_RI_USER_QUERY_MAX_EXECUTION_DATE>
+	<![CDATA[select max(executionDate) from RIUserQuery]]>
+	</QUERY_RI_USER_QUERY_MAX_EXECUTION_DATE>
+
+	<DELETE_RI_USER_QUERY_BY_MAX_EXECUTION_DATE>
+	<![CDATA[DELETE from RIUserQuery where executionDate <= :executionDate]]>
+	</DELETE_RI_USER_QUERY_BY_MAX_EXECUTION_DATE>
+
+	<DELETE_UDX_BY_CONTENT_DATE>
+	<![CDATA[DELETE from UnStructuredIndex where contentDate <= :contentDate and contentSourceType = :contentSourceType]]>
+	</DELETE_UDX_BY_CONTENT_DATE>
+
+	<QUERY_UDX_BY_CONTENT_SOURCE_TYPE>
+	<![CDATA[from UnStructuredIndex udx where udx.contentSourceType = :contentSourceType]]>
+	</QUERY_UDX_BY_CONTENT_SOURCE_TYPE>
+
+	<QUERY_UDX_BY_PROCESSED_STATE>
+	<![CDATA[from UnStructuredIndex udx where udx.imageUrlProcessed = :processed and udx.contentSourceType = :contentSourceType order by udx.id desc]]>
+	</QUERY_UDX_BY_PROCESSED_STATE>
+
+	<DELETE_UDX_ATTRIBUTE_BY_UDXID>
+	<![CDATA[DELETE from UDXAttribute u where u.udx.id in(:udxIds)]]>
+	</DELETE_UDX_ATTRIBUTE_BY_UDXID>
+
+	<DELETE_RI_UDX_BY_UDXID>
+	<![CDATA[DELETE from RIUnStructuredIndex ri where ri.udxId in(:udxIds)]]>
+	</DELETE_RI_UDX_BY_UDXID>
+
+	<DELETE_UDX_BY_ID>
+	<![CDATA[DELETE from UnStructuredIndex udx where udx.id in(:ids)]]>
+	</DELETE_UDX_BY_ID>
+
+	<QUERY_GET_SEED_BY_NODE_TYPE>
+	<![CDATA[from Seed s where s.nodeId = :nodeId and s.type = :type]]>
+	</QUERY_GET_SEED_BY_NODE_TYPE>
+
+	<QUERY_GET_RECORDS_IN_RANGE_FROM_UDX_SEARCH_RESULTS>
+	<![CDATA[SELECT udx.id, udx.rfId, udx.url,
+		 udx.contentSource,udx.contentSourceType,udx.longDescription,
+		 udx.shortDescription,udx.contentDate,
+		 ((usr.matchWeight/rq.maxMatchWeight) * rq.reducedQueryMatchPercent) AS relevance ,
+		  usr.searchType, rq.applicationId , usr.matchedTriples 
+		  FROM UnStructuredIndex udx,  UdxSearchResult usr, QDataReducedQuery rq 
+		  WHERE udx.id=usr.udxId AND usr.queryId = rq.userQueryId AND 
+		  usr.appId = rq.applicationId AND usr.queryId=:queryId 
+		  ORDER BY ((usr.matchWeight/rq.maxMatchWeight) * rq.reducedQueryMatchPercent) desc, usr.matchedTriplesSum desc
+	]]>
+	</QUERY_GET_RECORDS_IN_RANGE_FROM_UDX_SEARCH_RESULTS>
+
+	<DELETE_UDX_RESULTS_BY_MAX_EXECUTION_DATE>
+	<![CDATA[delete from UdxSearchResult ur where ur.queryId in (select rq.queryId from RIUserQuery rq  where rq.executionDate <= :executionDate)]]>
+	</DELETE_UDX_RESULTS_BY_MAX_EXECUTION_DATE>
+
+	<UPDATE_UDX_PROCESSING_STATE_BY_BATCH_ID>
+	<![CDATA[update UnStructuredIndex udx set udx.imageUrlProcessed = :updatingProcessedState 
+		 where udx.batchId =:batchId and udx.imageUrlProcessed = :existingProcessedState
+	]]>
+	</UPDATE_UDX_PROCESSING_STATE_BY_BATCH_ID>
+
+	<QUERY_RI_UDXS_BY_UDX_IDS>
+	<![CDATA[select ru.udxId, sum(ru.pageWeight*ru.matchWeight*rq.matchWeight/10000) as weight, 
+		ru.searchType, ru.variationSubType from RIUnStructuredIndex ru, 
+		RIUserQuery rq where rq.queryId = :userQueryId and rq.beId1 = ru.beId1 
+		and rq.beId2 = ru.beId2 and rq.beId3 = ru.beId3 and ru.variationSubType = rq.variationSubType 
+		group by ru.udxId, ru.searchType, ru.variationSubType
+		order by sum(ru.pageWeight*ru.matchWeight*rq.matchWeight/10000) desc, ru.searchType desc
+	]]>
+	</QUERY_RI_UDXS_BY_UDX_IDS>
+
+	<QUERY_UD_SEARCH_RESULT>
+	<![CDATA[from udxSearchresult udxsr where udxsr.queryId = :queryId limit $POSITION$ ,$UPPER$
+	]]>
+	</QUERY_UD_SEARCH_RESULT>
+</queries>

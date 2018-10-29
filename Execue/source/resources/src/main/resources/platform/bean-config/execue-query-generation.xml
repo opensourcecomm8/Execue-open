@@ -1,0 +1,107 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="cubeQueryEnhancerService" class="com.execue.querygen.service.impl.CubeQueryEnhancerServiceImpl">
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>	
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+	</bean>
+
+	<bean id="structuredQueryTransformerService" 
+		class="com.execue.querygen.service.impl.StructuredQueryTransformerServiceImpl" >
+		<property name="cubeQueryEnhancerService" ref="cubeQueryEnhancerService"/>
+		<property name="queryGenerationServiceFactory" ref ="queryGenerationServiceFactory"/>
+	</bean>
+	
+	<bean id="mySqlQueryGenerationService" class="com.execue.querygen.service.impl.mysql.MySqlQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "2"/>
+	</bean>
+	
+	<bean id="msSqlQueryGenerationService" class="com.execue.querygen.service.impl.mssql.MsSqlQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "3"/>
+	</bean>
+	
+	<bean id="db2QueryGenerationService" class="com.execue.querygen.service.impl.db2.Db2QueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "4"/>
+	</bean>
+	
+	<bean id="oracleQueryGenerationService" class="com.execue.querygen.service.impl.oracle.OracleQueryGenerationServiceImpl">
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "1"/>
+	</bean>
+	
+	<bean id="teradataQueryGenerationService" class="com.execue.querygen.service.impl.teradata.TeradataQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "7"/>
+	</bean>
+	
+	<bean id="sasQueryGenerationService" class="com.execue.querygen.service.impl.sas.SASQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "8"/>
+	</bean>
+
+	<bean id="derbyQueryGenerationServiceImpl" class="com.execue.querygen.service.impl.derby.DerbyQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "10"/>
+	</bean>
+
+
+	<bean id="postgresQueryGenerationServiceImpl" class="com.execue.querygen.service.impl.postgres.PostgresQueryGenerationServiceImpl" >
+		<property name="joinService" ref="joinService"/>
+		<property name="sdxRetrievalService" ref="sdxRetrievalService"/>
+		<property name="swiConfigurationService" ref ="swiConfigurationService"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="providerTypeValue" value = "11"/>
+	</bean>
+	
+	
+	<bean id="queryGenerationServiceFactory" 
+		class="com.execue.querygen.service.QueryGenerationServiceFactory" factory-method="getInstance">
+		<property name="beanMapping">
+			<map>
+				<entry key="1" value="oracleQueryGenerationService"/>
+				<entry key="2" value="mySqlQueryGenerationService"/>
+				<entry key="3" value="msSqlQueryGenerationService"/>
+				<entry key="4" value="db2QueryGenerationService"/>
+				<entry key="7" value="teradataQueryGenerationService"/>
+				<entry key="8" value="sasQueryGenerationService"/>
+				<entry key="10" value="derbyQueryGenerationServiceImpl"/>
+				<entry key="11" value="postgresQueryGenerationServiceImpl"/>				
+				<!-- default -->
+				<entry key="0" value="oracleQueryGenerationService"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="queryGenerationConfigurationService" class="com.execue.querygen.configuration.impl.QueryGenerationConfigurationServiceImpl">
+		<property name="queryGenerationConfiguration" ref="queryGenerationConfiguration"></property>
+	</bean>
+
+</beans>

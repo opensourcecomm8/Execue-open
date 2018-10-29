@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<execue>
+	<remoteAsset>
+		<name>dfs-billing</name>
+		<id>111</id>
+		<dataSource>
+		<providerType>Oracle</providerType>
+		<location>10.10.50.250</location>
+		<port>1521</port>
+		<userName>dfs</userName>
+		<password>onet123</password>
+		<schemaName>hydbd1</schemaName>
+		</dataSource>
+	</remoteAsset>
+	<localAsset>
+		<id>11</id>
+		<name>dfs-billing</name>
+		<dataSource>
+			<providerType>MySql</providerType>
+			<location>10.10.52.100</location>
+			<port>3307</port>
+			<userName>etl</userName>
+			<password>execue</password>
+			<schemaName>test</schemaName>
+		</dataSource>
+		<status></status>
+	</localAsset>
+	<remoteQueries>
+		<query>
+			<id>0</id>
+			<remoteSelectQuery>
+				SELECT PORT_SEG_GRP,PORT_SEG,PORT_SEG_DESC FROM PORT_SEG
+			</remoteSelectQuery>
+			<localCreateStatement>
+				CREATE TABLE PORT_SEG(PORT_SEG_GRP VARCHAR(2),PORT_SEG VARCHAR(5),PORT_SEG_DESC VARCHAR(60))
+			</localCreateStatement>
+			<localInsertStatement>
+				INSERT INTO PORT_SEG (PORT_SEG_GRP,PORT_SEG,PORT_SEG_DESC) VALUES (?PORT_SEG_GRP,?PORT_SEG,?PORT_SEG_DESC)
+			</localInsertStatement>
+			<localRollbackStatement>
+				DELETE FROM PORT_SEG
+			</localRollbackStatement>
+		</query>
+		<query>
+			<id>1</id>
+			<remoteSelectQuery>
+				SELECT CARD_TYPE_CD,CARD_TYPE FROM CARD_TYPE
+			</remoteSelectQuery>
+			<localCreateStatement>
+				CREATE TABLE CARD_TYPE(CARD_TYPE_CD VARCHAR(10),CARD_TYPE VARCHAR(20))
+			</localCreateStatement>
+			<localInsertStatement><!-- Given Wrong table name to test bad case-->
+				INSERT INTO CARD_TYPE_TABLE (CARD_TYPE_CD,CARD_TYPE) VALUES(?CARD_TYPE_CD,?CARD_TYPE)
+			</localInsertStatement>
+			<localRollbackStatement>
+				DELETE FROM CARD_TYPE
+			</localRollbackStatement>
+		</query>
+	</remoteQueries>
+</execue>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="execueAdminWebApp">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="unstructured-wh.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-wh/unstructured-wh">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="resources.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/resources/resources">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="core-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core-common/core-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="util-services.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util-services/util-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/data-access/data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="unstructured-ca-data-access.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/unstructured-ca-data-access/unstructured-ca-data-access">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/execueAdminWebApp/build/classes"/>
+        <property name="context-root" value="execueAdminWebApp"/>
+    </wb-module>
+</project-modules>

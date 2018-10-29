@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<nlp>
+		<files>
+			<validationRulesFile>/platform/bean-config/kbase/validationRules.xml</validationRulesFile>
+			<regexComponentsFile>/platform/bean-config/kbase/regexComponents.xml</regexComponentsFile>
+			<weightAssignmentRulesFile>/platform/bean-config/kbase/weightAssignmentRules.xml</weightAssignmentRulesFile>
+		</files>
+        <searchTypes>
+            <searchType>
+                <name>Default</name>
+                <flags>
+                    <runSemanticScoping>true</runSemanticScoping>
+                    <runMeaningFinder>true</runMeaningFinder>
+                    <runMeaningEnhancer>true</runMeaningEnhancer>
+                </flags>
+                <maxPossibilityCount>20</maxPossibilityCount>
+            </searchType>
+            <searchType>
+                <name>EntitySearch</name>
+                <flags>
+                    <runSemanticScoping>true</runSemanticScoping>
+                    <runMeaningFinder>true</runMeaningFinder>
+                    <runMeaningEnhancer>true</runMeaningEnhancer>
+                </flags>
+                <maxPossibilityCount>5</maxPossibilityCount>
+            </searchType>
+            <searchType>
+                <name>KnowledgeSearch</name>
+                <flags>
+                    <runSemanticScoping>true</runSemanticScoping>
+                    <runMeaningFinder>true</runMeaningFinder>
+                    <runMeaningEnhancer>true</runMeaningEnhancer>
+                </flags>
+                <maxPossibilityCount>20</maxPossibilityCount>
+            </searchType>
+        </searchTypes>
+	</nlp>
+</execue-configuration>
+        

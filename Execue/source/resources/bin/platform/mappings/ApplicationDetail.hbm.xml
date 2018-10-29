@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 3, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.entity.ApplicationDetail" table="APPLICATION_DETAIL">		
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">APPLICATION_DETAIL</param>
+			</generator>
+		</id>
+		<property name="applicationId" type="java.lang.Long">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</property>
+		 <property name="imageData" type="java.sql.Blob">
+            <column name="IMAGE_DATA" />
+        </property>
+        <property name="imageName" type="string">
+			<column name="IMAGE_NAME" length="255"/>
+		</property>
+		<property name="imageType" type="string">
+			<column name="IMAGE_TYPE" length="255" />
+		</property>
+	</class>
+</hibernate-mapping>

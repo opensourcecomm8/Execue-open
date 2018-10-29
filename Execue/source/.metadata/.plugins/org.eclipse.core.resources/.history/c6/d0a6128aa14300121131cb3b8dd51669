@@ -1,0 +1,5 @@
+<queries>
+	<QUERY_GET_ANONYMOUS_USER_BY_IP_LOCATION>
+	<![CDATA[from AnonymousUser as anonymousUser where anonymousUser.ipLocation = :ipLocation]]> 
+	</QUERY_GET_ANONYMOUS_USER_BY_IP_LOCATION>
+</queries>

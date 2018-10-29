@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="processingFlagType">
+		<param name="enumClass">com.execue.core.common.type.ProcessingFlagType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.entity.unstructured.SourceContent"
+		table="SOURCE_CONTENT">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="native" />
+		</id>
+
+		<property name="url" type="string">
+			<column name="URL" />
+		</property>
+		<property name="title" type="string">
+			<column name="TITLE" />
+		</property>
+		<property name="summary" type="string">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="source" type="string">
+			<column name="SOURCE" />
+		</property>
+		<property name="contextId" type="java.lang.Long">
+			<column name="CONTEXT_ID" />
+		</property>
+		<property name="processed" type="processingFlagType">
+			<column name="PROCESSED" />
+		</property>
+		<property name="addedDate" type="timestamp">
+			<column name="ADDED_DATE" />
+		</property>
+		<property name="failureCause" type="string">
+			<column name="FAILURE_CAUSE" />
+		</property>
+		<property name="batchId" type="java.lang.Long">
+			<column name="BATCH_ID" />
+		</property>
+		<property name="sourceItemId" type="java.lang.Long">
+			<column name="SOURCE_ITEM_ID" />
+		</property>
+		<property name="sourceNodeId" type="java.lang.Long">
+			<column name="SOURCE_SERVER_ID" />
+		</property>
+	</class>
+</hibernate-mapping>

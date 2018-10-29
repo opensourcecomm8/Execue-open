@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+    <class name="com.execue.core.common.bean.entity.KeyWord" table="KEY_WORD">
+        
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">KEY_WORD</param>
+			</generator>
+		</id>
+        
+		<many-to-one name="businessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+            <column name="BE_ID" precision="20" scale="0" />
+        </many-to-one>
+        
+		<many-to-one name="modelGroup" class="com.execue.core.common.bean.entity.ModelGroup" fetch="select">
+			<column name="MODEL_GROUP_ID" precision="20" scale="0" />
+        </many-to-one>
+        
+        <property name="word" type="string">
+            <column name="WORD" />
+        </property>
+        
+       
+        
+        <set name="parallelWords" inverse="true" cascade="save-update,delete">
+            <key>
+                <column name="KEY_WORD_ID" precision="20" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.execue.core.common.bean.entity.ParallelWord" />
+        </set>
+    
+    </class>
+
+</hibernate-mapping>

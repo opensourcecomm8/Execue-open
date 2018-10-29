@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for Preferences related actions
+
+-->
+<struts>
+	<package name="semanticIntefaceSearch" extends="execue-console-default">
+		<action name="semanticSearch" method="search" class="semanticSearchAction">
+			<result name="success" type="tiles">search.results</result>
+			<result name="input" type="tiles">qi.simpleSearch</result>
+			<result name="error" type="tiles">search.results</result>
+		</action>		
+		<action name="showAssetMetaInfo" method="showAssetMetaInfo" class="assetMetaInfoAction">
+			<result type="tiles" name="success">qi.showAssetMeta</result>
+			<result type="tiles" name="input">qi.showAssetMeta</result>
+			<result type="tiles" name="error">qi.showAssetMeta</result>
+		</action>
+	</package>
+	<package name="queryIntefaceSearch" extends="execue-console-default">
+		
+		<action name="processEntities" method="processEntities" class="semanticSearchAction">
+			<result name="success" type="tiles">search.results</result>
+			<result name="input" type="tiles">search.results</result>
+			<result name="error" type="tiles">search.results</result>
+		</action>
+		<action name="getUser" method="getUserById" class="usersAction">
+			<result name="success">/WEB-INF/jsp/main/qi/user-info.jsp</result> 
+		</action>
+		<action name="getAssetDisclaimer" method="showAssetDetailInfo" class="assetDetailAction">
+			<result name="success">/WEB-INF/jsp/main/qi/assetDisclaimerInfo.jsp</result> 
+		</action>		
+	
+	</package>
+	
+	<package name="assetDetail" namespace="/qi" extends="execue-json-default">
+		<action name="getShortDisclaimer" class="assetDetailAction"
+			method="loadShortDisclaimer">
+			<result name="success" type="json">
+				<param name="root">uiAssetDetail</param>
+			</result>
+		</action>
+		<action name="getExtendedDisclaimer" class="assetDetailAction"
+			method="loadExtendedDisclaimer">
+			<result name="success" type="json">
+				<param name="root">uiAssetDetail</param>
+			</result>
+		</action>
+		<action name="getExtendedNote" class="assetDetailAction"
+			method="loadExtendedNote">
+			<result name="success" type="json">
+				<param name="root">uiAssetDetail</param>
+			</result>
+		</action>
+		<action name="saveAjaxNotes" class="assetDetailAction" method="saveAjaxNotes">
+			<result name="success" type="json">
+				<param name="root">operationStatus</param>
+			</result>
+		</action>
+		<action name="saveAjaxDisclaimer" class="assetDetailAction"
+			method="saveAjaxDisclaimer">
+			<result name="success" type="json">
+				<param name="root">operationStatus</param>
+			</result>
+		</action>		
+	   <action name="showAssetCreationInfo" method="showAssetCreationInfo" class="assetDetailAction">
+		   <result name="success" type="json">
+				<param name="root">assetCreationInfo</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="queryInterfaceSuggest" namespace="/querySuggest" extends="execue-json-default">
+		<action name="suggestSelect" class="qiSuggestAction" method="suggestSelect">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<action name="semanticSuggest" class="semanticSuggestAction" method="suggestSelect">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<action name="suggestPopulation" class="qiSuggestAction" method="suggestBTsForPopulation">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<action name="suggestWhereLHS" class="qiSuggestAction" method="suggestWhereLHS">
+			<result name="success" type="json">
+				<param name="root">conditionTerms</param>
+			</result>
+		</action>
+		<action name="suggestWhererRHS" class="qiSuggestAction" method="suggestBTAndValuesForWhereRHS">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		<action name="suggestSummarize" class="qiSuggestAction" method="suggestBTsForSummarize">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		
+		<action name="suggestOrderBy" class="qiSuggestAction" method="suggestBTsForOrderBy">
+			<result name="success" type="json">
+				<param name="root">terms</param>
+			</result>
+		</action>
+		
+		<action name="qiValidation" class="qiValidationAction" method="validateRequest">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getSampleValAndConvDetail" class="qiSuggestAction" method="suggestConversion">
+			<result name="success" type="json">
+				<param name="root">qiConversionValueDetail</param>
+			</result>
+		</action>
+		<action name="qiQueryXML" class="qiDataXmlConvertAction" method="getJsonString">
+			<result name="success" type="json">
+				<param name="root">qiJSONData</param>
+			</result>
+		</action>
+		
+		<action name="showAppExamples" class="homeAction" method="getExample">
+			<result name="success" type="json">
+				<param name="root">examples</param>
+			</result>
+		</action>
+							
+	</package>
+	
+	<package name="browseApps" namespace="/qi" extends="execue-console-default">		
+		<!-- Action to display all the applications for browse all apps  -->
+		<action name="displayApplications" class="applicationAction" method = "getPageResults">
+			<result name="success" >/WEB-INF/jsp/main/qi/displayAllApplications.jsp</result>
+			<result name="error" >/WEB-INF/jsp/main/qi/displayAllApplications.jsp</result> 
+			<result name="input" >/WEB-INF/jsp/main/qi/displayAllApplications.jsp</result>  
+		</action>
+		
+		
+		
+		<action name="getImage" method="getUploadedAppImage" class="applicationAction">
+			<result name="success" type="stream">
+				<param name="contentType">imageType</param>
+				<param name="contentDisposition">absorb</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">1024</param>				
+			</result>
+		</action>
+	</package>
+</struts>

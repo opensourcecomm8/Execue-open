@@ -1,0 +1,162 @@
+<queries>
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORD>
+	<![CDATA[from RIOntoTerm rot 
+		 where word = :lookupWord
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORD>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWords)
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_SKIPPING_LOCATION>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWords) 
+		 and typeBEDID not in (:locationChildTypeBedIds)
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_SKIPPING_LOCATION>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_BY_MODELIDS>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWord)
+		 and modelGroupId in (:modelGroupIds)
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_BY_MODELIDS>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_BY_MODELIDS_SKIPPING_LOCATION>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWord)
+		 and modelGroupId in (:modelGroupIds) 
+		 and typeBEDID not in (:locationChildTypeBedIds)
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_BY_MODELIDS_SKIPPING_LOCATION>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE>
+	<![CDATA[from RIOntoTerm rot 
+		 where word = :lookupWord
+		 and entityType = :entityType
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_AND_TYPE>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWords)
+		 and entityType = :entityType
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_AND_TYPE>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_AND_GROUP_ID>
+	<![CDATA[from RIOntoTerm rot
+		 where word = :lookupWord and entityType = :entityType
+		 and modelGroupId = :modelGroupId
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_AND_GROUP_ID>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_AND_TYPE_AND_GROUP>
+	<![CDATA[from RIOntoTerm rot 
+		 where word in (:lookupWord)
+		 and entityType = :entityType 
+		 and modelGroupId = :groupId
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORDS_AND_TYPE_AND_GROUP>
+
+	<QUERY_ONTO_TERMS_BY_CONCEPT_BED_ID_AND_TYPE_AND_GROUP>
+	<![CDATA[from RIOntoTerm rot 
+		 where conceptBEDID = :conceptBEDID 
+		 and entityType = :entityType and modelGroupId = :groupId
+	]]>
+	</QUERY_ONTO_TERMS_BY_CONCEPT_BED_ID_AND_TYPE_AND_GROUP>
+
+	<QUERY_ONTO_TERMS_BY_INSTANCE_BED_ID_AND_TYPE_AND_GROUP>
+	<![CDATA[from RIOntoTerm rot 
+		 where instanceBEDID = :instanceBEDID 
+		 and entityType = :entityType and modelGroupId = :groupId
+	]]>
+	</QUERY_ONTO_TERMS_BY_INSTANCE_BED_ID_AND_TYPE_AND_GROUP>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_AND_GROUP_FOR_INSTANCE>
+	<![CDATA[from RIOntoTerm rot 
+		 where conceptBEDID = :conceptBEDId and word = :lookupWord 
+		 and entityType = :entityType and modelGroupId = :groupId
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_AND_GROUP_FOR_INSTANCE>
+
+	<QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_BE_ID>
+	<![CDATA[from RIOntoTerm rot 
+		 where word = :lookupWord 
+		 and typeBEDID = :typeBEDId
+	]]>
+	</QUERY_ONTO_TERMS_BY_LOOKUP_WORD_AND_TYPE_BE_ID>
+
+	<QUERY_ONTO_TERM_BY_LOOKUP_WORD_AND_CONCEPT_BE_ID>
+	<![CDATA[from RIOntoTerm rot 
+		 where word = :lookupWord 
+		 and conceptBEDID = :conceptBEDID 
+		 and entityType = :conceptLookupInstanceEntityType
+	]]>
+	</QUERY_ONTO_TERM_BY_LOOKUP_WORD_AND_CONCEPT_BE_ID>
+
+	<QUERY_ONTO_TERMS_FOR_REGEX_INSTANCES>
+	<![CDATA[from RIOntoTerm rot 
+		 where entityType = :regularExpEntityType
+	]]>
+	</QUERY_ONTO_TERMS_FOR_REGEX_INSTANCES>
+
+	<QUERY_REALIZED_ONTO_TERM_BY_TYPE_BE_ID_AND_MODEL_GROUP_ID>
+	<![CDATA[from RIOntoTerm rot 
+		 where typeBEDID = :typeBedId 
+		 and modelGroupId = :modelGroupId
+		 and entityType = :conceptEntityType
+	]]>
+	</QUERY_REALIZED_ONTO_TERM_BY_TYPE_BE_ID_AND_MODEL_GROUP_ID>
+
+	<QUERY_ONTO_TERMS_BY_CONCEPT_BED_IDs>
+	<![CDATA[from RIOntoTerm rot 
+		 where conceptBEDID in (:conceptBEDIDs)
+		 and entityType = :entityType and wordType= :exactRecognitionType
+	]]>
+	</QUERY_ONTO_TERMS_BY_CONCEPT_BED_IDs>
+
+	<QUERY_ONTO_TERMS_BY_ENTITY_BED_IDS>
+	<![CDATA[from RIOntoTerm rot where entityBEDID in (:entityBedIds)
+	]]>
+	</QUERY_ONTO_TERMS_BY_ENTITY_BED_IDS>
+
+	<DELETE_RI_ONTO_TERMS_BY_PROFILE_BEDID>
+	<![CDATA[delete from RIOntoTerm ri where ri.profileBEDID = 	:instanceProfileBedId
+	]]>
+	</DELETE_RI_ONTO_TERMS_BY_PROFILE_BEDID>
+
+	<UPDATE_INSTANCE_RIONTOTERMS_WITH_CONCEPT_INFO>
+	<![CDATA[update RIOntoTerm set
+		conceptName = :conceptName,
+		typeBEDID = :typeBEDId,typeName = :typeName
+		where modelGroupId = :modelGroupId
+		and conceptBEDID = :conceptBEDId
+		and entityType = :conceptLookupInstanceEntityType
+	]]>
+	</UPDATE_INSTANCE_RIONTOTERMS_WITH_CONCEPT_INFO>
+
+	<DELETE_INSTANCE_RIONTOTERMS_BY_CONCEPT_BEDID>
+	<![CDATA[delete RIOntoTerm riOnto
+		where modelGroupId = :modelGroupId
+		and conceptBEDID = :conceptBEDId
+		and entityType = :conceptLookupInstanceEntityType
+	]]>
+	</DELETE_INSTANCE_RIONTOTERMS_BY_CONCEPT_BEDID>
+
+	<DELETE_PROFILE_RIONTOTERMS_BY_BEDID>
+	<![CDATA[delete RIOntoTerm riOnto
+		where modelGroupId = :modelGroupId
+		and profileBEDID = :profileBEDId
+	]]>
+	</DELETE_PROFILE_RIONTOTERMS_BY_BEDID>	
+
+	<QUERY_DELETE_RI_ONTO_TERM>
+	<![CDATA[delete from RIOntoTerm 
+		 where modelGroupId in (:modelGroupIds)
+	]]>
+	</QUERY_DELETE_RI_ONTO_TERM>
+</queries>

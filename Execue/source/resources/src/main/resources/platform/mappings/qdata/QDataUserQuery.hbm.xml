@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 9, 2009 3:28:24 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="checkType">
+		<param name="enumClass">com.execue.core.common.type.CheckType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<class name="com.execue.core.common.bean.qdata.QDataUserQuery" table="USER_QUERY">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="assigned"/>
+		</id>
+        
+		<property name="normalizedQueryString" type="string">
+			<column name="QUERY_STRING" length="4000" />
+		</property>
+        
+		<property name="executionDate" type="timestamp">
+			<column name="EXECUTION_DATE"/>
+		</property>
+		
+		<property name="requestSuccessful" type="checkType">
+			<column name="REQUEST_SUCCESSFUL" length="1" />
+		</property>
+		
+		<property name="userId" type="java.lang.Long">
+			<column name="USER_ID" />			
+		</property>
+		
+		<property name="anonymousUser" type="checkType">
+			<column name="ANONYMOUS_USER" length="1" />
+		</property>
+		
+		<set name="businessQueries" inverse="true">
+			<key>
+				<column name="USER_QUERY_ID" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.qdata.QDataBusinessQuery" />
+		</set>
+        
+		<set name="reducedQueries" inverse="true">
+			<key>
+				<column name="USER_QUERY_ID" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.qdata.QDataReducedQuery" />
+		</set>
+        
+		<set name="aggregatedQueries" inverse="true">
+			<key>
+				<column name="USER_QUERY_ID" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.qdata.QDataAggregatedQuery"/>
+		</set>
+        
+		<set name="queryColumns" inverse="false" cascade="save-update,delete">
+			<key>
+				<column name="USER_QUERY_ID" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.qdata.QDataUserQueryColumn"/>
+		</set>
+	</class>
+</hibernate-mapping>

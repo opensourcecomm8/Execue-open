@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="soapRequestResponseService" class="com.execue.sforce.soap.impl.SOAPRequestResponseServiceImpl">
+	</bean>
+	<bean id="parseSOAPResponseService" class="com.execue.sforce.parser.impl.ParseSoapResponseServiceImpl">
+	</bean>
+	<bean id="sforceConvertableService" class="com.execue.sforce.convertable.impl.SforceConvertableServiceImpl">
+	</bean>
+	<bean id="sforceAbsorptionService" class="com.execue.sforce.absorption.impl.SforceAbsorptionServiceImpl">
+		<property name="genericJDBCService" ref="genericJDBCService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="clientSourceDAO"  ref="clientSourceDAO"/>
+	</bean>
+	<bean id="sforceJobService" class="com.execue.sforce.job.impl.SforceJobServiceImpl">
+		<property name="sforceConfiguration" ref="sforceConfiguration"/>
+		<property name="jobStatusLogService" ref="jobDataService"/>
+		<property name="schedulerService" ref="execueJobSchedulerService"/>
+	</bean>
+	<bean id="sforceLoginService" class="com.execue.sforce.login.impl.SforceLoginServiceImpl">
+		<property name="parseSOAPResponseService" ref="parseSOAPResponseService"/>
+		<property name="soapRequestResponseService" ref="soapRequestResponseService"/>
+	</bean>
+	
+	<bean id="sforceDataAccessService" class="com.execue.sforce.dataaccess.impl.SforceDataAccessServiceImpl">
+		<property name="sforceDAO" ref="sforceDAO"/>
+	</bean>
+	
+	<bean id="sforceReplicationService" class="com.execue.sforce.replication.impl.SforceReplicationServiceImpl">		
+		<property name="sforceConfiguration" ref="sforceConfiguration"/>
+		<property name="sforceAbsorptionService" ref="sforceAbsorptionService"/>
+		<property name="parseSOAPResponseService" ref="parseSOAPResponseService"/>
+		<property name="soapRequestResponseService" ref="soapRequestResponseService"/>
+		<property name="sourceMetaDataService" ref="sourceMetaDataService"/>
+		<property name="sforceConvertableService" ref="sforceConvertableService"/>
+		<property name="queryGenerationUtilServiceFactory" ref="queryGenerationUtilServiceFactory"/>
+		<property name="sdxService" ref="sdxService"/>
+		<property name="sforceDataAccessService" ref="sforceDataAccessService"/>
+	</bean>
+
+	<bean id="sforceAccessService" class="com.execue.sforce.access.impl.SforceAccessServiceImpl">		
+		<property name="parseSOAPResponseService" ref="parseSOAPResponseService"/>
+		<property name="soapRequestResponseService" ref="soapRequestResponseService"/>
+	</bean>	
+	<!--bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="location">
+				<value>classpath:sforce.properties</value>
+			</property>
+		</bean-->
+	<bean id="sforceConfiguration" class="com.execue.core.configuration.ExecueConfiguration">
+		<constructor-arg>
+			<value>/execue-sforce-configuration.xml</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="sforceDAO" 
+		class="com.execue.sforce.dataaccess.impl.SforceDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="sforceHibernateTemplate"/>
+		</property>
+	</bean>
+	
+</beans>

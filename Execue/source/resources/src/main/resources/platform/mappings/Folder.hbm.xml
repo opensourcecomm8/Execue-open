@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.execue.core.common.bean.Folder" table="FOLDER">
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">FOLDER</param>
+			</generator>
+		</id>
+		
+		<property name="name" type="string">
+			<column name="FOLDER_NAME" length="20" not-null="true" />
+		</property>
+		
+		<many-to-one name="user" class="com.execue.core.common.bean.security.User" fetch="select">
+			<column name="USER_ID" precision="20" scale="0" />
+		</many-to-one>
+        
+        <set name="bookmarks" inverse="true" cascade="delete" order-by="id">
+			<key>
+				<column name="FOLDER_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.Bookmark" />
+		</set>
+		
+		<property name="createdDate" type="timestamp">
+			<column name="DATE_CREATED" />
+		</property>
+		<property name="modifiedDate" type="timestamp">
+			<column name="DATE_MODIFIED" />
+		</property>
+		<property name="parentId" type="java.lang.Long">
+			<column name="PARENT_ID" length="20" />
+		</property>
+        
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<core>
+		<static-values>
+		  <application-example-retrieval-limit>50</application-example-retrieval-limit>
+		  <unstructured-app-user-visibility>true</unstructured-app-user-visibility>
+		  <nlp-tagger-dictionary-initiation-required>
+		      <CONSOLE_APP>true</CONSOLE_APP>
+		      <SEARCH_APP>true</SEARCH_APP>
+		      <BATCH>true</BATCH>
+		  </nlp-tagger-dictionary-initiation-required>
+		  <!-- App specific mail server properties -->
+		</static-values>
+	</core>
+</execue-configuration>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.execue.core.common.bean.qdata.UdxSearchResult" table="UNIVERSAL_SEARCH_RESULT">
+        
+       <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+                <param name="table_name">SEQUENCES</param>
+                <param name="segment_value">UNIVERSAL_SEARCH_RESULT</param>
+            </generator>
+		</id>
+        
+        <property name="queryId" type="java.lang.Long">
+            <column name="QUERY_ID" precision="20" scale="0" />
+        </property>
+       <property name="udxId" type="java.lang.Long">
+            <column name="UDX_ID" precision="20" scale="0" />
+        </property>
+       <property name="rfId" type="java.lang.Long">
+            <column name="RF_ID" precision="20" scale="0" />
+        </property>        
+        <property name="matchWeight" type="java.lang.Double">
+            <column name="Match_Weight" precision="10" scale="0" />
+        </property>
+        <property name="entityCount" type="java.lang.Double">
+			<column name="ENTITY_COUNT"/>
+		</property>
+		<property name="searchType" type="java.lang.Integer">
+			<column name="SEARCH_TYPE"/>
+		</property>  
+		  <property name="appId" type="java.lang.Long">
+            <column name="APPLICATION_ID" precision="20" scale="0" />
+        </property>  
+         <property name="matchedTriples" type="string">
+            <column name="MATCHED_TRIPLES"  />
+        </property>
+    	<property name="matchedTriplesSum" type="java.lang.Integer">
+			<column name="MATCHED_TRIPLES_SUM"/>
+		</property>       
+      </class>
+</hibernate-mapping>

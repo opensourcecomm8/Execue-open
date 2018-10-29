@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="unstructuredSearchConfigurationService" class="com.execue.uss.configuration.impl.UnstructuredSearchConfigurationServiceImpl">
+		<property name="unstructuredSearchConfiguration">
+			<ref bean="unstructuredSearchConfiguration"/>
+		</property>	
+	</bean>	
+	<bean id="unstructuredSearchConfigurableService" class="com.execue.uss.configuration.impl.UnstructuredSearchConfigurableService">
+		<property name="unstructuredSearchConfigurationService">
+			<ref bean="unstructuredSearchConfigurationService"/>
+		</property>	
+	</bean>	
+		
+	<bean id="unstructuredSearchEngine" class="com.execue.uss.service.impl.UnstructuredSearchEngineImpl">
+		<property name="udxService" ref="udxService"/>
+		<property name="pathDefinitionRetrievalService" ref="pathDefinitionRetrievalService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>      
+	</bean>
+   
+	<bean id="unstructuredWarehouseSearchEngine" class="com.execue.uss.service.impl.UnstructuredWarehouseSearchEngineImpl">
+		<property name="coreConfigurationService" ref="coreConfigurationService"/>
+		<property name="platformServicesConfigurationService" ref="platformServicesConfigurationService"/>
+		<property name="unstructuredSearchConfigurationService" ref="unstructuredSearchConfigurationService"/>
+		<property name="reducedFormOrganizationService" ref="reducedFormOrganizationService"/>
+		<property name="unstructuredWarehouseManagementService" ref="unstructuredWarehouseManagementService"/>
+		<property name="unstructuredWarehouseRetrievalService" ref="unstructuredWarehouseRetrievalService"/>
+		<property name="locationRetrievalService" ref="locationRetrievalService"/>
+		<property name="reducedFormHelper" ref="reducedFormHelper"/>
+		<property name="semantificationHelper" ref="semantificationHelper"/>
+		<property name="unstructuredWHFeatureContentLookupService" ref="unstructuredWHFeatureContentLookupService"/>
+        <property name="unstructuredWarehouseHelper" ref="unstructuredWarehouseHelper"/>
+	</bean>   
+
+	<bean id="entitySearchEngine" class="com.execue.uss.service.impl.EntitySearchEngineImpl">
+		<property name="udxService" ref="udxService"/>
+		<property name="kdxRetrievalService" ref="kdxRetrievalService"/>
+		<property name="rfIdGenerationService" ref="rfIdGenerationService"/>
+		<property name="rfxService" ref="rfxService"/>
+		<property name="rfxServiceHelper" ref="rfxServiceHelper"/>
+	</bean>
+</beans>

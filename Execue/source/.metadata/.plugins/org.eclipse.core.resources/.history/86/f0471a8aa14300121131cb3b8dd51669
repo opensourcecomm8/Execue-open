@@ -1,0 +1,110 @@
+<queries>
+	<QUERY_ENTITY_HAS_BEHAVIOR>
+	<![CDATA[from EntityBehavior 
+		 where entityBedId = :entityBedId and behaviorType = :behaviorType
+	]]>
+	</QUERY_ENTITY_HAS_BEHAVIOR>
+	
+	<QUERY_DELETE_ENTITY_BEHAVIOUR_BY_ENTITY_BED_ID>
+	<![CDATA[delete from EntityBehavior entityBehavior
+		 where entityBedId = :conceptBedId
+	]]>
+	</QUERY_DELETE_ENTITY_BEHAVIOUR_BY_ENTITY_BED_ID>
+	
+	
+	<QUERY_DELETE_ENTITY_BEHAVIORS_BY_ENTITY_BED_ID>
+	<![CDATA[delete from EntityBehavior entityBehavior
+		 where entityBedId = :conceptBedId and behaviorType in (:behaviorTypes)
+	]]>
+	</QUERY_DELETE_ENTITY_BEHAVIORS_BY_ENTITY_BED_ID>
+	
+
+	<QUERY_ALL_ABSTRACT_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb 
+		where bed.id=eb.entityBedId and eb.behaviorType= :abstractBehaviorType
+	]]>
+	</QUERY_ALL_ABSTRACT_CONCEPTS>
+	
+	
+	<QUERY_ALL_ATTRIBUTE_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb 
+		where bed.id=eb.entityBedId and eb.behaviorType= :attributeBehaviorType
+	]]>
+	</QUERY_ALL_ATTRIBUTE_CONCEPTS>	
+	
+	<QUERY_GET_ALL_BEHAVIOR_FOR_ENTITY>
+	<![CDATA[select behaviorType from EntityBehavior
+		 where entityBedId = :entityBedId
+	]]>
+	</QUERY_GET_ALL_BEHAVIOR_FOR_ENTITY>
+	
+	
+	<QUERY_ALL_COMPARATIVE_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb
+		 where bed.id=eb.entityBedId and eb.behaviorType= :comparativeBehaviorType
+	]]>
+	</QUERY_ALL_COMPARATIVE_CONCEPTS>
+	
+	
+	<QUERY_ALL_DISTRIBUTION_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb
+		 where bed.id=eb.entityBedId and eb.behaviorType= :distributionBehaviorType
+	]]>
+	</QUERY_ALL_DISTRIBUTION_CONCEPTS>
+	
+	<QUERY_ALL_ENUMRATION_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb
+		 where bed.id=eb.entityBedId and eb.behaviorType= :enumerationBehaviorType 
+	]]>
+	</QUERY_ALL_ENUMRATION_CONCEPTS>
+	
+		
+	<QUERY_GET_ALL_POSSIBLE_BEHAVIOR>
+	<![CDATA[select behaviorType from PossibleBehavior
+		 where typeBeId = :typeBeId
+	]]>
+	</QUERY_GET_ALL_POSSIBLE_BEHAVIOR>
+	
+	
+	<QUERY_ALL_QUANTITATIVE_CONCEPTS>
+	<![CDATA[from BusinessEntityDefinition bed, EntityBehavior eb
+		  where bed.id=eb.entityBedId and eb.behaviorType= :quantitativeBehaviorType
+	]]>
+	</QUERY_ALL_QUANTITATIVE_CONCEPTS>
+	
+	
+	<QUERY_GET_BED_BY_BEHAVIOR_NAME>
+	<![CDATA[select bed from BusinessEntityDefinition bed ,
+		 Behavior b where bed.behavior.id = b.id
+		 and bed.entityType = :behaviorEntityType  and b.behavior = :behaviorName
+	]]>
+	</QUERY_GET_BED_BY_BEHAVIOR_NAME>
+	
+		
+	<QUERY_GET_CONCEPT_MATCHED_BEHAVIOR>
+	<![CDATA[select eb from EntityBehavior eb 
+		 where eb.entityBedId = :conceptBedId and eb.behaviorType = :behaviorBedId
+	]]>
+	</QUERY_GET_CONCEPT_MATCHED_BEHAVIOR>
+	
+	
+	<QUERY_HAS_POSSIBLE_BEHAVIOR>
+	<![CDATA[from PossibleBehavior 
+		 where typeBeId = :typeBeId and behaviorType = :behaviorType
+	]]>
+	</QUERY_HAS_POSSIBLE_BEHAVIOR>
+
+	<QUERY_GET_NON_ATTRIBUTE_ENTITIES>
+	<![CDATA[select bed1 from BusinessEntityDefinition bed1, 
+		 ModelGroupMapping as mgm1 where bed1.modelGroup.id = mgm1.modelGroup.id 
+		 AND mgm1.model.id = :modelId AND mgm1.modelGroup.category = :userModelCategoryType
+		 AND bed1.entityType = :conceptEntityType AND bed1.id NOT IN
+		 (select distinct bed.id from BusinessEntityDefinition bed, 
+		 EntityBehavior eb, ModelGroupMapping as mgm where 
+		 bed.id = eb.entityBedId AND eb.behaviorType = :attributeBehaviorType 
+		 and bed.entityType = :conceptEntityType AND 
+		 bed.modelGroup.id = mgm.modelGroup.id
+		 and mgm.model.id = :modelId and mgm.modelGroup.category = :userModelCategoryType)
+	]]>
+	</QUERY_GET_NON_ATTRIBUTE_ENTITIES>
+</queries>

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="tripleDefinitionType">
+		<param name="enumClass">com.execue.core.common.type.EntityTripleDefinitionType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="triplePropertyType">
+        <param name="enumClass">com.execue.core.common.type.EntityTriplePropertyType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    <typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+        name="originType">
+        <param name="enumClass">com.execue.core.common.type.OriginType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+    
+	<class name="com.execue.core.common.bean.entity.EntityTripleDefinition" table="ENTITY_TRIPLE_DEFINITION">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">ENTITY_TRIPLE_DEFINITION</param>
+			</generator>
+		</id>
+        
+		<property name="cardinality" type="int">
+			<column name="CARDINALITY" precision="2" scale="0" />
+		</property>
+        
+		<property name="functional" type="boolean">
+			<column name="FUNCTIONAL" length="1" />
+		</property>
+        
+		<property name="inverseFunctional" type="boolean">
+			<column name="INVERSE_FUNCTIONAL" length="1" />
+		</property>
+        
+		<property name="relationSpecified" type="boolean">
+			<column name="RELATION_SPECIFIED" length="1" />
+		</property>
+      <property name="baseETDId" type="java.lang.Long">
+            <column name="BASE_ETD_ID" length="20" />
+      </property>      
+        
+		<property name="tripleType" type="tripleDefinitionType">
+			<column name="TRIPLE_TYPE" length="20" not-null="true"/>
+		</property>
+        
+        <property name="propertyType" type="triplePropertyType">
+            <column name="PROPERTY_TYPE" length="10" not-null="true"/>
+        </property>
+        
+        <property name="defaultValue" type="string">
+            <column name="DEFAULT_VALUE" />
+        </property>
+        
+		<many-to-one name="sourceBusinessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="SOURCE_BE_ID" precision="20" scale="0" not-null="true" />
+		</many-to-one>
+        
+		<many-to-one name="relation" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="RELATION_BE_ID" precision="20" scale="0" not-null="true" />
+		</many-to-one>
+        
+		<many-to-one name="destinationBusinessEntityDefinition" class="com.execue.core.common.bean.entity.BusinessEntityDefinition" fetch="select">
+			<column name="DESTINATION_BE_ID" precision="20" scale="0" not-null="true" />
+		</many-to-one>
+		<property name="origin" type="originType">
+            <column name="ORIGIN" length="2"/>
+        </property>
+        	<property name="instanceTripleExists" type="checkType">
+            <column name="INSTANCE_TRIPLE_EXISTS" length="1"/>
+        </property>
+		<set name="paths" inverse="true">
+			<key>
+				<column name="ENTITY_TRIPLE_DEF_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.Path" />
+		</set>
+	</class>
+
+</hibernate-mapping>

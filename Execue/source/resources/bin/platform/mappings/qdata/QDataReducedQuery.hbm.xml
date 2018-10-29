@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 9, 2009 3:28:24 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    
+    <class name="com.execue.core.common.bean.qdata.QDataReducedQuery" table="REDUCED_QUERY">
+        
+        <id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">REDUCED_QUERY</param>
+			</generator>
+		</id>
+        
+        <property name="applicationId" type="java.lang.Long">
+            <column name="APPLICATION_ID" precision="20" scale="0" />
+        </property>
+        
+        <property name="userQueryId" type="java.lang.Long">
+            <column name="USER_QUERY_ID" precision="20" scale="0" />
+        </property>        
+        
+        <property name="reducedQueryString" type="string">
+            <column name="REDUCED_QUERY_STRING" length="4000" />
+        </property>
+        
+        <property name="entityCount" type="java.lang.Double">
+            <column name="ENTITY_COUNT"/>
+        </property>       
+        
+        <property name="maxMatchWeight" type="java.lang.Double">
+            <column name="MAX_MATCH_WEIGHT"/>
+        </property>
+        
+        <property name="reducedQueryWeight" type="java.lang.Double">
+            <column name="REDUCED_QUERY_WEIGHT"/>
+        </property>
+        
+        <property name="baseUserQueryWeight" type="java.lang.Double">
+            <column name="BASE_USER_QUERY_WEIGHT"/>
+        </property>                
+
+        <property name="reducedQueryMatchPercent" type="java.lang.Double">
+            <column name="REDUCED_QUERY_MATCH_PERCENT"/>
+        </property>                
+       
+    </class>
+    
+</hibernate-mapping>

@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="rfxObjectType">
+		<param name="enumClass">com.execue.core.common.type.RFXObjectType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="rfxRecordType">
+		<param name="enumClass">com.execue.core.common.type.RFXRecordType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="variationType">
+		<param name="enumClass">com.execue.core.common.type.TripleVariationType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="variationSubType">
+		<param name="enumClass">com.execue.core.common.type.TripleVariationSubType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    
+	<class name="com.execue.core.common.bean.qdata.UQRFX" table="USER_QUERY_REDUCED_FORM_INDEX">
+        
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="10" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">USER_QUERY_REDUCED_FORM_INDEX</param>
+			</generator>
+		</id>
+        
+		<property name="queryRFId" type="java.lang.Long">
+			<column name="QUERY_REDUCED_FORM_ID" precision="10" scale="0" />
+		</property>
+
+        <!--property name="rfxEntityType" type="rfxEntityType">
+            <column name="TYPE" length="35" />
+        </property-->
+        
+        <property name="order" type="java.lang.Long">
+            <column name="ORDR" precision="10" scale="0" />
+        </property>
+        
+        <!--property name="weight" type="double">
+            <column name="WEIGHT" precision="6" scale="2"/>
+        </property-->
+        
+        <property name="inferredFlag" type="checkType">
+            <column name="INFERRED" />
+        </property>
+
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="10" scale="0" />
+        </property>
+        
+		<property name="subjectBeId" type="java.lang.Long">
+			<column name="SUBJECT_BE_ID" precision="10" scale="0" />
+		</property>
+        
+		<property name="predicateBeId" type="java.lang.Long">
+			<column name="PREDICATE_BE_ID" precision="10" scale="0" />
+		</property>
+        
+		<property name="objectBeId" type="java.lang.Long">
+			<column name="OBJECT_BE_ID" precision="10" scale="0" />
+		</property>
+
+		<property name="objectType" type="rfxObjectType">
+			<column name="OBJECT_TYPE" length="2" />
+		</property>
+        
+		<property name="value" type="string">
+			<column name="VALUE" length="50" />
+		</property>
+        
+		<property name="pathIndex" type="java.lang.Long">
+			<column name="PATH_INDEX" precision="10" scale="0" />
+		</property>
+		
+		<property name="level" type="java.lang.Long">
+			<column name="LEVEL" precision="10" scale="0" />
+		</property>
+		
+		<property name="listOrder" type="java.lang.Long">
+			<column name="LIST_ORDER" precision="10" scale="0" />
+		</property>
+		
+		<property name="listId" type="java.lang.Long">
+			<column name="LIST_ID" precision="10" scale="0" />
+		</property>
+
+		<property name="recordType" type="rfxRecordType">
+			<column name="REC_TYPE" length="1" />
+		</property>
+		
+		<property name="variationType" type="variationType">
+			<column name="VARIATION_TYPE" length="1" />
+		</property>
+		
+		<property name="varirationSubtype" type="variationSubType">
+			<column name="VARIATION_SUBTYPE" length="2" />
+		</property>
+		
+		<property name="subjectBeWeight" type="java.lang.Double">
+			<column name="SUBJECT_BE_WEIGHT" length="8" precision="4" scale="0" />
+		</property>
+		
+		<property name="predicateBeWeight" type="java.lang.Double">
+			<column name="PREDICATE_BE_WEIGHT" length="8" precision="4" scale="0" />
+		</property>
+		
+		<property name="objectBeWeight" type="java.lang.Double">
+			<column name="OBJECT_BE_WEIGHT" length="8" precision="4" scale="0" />
+		</property>
+        
+		<property name="tripleWeight" type="java.lang.Double">
+			<column name="TRIPLE_WEIGHT" length="8" precision="4" scale="0" />
+		</property>
+	</class>
+
+</hibernate-mapping>

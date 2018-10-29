@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<execue-configuration>
+	<aggregation>
+		<static-values>
+			<count-stat>COUNT</count-stat>
+			<report-title-append-text>report</report-title-append-text>
+			<unique-count-percent>10</unique-count-percent>
+		</static-values>
+		<reportselection>
+			<dataPoints>100</dataPoints>
+			<numberOfEffectiveGroups>2</numberOfEffectiveGroups>
+			<numberOfEffectiveRecords>90</numberOfEffectiveRecords>
+			<numberOfGroups>10</numberOfGroups>
+			<numberOfIdColumns>2</numberOfIdColumns>
+			<numberOfMeasures>10</numberOfMeasures>
+			<numberOfRecords>120</numberOfRecords>
+			<rule-name>reportSelection</rule-name>
+		</reportselection>
+		<reportcolumn>
+			<measure-data-types>NUMBER</measure-data-types>
+			<dimension-data-types>INT,LARGE_INTEGER,STRING,CHARACTER,TIME,DATE,DATETIME,VARCHAR</dimension-data-types>
+			<default-column-type>ID</default-column-type>
+		</reportcolumn>
+	</aggregation>
+</execue-configuration>

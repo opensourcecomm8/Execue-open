@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean defintion of data source -->
+	<!-- TODO: -KA- Need to find better alternative to testOnBorrow -->
+	
+	<bean id="qDataDataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+			<property name="driverClassName" value="${db.source.qdata.driver.class}"/>
+			<property name="url" value="${db.source.qdata.jdbcURL}"/>
+			<property name="username" value="${db.source.qdata.userName}"/>
+			<property name="password" value="${db.source.qdata.password}"/>
+			<property name="initialSize" value="5" />
+			<property name="maxActive" value="20" /> 
+			<property name="testOnBorrow" value="true" />
+			<property name="testWhileIdle" value="true" /> 
+			<property name="validationQuery" value="${db.source.qdata.connection.validation.query}" />
+		</bean>
+
+<!-- 
+	<bean id="qDataDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/qdata-execue" />
+	</bean>
+-->
+
+	<!-- Bean defintion of bean session factory -->
+
+	<bean id="qDataSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="qDataDataSource" />
+
+		<property name="mappingResources">
+			<list>
+				<value>platform/mappings/qdata/QDataUserQuery.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataUserQueryColumn.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataReducedQuery.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataBusinessQuery.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataBusinessQueryColumn.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataAggregatedQuery.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataAggregatedQueryColumn.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataReportData.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataCachedReportResults.hbm.xml</value>
+				<value>platform/mappings/qdata/QDataAggregatedReportType.hbm.xml</value>
+				<value>platform/mappings/qdata/JobRequest.hbm.xml</value>
+				<value>platform/mappings/qdata/JobOperationalStatus.hbm.xml</value>
+				<value>platform/mappings/qdata/AnswersCatalogContext.hbm.xml</value>
+				<value>platform/mappings/qdata/AnswersCatalogManagementQueue.hbm.xml</value>
+				<value>platform/mappings/qdata/JobHistoryOperationalStatus.hbm.xml</value>
+				
+				<!-- Message related entities -->
+				<value>platform/mappings/qdata/Message.hbm.xml</value>
+				<value>platform/mappings/qdata/MessageHistory.hbm.xml</value>
+                
+				<value>platform/mappings/qdata/RIUnstructuredIndex.hbm.xml</value>
+				<value>platform/mappings/qdata/RIQueryCache.hbm.xml</value>
+				<value>platform/mappings/qdata/RIUserQuery.hbm.xml</value>
+				<value>platform/mappings/qdata/ContentReducedFormIndex.hbm.xml</value>
+				<value>platform/mappings/qdata/UserQueryReducedFormIndex.hbm.xml</value>
+				<value>platform/mappings/qdata/RankingWeight.hbm.xml</value>				
+				<value>platform/mappings/qdata/UnStructuredIndex.hbm.xml</value>
+				<value>platform/mappings/qdata/UDXAttribute.hbm.xml</value>
+				<value>platform/mappings/qdata/UdxSearchResults.hbm.xml</value>
+				<value>platform/mappings/qdata/RIInstanceTripleDefinition.hbm.xml</value>
+				<value>platform/mappings/qdata/ContentRFXValue.hbm.xml</value>
+				<value>platform/mappings/qdata/UserQueryRFXValue.hbm.xml</value>
+				
+				<!-- These are specific to knowledge search apps, uncomment only if used 
+					with qdata  of such apps -->
+				<!--
+					<value>platform/mappings/qdata/EntityAttribute.hbm.xml</value>
+					-->
+				
+				<!-- Report Comment-->
+				<value>platform/mappings/qdata/ReportComment.hbm.xml</value>	
+				<!-- Message Box -->
+				<value>platform/mappings/qdata/Notification.hbm.xml</value>
+				<value>platform/mappings/qdata/NotificationDetail.hbm.xml</value>
+				<value>platform/mappings/qdata/NotificationTemplate.hbm.xml</value>
+				
+				<value>platform/mappings/qdata/NewsItem.hbm.xml</value>
+				<value>platform/mappings/qdata/AppNewsPopularity.hbm.xml</value>
+				<value>platform/mappings/qdata/AppNewsUsageWeight.hbm.xml</value>
+				<value>platform/mappings/qdata/Seed.hbm.xml</value>
+				<!-- These are specific to knowledge search apps, uncomment only if used 
+					with qdata  of such apps -->
+				<!--
+					<value>platform/mappings/qdata/AdditionalInfo.hbm.xml</value>
+					<value>platform/mappings/qdata/EntityAttribute.hbm.xml</value>
+					-->
+				<value>platform/mappings/qdata/UDXKeyword.hbm.xml</value>
+				<value>platform/mappings/qdata/UDXKeywordMatch.hbm.xml</value>
+				<value>platform/mappings/qdata/AppCategoryMapping.hbm.xml</value>
+				<value>platform/mappings/qdata/OptimalDSetSWIInfo.hbm.xml</value>
+			</list>
+		</property>
+    
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.source.qdata.hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<!-- Bean defintion of hibernate template -->
+	<bean id="qDataHibernateTemplate" 
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="qDataSessionFactory"/>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,87 @@
+<queries>
+	<QUERY_GET_INSTANCES_FOR_CONCEPT>
+	<![CDATA[select distinct bed.instance 
+		 from BusinessEntityDefinition bed 
+		 where bed.concept = :concept 
+		 and bed.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_INSTANCES_FOR_CONCEPT>
+
+	
+	<QUERY_GET_MAPPINGS_FOR_BED_SET>
+	<![CDATA[from Mapping mapping
+		 where mapping.businessEntityDefinition in (:businessEntityDefinitions)
+	]]>
+	</QUERY_GET_MAPPINGS_FOR_BED_SET>
+
+
+	<QUERY_GET_BED_FOR_INSTANCE_SET>
+	<![CDATA[from BusinessEntityDefinition businessEntityDefinition
+		 where businessEntityDefinition.instance in (:instances) 
+		 and businessEntityDefinition.entityType = :instanceEntityType
+	]]>
+	</QUERY_GET_BED_FOR_INSTANCE_SET>
+
+	<QUERY_GET_BED_FOR_RELATION_SET>
+	<![CDATA[from BusinessEntityDefinition businessEntityDefinition 
+		 where businessEntityDefinition.relation in
+		 (:relations) and businessEntityDefinition.entityType = :relationEntityType
+	]]>
+	</QUERY_GET_BED_FOR_RELATION_SET>
+
+	<QUERY_GET_BED_FOR_CONCEPT_SET>
+	<![CDATA[from BusinessEntityDefinition businessEntityDefinition
+		 where businessEntityDefinition.concept in (:concepts)
+		 and businessEntityDefinition.entityType = :conceptEntityType
+	]]>
+	</QUERY_GET_BED_FOR_CONCEPT_SET>
+
+	<QUERY_DELETE_ENTITY_BEHAVIOR_BY_BED_IDS>
+	<![CDATA[delete from EntityBehavior entityBehavior
+		 where entityBehavior.entityBedId in (:bedIds)
+	]]>
+	</QUERY_DELETE_ENTITY_BEHAVIOR_BY_BED_IDS>
+
+	
+	<QUERY_GET_APPLICATIONS_FOR_VERTICAL_BY_PAGE>
+	<![CDATA[select application from VerticalAppWeight verticalAppWeight, 
+		 Application application, Vertical vertical
+		 where verticalAppWeight.applicationId = application.id 
+		 and verticalAppWeight.verticalId = vertical.id
+	]]>
+	</QUERY_GET_APPLICATIONS_FOR_VERTICAL_BY_PAGE>
+
+	<QUERY_GET_COUNT_APPLICATIONS_FOR_VERTICAL_BY_PAGE>
+	<![CDATA[select count(application.name)
+		from VerticalAppWeight verticalAppWeight, Application application, Vertical vertical 
+		where verticalAppWeight.applicationId = application.id and 
+		verticalAppWeight.verticalId = vertical.id
+	]]>
+	</QUERY_GET_COUNT_APPLICATIONS_FOR_VERTICAL_BY_PAGE>
+
+	<QUERY_GET_CONCEPT_INSTANCE_DISPLAY_NAME_BY_ABBR>
+	<![CDATA[select i.displayName,i.abbreviatedName 
+		 from BusinessEntityDefinition be ,Concept c ,Instance i,  
+		 ModelGroupMapping mgm
+		 where c.name = :conceptName and i.abbreviatedName
+		 in(:abbrevatedNames) and be.concept.id = c.id 
+		 and be.instance.id = i.id and be.modelGroup.id = mgm.modelGroup.id
+		  and mgm.model.id = :modelId 
+	]]>
+	</QUERY_GET_CONCEPT_INSTANCE_DISPLAY_NAME_BY_ABBR>
+
+	
+	<QUERY_DELETE_ENTITY_DETAIL_BY_ENTITY_BED_ID>
+	<![CDATA[delete from EntityDetailType 
+		 where entityBed.id = :conceptBedId
+	]]>
+	</QUERY_DELETE_ENTITY_DETAIL_BY_ENTITY_BED_ID>
+		
+	<QUERY_GET_BUSINESS_ENTITY_DEF_INFO_FOR_MODEL>
+	<![CDATA[select bed.id,bed.entityType,bed.popularity,bed.modelGroup.id 
+		  from BusinessEntityDefinition bed , ModelGroupMapping mgm 
+		  where bed.modelGroup.id = mgm.modelGroup.id and mgm.model.id = :modelId
+		  and mgm.modelGroup.category != :baseCategoryType and bed.popularity > 0 
+	]]>
+	</QUERY_GET_BUSINESS_ENTITY_DEF_INFO_FOR_MODEL>
+</queries>

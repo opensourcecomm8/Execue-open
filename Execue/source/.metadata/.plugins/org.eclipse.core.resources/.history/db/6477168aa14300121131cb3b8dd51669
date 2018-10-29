@@ -1,0 +1,12 @@
+<queries>	
+	<DELETE_LINKS_PRIOR_TO_PUBLISHED_DATE>
+	<![CDATA[
+		  delete from semantifi_links where semantifi_links.id in 
+		  (select lnk.id from semantifi_links lnk, semantifi_feeds fd, 
+		  semantifi_cat cat where lnk.feed_id = fd.id 
+		  and fd.cat_id = cat.id and cat.name = :categoryId
+		  and lnk.pubdate <= :publishedDate
+	]]>
+	</DELETE_LINKS_PRIOR_TO_PUBLISHED_DATE>
+</queries>
+	

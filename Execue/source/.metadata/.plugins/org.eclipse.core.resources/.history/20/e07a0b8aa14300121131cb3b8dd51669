@@ -1,0 +1,126 @@
+<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<bean id="homeAction" scope="prototype" class="com.execue.web.core.action.HomeAction">
+		<property name="requestQueryFormTransform" ref="qiHandlerRequest"/>
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+		<property name="applicationServiceHandler" ref ="applicationServiceHandler"/>
+		<property name="qdataServiceHandler" ref ="qdataServiceHandler"/>
+		<property name="configuration">
+			<bean id="dbConfigurationImpl" class="com.execue.core.configuration.ExecueDBConfiguration">
+				<constructor-arg>
+					<ref bean="swiDataSource"/>			
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="qiSearchAction" scope="prototype" class="com.execue.web.core.action.qi.QueryInterfaceSearchAction">
+		<property name="queryInterfaceHandler" ref="qiWebHandler"/>	
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+	</bean>
+	<bean id="qiDataXmlConvertAction" scope="prototype" class="com.execue.web.core.action.QIDataXmlConvertAction">
+		<property name="queryInterfaceRequestXmlTransform" ref="qiHandlerRequest"/>						
+	</bean>
+	<bean id="qiSuggestAction" scope="prototype" class="com.execue.web.core.action.qi.QueryInterfaceSuggestAction">
+		<property name="suggestHandler" ref="qiSuggestHandler"/>
+		<property name="conversionServiceHandler" ref="conversionServiceHandler"/>
+		<property name="kdxServiceHandler" ref="kdxServiceHandler"/>
+	</bean>
+	<bean id="semanticSuggestAction" scope="prototype" class="com.execue.web.core.action.SemantifySuggestAction">
+		<property name="semanticSuggestHandler" ref="semanticSuggestHandler"/>		
+	</bean>	
+	
+	<!-- bookmarks realted -->
+	<bean id="bookmarkAction" scope="prototype" class="com.execue.web.core.action.qi.bookmark.BookmarkAction">
+		<property name="bookmarkHandler" ref="bookmarkHandlerImpl"/>
+	</bean>
+	<bean id="searchBookmarkAction" scope="prototype" class="com.execue.web.core.action.qi.bookmark.SearchBookmarkAction">
+		<property name="bookmarkHandler" ref="bookmarkHandlerImpl"/>
+		<property name="queryFormRequestTransform" ref="qiHandlerRequest"/>
+	</bean>
+	<bean id="qiValidationAction" scope="prototype" class="com.execue.web.core.action.qi.QueryInterfaceValidationAction">
+		<property name="queryInterfaceSuggestHandler" ref="qiSuggestHandler"/>
+	</bean>
+	<bean id="semanticSearchAction" scope="prototype" class="com.execue.web.core.action.SemantifySearchAction">
+		<property name="semanticSearchHandler" ref="semanticSearchHandler"/>
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/>		
+		<property name="coreConfigurationService" ref ="coreConfigurationService"/>
+	</bean>
+	
+	<bean id="assetMetaInfoAction" scope="prototype" class="com.execue.web.core.action.AssetMetaInfoAction">
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/>
+		<property name="kdxServiceHandler" ref="kdxServiceHandler"/>
+	</bean>
+	<bean id="reportAction" scope="prototype" class="com.execue.web.core.action.reporting.presentation.ReportAction">
+		<property name="reportServiceHandler" ref="reportServiceHandler"/>
+	</bean>
+	<bean id="reportStatusAction" class="com.execue.web.core.action.qi.ReportStatusAction" scope="prototype">
+		<property name="reportHandler" ref="reportHandler"/>        
+	</bean>
+    
+	<bean id="assetSecurityAction" class="com.execue.web.core.action.swi.AssetSecurityAction" scope="prototype">
+		<property name="applicationServiceHandler" ref="applicationServiceHandler"/> 
+		<property name="sdxSecurityServiceHandler" ref="sdxSecurityServiceHandler"/>  
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/> 		
+		<property name="usersHandler" ref="usersHandler"/>
+	</bean>
+	
+	<bean id="tableSecurityAction" class="com.execue.web.core.action.swi.TableSecurityAction" scope="prototype">		 
+		<property name="sdxSecurityServiceHandler" ref="sdxSecurityServiceHandler"/>  
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/> 
+	</bean>
+	
+	<bean id="columnSecurityAction" class="com.execue.web.core.action.swi.ColumnSecurityAction" scope="prototype">		 
+		<property name="sdxSecurityServiceHandler" ref="sdxSecurityServiceHandler"/>  
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/> 
+			
+	</bean>
+	
+	<bean id="securityRolePaginationAction" class="com.execue.web.core.action.swi.SecurityRolePaginationAction" scope="prototype">		
+		<property name="rolesHandler" ref="rolesHandler"/>  
+	</bean>
+    
+	<bean id="hierarchyDefinitionAction" class="com.execue.web.core.action.swi.HierarchyDefinitionAction" scope="prototype">		
+		<property name="hierarchyDefinitionServiceHandler" ref="hierarchyDefinitionServiceHandler"/>  
+	</bean>
+	
+	<bean id="memberSecurityAction" class="com.execue.web.core.action.swi.MemberSecurityAction" scope="prototype">		 
+		<property name="sdxSecurityServiceHandler" ref="sdxSecurityServiceHandler"/>  
+		<property name="sdxServiceHandler" ref="sdxServiceHandler"/> 
+		<property name="publishedFileColumnEvaluationServiceHandler" ref="publishedFileColumnEvaluationServiceHandler"/> 					
+	</bean>
+	
+	<bean id="showCSVAction" scope="prototype"  class="com.execue.web.core.action.reporting.presentation.ShowCSVAction">
+		<property name="csvTransform" ref="csvTransform"/>
+	</bean>
+	
+	<bean id="showPivotAction" scope="prototype"  class="com.execue.web.core.action.reporting.presentation.ShowPivotAction">
+		<property name="pivotTransform" ref="pivotTransform"/>
+	</bean>
+	
+	<bean id="dataBrowserAction" scope="prototype"  class="com.execue.web.core.action.reporting.presentation.DataBrowserAction">
+		<property name="presentationHandler" ref="presentationHandler"/>
+		<property name="queryDataService" ref="queryDataService"/>
+	</bean>
+	
+	<bean id="stockChartAction" scope="prototype"
+		class="com.execue.web.core.action.reporting.presentation.StockChartAction">	
+		<property name="presentationHandler" ref="presentationHandler"/>
+	</bean>
+
+	
+	<bean id="hierarchicalGridAction" scope="prototype"  class="com.execue.web.core.action.reporting.presentation.HierarchicalGridAction">
+		<property name="presentationHandler" ref="presentationHandler"/>		
+	</bean>
+	
+	<bean id="chartFxScatterChartAction" scope="prototype"
+		class="com.execue.web.core.action.reporting.presentation.ChartFxScatterChartAction">
+		<property name="scatterChartController" ref="scatterChartController" />
+		<property name="reportController" ref="reportController" />		
+		<property name="presentationHandler" ref="presentationHandler" />
+	</bean>
+
+</beans>

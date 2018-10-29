@@ -1,0 +1,64 @@
+<queries>
+	<QUERY_DIRECT_JOIN_DEFINITIONS_BY_TABLE_NAMES>
+		<![CDATA[select joins.joinDefinitions 
+		         from Join joins where joins.asset.id = :assetId and 
+		         joins.joinLength = 0 and ((joins.sourceTableName = :sourceTableName 
+		         and joins.destTableName = :destTableName) or
+		         (joins.sourceTableName = :ind_destTableName and 
+		         joins.destTableName = :ind_sourceTableName))]]>
+	</QUERY_DIRECT_JOIN_DEFINITIONS_BY_TABLE_NAMES>
+
+	<QUERY_JOIN_DEFINITIONS_BY_TABLE_NAMES>
+		<![CDATA[select joins.joinDefinitions
+		         from Join joins where 
+		         joins.asset.id = :assetId 
+		         and ((joins.sourceTableName = :sourceTableName 
+		         and joins.destTableName = :destTableName) or 
+                 (joins.sourceTableName = :ind_destTableName 
+                 and joins.destTableName = :ind_sourceTableName))]]>
+	</QUERY_JOIN_DEFINITIONS_BY_TABLE_NAMES>
+	
+	<QUERY_JOINS_BY_TABLE_NAMES>
+		<![CDATA[from Join joins 
+		         where joins.asset.id = :assetId and 
+		        (joins.sourceTableName = :srcTableName 
+		         or joins.destTableName = :destTableName)]]>
+	</QUERY_JOINS_BY_TABLE_NAMES>
+	
+	<QUERY_DIRECT_JOINS_BY_ASSET_ID>
+		<![CDATA[from Join joins
+		         where joins.asset.id = :assetId 
+		         and joins.joinLength = 0]]>
+	</QUERY_DIRECT_JOINS_BY_ASSET_ID>
+
+	<QUERY_INDIRECT_JOINS_BY_ASSET_ID_MAXLENGTH>
+		<![CDATA[select max(joins.joinLength)
+		        from Join joins
+		        where joins.asset.id = :assetId]]>
+	</QUERY_INDIRECT_JOINS_BY_ASSET_ID_MAXLENGTH>
+
+	<QUERY_GET_TABLES_PARTICIPATING_IN_JOINS>
+		<![CDATA[select distinct tabl.id 
+		        from Tabl as tabl, Join as joins 
+		        where joins.asset.id = :assetId
+		        and (joins.sourceTableName = tabl.name or joins.destTableName = tabl.name)]]>
+	</QUERY_GET_TABLES_PARTICIPATING_IN_JOINS>
+	
+	<QUERY_JOINS_BY_ASSET_ID>
+		<![CDATA[from Join joins 
+		         where joins.asset.id = :assetId]]>
+	</QUERY_JOINS_BY_ASSET_ID>
+
+	<QUERY_INDIRECT_JOINS_BY_ASSET_ID>
+		<![CDATA[from Join joins 
+		         where joins.asset.id = :assetId 
+		         and joins.joinLength > 0]]>
+	</QUERY_INDIRECT_JOINS_BY_ASSET_ID>
+
+	<QUERY_DIRECT_JOINS_BY_TABLE_NAMES_LENGTH>
+		<![CDATA[from Join joins 
+		         where joins.asset.id = :assetId and joins.joinLength = 0 and 
+		         ((joins.sourceTableName = :sourceTableName and joins.destTableName = :destTableName)
+		         or (joins.sourceTableName = :ind_destTableName and joins.destTableName = :ind_sourceTableName))]]>
+	</QUERY_DIRECT_JOINS_BY_TABLE_NAMES_LENGTH>
+</queries>

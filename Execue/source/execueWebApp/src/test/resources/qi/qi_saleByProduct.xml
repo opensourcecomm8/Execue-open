@@ -1,0 +1,16 @@
+<qf xmlns="http://execue.com/schemas/qf">
+	<selects>
+		<select>
+			<term>
+				<name>MerchandiseAmount</name>
+				<type>CONCEPT</type>
+			</term>
+		</select>
+	</selects>
+	<summarizations>
+		<term>
+			<name>Product</name>
+			<type>CONCEPT</type>
+		</term>
+	</summarizations>
+</qf>

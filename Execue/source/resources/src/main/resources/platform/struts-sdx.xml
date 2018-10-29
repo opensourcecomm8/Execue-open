@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for SDX related actions
+
+-->
+<struts>
+    
+	<package name="sdx" namespace="/swi" extends="execue-console-default">
+        
+		<!-- Data Source Related Actions {Start} -->
+		<action name="showDataSource" method="input" class="dataSourceAction">
+			<result type="tiles" >sdx.showDataSource</result> 
+		</action>
+		<action name="defineDataSource" method="input" class="dataSourceAction">
+			<result name="success">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+		</action>
+		<!--action name="listDataSources" method="list" class="dataSourceAction"-->
+		<action name="listDataSources" method="getPageResults" class="dataSourcePaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showDataSources.jsp</result> 
+		</action>
+		<!--action name="showDataSourcesDetails" method="list" class="dataSourceAction"-->
+		<action name="showDataSourcesDetails" method="getPageResults" class="dataSourcePaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showDataSourcesDetails.jsp</result> 
+		</action>
+	
+		<!--action name="showSubDataSources" method="showSubDataSourcesDetails" class="dataSourceAction"-->
+		<action name="showSubDataSources" method="getPageResults" class="dataSourcePaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showDataSourcesDetails.jsp</result> 
+		</action>
+		
+		<!--action name="showDataSources" method="list" class="dataSourceAction"-->
+		<action name="showDataSources" method="getPageResults" class="dataSourcePaginationAction">
+			<result name="success" type="tiles" >sdx.showDataSources</result> 			
+		</action> 
+		
+
+		<action name="createDataSource" method="create" class="dataSourceAction">
+			<result name="input" type="tiles">sdx.showDataSource</result>
+			<result name="error" type="tiles" >sdx.showDataSource</result> 
+			<result name="success" type="tiles" >sdx.showDataSource</result> 
+		</action>
+		<!--added new connection action for now, to create connection through ajax call, will remove the existion one later -->
+		<action name="createConnection" method="create" class="dataSourceAction">
+			<result name="input">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/publisher/defineNewConnectionTab.jsp</result>
+		</action>
+		<action name="deleteDataSource" method="delete" class="dataSourceAction">            
+			<result name="error" type="chain" >listDataSources</result> 
+			<result name="success" type="chain" >listDataSources</result> 
+		</action>
+		<!-- Data Source Related Actions {End} -->
+        
+		<!-- Joins Related Actions {Start} -->
+		<action name="showAssetSelectionForJoins"  class="assetSelectionAction">
+			<result type="tiles" name="success">sdx.showAssetSelectionForJoins</result>
+		</action>
+		<action name="showJoins" method="getAssetTables" class="joinsAction">
+			<result type="tiles" name="success">sdx.showJoins</result>
+		</action>
+        
+		<action name="showExistingJoins" method="getAssetJoins" class="joinsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/existingJoins.jsp</result>
+		</action>
+		<!-- Joins Related Actions {End} -->
+        
+		<!-- Constraints related actions {Start} -->
+		<action name="showConstraints" method="input" class="constraintsAction">
+			<result type="tiles" name="success">sdx.showConstraints</result>
+		</action>
+        
+		<action name="showConstraintTables" method="showTables" class="constraintsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/constraintTableList.jsp</result>
+		</action>
+        
+		<action name="showTableConstraints" method="showConstraints" class="constraintsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/tableConstraints.jsp</result>
+		</action>
+		<action name="saveConstraint" method="saveConstraint" class="constraintsAction">			
+			<result name="success" type="redirectAction">
+				<param name="actionName">showTableConstraints</param>
+				<param name="asset.id">${asset.id}</param>
+				<param name="tableConstraintsInfo.table.id">${tableConstraintsInfo.table.id}</param>
+			</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/tableConstraints.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/tableConstraints.jsp</result>
+		</action>
+		<action name="deleteConstraint" method="deleteConstraint" class="constraintsAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showTableConstraints</param>
+				<param name="asset.id">${asset.id}</param>
+				<param name="tableConstraintsInfo.table.id">${tableConstraintsInfo.table.id}</param>    
+			</result>	        
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/tableConstraints.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/tableConstraints.jsp</result>
+		</action>
+        
+		<!-- Constraints related actions {End} -->
+        
+		<!-- Asset Related Actions {Start} -->
+       
+       
+		<action name="showAssets" method="list" class="sdxAction">
+			<result name="success" type="tiles" >sdx.showAssets</result>			
+		</action>
+		<action name="showAllAssets" method="getAllAssets" class="assetSelectionAction">
+			<result name="success">/views/showSelectAsset.jsp</result>						
+		</action>
+             
+		<action name="showAllParentAssets" method="getAllParentAssets" class="assetSelectionAction">
+			<result name="success">/views/showSelectAsset.jsp</result>			
+		</action>
+		<action name="showAsset" method="showAsset" class="sdxAction">
+			<result type="tiles">sdx.showAsset</result>
+		</action>
+		<action name="editAsset" method="editAsset" class="sdxAction">
+			<result name="success" type="tiles">sdx.showAsset</result>
+			<result name="error" type="tiles">sdx.showAsset</result>
+			<result name="input" type="tiles">sdx.showAsset</result>
+		</action>
+		<action name="newAsset" method="newAsset" class="sdxAction">
+			<result type="tiles">sdx.showAsset</result>
+		</action>
+		<action name="listAssets" method="list" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showAssets.jsp</result> 
+		</action>
+        
+		<action name="getAssetDefinition" method="showAssetDefinition" class="sdxAction">
+            
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetDefinition.jsp</result>
+            
+		</action>
+        
+		<action name="createUpdateAssetView" method="input" class="sdxAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetDefinition.jsp</result>
+		</action>
+		<action name="createUpdateAsset" method="createAsset" class="sdxAction">
+			<result name="input" type="chain" >createUpdateAssetView</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetDefinition.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/assetDefinition.jsp</result>
+		</action>
+
+		<action name="analyzeActivateAsset" method="activateAsset" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetDefinition.jsp</result>
+		</action>
+        
+		<action name="createUpdateTableView" method="input" class="sdxAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/tableDefinition.jsp</result>
+		</action>
+		<action name="createUpdateTable" method="createTable" class="sdxAction">
+			<result name="input" type="chain">createUpdateTableView</result>
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/tableDefinition.jsp</result>
+		</action>
+		
+		<action name="updateColumnInfo" method="updateColumns" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/columnList.jsp</result>
+		</action>
+		
+		<action name="updateMemberInfo" method="updateMembers" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/memberList.jsp</result>
+		</action>
+		
+		<action name="updateAssetStatus" method="updateAssetStatus" class="sdxAction">
+			<result name="success" type="chain">viewSubAssetList</result>
+			<result name="error" type="chain" >viewSubAssetList</result>
+		</action>
+        
+		<!--action name="deleteAsset" method="deleteAsset" class="sdxAction">            
+				<result name="error" type="chain" >listAssets</result>
+				<result name="input" type="chain" >listAssets</result>			 
+				<result name="success" type="redirectAction">
+					<param name="actionName">showJobRequests</param>
+					<param name="namespace">/swi</param>									
+				</result>
+			</action-->
+        
+		<action name="deleteSelectedTables" method="deleteSelectedTables" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetTableList.jsp</result>
+		</action>
+        
+		<!--action name="getSourceTables" method="showSourceTables" class="sdxAction"-->
+		<action name="getSourceTables" method="getPageResults" class="sdxSourceTablesPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/sourceTableList.jsp</result>
+		</action>
+		<!--action name="showSubSourceTables" method="showSubSourceTables" class="sdxAction"-->
+		<action name="showSubSourceTables" method="getPageResults" class="sdxSourceTablesPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/sourceTableList.jsp</result>
+		</action>
+        
+		<action name="getAssetTables" method="showAssetTables" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetTableList.jsp</result>
+		</action>
+        
+		<action name="getTableInfo" method="showTableInfo" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/tableDefinition.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/tableDefinition.jsp</result>
+		</action>
+        
+		<action name="getColumnsInfo" method="showTableInfo" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/columnList.jsp</result>
+		</action>
+		<action name="getSubColumnsInfo" method="showSubMemberColumnInfo" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/columnList.jsp</result>
+		</action>
+		
+		<action name="getSubMembersInfo" method="showSubMemberColumnInfo" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/memberList.jsp</result>
+		</action>
+        
+		<action name="getMembersInfo" method="showTableInfo" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/memberList.jsp</result>
+		</action>
+		<action name="getParentIDs" method="getParentIDs" class="sdxAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/tableDefinition.jsp</result>
+		</action>
+		<action name="showAssetDetail" method="list" class="sdxAction">
+			<result type="tiles" >sdx.showAssetDetails</result> 
+		</action>
+		<action name="showAssetDetailInfo" method="showAssetDetailInfo" class="assetDetailAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+		</action>
+		<action name="updateAssetDetail" method="updateAssetDetail" class="assetDetailAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetDetailsInfo.jsp</result> 
+		</action>
+		
+		<!-- Asset Dashboard Starts -->
+		<action name="showAssetsDashboard" method="getAssetDashBoardDetails" class="dashBoardAction">
+			<result type="tiles" >sdx.showAssetsDashboard</result> 
+		</action>
+		<!-- Asset Dashboard Ends -->
+		
+		<!-- Search Apps Dashboard Starts -->
+		<action name="showSearchAppsDashboard" method="getAppDashBoardDetails" class="dashBoardAction">
+			<result name="success" type="tiles" >sdx.showSearchAppsDashboard</result>
+			<result name="error" type="tiles" >sdx.showSearchAppsDashboard</result>
+			<result name="input" type="tiles" >sdx.showSearchAppsDashboard</result>
+		</action>
+		
+		<action name="selectAppSearchAppsDashboard" method="selectApp" class="dashBoardAction">
+			<result name="success" type="tiles" >sdx.showSearchAppsDashboard</result>
+			<result name="error" type="tiles" >sdx.showSearchAppsDashboard</result>
+			<result name="input" type="tiles" >sdx.showSearchAppsDashboard</result>
+		</action>
+		<!-- Search Apps Dashboard Ends -->
+		
+		<!-- Asset grain start-->
+		<action name="showAssetsGrain" method="showAsset" class="sdxAction">
+			<result type="tiles">sdx.showAssetGrain</result>
+		</action>
+		<!--action name="assetListForGrain" method="showAllAssets" class="assetGrainAction"-->
+		<action name="assetListForGrain" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+		</action>
+		
+		<!--action name="showSubAllAssets" method="showSubAllAssets" class="assetGrainAction"-->
+		<action name="showSubAllAssets" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/viewAssetGrain.jsp</result>
+		</action>
+		
+		
+		<!--action name="assetListForAssetDetails" method="list" class="sdxAction"-->
+		<action name="assetListForAssetDetails" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result> 
+		</action>		
+			
+		<action name="getSubListForAssetDetail" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result>  
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result>
+		</action>
+		
+		<!--action name="assetSubListForAssetDetails" method="assetSubListForAssetDetails" class="sdxAction"-->
+		<action name="assetSubListForAssetDetails" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/viewAssetDetails.jsp</result>  
+		</action>
+		
+		<!--action name="viewAssetList" method="list" class="sdxAction"-->
+		<action name="viewAssetList" method="getPageResults" class="sdxPaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result>  
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result>  
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result>   
+		</action>
+		
+		<!--action name="viewSubAssetList" method="assetSubListForAssetDetails" class="sdxAction"-->
+		<action name="viewSubAssetList" method="getPageResults" class="sdxPaginationAction">	
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result>  
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/showAssetsDetails.jsp</result>   
+		</action>
+		
+		
+		<action name="showAssetGrain" method="input" class="assetGrainAction">       		
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetGrainInfo.jsp</result>  
+		</action>
+		<action name="updateAssetGrain" method="updateAssetGrain" class="assetGrainAction">       		
+			<result name="success" type="redirectAction">
+				<param name="actionName">showAssetGrain</param>
+				<param name="asset.id">${asset.id}</param>
+				<param name="asset.displayName">${asset.displayName}</param>
+				<param name="status">success</param>				
+			</result>
+			<result name="error" type="redirectAction">
+				<param name="actionName">showAssetGrain</param>
+				<param name="asset.id">${asset.id}</param>
+				<param name="asset.displayName">${asset.displayName}</param>
+				<param name="status">error</param>				
+			</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetGrainInfo.jsp</result>			
+		</action>
+		<!-- Asset grain end-->		
+		<!-- Asset Related Actions {End} -->
+		
+		<!-- Default metrics screen Action start-->
+		<action name="showDefaultMetrics"  method="showAssets" class="defaultMetricsAction">
+			<result name="success" type="tiles" >sdx.defaultMetrics</result>			
+		</action>
+		<action name="showDefaultMetricAssetTables"  method="showTables" class="defaultMetricsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/defaultMetricsAssetTables.jsp</result>			
+		</action>
+		<action name="getDefaultMetricByAssetTable"  method="showDefaultMetrics" class="defaultMetricsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/defaultMetricsInfo.jsp</result>			
+		</action>
+		<action name="updateDefaultMatric"  method="saveUpdateDefaultMetrics" class="defaultMetricsAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/defaultMetricsInfo.jsp</result>
+		</action>
+		
+		<!-- Default metrics screen Action end-->
+		
+		<!-- manage unstructured apps Action start -->
+		
+		<action name="showUnstructuredApps" class="unstructuredAppDataSourceAction">
+			<result name="input" type="tiles">unstructured.showUnstructuredApps</result>
+			<result name="error" type="tiles" >unstructured.showUnstructuredApps</result> 
+			<result name="success" type="tiles" >unstructured.showUnstructuredApps</result> 
+		</action>
+		
+		<action name="getUnstructuredApps" method="getPageResults" class="unstructuredAppDataSourceAction">
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/unstructuredAppList.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/swi/sdx/unstructuredAppList.jsp</result> 
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/unstructuredAppList.jsp</result> 
+		</action>
+		
+		<action name="showUnstructuredAppDatasources" method="showUnstructureAppDatasources" class="unstructuredAppDataSourceAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result> 
+		</action>
+		
+		<action name="saveUnstructuredDatasourceAndContentAggregators" method="saveUnstructuredDatasourceAndContentAggregators" class="unstructuredAppDataSourceAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/showUnstructuredAppDataSources.jsp</result> 
+		</action>
+		<!-- Sdx Security actions start-->
+		<action name="showAssetSecurity" method="showApplications" class="assetSecurityAction">
+			<result name="success" type="tiles">sdx.assetSecurity</result>
+			<result name="input" type="tiles">sdx.assetSecurity</result> 
+			<result name="error" type="tiles">sdx.assetSecurity</result> 
+		</action>
+		
+		<action name="showTableSecurity"  class="tableSecurityAction">
+			<result name="success" type="tiles">sdx.tableSecurity</result>
+			<result name="input" type="tiles">sdx.tableSecurity</result> 
+			<result name="error" type="tiles">sdx.tableSecurity</result> 
+		</action>
+		
+		<action name="showColumnSecurity"  class="columnSecurityAction">
+			<result name="success" type="tiles">sdx.columnSecurity</result>
+			<result name="input" type="tiles">sdx.columnSecurity</result> 
+			<result name="error" type="tiles">sdx.columnSecurity</result> 
+		</action>
+		
+		<action name="showMemberSecurity"  class="memberSecurityAction">
+			<result name="success" type="tiles">sdx.memberSecurity</result>
+			<result name="input" type="tiles">sdx.memberSecurity</result> 
+			<result name="error" type="tiles">sdx.memberSecurity</result> 
+		</action>
+		
+		<action name="getAssetsForApplication" method="getPageResults" class="assetSecurityAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/assetList.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetList.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/assetList.jsp</result> 
+		</action>
+		
+		<action name="getTablesForSelectedAsset" method="getPageResults" class="tableSecurityAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/tableList.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/tableList.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/tableList.jsp</result> 
+		</action>
+		
+		<action name="getColumnsForSelectedTable" method="getPageResults" class="columnSecurityAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/columnList_security.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/columnList_security.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/columnList_security.jsp</result> 
+		</action>
+		
+		<action name="getMembersForSelectedTable" method="getPageResults" class="memberSecurityAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/memberList_security.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/memberList_security.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/memberList_security.jsp</result> 
+		</action>
+		
+		<action name="showSecurityRoles" method="getPageResults" class="securityRolePaginationAction">
+			<result name="success">/WEB-INF/jsp/admin/swi/sdx/roleList.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/roleList.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/roleList.jsp</result> 
+		</action>		
+		
+		<action name="addSecurityPermissionForAsset" method="addAssetsPermission" class="assetSecurityAction">
+			<result name="success" type="chain">getAssetsForApplication</result>
+		</action>
+		
+		<action name="addSecurityPermissionForTable" method="addTablesPermission" class="tableSecurityAction">
+			<result name="success" type="chain">getTablesForSelectedAsset</result>
+		</action>
+		
+		<action name="addSecurityPermissionForColumn" method="addColumnsPermission" class="columnSecurityAction">
+			<result name="success" type="chain">getColumnsForSelectedTable</result>
+		</action>
+		
+		<action name="addSecurityPermissionForMember" method="addMembersPermission" class="memberSecurityAction">
+			<result name="success" type="chain">getMembersForSelectedTable</result>
+		</action>
+		
+		<!--<action name="showSecurityUsers" method="showUsers" class="assetSecurityAction">
+				<result name="success">/WEB-INF/jsp/admin/swi/sdx/showUserRoles.jsp</result>
+				<result name="input">/WEB-INF/jsp/admin/swi/sdx/showUserRoles.jsp</result> 
+				<result name="error">/WEB-INF/jsp/admin/swi/sdx/showUserRoles.jsp</result> 
+			</action>-->
+		
+		<!-- Sdx Security actions end-->
+		
+		<!-- manage unstructured apps Action end -->
+	</package>
+    
+	<package name="joins" namespace="/swi" extends="execue-json-default">
+        
+		<global-results>
+			<result name="error" type="json">
+				<param name="root">errorMessage</param>
+			</result>
+		</global-results>
+        
+		<action name="showTableColumnsForJoin" class="joinsAction" method="getJoinTableColumn">
+			<result name="success" type="json">
+				<param name="root">uiColumnForJoins</param>
+			</result>
+		</action>
+        
+		<action name="showExistingJoinDefinitions" class="joinsAction" method="getExistingJoinDefinitions">
+			<result name="success" type="json">
+				<param name="root">uiJoinDefInfo</param>
+			</result>
+		</action>
+        
+		<action name="createJoins" class="joinsAction" method="createJoins">
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+		
+		<action name="deleteJoins" class="joinsAction" method="deleteJoins">
+			<result name="success" type="json">
+				<param name="root">message</param>
+			</result>
+		</action>
+        
+		<action name="updateConstraints" method="updateConstraints" class="constraintsAction">
+			<result name="success" type="json">
+				<param name="root">constraintStatus</param>
+			</result>
+		</action>
+		<action name="qiConversion" class="qiSuggestAction" method="suggestConversion">
+			<result name="success" type="json">
+				<param name="root">qiConversionValueDetail</param>
+			</result>
+		</action>
+		
+		<!-- Constraint Related Actions {Start} -->
+			
+		<action name="showRefTableColums" class="constraintsAction" method="showReferenceTableColumns">
+			<result name="success" type="json">
+				<param name="root">refTableColums</param>
+			</result>
+		</action>
+		
+		<action name="showTablesofAsset" class="constraintsAction" method="showTables">
+			<result name="success" type="json">
+				<param name="root">tables</param>
+			</result>
+		</action>
+		
+		<action name="showPrimaryKeyTablesForForiegnKey" class="constraintsAction" method="showForeignKeyTables">
+			<result name="success" type="json">
+				<param name="root">foriegnKeyTables</param>
+			</result>
+		</action>
+		<action name="showPrimaryKeyTablesofAsset" class="constraintsAction" method="showTables">
+			<result name="success" type="json">
+				<param name="root">primaryKeyTables</param>
+			</result>
+		</action>
+		
+		<action name="applicationList" method="getPageResults" class="applicationListAction">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>
+		
+		<action name="datasetList" method="getPageResults" class="datasetListAction">
+			<result name="success" type="json">
+				<param name="root">grid</param>
+			</result>
+		</action>		
+		<action name="showPemittedAssetForRole" method="showPemittedAssetForRole" class="tableSecurityAction">
+			<result name="success" type="json">
+				<param name="root">assets</param>
+			</result>
+		</action>
+		
+		<action name="showTablesForAsset" method="showTablesForAsset" class="columnSecurityAction">
+			<result name="success" type="json">
+				<param name="root">tables</param>
+			</result>
+		</action>
+		
+		<action name="showLookupTablesForAsset" method="showLookupTablesForAsset" class="memberSecurityAction">
+			<result name="success" type="json">
+				<param name="root">tables</param>
+			</result>
+		</action>
+		
+		
+		<!-- Constraint Related Actions {End} -->
+		<action name="deleteAsset" method="deleteAsset" class="sdxAction">            
+			<result name="error" type="chain" >listAssets</result>
+			<result name="input" type="chain" >listAssets</result>			
+			<result name="success" type="json">
+				<param name="root">jobRequestResult</param>
+			</result>
+		</action>
+		
+		<action name="validateAssetUnderMaintenance" method="validateAssetUnderMaintenance" class="sdxAction">
+			<result name="success" type="json">
+				<param name="root">assetUnderProcess</param>
+			</result> 
+			<result name="assetUnderProcess">/WEB-INF/jsp/admin/swi/sdx/assetUnderProcessStatus.jsp</result> 
+			<result name="error">/WEB-INF/jsp/admin/swi/sdx/assetUnderProcessStatus.jsp</result> 
+			<result name="input">/WEB-INF/jsp/admin/swi/sdx/assetUnderProcessStatus.jsp</result>
+		</action>
+		
+		<!--Delete Datasource action -->
+		<action name="removeDatasource" method="deleteDatasource" class="dataSourceAction">    
+			<result name="success" type="json">
+				<param name="root">uiStatus</param>
+			</result>
+		</action>
+		<!--Delete Datasource action-->
+	</package>
+
+</struts>

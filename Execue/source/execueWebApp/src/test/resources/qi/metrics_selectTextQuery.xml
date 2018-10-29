@@ -1,0 +1,28 @@
+<qf xmlns="http://execue.com/schemas/qf">	
+	<selectText/>
+	<selectTextProcessed/>
+	<selects>
+		<select>
+			<term>
+				<name>NetSales</name>
+				<displayName>Net Sales</displayName>
+				<type>CONCEPT</type>
+			</term>
+			<stat>AVG</stat>
+			<statDisplayName>Average</statDisplayName>
+		</select>
+	</selects>
+	<conditions/>
+	<populations/>
+	<summarizations>
+		<term>
+			<name>CapitalSurplus</name>
+			<displayName>Capital Surplus</displayName>
+			<type>CONCEPT</type>
+		</term>
+	</summarizations>
+	<cohort>
+		<summarizations/>
+		<conditions/>
+	</cohort> 
+</qf>

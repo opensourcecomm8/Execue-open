@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+		# Defiens the package for Preferences related actions
+	-->
+<struts>
+
+	<package name="semanticIntefaceSearch-ext" extends="semanticIntefaceSearch">
+		<action name="semanticSearch" method="search" class="semanticSearchAction">
+			<result name="success" type="tiles">search.results</result>
+			<result name="input" type="tiles">qi.simpleSearch</result>
+			<result name="error" type="tiles">search.results</result>
+			<result name="singleAppRedirection" type="chain">
+				<param name="actionName">${redirectURL}</param>
+			</result>
+			<result name="singleAssetRedirection" type="tiles">search.singleAssetresult</result>
+		</action>
+	</package>
+
+	<package name="queryIntefaceSearch-ext" extends="queryIntefaceSearch">
+		<action name="querySearch" method="search" class="qiSearchAction">
+			<result name="success" type="tiles">search.results</result>
+			<result name="singleAssetRedirection" type="tiles">search.singleAssetresult</result>
+			<result name="input" type="tiles">qi.advanceSearch</result>
+			<result name="error" type="tiles">search.results</result>
+		</action>
+		<!--
+				action name="back" method="back" class="homeAction"> <result
+				name="success" type="tiles">qi.home</result> <result name="input"
+				type="tiles">qi.home</result> <result name="error"
+				type="tiles">qi.home</result> </action
+			-->
+		<action name="returnToHome" method="input" class="homeAction">
+			<result name="qiSearch" type="tiles">qi.advanceSearch</result>
+			<result name="search" type="tiles">qi.simpleSearch</result>
+		</action>
+	</package>
+
+
+	<package name="browseApps-ext"  extends="browseApps">
+		<action name="browseApps" class="applicationAction" method="input">
+			<result type="tiles">qi.browseApps</result>
+		</action>
+	</package>
+</struts>

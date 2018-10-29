@@ -1,0 +1,113 @@
+<queries>
+	<QUERY_GET_PUBLISHED_FILE_INFO_DETAIL_BY_FK>
+		<![CDATA[from PublishedFileInfoDetails as publishedFileInfoDetail 
+		         where publishedFileInfoDetail.publishedFileInfo=:publishedFileInfo]]>
+	</QUERY_GET_PUBLISHED_FILE_INFO_DETAIL_BY_FK>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_INFO_BY_FK>
+		<![CDATA[from PublishedFileTableInfo as publishedFileTableInfo 
+		        where publishedFileTableInfo.publishedFileInfo=:publishedFileInfo]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_INFO_BY_FK>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_BY_FK>
+		<![CDATA[from PublishedFileTableDetails as publishedFileTableDetail 
+		         where publishedFileTableDetail.publishedFileTableInfo=:publishedFileTableInfo
+                 order by publishedFileTableDetail.columnIndex]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_BY_FK>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_BY_FILEINFO_ID>
+		<![CDATA[from PublishedFileTableInfo as publishedFileTableInfo 
+		         where publishedFileTableInfo.publishedFileInfo.id = :fileInfoId]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_BY_FILEINFO_ID>
+
+	<QUERY_GET_PUBLISHED_FILE_INFO_BY_APPLICATION_ID>
+		<![CDATA[from PublishedFileInfo as publishedFileInfo 
+		         where publishedFileInfo.applicationId=:applicationId]]>
+	</QUERY_GET_PUBLISHED_FILE_INFO_BY_APPLICATION_ID>
+
+	<QUERY_PUBLISHED_FILE_INFO_BY_TABLE_INFO_ID>
+		<![CDATA[select pfti.publishedFileInfo 
+		         from PublishedFileTableInfo as pfti 
+		         where pfti.id = :publishedFileTableInfoId ]]>
+	</QUERY_PUBLISHED_FILE_INFO_BY_TABLE_INFO_ID>
+
+	<QUERY_GET_FILES_INFO_ELIGIBLE_FOR_ABSORPTION>
+		<![CDATA[from PublishedFileInfo 
+		         where fileLink = :fileLinkValue and fileAbsorbed = :fileAbsorbedValue 
+		         and (sourceType = :csvFileType or sourceType = :excelFileType)
+		         and userId=:userId ]]>
+	</QUERY_GET_FILES_INFO_ELIGIBLE_FOR_ABSORPTION>
+
+	<QUERY_GET_FILES_INFO_NOT_ELIGIBLE_FOR_ABSORPTION>
+		<![CDATA[from PublishedFileInfo 
+		         where userId=:userId
+		         and (fileLink = :fileLinkValue or fileAbsorbed = :fileAbsorbedValue or sourceType = :otherFileType) ]]>
+	</QUERY_GET_FILES_INFO_NOT_ELIGIBLE_FOR_ABSORPTION>
+
+	<QUERY_GET_FILES_INFO_BY_NAME>
+		<![CDATA[from PublishedFileInfo 
+		         where fileName =:fileName and userId=:userId ]]>
+	</QUERY_GET_FILES_INFO_BY_NAME>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLES_INFO>
+		<![CDATA[select pfti 
+		        from PublishedFileInfo pfi, PublishedFileTableInfo pfti 
+		        where pfi.userId = :userId 
+		        and pfi.id = pfti.publishedFileInfo.id
+		        and pfti.evaluatedTableName in (:evaluatedTableNames)]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLES_INFO>
+
+	<QUERY_GET_FILES_INFO_BY_USER_ID>
+		<![CDATA[from PublishedFileInfo pfi 
+		         where pfi.userId=:userId order by pfi.id desc]]>
+	</QUERY_GET_FILES_INFO_BY_USER_ID>
+
+	<QUERY_GET_PUBLISHED_FILES>
+		<![CDATA[from PublishedFileInfo publishedFileInfo where 1 = 1]]>
+	</QUERY_GET_PUBLISHED_FILES>
+
+	<QUERY_GET_PUBLISHED_FILES_COUNT>
+		<![CDATA[select count(id)
+		        from PublishedFileInfo publishedFileInfo where 1 = 1]]>
+	</QUERY_GET_PUBLISHED_FILES_COUNT>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_INFO>
+		<![CDATA[select pfti 
+		         from PublishedFileInfo pfi, PublishedFileTableInfo pfti
+		         where pfi.userId = :userId 
+		         and pfi.id = pfti.publishedFileInfo.id 
+		         and pfti.evaluatedTableName =:evaluatedTableName]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_INFO>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL>
+		<![CDATA[from PublishedFileTableDetails publishedFileTableDetail
+		         where publishedFileTableDetail.publishedFileTableInfo.id =:publishedFileTableId]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL>
+
+	<QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_COUNT>
+		<![CDATA[select count(id)
+		         from PublishedFileTableDetails publishedFileTableDetail 
+		         where publishedFileTableDetail.publishedFileTableInfo.id =:publishedFileTableId]]>
+	</QUERY_GET_PUBLISHED_FILE_TABLE_DETAIL_COUNT>
+
+	<QUERY_GET_PUBLISHED_FILE_TEMP_TABLE_BASE_COLUMNS>
+		<![CDATA[select publishedFileTableDetail.baseColumnName 
+		         from PublishedFileTableDetails publishedFileTableDetail
+    	         where publishedFileTableDetail.publishedFileTableInfo.id =:publishedFileTableId 
+    	         order by publishedFileTableDetail.columnIndex]]>
+	</QUERY_GET_PUBLISHED_FILE_TEMP_TABLE_BASE_COLUMNS>
+
+	<QUERY_GET_TABLE_DETAILS_BY_DISPLAY_NAME_EXCLUDING_ID>
+		<![CDATA[select pftd.id 
+		         from PublishedFileTableDetails pftd where
+    	         pftd.id != :fileTableDetailId 
+    	         and pftd.evaluatedColumnDisplayName = :fileTableDetailDisplayName]]>
+	</QUERY_GET_TABLE_DETAILS_BY_DISPLAY_NAME_EXCLUDING_ID>
+
+	<QUERY_COLUMN_DISPLAY_NAMES>
+		<![CDATA[select pftd.evaluatedColumnDisplayName 
+		         from PublishedFileTableDetails pftd where 
+		         pftd.publishedFileTableInfo.id = :fileTableId
+		         order by pftd.columnIndex]]>
+	</QUERY_COLUMN_DISPLAY_NAMES>
+</queries>

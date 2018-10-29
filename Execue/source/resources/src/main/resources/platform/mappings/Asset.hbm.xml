@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 7, 2009 9:52:51 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="assetOwnerType">
+		<param name="enumClass">com.execue.core.common.type.AssetOwnerType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getWordType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="assetType">
+		<param name="enumClass">com.execue.core.common.type.AssetType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getWordType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="assetSubType">
+		<param name="enumClass">com.execue.core.common.type.AssetSubType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getWordType</param>
+	</typedef>
+	<typedef name="statusEnum" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+		<param name="enumClass">com.execue.core.common.bean.StatusEnum</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="originType">
+		<param name="enumClass">com.execue.core.common.type.PublishedFileType</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+	<typedef class="com.execue.dataaccess.usertype.GenericEnumUserType"
+		name="publishMode">
+		<param name="enumClass">com.execue.core.common.type.PublishAssetMode</param>
+		<param name="identifierMethod">getValue</param>
+		<param name="valueOfMethod">getType</param>
+	</typedef>
+    <typedef name="checkType" class="com.execue.dataaccess.usertype.GenericEnumUserType">
+        <param name="enumClass">com.execue.core.common.type.CheckType</param>
+        <param name="identifierMethod">getValue</param>
+        <param name="valueOfMethod">getType</param>
+    </typedef>
+	<class name="com.execue.core.common.bean.entity.Asset" table="ASSET">
+		<comment>A Data Asset definiton</comment>
+		<id name="id" type="java.lang.Long">
+			<column name="ID" precision="20" scale="0" />
+			<generator class="org.hibernate.id.enhanced.TableGenerator">
+				<param name="table_name">SEQUENCES</param>
+				<param name="segment_value">ASSET</param>
+			</generator>
+		</id>
+		<property name="baseAssetId" type="java.lang.Long">
+			<column name="BASE_ASSET_ID" precision="20" scale="0" />
+		</property>
+		<property name="name" type="string">
+			<column name="NAME" length="255" not-null="true" unique="true" />
+		</property>
+		<property name="description" type="string">
+			<column name="DESCRIPTION" />
+		</property>
+		<property name="ownerType" type="assetOwnerType">
+			<column name="OWNER" length="35" />
+		</property>
+		<property name="type" type="assetType">
+			<column name="TYPE" length="35" />
+		</property>
+		<property name="subType" type="assetSubType">
+			<column name="SUB_TYPE" length="35" />
+		</property>
+		<property name="displayName" type="string">
+			<column name="DISPLAY_NAME" length="255" />
+		</property>
+		<property name="priority" type="double">
+			<column name="PRIORITY" precision="10" scale="0" />
+		</property>
+		<property name="status" type="statusEnum">
+			<column name="STATUS" length="1" />
+		</property>
+		<property name="originType" type="originType">
+			<column name="ORIGIN_TYPE" length="15" not-null="true"/>
+		</property>
+		<property name="queryExecutionAllowed" type="checkType">
+            <column name="QUERY_EXECUTION_ALLOWED" length="1" not-null="true"/>
+        </property>
+		
+		<many-to-one name="dataSource" class="com.execue.core.common.bean.entity.DataSource" fetch="select">
+			<column name="DATA_SOURCE_ID" precision="20" scale="0" />
+		</many-to-one>
+		
+		<set name="assetEntityDefinitions" inverse="true">
+			<key>
+				<column name="ASSET_ID" precision="20" scale="0" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.AssetEntityDefinition" />
+		</set>
+		
+
+		<set name="joins" inverse="true">
+			<key>
+				<column name="ASSET_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.Join" />
+		</set>
+        
+		<set name="joinDefinitions" inverse="true">
+			<key>
+				<column name="ASSET_ID" precision="20" scale="0" not-null="true" />
+			</key>
+			<one-to-many class="com.execue.core.common.bean.entity.JoinDefinition" />
+		</set>
+		<many-to-one name="application" class="com.execue.core.common.bean.entity.Application" fetch="select">
+			<column name="APPLICATION_ID" precision="20" scale="0" />
+		</many-to-one>
+		<property name="publishMode" type="publishMode">
+			<column name="PUBLISH_MODE" length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

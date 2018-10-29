@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--
+
+	# Defiens the package for SDX related actions
+
+-->
+<struts>
+    
+	<package name="account" namespace="/account" extends="execue-console-default">
+		<!-- Users advanced options{Start} -->
+		<action name="showAdvancedOptions"  class="accountProfileAction">
+			<result  name="success" type="tiles">account.advancedOptions</result>
+			<result  name="error" type="tiles">account.advancedOptions</result>
+			<result  name="input" type="tiles">account.advancedOptions</result>
+		</action>
+		
+		<action name="getAdvancedOptions" method="showAdvancedOptions" class="accountProfileAction">
+			<result  name="success">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+			<result  name="error">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+			<result  name="input">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+		</action>
+		
+		<action name="showManageUserRequests" class="accountProfileAction">
+			<result  name="success" type="tiles">sdx.showManageUserRequests</result>
+			<result  name="error" type="tiles">sdx.showManageUserRequests</result>
+			<result  name="input" type="tiles">sdx.showManageUserRequests</result>
+		</action>
+		
+		<action name="showUserRequests" method="showUserRequests" class="accountProfileAction">
+			<result name="success" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+		    <result name="input" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+		</action>
+		<action name="updateUserRequests" method="updateUserRequests" class="accountProfileAction">
+			<result name="success" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+		    <result name="input" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+			<result name="error" >/WEB-INF/jsp/admin/account/showUserRequests.jsp</result>
+		</action>		
+		<action name="createAdvancedOptions" method="createAdvanceOptions" class="accountProfileAction">
+			<result  name="success">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+			<result  name="error">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+			<result  name="input">/WEB-INF/jsp/admin/account/advancedOptionsInfo.jsp</result>
+		</action>
+	    
+		<!-- Users Actions {Start} -->
+		
+		<action name="showUserProfile"  class="accountProfileAction">
+			<result  name="success" type="tiles">account.profile</result>
+			<result  name="error" type="tiles">account.profile</result>
+			<result  name="input" type="tiles">account.profile</result>
+		</action>
+		
+		<action name="getUserProfile" method="showProfile" class="accountProfileAction">
+			<result  name="success">/WEB-INF/jsp/admin/account/profile-info.jsp</result>
+			<result  name="error">/WEB-INF/jsp/admin/account/profile-info.jsp</result>
+			<result  name="input">/WEB-INF/jsp/admin/account/profile-info.jsp</result>
+		</action>
+		<action name="updateUserProfile" method="updateProfile" class="accountProfileAction">
+			<result  name="success">/WEB-INF/jsp/admin/account/profile-info.jsp</result>
+			<result  name="error"  type="chain">getUserProfile</result>
+			<result  name="input"  type="chain">getUserProfile</result>
+		</action>
+		<action name="saveUser" method="input" class="usersAction">
+			<result name="success">/WEB-INF/jsp/swi/security/user.jsp</result>
+			<result name="input">/WEB-INF/jsp/swi/security/user.jsp</result>
+			<result name="error">/WEB-INF/jsp/swi/security/user.jsp</result>
+		</action>
+		<action name="showChangePassword" class="accountProfileAction">
+			<result name="success">/WEB-INF/jsp/admin/account/changePassword.jsp</result>	
+			<result name="error">/WEB-INF/jsp/admin/account/changePassword.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/account/changePassword.jsp</result>		
+		</action>
+		<action name="updatePassword" method="changePassword" class="accountProfileAction">
+			<result name="success">/WEB-INF/jsp/admin/account/changePassword.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/account/changePassword.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/account/changePassword.jsp</result>		
+		</action>
+		<action name="showUserNotification"  class="userNotificationAction">
+			<result  name="success" type="tiles">notification.message</result>
+			<result  name="error" type="tiles">notification.message</result>
+			<result  name="input" type="tiles">notification.message</result>
+		</action>
+		<action name="showMessageBox"  method="getPageResults" class="userNotificationAction">
+			<result name="success">/WEB-INF/jsp/admin/account/message-box.jsp</result>
+			<result name="error">/WEB-INF/jsp/admin/account/message-box.jsp</result>
+			<result name="input">/WEB-INF/jsp/admin/account/message-box.jsp</result>		
+		</action>	
+		<action name="showNotificationTemplate"  class="notificationTemplateAction">
+			<result  name="success" type="tiles">notification.template</result>
+			<result  name="error" type="tiles">notification.template</result>
+			<result  name="input" type="tiles">notification.template</result>		
+		</action>	
+
+	</package>
+	<package name="accountAjax" namespace="/account" extends="execue-json-default">
+		<action name="getNotificationBody"  method="getNotificationBodyContent" class="userNotificationAction">
+			<result type="json">
+				<param name="root">notificationBody</param>
+			</result>
+		</action>
+		<action name="getNotificationTemplate"  method="populateNotificationTemplate" class="notificationTemplateAction">
+			<result type="json">
+				<param name="root">notificationTemplate</param>
+			</result>
+		</action>
+		<action name="saveUpdateNotificationTemplate"  method="saveUpdateNotificationTemplate" class="notificationTemplateAction">
+			<result type="json">
+				<param name="root">notificationTemplate</param>
+			</result>
+		</action>		
+	</package>
+</struts>

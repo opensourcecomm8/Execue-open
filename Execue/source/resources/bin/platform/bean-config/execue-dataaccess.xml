@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean defintion of ClientSourceDAO -->
+	<bean id="clientSourceDAO" 
+		class="com.execue.dataaccess.clientsource.impl.ClientSourceDAOImpl" >
+		<property name="assetSourceConnectionProvider">
+			<ref bean="assetSourceConnectionProvider"/>
+		</property>
+	</bean>
+	
+	<!-- Execue ClientSource Executor for Client Source Native Queries -->
+	
+	    <bean id="clientSourceExecutorFactoy" 
+        class="com.execue.dataaccess.clientsource.ClientSourceExecutorFactoy" factory-method="getInstance">
+        <property name="beanMapping">
+            <map>
+            	<entry key="1" value="oracleClientSourceExecutorImpl"/>
+				<entry key="2" value="mySqlClientSourceExecutorImpl"/>
+				<entry key="3" value="msSqlClientSourceExecutorImpl"/>
+				<entry key="4" value="dB2ClientSourceExecutorImpl"/>
+				<entry key="7" value="teraDataClientSourceExecutorImpl"/>
+                <entry key="8" value="sasClientSourceExecutorImpl"/>
+                <entry key="10" value="derbyClientSourceExecutorImpl"/>
+                <entry key="11" value="postgresClientSourceExecutorImpl"/>
+                <!-- default -->
+                <entry key="0" value="clientSourceExecutorImpl"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="clientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.ClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="sasClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.SASClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="dB2ClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.DB2ClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="mySqlClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.MySqlClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="msSqlClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.MsSqlClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="oracleClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.OracleClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="teraDataClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.TeraDataClientSourceExecutorImpl" >       
+    </bean>
+    
+    <bean id="postgresClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.PostgresClientSourceExecutorImpl" >       
+    </bean>
+
+    <bean id="derbyClientSourceExecutorImpl" class="com.execue.dataaccess.clientsource.impl.DerbyClientSourceExecutorImpl" >       
+    </bean>
+
+    
+    <!-- Execue ClientSource Result Set Factory for Client Source Native Queries -->
+    <bean id="execueResultSetParserFactory" 
+        class="com.execue.dataaccess.clientsource.ExecueResultSetParserFactory" factory-method="getInstance">
+        <property name="beanMapping">
+            <map>
+                <entry key="1" value="execueOracleResultSetParser"/>
+                <entry key="2" value="execueMySqlResultSetParser"/>
+                <entry key="3" value="execueMsSqlResultSetParser"/>
+                <entry key="7" value="execueTeradataResultSetParser"/>
+                <entry key="8" value="execueSASResultSetParser"/>
+                <entry key="10" value="execueDerbyResultSetParser"/>
+                <entry key="11" value="execuePostgresResultSetParser"/>
+                <!-- default -->
+                <entry key="0" value="execueResultSetParser"/>
+            </map>
+        </property>
+    </bean>
+    
+    <bean id="execueResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueResultSetParserImpl" >       
+    </bean>
+    
+    <bean id="execueMySqlResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueMySqlResultSetParserImpl" >       
+    </bean>
+    
+    <bean id="execueMsSqlResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueMsSqlResultSetParserImpl" >       
+    </bean>
+    
+    <bean id="execueOracleResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueOracleResultSetParserImpl" >
+    </bean>
+    
+    <bean id="execueTeradataResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueTeradataResultSetParserImpl" >
+    </bean>
+    
+    <bean id="execueSASResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueSASResultSetParserImpl" >
+    </bean>    
+
+    <bean id="execuePostgresResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecuePostgresResultSetParserImpl" >
+    </bean>    
+
+    <bean id="execueDerbyResultSetParser" class="com.execue.dataaccess.clientsource.impl.ExecueDerbyResultSetParserImpl" >
+    </bean>    
+
+    
+	<!-- Bean defintion of JoinDefinitionDAO -->
+	<bean id="joinDefinitionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.JoinDefinitionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="appDataSourceDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AppDataSourceDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of JoinDAO -->
+	<bean id="joinDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.JoinDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+		<property name="assetTableDAO">
+			<ref bean="assetTableDAO"/>
+		</property>
+		<property name="assetTableColumnDAO">
+			<ref bean="assetTableColumnDAO"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of AssetDAO -->
+	<bean id="assetDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="assetDetailDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetDetailDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of AssetEntityDAO -->
+	<bean id="assetEntityDefinitionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetEntityDefinitionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+		<property name="assetTableColumnDAO">
+			<ref bean="assetTableColumnDAO"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of BusinessEntityDAO -->
+	<bean id="businessEntityDefinitionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.BusinessEntityDefinitionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="applicationDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ApplicationDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="modelDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ModelDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="conceptDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ConceptDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="businessEntityMaintenanceDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.BusinessEntityMaintenanceDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+
+	<bean id="instanceDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.InstanceDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="relationDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.RelationDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="statDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.StatDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="defaultDynamicValueDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.DefaultDynamicValueDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="entityAttributeDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.EntityAttributeDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="entityBehaviorDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.EntityBehaviorDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	<bean id="hierarchyDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.HierarchyDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	
+	<!-- Bean defintion of BaseBusinessEntityDefinitionDAO -->
+	<bean id="baseBusinessEntityDefinitionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.BaseBusinessEntityDefinitionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of PreferencesDAO -->
+	<bean id="keywordDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.KeywordDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="profileDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ProfileDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="rangeDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.RangeDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+    
+	<!-- Bean defintion of userManagementDAO -->
+	<bean id="userManagementDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.UserManagementDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of BookmarksDAO -->
+	<bean id="bookmarksDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.BookmarksDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of ConversionDAO -->
+	<bean id="conversionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ConversionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<!-- Bean defintion of LookupDAO -->
+	<bean id="lookupDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.LookupDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of ISFLWordDAO -->
+	<bean id="sflWordDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.SFLWordDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+		<property name="swiQueryBuilderServiceFactory">
+			<ref bean="swiQueryBuilderServiceFactory"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of IParallelWordDAO -->
+	<bean id="parallelWordDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ParallelWordDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of IOntoReverseIndexDAO -->
+	<bean id="ontoReverseIndexDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.OntoReverseIndexDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="riSharedUserModelMappingDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.RISharedUserModelMappingDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+    
+	<!-- Bean defintion of AssetSourceConnectionFactory-->
+	<bean id="assetSourceConnectionProvider" 
+		class="com.execue.dataaccess.AssetSourceConnectionProvider" >
+		<property name="pooledDataSourceManager">
+			<ref bean="pooledDataSourceManager"/>
+		</property>
+	</bean>
+    
+	<!-- Bean defintion of PooledDataSourceManager -->
+	<bean id="pooledDataSourceManager" 
+		class="com.execue.dataaccess.configuration.PooledDataSourceManager" >
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>
+		<property name="dataAccessUtilService">
+			<ref bean="dataAccessUtilService"/>
+		</property>
+		<property name="coreConfigurationService">
+			<ref bean="coreConfigurationService"/>
+		</property>
+		<property name="dataSourceDAO">
+            <ref bean="dataSourceDAO"/>
+        </property>
+	</bean>
+	
+	<!-- Bean defintion of DataAccessConfigurationService -->
+	<bean id="dataAccessConfigurableService" class="com.execue.dataaccess.configuration.impl.DataAccessConfigurableService">
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO"/>
+		</property>
+		<property name="pooledDataSourceManager">
+			<ref bean="pooledDataSourceManager"/>
+		</property>
+		<property name="solrPooledDataSourceManager">
+			<ref bean="solrPooledDataSourceManager"/>
+		</property>
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>	
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO"/>
+		</property>
+		<property name="initialContext">
+            <ref bean="initialContext"/>
+        </property>
+		<property name="coreConfigurationService">
+            <ref bean="coreConfigurationService"/>
+        </property>	
+	</bean>	
+	<bean id="dataAccessConfigurationService" class="com.execue.dataaccess.configuration.impl.DataAccessConfigurationServiceImpl">
+		<property name="dataAccessConfiguration">
+			<ref bean="dataAccessConfiguration"/>
+		</property>	
+	</bean>
+	
+	<!-- Bean defintion of GenericJDBCDAO -->
+	<bean id="genericJDBCDAO" 
+		class="com.execue.dataaccess.impl.GenericJDBCDAOImpl" >
+		<property name="assetSourceConnectionProvider">
+			<ref bean="assetSourceConnectionProvider"/>
+		</property>
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO"/>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- Bean defintion of JoinDefinitionDAO -->
+	<bean id="pathDefinitionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.PathDefinitionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<!-- Bean defintion of assetOperationDAO -->
+	<bean id="assetOperationDAO"
+		class="com.execue.dataaccess.swi.dao.impl.AssetOperationDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate" />
+		</property>
+	</bean>
+	
+	
+	
+	<!-- Bean definition of UserQueryPossibilityDAO --> 
+	<bean id="userQueryPossibilityDAO"
+		class="com.execue.dataaccess.swi.dao.impl.UserQueryPossibilityDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate" />
+		</property>
+	</bean>
+	
+	<!-- Bean definition of TypeDAO --> 
+	<bean id="typeDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.TypeDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+		
+	<!-- Bean definition of CloudDAO --> 
+	<bean id="cloudDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.CloudDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean definition of DateFormatDao --> 
+	<bean id="dateFormatDAO"
+		class="com.execue.dataaccess.swi.dao.impl.DateFormatDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate" />
+		</property>
+	</bean>
+	<bean id="publishedFileDAOImpl"
+		class="com.execue.dataaccess.swi.dao.impl.PublishedFileDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>	
+	<bean id="batchMaintenanceDAO"
+		class="com.execue.dataaccess.swi.dao.impl.BatchMaintenanceDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate" />
+		</property>
+		<property name="assetDAO">
+			<ref bean="assetDAO"/>
+		</property>
+		<property name="assetTableDAO">
+			<ref bean="assetTableDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="instanceMappingSuggestionDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.InstanceMappingSuggestionDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of VerticalDAOImpl -->
+	<bean id="verticalDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.VerticalDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	<bean id="easIndexDAO"
+		class="com.execue.dataaccess.swi.dao.impl.EASIndexDAOImpl">
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of BusinessEntityVariationDAO -->
+	<bean id="businessEntityVariationDAO" 
+		class=" com.execue.dataaccess.swi.dao.impl.BusinessEntityVariationDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>	
+	
+	<!--Bean Definitions for App/News Trend Batch-->
+    
+	<bean id="appPopularityDataAccessDAOImpl" class="com.execue.dataaccess.qdata.dao.impl.AppPopularityDataAccessDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="qDataHibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!--END Bean Definitions for App/News Trend Batch-->
+	
+	<!-- Bean defintion of SemanticSuggestDAO starts -->
+	<bean id="semanticSuggestDAO" 
+		class=" com.execue.dataaccess.swi.dao.impl.SemanticSuggestDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>	
+	<!-- Bean defintion of SemanticSuggestDAO ends -->	
+	
+	<!-- Bean defintion of QueryInterfaceSuggestDAO -->
+	<bean id="queryInterfaceSuggestDAO" 
+		class=" com.execue.dataaccess.swi.dao.impl.QueryInterfaceSuggestDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>		
+	</bean>		
+	<!-- Bean defintion of QueryInterfaceSuggestDAO ends -->    
+    
+	<!-- Bean defintion of ContentCleanupPatternDAO -->
+	<bean id="contentCleanupPatternDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.ContentCleanupPatternDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- solr connection management --> 
+	<bean id="solrPooledDataSourceManager" 
+		class="com.execue.dataaccess.configuration.SolrPooledDataSourceManager" >
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO"/>
+		</property>	
+		<property name="appDataSourceDAO">
+			<ref bean="appDataSourceDAO"/>
+		</property>	
+		<property name="dataSourceDAO">
+			<ref bean="dataSourceDAO"/>
+		</property>	
+		<property name="applicationDAO">
+			<ref bean="applicationDAO" />
+		</property>	
+	</bean>
+	
+
+	<bean id="solrDAO" 
+		class="com.execue.dataaccess.http.solr.impl.SolrDAOImpl" >
+		<property name="solrPooledDataSourceManager">
+			<ref bean="solrPooledDataSourceManager"/>
+		</property>	
+	</bean>
+	<!-- Bean defintion of UnstructuredApplicationDetailDAO -->
+	<bean id="unstructuredApplicationDetailDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.UnstructuredApplicationDetailDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of dataSourceDAO -->
+	<bean id="dataSourceDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.DataSourceDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of AssetTableDAO  -->
+	<bean id="assetTableDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetTableDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+		<property name="assetTableColumnDAO">
+			<ref bean="assetTableColumnDAO"/>
+		</property>
+	</bean>
+	
+	<!-- Bean definition of HibernateTemplateBuilder --> 
+	<bean id="hibernateTemplateBuilderService" 
+		class="com.execue.dataaccess.impl.HibernateTemplateBuilderServiceImpl" >
+		<property name="dataAccessConfigurationService">
+			<ref bean="dataAccessConfigurationService"/>
+		</property>
+		<property name="dataAccessUtilService">
+            <ref bean="dataAccessUtilService"/>
+        </property>
+        <property name="coreConfigurationService">
+            <ref bean="coreConfigurationService"/>
+        </property>	
+	</bean>
+	
+	<!-- Bean defintion of AssetTableColumnDAO  -->
+	<bean id="assetTableColumnDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetTableColumnDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+
+	<bean id="assetTableColumnMemberDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetTableColumnMemberDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of AssetTableColumnConstraintDAO  -->
+	<bean id="assetTableColumnConstraintDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetTableColumnConstraintDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+	</bean>
+	<!-- Bean defintion of MappingDAO  -->
+	<bean id="mappingDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.MappingDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>
+		<property name="assetEntityDefinitionDAO">
+			<ref bean="assetEntityDefinitionDAO"/>
+		</property>
+		
+		<property name="businessEntityDefinitionDAO">
+			<ref bean="businessEntityDefinitionDAO"/>
+		</property>
+	</bean>
+	
+	<!-- Bean defintion of PopularityHitDAO  -->
+	<bean id="popularityHitDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.PopularityHitDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>		
+	</bean>
+	
+	<!-- Bean defintion of DefaultMetricDAO  -->
+	<bean id="defaultMetricDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.DefaultMetricDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>		
+	</bean>	
+
+	<!-- Bean defintion of AssetOperationDetailDAO  -->
+	<bean id="assetOperationDetailDAO" 
+		class="com.execue.dataaccess.swi.dao.impl.AssetOperationDetailDAOImpl" >
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate"/>
+		</property>		
+	</bean>	
+
+	<bean id="dataAccessUtilService" 
+        class="com.execue.dataaccess.util.service.impl.DataAccessUtilServiceImpl" >
+        <property name="coreConfigurationService">
+            <ref bean="coreConfigurationService"/>
+        </property>
+        <property name="cryptographyService">
+            <ref bean="cryptographyService"/>
+        </property>
+    </bean>
+</beans>

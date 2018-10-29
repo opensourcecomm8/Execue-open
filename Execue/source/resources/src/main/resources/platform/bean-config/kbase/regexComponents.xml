@@ -1,0 +1,444 @@
+<execue>
+	<regexComponents>
+
+		<component>
+			<name>Subordinating Conjunction</name>
+			<patternHolder>%IN%</patternHolder>
+			<nlpTag>IN</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#superConcept:null#concept:\\w+#nlpTag:IN#type:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>TO</name>
+			<patternHolder>%TO%</patternHolder>
+			<nlpTag>TO</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Preposition#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Coordinating Conjunction</name>
+			<patternHolder>%CC%</patternHolder>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:CoordinatingConjunction#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Punctuation</name>
+			<patternHolder>%PUNCT%</patternHolder>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Punctuation#concept:\\w+#nlpTag:(?:OI|ORTI|OTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Adjectives Tag</name>
+			<patternHolder>%ADJ%</patternHolder>
+			<nlpTag>JJ, JJR, JJS</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#superConcept:null#concept:\\w+#nlpTag:(?:JJ\\w?|RB)#type:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Adjective Concept</name>
+			<patternHolder>%ADJC%</patternHolder>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Adjective#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Value</name>
+			<patternHolder>%V%</patternHolder>
+			<concept>Value</concept>
+			<regex><![CDATA[Token@word:\\d+#type:Digit#concept:\\w+#nlpTag:(?:OI|OTRI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>YearValue</name>
+			<patternHolder>%YV%</patternHolder>
+			<concept>Value</concept>
+			<regex><![CDATA[Token@word:(?:(?:(?:19|20)\\d\\d)|(?:9)\\d|(?:0)\\d|(?:1)[0-2])#type:Digit#concept:\\w+#nlpTag:OTRI#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Ontological Concept</name>
+			<patternHolder>%OC%</patternHolder>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:OntoEntity#concept:\\w+#nlpTag:OC#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<!-- Absolute Time Component Recognition Regex -->
+
+		<component>
+			<name>Partial Time Unit Instance Day</name>
+			<patternHolder>%PTID%</patternHolder>
+			<concept>Day</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:[\\wd]+#type:Day#concept:\\w+#nlpTag:(?:OI|OTI|ORTI|OTRI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Time Unit Instance Day</name>
+			<patternHolder>%TDI%</patternHolder>
+			<concept>Day</concept>
+			<nlpTag>ORTI</nlpTag>
+			<regex><![CDATA[Token@word:[\\wd]+#type:Day#concept:\\w+#nlpTag:(?:ORTI|OTRI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Relative Time Unit Instance Day</name>
+			<patternHolder>%RTID%</patternHolder>
+			<concept>Day</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:relative[\\wd]+#type:Day#concept:\\w+#nlpTag:(?:OI|OTI|ORTI|OTRI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Partial Time Unit Day</name>
+			<patternHolder>%PTD%</patternHolder>
+			<concept>Day</concept>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Day#concept:\\w+#nlpTag:(?:OT|OC)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Partial Time Unit Instance Month</name>
+			<patternHolder>%PTIM%</patternHolder>
+			<concept>Month</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:[\\wd]+#type:Month#concept:\\w+#nlpTag:(?:OI|OTI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Partial Time Unit Month</name>
+			<patternHolder>%PTM%</patternHolder>
+			<concept>Month</concept>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Month#concept:\\w+#nlpTag:(?:OT|OC)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Partial Time Unit Quarter</name>
+			<patternHolder>%PTQ%</patternHolder>
+			<concept>Quarter</concept>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Quarter#concept:\\w+#nlpTag:(?:OT|OC)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Partial Time Unit Instance Quarter</name>
+			<patternHolder>%PTIQ%</patternHolder>
+			<concept>Quarter</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:([a-zA-Z]+[0-9]*[a-zA-Z]*)#type:Quarter#concept:\\w+#nlpTag:(?:OTI|OI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Partial Time Unit Year</name>
+			<patternHolder>%PTY%</patternHolder>
+			<concept>Year</concept>
+			<nlpTag>OC</nlpTag>
+			<regex><![CDATA[Token@word:\\w+#type:Year#concept:\\w+#nlpTag:(?:OT|OC)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<example><![CDATA[2008 (or) year 2008]]></example>
+			<name>Self Sufficient Time Unit Year Value Instance</name>
+			<patternHolder>%STI%</patternHolder>
+			<concept>Year</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:[\\wd]+#type:Year#concept:\\w+#nlpTag:(?:OTI|OI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+		    <example><![CDATA[year 2008]]></example>
+			<name>Self Sufficient Time Unit Year Value Instance With Year Keyword</name>
+			<patternHolder>%YEARSTI%</patternHolder>
+			<concept>Year</concept>
+			<nlpTag>OI</nlpTag>
+			<regex><![CDATA[Token@word:[yY][eE][aA][rR]\\s*\\d+#type:Year#concept:\\w+#nlpTag:(?:OTI|OI)#behavior:[\\w~]+]]></regex>
+		</component>		
+
+		<!-- Abstract Time Component Recognition Regex -->
+
+		
+		<!-- Value Component Recognition Regex -->
+		<component>
+			<name>Digit</name>
+			<patternHolder>%DIGIT%</patternHolder>
+			<concept>Digit</concept>
+			<regex><![CDATA[Token@word:[(?:(?:\\d+)?(?:\\.)?(?:\\d+)(?:%)?)]+#type:Digit#concept:\\w+#nlpTag:(?:OI|OTRI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Operator</name>
+			<patternHolder>%OP%</patternHolder>
+			<concept>Operator</concept>
+			<regex><![CDATA[Token@word:[\\w,]+#type:Operator#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>ValuePreposition</name>
+			<patternHolder>%VALPREP%</patternHolder>
+			<concept>ValuePreposition</concept>
+			<regex><![CDATA[Token@word:[\\w,]+#type:ValuePreposition#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>TimePreposition</name>
+			<patternHolder>%TIMEPREP%</patternHolder>
+			<concept>TimePreposition</concept>
+			<regex><![CDATA[Token@word:[\\w,]+#type:TimePreposition#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>UnitSymbol</name>
+			<patternHolder>%USYM%</patternHolder>
+			<concept>UnitSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:(?:(?:![\\w~]*CurrencySymbol)(?:![\\w~]*DistanceSymbol)(?:![\\w~]*PowerSymbol)(?:![\\w~]*VolumeSymbol)[\\w~]*)#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>UnitScale</name>
+			<patternHolder>%USCALE%</patternHolder>
+			<concept>UnitScale</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitScale#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>DistanceSymbol</name>
+			<patternHolder>%DISTSYM%</patternHolder>
+			<concept>DistanceSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:DistanceSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>CurrencySymbol</name>
+			<patternHolder>%CURRSYM%</patternHolder>
+			<concept>CurrencySymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:CurrencySymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>VolumeSymbol</name>
+			<patternHolder>%VOLSYM%</patternHolder>
+			<concept>VolumeSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:VolumeSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>PowerSymbol</name>
+			<patternHolder>%PSYM%</patternHolder>
+			<concept>PowerSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:PowerSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>DecibelSymbol</name>
+			<patternHolder>%DECIBELSYM%</patternHolder>
+			<concept>DecibelSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:DecibelSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>ImpedenceSymbol</name>
+			<patternHolder>%IMPEDENCESYM%</patternHolder>
+			<concept>ImpedenceSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:ImpedenceSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>ElectricPowerSymbol</name>
+			<patternHolder>%EPSYM%</patternHolder>
+			<concept>ElectricPowerSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:ElectricPowerSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>BatteryCapacitySymbol</name>
+			<patternHolder>%BCSYM%</patternHolder>
+			<concept>BatteryCapacitySymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:BatteryCapacitySymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>PrintResoultionSymbol</name>
+			<patternHolder>%PRSYM%</patternHolder>
+			<concept>PrintResoultionSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:PrintResoultionSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>MemoryCapacitySymbol</name>
+			<patternHolder>%MCSYM%</patternHolder>
+			<concept>MemoryCapacitySymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:MemoryCapacitySymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>FrequencySymbol</name>
+			<patternHolder>%FREQUENCYSYM%</patternHolder>
+			<concept>FrequencySymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:FrequencySymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>BrightnessSymbol</name>
+			<patternHolder>%BRIGHTSYM%</patternHolder>
+			<concept>BrightnessSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:BrightnessSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		                                                   
+		<component>
+			<name>WeightSymbol</name>
+			<patternHolder>%WEIGHTSYM%</patternHolder>
+			<concept>WeightSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:WeightSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>AreaSymbol</name>
+			<patternHolder>%ASYM%</patternHolder>
+			<concept>AreaSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:AreaSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>MemorySymbol</name>
+			<patternHolder>%MSYM%</patternHolder>
+			<concept>MemorySymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:MemorySymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+			
+		<component>
+			<name>ResolutionSymbol</name>
+			<patternHolder>%RSYM%</patternHolder>
+			<concept>ResolutionSymbol</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:UnitSymbol#concept:ResolutionSymbol#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+					
+		<component>
+			<name>Unit</name>
+			<patternHolder>%UNIT%</patternHolder>
+			<concept>Unit</concept>
+			<regex><![CDATA[Token@word:[\\w\\.]+#type:Unit#concept:\\w+#nlpTag:OTI#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>BETWEEN</name>
+			<patternHolder>%BET%</patternHolder>
+			<regex><![CDATA[Token@word:[\\w]+#type:RangePreposition#concept:\\w+#nlpTag:ORTI#behavior:[\\w~]+]]></regex>
+		</component>
+		 
+		<component>
+			<name>TimeFrame</name>
+			<patternHolder>%TF%</patternHolder>
+			<concept>TimeFrame</concept>
+			<regex><![CDATA[Token@word:[\\w:-]+#type:TimeFrame#concept:\\w+#nlpTag:OTI#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<example><![CDATA[nominal year]]></example>
+			<name>RealizedTimeFrame</name>
+			<patternHolder>%RTF%</patternHolder>
+			<concept>TimeFrame</concept>
+			<regex><![CDATA[Token@word:[\\w:-]+#type:TimeFrame#concept:\\w+#nlpTag:OC#behavior:[\\w~]+]]></regex>
+		</component>		
+	
+		<!-- END: Validation rules component -->
+		
+		<component>
+			<name>Time Concept</name>
+			<patternHolder>%TIME%</patternHolder>
+			<excludeNlpTag>OC, Profile</excludeNlpTag>
+			<concept>Time</concept>
+			<regex><![CDATA[Token@word:[\\w\\d#\-]+#type:TimeFrame#concept:\\w+#nlpTag:(?:OI|ORTI|OTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		
+		<component>
+			<name>Value Instance</name>
+			<patternHolder>%VAL%</patternHolder>
+			<concept>Value</concept>
+			<regex><![CDATA[Token@word:.+#type:Value#concept:\\w+#nlpTag:(?:OI|ORTI|OTI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Value Concept</name>
+			<patternHolder>%VALUE%</patternHolder>
+			<excludeNlpTag>OC, Profile</excludeNlpTag>
+			<concept>Value</concept>
+			<regex><![CDATA[Token@word:[\\w]+#type:Value#concept:\\w+#nlpTag:OC#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Indicator</name>
+			<patternHolder>%INDICATOR%</patternHolder>
+			<excludeNlpTag>OC, Profile</excludeNlpTag>
+			<concept>Indicator</concept>
+			<regex><![CDATA[Token@word:\\w+#type:\\w+#concept:\\w+#nlpTag:OI#behavior:[\\w~]*INDICATOR~[\\w~]*]]></regex>
+		</component>
+
+		<component>
+			<name>Statistics Concept</name>
+			<patternHolder>%STAT%</patternHolder>
+			<excludeNlpTag>OC, Profile</excludeNlpTag>
+			<concept>Statistics</concept>
+			<regex><![CDATA[Token@word:\\w+#type:Statistics#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>General Word</name>
+			<patternHolder>%WORD%</patternHolder>
+			<regex><![CDATA[Token@word:\\w+#type:\\w+#concept:\\w+#nlpTag:\\w+#behavior:[\\w~]+]]></regex>
+		</component>
+
+		<component>
+			<name>Conjunction Instance</name>
+			<patternHolder>%CONJUNCTION%</patternHolder>
+			<excludeNlpTag>OC, CP</excludeNlpTag>
+			<concept>Conjunction</concept>
+			<regex><![CDATA[Token@word:\\w+#type:Conjunction#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+			
+		<component>
+			<name>Measurable Entity</name>
+			<patternHolder>%ME%</patternHolder>
+			<excludeNlpTag>OC, CP</excludeNlpTag>
+			<concept>MeasurableEntity</concept>
+			<regex><![CDATA[Token@word:\\w+#type:MeasurableEntity#concept:\\w+#nlpTag:(?:OC|CP)#behavior:[\\w~]+]]></regex>
+		</component>
+			
+		<component>
+			<name>NON-Periodic Information Entity</name>
+			<patternHolder>%NON-PERIODIC-INFO%</patternHolder>
+			<excludeNlpTag>OP</excludeNlpTag>
+			<concept>PeriodicInformation</concept>
+			<regex><![CDATA[Token@word:[\\w\\d]+#superConcept:(?:[\\w-~]*)(?:(?:<!(?:PeriodicInformation|Conjunction))(?:~Thing~)(?:!(?:PeriodicInformation|Conjunction)))(?:[\\w~]*)#concept:\\w+#nlpTag:[\\w]+]]></regex>
+		</component>
+			
+		<component>
+			<name>ByConjunction</name>
+			<patternHolder>%BYCONJ%</patternHolder>
+			<concept>ByConjunction</concept>
+			<regex><![CDATA[Token@word:\\w+#type:ByConjunction#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		 
+		<component>
+			<name>ComparativeStatistics</name>
+			<patternHolder>%COMP%</patternHolder>
+			<concept>ComparativeStatistics</concept>
+			<regex><![CDATA[Token@word:\\w+#type:ComparativeStatistics#concept:\\w+#nlpTag:(?:OI|ORTI)#behavior:[\\w~]+]]></regex>
+		</component>
+		 	
+		<component>
+			<name>QuantitativeConceptInstance</name>
+			<patternHolder>%QCI%</patternHolder>
+			<concept>QuantitativeConcept</concept>
+			<regex><![CDATA[Token@word:\\w+#type:\\w+#concept:\\w+#nlpTag:OI#behavior:(?:[\\w~]*)(?:QUANTITATIVE)(?:[\\w~]*)]]></regex>
+		</component>
+		
+		<component>
+			<name>ComparativeConcept</name>
+			<patternHolder>%COMPCONCEPT%</patternHolder>
+			<concept>ComparativeConcept</concept>
+			<regex><![CDATA[Token@word:\\w+#type:\\w+#concept:\\w+#nlpTag:OI#behavior:(?:[\\w~]*)(?:COMPARATIVE)([\\w~]*)]]></regex>
+		</component>
+	</regexComponents>
+</execue>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<execue>
+
+
+  <execuetag>
+      <name>PRE SUBORDINATING CONJUNCTION</name>
+      <tagVal>+IN</tagVal>
+      <candidateTag>IN</candidateTag>
+      <candidateVals>with, in, that are</candidateVals>
+  </execuetag>
+
+  <execuetag>
+      <name>POST SUBORDINATING CONJUNCTION</name>
+      <tagVal>IN+</tagVal>
+      <candidateTag>IN</candidateTag>
+      <candidateVals>of, on, at</candidateVals>
+  </execuetag>
+
+  <execuetag>
+      <name>MAIN SUBORDINATING CONJUNCTION</name>
+      <tagVal>IN</tagVal>
+      <replaceTagVal>NN</replaceTagVal>
+      <candidateTag>IN</candidateTag>
+      <candidateVals>of, on, at, with, from, for, after, though, before, until, unless, since, or, in, based</candidateVals>
+  </execuetag>
+
+  <execuetag>
+    <name>MAIN MODAL AUXILIARY</name>
+    <tagVal>DT</tagVal>
+    <replaceTagVal>NN</replaceTagVal>
+    <candidateTag>DT</candidateTag>
+    <candidateVals>a, an, the</candidateVals>
+  </execuetag>
+
+  <execuetag>
+    <name>MAIN DETERMINER</name>
+    <tagVal>DT</tagVal>
+    <replaceTagVal>NN</replaceTagVal>
+    <candidateTag>DT</candidateTag>
+    <candidateVals>a, an, the</candidateVals>
+  </execuetag>
+
+  <execuetag>
+    <name>MAIN MODAL AUXILIARY</name>
+    <tagVal>MD</tagVal>
+    <replaceTagVal>NN</replaceTagVal>
+    <candidateTag>MD</candidateTag>
+    <candidateVals>may, might, can, could, will, would, shall, should, must</candidateVals>
+  </execuetag>
+
+  <execuetag>
+      <name>MAIN BY VARIABLE</name>
+      <tagVal>BY</tagVal>
+      <replaceTagVal>NN</replaceTagVal>
+      <candidateTag>NN</candidateTag>
+      <candidateVals>by</candidateVals>
+  </execuetag>
+
+
+</execue>

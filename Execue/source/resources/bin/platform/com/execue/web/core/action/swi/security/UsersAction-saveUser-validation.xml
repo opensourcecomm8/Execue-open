@@ -1,0 +1,62 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<!--field name="user.username">
+			<field-validator type="required">
+				<message key="users.username.required"/>
+			</field-validator>
+		</field-->
+	<field name="user.username">
+		<field-validator type="required">
+			<message key="users.username.required"/>
+		</field-validator>
+		<!--<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*[_0-9a-zA-Z]*)]]>
+			</param>
+			<message key="user.name.format"/>
+		</field-validator>
+		<field-validator type="stringlength">  
+            <param name="minLength">6</param>  
+            <param name="maxLength">25</param>  
+            <message>user name should be min 6 and max 25 characters</message>  
+        </field-validator> -->
+	</field>
+	<field name="user.firstName">
+		<field-validator type="required">
+			<message key="users.firstName.required"/>
+		</field-validator>
+		<!--<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*)]]>
+			</param>
+			<message>Valid First name required example: kog</message>
+		</field-validator>-->
+	</field>
+	<field name="user.lastName">
+		<field-validator type="required">
+			<message key="users.lastName.required"/>
+		</field-validator>
+		<!--<field-validator type="regex">
+			<param name="expression">
+			<![CDATA[([a-zA-Z][a-zA-Z]*)]]>
+			</param>
+			<message>Valid Last name required example: kog</message>
+		</field-validator>-->
+	</field>
+	<!--<field name="user.emailId">
+		<field-validator type="email">
+			<message key="Please enter a valid email"/>
+		</field-validator>
+	</field>-->
+	<field name="user.password">
+		<field-validator type="required">
+			<message key="users.password.required"/>
+		</field-validator>
+	</field>
+	<field name="confirmPassword">
+		<field-validator type="fieldexpression">
+			<param name="expression">(user.password == confirmPassword)</param>
+			<message>Password and Confirm Password must be same.</message>
+		</field-validator>
+	</field>
+</validators>
